@@ -17,10 +17,11 @@ include_directories(
 )
 
 add_executable(test_bson_mapper
-    main.cpp
-    test.cpp
+    archiver_test.cpp
     bson_streambuf.cpp
+    main.cpp
     mapping_functions.cpp
+    test.cpp
 )
 
 target_link_libraries(test_bson_mapper bson_mapper_static)
