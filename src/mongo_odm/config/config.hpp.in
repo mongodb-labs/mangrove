@@ -12,10 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define CATCH_CONFIG_RUNNER
-#include "catch.hpp"
+#define MONGO_ODM_INLINE_NAMESPACE_BEGIN inline namespace @MONGO_ODM_INLINE_NAMESPACE@ {
 
-int main(int argc, char** argv) {
-    int result = Catch::Session().run(argc, argv);
-    return result;
-}
+#define MONGO_ODM_INLINE_NAMESPACE_END }  // namespace @MONGO_ODM_INLINE_NAMESPACE@

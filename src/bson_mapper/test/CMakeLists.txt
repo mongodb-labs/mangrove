@@ -20,6 +20,7 @@ add_executable(test_bson_mapper
     main.cpp
     test.cpp
     bson_streambuf.cpp
+    mapping_functions.cpp
 )
 
 target_link_libraries(test_bson_mapper bson_mapper_static)

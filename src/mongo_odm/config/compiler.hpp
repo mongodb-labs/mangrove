@@ -12,10 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define CATCH_CONFIG_RUNNER
-#include "catch.hpp"
+#if defined(_MSC_VER)
 
-int main(int argc, char** argv) {
-    int result = Catch::Session().run(argc, argv);
-    return result;
-}
+// Disable MSVC warnings that cause a lot of noise related to DLL visibility
+// for types that we don't control (like std::unique_ptr).
+#pragma warning(push)
+#pragma warning(disable : 4251 4275)
+
+#define MONGO_ODM_INLINE inline __forceinline MONGO_ODM_PRIVATE
+
+#define MONGO_ODM_CALL __cdecl
+
+#else
+
+#define MONGO_ODM_INLINE inline __attribute__((__always_inline__)) MONGO_ODM_PRIVATE
+
+#define MONGO_ODM_CALL
+
+#endif
