@@ -145,7 +145,7 @@ struct DataC : public bson_mapper::UnderlyingBSONDataBase {
           test_oid{someOid},
           test_oid2(someOid),
           test_bool{true},
-          test_date(1465225981),
+          test_date(std::chrono::milliseconds{1465225981}),
           test_int32{214},
           test_int64{5191872984791874},
           test_regex{"/^#?([a-f0-9]{6}|[a-f0-9]{3})$/", ""},
@@ -171,7 +171,7 @@ for (var prop in obj) {
         test_oid.value = bsoncxx::oid(bsoncxx::oid::init_tag_t{});
         test_oid2 = bsoncxx::oid(bsoncxx::oid::init_tag_t{});
         test_bool.value = false;
-        test_date.value = 0;
+        test_date.value = std::chrono::milliseconds{0};
         test_int32.value = 0;
         test_int64.value = 0;
         test_regex.regex = "";
