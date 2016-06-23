@@ -25,13 +25,14 @@ class Foo {
    public:
     int a, b, c;
 
-    bool operator==(const Foo &rhs) {
+    bool operator==(const Foo& rhs) {
         return (a == rhs.a) && (b == rhs.b) && (c == rhs.c);
     }
 
-    // void serialize(Archive& ar) {
-    //     ar(CEREAL_NVP(a), CEREAL_NVP(b), CEREAL_NVP(c), CEREAL_NVP(f));
-    // }
+    template <class Archive>
+    void serialize(Archive& ar) {
+        ar(CEREAL_NVP(a), CEREAL_NVP(b), CEREAL_NVP(c));
+    }
 };
 
 // set up test BSON documents and objects

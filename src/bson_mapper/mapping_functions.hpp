@@ -21,7 +21,7 @@
 #include <bsoncxx/builder/basic/document.hpp>
 #include <bsoncxx/stdx/optional.hpp>
 
-#include <bson_mapper/archiver_mock.hpp>
+#include <bson_mapper/bson_archiver.hpp>
 #include <bson_mapper/bson_streambuf.hpp>
 
 namespace bson_mapper {
@@ -39,9 +39,9 @@ BSON_MAPPER_INLINE_NAMESPACE_BEGIN
 template <class T>
 bsoncxx::document::value to_document(const T& obj) {
     bsoncxx::stdx::optional<bsoncxx::document::value> doc;
-    bson_mapper::bson_ostream bos([&doc](bsoncxx::document::value v) { doc = std::move(v); });
-    // TODO bson_mapper::BSONOutputArchiver archiver(bos);
-    out_archiver_mock<T> archive(bos);
+    bson_ostream bos([&doc](bsoncxx::document::value v) { doc = std::move(v); });
+    BSONOutputArchive archive(bos);
+    // out_archiver_mock<T> archive(bos);
     archive(obj);
     return doc.value();
 }
@@ -61,8 +61,8 @@ T to_obj(bsoncxx::document::view v) {
     static_assert(std::is_default_constructible<T>::value,
                   "Template type must be default constructible");
     bson_mapper::bson_istream bis(v);
-    // TODO bson_mapper::BSONInputArchive archive(bis);
-    in_archiver_mock<T> archive(bis);
+    bson_mapper::BSONInputArchive archive(bis);
+    // in_archiver_mock<T> archive(bis);
     T obj;
     archive(obj);
     return obj;
@@ -81,8 +81,8 @@ T to_obj(bsoncxx::document::view v) {
 template <class T>
 void to_obj(bsoncxx::document::view v, T& obj) {
     bson_mapper::bson_istream bis(v);
-    // TODO bson_mapper::BSONInputArchive archive(bis);
-    in_archiver_mock<T> archive(bis);
+    bson_mapper::BSONInputArchive archive(bis);
+    // in_archiver_mock<T> archive(bis);
     archive(obj);
 }
 
