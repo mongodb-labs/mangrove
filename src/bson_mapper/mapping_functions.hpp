@@ -41,7 +41,6 @@ bsoncxx::document::value to_document(const T& obj) {
     bsoncxx::stdx::optional<bsoncxx::document::value> doc;
     bson_ostream bos([&doc](bsoncxx::document::value v) { doc = std::move(v); });
     BSONOutputArchive archive(bos);
-    // out_archiver_mock<T> archive(bos);
     archive(obj);
     return doc.value();
 }
@@ -62,7 +61,6 @@ T to_obj(bsoncxx::document::view v) {
                   "Template type must be default constructible");
     bson_mapper::bson_istream bis(v);
     bson_mapper::BSONInputArchive archive(bis);
-    // in_archiver_mock<T> archive(bis);
     T obj;
     archive(obj);
     return obj;
@@ -82,7 +80,6 @@ template <class T>
 void to_obj(bsoncxx::document::view v, T& obj) {
     bson_mapper::bson_istream bis(v);
     bson_mapper::BSONInputArchive archive(bis);
-    // in_archiver_mock<T> archive(bis);
     archive(obj);
 }
 

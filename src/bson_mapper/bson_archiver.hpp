@@ -45,6 +45,7 @@
 
 #include <chrono>
 #include <memory>
+#include <sstream>
 #include <stack>
 #include <string>
 #include <vector>

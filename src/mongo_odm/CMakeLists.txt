@@ -55,6 +55,7 @@ include_directories(
     ${LIBMONGOC_INCLUDE_DIRS}
     ${CMAKE_SOURCE_DIR}/src
     ${CMAKE_BINARY_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/third_party/cereal/include
 )
 
 link_directories(

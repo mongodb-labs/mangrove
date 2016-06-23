@@ -16,6 +16,10 @@
 
 #include <bson_mapper/config/prelude.hpp>
 
+#include <istream>
+#include <ostream>
+#include <streambuf>
+
 #include <bsoncxx/builder/stream/document.hpp>
 #include <bsoncxx/json.hpp>
 

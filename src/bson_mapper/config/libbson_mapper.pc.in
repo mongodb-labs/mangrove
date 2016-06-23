@@ -21,5 +21,5 @@ Description: The MongoDB C++11 ODM BSON Library
 URL: http://github.com/mongodb/mongo-cxx-odm
 Version: @BSON_MAPPER_VERSION@
 Requires.private: libbsoncxx >= @LIBBSONCXX_REQUIRED_VERSION@
-Cflags: -I${includedir}/bson_mapper/@BSON_MAPPER_INLINE_NAMESPACE@
+Cflags: -I${includedir}/bson_mapper/@BSON_MAPPER_INLINE_NAMESPACE@ -I${includedir}/bson_mapper/@BSON_MAPPER_INLINE_NAMESPACE@/bson_mapper/third_party
 Libs: -L${libdir} -lbson_mapper

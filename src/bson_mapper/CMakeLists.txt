@@ -46,7 +46,6 @@ add_subdirectory(config)
 
 set(bson_mapper_sources
    "bson_streambuf.cpp"
-   "file.cpp"
 )
 
 include_directories(
@@ -117,6 +116,15 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
         PATTERN "*.h"
         PATTERN "*.hpp"
         REGEX ".+/test" EXCLUDE
+)
+
+
+
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/third_party/cereal/include/cereal/
+    DESTINATION ${BSON_MAPPER_HEADER_INSTALL_DIR}/bson_mapper/third_party/cereal
+    FILES_MATCHING
+        PATTERN "*.hpp"
+        PATTERN "*.h"
 )
 
 install(FILES

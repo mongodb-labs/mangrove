@@ -26,13 +26,20 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 endif()
 
 add_subdirectory(bson_mapper)
+add_subdirectory(mongo_odm)
 
-add_custom_target(examples DEPENDS ${BSON_MAPPER_EXAMPLE_EXECUTABLES})
+add_custom_target(examples DEPENDS ${BSON_MAPPER_EXAMPLE_EXECUTABLES} ${MONGO_ODM_EXAMPLE_EXECUTABLES})
 
 add_custom_target(run-examples DEPENDS examples)
 
 # Run all bson_mapper examples on `make run-examples`.
 foreach(EXAMPLE ${BSON_MAPPER_EXAMPLE_EXECUTABLES})
     get_filename_component(EXAMPLE_EXECUTABLE "${CMAKE_BINARY_DIR}/examples/bson_mapper/${EXAMPLE}" ABSOLUTE)
+    add_custom_command(TARGET run-examples POST_BUILD COMMAND ${EXAMPLE_EXECUTABLE})
+endforeach(EXAMPLE)
+
+# Run all mongo_odm examples on `make run-examples`.
+foreach(EXAMPLE ${MONGO_ODM_EXAMPLE_EXECUTABLES})
+    get_filename_component(EXAMPLE_EXECUTABLE "${CMAKE_BINARY_DIR}/examples/mongo_odm/${EXAMPLE}" ABSOLUTE)
     add_custom_command(TARGET run-examples POST_BUILD COMMAND ${EXAMPLE_EXECUTABLE})
 endforeach(EXAMPLE)
