@@ -25,7 +25,7 @@ configure_file(
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/config.hpp
     ${CMAKE_CURRENT_BINARY_DIR}/version.hpp
-    DESTINATION ${BSON_MAPPER_HEADER_INSTALL_DIR}/bsoncxx/config
+    DESTINATION ${BSON_MAPPER_HEADER_INSTALL_DIR}/bson_mapper/config
     COMPONENT dev
 )
 

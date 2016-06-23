@@ -25,7 +25,7 @@ configure_file(
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/config.hpp
     ${CMAKE_CURRENT_BINARY_DIR}/version.hpp
-    DESTINATION ${MONGO_ODM_HEADER_INSTALL_DIR}/bsoncxx/config
+    DESTINATION ${MONGO_ODM_HEADER_INSTALL_DIR}/mongo_odm/config
     COMPONENT dev
 )
 
