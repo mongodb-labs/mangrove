@@ -43,6 +43,22 @@ class Foo {
     }
 };
 
+// Represents an aggregation result
+class FooResult {
+   public:
+    int a;
+    int sum;
+
+    bool operator==(const FooResult& rhs) {
+        return (a == rhs.a) && (sum == rhs.sum);
+    }
+
+    template <class Archive>
+    void serialize(Archive& ar) {
+        ar(CEREAL_NVP(a), CEREAL_NVP(sum));
+    }
+};
+
 // set up test BSON documents and objects
 std::string json_str = R"({"a": 1, "b":4, "c": 9})";
 auto doc = from_json(json_str);
@@ -69,27 +85,34 @@ TEST_CASE(
         for (int i = 0; i < 10; i++) {
             coll.insert_one(doc_view);
         }
-        Foo result_obj{10, 40, 90};
+        FooResult result_obj{1, 140};
 
         // Set up aggregation query that sums up every field of each individual document.
-        // The resulting document has the same schema, so it can be de-serialized into a Foo.
         pipeline stages;
         builder::stream::document group_stage;
         group_stage << "_id"
-                    << "a"
+                    << "$a"
                     << "a" << builder::stream::open_document << "$sum"
                     << "$a" << builder::stream::close_document << "b"
                     << builder::stream::open_document << "$sum"
                     << "$b" << builder::stream::close_document << "c"
                     << builder::stream::open_document << "$sum"
                     << "$c" << builder::stream::close_document;
+        builder::stream::document project_stage;
+        project_stage << "a"
+                      << "$_id"
+                      << "sum" << builder::stream::open_document << "$add"
+                      << builder::stream::open_array << "$a"
+                      << "$b"
+                      << "$c" << builder::stream::close_array << builder::stream::close_document;
         stages.group(group_stage.view());
+        stages.project(project_stage.view());
 
-        auto cur = foo_coll.aggregate(stages);
+        auto cur = foo_coll.aggregate<FooResult>(stages);
         int i = 0;
-        for (Foo f : cur) {
+        for (FooResult fr : cur) {
             i++;
-            REQUIRE(f == result_obj);
+            REQUIRE(fr.a == result_obj.a);
         }
         REQUIRE(i == 1);
     }

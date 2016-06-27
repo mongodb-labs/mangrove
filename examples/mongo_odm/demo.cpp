@@ -254,6 +254,7 @@ int main(int, char**) {
 
         std::cout << "Store aggregation results in custom objects:" << std::endl;
 
+        // Build an aggregation query that find the number of restaurants in each borough
         mongocxx::pipeline stages;
         bsoncxx::builder::stream::document group_stage;
         group_stage << "_id"
@@ -267,11 +268,7 @@ int main(int, char**) {
         stages.group(group_stage.view());
         stages.project(project_stage.view());
 
-        // Make a new collection wrapper that outputs the aggregate type for aggregation queries.
-        // TODO (CXXODM-13) allow aggregation queries with original collection wrapper, maybe add
-        // another template for the aggregate() function?
-        mongo_odm::odm_collection<BoroughStats> borough_stats_col{restaurants_col};
-        auto cur = borough_stats_col.aggregate(stages);
+        auto cur = restaurants.aggregate<BoroughStats>(stages);
         for (const auto& bs : cur) {
             std::cout << "Borough: " << bs.borough << ", restaurants: " << bs.count << std::endl;
         }

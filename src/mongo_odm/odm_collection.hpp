@@ -48,25 +48,28 @@ class odm_collection {
 
     ///
     /// Runs an aggregation framework pipeline against this collection, and returns the results
-    /// as
-    /// de-serialized object.
+    /// as de-serialized objects.
+    /// This function is templated on the result's type, which is not necessarily the same as the
+    /// type of the documents in the colleciton.
     ///
+    /// @tparam Result - The type of the aggregation result.
     /// @param pipeline
     ///   The pipeline of aggregation operations to perform.
     /// @param options
     ///   Optional arguments, see mongocxx::mongocxx::options::aggregate.
     ///
-    /// @return A deserializing_cursor with the results.
+    /// @return A deserializing_cursor<Result> with the results.
     /// @throws
     ///   If the operation failed, the returned cursor will throw an mongocxx::exception::query
     ///   when it is iterated.
     ///
     /// @see http://docs.mongodb.org/manual/reference/command/aggregate/
     ///
-    deserializing_cursor<T> aggregate(
+    template <class Result = T>
+    deserializing_cursor<Result> aggregate(
         const mongocxx::pipeline& pipeline,
         const mongocxx::options::aggregate& options = mongocxx::options::aggregate()) {
-        return deserializing_cursor<T>(_coll.aggregate(pipeline, options));
+        return deserializing_cursor<Result>(_coll.aggregate(pipeline, options));
     }
 
     ///
