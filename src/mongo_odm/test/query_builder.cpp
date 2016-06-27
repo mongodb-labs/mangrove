@@ -12,15 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <cstddef>
+#include "catch.hpp"
+
 #include <iostream>
-#include <stdexcept>
-#include <tuple>
-#include <type_traits>
 
-#include "query_builder.hpp"
+#include <mongo_odm/query_builder.hpp>
 
-// using namespace mongo_odm;
+using namespace mongo_odm;
 
 struct Foo {
   Foo *v;
@@ -28,18 +26,22 @@ struct Foo {
   int x;
   bool y;
   std::string z;
+  // this characer is not put into a macro, there will be no member funcion
+  // pointer for it.
   char missing;
 
   ADAPT(Foo, NVP(v), NVP(w), NVP(x), NVP(y), NVP(z))
 };
 ADAPT_STORAGE(Foo);
 
-int main() {
+TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
   std::cout << "Wrap: " << wrap(&Foo::v)->name << std::endl;
   std::cout << "Wrap: " << SAFEWRAP(Foo, w).name << std::endl;
   std::cout << "Wrap: " << SAFEWRAPTYPE(Foo::x).name << std::endl;
   std::cout << "Wrap: " << (SAFEWRAPTYPE(Foo::y) == true) << std::endl;
-  //    std::cout << "Wrap: " << (SAFEWRAPTYPE(Foo::y) == "hello") << std::endl;
+  // Type error:
+  // std::cout << "Wrap: " << (SAFEWRAPTYPE(Foo::y) == "hello") << std::endl;
   std::cout << "Wrap: " << (SAFEWRAPTYPE(Foo::z) == "hello") << std::endl;
-  //    std::cout << "Wrap: " << SAFEWRAPTYPE(Foo::missing)->name << std::endl;
+  // "Missing" Field:
+  // std::cout << "Wrap: " << SAFEWRAPTYPE(Foo::missing)->name << std::endl;
 }

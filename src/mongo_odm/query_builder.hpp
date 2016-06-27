@@ -15,7 +15,6 @@
 #include <mongo_odm/config/prelude.hpp>
 
 #include <cstddef>
-#include <iostream>
 #include <stdexcept>
 #include <tuple>
 #include <type_traits>
@@ -34,8 +33,8 @@
 #define SAFEWRAPTYPE(value)                                                    \
   hasCallIfFieldIsPresent<decltype(&value), &value>::call()
 
-// namespace mongo_odm {
-// MONGO_ODM_INLINE_NAMESPACE_BEGIN
+namespace mongo_odm {
+MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
 template <typename Base, typename T> struct Nvp {
   constexpr Nvp(T Base::*t, const char *name) : t(t), name(name) {}
@@ -81,6 +80,15 @@ template <typename Base, typename T, size_t N, size_t M>
 struct hasField<Base, T, N, M, true>
     : public std::is_same<T Base::*, decltype(std::get<N>(Base::fields).t)> {};
 
+// forward declarations for wrapimpl
+template <typename Base, typename T, size_t N, size_t M>
+constexpr std::enable_if_t<N == M, const Nvp<Base, T> *> wrapimpl(T Base::*t);
+
+template <typename Base, typename T, size_t N, size_t M>
+    constexpr std::enable_if_t <
+    N<M && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
+    wrapimpl(T Base::*t);
+
 template <typename Base, typename T, size_t N, size_t M>
     constexpr std::enable_if_t <
     N<M && hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
@@ -118,7 +126,7 @@ struct hasCallIfFieldIsPresent<T Base::*, ptr,
   static constexpr const Nvp<Base, T> &call() { return *wrap(ptr); }
 };
 
-// MONGO_ODM_INLINE_NAMESPACE_END
-// }  // namespace bson_mapper
+MONGO_ODM_INLINE_NAMESPACE_END
+} // namespace bson_mapper
 
 #include <mongo_odm/config/postlude.hpp>
