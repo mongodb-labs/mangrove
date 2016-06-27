@@ -21,6 +21,7 @@ add_executable(test_mongo_odm
     model.cpp
     odm_collection.cpp
     deserializing_cursor.cpp
+    query_builder.cpp
 )
 
 target_link_libraries(test_mongo_odm mongo_odm_static)
