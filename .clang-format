@@ -5,6 +5,6 @@ IndentWidth: 4
 MaxEmptyLinesToKeep: 1
 NamespaceIndentation: None
 SpaceBeforeAssignmentOperators: true
-Standard: Cpp11
+Standard: Cpp14
 UseTab: Never
 AllowShortFunctionsOnASingleLine: false

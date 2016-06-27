@@ -48,7 +48,7 @@ set(CMAKE_MACOSX_RPATH 1)
 
 # Enforce the C++ standard, and disable extensions
 if(NOT DEFINED CMAKE_CXX_STANDARD)
-    set(CMAKE_CXX_STANDARD 11)
+    set(CMAKE_CXX_STANDARD 14)
 endif()
 
 set(CMAKE_CXX_EXTENSIONS OFF)
