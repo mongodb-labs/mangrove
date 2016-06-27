@@ -36,6 +36,10 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
+/**
+ * An object that represents a name-value pair of a member in an object.
+ * It is templated on the class of the member and its type.
+ */
 template <typename Base, typename T> struct Nvp {
   constexpr Nvp(T Base::*t, const char *name) : t(t), name(name) {}
 
@@ -43,6 +47,9 @@ template <typename Base, typename T> struct Nvp {
   const char *name;
 };
 
+/**
+ * Represents a query expression involving name-value pairs.
+ */
 template <typename Base, typename T> struct Expr {
   constexpr Expr(const Nvp<Base, T> &nvp, T field)
       : nvp(nvp), field(std::move(field)) {}
@@ -56,6 +63,7 @@ template <typename Base, typename T> struct Expr {
   }
 };
 
+/* Overload operators for name-value pairs to create expressions */
 template <typename Base, typename T, typename U,
           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
 Expr<Base, T> operator==(const Nvp<Base, T> &lhs, const U &rhs) {
@@ -68,14 +76,23 @@ Expr<Base, T> operator==(const Nvp<Base, T> &lhs, const T &rhs) {
   return Expr<Base, T>(lhs, rhs);
 }
 
+// Create a name-value pair from a object member and its name
 template <typename Base, typename T>
 Nvp<Base, T> constexpr makeNvp(T Base::*t, const char *name) {
   return Nvp<Base, T>(t, name);
 }
 
+/**
+ * hasField determines whether a type Base has a member of the given type T as
+ * the Nth member out of M total members which have name value pairs.
+ */
+// By default, if N>=M the index is out of bounds and hasField is false-y.
 template <typename Base, typename T, size_t N, size_t M,
           bool = N<M> struct hasField : public std::false_type {};
 
+// Nth member in the Base::fields tuple (i.e. the list of fields for which we
+// have name-value pairs)
+// Must have same type as the given argument.
 template <typename Base, typename T, size_t N, size_t M>
 struct hasField<Base, T, N, M, true>
     : public std::is_same<T Base::*, decltype(std::get<N>(Base::fields).t)> {};
