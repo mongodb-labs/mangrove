@@ -45,6 +45,7 @@ set(MONGO_ODM_HEADER_INSTALL_DIR "include/mongo_odm/${MONGO_ODM_INLINE_NAMESPACE
 add_subdirectory(config)
 
 set(mongo_odm_sources
+   "model.cpp"
    "odm_collection.cpp"
 )
 

@@ -85,14 +85,14 @@ int char_array_streambuf::underflow() {
     if (_current == _end) {
         return EOF;
     }
-    return *_current;
+    return static_cast<unsigned char>(*_current);
 }
 
 int char_array_streambuf::uflow() {
     if (_current == _end) {
         return EOF;
     }
-    return *(_current++);
+    return static_cast<unsigned char>(*(_current++));
 }
 
 int char_array_streambuf::pbackfail(int ch) {
@@ -102,7 +102,7 @@ int char_array_streambuf::pbackfail(int ch) {
         return EOF;
     }
     _current--;
-    return *_current;
+    return static_cast<unsigned char>(*_current);
 }
 
 std::streamsize char_array_streambuf::showmanyc() {

@@ -18,6 +18,7 @@ include_directories(
 
 add_executable(test_mongo_odm
     main.cpp
+    model.cpp
     odm_collection.cpp
 )
 
