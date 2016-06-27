@@ -47,7 +47,6 @@ add_subdirectory(config)
 set(mongo_odm_sources
    "model.cpp"
    "odm_collection.cpp"
-   "query_builder.cpp"
 )
 
 include_directories(
