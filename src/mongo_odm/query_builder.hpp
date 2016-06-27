@@ -97,14 +97,15 @@ template <typename Base, typename T, size_t N, size_t M>
 struct hasField<Base, T, N, M, true>
     : public std::is_same<T Base::*, decltype(std::get<N>(Base::fields).t)> {};
 
-// forward declarations for wrapimpl
-template <typename Base, typename T, size_t N, size_t M>
-constexpr std::enable_if_t<N == M, const Nvp<Base, T> *> wrapimpl(T Base::*t);
-
-template <typename Base, typename T, size_t N, size_t M>
-    constexpr std::enable_if_t <
-    N<M && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
-    wrapimpl(T Base::*t);
+// // forward declarations for wrapimpl
+// template <typename Base, typename T, size_t N, size_t M>
+// constexpr std::enable_if_t<N == M, const Nvp<Base, T> *> wrapimpl(T
+// Base::*t);
+//
+// template <typename Base, typename T, size_t N, size_t M>
+//     constexpr std::enable_if_t <
+//     N<M && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
+//     wrapimpl(T Base::*t);
 
 template <typename Base, typename T, size_t N, size_t M>
     constexpr std::enable_if_t <
