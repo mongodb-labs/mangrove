@@ -21,17 +21,16 @@
 
 #define NVP(x) makeNvp(&wrapBase::x, #x)
 
-#define ADAPT(Base, ...)                                                       \
-  using wrapBase = Base;                                                       \
-  constexpr static auto fields = std::make_tuple(__VA_ARGS__);
+#define ADAPT(Base, ...)   \
+    using wrapBase = Base; \
+    constexpr static auto fields = std::make_tuple(__VA_ARGS__);
 
 #define ADAPT_STORAGE(Base) constexpr decltype(Base::fields) Base::fields
 
-#define SAFEWRAP(name, member)                                                 \
-  hasCallIfFieldIsPresent<decltype(&name::member), &name::member>::call()
+#define SAFEWRAP(name, member) \
+    hasCallIfFieldIsPresent<decltype(&name::member), &name::member>::call()
 
-#define SAFEWRAPTYPE(value)                                                    \
-  hasCallIfFieldIsPresent<decltype(&value), &value>::call()
+#define SAFEWRAPTYPE(value) hasCallIfFieldIsPresent<decltype(&value), &value>::call()
 
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
@@ -40,46 +39,49 @@ MONGO_ODM_INLINE_NAMESPACE_BEGIN
  * An object that represents a name-value pair of a member in an object.
  * It is templated on the class of the member and its type.
  */
-template <typename Base, typename T> struct Nvp {
-  constexpr Nvp(T Base::*t, const char *name) : t(t), name(name) {}
+template <typename Base, typename T>
+struct Nvp {
+    constexpr Nvp(T Base::*t, const char *name) : t(t), name(name) {
+    }
 
-  T Base::*t;
-  const char *name;
+    T Base::*t;
+    const char *name;
 };
 
 /**
  * Represents a query expression involving name-value pairs.
  */
-template <typename Base, typename T> struct Expr {
-  constexpr Expr(const Nvp<Base, T> &nvp, T field)
-      : nvp(nvp), field(std::move(field)) {}
+template <typename Base, typename T>
+struct Expr {
+    constexpr Expr(const Nvp<Base, T> &nvp, T field) : nvp(nvp), field(std::move(field)) {
+    }
 
-  const Nvp<Base, T> &nvp;
-  T field;
+    const Nvp<Base, T> &nvp;
+    T field;
 
-  friend std::ostream &operator<<(std::ostream &os, const Expr &expr) {
-    os << expr.nvp.name << " == " << expr.field;
-    return os;
-  }
+    friend std::ostream &operator<<(std::ostream &os, const Expr &expr) {
+        os << expr.nvp.name << " == " << expr.field;
+        return os;
+    }
 };
 
 /* Overload operators for name-value pairs to create expressions */
 template <typename Base, typename T, typename U,
           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
 Expr<Base, T> operator==(const Nvp<Base, T> &lhs, const U &rhs) {
-  return Expr<Base, T>(lhs, rhs);
+    return Expr<Base, T>(lhs, rhs);
 }
 
 template <typename Base, typename T,
           typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
 Expr<Base, T> operator==(const Nvp<Base, T> &lhs, const T &rhs) {
-  return Expr<Base, T>(lhs, rhs);
+    return Expr<Base, T>(lhs, rhs);
 }
 
 // Create a name-value pair from a object member and its name
 template <typename Base, typename T>
 Nvp<Base, T> constexpr makeNvp(T Base::*t, const char *name) {
-  return Nvp<Base, T>(t, name);
+    return Nvp<Base, T>(t, name);
 }
 
 /**
@@ -87,8 +89,8 @@ Nvp<Base, T> constexpr makeNvp(T Base::*t, const char *name) {
  * the Nth member out of M total members which have name value pairs.
  */
 // By default, if N>=M the index is out of bounds and hasField is false-y.
-template <typename Base, typename T, size_t N, size_t M,
-          bool = N<M> struct hasField : public std::false_type {};
+template <typename Base, typename T, size_t N, size_t M, bool = N<M> struct hasField
+                                                         : public std::false_type {};
 
 // Nth member in the Base::fields tuple (i.e. the list of fields for which we
 // have name-value pairs)
@@ -103,47 +105,58 @@ constexpr std::enable_if_t<N == M, const Nvp<Base, T> *> wrapimpl(T Base::*t);
 
 template <typename Base, typename T, size_t N, size_t M>
     constexpr std::enable_if_t <
-    N<M && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
-    wrapimpl(T Base::*t);
+    N<M && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *> wrapimpl(T Base::*t);
 
+/**
+ * wrapimpl uses template arguments N and M to iterate over the fields of a Base
+ * class, and returns the name-value pair corresponding to the given member
+ * field.
+ */
 template <typename Base, typename T, size_t N, size_t M>
     constexpr std::enable_if_t <
-    N<M && hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
-    wrapimpl(T Base::*t) {
-  if (std::get<N>(Base::fields).t == t) {
-    return &std::get<N>(Base::fields);
-  } else {
-    return wrapimpl<Base, T, N + 1, M>(t);
-  }
+    N<M && hasField<Base, T, N, M>::value, const Nvp<Base, T> *> wrapimpl(T Base::*t) {
+    if (std::get<N>(Base::fields).t == t) {
+        return &std::get<N>(Base::fields);
+    } else {
+        return wrapimpl<Base, T, N + 1, M>(t);
+    }
 }
 
 template <typename Base, typename T, size_t N, size_t M>
     constexpr std::enable_if_t <
-    N<M && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
-    wrapimpl(T Base::*t) {
-  return wrapimpl<Base, T, N + 1, M>(t);
+    N<M && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *> wrapimpl(T Base::*t) {
+    return wrapimpl<Base, T, N + 1, M>(t);
 }
 
 template <typename Base, typename T, size_t N, size_t M>
 constexpr std::enable_if_t<N == M, const Nvp<Base, T> *> wrapimpl(T Base::*t) {
-  return nullptr;
+    return nullptr;
 }
 
+/**
+ * Returns a name-value pair corresponding to the given member pointer.
+ */
 template <typename Base, typename T>
 constexpr const Nvp<Base, T> *wrap(T Base::*t) {
-  return wrapimpl<Base, T, 0, std::tuple_size<decltype(Base::fields)>::value>(
-      t);
+    return wrapimpl<Base, T, 0, std::tuple_size<decltype(Base::fields)>::value>(t);
 }
 
-template <typename T, T, typename = void> struct hasCallIfFieldIsPresent {};
+/*
+A struct that has a call() method that returns a name-value pair corresponding
+to the given member pointer,
+but only if such a member exists.
+ */
+template <typename T, T, typename = void>
+struct hasCallIfFieldIsPresent {};
 
 template <typename Base, typename T, T Base::*ptr>
-struct hasCallIfFieldIsPresent<T Base::*, ptr,
-                               std::enable_if_t<wrap(ptr) != nullptr>> {
-  static constexpr const Nvp<Base, T> &call() { return *wrap(ptr); }
+struct hasCallIfFieldIsPresent<T Base::*, ptr, std::enable_if_t<wrap(ptr) != nullptr>> {
+    static constexpr const Nvp<Base, T> &call() {
+        return *wrap(ptr);
+    }
 };
 
 MONGO_ODM_INLINE_NAMESPACE_END
-} // namespace bson_mapper
+}  // namespace bson_mapper
 
 #include <mongo_odm/config/postlude.hpp>

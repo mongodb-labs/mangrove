@@ -16,32 +16,56 @@
 
 #include <iostream>
 
+#include <bsoncxx/builder/stream/document.hpp>
+#include <mongocxx/client.hpp>
+#include <mongocxx/instance.hpp>
+#include <mongocxx/pipeline.hpp>
+#include <mongocxx/stdx.hpp>
+
+#include <mongo_odm/odm_collection.hpp>
 #include <mongo_odm/query_builder.hpp>
 
+using namespace mongocxx;
 using namespace mongo_odm;
 
-struct Foo {
-  Foo *v;
-  long w;
-  int x;
-  bool y;
-  std::string z;
-  // this characer is not put into a macro, there will be no member funcion
-  // pointer for it.
-  char missing;
+class Bar {
+   public:
+    Bar *v;
+    int64_t w;
+    int x1;
+    int x2;
+    bool y;
+    std::string z;
+    // this characer is not put into a macro, there will be no member funcion
+    // pointer for it.
+    char missing;
 
-  ADAPT(Foo, NVP(v), NVP(w), NVP(x), NVP(y), NVP(z))
+    ADAPT(Bar, NVP(v), NVP(w), NVP(x1), NVP(x2), NVP(y), NVP(z))
+
+    template <class Archive>
+    void serialize(Archive &ar) {
+        ar(CEREAL_NVP(w), CEREAL_NVP(x1), CEREAL_NVP(x2), CEREAL_NVP(y), CEREAL_NVP(z));
+    }
 };
-ADAPT_STORAGE(Foo);
+ADAPT_STORAGE(Bar);
 
 TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
-  std::cout << "Wrap: " << wrap(&Foo::v)->name << std::endl;
-  std::cout << "Wrap: " << SAFEWRAP(Foo, w).name << std::endl;
-  std::cout << "Wrap: " << SAFEWRAPTYPE(Foo::x).name << std::endl;
-  std::cout << "Wrap: " << (SAFEWRAPTYPE(Foo::y) == true) << std::endl;
-  // Type error:
-  // std::cout << "Wrap: " << (SAFEWRAPTYPE(Foo::y) == "hello") << std::endl;
-  std::cout << "Wrap: " << (SAFEWRAPTYPE(Foo::z) == "hello") << std::endl;
-  // "Missing" Field:
-  // std::cout << "Wrap: " << SAFEWRAPTYPE(Foo::missing)->name << std::endl;
+    std::cout << "Wrap: " << wrap(&Bar::v)->name << std::endl;
+    std::cout << "Wrap: " << SAFEWRAP(Bar, w).name << std::endl;
+    std::cout << "Wrap: " << (SAFEWRAPTYPE(Bar::x1) == 5) << std::endl;
+    std::cout << "Wrap: " << (SAFEWRAPTYPE(Bar::x2) == 5) << std::endl;
+    std::cout << "Wrap: " << (SAFEWRAPTYPE(Bar::y) == true) << std::endl;
+    // Type error:
+    // std::cout << "Wrap: " << (SAFEWRAPTYPE(Bar::y) == "hello") << std::endl;
+    std::cout << "Wrap: " << (SAFEWRAPTYPE(Bar::z) == "hello") << std::endl;
+    // "Missing" Field:
+    // std::cout << "Wrap: " << SAFEWRAPTYPE(Bar::missing)->name << std::endl;
+
+    instance::current();
+    client conn{uri{}};
+    collection coll = conn["testdb"]["testcollection"];
+    odm_collection<Bar> bar_coll(coll);
+
+    Bar b{nullptr, 444, 1, 2, false, "hello", 'q'};
+    bar_coll.insert_one(b);
 }
