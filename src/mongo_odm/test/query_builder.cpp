@@ -50,22 +50,56 @@ class Bar {
 ADAPT_STORAGE(Bar);
 
 TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
-    std::cout << "Wrap: " << wrap(&Bar::v)->name << std::endl;
-    std::cout << "Wrap: " << SAFEWRAP(Bar, w).name << std::endl;
-    std::cout << "Wrap: " << (SAFEWRAPTYPE(Bar::x1) == 5) << std::endl;
-    std::cout << "Wrap: " << (SAFEWRAPTYPE(Bar::x2) == 5) << std::endl;
-    std::cout << "Wrap: " << (SAFEWRAPTYPE(Bar::y) == true) << std::endl;
-    // Type error:
-    // std::cout << "Wrap: " << (SAFEWRAPTYPE(Bar::y) == "hello") << std::endl;
-    std::cout << "Wrap: " << (SAFEWRAPTYPE(Bar::z) == "hello") << std::endl;
-    // "Missing" Field:
-    // std::cout << "Wrap: " << SAFEWRAPTYPE(Bar::missing)->name << std::endl;
-
     instance::current();
     client conn{uri{}};
     collection coll = conn["testdb"]["testcollection"];
     odm_collection<Bar> bar_coll(coll);
+    coll.delete_many({});
 
-    Bar b{nullptr, 444, 1, 2, false, "hello", 'q'};
-    bar_coll.insert_one(b);
+    bar_coll.insert_one({nullptr, 444, 1, 2, false, "hello", 'q'});
+    bar_coll.insert_one({nullptr, 555, 10, 2, false, "goodbye", 'q'});
+
+    {
+        auto res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::x1) == 1));
+        REQUIRE(res);
+        REQUIRE(res.value().x1 == 1);
+
+        res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::z) == "hello"));
+        REQUIRE(res);
+        REQUIRE(res.value().z == "hello");
+    }
+
+    {
+        auto res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::x1) > 1));
+        REQUIRE(res);
+        REQUIRE(res.value().x1 > 1);
+    }
+
+    {
+        auto res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::x1) >= 10));
+        REQUIRE(res);
+        REQUIRE(res.value().x1 >= 10);
+    }
+
+    {
+        auto res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::x1) < 10));
+        REQUIRE(res);
+        REQUIRE(res.value().x1 < 10);
+    }
+
+    {
+        auto res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::x1) <= 1));
+        REQUIRE(res);
+        REQUIRE(res.value().x1 <= 1);
+    }
+
+    {
+        auto res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::x1) != 1));
+        REQUIRE(res);
+        REQUIRE(res.value().x1 != 1);
+
+        res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::z) != "hello"));
+        REQUIRE(res);
+        REQUIRE(res.value().z == "goodbye");
+    }
 }

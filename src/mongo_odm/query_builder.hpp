@@ -19,6 +19,11 @@
 #include <tuple>
 #include <type_traits>
 
+#include <bsoncxx/builder/stream/document.hpp>
+#include <bsoncxx/builder/stream/helpers.hpp>
+#include <bsoncxx/view_or_value.hpp>
+
+// TODO consider how namespaces will work with these macros?
 #define NVP(x) makeNvp(&wrapBase::x, #x)
 
 #define ADAPT(Base, ...)   \
@@ -48,34 +53,118 @@ struct Nvp {
     const char *name;
 };
 
+// Enumeration of possible query selectors, as well as a mapping to string values
+enum QuerySelector { eq, gt, gte, lt, lte, ne, in, nin };
+const std::map<QuerySelector, std::string> selector_map = {
+    {eq, "$eq"},   {gt, "$gt"}, {gte, "$gte"}, {lt, "$lt"},
+    {lte, "$lte"}, {ne, "$ne"}, {in, "$in"},   {nin, "$nin"}};
+
 /**
  * Represents a query expression involving name-value pairs.
  */
 template <typename Base, typename T>
-struct Expr {
-    constexpr Expr(const Nvp<Base, T> &nvp, T field) : nvp(nvp), field(std::move(field)) {
+class Expr {
+   public:
+    constexpr Expr(const Nvp<Base, T> &nvp, T field, QuerySelector selector_type)
+        : nvp(nvp),
+          field(std::move(field)),
+          selector_type(selector_map.find(selector_type)->second) {
     }
 
     const Nvp<Base, T> &nvp;
     T field;
+    const std::string selector_type;
+
+    /**
+     * Converts the expression to a BSON filter for a query.
+     */
+    operator bsoncxx::document::view_or_value() {
+        auto builder = bsoncxx::builder::stream::document{};
+        auto value = builder << std::string(nvp.name) << bsoncxx::builder::stream::open_document
+                             << selector_type << field << bsoncxx::builder::stream::close_document
+                             << bsoncxx::builder::stream::finalize;
+        return bsoncxx::document::view_or_value(value);
+    }
 
     friend std::ostream &operator<<(std::ostream &os, const Expr &expr) {
-        os << expr.nvp.name << " == " << expr.field;
+        os << "{ " << expr.nvp.name << ": {" << expr.selector_type << ": " << expr.field << "} }";
         return os;
     }
 };
 
 /* Overload operators for name-value pairs to create expressions */
+// Separate operators are defined for bool types to prevent unnecesary implicit casting to bool for
+// non-bool types.
 template <typename Base, typename T, typename U,
           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
 Expr<Base, T> operator==(const Nvp<Base, T> &lhs, const U &rhs) {
-    return Expr<Base, T>(lhs, rhs);
+    return Expr<Base, T>(lhs, rhs, eq);
 }
 
 template <typename Base, typename T,
           typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
 Expr<Base, T> operator==(const Nvp<Base, T> &lhs, const T &rhs) {
-    return Expr<Base, T>(lhs, rhs);
+    return Expr<Base, T>(lhs, rhs, eq);
+}
+
+template <typename Base, typename T, typename U,
+          typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
+Expr<Base, T> operator>(const Nvp<Base, T> &lhs, const U &rhs) {
+    return Expr<Base, T>(lhs, rhs, gt);
+}
+
+template <typename Base, typename T,
+          typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
+Expr<Base, T> operator>(const Nvp<Base, T> &lhs, const T &rhs) {
+    return Expr<Base, T>(lhs, rhs, gt);
+}
+
+template <typename Base, typename T, typename U,
+          typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
+Expr<Base, T> operator>=(const Nvp<Base, T> &lhs, const U &rhs) {
+    return Expr<Base, T>(lhs, rhs, gte);
+}
+
+template <typename Base, typename T,
+          typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
+Expr<Base, T> operator>=(const Nvp<Base, T> &lhs, const T &rhs) {
+    return Expr<Base, T>(lhs, rhs, gte);
+}
+
+template <typename Base, typename T, typename U,
+          typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
+Expr<Base, T> operator<(const Nvp<Base, T> &lhs, const U &rhs) {
+    return Expr<Base, T>(lhs, rhs, lt);
+}
+
+template <typename Base, typename T,
+          typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
+Expr<Base, T> operator<(const Nvp<Base, T> &lhs, const T &rhs) {
+    return Expr<Base, T>(lhs, rhs, lt);
+}
+
+template <typename Base, typename T, typename U,
+          typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
+Expr<Base, T> operator<=(const Nvp<Base, T> &lhs, const U &rhs) {
+    return Expr<Base, T>(lhs, rhs, lte);
+}
+
+template <typename Base, typename T,
+          typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
+Expr<Base, T> operator<=(const Nvp<Base, T> &lhs, const T &rhs) {
+    return Expr<Base, T>(lhs, rhs, lte);
+}
+
+template <typename Base, typename T, typename U,
+          typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
+Expr<Base, T> operator!=(const Nvp<Base, T> &lhs, const U &rhs) {
+    return Expr<Base, T>(lhs, rhs, ne);
+}
+
+template <typename Base, typename T,
+          typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
+Expr<Base, T> operator!=(const Nvp<Base, T> &lhs, const T &rhs) {
+    return Expr<Base, T>(lhs, rhs, ne);
 }
 
 // Create a name-value pair from a object member and its name
@@ -89,8 +178,8 @@ Nvp<Base, T> constexpr makeNvp(T Base::*t, const char *name) {
  * the Nth member out of M total members which have name value pairs.
  */
 // By default, if N>=M the index is out of bounds and hasField is false-y.
-template <typename Base, typename T, size_t N, size_t M, bool = N<M> struct hasField
-                                                         : public std::false_type {};
+template <typename Base, typename T, size_t N, size_t M,
+          bool = N<M> struct hasField : public std::false_type {};
 
 // Nth member in the Base::fields tuple (i.e. the list of fields for which we
 // have name-value pairs)
