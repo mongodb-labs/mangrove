@@ -56,6 +56,8 @@
 #include <bsoncxx/types.hpp>
 #include <bsoncxx/types/value.hpp>
 
+#include <bson_mapper/stdx/optional.hpp>
+
 namespace bson_mapper {
 
 /**
@@ -447,10 +449,17 @@ class BSONInputArchive : public cereal::InputArchive<BSONInputArchive> {
     /**
      * Searches for the next BSON element to be retrieved and loaded.
      *
-     * @return the element with _nextName as a key, or if the current node is an
-     *         array, the next element in that array.
+     * @return The element with _nextName as a key, or if the current node is an array, the next
+     *         element in that array.
      */
     inline bsoncxx::types::value search() {
+        // If our search result is cached, return the cached result instead of repeating the search.
+        if (_cachedSearchResult) {
+            auto val = *_cachedSearchResult;
+            _cachedSearchResult = stdx::nullopt;
+            return val;
+        }
+
         // Make sure the node stack is not empty.
         if (_nodeTypeStack.empty()) {
             throw bson_mapper::Exception("Cannot search for element if not in node.");
@@ -484,7 +493,7 @@ class BSONInputArchive : public cereal::InputArchive<BSONInputArchive> {
                 }
             }
 
-            // Provide an error message if the key is not found.
+            // Provide an exception with an error message if the key is not found.
             std::stringstream error_msg;
             error_msg << "No element found with the key ";
             error_msg << nextName;
@@ -511,6 +520,57 @@ class BSONInputArchive : public cereal::InputArchive<BSONInputArchive> {
     }
 
    public:
+    /**
+     * Checks if the next invocation of search() will yield a value. Used to check if a particular
+     * optional element, embedded document, or embedded array exists.
+     *
+     * If search() would indeed return a value, it is cached here so that the logic in search()
+     * will not need to be repeated.
+     *
+     * @return true if the next invocation of search with the current _nextName yields a value,
+     *         false otherwise.
+     */
+    bool willSearchYieldValue() {
+        // Make sure the node stack is not empty.
+        if (_nodeTypeStack.empty()) {
+            throw bson_mapper::Exception("Cannot search for element if not in node.");
+        }
+
+        // Check to make sure a document has been read.
+        if (!_readFirstDoc) {
+            throw bson_mapper::Exception(
+                "Error in element search, never loaded BSON data from file.");
+        }
+
+        if (_nodeTypeStack.top() == InputNodeType::InEmbeddedArray) {
+            throw cereal::Exception(
+                "Should not be checking if search() will yield next value from an embedded array.");
+        }
+
+        if (_nextName) {
+            const char* nextName = _nextName;
+            _nextName = nullptr;
+
+            bsoncxx::document::element val{};
+
+            if (_nodeTypeStack.top() == InputNodeType::InObject ||
+                _nodeTypeStack.top() == InputNodeType::InRootElement) {
+                val = _curBsonDoc[nextName];
+
+            } else {
+                val = _embeddedBsonDocStack.top()[nextName];
+            }
+
+            if (val) {
+                _cachedSearchResult = val.get_value();
+                return true;
+            }
+        }
+
+        _cachedSearchResult = stdx::nullopt;
+        return false;
+    }
+
     /**
      * Pushes a root element on the node stack if we're in root.
      *
@@ -570,6 +630,7 @@ class BSONInputArchive : public cereal::InputArchive<BSONInputArchive> {
             // From the BSON document we're currently in, fetch the value associated
             // with this node and update the relevant stacks.
             auto newNode = search();
+
             if (newNode.type() == bsoncxx::type::k_document) {
                 _embeddedBsonDocStack.push(newNode.get_document().value);
                 _nodeTypeStack.push(InputNodeType::InEmbeddedObject);
@@ -695,7 +756,6 @@ class BSONInputArchive : public cereal::InputArchive<BSONInputArchive> {
     void loadValue(std::chrono::system_clock::time_point& val) {
         auto bsonVal = search();
         assert_type(bsonVal, bsoncxx::type::k_date);
-
         val = std::chrono::system_clock::time_point(
             std::chrono::milliseconds{bsonVal.get_date().value});
     }
@@ -770,6 +830,9 @@ class BSONInputArchive : public cereal::InputArchive<BSONInputArchive> {
     // Bool that tracks whether or not a document has been read from the stream.
     bool _readFirstDoc;
 
+    // Cache for the next search result if willSearchYieldValue() returns true.
+    stdx::optional<bsoncxx::types::value> _cachedSearchResult;
+
     // The current root BSON document being viewed.
     std::shared_ptr<uint8_t> _curBsonData;
     size_t _curBsonDataSize;
@@ -815,6 +878,31 @@ inline void epilogue(BSONOutputArchive&, cereal::NameValuePair<T> const&) {
 // NVPs do not start or finish nodes - they just set up the names
 template <class T>
 inline void epilogue(BSONInputArchive&, cereal::NameValuePair<T> const&) {
+}
+
+// ######################################################################
+// Prologue for stdx::optionals for BSON output archives
+// stdx::optionals do not start or finish nodes - they just set up the names
+template <class T>
+inline void prologue(BSONOutputArchive&, stdx::optional<T> const&) {
+}
+
+// Prologue for stdx::optionals for BSON input archives
+template <class T>
+inline void prologue(BSONInputArchive&, stdx::optional<T> const&) {
+}
+
+// ######################################################################
+// Epilogue for stdx::optionals for BSON output archives
+// stdx::optionals do not start or finish nodes - they just set up the names
+template <class T>
+inline void epilogue(BSONOutputArchive&, stdx::optional<T> const&) {
+}
+
+// Epilogue for stdx::optionals for BSON input archives
+// stdx::optionals do not start or finish nodes - they just set up the names
+template <class T>
+inline void epilogue(BSONInputArchive&, stdx::optional<T> const&) {
 }
 
 // ######################################################################
@@ -1024,10 +1112,103 @@ inline void CEREAL_SAVE_FUNCTION_NAME(BSONOutputArchive& ar, cereal::NameValuePa
     ar(t.value);
 }
 
+// Loading NVP types from BSON
 template <class T>
 inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar, cereal::NameValuePair<T>& t) {
     ar.setNextName(t.name);
     ar(t.value);
+}
+
+// Serializing stdx::optional types to BSON
+template <class T>
+inline void CEREAL_SAVE_FUNCTION_NAME(BSONOutputArchive& ar, stdx::optional<T> const& t) {
+    // Only serialize the value if it is present. Otherwise do nothing.
+    if (t) {
+        ar(*t);
+    }
+}
+
+// Loading stdx::optional types from BSON
+//
+// Note that if a key for an optional is not present in the BSON from which we are loading values,
+// the BSONInputArchive will overwrite what was in the destination stdx::optional with a
+// stdx::nullopt, even if there was already a value.
+//
+template <class T,
+          cereal::traits::DisableIf<is_bson<T>::value && !std::is_default_constructible<T>::value> =
+              cereal::traits::sfinae>
+inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar, stdx::optional<T>& t) {
+    if (ar.willSearchYieldValue()) {
+        T value;
+        ar(value);
+        t.emplace(value);
+    } else {
+        t = stdx::nullopt;
+    }
+}
+
+// Overloads for the stdx::optional types wrapping non-default-constructible BSON b_ types.
+// TODO: Once CXX-966 is resolved (making all BSON b_ types default constructible) these overloads
+//       will no longer be necessary.
+inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
+                                      stdx::optional<bsoncxx::types::b_utf8>& t) {
+    if (ar.willSearchYieldValue()) {
+        bsoncxx::types::b_utf8 value{""};
+        ar(value);
+        t.emplace(value);
+    } else {
+        t = stdx::nullopt;
+    }
+}
+inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
+                                      stdx::optional<bsoncxx::types::b_date>& t) {
+    if (ar.willSearchYieldValue()) {
+        bsoncxx::types::b_date value{std::chrono::system_clock::time_point{}};
+        ar(value);
+        t.emplace(value);
+    } else {
+        t = stdx::nullopt;
+    }
+}
+inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
+                                      stdx::optional<bsoncxx::types::b_regex>& t) {
+    if (ar.willSearchYieldValue()) {
+        bsoncxx::types::b_regex value{"", ""};
+        ar(value);
+        t.emplace(value);
+    } else {
+        t = stdx::nullopt;
+    }
+}
+inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
+                                      stdx::optional<bsoncxx::types::b_code>& t) {
+    if (ar.willSearchYieldValue()) {
+        bsoncxx::types::b_code value{""};
+        ar(value);
+        t.emplace(value);
+    } else {
+        t = stdx::nullopt;
+    }
+}
+inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
+                                      stdx::optional<bsoncxx::types::b_codewscope>& t) {
+    if (ar.willSearchYieldValue()) {
+        bsoncxx::types::b_codewscope value{"", bsoncxx::document::view()};
+        ar(value);
+        t.emplace(value);
+    } else {
+        t = stdx::nullopt;
+    }
+}
+inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
+                                      stdx::optional<bsoncxx::types::b_symbol>& t) {
+    if (ar.willSearchYieldValue()) {
+        bsoncxx::types::b_symbol value{""};
+        ar(value);
+        t.emplace(value);
+    } else {
+        t = stdx::nullopt;
+    }
 }
 
 // Saving for arithmetic to BSON
@@ -1088,7 +1269,7 @@ inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar, BsonT& bsonVal) {
     ar.loadValue(bsonVal);
 }
 
-}  // namespace cereal
+}  // namespace bson_mapper
 
 // Register archives for polymorphic support.
 CEREAL_REGISTER_ARCHIVE(bson_mapper::BSONInputArchive)

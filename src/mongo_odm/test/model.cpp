@@ -16,6 +16,8 @@
 
 #include <bsoncxx/builder/stream/document.hpp>
 
+#include <bson_mapper/stdx/optional.hpp>
+
 #include <mongocxx/client.hpp>
 #include <mongocxx/instance.hpp>
 
@@ -104,4 +106,61 @@ TEST_CASE(
     }
 
     REQUIRE(sum == -45);
+}
+
+using bson_mapper::stdx::optional;
+
+struct DataB : public mongo_odm::model<DataB> {
+    int32_t x;
+    optional<int32_t> y;
+    optional<double> z;
+
+    DataB() {
+        _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
+    }
+
+    bool operator==(const DataB& other) {
+        return std::tie(x, y, z) == std::tie(other.x, other.y, other.z);
+    }
+
+    template <class Archive>
+    void serialize(Archive& ar) {
+        ar(CEREAL_NVP(_id), CEREAL_NVP(x), CEREAL_NVP(y), CEREAL_NVP(z));
+    }
+
+    bsoncxx::oid getID() {
+        return _id;
+    }
+};
+
+TEST_CASE(
+    "the model base class successfully allows dynamic schemas by way of allowing stdx::optional "
+    "elements.", "[mongo_odm::model]") {
+        mongocxx::instance{};
+    mongocxx::client conn{mongocxx::uri{}};
+
+    auto db = conn["mongo_cxx_odm_model_test"];
+
+    DataB::setCollection(db["data_b"]);
+    DataB::drop();
+
+    DataB b1;
+
+    b1.x = 16;
+    b1.z = 1.50;
+
+    b1.save();
+
+    auto query_filter = bsoncxx::builder::stream::document{} << "x" << 16
+                                                             << bsoncxx::builder::stream::finalize;
+
+    auto query_result = DataB::find_one(query_filter.view());
+
+    REQUIRE(query_result);
+    REQUIRE(!query_result->y);
+    REQUIRE(b1 == *query_result);
+
+    query_result->remove();
+
+    REQUIRE(!DataB::find_one(query_filter.view()));
 }
