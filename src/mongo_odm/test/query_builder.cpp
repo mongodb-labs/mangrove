@@ -36,18 +36,14 @@ class Bar {
     int x2;
     bool y;
     std::string z;
-    // this characer is not put into a macro, there will be no member funcion
-    // pointer for it.
-    char missing;
-
-    ADAPT(Bar, NVP(v), NVP(w), NVP(x1), NVP(x2), NVP(y), NVP(z))
+    ODM_MAKE_KEYS(Bar, NVP(v), NVP(w), NVP(x1), NVP(x2), NVP(y), NVP(z))
 
     template <class Archive>
     void serialize(Archive &ar) {
         ar(CEREAL_NVP(w), CEREAL_NVP(x1), CEREAL_NVP(x2), CEREAL_NVP(y), CEREAL_NVP(z));
     }
 };
-ADAPT_STORAGE(Bar);
+ODM_MAKE_KEYS_STORAGE(Bar);
 
 TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     instance::current();
@@ -56,49 +52,49 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     odm_collection<Bar> bar_coll(coll);
     coll.delete_many({});
 
-    bar_coll.insert_one({nullptr, 444, 1, 2, false, "hello", 'q'});
-    bar_coll.insert_one({nullptr, 555, 10, 2, false, "goodbye", 'q'});
+    bar_coll.insert_one({nullptr, 444, 1, 2, false, "hello"});
+    bar_coll.insert_one({nullptr, 555, 10, 2, true, "goodbye"});
 
-    {
-        auto res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::x1) == 1));
+    SECTION("Test == comparison.", "[mongo_odm::Expr]") {
+        auto res = bar_coll.find_one(std::move(ODM_KEY(Bar::x1) == 1));
         REQUIRE(res);
         REQUIRE(res.value().x1 == 1);
 
-        res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::z) == "hello"));
+        res = bar_coll.find_one(std::move(ODM_KEY(Bar::z) == "hello"));
         REQUIRE(res);
         REQUIRE(res.value().z == "hello");
     }
 
-    {
-        auto res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::x1) > 1));
+    SECTION("Test > comparison.", "[mongo_odm::Expr]") {
+        auto res = bar_coll.find_one(std::move(ODM_KEY(Bar::x1) > 1));
         REQUIRE(res);
         REQUIRE(res.value().x1 > 1);
     }
 
-    {
-        auto res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::x1) >= 10));
+    SECTION("Test >= comparison.", "[mongo_odm::Expr]") {
+        auto res = bar_coll.find_one(std::move(ODM_KEY(Bar::x1) >= 10));
         REQUIRE(res);
         REQUIRE(res.value().x1 >= 10);
     }
 
-    {
-        auto res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::x1) < 10));
+    SECTION("Test < comparison.", "[mongo_odm::Expr]") {
+        auto res = bar_coll.find_one(std::move(ODM_KEY(Bar::x1) < 10));
         REQUIRE(res);
         REQUIRE(res.value().x1 < 10);
     }
 
-    {
-        auto res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::x1) <= 1));
+    SECTION("Test <= comparison.", "[mongo_odm::Expr]") {
+        auto res = bar_coll.find_one(std::move(ODM_KEY(Bar::x1) <= 1));
         REQUIRE(res);
         REQUIRE(res.value().x1 <= 1);
     }
 
-    {
-        auto res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::x1) != 1));
+    SECTION("Test != comparison.", "[mongo_odm::Expr]") {
+        auto res = bar_coll.find_one(std::move(ODM_KEY(Bar::x1) != 1));
         REQUIRE(res);
         REQUIRE(res.value().x1 != 1);
 
-        res = bar_coll.find_one(std::move(SAFEWRAPTYPE(Bar::z) != "hello"));
+        res = bar_coll.find_one(std::move(ODM_KEY(Bar::z) != "hello"));
         REQUIRE(res);
         REQUIRE(res.value().z == "goodbye");
     }
