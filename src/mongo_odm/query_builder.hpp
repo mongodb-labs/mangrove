@@ -243,7 +243,7 @@ class BooleanExpr {
     const std::string op;
 };
 
-/* A tempalted struct that holds a boolean value.
+/* A templated struct that holds a boolean value.
 * This value is TRUE for types that are query expression,
 * and FALSE for all other types.
 */
@@ -351,7 +351,7 @@ constexpr ComparisonExpr<Base, T> operator!=(const Nvp<Base, T> &lhs, const T &r
 }
 
 /**
- * Wrap a comparison expression in a $not expression.
+ * Negates a comparison expression in a $not expression.
  */
 template <typename Base, typename T>
 constexpr NotExpr<Base, T> operator!(const ComparisonExpr<Base, T> &expr) {
