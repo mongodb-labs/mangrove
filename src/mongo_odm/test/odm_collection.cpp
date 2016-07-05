@@ -59,21 +59,20 @@ class FooResult {
     }
 };
 
-// set up test BSON documents and objects
-std::string json_str = R"({"a": 1, "b":4, "c": 9})";
-auto doc = from_json(json_str);
-auto doc_view = doc.view();
-
-std::string json_str_2 = R"({"a": 1, "b":4, "c": 900})";
-auto doc_2 = from_json(json_str_2);
-auto doc_2_view = doc_2.view();
-
-Foo obj{1, 4, 9};
-
 TEST_CASE(
     "ODM_Collection class wraps collection's CRUD interface, with automatic "
     "serialization.",
     "[mongo_odm::odm_collection]") {
+    // set up test BSON documents and objects
+    std::string json_str = R"({"a": 1, "b":4, "c": 9})";
+    auto doc = from_json(json_str);
+    auto doc_view = doc.view();
+
+    std::string json_str_2 = R"({"a": 1, "b":4, "c": 900})";
+    auto doc_2 = from_json(json_str_2);
+    auto doc_2_view = doc_2.view();
+
+    Foo obj{1, 4, 9};
     instance::current();
     client conn{uri{}};
     collection coll = conn["testdb"]["testcollection"];
