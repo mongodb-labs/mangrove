@@ -15,6 +15,7 @@
 #include "catch.hpp"
 
 #include <bson_mapper/bson_archiver.hpp>
+#include <bson_mapper/bson_streambuf.hpp>
 #include <bsoncxx/json.hpp>
 #include <cereal/types/vector.hpp>
 #include <fstream>
@@ -511,4 +512,36 @@ TEST_CASE(
         DataA a_cmp{56, 63, 1.776};
         REQUIRE(a == a_cmp);
     }
+}
+
+TEST_CASE("the BSON archiver successfully serializes embedded classes with dot notation") {
+    bson_mapper::bson_ostream os(
+        [](bsoncxx::document::value v) { REQUIRE(countKeys(v.view()) == 8); });
+
+    bson_mapper::BSONOutputArchive archive(os, true);
+
+    DataA a1, a2;
+    DataB b1;
+
+    std::vector<DataA> test_obj_arr;
+
+    a1.x = 43;
+    a1.y = 229;
+    a1.z = 3.14;
+
+    a2.x = 26;
+    a2.y = 32;
+    a2.z = 3.4;
+
+    test_obj_arr.push_back(a1);
+    test_obj_arr.push_back(a2);
+
+    b1.a = 517259871609285984;
+    b1.b = 35781926586124;
+    b1.m = a2;
+    b1.arr = test_obj_arr;
+    b1.s = "hello world!";
+    b1.tp = std::chrono::system_clock::now();
+
+    archive(b1);
 }

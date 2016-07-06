@@ -27,10 +27,6 @@ struct DataA : public mongo_odm::model<DataA> {
     int32_t x, y;
     double z;
 
-    DataA() {
-        _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
-    }
-
     bool operator==(const DataA& other) {
         return std::tie(x, y, z) == std::tie(other.x, other.y, other.z);
     }
@@ -115,10 +111,6 @@ struct DataB : public mongo_odm::model<DataB> {
     optional<int32_t> y;
     optional<double> z;
 
-    DataB() {
-        _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
-    }
-
     bool operator==(const DataB& other) {
         return std::tie(x, y, z) == std::tie(other.x, other.y, other.z);
     }
@@ -164,4 +156,214 @@ TEST_CASE(
     query_result->remove();
 
     REQUIRE(!DataB::find_one(query_filter.view()));
+}
+
+struct EmbeddedVals {
+    int32_t x;
+    double y;
+
+    template <class Archive>
+    void serialize(Archive& ar) {
+        ar(CEREAL_NVP(x), CEREAL_NVP(y));
+    }
+
+    bool operator==(const EmbeddedVals& other) {
+        return std::tie(x, y) == std::tie(other.x, other.y);
+    }
+};
+
+struct DataC : public mongo_odm::model<DataC> {
+    int64_t a, b;
+    EmbeddedVals m;
+
+    template <class Archive>
+    void serialize(Archive& ar) {
+        ar(CEREAL_NVP(_id), CEREAL_NVP(a), CEREAL_NVP(b), CEREAL_NVP(m));
+    }
+
+    bool operator==(const DataC& other) {
+        return std::tie(a, b, m) == std::tie(other.a, other.b, other.m);
+    }
+};
+
+// Struct with _id as std::string
+struct DataD : public mongo_odm::model<DataD, std::string> {
+    int32_t x, y;
+    double z;
+
+    DataD() {
+    }
+
+    DataD(const char* s) : mongo_odm::model<DataD, std::string>(s) {
+    }
+
+    bool operator==(const DataD& other) {
+        return std::tie(x, y, z) == std::tie(other.x, other.y, other.z);
+    }
+
+    template <class Archive>
+    void serialize(Archive& ar) {
+        ar(CEREAL_NVP(_id), CEREAL_NVP(x), CEREAL_NVP(y), CEREAL_NVP(z));
+    }
+
+    std::string getID() {
+        return _id;
+    }
+};
+
+TEST_CASE(
+    "the model base class successfully allows the saving and removing of records when _id is of a "
+    "custom type.",
+    "[mongo_odm::model]") {
+    mongocxx::instance{};
+    mongocxx::client conn{mongocxx::uri{}};
+
+    auto db = conn["mongo_cxx_odm_model_test"];
+
+    DataD::setCollection(db["data_d"]);
+    DataD::drop();
+
+    DataD d("my very first DataD");
+
+    d.x = 16;
+    d.y = 32;
+    d.z = 1.50;
+
+    d.save();
+
+    auto query_filter = bsoncxx::builder::stream::document{} << "x" << 16
+                                                             << bsoncxx::builder::stream::finalize;
+
+    auto query_result = DataD::find_one(query_filter.view());
+
+    REQUIRE(query_result);
+    REQUIRE(d == *query_result);
+
+    query_result->remove();
+
+    REQUIRE(!DataD::find_one(query_filter.view()));
+}
+
+TEST_CASE(
+    "the model base class successfully allows the saving and removing of records with embedded "
+    "documents.",
+    "[mongo_odm::model]") {
+    mongocxx::instance{};
+    mongocxx::client conn{mongocxx::uri{}};
+
+    auto db = conn["mongo_cxx_odm_model_test"];
+
+    DataC::setCollection(db["data_c"]);
+    DataC::drop();
+
+    DataC c;
+
+    c.a = 229;
+    c.b = 43;
+    c.m.x = 13;
+    c.m.y = 1.50;
+
+    c.save();
+
+    auto query_filter = bsoncxx::builder::stream::document{} << "a" << 229
+                                                             << bsoncxx::builder::stream::finalize;
+
+    auto query_result = DataC::find_one(query_filter.view());
+
+    REQUIRE(query_result);
+    REQUIRE(c == *query_result);
+
+    query_result->remove();
+
+    REQUIRE(!DataC::find_one(query_filter.view()));
+}
+
+struct OptEmbeddedVals {
+    optional<int32_t> x;
+    optional<double> y;
+
+    template <class Archive>
+    void serialize(Archive& ar) {
+        ar(CEREAL_NVP(x), CEREAL_NVP(y));
+    }
+
+    bool operator==(const OptEmbeddedVals& other) {
+        return std::tie(x, y) == std::tie(other.x, other.y);
+    }
+};
+
+struct DataE : public mongo_odm::model<DataE> {
+    int64_t a, b;
+    OptEmbeddedVals m;
+
+    DataE() = default;
+
+    DataE(bsoncxx::oid id) : mongo_odm::model<DataE>(id) {
+    }
+
+    template <class Archive>
+    void serialize(Archive& ar) {
+        ar(CEREAL_NVP(_id), CEREAL_NVP(a), CEREAL_NVP(b), CEREAL_NVP(m));
+    }
+
+    bool operator==(const DataE& other) {
+        return std::tie(a, b, m) == std::tie(other.a, other.b, other.m);
+    }
+
+    bsoncxx::oid getID() {
+        return _id;
+    }
+};
+
+TEST_CASE(
+    "the model base class does not overwrite existing fields in embedded documents on save (when "
+    "they are not in an array).",
+    "[mongo_odm::model]") {
+    mongocxx::instance{};
+    mongocxx::client conn{mongocxx::uri{}};
+
+    auto db = conn["mongo_cxx_odm_model_test"];
+
+    DataE::setCollection(db["data_e"]);
+    DataE::drop();
+
+    DataE e_with_embedded_x;
+
+    e_with_embedded_x.a = 229;
+    e_with_embedded_x.b = 43;
+    e_with_embedded_x.m.x = 13;
+
+    e_with_embedded_x.save();
+
+    auto query_filter = bsoncxx::builder::stream::document{} << "_id" << e_with_embedded_x.getID()
+                                                             << bsoncxx::builder::stream::finalize;
+
+    auto query_result = DataE::find_one(query_filter.view());
+
+    REQUIRE(query_result);
+    REQUIRE(!query_result->m.y);
+    REQUIRE(e_with_embedded_x == *query_result);
+
+    DataE e_with_embedded_y(e_with_embedded_x.getID());
+    e_with_embedded_y.a = 229;
+    e_with_embedded_y.b = 43;
+    e_with_embedded_y.m.y = 1.50;
+
+    e_with_embedded_y.save();
+
+    query_filter = bsoncxx::builder::stream::document{} << "_id" << e_with_embedded_y.getID()
+                                                        << bsoncxx::builder::stream::finalize;
+
+    query_result = DataE::find_one(query_filter.view());
+
+    REQUIRE(query_result);
+    REQUIRE(query_result->m.x);
+    REQUIRE(e_with_embedded_x.m.x == *query_result->m.x);
+
+    REQUIRE(query_result->m.y);
+    REQUIRE(e_with_embedded_y.m.y == *query_result->m.y);
+
+    query_result->remove();
+
+    REQUIRE(!DataE::find_one(query_filter.view()));
 }
