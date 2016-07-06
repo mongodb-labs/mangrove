@@ -31,10 +31,36 @@
 
 #define NVP(x) mongo_odm::makeNvp(&mongo_odm_wrap_base::x, #x)
 
-#define ODM_MAKE_KEYS(Base, ...)      \
-    using mongo_odm_wrap_base = Base; \
-    constexpr static auto fields = std::make_tuple(__VA_ARGS__);
+// Creates serialize() function
+#define ODM_SERIALIZE_KEYS                                                         \
+    template <class Archive>                                                       \
+    void serialize(Archive &ar) {                                                  \
+        serialize_recur<Archive, 0, std::tuple_size<decltype(fields)>::value>(ar); \
+    }                                                                              \
+    template <class Archive, size_t I, size_t N>                                   \
+    typename std::enable_if<(I < N), void>::type serialize_recur(Archive &ar) {    \
+        auto nvp = std::get<I>(fields);                                            \
+        ar(cereal::make_nvp(nvp.name, this->*(nvp.t)));                            \
+        serialize_recur<Archive, I + 1, N>(ar);                                    \
+    }                                                                              \
+                                                                                   \
+    template <class Archive, size_t I, size_t N>                                   \
+    typename std::enable_if<(I == N), void>::type serialize_recur(Archive &ar) {   \
+        ;                                                                          \
+    }
 
+// Creates `fields` object that holds member pointers, as well as a serialize() function for those
+// members
+#define ODM_MAKE_KEYS(Base, ...)                                 \
+    using mongo_odm_wrap_base = Base;                            \
+    constexpr static auto fields = std::make_tuple(__VA_ARGS__); \
+    ODM_SERIALIZE_KEYS
+
+// If using the mongo_odm::model, then also register _id as a field.
+#define ODM_MAKE_KEYS_MODEL(Base, ...) ODM_MAKE_KEYS(Base, NVP(_id), __VA_ARGS__)
+
+// Allocate storage for fields. (TODO: Jason mentioned that one could make `fields` a function that
+// returns NVPs, obviating the need for allocating storage separately.)
 #define ODM_MAKE_KEYS_STORAGE(Base) constexpr decltype(Base::fields) Base::fields
 
 #define ODM_KEY(value) mongo_odm::hasCallIfFieldIsPresent<decltype(&value), &value>::call()

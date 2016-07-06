@@ -36,7 +36,7 @@ class Bar : public mongo_odm::model<Bar> {
     int x2;
     bool y;
     std::string z;
-    ODM_MAKE_KEYS(Bar, NVP(w), NVP(x1), NVP(x2), NVP(y), NVP(z))
+    ODM_MAKE_KEYS_MODEL(Bar, NVP(w), NVP(x1), NVP(x2), NVP(y), NVP(z))
 
     Bar(int64_t w, int x1, int x2, bool y, std::string z) : w(w), x1(x1), x2(x2), y(y), z(z) {
         _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
@@ -49,11 +49,6 @@ class Bar : public mongo_odm::model<Bar> {
 
     bsoncxx::oid getID() {
         return _id;
-    }
-
-    template <class Archive>
-    void serialize(Archive &ar) {
-        ar(CEREAL_NVP(w), CEREAL_NVP(x1), CEREAL_NVP(x2), CEREAL_NVP(y), CEREAL_NVP(z));
     }
 };
 ODM_MAKE_KEYS_STORAGE(Bar);
