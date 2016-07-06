@@ -22,13 +22,14 @@
 #include <mongocxx/pipeline.hpp>
 #include <mongocxx/stdx.hpp>
 
+#include <mongo_odm/model.hpp>
 #include <mongo_odm/odm_collection.hpp>
 #include <mongo_odm/query_builder.hpp>
 
 using namespace mongocxx;
 using namespace mongo_odm;
 
-class Bar {
+class Bar : public mongo_odm::model<Bar> {
    public:
     int64_t w;
     int x1;
@@ -36,6 +37,19 @@ class Bar {
     bool y;
     std::string z;
     ODM_MAKE_KEYS(Bar, NVP(w), NVP(x1), NVP(x2), NVP(y), NVP(z))
+
+    Bar(int64_t w, int x1, int x2, bool y, std::string z) : w(w), x1(x1), x2(x2), y(y), z(z) {
+        _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
+    }
+
+    // default constructor
+    Bar() {
+        _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
+    }
+
+    bsoncxx::oid getID() {
+        return _id;
+    }
 
     template <class Archive>
     void serialize(Archive &ar) {
@@ -48,70 +62,70 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     instance::current();
     client conn{uri{}};
     collection coll = conn["testdb"]["testcollection"];
-    odm_collection<Bar> bar_coll(coll);
     coll.delete_many({});
 
-    bar_coll.insert_one({444, 1, 2, false, "hello"});
-    bar_coll.insert_one({444, 1, 3, false, "hello"});
-    bar_coll.insert_one({555, 10, 2, true, "goodbye"});
+    Bar::setCollection(coll);
+    Bar(444, 1, 2, false, "hello").save();
+    Bar(444, 1, 3, false, "hello").save();
+    Bar(555, 10, 2, true, "goodbye").save();
 
     SECTION("Test == comparison.", "[mongo_odm::ComparisonExpr]") {
-        auto res = bar_coll.find_one(ODM_KEY(Bar::x1) == 1);
+        auto res = Bar::find_one(ODM_KEY(Bar::x1) == 1);
         REQUIRE(res);
         REQUIRE(res.value().x1 == 1);
 
-        res = bar_coll.find_one(ODM_KEY(Bar::z) == "hello");
+        res = Bar::find_one(ODM_KEY(Bar::z) == "hello");
         REQUIRE(res);
         REQUIRE(res.value().z == "hello");
     }
 
     SECTION("Test > comparison.", "[mongo_odm::ComparisonExpr]") {
-        auto res = bar_coll.find_one(ODM_KEY(Bar::x1) > 1);
+        auto res = Bar::find_one(ODM_KEY(Bar::x1) > 1);
         REQUIRE(res);
         REQUIRE(res.value().x1 > 1);
     }
 
     SECTION("Test >= comparison.", "[mongo_odm::ComparisonExpr]") {
-        auto res = bar_coll.find_one(ODM_KEY(Bar::x1) >= 10);
+        auto res = Bar::find_one(ODM_KEY(Bar::x1) >= 10);
         REQUIRE(res);
         REQUIRE(res.value().x1 >= 10);
     }
 
     SECTION("Test < comparison.", "[mongo_odm::ComparisonExpr]") {
-        auto res = bar_coll.find_one(ODM_KEY(Bar::x1) < 10);
+        auto res = Bar::find_one(ODM_KEY(Bar::x1) < 10);
         REQUIRE(res);
         REQUIRE(res.value().x1 < 10);
     }
 
     SECTION("Test <= comparison.", "[mongo_odm::ComparisonExpr]") {
-        auto res = bar_coll.find_one(ODM_KEY(Bar::x1) <= 1);
+        auto res = Bar::find_one(ODM_KEY(Bar::x1) <= 1);
         REQUIRE(res);
         REQUIRE(res.value().x1 <= 1);
     }
 
     SECTION("Test != comparison.", "[mongo_odm::ComparisonExpr]") {
-        auto res = bar_coll.find_one(ODM_KEY(Bar::x1) != 1);
+        auto res = Bar::find_one(ODM_KEY(Bar::x1) != 1);
         REQUIRE(res);
         REQUIRE(res.value().x1 != 1);
 
-        res = bar_coll.find_one(ODM_KEY(Bar::z) != "hello");
+        res = Bar::find_one(ODM_KEY(Bar::z) != "hello");
         REQUIRE(res);
         REQUIRE(res.value().z == "goodbye");
     }
 
     SECTION("Test $not expression, with operator!.", "[mongo_odm::NotExpr]") {
-        auto res = bar_coll.find_one(!(ODM_KEY(Bar::x1) < 10));
+        auto res = Bar::find_one(!(ODM_KEY(Bar::x1) < 10));
         REQUIRE(res);
         REQUIRE(res.value().x1 >= 10);
 
-        res = bar_coll.find_one(!(ODM_KEY(Bar::z) == "hello"));
+        res = Bar::find_one(!(ODM_KEY(Bar::z) == "hello"));
         REQUIRE(res);
         REQUIRE(res.value().z == "goodbye");
     }
 
     SECTION("Test expression list.", "[mongo_odm::ExpressionList]") {
-        auto res = bar_coll.find_one(
-            (ODM_KEY(Bar::x1) == 1, ODM_KEY(Bar::x2) == 2, ODM_KEY(Bar::w) >= 444));
+        auto res =
+            Bar::find_one((ODM_KEY(Bar::x1) == 1, ODM_KEY(Bar::x2) == 2, ODM_KEY(Bar::w) >= 444));
         REQUIRE(res);
         REQUIRE(res.value().x1 == 1);
         REQUIRE(res.value().x2 == 2);
@@ -119,11 +133,11 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     }
 
     SECTION("Test boolean expressions.", "[mongo_odm::BooleanExpr]") {
-        auto res = bar_coll.find_one(ODM_KEY(Bar::x1) > 9 && ODM_KEY(Bar::x1) < 11);
+        auto res = Bar::find_one(ODM_KEY(Bar::x1) > 9 && ODM_KEY(Bar::x1) < 11);
         REQUIRE(res);
         REQUIRE(res.value().x1 == 10);
 
-        auto cursor = bar_coll.find(ODM_KEY(Bar::x1) == 10 || ODM_KEY(Bar::x2) == 3);
+        auto cursor = Bar::find(ODM_KEY(Bar::x1) == 10 || ODM_KEY(Bar::x2) == 3);
         int i = 0;
         for (Bar b : cursor) {
             i++;
