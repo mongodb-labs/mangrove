@@ -384,8 +384,8 @@ constexpr BooleanExpr<Expr1, Expr2> operator||(const Expr1 &lhs, const Expr2 &rh
  * the Nth member out of M total members which have name value pairs.
  */
 // By default, if N>=M the index is out of bounds and hasField is false-y.
-template <typename Base, typename T, size_t N, size_t M,
-          bool = N<M> struct hasField : public std::false_type {};
+template <typename Base, typename T, size_t N, size_t M, bool = (N < M)>
+struct hasField : public std::false_type {};
 
 // Nth member in the Base::fields tuple (i.e. the list of fields for which we
 // have name-value pairs)
@@ -405,14 +405,14 @@ template <typename Base, typename T, size_t N, size_t M>
 constexpr std::enable_if_t<N == M, const Nvp<Base, T> *> wrapimpl(T Base::*t);
 
 template <typename Base, typename T, size_t N, size_t M>
-    constexpr std::enable_if_t <
-    N<M && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *> wrapimpl(T Base::*t);
+constexpr std::enable_if_t<(N < M) && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
+wrapimpl(T Base::*t);
 
 // If Nth field has same type as T, check that it points to the same member.
 // If not, check (N+1)th field.
 template <typename Base, typename T, size_t N, size_t M>
-    constexpr std::enable_if_t <
-    N<M && hasField<Base, T, N, M>::value, const Nvp<Base, T> *> wrapimpl(T Base::*t) {
+constexpr std::enable_if_t<(N < M) && hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
+wrapimpl(T Base::*t) {
     if (std::get<N>(Base::fields).t == t) {
         return &std::get<N>(Base::fields);
     } else {
@@ -422,8 +422,8 @@ template <typename Base, typename T, size_t N, size_t M>
 
 // If current field doesn't match the type of T, check (N+1)th field.
 template <typename Base, typename T, size_t N, size_t M>
-    constexpr std::enable_if_t <
-    N<M && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *> wrapimpl(T Base::*t) {
+constexpr std::enable_if_t<(N < M) && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
+wrapimpl(T Base::*t) {
     return wrapimpl<Base, T, N + 1, M>(t);
 }
 
