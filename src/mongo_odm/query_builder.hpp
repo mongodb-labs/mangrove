@@ -32,36 +32,34 @@
 #define NVP(x) mongo_odm::makeNvp(&mongo_odm_wrap_base::x, #x)
 
 // Creates serialize() function
-#define ODM_SERIALIZE_KEYS                                                         \
-    template <class Archive>                                                       \
-    void serialize(Archive &ar) {                                                  \
-        serialize_recur<Archive, 0, std::tuple_size<decltype(fields)>::value>(ar); \
-    }                                                                              \
-    template <class Archive, size_t I, size_t N>                                   \
-    typename std::enable_if<(I < N), void>::type serialize_recur(Archive &ar) {    \
-        auto nvp = std::get<I>(fields);                                            \
-        ar(cereal::make_nvp(nvp.name, this->*(nvp.t)));                            \
-        serialize_recur<Archive, I + 1, N>(ar);                                    \
-    }                                                                              \
-                                                                                   \
-    template <class Archive, size_t I, size_t N>                                   \
-    typename std::enable_if<(I == N), void>::type serialize_recur(Archive &ar) {   \
-        ;                                                                          \
+#define ODM_SERIALIZE_KEYS                                                           \
+    template <class Archive>                                                         \
+    void serialize(Archive &ar) {                                                    \
+        serialize_recur<Archive, 0, std::tuple_size<decltype(fields())>::value>(ar); \
+    }                                                                                \
+    template <class Archive, size_t I, size_t N>                                     \
+    typename std::enable_if<(I < N), void>::type serialize_recur(Archive &ar) {      \
+        auto nvp = std::get<I>(fields());                                            \
+        ar(cereal::make_nvp(nvp.name, this->*(nvp.t)));                              \
+        serialize_recur<Archive, I + 1, N>(ar);                                      \
+    }                                                                                \
+                                                                                     \
+    template <class Archive, size_t I, size_t N>                                     \
+    typename std::enable_if<(I == N), void>::type serialize_recur(Archive &ar) {     \
+        ;                                                                            \
     }
 
 // Creates `fields` object that holds member pointers, as well as a serialize() function for those
 // members
-#define ODM_MAKE_KEYS(Base, ...)                                 \
-    using mongo_odm_wrap_base = Base;                            \
-    constexpr static auto fields = std::make_tuple(__VA_ARGS__); \
+#define ODM_MAKE_KEYS(Base, ...)             \
+    using mongo_odm_wrap_base = Base;        \
+    constexpr static auto fields() {         \
+        return std::make_tuple(__VA_ARGS__); \
+    }                                        \
     ODM_SERIALIZE_KEYS
 
 // If using the mongo_odm::model, then also register _id as a field.
 #define ODM_MAKE_KEYS_MODEL(Base, ...) ODM_MAKE_KEYS(Base, NVP(_id), __VA_ARGS__)
-
-// Allocate storage for fields. (TODO: Jason mentioned that one could make `fields` a function that
-// returns NVPs, obviating the need for allocating storage separately.)
-#define ODM_MAKE_KEYS_STORAGE(Base) constexpr decltype(Base::fields) Base::fields
 
 #define ODM_KEY(value) mongo_odm::hasCallIfFieldIsPresent<decltype(&value), &value>::call()
 
@@ -418,7 +416,39 @@ struct hasField : public std::false_type {};
 // Must have same type as the given argument.
 template <typename Base, typename T, size_t N, size_t M>
 struct hasField<Base, T, N, M, true>
-    : public std::is_same<T Base::*, decltype(std::get<N>(Base::fields).t)> {};
+    : public std::is_same<T Base::*, decltype(std::get<N>(Base::fields()).t)> {};
+
+/**
+ * wrapbool iterates through the fields and returns true if a matching member exists, and false
+ * otherwise.
+ */
+
+// forward declarations for wrapbool
+template <typename Base, typename T, size_t N, size_t M>
+    constexpr std::enable_if_t < N<M && !hasField<Base, T, N, M>::value, bool> wrapbool(T Base::*t);
+
+template <typename Base, typename T, size_t N, size_t M>
+constexpr std::enable_if_t<N == M, bool> wrapbool(T Base::*t);
+
+template <typename Base, typename T, size_t N, size_t M>
+    constexpr std::enable_if_t < N<M && hasField<Base, T, N, M>::value, bool> wrapbool(T Base::*t) {
+    if (std::get<N>(Base::fields()).t == t) {
+        return true;
+    } else {
+        return wrapbool<Base, T, N + 1, M>(t);
+    }
+}
+
+template <typename Base, typename T, size_t N, size_t M>
+    constexpr std::enable_if_t <
+    N<M && !hasField<Base, T, N, M>::value, bool> wrapbool(T Base::*t) {
+    return wrapbool<Base, T, N + 1, M>(t);
+}
+
+template <typename Base, typename T, size_t N, size_t M>
+constexpr std::enable_if_t<N == M, bool> wrapbool(T Base::*t) {
+    return false;
+}
 
 /**
  * wrapimpl uses template arguments N and M to iterate over the fields of a Base
@@ -428,19 +458,19 @@ struct hasField<Base, T, N, M, true>
 
 // forward declarations for wrapimpl
 template <typename Base, typename T, size_t N, size_t M>
-constexpr std::enable_if_t<N == M, const Nvp<Base, T> *> wrapimpl(T Base::*t);
+constexpr std::enable_if_t<N == M, const Nvp<Base, T>> wrapimpl(T Base::*t);
 
 template <typename Base, typename T, size_t N, size_t M>
-constexpr std::enable_if_t<(N < M) && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
-wrapimpl(T Base::*t);
+constexpr std::enable_if_t<(N < M) && !hasField<Base, T, N, M>::value, const Nvp<Base, T>> wrapimpl(
+    T Base::*t);
 
 // If Nth field has same type as T, check that it points to the same member.
 // If not, check (N+1)th field.
 template <typename Base, typename T, size_t N, size_t M>
-constexpr std::enable_if_t<(N < M) && hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
-wrapimpl(T Base::*t) {
-    if (std::get<N>(Base::fields).t == t) {
-        return &std::get<N>(Base::fields);
+constexpr std::enable_if_t<(N < M) && hasField<Base, T, N, M>::value, const Nvp<Base, T>> wrapimpl(
+    T Base::*t) {
+    if (std::get<N>(Base::fields()).t == t) {
+        return std::get<N>(Base::fields());
     } else {
         return wrapimpl<Base, T, N + 1, M>(t);
     }
@@ -448,15 +478,15 @@ wrapimpl(T Base::*t) {
 
 // If current field doesn't match the type of T, check (N+1)th field.
 template <typename Base, typename T, size_t N, size_t M>
-constexpr std::enable_if_t<(N < M) && !hasField<Base, T, N, M>::value, const Nvp<Base, T> *>
-wrapimpl(T Base::*t) {
+constexpr std::enable_if_t<(N < M) && !hasField<Base, T, N, M>::value, const Nvp<Base, T>> wrapimpl(
+    T Base::*t) {
     return wrapimpl<Base, T, N + 1, M>(t);
 }
 
 // If N==M, we've gone past the last field, return nullptr.
 template <typename Base, typename T, size_t N, size_t M>
-constexpr std::enable_if_t<N == M, const Nvp<Base, T> *> wrapimpl(T Base::*t) {
-    return nullptr;
+constexpr std::enable_if_t<N == M, const Nvp<Base, T>> wrapimpl(T Base::*t) {
+    return Nvp<Base, T>(nullptr, nullptr);
 }
 
 /**
@@ -467,8 +497,8 @@ constexpr std::enable_if_t<N == M, const Nvp<Base, T> *> wrapimpl(T Base::*t) {
  * @return      The name-value pair corresponding to this member pointer.
  */
 template <typename Base, typename T>
-constexpr const Nvp<Base, T> *wrap(T Base::*t) {
-    return wrapimpl<Base, T, 0, std::tuple_size<decltype(Base::fields)>::value>(t);
+constexpr const Nvp<Base, T> wrap(T Base::*t) {
+    return wrapimpl<Base, T, 0, std::tuple_size<decltype(Base::fields())>::value>(t);
 }
 
 /**
@@ -480,9 +510,11 @@ template <typename T, T, typename = void>
 struct hasCallIfFieldIsPresent {};
 
 template <typename Base, typename T, T Base::*ptr>
-struct hasCallIfFieldIsPresent<T Base::*, ptr, std::enable_if_t<wrap(ptr) != nullptr>> {
-    static constexpr const Nvp<Base, T> &call() {
-        return *wrap(ptr);
+struct hasCallIfFieldIsPresent<
+    T Base::*, ptr,
+    std::enable_if_t<wrapbool<Base, T, 0, std::tuple_size<decltype(Base::fields())>::value>(ptr)>> {
+    static constexpr const Nvp<Base, T> call() {
+        return wrap(ptr);
     }
 };
 

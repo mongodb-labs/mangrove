@@ -51,7 +51,6 @@ class Bar : public mongo_odm::model<Bar> {
         return _id;
     }
 };
-ODM_MAKE_KEYS_STORAGE(Bar);
 
 // Test ODM on class that does not rely on model
 class Point {
@@ -60,7 +59,6 @@ class Point {
     int y;
     ODM_MAKE_KEYS(Point, NVP(x), NVP(y));
 };
-ODM_MAKE_KEYS_STORAGE(Point);
 
 TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     instance::current();
