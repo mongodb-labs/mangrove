@@ -29,10 +29,10 @@
 
 #include <bsoncxx/builder/stream/array.hpp>
 
-#define NVP(x) mongo_odm::makeNvp(&wrapBase::x, #x)
+#define NVP(x) mongo_odm::makeNvp(&mongo_odm_wrap_base::x, #x)
 
-#define ODM_MAKE_KEYS(Base, ...) \
-    using wrapBase = Base;       \
+#define ODM_MAKE_KEYS(Base, ...)      \
+    using mongo_odm_wrap_base = Base; \
     constexpr static auto fields = std::make_tuple(__VA_ARGS__);
 
 #define ODM_MAKE_KEYS_STORAGE(Base) constexpr decltype(Base::fields) Base::fields

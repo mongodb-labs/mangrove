@@ -30,13 +30,12 @@ using namespace mongo_odm;
 
 class Bar {
    public:
-    Bar *v;
     int64_t w;
     int x1;
     int x2;
     bool y;
     std::string z;
-    ODM_MAKE_KEYS(Bar, NVP(v), NVP(w), NVP(x1), NVP(x2), NVP(y), NVP(z))
+    ODM_MAKE_KEYS(Bar, NVP(w), NVP(x1), NVP(x2), NVP(y), NVP(z))
 
     template <class Archive>
     void serialize(Archive &ar) {
@@ -52,9 +51,9 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     odm_collection<Bar> bar_coll(coll);
     coll.delete_many({});
 
-    bar_coll.insert_one({nullptr, 444, 1, 2, false, "hello"});
-    bar_coll.insert_one({nullptr, 444, 1, 3, false, "hello"});
-    bar_coll.insert_one({nullptr, 555, 10, 2, true, "goodbye"});
+    bar_coll.insert_one({444, 1, 2, false, "hello"});
+    bar_coll.insert_one({444, 1, 3, false, "hello"});
+    bar_coll.insert_one({555, 10, 2, true, "goodbye"});
 
     SECTION("Test == comparison.", "[mongo_odm::ComparisonExpr]") {
         auto res = bar_coll.find_one(ODM_KEY(Bar::x1) == 1);
