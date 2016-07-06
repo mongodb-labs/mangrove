@@ -53,6 +53,15 @@ class Bar : public mongo_odm::model<Bar> {
 };
 ODM_MAKE_KEYS_STORAGE(Bar);
 
+// Test ODM on class that does not rely on model
+class Point {
+   public:
+    int x;
+    int y;
+    ODM_MAKE_KEYS(Point, NVP(x), NVP(y));
+};
+ODM_MAKE_KEYS_STORAGE(Point);
+
 TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     instance::current();
     client conn{uri{}};
@@ -142,4 +151,18 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         }
         REQUIRE(i == 2);
     }
+}
+
+TEST_CASE("Query builder works with non-ODM class") {
+    instance::current();
+    client conn{uri{}};
+    collection coll = conn["testdb"]["testcollection"];
+    coll.delete_many({});
+
+    auto point_coll = odm_collection<Point>(coll);
+    point_coll.insert_one({5, 6});
+    auto res = point_coll.find_one(ODM_KEY(Point::x) == 5);
+    REQUIRE(res.value().x == 5);
+
+    coll.delete_many({});
 }
