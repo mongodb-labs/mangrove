@@ -29,6 +29,10 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
+// Forward declarations
+template <typename Base, typename T>
+class NotExpr;
+
 /**
  * Represents a binary comparison expression between a key and a value. e.g. (User.age > 21).
  */
@@ -42,23 +46,18 @@ class ComparisonExpr {
      * @param  selector_type The type of comparison operator, such at gt (>) or ne (!=).
      */
     constexpr ComparisonExpr(const Nvp<Base, T> &nvp, T field, const char *selector_type)
-        : nvp(nvp), field(std::move(field)), selector_type(selector_type) {
+        : _nvp(nvp), _field(std::move(field)), _selector_type(selector_type) {
     }
-
-    const Nvp<Base, T> &nvp;
-    T field;
-    const char *selector_type;
-
     /**
      * Appends this expression to a BSON core builder, as a key-value pair of the form
      * "key: {$cmp: val}", where $cmp is some comparison operator.
      * @param builder A BSON core builder
      */
     void append_to_bson(bsoncxx::builder::core &builder) const {
-        builder.key_view(nvp.name);
+        builder.key_view(_nvp.name);
         builder.open_document();
-        builder.key_view(selector_type);
-        builder.append(field);
+        builder.key_view(_selector_type);
+        builder.append(_field);
         builder.close_document();
     }
 
@@ -71,6 +70,13 @@ class ComparisonExpr {
         append_to_bson(builder);
         return {builder.extract_document()};
     }
+
+    friend NotExpr<Base, T>;
+
+   private:
+    const Nvp<Base, T> &_nvp;
+    T _field;
+    const char *_selector_type;
 };
 
 /**
@@ -84,7 +90,7 @@ class NotExpr {
      * Creates a $not expression taht negates the given comparison expression.
      * @param  expr A comparison expression
      */
-    constexpr NotExpr(const ComparisonExpr<Base, T> &expr) : expr(expr) {
+    constexpr NotExpr(const ComparisonExpr<Base, T> &expr) : _expr(expr) {
     }
 
     /**
@@ -93,12 +99,12 @@ class NotExpr {
      * @param builder a BSON core builder
      */
     void append_to_bson(bsoncxx::builder::core &builder) const {
-        builder.key_view(expr.nvp.name);
+        builder.key_view(_expr._nvp.name);
         builder.open_document();
         builder.key_view("$not");
         builder.open_document();
-        builder.key_view(expr.selector_type);
-        builder.append(expr.field);
+        builder.key_view(_expr._selector_type);
+        builder.append(_expr._field);
         builder.close_document();
         builder.close_document();
     }
@@ -113,7 +119,8 @@ class NotExpr {
         return {builder.extract_document()};
     }
 
-    const ComparisonExpr<Base, T> expr;
+   private:
+    const ComparisonExpr<Base, T> _expr;
 };
 
 template <typename Head, typename Tail>
@@ -124,7 +131,7 @@ class ExpressionList {
      * @param head  The first element in the list
      * @param tail  The remainder of the list
      */
-    constexpr ExpressionList(const Head &head, const Tail &tail) : head(head), tail(tail) {
+    constexpr ExpressionList(const Head &head, const Tail &tail) : _head(head), _tail(tail) {
     }
 
     /**
@@ -133,8 +140,8 @@ class ExpressionList {
      * @param builder A basic BSON core builder.
      */
     void append_to_bson(bsoncxx::builder::core &builder) const {
-        head.append_to_bson(builder);
-        tail.append_to_bson(builder);
+        _head.append_to_bson(builder);
+        _tail.append_to_bson(builder);
     }
 
     /**
@@ -146,8 +153,9 @@ class ExpressionList {
         return {builder.extract_document()};
     }
 
-    const Head head;
-    const Tail tail;
+   private:
+    const Head _head;
+    const Tail _tail;
 };
 
 template <typename Expr1, typename Expr2>
@@ -160,7 +168,7 @@ class BooleanExpr {
      * @param  op  The operator of the expression, e.g. AND or OR.
      */
     constexpr BooleanExpr(const Expr1 &lhs, const Expr2 &rhs, const char *op)
-        : lhs(lhs), rhs(rhs), op(op) {
+        : _lhs(lhs), _rhs(rhs), _op(op) {
     }
 
     /**
@@ -168,17 +176,17 @@ class BooleanExpr {
      * @param builder A basic BSON core builder.
      */
     void append_to_bson(bsoncxx::builder::core &builder) const {
-        builder.key_view(op);
+        builder.key_view(_op);
         builder.open_array();
 
         // append left hand side
         builder.open_document();
-        lhs.append_to_bson(builder);
+        _lhs.append_to_bson(builder);
         builder.close_document();
 
         // append right hand side
         builder.open_document();
-        rhs.append_to_bson(builder);
+        _rhs.append_to_bson(builder);
         builder.close_document();
 
         builder.close_array();
@@ -194,9 +202,9 @@ class BooleanExpr {
         return {builder.extract_document()};
     }
 
-    const Expr1 lhs;
-    const Expr2 rhs;
-    const char *op;
+    const Expr1 _lhs;
+    const Expr2 _rhs;
+    const char *_op;
 };
 
 /* A templated struct that holds a boolean value.
