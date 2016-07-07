@@ -44,6 +44,10 @@ set(MONGO_ODM_HEADER_INSTALL_DIR "include/mongo_odm/${MONGO_ODM_INLINE_NAMESPACE
 
 add_subdirectory(config)
 
+# auto-generate MONGO_ODM_CHILD macros for accessing nested fields in the query builder.
+message(STATUS "Generating MONGO_ODM_CHILD preprocessor macros...")
+execute_process(COMMAND ${CMAKE_SOURCE_DIR}/buildscripts/generate_macros.py ${CMAKE_SOURCE_DIR}/src/mongo_odm/mongo_odm_child_autogen.hpp)
+
 set(mongo_odm_sources
    "model.cpp"
    "odm_collection.cpp"
