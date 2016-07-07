@@ -54,12 +54,12 @@ class ComparisonExpr {
      * "key: {$cmp: val}", where $cmp is some comparison operator.
      * @param builder A BSON core builder
      */
-    void append_to_bson(bsoncxx::builder::core &bson) const {
-        bson.key_view(nvp.name);
-        bson.open_document();
-        bson.key_view(selector_type);
-        bson.append(field);
-        bson.close_document();
+    void append_to_bson(bsoncxx::builder::core &builder) const {
+        builder.key_view(nvp.name);
+        builder.open_document();
+        builder.key_view(selector_type);
+        builder.append(field);
+        builder.close_document();
     }
 
     /**
@@ -67,9 +67,9 @@ class ComparisonExpr {
      * The resulting BSON is of the form "{key: {$cmp: val}}".
      */
     operator bsoncxx::document::view_or_value() const {
-        auto bson = bsoncxx::builder::core(false);
-        append_to_bson(bson);
-        return bsoncxx::document::view_or_value(bson.extract_document());
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return {builder.extract_document()};
     }
 };
 
@@ -92,15 +92,15 @@ class NotExpr {
      * as a key-value pair of the form "key: {$not: {$cmp: val}}".
      * @param builder a BSON core builder
      */
-    void append_to_bson(bsoncxx::builder::core &bson) const {
-        bson.key_view(expr.nvp.name);
-        bson.open_document();
-        bson.key_view("$not");
-        bson.open_document();
-        bson.key_view(expr.selector_type);
-        bson.append(expr.field);
-        bson.close_document();
-        bson.close_document();
+    void append_to_bson(bsoncxx::builder::core &builder) const {
+        builder.key_view(expr.nvp.name);
+        builder.open_document();
+        builder.key_view("$not");
+        builder.open_document();
+        builder.key_view(expr.selector_type);
+        builder.append(expr.field);
+        builder.close_document();
+        builder.close_document();
     }
 
     /**
@@ -108,9 +108,9 @@ class NotExpr {
      * The format of the BSON is "{key: {$not: {$cmp: val}}}".
      */
     operator bsoncxx::document::view_or_value() const {
-        auto bson = bsoncxx::builder::core(false);
-        append_to_bson(bson);
-        return bsoncxx::document::view_or_value(bson.extract_document());
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return {builder.extract_document()};
     }
 
     const ComparisonExpr<Base, T> expr;
@@ -132,18 +132,18 @@ class ExpressionList {
      * in the list, and then recursing on the rest of the list.
      * @param builder A basic BSON core builder.
      */
-    void append_to_bson(bsoncxx::builder::core &bson) const {
-        head.append_to_bson(bson);
-        tail.append_to_bson(bson);
+    void append_to_bson(bsoncxx::builder::core &builder) const {
+        head.append_to_bson(builder);
+        tail.append_to_bson(builder);
     }
 
     /**
      * Casts the expression list to a BSON query of  the form { expr1, expr2, ....}
      */
     operator bsoncxx::document::view_or_value() const {
-        auto bson = bsoncxx::builder::core(false);
-        append_to_bson(bson);
-        return bsoncxx::document::view_or_value(bson.extract_document());
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return {builder.extract_document()};
     }
 
     const Head head;
@@ -167,21 +167,21 @@ class BooleanExpr {
      * Appends this query to a BSON core builder as a key-value pair "$op: [{lhs}, {rhs}]"
      * @param builder A basic BSON core builder.
      */
-    void append_to_bson(bsoncxx::builder::core &bson) const {
-        bson.key_view(op);
-        bson.open_array();
+    void append_to_bson(bsoncxx::builder::core &builder) const {
+        builder.key_view(op);
+        builder.open_array();
 
         // append left hand side
-        bson.open_document();
-        lhs.append_to_bson(bson);
-        bson.close_document();
+        builder.open_document();
+        lhs.append_to_bson(builder);
+        builder.close_document();
 
         // append right hand side
-        bson.open_document();
-        rhs.append_to_bson(bson);
-        bson.close_document();
+        builder.open_document();
+        rhs.append_to_bson(builder);
+        builder.close_document();
 
-        bson.close_array();
+        builder.close_array();
     }
 
     /**
@@ -189,9 +189,9 @@ class BooleanExpr {
      * in the form "{ $op: [{lhs}, {rhs}] }"
      */
     operator bsoncxx::document::view_or_value() const {
-        auto bson = bsoncxx::builder::core(false);
-        append_to_bson(bson);
-        return bsoncxx::document::view_or_value(bson.extract_document());
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return {builder.extract_document()};
     }
 
     const Expr1 lhs;
@@ -237,73 +237,73 @@ struct is_expression<BooleanExpr<Expr1, Expr2>> {
 template <typename Base, typename T, typename U,
           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
 constexpr ComparisonExpr<Base, T> operator==(const Nvp<Base, T> &lhs, const U &rhs) {
-    return ComparisonExpr<Base, T>(lhs, rhs, "$eq");
+    return {lhs, rhs, "$eq"};
 }
 
 template <typename Base, typename T,
           typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
 constexpr ComparisonExpr<Base, T> operator==(const Nvp<Base, T> &lhs, const T &rhs) {
-    return ComparisonExpr<Base, T>(lhs, rhs, "$eq");
+    return {lhs, rhs, "$eq"};
 }
 
 template <typename Base, typename T, typename U,
           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
 constexpr ComparisonExpr<Base, T> operator>(const Nvp<Base, T> &lhs, const U &rhs) {
-    return ComparisonExpr<Base, T>(lhs, rhs, "$gt");
+    return {lhs, rhs, "$gt"};
 }
 
 template <typename Base, typename T,
           typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
 constexpr ComparisonExpr<Base, T> operator>(const Nvp<Base, T> &lhs, const T &rhs) {
-    return ComparisonExpr<Base, T>(lhs, rhs, "$gt");
+    return {lhs, rhs, "$gt"};
 }
 
 template <typename Base, typename T, typename U,
           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
 constexpr ComparisonExpr<Base, T> operator>=(const Nvp<Base, T> &lhs, const U &rhs) {
-    return ComparisonExpr<Base, T>(lhs, rhs, "$gte");
+    return {lhs, rhs, "$gte"};
 }
 
 template <typename Base, typename T,
           typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
 constexpr ComparisonExpr<Base, T> operator>=(const Nvp<Base, T> &lhs, const T &rhs) {
-    return ComparisonExpr<Base, T>(lhs, rhs, "$gte");
+    return {lhs, rhs, "$gte"};
 }
 
 template <typename Base, typename T, typename U,
           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
 constexpr ComparisonExpr<Base, T> operator<(const Nvp<Base, T> &lhs, const U &rhs) {
-    return ComparisonExpr<Base, T>(lhs, rhs, "$lt");
+    return {lhs, rhs, "$lt"};
 }
 
 template <typename Base, typename T,
           typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
 constexpr ComparisonExpr<Base, T> operator<(const Nvp<Base, T> &lhs, const T &rhs) {
-    return ComparisonExpr<Base, T>(lhs, rhs, "$lt");
+    return {lhs, rhs, "$lt"};
 }
 
 template <typename Base, typename T, typename U,
           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
 constexpr ComparisonExpr<Base, T> operator<=(const Nvp<Base, T> &lhs, const U &rhs) {
-    return ComparisonExpr<Base, T>(lhs, rhs, "$lte");
+    return {lhs, rhs, "$lte"};
 }
 
 template <typename Base, typename T,
           typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
 constexpr ComparisonExpr<Base, T> operator<=(const Nvp<Base, T> &lhs, const T &rhs) {
-    return ComparisonExpr<Base, T>(lhs, rhs, "$lte");
+    return {lhs, rhs, "$lte"};
 }
 
 template <typename Base, typename T, typename U,
           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
 constexpr ComparisonExpr<Base, T> operator!=(const Nvp<Base, T> &lhs, const U &rhs) {
-    return ComparisonExpr<Base, T>(lhs, rhs, "$ne");
+    return {lhs, rhs, "$ne"};
 }
 
 template <typename Base, typename T,
           typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
 constexpr ComparisonExpr<Base, T> operator!=(const Nvp<Base, T> &lhs, const T &rhs) {
-    return ComparisonExpr<Base, T>(lhs, rhs, "$ne");
+    return {lhs, rhs, "$ne"};
 }
 
 /**
@@ -311,7 +311,7 @@ constexpr ComparisonExpr<Base, T> operator!=(const Nvp<Base, T> &lhs, const T &r
  */
 template <typename Base, typename T>
 constexpr NotExpr<Base, T> operator!(const ComparisonExpr<Base, T> &expr) {
-    return NotExpr<Base, T>(expr);
+    return {expr};
 }
 
 /**
@@ -322,7 +322,7 @@ template <typename Head, typename Tail,
           typename = typename std::enable_if<is_expression<Head>::value &&
                                              is_expression<Tail>::value>::type>
 constexpr ExpressionList<Head, Tail> operator,(Tail &&tail, Head &&head) {
-    return ExpressionList<Head, Tail>(head, tail);
+    return {head, tail};
 }
 
 /**
@@ -332,14 +332,14 @@ template <typename Expr1, typename Expr2,
           typename = typename std::enable_if<is_expression<Expr1>::value &&
                                              is_expression<Expr2>::value>::type>
 constexpr BooleanExpr<Expr1, Expr2> operator&&(const Expr1 &lhs, const Expr2 &rhs) {
-    return BooleanExpr<Expr1, Expr2>(lhs, rhs, "$and");
+    return {lhs, rhs, "$and"};
 }
 
 template <typename Expr1, typename Expr2,
           typename = typename std::enable_if<is_expression<Expr1>::value &&
                                              is_expression<Expr2>::value>::type>
 constexpr BooleanExpr<Expr1, Expr2> operator||(const Expr1 &lhs, const Expr2 &rhs) {
-    return BooleanExpr<Expr1, Expr2>(lhs, rhs, "$or");
+    return {lhs, rhs, "$or"};
 }
 
 MONGO_ODM_INLINE_NAMESPACE_END
