@@ -24,7 +24,7 @@
 #include <bsoncxx/builder/core.hpp>
 #include <bsoncxx/view_or_value.hpp>
 
-#include <mongo_odm/model.hpp>
+#include <mongo_odm/nvp.hpp>
 
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
