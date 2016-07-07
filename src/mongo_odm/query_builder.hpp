@@ -207,24 +207,82 @@ class BooleanExpr {
     const char *_op;
 };
 
+template <typename Base, typename T>
+class UpdateExpr {
+   public:
+    constexpr UpdateExpr(const Nvp<Base, T> &nvp, const T &val, const char *op)
+        : _nvp(nvp), _val(val), _op(op) {
+    }
+
+    void append_to_bson(bsoncxx::builder::core &builder) const {
+        builder.key_view(_op);
+        builder.open_document();
+        builder.key_view(_nvp.name);
+        builder.append(_val);
+        builder.close_document();
+    }
+
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return {builder.extract_document()};
+    }
+
+   private:
+    Nvp<Base, T> _nvp;
+    T _val;
+    const char *_op;
+};
+
 /* A templated struct that holds a boolean value.
-* This value is TRUE for types that are query expression,
+* This value is TRUE for types that are query expressions,
 * and FALSE for all other types.
 */
 template <typename>
-struct is_expression : public std::false_type {};
+struct is_query_expression {
+    constexpr static bool value = false;
+};
 
 template <typename Base, typename T>
-struct is_expression<ComparisonExpr<Base, T>> : public std::true_type {};
+struct is_query_expression<ComparisonExpr<Base, T>> {
+    constexpr static bool value = true;
+};
 
 template <typename Base, typename T>
-struct is_expression<NotExpr<Base, T>> : public std::true_type {};
+struct is_query_expression<NotExpr<Base, T>> {
+    constexpr static bool value = true;
+};
 
 template <typename Head, typename Tail>
-struct is_expression<ExpressionList<Head, Tail>> : public std::true_type {};
+struct is_query_expression<ExpressionList<Head, Tail>> {
+    constexpr static bool value =
+        is_query_expression<Head>::value && is_query_expression<Tail>::value;
+};
 
 template <typename Expr1, typename Expr2>
-struct is_expression<BooleanExpr<Expr1, Expr2>> : public std::true_type {};
+struct is_query_expression<BooleanExpr<Expr1, Expr2>> {
+    constexpr static bool value = true;
+};
+
+/**
+ * A templated struct that holds a boolean value.
+ * This value is TRUE for types that are update expressions, and false otherwise.
+ */
+template <typename>
+struct is_update_expression {
+    constexpr static bool value = false;
+};
+
+template <typename Base, typename T>
+struct is_update_expression<UpdateExpr<Base, T>> {
+    constexpr static bool value = true;
+};
+
+template <typename Head, typename Tail>
+struct is_update_expression<ExpressionList<Head, Tail>> {
+    constexpr static bool value =
+        is_update_expression<Head>::value && is_update_expression<Tail>::value;
+};
 
 /* Operator overloads for creating and combining expressions */
 
@@ -317,8 +375,9 @@ constexpr NotExpr<Base, T> operator!(const ComparisonExpr<Base, T> &expr) {
  * expression list.
  */
 template <typename Head, typename Tail,
-          typename = typename std::enable_if<is_expression<Head>::value &&
-                                             is_expression<Tail>::value>::type>
+          typename = typename std::enable_if<
+              (is_query_expression<Head>::value && is_query_expression<Tail>::value) ||
+              (is_update_expression<Head>::value && is_update_expression<Tail>::value)>::type>
 constexpr ExpressionList<Head, Tail> operator,(Tail &&tail, Head &&head) {
     return {head, tail};
 }
@@ -327,17 +386,67 @@ constexpr ExpressionList<Head, Tail> operator,(Tail &&tail, Head &&head) {
  * Boolean operator overloads for expressions.
  */
 template <typename Expr1, typename Expr2,
-          typename = typename std::enable_if<is_expression<Expr1>::value &&
-                                             is_expression<Expr2>::value>::type>
+          typename = typename std::enable_if<is_query_expression<Expr1>::value &&
+                                             is_query_expression<Expr2>::value>::type>
 constexpr BooleanExpr<Expr1, Expr2> operator&&(const Expr1 &lhs, const Expr2 &rhs) {
     return {lhs, rhs, "$and"};
 }
 
 template <typename Expr1, typename Expr2,
-          typename = typename std::enable_if<is_expression<Expr1>::value &&
-                                             is_expression<Expr2>::value>::type>
+          typename = typename std::enable_if<is_query_expression<Expr1>::value &&
+                                             is_query_expression<Expr2>::value>::type>
 constexpr BooleanExpr<Expr1, Expr2> operator||(const Expr1 &lhs, const Expr2 &rhs) {
     return {lhs, rhs, "$or"};
+}
+
+/**
+ * Arithmetic update operators.
+ */
+
+template <typename Base, typename T,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<Base, T> operator+=(const Nvp<Base, T> &nvp, const T &val) {
+    return {nvp, val, "$inc"};
+}
+
+template <typename Base, typename T,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<Base, T> operator-=(const Nvp<Base, T> &nvp, const T &val) {
+    return {nvp, -val, "$inc"};
+}
+
+template <typename Base, typename T,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<Base, T> operator++(const Nvp<Base, T> &nvp) {
+    return {nvp, 1, "$inc"};
+}
+
+template <typename Base, typename T,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<Base, T> operator++(const Nvp<Base, T> &nvp, int) {
+    return {nvp, 1, "$inc"};
+}
+template <typename Base, typename T,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<Base, T> operator--(const Nvp<Base, T> &nvp) {
+    return {nvp, -1, "$inc"};
+}
+
+template <typename Base, typename T,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<Base, T> operator--(const Nvp<Base, T> &nvp, int) {
+    return {nvp, -1, "$inc"};
+}
+template <typename Base, typename T,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<Base, T> operator*=(const Nvp<Base, T> &nvp, const T &val) {
+    return {nvp, val, "$mul"};
+}
+
+template <typename Base, typename T,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<Base, T> operator/=(const Nvp<Base, T> &nvp, const T &val) {
+    return {nvp, static_cast<T>(1.0 / val), "$mul"};
 }
 
 MONGO_ODM_INLINE_NAMESPACE_END

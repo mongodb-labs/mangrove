@@ -172,3 +172,97 @@ TEST_CASE("Query builder works with non-ODM class") {
 
     coll.delete_many({});
 }
+
+TEST_CASE("Update Builder", "mongo_odm::UpdateExpr") {
+    instance::current();
+    client conn{uri{}};
+    collection coll = conn["testdb"]["testcollection"];
+    coll.delete_many({});
+
+    Bar::setCollection(coll);
+    Bar(444, 1, 2, false, "hello").save();
+    Bar(444, 1, 3, false, "hello").save();
+    Bar(555, 10, 2, true, "goodbye").save();
+
+    SECTION("Test = assignment.", "[mongo_odm::UpdateExpr]") {
+        auto res =
+            coll.update_one(ODM_KEY(Bar::w) == 555, (ODM_KEY(Bar::x1) = 73, ODM_KEY(Bar::x2) = 99));
+        REQUIRE(res);
+        REQUIRE(res.value().modified_count() == 1);
+        auto bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
+        REQUIRE(bar);
+        REQUIRE(bar.value().x1 == 73);
+        REQUIRE(bar.value().x2 == 99);
+    }
+
+    SECTION("Test increment operators.", "[mongo_odm::UpdateExpr]") {
+        auto bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
+        REQUIRE(bar);
+        int initial_x1 = bar.value().x1;
+
+        {
+            // Test postfix ++
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, ODM_KEY(Bar::x1)++);
+            REQUIRE(res);
+            REQUIRE(res.value().modified_count() == 1);
+            bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
+            REQUIRE(bar);
+            REQUIRE(bar.value().x1 == initial_x1 + 1);
+        }
+
+        {
+            // Test prefix ++
+            initial_x1 = bar.value().x1;
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, ++ODM_KEY(Bar::x1));
+            REQUIRE(res);
+            REQUIRE(res.value().modified_count() == 1);
+            bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
+            REQUIRE(bar);
+            REQUIRE(bar.value().x1 == initial_x1 + 1);
+        }
+
+        {
+            // Test postfix --
+            initial_x1 = bar.value().x1;
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, ODM_KEY(Bar::x1)--);
+            REQUIRE(res);
+            REQUIRE(res.value().modified_count() == 1);
+            bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
+            REQUIRE(bar);
+            REQUIRE(bar.value().x1 == initial_x1 - 1);
+        }
+
+        {
+            // Test prefix --
+            initial_x1 = bar.value().x1;
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, --ODM_KEY(Bar::x1));
+            REQUIRE(res);
+            REQUIRE(res.value().modified_count() == 1);
+            bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
+            REQUIRE(bar);
+            REQUIRE(bar.value().x1 == initial_x1 - 1);
+        }
+
+        {
+            // Test operator+=
+            initial_x1 = bar.value().x1;
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, ODM_KEY(Bar::x1) += 5);
+            REQUIRE(res);
+            REQUIRE(res.value().modified_count() == 1);
+            bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
+            REQUIRE(bar);
+            REQUIRE(bar.value().x1 == initial_x1 + 5);
+        }
+
+        {
+            // Test operator-=
+            initial_x1 = bar.value().x1;
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, ODM_KEY(Bar::x1) -= 5);
+            REQUIRE(res);
+            REQUIRE(res.value().modified_count() == 1);
+            bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
+            REQUIRE(bar);
+            REQUIRE(bar.value().x1 == initial_x1 - 5);
+        }
+    }
+}
