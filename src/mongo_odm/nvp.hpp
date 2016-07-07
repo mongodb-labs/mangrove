@@ -60,6 +60,9 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
+template <typename Base, typename T>
+class UpdateExpr;
+
 /**
  * An object that represents a name-value pair of a member in an object.
  * It is templated on the class of the member and its type.
@@ -72,6 +75,11 @@ struct Nvp {
      * @param  name The name of the member
      */
     constexpr Nvp(T Base::*t, const char* name) : t(t), name(name) {
+    }
+
+    template <typename = typename std::enable_if<std::is_arithmetic<T>::value>>
+    constexpr UpdateExpr<Base, T> operator=(const T& val) const {
+        return {*this, val, "$set"};
     }
 
     T Base::*t;
