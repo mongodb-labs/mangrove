@@ -20,7 +20,6 @@
 #include <mongocxx/instance.hpp>
 #include <mongocxx/pipeline.hpp>
 
-#include <bson_mapper/bson_streambuf.hpp>
 #include <cereal/types/vector.hpp>
 #include <mongo_odm/odm_collection.hpp>
 

@@ -39,7 +39,7 @@ set(MONGO_ODM_EXAMPLES
 foreach(EXAMPLE_SRC ${MONGO_ODM_EXAMPLES})
     get_filename_component(EXAMPLE_TARGET ${EXAMPLE_SRC} NAME_WE)
     add_executable(${EXAMPLE_TARGET} ${EXAMPLE_SRC})
-    target_link_libraries(${EXAMPLE_TARGET} mongo_odm mongocxx bsoncxx)
+    target_link_libraries(${EXAMPLE_TARGET} mongo_odm bson_mapper mongocxx bsoncxx)
     set(MONGO_ODM_EXAMPLE_EXECUTABLES ${MONGO_ODM_EXAMPLE_EXECUTABLES} ${EXAMPLE_TARGET})
 endforeach(EXAMPLE_SRC)
 

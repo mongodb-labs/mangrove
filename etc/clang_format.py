@@ -37,14 +37,14 @@ from multiprocessing import cpu_count
 #
 
 # Expected version of clang-format
-CLANG_FORMAT_VERSION = "3.6.0"
+CLANG_FORMAT_VERSION = "3.8.0"
 
 # Name of clang-format as a binary
 CLANG_FORMAT_PROGNAME = "clang-format"
 
 # URL location of the "cached" copy of clang-format to download
 # for users which do not have clang-format installed
-CLANG_FORMAT_HTTP_LINUX_CACHE = "https://s3.amazonaws.com/boxes.10gen.com/build/clang-format-rhel55.tar.gz"
+CLANG_FORMAT_HTTP_LINUX_CACHE = "https://s3.amazonaws.com/boxes.10gen.com/build/clang-format-3.8-rhel55.tar.gz"
 
 # URL on LLVM's website to download the clang tarball
 CLANG_FORMAT_SOURCE_URL_BASE = string.Template("http://llvm.org/releases/$version/clang+llvm-$version-$llvm_distro.tar.xz")
@@ -341,7 +341,7 @@ def get_clang_format_from_linux_cache(dest_file):
     extract_clang_format(temp_tar_file)
 
     # Destination Path
-    shutil.move("llvm/Release/bin/clang-format", dest_file)
+    shutil.move("build/bin/clang-format", dest_file)
 
 
 class ClangFormat(object):
@@ -349,8 +349,8 @@ class ClangFormat(object):
     and linting/formating an individual file
     """
     def __init__(self, path, cache_dir):
-        if os.path.exists('/usr/bin/clang-format-3.6'):
-            clang_format_progname = 'clang-format-3.6'
+        if os.path.exists('/usr/bin/clang-format-3.8'):
+            clang_format_progname = 'clang-format-3.8'
         else:
             clang_format_progname = CLANG_FORMAT_PROGNAME
 

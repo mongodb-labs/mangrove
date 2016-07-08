@@ -60,10 +60,10 @@
 #pragma push_macro("BSON_MAPPER_NO_DEPRECATED")
 #undef BSON_MAPPER_NO_DEPRECATED
 
-#include <bson_mapper/config/config.hpp>
-#include <bson_mapper/config/version.hpp>
-#include <bson_mapper/config/export.hpp>
 #include <bson_mapper/config/compiler.hpp>
+#include <bson_mapper/config/config.hpp>
+#include <bson_mapper/config/export.hpp>
+#include <bson_mapper/config/version.hpp>
 
 #pragma push_macro("BSON_MAPPER_UNREACHABLE")
 #undef BSON_MAPPER_UNREACHABLE

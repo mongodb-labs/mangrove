@@ -379,7 +379,7 @@ struct NoSerializedMembers {
     int32_t a;
 
     template <class Archive>
-    void serialize(Archive& ar) {
+    void serialize(Archive&) {
     }
 };
 

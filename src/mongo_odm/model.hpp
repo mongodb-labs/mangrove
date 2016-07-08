@@ -157,8 +157,13 @@ class model {
     }
 };
 
+#ifdef __APPLE__
 template <typename T, typename IdType>
 odm_collection<T> model<T, IdType>::_coll;
+#else
+template <typename T, typename IdType>
+thread_local odm_collection<T> model<T, IdType>::_coll;
+#endif
 
 MONGO_ODM_INLINE_NAMESPACE_END
 }  // namespace mongo_odm

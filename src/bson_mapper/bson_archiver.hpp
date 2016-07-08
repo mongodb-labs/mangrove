@@ -982,7 +982,7 @@ inline void epilogue(BSONInputArchive& ar, BsonT const&) {
 // Prologue for all types which inherit from UnderlyingBSONDataBase for BSON output archives.
 template <class T, cereal::traits::EnableIf<std::is_base_of<UnderlyingBSONDataBase, T>::value> =
                        cereal::traits::sfinae>
-inline void prologue(BSONOutputArchive& ar, T const& obj) {
+inline void prologue(BSONOutputArchive& ar, T const&) {
     ar.startNode(true);
 }
 
@@ -994,7 +994,7 @@ template <class T,
               cereal::traits::has_minimal_output_serialization<T, BSONOutputArchive>::value ||
               is_bson<T>::value || std::is_same<T, std::chrono::system_clock::time_point>::value ||
               std::is_base_of<UnderlyingBSONDataBase, T>::value> = cereal::traits::sfinae>
-inline void prologue(BSONOutputArchive& ar, T const& obj) {
+inline void prologue(BSONOutputArchive& ar, T const&) {
     ar.startNode(false);
 }
 
@@ -1015,7 +1015,7 @@ template <class T,
               cereal::traits::has_minimal_input_serialization<T, BSONInputArchive>::value ||
               is_bson<T>::value || std::is_same<T, std::chrono::system_clock::time_point>::value ||
               std::is_base_of<UnderlyingBSONDataBase, T>::value> = cereal::traits::sfinae>
-inline void prologue(BSONInputArchive& ar, T const& obj) {
+inline void prologue(BSONInputArchive& ar, T const&) {
     ar.startNode();
 }
 

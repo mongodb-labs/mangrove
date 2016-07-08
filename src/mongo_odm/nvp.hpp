@@ -39,7 +39,7 @@
     }                                                                                           \
                                                                                                 \
     template <class Archive, size_t I, size_t N>                                                \
-    typename std::enable_if<(I == N), void>::type mongo_odm_serialize_recur(Archive& ar) {      \
+    typename std::enable_if<(I == N), void>::type mongo_odm_serialize_recur(Archive&) {         \
         ;                                                                                       \
     }
 
@@ -127,7 +127,7 @@ template <typename Base, typename T, size_t N, size_t M>
 }
 
 template <typename Base, typename T, size_t N, size_t M>
-constexpr std::enable_if_t<N == M, bool> wrapbool(T Base::*t) {
+constexpr std::enable_if_t<N == M, bool> wrapbool(T Base::*) {
     return false;
 }
 
@@ -166,7 +166,7 @@ constexpr std::enable_if_t<(N < M) && !hasField<Base, T, N, M>::value, const Nvp
 
 // If N==M, we've gone past the last field, return nullptr.
 template <typename Base, typename T, size_t N, size_t M>
-constexpr std::enable_if_t<N == M, const Nvp<Base, T>> wrapimpl(T Base::*t) {
+constexpr std::enable_if_t<N == M, const Nvp<Base, T>> wrapimpl(T Base::*) {
     return Nvp<Base, T>(nullptr, nullptr);
 }
 
