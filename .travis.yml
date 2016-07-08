@@ -64,7 +64,7 @@ install:
     - pushd mongo-c-driver; ./autogen.sh --enable-tests=no --enable-examples=no --with-libbson=bundled; make; sudo make install; popd;
 
     # Install Mongo C++ Driver
-    - pushd mongo-cxx-driver/build; cmake -DCMAKE_BUILD_TYPE=$CONFIG ..; make; sudo make install; popd; 
+    - pushd mongo-cxx-driver/build; ../../${CMAKE_BINARY} -DCMAKE_BUILD_TYPE=$CONFIG ..; make; sudo make install; popd; 
 
 before_script:
     - $CC --version
@@ -72,7 +72,7 @@ before_script:
 
     # Build the odm and the tests
     - cd build
-    - cmake -DCMAKE_BUILD_TYPE=$CONFIG -DCMAKE_MODULE_PATH=../mongo-cxx-driver/cmake -DCMAKE_C_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers" -DCMAKE_CXX_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers" ..
+    - ${CMAKE_BINARY} -DCMAKE_BUILD_TYPE=$CONFIG -DCMAKE_MODULE_PATH=../mongo-cxx-driver/cmake -DCMAKE_C_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers" -DCMAKE_CXX_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers" ..
 
 script:
     - make format-lint
