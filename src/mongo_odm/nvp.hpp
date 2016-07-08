@@ -89,7 +89,7 @@ struct Nvp {
         return {*this, val, "$set"};
     }
 
-    std::string get_name() {
+    std::string get_name() const {
         return name;
     }
 
@@ -113,7 +113,7 @@ class NvpChild {
         return {*this, val, "$set"};
     }
 
-    std::string get_name() {
+    std::string get_name() const {
         std::string full_name;
         full_name += (parent.get_name() + ".");
         full_name += name;

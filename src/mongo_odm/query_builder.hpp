@@ -46,7 +46,7 @@ class ComparisonExpr {
      * @param  selector_type The type of comparison operator, such at gt (>) or ne (!=).
      */
     constexpr ComparisonExpr(const NVPType &nvp, T field, const char *selector_type)
-        : _nvp(nvp), _field(std::move(field)), _selector_type(selector_type) {
+        : _nvp(nvp), _field(field), _selector_type(selector_type) {
     }
     /**
      * Appends this expression to a BSON core builder, as a key-value pair of the form
@@ -305,81 +305,64 @@ struct is_update_expression<ExpressionList<Head, Tail>> {
  * Separate operators are defined for bool types to prevent confusing implicit casting to bool
  * for non-bool types.
  */
-// template <typename T, typename NVPType,
-//           typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>, typename U,
-//           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
-// constexpr ComparisonExpr<T, NVPType> operator==(const NVPType &lhs, const U &rhs) {
-//     return {lhs, rhs, "$eq"};
-// }
 
-template <typename T, typename NVPType,
-          typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>>
-constexpr ComparisonExpr<T, NVPType> operator==(const NVPType &lhs, const T &rhs) {
+template <typename Base, typename T, typename U>
+constexpr ComparisonExpr<T, Nvp<Base, T>> operator==(const Nvp<Base, T> &lhs, const U &rhs) {
+    return {lhs, rhs, "$eq"};
+}
+template <typename Base, typename T, typename Parent, typename U>
+constexpr ComparisonExpr<T, NvpChild<Base, T, Parent>> operator==(
+    const NvpChild<Base, T, Parent> &lhs, const U &rhs) {
     return {lhs, rhs, "$eq"};
 }
 
-// template <typename T, typename NVPType,
-//           typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>, typename U,
-//           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
-// constexpr ComparisonExpr<T, NVPType> operator>(const NVPType &lhs, const U &rhs) {
-//     return {lhs, rhs, "$gt"};
-// }
-
-template <typename T, typename NVPType,
-          typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>>
-constexpr ComparisonExpr<T, NVPType> operator>(const NVPType &lhs, const T &rhs) {
+template <typename Base, typename T, typename U>
+constexpr ComparisonExpr<T, Nvp<Base, T>> operator>(const Nvp<Base, T> &lhs, const U &rhs) {
+    return {lhs, rhs, "$gt"};
+}
+template <typename Base, typename T, typename Parent, typename U>
+constexpr ComparisonExpr<T, NvpChild<Base, T, Parent>> operator>(
+    const NvpChild<Base, T, Parent> &lhs, const U &rhs) {
     return {lhs, rhs, "$gt"};
 }
 
-// template <typename T, typename NVPType,
-//           typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>, typename U,
-//           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
-// constexpr ComparisonExpr<T, NVPType> operator>=(const NVPType &lhs, const U &rhs) {
-//     return {lhs, rhs, "$gte"};
-// }
-
-template <typename T, typename NVPType,
-          typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>>
-constexpr ComparisonExpr<T, NVPType> operator>=(const NVPType &lhs, const T &rhs) {
+template <typename Base, typename T, typename U>
+constexpr ComparisonExpr<T, Nvp<Base, T>> operator>=(const Nvp<Base, T> &lhs, const U &rhs) {
+    return {lhs, rhs, "$gte"};
+}
+template <typename Base, typename T, typename Parent, typename U>
+constexpr ComparisonExpr<T, NvpChild<Base, T, Parent>> operator>=(
+    const NvpChild<Base, T, Parent> &lhs, const U &rhs) {
     return {lhs, rhs, "$gte"};
 }
 
-// template <typename T, typename NVPType,
-//           typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>, typename U,
-//           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
-// constexpr ComparisonExpr<T, NVPType> operator<(const NVPType &lhs, const U &rhs) {
-//     return {lhs, rhs, "$lt"};
-// }
-
-template <typename T, typename NVPType,
-          typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>>
-constexpr ComparisonExpr<T, NVPType> operator<(const NVPType &lhs, const T &rhs) {
+template <typename Base, typename T, typename U>
+constexpr ComparisonExpr<T, Nvp<Base, T>> operator<(const Nvp<Base, T> &lhs, const U &rhs) {
+    return {lhs, rhs, "$lt"};
+}
+template <typename Base, typename T, typename Parent, typename U>
+constexpr ComparisonExpr<T, NvpChild<Base, T, Parent>> operator<(
+    const NvpChild<Base, T, Parent> &lhs, const U &rhs) {
     return {lhs, rhs, "$lt"};
 }
 
-// template <typename T, typename NVPType,
-//           typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>, typename U,
-//           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
-// constexpr ComparisonExpr<T, NVPType> operator<=(const NVPType &lhs, const U &rhs) {
-//     return {lhs, rhs, "$lte"};
-// }
-
-template <typename T, typename NVPType,
-          typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>>
-constexpr ComparisonExpr<T, NVPType> operator<=(const NVPType &lhs, const T &rhs) {
+template <typename Base, typename T, typename U>
+constexpr ComparisonExpr<T, Nvp<Base, T>> operator<=(const Nvp<Base, T> &lhs, const U &rhs) {
+    return {lhs, rhs, "$lte"};
+}
+template <typename Base, typename T, typename Parent, typename U>
+constexpr ComparisonExpr<T, NvpChild<Base, T, Parent>> operator<=(
+    const NvpChild<Base, T, Parent> &lhs, const U &rhs) {
     return {lhs, rhs, "$lte"};
 }
 
-// template <typename T, typename NVPType,
-//           typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>, typename U,
-//           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
-// constexpr ComparisonExpr<T, NVPType> operator!=(const NVPType &lhs, const U &rhs) {
-//     return {lhs, rhs, "$ne"};
-// }
-
-template <typename T, typename NVPType,
-          typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>>
-constexpr ComparisonExpr<T, NVPType> operator!=(const NVPType &lhs, const T &rhs) {
+template <typename Base, typename T, typename U>
+constexpr ComparisonExpr<T, Nvp<Base, T>> operator!=(const Nvp<Base, T> &lhs, const U &rhs) {
+    return {lhs, rhs, "$ne"};
+}
+template <typename Base, typename T, typename Parent, typename U>
+constexpr ComparisonExpr<T, NvpChild<Base, T, Parent>> operator!=(
+    const NvpChild<Base, T, Parent> &lhs, const U &rhs) {
     return {lhs, rhs, "$ne"};
 }
 
@@ -431,8 +414,8 @@ constexpr UpdateExpr<T, Nvp<Base, T>> operator+=(const Nvp<Base, T> &nvp, const 
     return {nvp, val, "$inc"};
 }
 
-template <typename T, typename Base,
-          typename Parent typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+template <typename T, typename Base, typename Parent,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
 constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator+=(const NvpChild<Base, T, Parent> &nvp,
                                                               const T &val) {
     return {nvp, val, "$inc"};
@@ -444,8 +427,8 @@ constexpr UpdateExpr<T, Nvp<Base, T>> operator-=(const Nvp<Base, T> &nvp, const 
     return {nvp, -val, "$inc"};
 }
 
-template <typename T, typename Base,
-          typename Parent typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+template <typename T, typename Base, typename Parent,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
 constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator-=(const NvpChild<Base, T, Parent> &nvp,
                                                               const T &val) {
     return {nvp, -val, "$inc"};
@@ -457,8 +440,8 @@ constexpr UpdateExpr<T, Nvp<Base, T>> operator++(const Nvp<Base, T> &nvp) {
     return {nvp, 1, "$inc"};
 }
 
-template <typename T, typename Base,
-          typename Parent typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+template <typename T, typename Base, typename Parent,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
 constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator++(
     const NvpChild<Base, T, Parent> &nvp) {
     return {nvp, 1, "$inc"};
@@ -470,8 +453,8 @@ constexpr UpdateExpr<T, Nvp<Base, T>> operator++(const Nvp<Base, T> &nvp, int) {
     return {nvp, 1, "$inc"};
 }
 
-template <typename T, typename Base,
-          typename Parent typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+template <typename T, typename Base, typename Parent,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
 constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator++(const NvpChild<Base, T, Parent> &nvp,
                                                               int) {
     return {nvp, 1, "$inc"};
@@ -483,8 +466,8 @@ constexpr UpdateExpr<T, Nvp<Base, T>> operator--(const Nvp<Base, T> &nvp) {
     return {nvp, -1, "$inc"};
 }
 
-template <typename T, typename Base,
-          typename Parent typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+template <typename T, typename Base, typename Parent,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
 constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator--(
     const NvpChild<Base, T, Parent> &nvp) {
     return {nvp, -1, "$inc"};
@@ -492,7 +475,7 @@ constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator--(
 
 template <typename T, typename Base,
           typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
-constexpr UpdateExpr<T, NVPType> operator--(const Nvp<Base, T> &nvp, int) {
+constexpr UpdateExpr<T, Nvp<Base, T>> operator--(const Nvp<Base, T> &nvp, int) {
     return {nvp, -1, "$inc"};
 }
 
@@ -502,8 +485,8 @@ constexpr UpdateExpr<T, Nvp<Base, T>> operator*=(const Nvp<Base, T> &nvp, const 
     return {nvp, val, "$mul"};
 }
 
-template <typename T, typename Base,
-          typename Parent typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+template <typename T, typename Base, typename Parent,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
 constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator*=(const NvpChild<Base, T, Parent> &nvp,
                                                               const T &val) {
     return {nvp, val, "$mul"};
