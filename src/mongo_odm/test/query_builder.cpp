@@ -61,24 +61,6 @@ class Point {
     MONGO_ODM_MAKE_KEYS(Point, MONGO_ODM_NVP(x), MONGO_ODM_NVP(y));
 };
 
-class BarParent {
-   public:
-    Bar b;
-    ODM_MAKE_KEYS(BarParent, NVP(b));
-};
-
-class BarAncestor {
-   public:
-    BarParent bp;
-    ODM_MAKE_KEYS(BarAncestor, NVP(bp));
-};
-
-TEST_CASE("NVP Child") {
-    BarParent a;
-    auto nvp_child = ODM_KEY(BarAncestor::bp)->*ODM_KEY(BarParent::b)->*ODM_KEY(Bar::x1);
-    std::cout << "***** " << nvp_child.name << std::endl;
-}
-
 TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     instance::current();
     client conn{uri{}};
@@ -294,4 +276,59 @@ TEST_CASE("Update Builder", "mongo_odm::UpdateExpr") {
             REQUIRE(bar.value().x1 == initial_x1 * 5);
         }
     }
+}
+
+class BarParent {
+   public:
+    Bar b;
+
+    BarParent() {
+    }
+
+    // default constructor
+    BarParent(Bar b) : b(b) {
+    }
+    ODM_MAKE_KEYS(BarParent, NVP(b));
+};
+
+class BarAncestor : public mongo_odm::model<BarAncestor> {
+   public:
+    BarParent bp;
+    ODM_MAKE_KEYS_MODEL(BarAncestor, NVP(bp));
+
+    BarAncestor() {
+        _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
+    }
+
+    // default constructor
+    BarAncestor(BarParent bp) : bp(bp) {
+        _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
+    }
+
+    bsoncxx::oid getID() {
+        return _id;
+    }
+};
+
+TEST_CASE("Test access of nested members.", "[mongo_odm::NvpChild]") {
+    BarParent root;
+    auto nvp_child = ODM_KEY(BarAncestor::bp)->*ODM_KEY(BarParent::b)->*ODM_KEY(Bar::x1);
+    REQUIRE(nvp_child.get_name() == "bp.b.x1");
+}
+
+TEST_CASE("Test queries built with nested members", "[mongo_odm::NvpChild]") {
+    instance::current();
+    client conn{uri{}};
+    collection coll = conn["testdb"]["testcollection"];
+    coll.delete_many({});
+
+    BarAncestor::setCollection(coll);
+    BarAncestor(BarParent(Bar(444, 1, 2, false, "hello"))).save();
+    BarAncestor(BarParent(Bar(444, 1, 3, false, "hello"))).save();
+    BarAncestor(BarParent(Bar(555, 10, 2, true, "goodbye"))).save();
+
+    auto res = BarAncestor::find_one(
+        ODM_KEY(BarAncestor::bp)->*ODM_KEY(BarParent::b)->*ODM_KEY(Bar::x1) == 10);
+    REQUIRE(res);
+    REQUIRE(res.value().bp.b.x1 == 10);
 }
