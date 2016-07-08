@@ -60,7 +60,10 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
-template <typename Base, typename T>
+template <typename Base, typename T, typename Parent>
+class NvpChild;
+
+template <typename T, typename Parent>
 class UpdateExpr;
 
 /**
@@ -77,13 +80,49 @@ struct Nvp {
     constexpr Nvp(T Base::*t, const char* name) : t(t), name(name) {
     }
 
-    template <typename = typename std::enable_if<std::is_arithmetic<T>::value>>
-    constexpr UpdateExpr<Base, T> operator=(const T& val) const {
+    template <typename U>
+    constexpr NvpChild<T, U, Nvp<Base, T>> operator->*(const Nvp<T, U>& child) const {
+        return {child.t, child.name, *this};
+    }
+
+    constexpr UpdateExpr<T, Nvp<Base, T>> operator=(const T& val) const {
         return {*this, val, "$set"};
+    }
+
+    std::string get_name() {
+        return name;
     }
 
     T Base::*t;
     const char* name;
+};
+
+template <typename Base, typename T, typename Parent>
+class NvpChild {
+   public:
+    constexpr NvpChild(T Base::*t, const char* name, Parent parent)
+        : t(t), name(name), parent(parent) {
+    }
+
+    template <typename U>
+    constexpr NvpChild<T, U, NvpChild<Base, T, Parent>> operator->*(const Nvp<T, U>& child) const {
+        return {child.t, child.name, *this};
+    }
+
+    constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator=(const T& val) const {
+        return {*this, val, "$set"};
+    }
+
+    std::string get_name() {
+        std::string full_name;
+        full_name += (parent.get_name() + ".");
+        full_name += name;
+        return full_name;
+    }
+
+    const char* name;
+    T Base::*t;
+    const Parent parent;
 };
 
 /* Create a name-value pair from a object member and its name */
