@@ -72,7 +72,7 @@ before_script:
 
     # Build the odm and the tests
     - cd build
-    - ${CMAKE_BINARY} -DCMAKE_BUILD_TYPE=$CONFIG -DCMAKE_PREFIX_PATH=../mongo-cxx-driver/build/install/lib -DCMAKE_C_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers" -DCMAKE_CXX_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers" ..
+    - ${CMAKE_BINARY} -DCMAKE_BUILD_TYPE=$CONFIG -DCMAKE_PREFIX_PATH=../mongo-cxx-driver/build/install/ -DCMAKE_C_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers" -DCMAKE_CXX_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers" ..
 
 script:
     - make format-lint
@@ -93,3 +93,6 @@ script:
 
     # Run the examples
     - make run-examples
+
+after-failure:
+    - cat /home/travis/build/mongodb/mongo-cxx-odm/build/CMakeFiles/CMakeOutput.log
