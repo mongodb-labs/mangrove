@@ -311,6 +311,8 @@ TEST_CASE("Test access of nested members.", "[mongo_odm::NvpChild]") {
     BarParent root;
     auto nvp_child = ODM_KEY(BarAncestor::bp)->*ODM_KEY(BarParent::b)->*ODM_KEY(Bar::x1);
     REQUIRE(nvp_child.get_name() == "bp.b.x1");
+    auto nvp_child_macro = NEST(BarAncestor, bp, b, x1);
+    REQUIRE(nvp_child_macro.get_name() == "bp.b.x1");
 }
 
 TEST_CASE("Test queries built with nested members", "[mongo_odm::NvpChild]") {

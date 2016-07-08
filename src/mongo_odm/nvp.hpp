@@ -21,6 +21,18 @@
 #include <tuple>
 #include <type_traits>
 
+#define PP_NARG(...) PP_NARG_(__VA_ARGS__, PP_RSEQ_N())
+#define PP_NARG_(...) PP_ARG_N(__VA_ARGS__)
+#define PP_ARG_N(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, \
+                 _19, _20, _21, _22, _23, _24, _25, _26, _27, _28, _29, _30, _31, _32, _33, _34,  \
+                 _35, _36, _37, _38, _39, _40, _41, _42, _43, _44, _45, _46, _47, _48, _49, _50,  \
+                 _51, _52, _53, _54, _55, _56, _57, _58, _59, _60, _61, _62, _63, N, ...)         \
+    N
+#define PP_RSEQ_N()                                                                             \
+    63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, \
+        40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, \
+        18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
+
 #define MONGO_ODM_NVP(x) mongo_odm::makeNvp(&mongo_odm_wrap_base::x, #x)
 
 // Creates serialize() function
@@ -56,6 +68,25 @@
     MONGO_ODM_MAKE_KEYS(Base, MONGO_ODM_NVP(_id), __VA_ARGS__)
 
 #define MONGO_ODM_KEY(value) mongo_odm::hasCallIfFieldIsPresent<decltype(&value), &value>::call()
+#define MONGO_ODM_KEY_BY_VALUE(value) hasCallIfFieldIsPresent<decltype(value), value>::call()
+
+#define NEST1(base, field1) MONGO_ODM_KEY_BY_VALUE(&base::field1)
+
+#define NEST2(base, field1, field2)                                                             \
+    makeNvpWithParent(MONGO_ODM_KEY_BY_VALUE(                                                   \
+                          &std::decay_t<typename decltype(NEST1(base, field1))::type>::field2), \
+                      NEST1(base, field1))
+
+#define NEST3(base, field1, field2, field3)                                               \
+    makeNvpWithParent(                                                                    \
+        MONGO_ODM_KEY_BY_VALUE(                                                           \
+            &std::decay_t<typename decltype(NEST2(base, field1, field2))::type>::field3), \
+        NEST2(base, field1, field2))
+
+#define PASTE_IMPL(s1, s2) s1##s2
+#define PASTE(s1, s2) PASTE_IMPL(s1, s2)
+
+#define NEST(type, ...) PASTE(NEST, PP_NARG(__VA_ARGS__))(type, __VA_ARGS__)
 
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
@@ -72,6 +103,8 @@ class UpdateExpr;
  */
 template <typename Base, typename T>
 struct Nvp {
+    using type = T;
+
     /**
      * Create a name-value pair from a member pointer and a name.
      * @param  t    A pointer to the member
@@ -100,6 +133,8 @@ struct Nvp {
 template <typename Base, typename T, typename Parent>
 class NvpChild {
    public:
+    using type = T;
+
     constexpr NvpChild(T Base::*t, const char* name, Parent parent)
         : t(t), name(name), parent(parent) {
     }
@@ -131,6 +166,15 @@ Nvp<Base, T> constexpr makeNvp(T Base::*t, const char* name) {
     return Nvp<Base, T>(t, name);
 }
 
+/**
+ * Constructs a name-value pair that is a subfield of a `parent` object.
+ * The resulting name-value pair will have the name "rootfield.subfield".
+ */
+template <typename Base, typename T, typename Parent>
+NvpChild<Base, T, Parent> constexpr makeNvpWithParent(const Nvp<Base, T>& child,
+                                                      const Parent& parent) {
+    return NvpChild<Base, T, Parent>(child.t, child.name, parent);
+}
 /**
  * hasField determines whether a type Base has a member of the given type T as
  * the Nth member out of M total members which have name value pairs.
