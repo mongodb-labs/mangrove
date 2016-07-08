@@ -36,7 +36,7 @@ class Bar : public mongo_odm::model<Bar> {
     int x2;
     bool y;
     std::string z;
-    MONGO_ODM_MAKE_KEYS_MODEL(Bar, NVP(w), NVP(x1), NVP(x2), NVP(y), NVP(z))
+    MONGO_ODM_MAKE_KEYS_MODEL(Bar, MONGO_ODM_NVP(w), MONGO_ODM_NVP(x1), MONGO_ODM_NVP(x2), MONGO_ODM_NVP(y), MONGO_ODM_NVP(z))
 
     Bar(int64_t w, int x1, int x2, bool y, std::string z) : w(w), x1(x1), x2(x2), y(y), z(z) {
         _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
@@ -57,7 +57,7 @@ class Point {
    public:
     int x;
     int y;
-    MONGO_ODM_MAKE_KEYS(Point, NVP(x), NVP(y));
+    MONGO_ODM_MAKE_KEYS(Point, MONGO_ODM_NVP(x), MONGO_ODM_NVP(y));
 };
 
 TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {

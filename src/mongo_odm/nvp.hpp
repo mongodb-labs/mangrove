@@ -21,7 +21,7 @@
 #include <tuple>
 #include <type_traits>
 
-#define NVP(x) mongo_odm::makeNvp(&mongo_odm_wrap_base::x, #x)
+#define MONGO_ODM_NVP(x) mongo_odm::makeNvp(&mongo_odm_wrap_base::x, #x)
 
 // Creates serialize() function
 #define MONGO_ODM_SERIALIZE_KEYS                                                                \
@@ -52,7 +52,8 @@
     MONGO_ODM_SERIALIZE_KEYS
 
 // If using the mongo_odm::model, then also register _id as a field.
-#define MONGO_ODM_MAKE_KEYS_MODEL(Base, ...) MONGO_ODM_MAKE_KEYS(Base, NVP(_id), __VA_ARGS__)
+#define MONGO_ODM_MAKE_KEYS_MODEL(Base, ...) \
+    MONGO_ODM_MAKE_KEYS(Base, MONGO_ODM_NVP(_id), __VA_ARGS__)
 
 #define MONGO_ODM_KEY(value) mongo_odm::hasCallIfFieldIsPresent<decltype(&value), &value>::call()
 
