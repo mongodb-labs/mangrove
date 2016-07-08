@@ -61,6 +61,24 @@ class Point {
     MONGO_ODM_MAKE_KEYS(Point, MONGO_ODM_NVP(x), MONGO_ODM_NVP(y));
 };
 
+class BarParent {
+   public:
+    Bar b;
+    ODM_MAKE_KEYS(BarParent, NVP(b));
+};
+
+class BarAncestor {
+   public:
+    BarParent bp;
+    ODM_MAKE_KEYS(BarAncestor, NVP(bp));
+};
+
+TEST_CASE("NVP Child") {
+    BarParent a;
+    auto nvp_child = ODM_KEY(BarAncestor::bp)->*ODM_KEY(BarParent::b)->*ODM_KEY(Bar::x1);
+    std::cout << "***** " << nvp_child.name << std::endl;
+}
+
 TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     instance::current();
     client conn{uri{}};
@@ -263,6 +281,17 @@ TEST_CASE("Update Builder", "mongo_odm::UpdateExpr") {
             bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
             REQUIRE(bar);
             REQUIRE(bar.value().x1 == initial_x1 - 5);
+        }
+
+        {
+            // Test operator*=
+            initial_x1 = bar.value().x1;
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, ODM_KEY(Bar::x1) *= 5);
+            REQUIRE(res);
+            REQUIRE(res.value().modified_count() == 1);
+            bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
+            REQUIRE(bar);
+            REQUIRE(bar.value().x1 == initial_x1 * 5);
         }
     }
 }

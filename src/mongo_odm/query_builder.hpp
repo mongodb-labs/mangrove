@@ -30,13 +30,13 @@ namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
 // Forward declarations
-template <typename Base, typename T>
+template <typename T, typename NVPType>
 class NotExpr;
 
 /**
  * Represents a binary comparison expression between a key and a value. e.g. (User.age > 21).
  */
-template <typename Base, typename T>
+template <typename T, typename NVPType>
 class ComparisonExpr {
    public:
     /**
@@ -45,7 +45,7 @@ class ComparisonExpr {
      * @param  field         The value that the key is being compared to.
      * @param  selector_type The type of comparison operator, such at gt (>) or ne (!=).
      */
-    constexpr ComparisonExpr(const Nvp<Base, T> &nvp, T field, const char *selector_type)
+    constexpr ComparisonExpr(const NVPType &nvp, T field, const char *selector_type)
         : _nvp(nvp), _field(std::move(field)), _selector_type(selector_type) {
     }
     /**
@@ -54,7 +54,7 @@ class ComparisonExpr {
      * @param builder A BSON core builder
      */
     void append_to_bson(bsoncxx::builder::core &builder) const {
-        builder.key_view(_nvp.name);
+        builder.key_view(_nvp.get_name());
         builder.open_document();
         builder.key_view(_selector_type);
         builder.append(_field);
@@ -71,10 +71,10 @@ class ComparisonExpr {
         return builder.extract_document();
     }
 
-    friend NotExpr<Base, T>;
+    friend NotExpr<T, NVPType>;
 
    private:
-    const Nvp<Base, T> &_nvp;
+    const NVPType &_nvp;
     T _field;
     const char *_selector_type;
 };
@@ -83,14 +83,14 @@ class ComparisonExpr {
  * This represents an expression with the $not operator, which wraps a comparison expression and
  * negates it.
  */
-template <typename Base, typename T>
+template <typename T, typename NVPType>
 class NotExpr {
    public:
     /**
      * Creates a $not expression taht negates the given comparison expression.
      * @param  expr A comparison expression
      */
-    constexpr NotExpr(const ComparisonExpr<Base, T> &expr) : _expr(expr) {
+    constexpr NotExpr(const ComparisonExpr<T, NVPType> &expr) : _expr(expr) {
     }
 
     /**
@@ -99,7 +99,7 @@ class NotExpr {
      * @param builder a BSON core builder
      */
     void append_to_bson(bsoncxx::builder::core &builder) const {
-        builder.key_view(_expr._nvp.name);
+        builder.key_view(_expr._nvp.get_name());
         builder.open_document();
         builder.key_view("$not");
         builder.open_document();
@@ -120,7 +120,7 @@ class NotExpr {
     }
 
    private:
-    const ComparisonExpr<Base, T> _expr;
+    const ComparisonExpr<T, NVPType> _expr;
 };
 
 template <typename Head, typename Tail>
@@ -207,17 +207,17 @@ class BooleanExpr {
     const char *_op;
 };
 
-template <typename Base, typename T>
+template <typename T, typename NVPType>
 class UpdateExpr {
    public:
-    constexpr UpdateExpr(const Nvp<Base, T> &nvp, const T &val, const char *op)
+    constexpr UpdateExpr(const NVPType &nvp, const T &val, const char *op)
         : _nvp(nvp), _val(val), _op(op) {
     }
 
     void append_to_bson(bsoncxx::builder::core &builder) const {
         builder.key_view(_op);
         builder.open_document();
-        builder.key_view(_nvp.name);
+        builder.key_view(_nvp.get_name());
         builder.append(_val);
         builder.close_document();
     }
@@ -229,9 +229,24 @@ class UpdateExpr {
     }
 
    private:
-    Nvp<Base, T> _nvp;
+    NVPType _nvp;
     T _val;
     const char *_op;
+};
+
+template <typename NVPType>
+struct is_nvp_type {
+    constexpr static bool value = false;
+};
+
+template <typename Base, typename T>
+struct is_nvp_type<Nvp<Base, T>> {
+    constexpr static bool value = true;
+};
+
+template <typename Base, typename T, typename Parent>
+struct is_nvp_type<NvpChild<Base, T, Parent>> {
+    constexpr static bool value = true;
 };
 
 /* A templated struct that holds a boolean value.
@@ -243,13 +258,13 @@ struct is_query_expression {
     constexpr static bool value = false;
 };
 
-template <typename Base, typename T>
-struct is_query_expression<ComparisonExpr<Base, T>> {
+template <typename T, typename NVPType>
+struct is_query_expression<ComparisonExpr<T, NVPType>> {
     constexpr static bool value = true;
 };
 
-template <typename Base, typename T>
-struct is_query_expression<NotExpr<Base, T>> {
+template <typename T, typename NVPType>
+struct is_query_expression<NotExpr<T, NVPType>> {
     constexpr static bool value = true;
 };
 
@@ -273,8 +288,8 @@ struct is_update_expression {
     constexpr static bool value = false;
 };
 
-template <typename Base, typename T>
-struct is_update_expression<UpdateExpr<Base, T>> {
+template <typename T, typename NVPType>
+struct is_update_expression<UpdateExpr<T, NVPType>> {
     constexpr static bool value = true;
 };
 
@@ -290,83 +305,89 @@ struct is_update_expression<ExpressionList<Head, Tail>> {
  * Separate operators are defined for bool types to prevent confusing implicit casting to bool
  * for non-bool types.
  */
-template <typename Base, typename T, typename U,
-          typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
-constexpr ComparisonExpr<Base, T> operator==(const Nvp<Base, T> &lhs, const U &rhs) {
+// template <typename T, typename NVPType,
+//           typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>, typename U,
+//           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
+// constexpr ComparisonExpr<T, NVPType> operator==(const NVPType &lhs, const U &rhs) {
+//     return {lhs, rhs, "$eq"};
+// }
+
+template <typename T, typename NVPType,
+          typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>>
+constexpr ComparisonExpr<T, NVPType> operator==(const NVPType &lhs, const T &rhs) {
     return {lhs, rhs, "$eq"};
 }
 
-template <typename Base, typename T,
-          typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
-constexpr ComparisonExpr<Base, T> operator==(const Nvp<Base, T> &lhs, const T &rhs) {
-    return {lhs, rhs, "$eq"};
-}
+// template <typename T, typename NVPType,
+//           typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>, typename U,
+//           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
+// constexpr ComparisonExpr<T, NVPType> operator>(const NVPType &lhs, const U &rhs) {
+//     return {lhs, rhs, "$gt"};
+// }
 
-template <typename Base, typename T, typename U,
-          typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
-constexpr ComparisonExpr<Base, T> operator>(const Nvp<Base, T> &lhs, const U &rhs) {
+template <typename T, typename NVPType,
+          typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>>
+constexpr ComparisonExpr<T, NVPType> operator>(const NVPType &lhs, const T &rhs) {
     return {lhs, rhs, "$gt"};
 }
 
-template <typename Base, typename T,
-          typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
-constexpr ComparisonExpr<Base, T> operator>(const Nvp<Base, T> &lhs, const T &rhs) {
-    return {lhs, rhs, "$gt"};
-}
+// template <typename T, typename NVPType,
+//           typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>, typename U,
+//           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
+// constexpr ComparisonExpr<T, NVPType> operator>=(const NVPType &lhs, const U &rhs) {
+//     return {lhs, rhs, "$gte"};
+// }
 
-template <typename Base, typename T, typename U,
-          typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
-constexpr ComparisonExpr<Base, T> operator>=(const Nvp<Base, T> &lhs, const U &rhs) {
+template <typename T, typename NVPType,
+          typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>>
+constexpr ComparisonExpr<T, NVPType> operator>=(const NVPType &lhs, const T &rhs) {
     return {lhs, rhs, "$gte"};
 }
 
-template <typename Base, typename T,
-          typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
-constexpr ComparisonExpr<Base, T> operator>=(const Nvp<Base, T> &lhs, const T &rhs) {
-    return {lhs, rhs, "$gte"};
-}
+// template <typename T, typename NVPType,
+//           typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>, typename U,
+//           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
+// constexpr ComparisonExpr<T, NVPType> operator<(const NVPType &lhs, const U &rhs) {
+//     return {lhs, rhs, "$lt"};
+// }
 
-template <typename Base, typename T, typename U,
-          typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
-constexpr ComparisonExpr<Base, T> operator<(const Nvp<Base, T> &lhs, const U &rhs) {
+template <typename T, typename NVPType,
+          typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>>
+constexpr ComparisonExpr<T, NVPType> operator<(const NVPType &lhs, const T &rhs) {
     return {lhs, rhs, "$lt"};
 }
 
-template <typename Base, typename T,
-          typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
-constexpr ComparisonExpr<Base, T> operator<(const Nvp<Base, T> &lhs, const T &rhs) {
-    return {lhs, rhs, "$lt"};
-}
+// template <typename T, typename NVPType,
+//           typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>, typename U,
+//           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
+// constexpr ComparisonExpr<T, NVPType> operator<=(const NVPType &lhs, const U &rhs) {
+//     return {lhs, rhs, "$lte"};
+// }
 
-template <typename Base, typename T, typename U,
-          typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
-constexpr ComparisonExpr<Base, T> operator<=(const Nvp<Base, T> &lhs, const U &rhs) {
+template <typename T, typename NVPType,
+          typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>>
+constexpr ComparisonExpr<T, NVPType> operator<=(const NVPType &lhs, const T &rhs) {
     return {lhs, rhs, "$lte"};
 }
 
-template <typename Base, typename T,
-          typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
-constexpr ComparisonExpr<Base, T> operator<=(const Nvp<Base, T> &lhs, const T &rhs) {
-    return {lhs, rhs, "$lte"};
-}
+// template <typename T, typename NVPType,
+//           typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>, typename U,
+//           typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
+// constexpr ComparisonExpr<T, NVPType> operator!=(const NVPType &lhs, const U &rhs) {
+//     return {lhs, rhs, "$ne"};
+// }
 
-template <typename Base, typename T, typename U,
-          typename = typename std::enable_if_t<!std::is_same<T, bool>::value>>
-constexpr ComparisonExpr<Base, T> operator!=(const Nvp<Base, T> &lhs, const U &rhs) {
-    return {lhs, rhs, "$ne"};
-}
-
-template <typename Base, typename T,
-          typename = typename std::enable_if_t<std::is_same<T, bool>::value>>
-constexpr ComparisonExpr<Base, T> operator!=(const Nvp<Base, T> &lhs, const T &rhs) {
+template <typename T, typename NVPType,
+          typename = typename std::enable_if_t<is_nvp_type<NVPType>::value>>
+constexpr ComparisonExpr<T, NVPType> operator!=(const NVPType &lhs, const T &rhs) {
     return {lhs, rhs, "$ne"};
 }
 
 /**
  * Negates a comparison expression in a $not expression.
  */
-template <typename Base, typename T>
-constexpr NotExpr<Base, T> operator!(const ComparisonExpr<Base, T> &expr) {
+template <typename T, typename NVPType>
+constexpr NotExpr<T, NVPType> operator!(const ComparisonExpr<T, NVPType> &expr) {
     return {expr};
 }
 
@@ -400,53 +421,92 @@ constexpr BooleanExpr<Expr1, Expr2> operator||(const Expr1 &lhs, const Expr2 &rh
 }
 
 /**
- * Arithmetic update operators.
+ * Arithmetic update operators. NvpChild<> and Nvp<> must be overloaded separately to help with type
+ * inference for T.
  */
 
-template <typename Base, typename T,
+template <typename T, typename Base,
           typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
-constexpr UpdateExpr<Base, T> operator+=(const Nvp<Base, T> &nvp, const T &val) {
+constexpr UpdateExpr<T, Nvp<Base, T>> operator+=(const Nvp<Base, T> &nvp, const T &val) {
     return {nvp, val, "$inc"};
 }
 
-template <typename Base, typename T,
+template <typename T, typename Base,
+          typename Parent typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator+=(const NvpChild<Base, T, Parent> &nvp,
+                                                              const T &val) {
+    return {nvp, val, "$inc"};
+}
+
+template <typename T, typename Base,
           typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
-constexpr UpdateExpr<Base, T> operator-=(const Nvp<Base, T> &nvp, const T &val) {
+constexpr UpdateExpr<T, Nvp<Base, T>> operator-=(const Nvp<Base, T> &nvp, const T &val) {
     return {nvp, -val, "$inc"};
 }
 
-template <typename Base, typename T,
+template <typename T, typename Base,
+          typename Parent typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator-=(const NvpChild<Base, T, Parent> &nvp,
+                                                              const T &val) {
+    return {nvp, -val, "$inc"};
+}
+
+template <typename T, typename Base,
           typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
-constexpr UpdateExpr<Base, T> operator++(const Nvp<Base, T> &nvp) {
+constexpr UpdateExpr<T, Nvp<Base, T>> operator++(const Nvp<Base, T> &nvp) {
     return {nvp, 1, "$inc"};
 }
 
-template <typename Base, typename T,
-          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
-constexpr UpdateExpr<Base, T> operator++(const Nvp<Base, T> &nvp, int) {
+template <typename T, typename Base,
+          typename Parent typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator++(
+    const NvpChild<Base, T, Parent> &nvp) {
     return {nvp, 1, "$inc"};
 }
-template <typename Base, typename T,
+
+template <typename T, typename Base,
           typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
-constexpr UpdateExpr<Base, T> operator--(const Nvp<Base, T> &nvp) {
+constexpr UpdateExpr<T, Nvp<Base, T>> operator++(const Nvp<Base, T> &nvp, int) {
+    return {nvp, 1, "$inc"};
+}
+
+template <typename T, typename Base,
+          typename Parent typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator++(const NvpChild<Base, T, Parent> &nvp,
+                                                              int) {
+    return {nvp, 1, "$inc"};
+}
+
+template <typename T, typename Base,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<T, Nvp<Base, T>> operator--(const Nvp<Base, T> &nvp) {
     return {nvp, -1, "$inc"};
 }
 
-template <typename Base, typename T,
-          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
-constexpr UpdateExpr<Base, T> operator--(const Nvp<Base, T> &nvp, int) {
+template <typename T, typename Base,
+          typename Parent typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator--(
+    const NvpChild<Base, T, Parent> &nvp) {
     return {nvp, -1, "$inc"};
 }
-template <typename Base, typename T,
+
+template <typename T, typename Base,
           typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
-constexpr UpdateExpr<Base, T> operator*=(const Nvp<Base, T> &nvp, const T &val) {
+constexpr UpdateExpr<T, NVPType> operator--(const Nvp<Base, T> &nvp, int) {
+    return {nvp, -1, "$inc"};
+}
+
+template <typename T, typename Base,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<T, Nvp<Base, T>> operator*=(const Nvp<Base, T> &nvp, const T &val) {
     return {nvp, val, "$mul"};
 }
 
-template <typename Base, typename T,
-          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
-constexpr UpdateExpr<Base, T> operator/=(const Nvp<Base, T> &nvp, const T &val) {
-    return {nvp, static_cast<T>(1.0 / val), "$mul"};
+template <typename T, typename Base,
+          typename Parent typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator*=(const NvpChild<Base, T, Parent> &nvp,
+                                                              const T &val) {
+    return {nvp, val, "$mul"};
 }
 
 MONGO_ODM_INLINE_NAMESPACE_END
