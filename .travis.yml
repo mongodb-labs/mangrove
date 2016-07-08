@@ -62,7 +62,7 @@ install:
     - sudo apt-get install cmake
 
     # Prepare pkg-config path
-    - export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/home/adam/install/lib/pkgconfig/
+    - export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/home/travis/install/lib/pkgconfig/
 
     # Install Mongo C Driver
     - tar -zxvf mongo-c-driver-${CDRIVER_VERSION}.tar.gz
