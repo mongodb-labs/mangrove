@@ -24,35 +24,37 @@
 #define NVP(x) mongo_odm::makeNvp(&mongo_odm_wrap_base::x, #x)
 
 // Creates serialize() function
-#define ODM_SERIALIZE_KEYS                                                           \
-    template <class Archive>                                                         \
-    void serialize(Archive& ar) {                                                    \
-        serialize_recur<Archive, 0, std::tuple_size<decltype(fields())>::value>(ar); \
-    }                                                                                \
-    template <class Archive, size_t I, size_t N>                                     \
-    typename std::enable_if<(I < N), void>::type serialize_recur(Archive& ar) {      \
-        auto nvp = std::get<I>(fields());                                            \
-        ar(cereal::make_nvp(nvp.name, this->*(nvp.t)));                              \
-        serialize_recur<Archive, I + 1, N>(ar);                                      \
-    }                                                                                \
-                                                                                     \
-    template <class Archive, size_t I, size_t N>                                     \
-    typename std::enable_if<(I == N), void>::type serialize_recur(Archive& ar) {     \
-        ;                                                                            \
+#define MONGO_ODM_SERIALIZE_KEYS                                                                \
+    template <class Archive>                                                                    \
+    void serialize(Archive& ar) {                                                               \
+        mongo_odm_serialize_recur<Archive, 0,                                                   \
+                                  std::tuple_size<decltype(mongo_odm_mapped_fields())>::value>( \
+            ar);                                                                                \
+    }                                                                                           \
+    template <class Archive, size_t I, size_t N>                                                \
+    typename std::enable_if<(I < N), void>::type mongo_odm_serialize_recur(Archive& ar) {       \
+        auto nvp = std::get<I>(mongo_odm_mapped_fields());                                      \
+        ar(cereal::make_nvp(nvp.name, this->*(nvp.t)));                                         \
+        mongo_odm_serialize_recur<Archive, I + 1, N>(ar);                                       \
+    }                                                                                           \
+                                                                                                \
+    template <class Archive, size_t I, size_t N>                                                \
+    typename std::enable_if<(I == N), void>::type mongo_odm_serialize_recur(Archive& ar) {      \
+        ;                                                                                       \
     }
 
 // Register members and create serialize() function
-#define ODM_MAKE_KEYS(Base, ...)             \
-    using mongo_odm_wrap_base = Base;        \
-    constexpr static auto fields() {         \
-        return std::make_tuple(__VA_ARGS__); \
-    }                                        \
-    ODM_SERIALIZE_KEYS
+#define MONGO_ODM_MAKE_KEYS(Base, ...)                \
+    using mongo_odm_wrap_base = Base;                 \
+    constexpr static auto mongo_odm_mapped_fields() { \
+        return std::make_tuple(__VA_ARGS__);          \
+    }                                                 \
+    MONGO_ODM_SERIALIZE_KEYS
 
 // If using the mongo_odm::model, then also register _id as a field.
-#define ODM_MAKE_KEYS_MODEL(Base, ...) ODM_MAKE_KEYS(Base, NVP(_id), __VA_ARGS__)
+#define MONGO_ODM_MAKE_KEYS_MODEL(Base, ...) MONGO_ODM_MAKE_KEYS(Base, NVP(_id), __VA_ARGS__)
 
-#define ODM_KEY(value) mongo_odm::hasCallIfFieldIsPresent<decltype(&value), &value>::call()
+#define MONGO_ODM_KEY(value) mongo_odm::hasCallIfFieldIsPresent<decltype(&value), &value>::call()
 
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
@@ -94,7 +96,7 @@ struct hasField : public std::false_type {};
 // Must have same type as the given argument.
 template <typename Base, typename T, size_t N, size_t M>
 struct hasField<Base, T, N, M, true>
-    : public std::is_same<T Base::*, decltype(std::get<N>(Base::fields()).t)> {};
+    : public std::is_same<T Base::*, decltype(std::get<N>(Base::mongo_odm_mapped_fields()).t)> {};
 
 /**
  * wrapbool iterates through the fields and returns true if a matching member exists, and false
@@ -110,7 +112,7 @@ constexpr std::enable_if_t<N == M, bool> wrapbool(T Base::*t);
 
 template <typename Base, typename T, size_t N, size_t M>
     constexpr std::enable_if_t < N<M && hasField<Base, T, N, M>::value, bool> wrapbool(T Base::*t) {
-    if (std::get<N>(Base::fields()).t == t) {
+    if (std::get<N>(Base::mongo_odm_mapped_fields()).t == t) {
         return true;
     } else {
         return wrapbool<Base, T, N + 1, M>(t);
@@ -147,8 +149,8 @@ constexpr std::enable_if_t<(N < M) && !hasField<Base, T, N, M>::value, const Nvp
 template <typename Base, typename T, size_t N, size_t M>
 constexpr std::enable_if_t<(N < M) && hasField<Base, T, N, M>::value, const Nvp<Base, T>> wrapimpl(
     T Base::*t) {
-    if (std::get<N>(Base::fields()).t == t) {
-        return std::get<N>(Base::fields());
+    if (std::get<N>(Base::mongo_odm_mapped_fields()).t == t) {
+        return std::get<N>(Base::mongo_odm_mapped_fields());
     } else {
         return wrapimpl<Base, T, N + 1, M>(t);
     }
@@ -176,7 +178,8 @@ constexpr std::enable_if_t<N == M, const Nvp<Base, T>> wrapimpl(T Base::*t) {
  */
 template <typename Base, typename T>
 constexpr const Nvp<Base, T> wrap(T Base::*t) {
-    return wrapimpl<Base, T, 0, std::tuple_size<decltype(Base::fields())>::value>(t);
+    return wrapimpl<Base, T, 0, std::tuple_size<decltype(Base::mongo_odm_mapped_fields())>::value>(
+        t);
 }
 
 /**
@@ -190,7 +193,8 @@ struct hasCallIfFieldIsPresent {};
 template <typename Base, typename T, T Base::*ptr>
 struct hasCallIfFieldIsPresent<
     T Base::*, ptr,
-    std::enable_if_t<wrapbool<Base, T, 0, std::tuple_size<decltype(Base::fields())>::value>(ptr)>> {
+    std::enable_if_t<wrapbool<
+        Base, T, 0, std::tuple_size<decltype(Base::mongo_odm_mapped_fields())>::value>(ptr)>> {
     static constexpr const Nvp<Base, T> call() {
         return wrap(ptr);
     }
