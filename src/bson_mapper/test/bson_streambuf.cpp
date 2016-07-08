@@ -28,7 +28,7 @@ using namespace bson_mapper;
  */
 class doc_validator {
    public:
-    doc_validator(bsoncxx::document::value doc) : _doc(doc), _count(0) {
+    doc_validator(bsoncxx::document::value doc) : _count(0), _doc(doc) {
     }
 
     // Getter for the number of documents compared so far.
@@ -84,12 +84,12 @@ TEST_CASE("char_array_streambuf properly implements seeking.",
     is.seekg(0, is.beg);
     REQUIRE(is.tellg() == 0);
     is.seekg(0, is.end);
-    REQUIRE(is.tellg() == len);
+    REQUIRE(is.tellg() == static_cast<std::istream::pos_type>(len));
 
     is.seekg(50, is.beg);
     REQUIRE(is.tellg() == 50);
     is.seekg(-20, is.end);
-    REQUIRE(is.tellg() == len - 20);
+    REQUIRE(is.tellg() == static_cast<std::istream::pos_type>(len - 20));
 
     // seek relative to current position
     std::streampos current_pos = is.tellg();
@@ -98,7 +98,7 @@ TEST_CASE("char_array_streambuf properly implements seeking.",
 
     // seeking cannot go past buffer
     is.seekg(len + 100);
-    REQUIRE(is.tellg() == len);
+    REQUIRE(is.tellg() == static_cast<std::istream::pos_type>(len));
 }
 
 TEST_CASE("bson_input_streambuf can faithfully send over the bytes of a BSON document",

@@ -135,8 +135,9 @@ struct DataB : public mongo_odm::model<DataB> {
 
 TEST_CASE(
     "the model base class successfully allows dynamic schemas by way of allowing stdx::optional "
-    "elements.", "[mongo_odm::model]") {
-        mongocxx::instance{};
+    "elements.",
+    "[mongo_odm::model]") {
+    mongocxx::instance{};
     mongocxx::client conn{mongocxx::uri{}};
 
     auto db = conn["mongo_cxx_odm_model_test"];

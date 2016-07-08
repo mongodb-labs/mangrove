@@ -241,7 +241,8 @@ struct OptDataE : public bson_mapper::UnderlyingBSONDataBase {
     }
 };
 
-TEST_CASE("The BSON archives successfully serialize and deserialize optional bsoncxx::types::b_ types.") {
+TEST_CASE(
+    "The BSON archives successfully serialize and deserialize optional bsoncxx::types::b_ types.") {
     OptDataE e1;
 
     e1.test_utf8 = make_optional<bsoncxx::types::b_utf8>(bsoncxx::types::b_utf8("hello!"));
@@ -267,13 +268,14 @@ TEST_CASE("The BSON archives successfully serialize and deserialize optional bso
 
         REQUIRE(!e2.test_double);
         REQUIRE(e2.test_utf8->value.to_string() == std::string{"hello!"});
-        REQUIRE(e2.test_date->operator std::chrono::system_clock::time_point() == std::chrono::system_clock::time_point{});
+        REQUIRE(e2.test_date->operator std::chrono::system_clock::time_point() ==
+                std::chrono::system_clock::time_point{});
         REQUIRE(e2.test_regex->regex.to_string() == std::string("a"));
         REQUIRE(e2.test_regex->options.to_string() == std::string("b"));
 
         REQUIRE(e2.test_code->code.to_string() == std::string("void main() {}"));
         REQUIRE(e2.test_codewscope->code.to_string() == std::string("void main() {}"));
-        REQUIRE(e2.test_symbol->symbol.to_string() == std::string("bye."));        
+        REQUIRE(e2.test_symbol->symbol.to_string() == std::string("bye."));
     }
 }
 

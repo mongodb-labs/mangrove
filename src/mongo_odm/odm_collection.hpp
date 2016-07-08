@@ -31,7 +31,6 @@ MONGO_ODM_INLINE_NAMESPACE_BEGIN
 template <class T>
 class odm_collection {
    public:
-
     odm_collection() noexcept = default;
 
     odm_collection(const mongocxx::collection& c) noexcept : _coll(c) {

@@ -28,7 +28,7 @@ namespace bson_mapper {
 BSON_MAPPER_INLINE_NAMESPACE_BEGIN
 
 bson_output_streambuf::bson_output_streambuf(document_callback cb)
-    : _cb(cb), _data(nullptr, [](uint8_t *p) {}), _bytes_read(0), _len(0) {
+    : _cb(cb), _data(nullptr, [](uint8_t *) {}), _len(0), _bytes_read(0) {
 }
 
 int bson_output_streambuf::underflow() {
