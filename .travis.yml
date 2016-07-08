@@ -64,7 +64,7 @@ install:
     - pushd mongo-c-driver; ./autogen.sh --enable-tests=no --enable-examples=no --with-libbson=bundled; make; sudo make install; popd;
 
     # Install Mongo C++ Driver
-    - pushd mongo-cxx-driver/build; ../../build/${CMAKE_BINARY} -DCMAKE_BUILD_TYPE=$CONFIG -DCMAKE_INSTALL_PREFIX ./install/ ..; make; sudo make install; popd; 
+    - pushd mongo-cxx-driver/build; ../../build/${CMAKE_BINARY} -DCMAKE_BUILD_TYPE=$CONFIG -DCMAKE_INSTALL_PREFIX=./install/ ..; make; sudo make install; popd; 
 
 before_script:
     - $CC --version
