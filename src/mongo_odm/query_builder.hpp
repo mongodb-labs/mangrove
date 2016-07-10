@@ -68,7 +68,7 @@ class ComparisonExpr {
     operator bsoncxx::document::view_or_value() const {
         auto builder = bsoncxx::builder::core(false);
         append_to_bson(builder);
-        return {builder.extract_document()};
+        return builder.extract_document();
     }
 
     friend NotExpr<Base, T>;
@@ -116,7 +116,7 @@ class NotExpr {
     operator bsoncxx::document::view_or_value() const {
         auto builder = bsoncxx::builder::core(false);
         append_to_bson(builder);
-        return {builder.extract_document()};
+        return builder.extract_document();
     }
 
    private:
@@ -150,7 +150,7 @@ class ExpressionList {
     operator bsoncxx::document::view_or_value() const {
         auto builder = bsoncxx::builder::core(false);
         append_to_bson(builder);
-        return {builder.extract_document()};
+        return builder.extract_document();
     }
 
    private:
@@ -199,7 +199,7 @@ class BooleanExpr {
     operator bsoncxx::document::view_or_value() const {
         auto builder = bsoncxx::builder::core(false);
         append_to_bson(builder);
-        return {builder.extract_document()};
+        return builder.extract_document();
     }
 
     const Expr1 _lhs;
@@ -212,29 +212,19 @@ class BooleanExpr {
 * and FALSE for all other types.
 */
 template <typename>
-struct is_expression {
-    constexpr static bool value = false;
-};
+struct is_expression : public std::false_type {};
 
 template <typename Base, typename T>
-struct is_expression<ComparisonExpr<Base, T>> {
-    constexpr static bool value = true;
-};
+struct is_expression<ComparisonExpr<Base, T>> : public std::true_type {};
 
 template <typename Base, typename T>
-struct is_expression<NotExpr<Base, T>> {
-    constexpr static bool value = true;
-};
+struct is_expression<NotExpr<Base, T>> : public std::true_type {};
 
 template <typename Head, typename Tail>
-struct is_expression<ExpressionList<Head, Tail>> {
-    constexpr static bool value = true;
-};
+struct is_expression<ExpressionList<Head, Tail>> : public std::true_type {};
 
 template <typename Expr1, typename Expr2>
-struct is_expression<BooleanExpr<Expr1, Expr2>> {
-    constexpr static bool value = true;
-};
+struct is_expression<BooleanExpr<Expr1, Expr2>> : public std::true_type {};
 
 /* Operator overloads for creating and combining expressions */
 
