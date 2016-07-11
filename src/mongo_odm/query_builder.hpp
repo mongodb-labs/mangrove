@@ -479,6 +479,13 @@ constexpr UpdateExpr<T, Nvp<Base, T>> operator--(const Nvp<Base, T> &nvp, int) {
     return {nvp, -1, "$inc"};
 }
 
+template <typename T, typename Base, typename Parent,
+          typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator--(const NvpChild<Base, T, Parent> &nvp,
+                                                              int) {
+    return {nvp, -1, "$inc"};
+}
+
 template <typename T, typename Base,
           typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
 constexpr UpdateExpr<T, Nvp<Base, T>> operator*=(const Nvp<Base, T> &nvp, const T &val) {
