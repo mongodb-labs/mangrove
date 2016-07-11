@@ -43,6 +43,7 @@ class Foo {
     }
 };
 
+/**
 TEST_CASE("Test deserializing cursor", "[mongo_odm::deserializing_cursor]") {
     // set up test BSON documents and objects
     std::string json_str = R"({"a": 1, "b":4, "c": 9})";
@@ -108,4 +109,4 @@ TEST_CASE("Test deserializing cursor", "[mongo_odm::deserializing_cursor]") {
     }
 
     coll.delete_many({});
-}
+}*/

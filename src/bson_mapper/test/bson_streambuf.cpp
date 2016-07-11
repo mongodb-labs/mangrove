@@ -77,7 +77,7 @@ TEST_CASE("char_array_streambuf properly implements seeking.",
           "[bson_mapper::bson_input_streambuf]") {
     size_t len = 100;
     char *data = new char[len];
-    char_array_streambuf buffer = char_array_streambuf(data, len);
+    char_array_streambuf buffer(data, len);
     std::istream is(&buffer);
 
     // Seek through the buffer
