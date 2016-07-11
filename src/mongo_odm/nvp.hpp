@@ -70,23 +70,23 @@
 #define MONGO_ODM_KEY(value) mongo_odm::hasCallIfFieldIsPresent<decltype(&value), &value>::call()
 #define MONGO_ODM_KEY_BY_VALUE(value) hasCallIfFieldIsPresent<decltype(value), value>::call()
 
-#define NEST1(base, field1) MONGO_ODM_KEY_BY_VALUE(&base::field1)
+#define MONGO_ODM_CHILD1(base, field1) ODM_KEY_BY_VALUE(&base::field1)
 
-#define NEST2(base, field1, field2)                                                             \
-    makeNvpWithParent(MONGO_ODM_KEY_BY_VALUE(                                                   \
-                          &std::decay_t<typename decltype(NEST1(base, field1))::type>::field2), \
-                      NEST1(base, field1))
+#define MONGO_ODM_CHILD2(base, field1, field2)                                               \
+    makeNvpWithParent(                                                                       \
+        MONGO_ODM_KEY_BY_VALUE(                                                              \
+            &std::decay_t<typename decltype(MONGO_ODM_CHILD1(base, field1))::type>::field2), \
+        MONGO_ODM_CHILD1(base, field1))
 
-#define NEST3(base, field1, field2, field3)                                               \
-    makeNvpWithParent(                                                                    \
-        MONGO_ODM_KEY_BY_VALUE(                                                           \
-            &std::decay_t<typename decltype(NEST2(base, field1, field2))::type>::field3), \
-        NEST2(base, field1, field2))
+#define MONGO_ODM_CHILD3(base, field1, field2, field3)                                         \
+    makeNvpWithParent(MONGO_ODM_KEY_BY_VALUE(&std::decay_t<typename decltype(MONGO_ODM_CHILD2( \
+                                                 base, field1, field2))::type>::field3),       \
+                      MONGO_ODM_CHILD2(base, field1, field2))
 
 #define PASTE_IMPL(s1, s2) s1##s2
 #define PASTE(s1, s2) PASTE_IMPL(s1, s2)
 
-#define NEST(type, ...) PASTE(NEST, PP_NARG(__VA_ARGS__))(type, __VA_ARGS__)
+#define MONGO_ODM_CHILD(type, ...) PASTE(MONGO_ODM_CHILD, PP_NARG(__VA_ARGS__))(type, __VA_ARGS__)
 
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
@@ -130,6 +130,15 @@ struct Nvp {
     const char* name;
 };
 
+/**
+ * Class that represents a name-value pair for a field of an object that is a member of another
+ * object.
+ * The name of this name-value pair will be "<parent-name>.field_name".
+ * The parenet can be either an Nvp, or another NvpChild.
+ * @tparam Base The type of the object that contains this field
+ * @tparam T    The type of the field
+ * @tparam Parent The type of the parent name-value pair, either an Nvp<...> or NvpChild<...>.
+ */
 template <typename Base, typename T, typename Parent>
 class NvpChild {
    public:

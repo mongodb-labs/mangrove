@@ -29,6 +29,15 @@
 using namespace mongocxx;
 using namespace mongo_odm;
 
+// An ODM class that does not rely on model
+class Point {
+   public:
+    int x;
+    int y;
+    ODM_MAKE_KEYS(Point, NVP(x), NVP(y));
+};
+
+// An ODM class that inherits from model
 class Bar : public mongo_odm::model<Bar> {
    public:
     int64_t w;
@@ -39,7 +48,8 @@ class Bar : public mongo_odm::model<Bar> {
     MONGO_ODM_MAKE_KEYS_MODEL(Bar, MONGO_ODM_NVP(w), MONGO_ODM_NVP(x1), MONGO_ODM_NVP(x2),
                               MONGO_ODM_NVP(y), MONGO_ODM_NVP(z))
 
-    Bar(int64_t w, int x1, int x2, bool y, std::string z) : w(w), x1(x1), x2(x2), y(y), z(z) {
+    Bar(int64_t w, int x1, int x2, bool y, std::string z, Point p)
+        : w(w), x1(x1), x2(x2), y(y), z(z), p(p) {
         _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
     }
 
@@ -53,13 +63,70 @@ class Bar : public mongo_odm::model<Bar> {
     }
 };
 
-// Test ODM on class that does not rely on model
-class Point {
+class BarParent {
    public:
-    int x;
-    int y;
-    MONGO_ODM_MAKE_KEYS(Point, MONGO_ODM_NVP(x), MONGO_ODM_NVP(y));
+    Bar b;
+
+    BarParent() {
+    }
+
+    // default constructor
+    BarParent(Bar b) : b(b) {
+    }
+    ODM_MAKE_KEYS(BarParent, NVP(b));
 };
+
+TEST_CASE("Test member access.", "[mongo_odm::Nvp]") {
+    SECTION("Member access using ODM_KEY") {
+        auto nvp = ODM_KEY(Bar::x1);
+        REQUIRE(nvp.get_name() == "x1");
+        REQUIRE(nvp.t == &Bar::x1);
+    }
+
+    SECTION("Member access using MONGO_ODM_CHILD macro") {
+        auto nvp = MONGO_ODM_CHILD(Bar, p);
+        REQUIRE(nvp.get_name() == "p");
+        REQUIRE(nvp.t == &Bar::p);
+    }
+}
+
+TEST_CASE("Test nested member access.", "[mongo_odm::NvpChild]") {
+    SECTION("Nested member access using operator->*") {
+        auto nvp_child = ODM_KEY(Bar::p)->*ODM_KEY(Point::x);
+        REQUIRE(nvp_child.get_name() == "p.x");
+        REQUIRE(nvp_child.t == &Point::x);
+        REQUIRE(nvp_child.parent.get_name() == "p");
+        REQUIRE(nvp_child.parent.t == &Bar::p);
+    }
+
+    SECTION("Multiple nested member access using operator->*") {
+        auto nvp_child = ODM_KEY(BarParent::b)->*ODM_KEY(Bar::p)->*ODM_KEY(Point::x);
+        REQUIRE(nvp_child.get_name() == "b.p.x");
+        REQUIRE(nvp_child.t == &Point::x);
+        REQUIRE(nvp_child.parent.get_name() == "b.p");
+        REQUIRE(nvp_child.parent.t == &Bar::p);
+        REQUIRE(nvp_child.parent.parent.get_name() == "b");
+        REQUIRE(nvp_child.parent.parent.t == &BarParent::b);
+    }
+
+    SECTION("Nested member access using MONGO_ODM_CHILD macro") {
+        auto nvp_child = MONGO_ODM_CHILD(Bar, p, x);
+        REQUIRE(nvp_child.get_name() == "p.x");
+        REQUIRE(nvp_child.t == &Point::x);
+        REQUIRE(nvp_child.parent.get_name() == "p");
+        REQUIRE(nvp_child.parent.t == &Bar::p);
+    }
+
+    SECTION("Multiple nested member access using MONGO_ODM_CHILD macro") {
+        auto nvp_child = MONGO_ODM_CHILD(BarParent, b, p, x);
+        REQUIRE(nvp_child.get_name() == "b.p.x");
+        REQUIRE(nvp_child.t == &Point::x);
+        REQUIRE(nvp_child.parent.get_name() == "b.p");
+        REQUIRE(nvp_child.parent.t == &Bar::p);
+        REQUIRE(nvp_child.parent.parent.get_name() == "b");
+        REQUIRE(nvp_child.parent.parent.t == &BarParent::b);
+    }
+}
 
 TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     instance::current();
@@ -68,9 +135,9 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     coll.delete_many({});
 
     Bar::setCollection(coll);
-    Bar(444, 1, 2, false, "hello").save();
-    Bar(444, 1, 3, false, "hello").save();
-    Bar(555, 10, 2, true, "goodbye").save();
+    Bar(444, 1, 2, false, "hello", {0, 0}).save();
+    Bar(444, 1, 3, false, "hello", {0, 1}).save();
+    Bar(555, 10, 2, true, "goodbye", {1, 0}).save();
 
     SECTION("Test == comparison.", "[mongo_odm::ComparisonExpr]") {
         auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x1) == 1);
@@ -80,12 +147,22 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(MONGO_ODM_KEY(Bar::z) == "hello");
         REQUIRE(res);
         REQUIRE(res.value().z == "hello");
+
+        // nested member test
+        res = Bar::find_one(ODM_KEY(Bar::p)->*ODM_KEY(Point::x) == 1);
+        REQUIRE(res);
+        REQUIRE(res.value().p.x == 1);
     }
 
     SECTION("Test > comparison.", "[mongo_odm::ComparisonExpr]") {
         auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x1) > 1);
         REQUIRE(res);
         REQUIRE(res.value().x1 > 1);
+
+        // nested member test
+        res = Bar::find_one(ODM_KEY(Bar::p)->*ODM_KEY(Point::x) > 0);
+        REQUIRE(res);
+        REQUIRE(res.value().p.x > 0);
     }
 
     SECTION("Test >= comparison.", "[mongo_odm::ComparisonExpr]") {
@@ -114,6 +191,11 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(MONGO_ODM_KEY(Bar::z) != "hello");
         REQUIRE(res);
         REQUIRE(res.value().z == "goodbye");
+
+        // nested member test
+        res = Bar::find_one(ODM_KEY(Bar::p)->*ODM_KEY(Point::x) != 0);
+        REQUIRE(res);
+        REQUIRE(res.value().p.x != 0);
     }
 
     SECTION("Test $not expression, with operator!.", "[mongo_odm::NotExpr]") {
@@ -124,23 +206,32 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(!(MONGO_ODM_KEY(Bar::z) == "hello"));
         REQUIRE(res);
         REQUIRE(res.value().z == "goodbye");
+
+        // nested member test
+        res = Bar::find_one(!(ODM_KEY(Bar::p)->*ODM_KEY(Point::x) == 1));
+        REQUIRE(res);
+        REQUIRE(res.value().p.x != 1);
     }
 
     SECTION("Test expression list.", "[mongo_odm::ExpressionList]") {
-        auto res = Bar::find_one((MONGO_ODM_KEY(Bar::x1) == 1, MONGO_ODM_KEY(Bar::x2) == 2,
-                                  MONGO_ODM_KEY(Bar::w) >= 444));
+        auto res = Bar::find_one((ODM_KEY(Bar::x1) == 1, ODM_KEY(Bar::x2) == 2,
+                                  ODM_KEY(Bar::w) >= 444, MONGO_ODM_CHILD(Bar, p, y) == 0));
         REQUIRE(res);
         REQUIRE(res.value().x1 == 1);
         REQUIRE(res.value().x2 == 2);
         REQUIRE(res.value().w >= 444);
+        REQUIRE(res.value().p.x == 0);
     }
 
     SECTION("Test boolean expressions.", "[mongo_odm::BooleanExpr]") {
-        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x1) > 9 && MONGO_ODM_KEY(Bar::x1) < 11);
+        auto res = Bar::find_one(ODM_KEY(Bar::x1) > 9 && ODM_KEY(Bar::x1) < 11 &&
+                                 MONGO_ODM_CHILD(Bar, p, x) > 0);
         REQUIRE(res);
         REQUIRE(res.value().x1 == 10);
+        REQUIRE(res.value().x1 == 10);
 
-        auto cursor = Bar::find(MONGO_ODM_KEY(Bar::x1) == 10 || MONGO_ODM_KEY(Bar::x2) == 3);
+        auto cursor = Bar::find(ODM_KEY(Bar::x1) == 10 || ODM_KEY(Bar::x2) == 3 ||
+                                MONGO_ODM_CHILD(Bar, p, x) == 1);
         int i = 0;
         for (Bar b : cursor) {
             i++;
@@ -180,157 +271,123 @@ TEST_CASE("Update Builder", "mongo_odm::UpdateExpr") {
     coll.delete_many({});
 
     Bar::setCollection(coll);
-    Bar(444, 1, 2, false, "hello").save();
-    Bar(444, 1, 3, false, "hello").save();
-    Bar(555, 10, 2, true, "goodbye").save();
+    Bar(444, 1, 2, false, "hello", {0, 0}).save();
+    Bar(444, 1, 3, false, "hello", {0, 1}).save();
+    Bar(555, 10, 2, true, "goodbye", {1, 0}).save();
 
     SECTION("Test = assignment.", "[mongo_odm::UpdateExpr]") {
-        auto res =
-            coll.update_one(ODM_KEY(Bar::w) == 555, (ODM_KEY(Bar::x1) = 73, ODM_KEY(Bar::x2) = 99));
+        auto res = coll.update_one(
+            ODM_KEY(Bar::w) == 555,
+            (ODM_KEY(Bar::x1) = 73, ODM_KEY(Bar::x2) = 99, MONGO_ODM_CHILD(Bar, p, x) = 100));
         REQUIRE(res);
         REQUIRE(res.value().modified_count() == 1);
         auto bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
         REQUIRE(bar);
         REQUIRE(bar.value().x1 == 73);
         REQUIRE(bar.value().x2 == 99);
+        REQUIRE(bar.value().p.x == 100);
     }
 
     SECTION("Test increment operators.", "[mongo_odm::UpdateExpr]") {
         auto bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
         REQUIRE(bar);
         int initial_x1 = bar.value().x1;
+        int initial_p_x = bar.value().p.x;
 
         {
             // Test postfix ++
-            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, ODM_KEY(Bar::x1)++);
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555,
+                                       (ODM_KEY(Bar::x1)++, MONGO_ODM_CHILD(Bar, p, x)++));
             REQUIRE(res);
             REQUIRE(res.value().modified_count() == 1);
             bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
             REQUIRE(bar);
             REQUIRE(bar.value().x1 == initial_x1 + 1);
+            REQUIRE(bar.value().p.x == initial_p_x + 1);
         }
 
         {
             // Test prefix ++
             initial_x1 = bar.value().x1;
-            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, ++ODM_KEY(Bar::x1));
+            initial_p_x = bar.value().p.x;
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555,
+                                       (++ODM_KEY(Bar::x1), ++MONGO_ODM_CHILD(Bar, p, x)));
             REQUIRE(res);
             REQUIRE(res.value().modified_count() == 1);
             bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
             REQUIRE(bar);
             REQUIRE(bar.value().x1 == initial_x1 + 1);
+            REQUIRE(bar.value().p.x == initial_p_x + 1);
         }
 
         {
             // Test postfix --
             initial_x1 = bar.value().x1;
-            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, ODM_KEY(Bar::x1)--);
+            initial_p_x = bar.value().p.x;
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555,
+                                       (ODM_KEY(Bar::x1)--, MONGO_ODM_CHILD(Bar, p, x)--));
             REQUIRE(res);
             REQUIRE(res.value().modified_count() == 1);
             bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
             REQUIRE(bar);
             REQUIRE(bar.value().x1 == initial_x1 - 1);
+            REQUIRE(bar.value().p.x == initial_p_x - 1);
         }
 
         {
             // Test prefix --
             initial_x1 = bar.value().x1;
-            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, --ODM_KEY(Bar::x1));
+            initial_p_x = bar.value().p.x;
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555,
+                                       (--ODM_KEY(Bar::x1), --MONGO_ODM_CHILD(Bar, p, x)));
             REQUIRE(res);
             REQUIRE(res.value().modified_count() == 1);
             bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
             REQUIRE(bar);
             REQUIRE(bar.value().x1 == initial_x1 - 1);
+            REQUIRE(bar.value().p.x == initial_p_x - 1);
         }
 
         {
             // Test operator+=
             initial_x1 = bar.value().x1;
-            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, ODM_KEY(Bar::x1) += 5);
+            initial_p_x = bar.value().p.x;
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555,
+                                       (ODM_KEY(Bar::x1) += 5, MONGO_ODM_CHILD(Bar, p, x) += 5));
             REQUIRE(res);
             REQUIRE(res.value().modified_count() == 1);
             bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
             REQUIRE(bar);
             REQUIRE(bar.value().x1 == initial_x1 + 5);
+            REQUIRE(bar.value().p.x == initial_p_x + 5);
         }
 
         {
             // Test operator-=
             initial_x1 = bar.value().x1;
-            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, ODM_KEY(Bar::x1) -= 5);
+            initial_p_x = bar.value().p.x;
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555,
+                                       (ODM_KEY(Bar::x1) -= 5, MONGO_ODM_CHILD(Bar, p, x) -= 5));
             REQUIRE(res);
             REQUIRE(res.value().modified_count() == 1);
             bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
             REQUIRE(bar);
             REQUIRE(bar.value().x1 == initial_x1 - 5);
+            REQUIRE(bar.value().p.x == initial_p_x - 5);
         }
 
         {
             // Test operator*=
             initial_x1 = bar.value().x1;
-            auto res = coll.update_one(ODM_KEY(Bar::w) == 555, ODM_KEY(Bar::x1) *= 5);
+            initial_p_x = bar.value().p.x;
+            auto res = coll.update_one(ODM_KEY(Bar::w) == 555,
+                                       (ODM_KEY(Bar::x1) *= 5, MONGO_ODM_CHILD(Bar, p, x) *= 5));
             REQUIRE(res);
             REQUIRE(res.value().modified_count() == 1);
             bar = Bar::find_one(ODM_KEY(Bar::w) == 555);
             REQUIRE(bar);
             REQUIRE(bar.value().x1 == initial_x1 * 5);
+            REQUIRE(bar.value().p.x == initial_p_x * 5);
         }
     }
-}
-
-class BarParent {
-   public:
-    Bar b;
-
-    BarParent() {
-    }
-
-    // default constructor
-    BarParent(Bar b) : b(b) {
-    }
-    ODM_MAKE_KEYS(BarParent, NVP(b));
-};
-
-class BarAncestor : public mongo_odm::model<BarAncestor> {
-   public:
-    BarParent bp;
-    ODM_MAKE_KEYS_MODEL(BarAncestor, NVP(bp));
-
-    BarAncestor() {
-        _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
-    }
-
-    // default constructor
-    BarAncestor(BarParent bp) : bp(bp) {
-        _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
-    }
-
-    bsoncxx::oid getID() {
-        return _id;
-    }
-};
-
-TEST_CASE("Test access of nested members.", "[mongo_odm::NvpChild]") {
-    BarParent root;
-    auto nvp_child = ODM_KEY(BarAncestor::bp)->*ODM_KEY(BarParent::b)->*ODM_KEY(Bar::x1);
-    REQUIRE(nvp_child.get_name() == "bp.b.x1");
-    auto nvp_child_macro = NEST(BarAncestor, bp, b, x1);
-    REQUIRE(nvp_child_macro.get_name() == "bp.b.x1");
-}
-
-TEST_CASE("Test queries built with nested members", "[mongo_odm::NvpChild]") {
-    instance::current();
-    client conn{uri{}};
-    collection coll = conn["testdb"]["testcollection"];
-    coll.delete_many({});
-
-    BarAncestor::setCollection(coll);
-    BarAncestor(BarParent(Bar(444, 1, 2, false, "hello"))).save();
-    BarAncestor(BarParent(Bar(444, 1, 3, false, "hello"))).save();
-    BarAncestor(BarParent(Bar(555, 10, 2, true, "goodbye"))).save();
-
-    auto res = BarAncestor::find_one(
-        ODM_KEY(BarAncestor::bp)->*ODM_KEY(BarParent::b)->*ODM_KEY(Bar::x1) == 10);
-    REQUIRE(res);
-    REQUIRE(res.value().bp.b.x1 == 10);
 }
