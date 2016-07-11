@@ -36,7 +36,8 @@ class Bar : public mongo_odm::model<Bar> {
     int x2;
     bool y;
     std::string z;
-    MONGO_ODM_MAKE_KEYS_MODEL(Bar, MONGO_ODM_NVP(w), MONGO_ODM_NVP(x1), MONGO_ODM_NVP(x2), MONGO_ODM_NVP(y), MONGO_ODM_NVP(z))
+    MONGO_ODM_MAKE_KEYS_MODEL(Bar, MONGO_ODM_NVP(w), MONGO_ODM_NVP(x1), MONGO_ODM_NVP(x2),
+                              MONGO_ODM_NVP(y), MONGO_ODM_NVP(z))
 
     Bar(int64_t w, int x1, int x2, bool y, std::string z) : w(w), x1(x1), x2(x2), y(y), z(z) {
         _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
@@ -148,6 +149,13 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
             REQUIRE(or_test);
         }
         REQUIRE(i == 2);
+
+        // Test a complex boolean expression, with parentheses and mixed oeprators
+        res = Bar::find_one(
+            (MONGO_ODM_KEY(Bar::z) == "goodbye" || !(MONGO_ODM_KEY(Bar::y) == false)) &&
+            (MONGO_ODM_KEY(Bar::w) == 555 || MONGO_ODM_KEY(Bar::x2) == 3));
+        REQUIRE(res);
+        REQUIRE(res.value().z == "goodbye");
     }
 }
 
