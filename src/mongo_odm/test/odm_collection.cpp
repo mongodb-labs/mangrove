@@ -125,12 +125,8 @@ TEST_CASE(
             coll.insert_one(doc_2_view);
         }
 
-        std::string filter_json_str = R"({"c": {"$gt": 100}})";
-        auto filter_doc = from_json(filter_json_str);
+        auto filter_doc = from_json(R"({"c": {"$gt": 100}})");
         auto filter = filter_doc.view();
-
-        // SEGFAULTS ON LINUX
-        // auto filter = from_json(R"({"c": {"$gt": 100}})").view();
 
         deserializing_cursor<Foo> cur = foo_coll.find(filter);
         int i = 0;

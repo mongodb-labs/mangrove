@@ -43,7 +43,6 @@ class Foo {
     }
 };
 
-/**
 TEST_CASE("Test deserializing cursor", "[mongo_odm::deserializing_cursor]") {
     // set up test BSON documents and objects
     std::string json_str = R"({"a": 1, "b":4, "c": 9})";
@@ -70,7 +69,9 @@ TEST_CASE("Test deserializing cursor", "[mongo_odm::deserializing_cursor]") {
             coll.insert_one(doc_2_view);
         }
 
-        auto filter = from_json(R"({"c": {"$gt": 100}})").view();
+        auto filter_doc = from_json(R"({"c": {"$gt": 100}})");
+        auto filter = filter_doc.view();
+        
         deserializing_cursor<Foo> cur = foo_coll.find(filter);
         int i = 0;
         for (Foo f : cur) {
@@ -109,4 +110,4 @@ TEST_CASE("Test deserializing cursor", "[mongo_odm::deserializing_cursor]") {
     }
 
     coll.delete_many({});
-}*/
+}
