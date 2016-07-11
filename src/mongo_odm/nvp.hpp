@@ -68,9 +68,10 @@
     MONGO_ODM_MAKE_KEYS(Base, MONGO_ODM_NVP(_id), __VA_ARGS__)
 
 #define MONGO_ODM_KEY(value) mongo_odm::hasCallIfFieldIsPresent<decltype(&value), &value>::call()
-#define MONGO_ODM_KEY_BY_VALUE(value) hasCallIfFieldIsPresent<decltype(value), value>::call()
+#define MONGO_ODM_KEY_BY_VALUE(value) \
+    mongo_odm::hasCallIfFieldIsPresent<decltype(value), value>::call()
 
-#define MONGO_ODM_CHILD1(base, field1) ODM_KEY_BY_VALUE(&base::field1)
+#define MONGO_ODM_CHILD1(base, field1) MONGO_ODM_KEY_BY_VALUE(&base::field1)
 
 #define MONGO_ODM_CHILD2(base, field1, field2)                                               \
     makeNvpWithParent(                                                                       \
