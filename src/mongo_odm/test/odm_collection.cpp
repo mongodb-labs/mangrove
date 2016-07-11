@@ -130,7 +130,7 @@ TEST_CASE(
         auto filter = filter_doc.view();
 
         // SEGFAULTS ON LINUX
-        //auto filter = from_json(R"({"c": {"$gt": 100}})").view();
+        // auto filter = from_json(R"({"c": {"$gt": 100}})").view();
 
         deserializing_cursor<Foo> cur = foo_coll.find(filter);
         int i = 0;

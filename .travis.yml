@@ -91,7 +91,7 @@ script:
     - ./src/mongo_odm/test/test_mongo_odm
 
     # Install headers and libs for the examples
-    - make install
+    - sudo make install
 
     # Make the examples
     - make examples
