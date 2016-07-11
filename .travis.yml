@@ -50,7 +50,7 @@ install:
     - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-6; export CXX="g++-6"; export CC="gcc-6"; fi
 
     # Clang
-    - if [ "$CXX" == "clang++" ]; then wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -; sudo apt-get install --allow-unauthenticated -qq clang-3.8; export CXX="clang++-3.8"; export CC="clang-3.8"; fi
+    - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-3.7; export CXX="clang++-3.7"; export CC="clang-3.7"; fi
 
     # CMake
     - tar -zxf ${CMAKE_VERSION}.tar.gz -C build
@@ -69,7 +69,7 @@ install:
     - pushd mongo-c-driver-${CDRIVER_VERSION}; ./configure --prefix=/home/travis/install; make; sudo make install; popd;
 
     # Install Mongo C++ Driver
-    - pushd mongo-cxx-driver/build; ../../build/${CMAKE_BINARY} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/travis/install/ ..; make; sudo make install; popd; 
+    - pushd mongo-cxx-driver/build; ../../build/${CMAKE_BINARY} -DCMAKE_CXX_FLAGS="-Wno-ignored-attributes" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/travis/install/ ..; make; sudo make install; popd; 
 
 before_script:
     - $CC --version
