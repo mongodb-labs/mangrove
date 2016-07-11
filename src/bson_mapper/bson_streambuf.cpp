@@ -131,6 +131,8 @@ std::streampos char_array_streambuf::seekoff(std::streamoff off, std::ios_base::
             case std::ios_base::end:
                 _current = _end + off;
                 break;
+            default:
+                break;
         }
     }
     // Clamp current pointer to be within the buffer.
