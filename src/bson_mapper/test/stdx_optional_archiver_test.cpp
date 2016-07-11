@@ -237,8 +237,7 @@ struct OptDataE : public bson_mapper::UnderlyingBSONDataBase {
            CEREAL_NVP(test_symbol));
     }
 
-    OptDataE() {
-    }
+    OptDataE() = default;
 };
 
 TEST_CASE(

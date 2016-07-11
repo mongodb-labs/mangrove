@@ -165,7 +165,5 @@ template <typename T, typename IdType>
 thread_local odm_collection<T> model<T, IdType>::_coll;
 #endif
 
-
-
 MONGO_ODM_INLINE_NAMESPACE_END
 }  // namespace mongo_odm
