@@ -94,7 +94,7 @@ MONGO_ODM_INLINE_NAMESPACE_BEGIN
 template <typename Base, typename T, typename Parent>
 class NvpChild;
 
-template <typename T, typename Parent>
+template <typename Parent>
 class UpdateExpr;
 
 /**
@@ -118,11 +118,11 @@ struct Nvp {
         return {child.t, child.name, *this};
     }
 
-    constexpr UpdateExpr<T, Nvp<Base, T>> operator=(const T& val) const {
+    constexpr UpdateExpr<Nvp<Base, T>> operator=(const T& val) const {
         return {*this, val, "$set"};
     }
 
-    std::string get_name() const {
+    virtual std::string get_name() const {
         return name;
     }
 
@@ -140,12 +140,12 @@ struct Nvp {
  * @tparam Parent The type of the parent name-value pair, either an Nvp<...> or NvpChild<...>.
  */
 template <typename Base, typename T, typename Parent>
-class NvpChild {
+class NvpChild : public Nvp<Base, T> {
    public:
     using type = T;
 
     constexpr NvpChild(T Base::*t, const char* name, Parent parent)
-        : t(t), name(name), parent(parent) {
+        : Nvp<Base, T>(t, name), parent(parent) {
     }
 
     template <typename U>
@@ -153,19 +153,17 @@ class NvpChild {
         return {child.t, child.name, *this};
     }
 
-    constexpr UpdateExpr<T, NvpChild<Base, T, Parent>> operator=(const T& val) const {
+    constexpr UpdateExpr<NvpChild<Base, T, Parent>> operator=(const T& val) const {
         return {*this, val, "$set"};
     }
 
     std::string get_name() const {
         std::string full_name;
         full_name += (parent.get_name() + ".");
-        full_name += name;
+        full_name += this->name;
         return full_name;
     }
 
-    const char* name;
-    T Base::*t;
     const Parent parent;
 };
 
