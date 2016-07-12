@@ -82,7 +82,7 @@ class ComparisonExpr {
     friend NotExpr<NvpT>;
 
    private:
-    const NvpT &_nvp;
+    const NvpT _nvp;
     typename NvpT::type _field;
     const char *_selector_type;
 };
@@ -138,6 +138,59 @@ class NotExpr {
     const ComparisonExpr<NvpT> _expr;
 };
 
+/**
+ * An expression that compares a key-value pair to a set of values in an iterable.
+ * @tparam NvpT     The type of the key-value pair used in this expression.
+ * @tparam Iterable A type that can be used inside a range-based for loop. The objects retreived by
+ * iterating must be convertible to the type of the key-value pair.
+ */
+template <typename NvpT, typename Iterable>
+class InArrayExpression {
+   public:
+    constexpr InArrayExpression(const NvpT &nvp, const Iterable &iter, const bool negate = false)
+        : _nvp(nvp), _iter(iter), _negate(negate) {
+    }
+
+    /**
+     * Appends this expression to a BSON core builder, as a key-value pair of the form
+     * "key: {$cmp: val}", where $cmp is some comparison operator.
+     * @param builder A BSON core builder
+     * @param wrap  Whether to wrap the BSON inside a document.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+        builder.key_view(_nvp.get_name());
+        builder.open_document();
+        builder.key_view(_negate ? "$nin" : "$in");
+        builder.open_array();
+        for (auto i : _iter) {
+            builder.append(i);
+        }
+        builder.close_array();
+        builder.close_document();
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    /**
+     * Converts the expression to a BSON filter for a query.
+     * The resulting BSON is of the form "{key: {$cmp: val}}".
+     */
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return builder.extract_document();
+    }
+
+   private:
+    const NvpT _nvp;
+    const Iterable &_iter;
+    const bool _negate;
+};
+
 template <typename Head, typename Tail>
 class ExpressionList {
    public:
@@ -153,7 +206,8 @@ class ExpressionList {
      * Appends this expression list to the given core builder by appending the first expression
      * in the list, and then recursing on the rest of the list.
      * @param builder A basic BSON core builder.
-     * @param Whether to wrap individual elements inside a document.
+     * @param Whether to wrap individual elements inside a document. This is useful when the
+     * ExpressionList is used as a BSON array.
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
         _head.append_to_bson(builder, wrap);
@@ -192,6 +246,9 @@ constexpr List make_expression_list(List l) {
     return l;
 }
 
+/**
+ * This represents a boolean expression with two arguments.
+ */
 template <typename Expr1, typename Expr2>
 class BooleanExpr {
    public:
@@ -208,6 +265,7 @@ class BooleanExpr {
     /**
      * Appends this query to a BSON core builder as a key-value pair "$op: [{lhs}, {rhs}]"
      * @param builder A basic BSON core builder.
+     * @param Whether to wrap this expression inside a document.
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
         if (wrap) {
@@ -249,6 +307,11 @@ class BooleanExpr {
     const char *_op;
 };
 
+/**
+ * This class represents a boolean expression over an array of arguments.
+ * This is particularly useful for the $nor operator.
+ * When converted to BSON, this class produces an expression {$op: [{arg1}, {arg2}, ...]}
+ */
 template <typename List>
 class BooleanListExpr {
    public:
@@ -263,17 +326,24 @@ class BooleanListExpr {
     /**
      * Appends this query to a BSON core builder as a key-value pair "$op: [{lhs}, {rhs}]"
      * @param builder A basic BSON core builder.
+     * @param wrap  Whether to wrap this expression inside a document.
      */
-    void append_to_bson(bsoncxx::builder::core &builder) const {
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
         builder.key_view(_op);
         builder.open_array();
         _args.append_to_bson(builder, true);
         builder.close_array();
+        if (wrap) {
+            builder.close_document();
+        }
     }
 
     /**
      * Converts the expression to a BSON filter for a query,
-     * in the form "{ $op: [{lhs}, {rhs}] }"
+     * in the form "{$op: [{arg1}, {arg2}, ...]}"
      */
     operator bsoncxx::document::view_or_value() const {
         auto builder = bsoncxx::builder::core(false);
@@ -285,6 +355,11 @@ class BooleanListExpr {
     const char *_op;
 };
 
+/**
+ * Represents an update operator that modifies a certain elements.
+ * This creates BSON expressions of the form "$op: {field: value}",
+ * where $op can be $set, $inc, etc.
+ */
 template <typename NvpT>
 class UpdateExpr {
    public:
@@ -292,6 +367,11 @@ class UpdateExpr {
         : _nvp(nvp), _val(val), _op(op) {
     }
 
+    /**
+     * Appends this query to a BSON core builder as a key-value pair "$op: {field: value}"
+     * @param builder A basic BSON core builder.
+     * @param Whether to wrap this expression inside a document.
+     */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
         if (wrap) {
             builder.open_document();
@@ -441,7 +521,6 @@ constexpr ComparisonExpr<NvpT> operator!=(const NvpT &lhs, const U &rhs) {
 /**
  * Negates a comparison expression in a $not expression.
  */
-
 template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
 constexpr NotExpr<NvpT> operator!(const ComparisonExpr<NvpT> &expr) {
     return {expr};
@@ -480,7 +559,7 @@ constexpr BooleanExpr<Expr1, Expr2> operator||(const Expr1 &lhs, const Expr2 &rh
 }
 
 /**
- * A function that creates a $nor operator out of a list of arguments.
+ * A function that creates a $nor operator out of an ExpressionList containing arguments
  * @param list The list of arguments to the $nor operator, as an expression list.
  * @return A BooleanLlistExpr that wraps the given list.
  */
@@ -491,6 +570,9 @@ constexpr BooleanListExpr<ExpressionList<Head, Tail>> nor(const ExpressionList<H
     return {list, "$nor"};
 }
 
+/**
+ * Function that creates a $nor operator out of a list of arguments.
+ */
 template <typename... QueryExpressions,
           typename = typename all_true<is_query_expression<QueryExpressions>::value...>::type>
 constexpr auto nor(QueryExpressions... args)
@@ -503,44 +585,58 @@ constexpr auto nor(QueryExpressions... args)
  * TODO: allow stdx::optional arithmetic types to work with this as well.
  */
 
-template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-          typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value>::type>
+template <
+    typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
+                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
 constexpr UpdateExpr<NvpT> operator+=(const NvpT &nvp, const typename NvpT::type &val) {
     return {nvp, val, "$inc"};
 }
 
-template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-          typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value>::type>
+template <
+    typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
+                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
 constexpr UpdateExpr<NvpT> operator-=(const NvpT &nvp, const typename NvpT::type &val) {
     return {nvp, -val, "$inc"};
 }
 
-template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-          typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value>::type>
+template <
+    typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
+                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
 constexpr UpdateExpr<NvpT> operator++(const NvpT &nvp) {
     return {nvp, 1, "$inc"};
 }
 
-template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-          typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value>::type>
+template <
+    typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
+                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
 constexpr UpdateExpr<NvpT> operator++(const NvpT &nvp, int) {
     return {nvp, 1, "$inc"};
 }
 
-template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-          typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value>::type>
+template <
+    typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
+                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
 constexpr UpdateExpr<NvpT> operator--(const NvpT &nvp) {
     return {nvp, -1, "$inc"};
 }
 
-template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-          typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value>::type>
+template <
+    typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
+                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
 constexpr UpdateExpr<NvpT> operator--(const NvpT &nvp, int) {
     return {nvp, -1, "$inc"};
 }
 
-template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-          typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value>::type>
+template <
+    typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
+                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
 constexpr UpdateExpr<NvpT> operator*=(const NvpT &nvp, const typename NvpT::type &val) {
     return {nvp, val, "$mul"};
 }
