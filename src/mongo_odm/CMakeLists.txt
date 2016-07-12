@@ -45,8 +45,12 @@ set(MONGO_ODM_HEADER_INSTALL_DIR "include/mongo_odm/${MONGO_ODM_INLINE_NAMESPACE
 add_subdirectory(config)
 
 set(mongo_odm_sources
+   "deserializing_cursor.hpp"
    "model.cpp"
+   "nvp.hpp"
    "odm_collection.cpp"
+   "query_builder.hpp"
+   "util.hpp"
 )
 
 include_directories(

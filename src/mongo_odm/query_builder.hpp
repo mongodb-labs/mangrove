@@ -25,15 +25,10 @@
 #include <bsoncxx/view_or_value.hpp>
 
 #include <mongo_odm/nvp.hpp>
+#include <mongo_odm/util.hpp>
 
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
-
-// TODO this should probably go in a separate util class
-template <bool...>
-struct bool_pack;
-template <bool... bs>
-struct all_true : public std::is_same<bool_pack<bs..., true>, bool_pack<true, bs...>> {};
 
 // Forward declarations
 template <typename NvpT>
