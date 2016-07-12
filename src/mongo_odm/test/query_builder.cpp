@@ -27,7 +27,6 @@
 #include <mongo_odm/query_builder.hpp>
 
 using namespace mongocxx;
-// using namespace mongo_odm;
 
 // An ODM class that does not rely on model
 class Point {
@@ -213,6 +212,26 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(!(MONGO_ODM_KEY(Bar::p)->*MONGO_ODM_KEY(Point::x) == 1));
         REQUIRE(res);
         REQUIRE(res.value().p.x != 1);
+    }
+
+    SECTION("Test $nin and $in operators.", "[mongo_odm::InArrayExpression]") {
+        std::vector<int> nums;
+        nums.push_back(1);
+        nums.push_back(2);
+        nums.push_back(555);
+
+        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::w).in(nums));
+        REQUIRE(res);
+        REQUIRE(res.value().w == 555);
+
+        nums.clear();
+        nums.push_back(1);
+        nums.push_back(2);
+        nums.push_back(444);
+
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::w).nin(nums));
+        REQUIRE(res);
+        REQUIRE(res.value().w == 555);
     }
 
     SECTION("Test expression list.", "[mongo_odm::ExpressionList]") {

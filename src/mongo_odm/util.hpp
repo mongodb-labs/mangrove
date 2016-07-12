@@ -18,6 +18,8 @@
 
 #include <type_traits>
 
+#include <bsoncxx/stdx/optional.hpp>
+
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
@@ -28,6 +30,12 @@ template <bool...>
 struct bool_pack;
 template <bool... bs>
 struct all_true : public std::is_same<bool_pack<bs..., true>, bool_pack<true, bs...>> {};
+
+template <typename T>
+struct is_arithmetic_optional : public std::false_type {};
+
+template <typename T>
+struct is_arithmetic_optional<bsoncxx::stdx::optional<T>> : public std::is_arithmetic<T> {};
 
 MONGO_ODM_INLINE_NAMESPACE_END
 }  // namespace bson_mapper
