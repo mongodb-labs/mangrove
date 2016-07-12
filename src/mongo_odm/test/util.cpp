@@ -14,9 +14,16 @@
 
 #include "catch.hpp"
 
+#include <typeinfo>
+
 #include <mongo_odm/util.hpp>
 
 using bsoncxx::stdx::optional;
+
+TEST_CASE("select_non_void properly returns non-void type", "[mongo_odm::select_non_void]") {
+    REQUIRE((typeid(mongo_odm::select_non_void<void, int>::type)) == typeid(int));
+    REQUIRE((typeid(mongo_odm::select_non_void<int, double>::type)) == typeid(int));
+}
 
 TEST_CASE("Test all_true template struct.", "[mongo_odm::all_true]") {
     REQUIRE((mongo_odm::all_true<false>::value) == false);
@@ -28,7 +35,7 @@ TEST_CASE("Test all_true template struct.", "[mongo_odm::all_true]") {
 }
 
 TEST_CASE(
-    "is_arithmetic_optional should contain true only for types that are optionas containing "
+    "is_arithmetic_optional should contain true only for types that are optionals containing "
     "arithmetic types.",
     "[mongo_odm::is_arithmetic_optional]") {
     REQUIRE((mongo_odm::is_arithmetic_optional<int>::value) == false);

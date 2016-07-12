@@ -23,14 +23,29 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
+template <typename A, typename B>
+struct select_non_void {
+    using type = A;
+};
+
+template <typename B>
+struct select_non_void<void, B> {
+    using type = B;
+};
+
 /**
- * A type trait struct for determining whether a variadic list of boolean conditions is all true.
+ * A type trait struct for determining whether a variadic list of boolean conditions is
+ * all true.
  */
 template <bool...>
 struct bool_pack;
 template <bool... bs>
 struct all_true : public std::is_same<bool_pack<bs..., true>, bool_pack<true, bs...>> {};
 
+/**
+ * A type trait struct that contains true if the type T is an optional containing an arithmetic
+ * type.
+ */
 template <typename T>
 struct is_arithmetic_optional : public std::false_type {};
 
