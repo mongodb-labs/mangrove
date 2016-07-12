@@ -49,10 +49,10 @@ before_install:
 
 install:
     # GCC
-    - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-${GCC_VERSION}; export CXX="g++-${GCC_VERSION}"; export CC="gcc-${GCC_VERSION}"; fi
+    - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-${GCC_VERSION}; export CXX="g++-$GCC_VERSION"; export CC="gcc-$GCC_VERSION"; fi
 
     # Clang
-    - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-${LLVM_VERSION}; export CXX="clang++-${LLVM_VERSION}"; export CC="clang-${LLVM_VERSION}"; fi
+    - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-$LLVM_VERSION; export CXX="clang++-$LLVM_VERSION"; export CC="clang-$LLVM_VERSION"; fi
 
     # CMake
     - tar -zxf ${CMAKE_VERSION}.tar.gz -C build
