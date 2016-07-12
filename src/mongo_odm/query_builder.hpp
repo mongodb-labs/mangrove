@@ -29,6 +29,12 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
+// TODO this should probably go in a separate util class
+template <bool...>
+struct bool_pack;
+template <bool... bs>
+struct all_true : public std::is_same<bool_pack<bs..., true>, bool_pack<true, bs...>> {};
+
 // Forward declarations
 template <typename NvpT>
 class NotExpr;
@@ -52,13 +58,20 @@ class ComparisonExpr {
      * Appends this expression to a BSON core builder, as a key-value pair of the form
      * "key: {$cmp: val}", where $cmp is some comparison operator.
      * @param builder A BSON core builder
+     * @param wrap  Whether to wrap the BSON inside a document.
      */
-    void append_to_bson(bsoncxx::builder::core &builder) const {
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
         builder.key_view(_nvp.get_name());
         builder.open_document();
         builder.key_view(_selector_type);
         builder.append(_field);
         builder.close_document();
+        if (wrap) {
+            builder.close_document();
+        }
     }
 
     /**
@@ -87,7 +100,7 @@ template <typename NvpT>
 class NotExpr {
    public:
     /**
-     * Creates a $not expression taht negates the given comparison expression.
+     * Creates a $not expression that negates the given comparison expression.
      * @param  expr A comparison expression
      */
     constexpr NotExpr(const ComparisonExpr<NvpT> &expr) : _expr(expr) {
@@ -97,8 +110,12 @@ class NotExpr {
      * Appends this expression to a BSON core builder,
      * as a key-value pair of the form "key: {$not: {$cmp: val}}".
      * @param builder a BSON core builder
+     * @param wrap  Whether to wrap the BSON in a document.
      */
-    void append_to_bson(bsoncxx::builder::core &builder) const {
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
         builder.key_view(_expr._nvp.get_name());
         builder.open_document();
         builder.key_view("$not");
@@ -107,6 +124,9 @@ class NotExpr {
         builder.append(_expr._field);
         builder.close_document();
         builder.close_document();
+        if (wrap) {
+            builder.close_document();
+        }
     }
 
     /**
@@ -128,7 +148,7 @@ class ExpressionList {
    public:
     /**
      * Constructs an expression list.
-     * @param head  The first element in the list
+     * @param head  The first element in the list.
      * @param tail  The remainder of the list
      */
     constexpr ExpressionList(const Head &head, const Tail &tail) : _head(head), _tail(tail) {
@@ -138,10 +158,11 @@ class ExpressionList {
      * Appends this expression list to the given core builder by appending the first expression
      * in the list, and then recursing on the rest of the list.
      * @param builder A basic BSON core builder.
+     * @param Whether to wrap individual elements inside a document.
      */
-    void append_to_bson(bsoncxx::builder::core &builder) const {
-        _head.append_to_bson(builder);
-        _tail.append_to_bson(builder);
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        _head.append_to_bson(builder, wrap);
+        _tail.append_to_bson(builder, wrap);
     }
 
     /**
@@ -157,6 +178,24 @@ class ExpressionList {
     const Head _head;
     const Tail _tail;
 };
+
+/**
+ * Function for creating an ExpressionList out of a variadic list of epxressions.
+ */
+template <typename Expr1, typename Expr2, typename... Expressions>
+constexpr auto make_expression_list(Expr1 e1, Expr2 e2, Expressions... args) {
+    // Expr1 is the "tail" that contains the intermediate expression list, Expr2 is a single
+    // expression being added onto the list.
+    return make_expression_list(ExpressionList<Expr2, Expr1>(e2, e1), args...);
+}
+
+/**
+ * Base case for variadic ExpressionList builder, simply returns the list it receives.
+ */
+template <typename List>
+constexpr List make_expression_list(List l) {
+    return l;
+}
 
 template <typename Expr1, typename Expr2>
 class BooleanExpr {
@@ -175,21 +214,29 @@ class BooleanExpr {
      * Appends this query to a BSON core builder as a key-value pair "$op: [{lhs}, {rhs}]"
      * @param builder A basic BSON core builder.
      */
-    void append_to_bson(bsoncxx::builder::core &builder) const {
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+
         builder.key_view(_op);
         builder.open_array();
 
         // append left hand side
         builder.open_document();
-        _lhs.append_to_bson(builder);
+        _lhs.append_to_bson(builder, wrap);
         builder.close_document();
 
         // append right hand side
         builder.open_document();
-        _rhs.append_to_bson(builder);
+        _rhs.append_to_bson(builder, wrap);
         builder.close_document();
 
         builder.close_array();
+
+        if (wrap) {
+            builder.close_document();
+        }
     }
 
     /**
@@ -207,6 +254,42 @@ class BooleanExpr {
     const char *_op;
 };
 
+template <typename List>
+class BooleanListExpr {
+   public:
+    /**
+     * Constructs a boolean expression from a list of sub-expressions, and a certain operator.
+     * @param args An expression list of boolean conditions.
+     * @param  op  The operator of the expression, e.g. AND or OR.
+     */
+    constexpr BooleanListExpr(const List args, const char *op) : _args(args), _op(op) {
+    }
+
+    /**
+     * Appends this query to a BSON core builder as a key-value pair "$op: [{lhs}, {rhs}]"
+     * @param builder A basic BSON core builder.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder) const {
+        builder.key_view(_op);
+        builder.open_array();
+        _args.append_to_bson(builder, true);
+        builder.close_array();
+    }
+
+    /**
+     * Converts the expression to a BSON filter for a query,
+     * in the form "{ $op: [{lhs}, {rhs}] }"
+     */
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return builder.extract_document();
+    }
+
+    const List _args;
+    const char *_op;
+};
+
 template <typename NvpT>
 class UpdateExpr {
    public:
@@ -214,12 +297,18 @@ class UpdateExpr {
         : _nvp(nvp), _val(val), _op(op) {
     }
 
-    void append_to_bson(bsoncxx::builder::core &builder) const {
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
         builder.key_view(_op);
         builder.open_document();
         builder.key_view(_nvp.get_name());
         builder.append(_val);
         builder.close_document();
+        if (wrap) {
+            builder.close_document();
+        }
     }
 
     operator bsoncxx::document::view_or_value() const {
@@ -233,15 +322,6 @@ class UpdateExpr {
     typename NvpT::type _val;
     const char *_op;
 };
-
-template <typename>
-struct is_nvp_type : public std::false_type {};
-
-template <typename Base, typename T>
-struct is_nvp_type<Nvp<Base, T>> : public std::true_type {};
-
-template <typename Base, typename T, typename Parent>
-struct is_nvp_type<NvpChild<Base, T, Parent>> : public std::true_type {};
 
 /* A templated struct that holds a boolean value.
 * This value is TRUE for types that are query expressions,
@@ -264,6 +344,9 @@ struct is_query_expression<ExpressionList<Head, Tail>> {
 
 template <typename Expr1, typename Expr2>
 struct is_query_expression<BooleanExpr<Expr1, Expr2>> : public std::true_type {};
+
+template <typename List>
+struct is_query_expression<BooleanListExpr<List>> : public std::true_type {};
 
 /**
  * A templated struct that holds a boolean value.
@@ -364,19 +447,17 @@ constexpr ComparisonExpr<NvpT> operator!=(const NvpT &lhs, const U &rhs) {
  * Negates a comparison expression in a $not expression.
  */
 
-// template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-// constexpr NotExpr<NvpT> not(const ComparisonExpr<NvpT> &expr) {
-//     return {expr};
-// }
-
 template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
 constexpr NotExpr<NvpT> operator!(const ComparisonExpr<NvpT> &expr) {
     return {expr};
 }
 
 /**
- * Comma operator that combines two expressions or an expression and an expression list into a new
- * expression list.
+ * Comma operator that combines two expressions or an expression and an expression list into a
+ * new expression list.
+ * NOTE: This recursively checks that the elements of the list are either all query expressions or
+ * all update expressions. This happens each time an element is appended to the list, so this could
+ * get expensive. Perhaps we could store the "expression category" inside the ExpressionList object?
  */
 template <typename Head, typename Tail,
           typename = typename std::enable_if<
@@ -404,9 +485,27 @@ constexpr BooleanExpr<Expr1, Expr2> operator||(const Expr1 &lhs, const Expr2 &rh
 }
 
 /**
- * Arithmetic update operators. NvpChild<> and Nvp<> must be overloaded separately to help with
- * type
- * inference for T.
+ * A function that creates a $nor operator out of a list of arguments.
+ * @param list The list of arguments to the $nor operator, as an expression list.
+ * @return A BooleanLlistExpr that wraps the given list.
+ */
+template <typename Head, typename Tail,
+          typename =
+              typename std::enable_if<is_query_expression<ExpressionList<Head, Tail>>::value>::type>
+constexpr BooleanListExpr<ExpressionList<Head, Tail>> nor(const ExpressionList<Head, Tail> &list) {
+    return {list, "$nor"};
+}
+
+template <typename... QueryExpressions,
+          typename = typename all_true<is_query_expression<QueryExpressions>::value...>::type>
+constexpr auto nor(QueryExpressions... args)
+    -> BooleanListExpr<decltype(make_expression_list(args...))> {
+    return {make_expression_list(args...), "$nor"};
+}
+
+/**
+ * Arithmetic update operators.
+ * TODO: allow stdx::optional arithmetic types to work with this as well.
  */
 
 template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
