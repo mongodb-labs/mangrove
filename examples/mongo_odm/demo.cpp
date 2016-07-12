@@ -20,6 +20,7 @@
 #include <mongocxx/instance.hpp>
 #include <mongocxx/pipeline.hpp>
 
+#include <cereal/types/vector.hpp>
 #include <mongo_odm/odm_collection.hpp>
 
 // Makes dealing with dates easier
