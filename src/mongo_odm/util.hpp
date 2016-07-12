@@ -32,6 +32,12 @@ template <bool... bs>
 struct all_true : public std::is_same<bool_pack<bs..., true>, bool_pack<true, bs...>> {};
 
 template <typename T>
+struct is_optional : public std::false_type {};
+
+template <typename T>
+struct is_optional<bsoncxx::stdx::optional<T>> : public std::true_type {};
+
+template <typename T>
 struct is_arithmetic_optional : public std::false_type {};
 
 template <typename T>

@@ -31,13 +31,15 @@ namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
 // Forward declarations
-template <typename NvpT>
+template <typename NvpT, typename U>
 class NotExpr;
 
 /**
- * Represents a binary comparison expression between a key and a value. e.g. (User.age > 21).
+ * Represents a query expression with the syntax "key: {$op: value}".
+ * This usually means queries that are comparisons, such as (User.age > 21).
+ * However, this also covers operators such as $exists.
  */
-template <typename NvpT>
+template <typename NvpT, typename U>
 class ComparisonExpr {
    public:
     /**
@@ -46,7 +48,7 @@ class ComparisonExpr {
      * @param  field         The value that the key is being compared to.
      * @param  selector_type The type of comparison operator, such at gt (>) or ne (!=).
      */
-    constexpr ComparisonExpr(const NvpT &nvp, typename NvpT::type field, const char *selector_type)
+    constexpr ComparisonExpr(const NvpT &nvp, const U &field, const char *selector_type)
         : _nvp(nvp), _field(field), _selector_type(selector_type) {
     }
     /**
@@ -79,11 +81,11 @@ class ComparisonExpr {
         return builder.extract_document();
     }
 
-    friend NotExpr<NvpT>;
+    friend NotExpr<NvpT, U>;
 
    private:
     const NvpT _nvp;
-    typename NvpT::type _field;
+    const U &_field;
     const char *_selector_type;
 };
 
@@ -91,14 +93,14 @@ class ComparisonExpr {
  * This represents an expression with the $not operator, which wraps a comparison expression and
  * negates it.
  */
-template <typename NvpT>
+template <typename NvpT, typename U>
 class NotExpr {
    public:
     /**
      * Creates a $not expression that negates the given comparison expression.
      * @param  expr A comparison expression
      */
-    constexpr NotExpr(const ComparisonExpr<NvpT> &expr) : _expr(expr) {
+    constexpr NotExpr(const ComparisonExpr<NvpT, U> &expr) : _expr(expr) {
     }
 
     /**
@@ -135,7 +137,7 @@ class NotExpr {
     }
 
    private:
-    const ComparisonExpr<NvpT> _expr;
+    const ComparisonExpr<NvpT, U> _expr;
 };
 
 /**
@@ -405,11 +407,11 @@ class UpdateExpr {
 template <typename>
 struct is_query_expression : public std::false_type {};
 
-template <typename NvpT>
-struct is_query_expression<ComparisonExpr<NvpT>> : public std::true_type {};
+template <typename NvpT, typename U>
+struct is_query_expression<ComparisonExpr<NvpT, U>> : public std::true_type {};
 
-template <typename NvpT>
-struct is_query_expression<NotExpr<NvpT>> : public std::true_type {};
+template <typename NvpT, typename U>
+struct is_query_expression<NotExpr<NvpT, U>> : public std::true_type {};
 
 template <typename NvpT, typename Iterable>
 struct is_query_expression<InArrayExpr<NvpT, Iterable>> : public std::true_type {};
@@ -445,87 +447,98 @@ struct is_update_expression<ExpressionList<Head, Tail>> {
 /* Operator overloads for creating and combining expressions */
 
 /* Overload comparison operators for name-value pairs to create expressions.
- * Separate operators are defined for bool types to prevent confusing implicit casting to bool
- * for non-bool types.
  */
 
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr ComparisonExpr<NvpT> eq(const NvpT &lhs, const U &rhs) {
+template <
+    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
+constexpr ComparisonExpr<NvpT, U> eq(const NvpT &lhs, const U &rhs) {
     return {lhs, rhs, "$eq"};
 }
 
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr ComparisonExpr<NvpT> operator==(const NvpT &lhs, const U &rhs) {
+template <
+    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
+constexpr ComparisonExpr<NvpT, U> operator==(const NvpT &lhs, const U &rhs) {
     return eq(lhs, rhs);
 }
 
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr ComparisonExpr<NvpT> gt(const NvpT &lhs, const U &rhs) {
+template <
+    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
+constexpr ComparisonExpr<NvpT, U> gt(const NvpT &lhs, const U &rhs) {
     return {lhs, rhs, "$gt"};
 }
 
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr ComparisonExpr<NvpT> operator>(const NvpT &lhs, const U &rhs) {
+template <
+    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
+constexpr ComparisonExpr<NvpT, U> operator>(const NvpT &lhs, const U &rhs) {
     return gt(lhs, rhs);
 }
 
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr ComparisonExpr<NvpT> gte(const NvpT &lhs, const U &rhs) {
+template <
+    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
+constexpr ComparisonExpr<NvpT, U> gte(const NvpT &lhs, const U &rhs) {
     return {lhs, rhs, "$gte"};
 }
 
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr ComparisonExpr<NvpT> operator>=(const NvpT &lhs, const U &rhs) {
+template <
+    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
+constexpr ComparisonExpr<NvpT, U> operator>=(const NvpT &lhs, const U &rhs) {
     return gte(lhs, rhs);
 }
 
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr ComparisonExpr<NvpT> lt(const NvpT &lhs, const U &rhs) {
+template <
+    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
+constexpr ComparisonExpr<NvpT, U> lt(const NvpT &lhs, const U &rhs) {
     return {lhs, rhs, "$lt"};
 }
 
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr ComparisonExpr<NvpT> operator<(const NvpT &lhs, const U &rhs) {
+template <
+    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
+constexpr ComparisonExpr<NvpT, U> operator<(const NvpT &lhs, const U &rhs) {
     return lt(lhs, rhs);
 }
 
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr ComparisonExpr<NvpT> lte(const NvpT &lhs, const U &rhs) {
+template <
+    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
+constexpr ComparisonExpr<NvpT, U> lte(const NvpT &lhs, const U &rhs) {
     return {lhs, rhs, "$lte"};
 }
 
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr ComparisonExpr<NvpT> operator<=(const NvpT &lhs, const U &rhs) {
+template <
+    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
+constexpr ComparisonExpr<NvpT, U> operator<=(const NvpT &lhs, const U &rhs) {
     return lte(lhs, rhs);
 }
 
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr ComparisonExpr<NvpT> ne(const NvpT &lhs, const U &rhs) {
+template <
+    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
+constexpr ComparisonExpr<NvpT, U> ne(const NvpT &lhs, const U &rhs) {
     return {lhs, rhs, "$ne"};
 }
 
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr ComparisonExpr<NvpT> operator!=(const NvpT &lhs, const U &rhs) {
+template <
+    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
+constexpr ComparisonExpr<NvpT, U> operator!=(const NvpT &lhs, const U &rhs) {
     return ne(lhs, rhs);
 }
 
 /**
  * Negates a comparison expression in a $not expression.
  */
-template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr NotExpr<NvpT> operator!(const ComparisonExpr<NvpT> &expr) {
+template <typename NvpT, typename U,
+          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr NotExpr<NvpT, U> operator!(const ComparisonExpr<NvpT, U> &expr) {
     return {expr};
 }
 

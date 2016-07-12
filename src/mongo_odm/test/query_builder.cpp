@@ -299,6 +299,10 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(b.z != "hello");
         REQUIRE(b.p.x != 0);
     }
+
+    SECTION("Test $exists operator.", "[mongo_odm::Nvp::exists]") {
+        ;
+    }
 }
 
 TEST_CASE("Query builder works with non-ODM class") {

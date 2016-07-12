@@ -21,6 +21,8 @@
 #include <tuple>
 #include <type_traits>
 
+#include <mongo_odm/util.hpp>
+
 #define PP_NARG(...) PP_NARG_(__VA_ARGS__, PP_RSEQ_N())
 #define PP_NARG_(...) PP_ARG_N(__VA_ARGS__)
 #define PP_ARG_N(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, \
@@ -94,6 +96,9 @@ MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
 template <typename NvpT, typename T>
 class NvpCRTP;
+
+template <typename NvpT, typename U>
+class ComparisonExpr;
 
 template <typename NvpT, typename Iterable>
 class InArrayExpr;
@@ -205,9 +210,15 @@ class NvpCRTP {
         return {*static_cast<const NvpT*>(this), iter, true};
     }
 
-    // constexpr ComparisonExpr<NvpT> exists(const bool& negate){
-    //     return {}
-    // }
+    /**
+     * Creates an expression that checks the existence of a certain field.
+     * This is only enabled for fields that are optional types.
+     * @param negate    If true, checks whether a certain field does *not* exist. False by default.
+     */
+    template <typename U = T, typename = typename std::enable_if<is_optional<U>::value>::type>
+    constexpr ComparisonExpr<NvpT, bool> exists(const bool& negate = false) {
+        return {*static_cast<const NvpT*>(this), negate, "$exists"};
+    }
 };
 
 /* Create a name-value pair from a object member and its name */
