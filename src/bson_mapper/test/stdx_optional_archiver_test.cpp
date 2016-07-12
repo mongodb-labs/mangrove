@@ -267,8 +267,6 @@ TEST_CASE(
 
         REQUIRE(!e2.test_double);
         REQUIRE(e2.test_utf8->value.to_string() == std::string{"hello!"});
-        // REQUIRE(e2.test_utf8.value_or(bsoncxx::types::b_utf8{""}).value.to_string() ==
-        //        std::string{"hello!"});
         REQUIRE(e2.test_date->operator std::chrono::system_clock::time_point() ==
                 std::chrono::system_clock::time_point{});
         REQUIRE(e2.test_regex->regex.to_string() == std::string("a"));
