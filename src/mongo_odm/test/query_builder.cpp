@@ -212,7 +212,7 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(res.value().p.x != 1);
     }
 
-    SECTION("Test $nin and $in operators.", "[mongo_odm::InArrayExpression]") {
+    SECTION("Test $nin and $in operators.", "[mongo_odm::InArrayExpr]") {
         std::vector<int> nums;
         nums.push_back(1);
         nums.push_back(2);
@@ -230,6 +230,11 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(MONGO_ODM_KEY(Bar::w).nin(nums));
         REQUIRE(res);
         REQUIRE(res.value().w == 555);
+
+        res = Bar::find_one(MONGO_ODM_CHILD(Bar, p, y).nin(nums) && MONGO_ODM_KEY(Bar::w) == 555);
+        REQUIRE(res);
+        REQUIRE(res.value().w == 555);
+        REQUIRE(res.value().p.y == 0);
     }
 
     SECTION("Test expression list.", "[mongo_odm::ExpressionList]") {

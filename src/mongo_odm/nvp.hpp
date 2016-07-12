@@ -96,7 +96,7 @@ template <typename Base, typename T, typename Parent>
 class NvpChild;
 
 template <typename NvpT, typename Iterable>
-class InArrayExpression;
+class InArrayExpr;
 
 template <typename Parent>
 class UpdateExpr;
@@ -134,7 +134,7 @@ struct Nvp {
      */
     template <typename Iterable, typename = typename std::enable_if<std::is_convertible<
                                      typename Iterable::iterator::value_type, T>::value>::type>
-    constexpr InArrayExpression<Nvp<Base, T>, Iterable> in(const Iterable& iter) const {
+    constexpr InArrayExpr<Nvp<Base, T>, Iterable> in(const Iterable& iter) const {
         return {*this, iter};
     }
 
@@ -146,7 +146,7 @@ struct Nvp {
      */
     template <typename Iterable, typename = typename std::enable_if<std::is_convertible<
                                      typename Iterable::iterator::value_type, T>::value>::type>
-    constexpr InArrayExpression<Nvp<Base, T>, Iterable> nin(const Iterable& iter) const {
+    constexpr InArrayExpr<Nvp<Base, T>, Iterable> nin(const Iterable& iter) const {
         return {*this, iter, true};
     }
 
@@ -183,6 +183,30 @@ class NvpChild : public Nvp<Base, T> {
 
     constexpr UpdateExpr<NvpChild<Base, T, Parent>> operator=(const T& val) const {
         return {*this, val, "$set"};
+    }
+
+    /**
+     * Creates an expression that checks whether the value of this field matches any value in the
+     * given iterable.
+     * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
+     * to the type of this name-value pair.
+     */
+    template <typename Iterable, typename = typename std::enable_if<std::is_convertible<
+                                     typename Iterable::iterator::value_type, T>::value>::type>
+    constexpr InArrayExpr<Nvp<Base, T>, Iterable> in(const Iterable& iter) const {
+        return {*this, iter};
+    }
+
+    /**
+     * Creates an expression that checks whether the value of this field matches none of the values
+     * in the given iterable.
+     * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
+     * to the type of this name-value pair.
+     */
+    template <typename Iterable, typename = typename std::enable_if<std::is_convertible<
+                                     typename Iterable::iterator::value_type, T>::value>::type>
+    constexpr InArrayExpr<Nvp<Base, T>, Iterable> nin(const Iterable& iter) const {
+        return {*this, iter, true};
     }
 
     std::string get_name() const {

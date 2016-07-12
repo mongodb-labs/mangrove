@@ -145,9 +145,9 @@ class NotExpr {
  * iterating must be convertible to the type of the key-value pair.
  */
 template <typename NvpT, typename Iterable>
-class InArrayExpression {
+class InArrayExpr {
    public:
-    constexpr InArrayExpression(const NvpT &nvp, const Iterable &iter, const bool negate = false)
+    constexpr InArrayExpr(const NvpT &nvp, const Iterable &iter, const bool negate = false)
         : _nvp(nvp), _iter(iter), _negate(negate) {
     }
 
@@ -410,6 +410,9 @@ struct is_query_expression<ComparisonExpr<NvpT>> : public std::true_type {};
 
 template <typename NvpT>
 struct is_query_expression<NotExpr<NvpT>> : public std::true_type {};
+
+template <typename NvpT, typename Iterable>
+struct is_query_expression<InArrayExpr<NvpT, Iterable>> : public std::true_type {};
 
 template <typename Head, typename Tail>
 struct is_query_expression<ExpressionList<Head, Tail>> {
