@@ -114,6 +114,8 @@ template <typename Base, typename T>
 class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
    public:
     using type = T;
+    // In case this field is wrapped in an optional, store the underlying type.
+    using no_opt_type = remove_optional_t<T>;
 
     /**
      * Create a name-value pair from a member pointer and a name.
@@ -123,7 +125,7 @@ class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
     constexpr Nvp(T Base::*t, const char* name) : t(t), name(name) {
     }
 
-    constexpr UpdateExpr<Nvp<Base, T>> operator=(const T& val) const {
+    constexpr UpdateExpr<Nvp<Base, T>> operator=(const no_opt_type& val) const {
         return {*this, val, "$set"};
     }
 
@@ -148,12 +150,14 @@ template <typename Base, typename T, typename Parent>
 class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
    public:
     using type = T;
+    // In case this field is wrapped in an optional, store the underlying type.
+    using no_opt_type = remove_optional_t<T>;
 
     constexpr NvpChild(T Base::*t, const char* name, Parent parent)
         : t(t), name(name), parent(parent) {
     }
 
-    constexpr UpdateExpr<NvpChild<Base, T, Parent>> operator=(const T& val) const {
+    constexpr UpdateExpr<NvpChild<Base, T, Parent>> operator=(const no_opt_type& val) const {
         return {*this, val, "$set"};
     }
 

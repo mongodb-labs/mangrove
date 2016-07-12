@@ -365,7 +365,7 @@ class BooleanListExpr {
 template <typename NvpT>
 class UpdateExpr {
    public:
-    constexpr UpdateExpr(const NvpT &nvp, const typename NvpT::type &val, const char *op)
+    constexpr UpdateExpr(const NvpT &nvp, const typename NvpT::no_opt_type &val, const char *op)
         : _nvp(nvp), _val(val), _op(op) {
     }
 
@@ -396,7 +396,7 @@ class UpdateExpr {
 
    private:
     NvpT _nvp;
-    typename NvpT::type _val;
+    typename NvpT::no_opt_type _val;
     const char *_op;
 };
 

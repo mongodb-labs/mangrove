@@ -43,6 +43,19 @@ struct is_arithmetic_optional : public std::false_type {};
 template <typename T>
 struct is_arithmetic_optional<bsoncxx::stdx::optional<T>> : public std::is_arithmetic<T> {};
 
+template <typename T>
+struct remove_optional {
+    using type = T;
+};
+
+template <typename T>
+struct remove_optional<bsoncxx::stdx::optional<T>> {
+    using type = T;
+};
+
+template <typename T>
+using remove_optional_t = typename remove_optional<T>::type;
+
 MONGO_ODM_INLINE_NAMESPACE_END
 }  // namespace bson_mapper
 

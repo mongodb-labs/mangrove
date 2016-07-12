@@ -41,7 +41,7 @@ class Bar : public mongo_odm::model<Bar> {
    public:
     int64_t w;
     int x1;
-    int x2;
+    stdx::optional<int> x2;
     bool y;
     std::string z;
     Point p;
