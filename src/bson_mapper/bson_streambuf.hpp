@@ -111,12 +111,12 @@ class BSON_MAPPER_API char_array_streambuf : public std::streambuf {
      * This reads and returns a character from the buffer, and increments the read pointer.
      * @return [description]
      */
-    virtual BSON_MAPPER_PRIVATE int underflow() override;
+    int underflow() override;
 
     // These are necessary since the buffer is not writeable, and thus we cannot call setg()
-    virtual BSON_MAPPER_PRIVATE int uflow() override;
-    virtual BSON_MAPPER_PRIVATE int pbackfail(int ch) override;
-    virtual BSON_MAPPER_PRIVATE std::streamsize showmanyc() override;
+    int uflow() override;
+    int pbackfail(int ch) override;
+    std::streamsize showmanyc() override;
 
     /**
      * This function seeks to an absolute position in the buffer.
@@ -125,7 +125,7 @@ class BSON_MAPPER_API char_array_streambuf : public std::streambuf {
      * the input character sequence.
      * @return       The absolute (relative to start) position of the current pointer.
      */
-    virtual BSON_MAPPER_PRIVATE std::streampos seekpos(
+    std::streampos seekpos(
         std::streampos sp,
         std::ios_base::openmode which = std::ios_base::in | std::ios_base::out) override;
 
@@ -138,7 +138,7 @@ class BSON_MAPPER_API char_array_streambuf : public std::streambuf {
      * the input character sequence.
      * @return       The absolute (relative to start) position of the current pointer.
      */
-    virtual BSON_MAPPER_PRIVATE std::streampos seekoff(
+    std::streampos seekoff(
         std::streamoff off, std::ios_base::seekdir way,
         std::ios_base::openmode which = std::ios_base::in | std::ios_base::out) override;
     // Pointers to the data buffer.
