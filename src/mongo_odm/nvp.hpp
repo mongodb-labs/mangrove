@@ -183,6 +183,21 @@ NvpChild<Base, T, Parent> constexpr makeNvpWithParent(const Nvp<Base, T>& child,
                                                       const Parent& parent) {
     return NvpChild<Base, T, Parent>(child.t, child.name, parent);
 }
+
+/**
+ * A type trait struct that inherits from std::true_type
+ * if the given type parameter is a name-value pair,
+ * and from std::false_type otherwise.
+ */
+template <typename>
+struct is_nvp_type : public std::false_type {};
+
+template <typename Base, typename T>
+struct is_nvp_type<Nvp<Base, T>> : public std::true_type {};
+
+template <typename Base, typename T, typename Parent>
+struct is_nvp_type<NvpChild<Base, T, Parent>> : public std::true_type {};
+
 /**
  * hasField determines whether a type Base has a member of the given type T as
  * the Nth member out of M total members which have name value pairs.

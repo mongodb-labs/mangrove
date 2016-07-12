@@ -223,6 +223,17 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(res.value().x2 == 2);
         REQUIRE(res.value().w >= 444);
         REQUIRE(res.value().p.x == 0);
+
+        // Test variadic ExpressionList builder. ODM clients shouldn't need to use this,
+        // but it's used internally by functions such as nor(...) that accept variadic arguments.
+        res = Bar::find_one(mongo_odm::make_expression_list(
+            MONGO_ODM_KEY(Bar::x1) == 1, MONGO_ODM_KEY(Bar::x2) == 2, MONGO_ODM_KEY(Bar::w) >= 444,
+            MONGO_ODM_CHILD(Bar, p, y) == 0));
+        REQUIRE(res);
+        REQUIRE(res.value().x1 == 1);
+        REQUIRE(res.value().x2 == 2);
+        REQUIRE(res.value().w >= 444);
+        REQUIRE(res.value().p.x == 0);
     }
 
     SECTION("Test boolean expressions.", "[mongo_odm::BooleanExpr]") {
@@ -249,6 +260,22 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
             (MONGO_ODM_KEY(Bar::w) == 555 || MONGO_ODM_KEY(Bar::x2) == 3));
         REQUIRE(res);
         REQUIRE(res.value().z == "goodbye");
+    }
+
+    SECTION("Test boolean operators on expression lists. (used primarily for $nor)",
+            "[mongo_odm::BooleanListExpr]") {
+        auto res =
+            Bar::find_one(nor(MONGO_ODM_KEY(Bar::w) == 444, MONGO_ODM_KEY(Bar::x1) == 1,
+                              MONGO_ODM_KEY(Bar::x2) == 3, MONGO_ODM_KEY(Bar::y) == false,
+                              MONGO_ODM_KEY(Bar::z) == "hello", MONGO_ODM_CHILD(Bar, p, x) == 0));
+        REQUIRE(res);
+        Bar b = res.value();
+        REQUIRE(b.w != 444);
+        REQUIRE(b.x1 != 1);
+        REQUIRE(b.x2 != 3);
+        REQUIRE(b.y != false);
+        REQUIRE(b.z != "hello");
+        REQUIRE(b.p.x != 0);
     }
 }
 
