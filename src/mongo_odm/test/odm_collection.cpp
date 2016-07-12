@@ -125,10 +125,7 @@ TEST_CASE(
             coll.insert_one(doc_2_view);
         }
 
-        auto filter_doc = from_json(R"({"c": {"$gt": 100}})");
-        auto filter = filter_doc.view();
-
-        deserializing_cursor<Foo> cur = foo_coll.find(filter);
+        deserializing_cursor<Foo> cur = foo_coll.find(from_json(R"({"c": {"$gt": 100}})"));
         int i = 0;
         for (Foo f : cur) {
             REQUIRE(f.c > 100);
