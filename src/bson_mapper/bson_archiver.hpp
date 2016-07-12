@@ -1153,7 +1153,7 @@ inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar, stdx::optional<T>& t
 inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
                                       stdx::optional<bsoncxx::types::b_utf8>& t) {
     if (ar.willSearchYieldValue()) {
-        bsoncxx::types::b_utf8 value{""};
+        bsoncxx::types::b_utf8 value{"."};
         ar(value);
         t.emplace(value);
     } else {
@@ -1173,7 +1173,7 @@ inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
 inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
                                       stdx::optional<bsoncxx::types::b_regex>& t) {
     if (ar.willSearchYieldValue()) {
-        bsoncxx::types::b_regex value{"", ""};
+        bsoncxx::types::b_regex value{".", "."};
         ar(value);
         t.emplace(value);
     } else {
@@ -1183,7 +1183,7 @@ inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
 inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
                                       stdx::optional<bsoncxx::types::b_code>& t) {
     if (ar.willSearchYieldValue()) {
-        bsoncxx::types::b_code value{""};
+        bsoncxx::types::b_code value{"."};
         ar(value);
         t.emplace(value);
     } else {
@@ -1193,7 +1193,7 @@ inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
 inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
                                       stdx::optional<bsoncxx::types::b_codewscope>& t) {
     if (ar.willSearchYieldValue()) {
-        bsoncxx::types::b_codewscope value{"", bsoncxx::document::view()};
+        bsoncxx::types::b_codewscope value{".", bsoncxx::document::view()};
         ar(value);
         t.emplace(value);
     } else {
@@ -1203,7 +1203,7 @@ inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
 inline void CEREAL_LOAD_FUNCTION_NAME(BSONInputArchive& ar,
                                       stdx::optional<bsoncxx::types::b_symbol>& t) {
     if (ar.willSearchYieldValue()) {
-        bsoncxx::types::b_symbol value{""};
+        bsoncxx::types::b_symbol value{"."};
         ar(value);
         t.emplace(value);
     } else {
