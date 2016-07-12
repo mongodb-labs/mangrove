@@ -92,7 +92,7 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
-template <typename NvpT>
+template <typename NvpT, typename T>
 class NvpCRTP;
 
 template <typename NvpT, typename Iterable>
@@ -106,7 +106,7 @@ class UpdateExpr;
  * It is templated on the class of the member and its type.
  */
 template <typename Base, typename T>
-class Nvp : public NvpCRTP<Nvp<Base, T>> {
+class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
    public:
     using type = T;
 
@@ -116,6 +116,10 @@ class Nvp : public NvpCRTP<Nvp<Base, T>> {
      * @param  name The name of the member
      */
     constexpr Nvp(T Base::*t, const char* name) : t(t), name(name) {
+    }
+
+    constexpr UpdateExpr<Nvp<Base, T>> operator=(const T& val) const {
+        return {*this, val, "$set"};
     }
 
     virtual std::string get_name() const {
@@ -136,12 +140,16 @@ class Nvp : public NvpCRTP<Nvp<Base, T>> {
  * @tparam Parent The type of the parent name-value pair, either an Nvp<...> or NvpChild<...>.
  */
 template <typename Base, typename T, typename Parent>
-class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>> {
+class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
    public:
     using type = T;
 
     constexpr NvpChild(T Base::*t, const char* name, Parent parent)
         : t(t), name(name), parent(parent) {
+    }
+
+    constexpr UpdateExpr<NvpChild<Base, T, Parent>> operator=(const T& val) const {
+        return {*this, val, "$set"};
     }
 
     std::string get_name() const {
@@ -161,16 +169,16 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>> {
  * These functions are identical between Nvp<...> and NvpChild<...>, but their return types are
  * templated on the Nvp's types, so they are defined here using CRTP.
  */
-template <typename NvpT>
+template <typename NvpT, typename T>
 class NvpCRTP {
+   public:
     template <typename U>
-    constexpr NvpChild<typename NvpT::type, U, NvpT> operator->*(
-        const Nvp<typename NvpT::type, U>& child) const {
-        return {child.t, child.name, *this};
+    constexpr NvpChild<T, U, NvpT> operator->*(const Nvp<T, U>& child) const {
+        return {child.t, child.name, *static_cast<const NvpT*>(this)};
     }
 
-    constexpr UpdateExpr<NvpT> operator=(const typename NvpT::type& val) const {
-        return {*this, val, "$set"};
+    constexpr UpdateExpr<NvpT> operator=(const T& val) const {
+        return {*static_cast<const NvpT*>(this), val, "$set"};
     }
 
     /**
@@ -179,11 +187,10 @@ class NvpCRTP {
      * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
      * to the type of this name-value pair.
      */
-    template <typename Iterable,
-              typename = typename std::enable_if<std::is_convertible<
-                  typename Iterable::iterator::value_type, typename NvpT::type>::value>::type>
+    template <typename Iterable, typename = typename std::enable_if<std::is_convertible<
+                                     typename Iterable::iterator::value_type, T>::value>::type>
     constexpr InArrayExpr<NvpT, Iterable> in(const Iterable& iter) const {
-        return {*this, iter};
+        return {*static_cast<const NvpT*>(this), iter};
     }
 
     /**
@@ -192,12 +199,15 @@ class NvpCRTP {
      * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
      * to the type of this name-value pair.
      */
-    template <typename Iterable,
-              typename = typename std::enable_if<std::is_convertible<
-                  typename Iterable::iterator::value_type, typename NvpT::type>::value>::type>
+    template <typename Iterable, typename = typename std::enable_if<std::is_convertible<
+                                     typename Iterable::iterator::value_type, T>::value>::type>
     constexpr InArrayExpr<NvpT, Iterable> nin(const Iterable& iter) const {
-        return {*this, iter, true};
+        return {*static_cast<const NvpT*>(this), iter, true};
     }
+
+    // constexpr ComparisonExpr<NvpT> exists(const bool& negate){
+    //     return {}
+    // }
 };
 
 /* Create a name-value pair from a object member and its name */
