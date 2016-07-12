@@ -92,8 +92,8 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
-template <typename Base, typename T, typename Parent>
-class NvpChild;
+template <typename NvpT>
+class NvpCRTP;
 
 template <typename NvpT, typename Iterable>
 class InArrayExpr;
@@ -106,7 +106,8 @@ class UpdateExpr;
  * It is templated on the class of the member and its type.
  */
 template <typename Base, typename T>
-struct Nvp {
+class Nvp : public NvpCRTP<Nvp<Base, T>> {
+   public:
     using type = T;
 
     /**
@@ -115,39 +116,6 @@ struct Nvp {
      * @param  name The name of the member
      */
     constexpr Nvp(T Base::*t, const char* name) : t(t), name(name) {
-    }
-
-    template <typename U>
-    constexpr NvpChild<T, U, Nvp<Base, T>> operator->*(const Nvp<T, U>& child) const {
-        return {child.t, child.name, *this};
-    }
-
-    constexpr UpdateExpr<Nvp<Base, T>> operator=(const T& val) const {
-        return {*this, val, "$set"};
-    }
-
-    /**
-     * Creates an expression that checks whether the value of this field matches any value in the
-     * given iterable.
-     * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
-     * to the type of this name-value pair.
-     */
-    template <typename Iterable, typename = typename std::enable_if<std::is_convertible<
-                                     typename Iterable::iterator::value_type, T>::value>::type>
-    constexpr InArrayExpr<Nvp<Base, T>, Iterable> in(const Iterable& iter) const {
-        return {*this, iter};
-    }
-
-    /**
-     * Creates an expression that checks whether the value of this field matches none of the values
-     * in the given iterable.
-     * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
-     * to the type of this name-value pair.
-     */
-    template <typename Iterable, typename = typename std::enable_if<std::is_convertible<
-                                     typename Iterable::iterator::value_type, T>::value>::type>
-    constexpr InArrayExpr<Nvp<Base, T>, Iterable> nin(const Iterable& iter) const {
-        return {*this, iter, true};
     }
 
     virtual std::string get_name() const {
@@ -168,45 +136,12 @@ struct Nvp {
  * @tparam Parent The type of the parent name-value pair, either an Nvp<...> or NvpChild<...>.
  */
 template <typename Base, typename T, typename Parent>
-class NvpChild : public Nvp<Base, T> {
+class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>> {
    public:
     using type = T;
 
     constexpr NvpChild(T Base::*t, const char* name, Parent parent)
-        : Nvp<Base, T>(t, name), parent(parent) {
-    }
-
-    template <typename U>
-    constexpr NvpChild<T, U, NvpChild<Base, T, Parent>> operator->*(const Nvp<T, U>& child) const {
-        return {child.t, child.name, *this};
-    }
-
-    constexpr UpdateExpr<NvpChild<Base, T, Parent>> operator=(const T& val) const {
-        return {*this, val, "$set"};
-    }
-
-    /**
-     * Creates an expression that checks whether the value of this field matches any value in the
-     * given iterable.
-     * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
-     * to the type of this name-value pair.
-     */
-    template <typename Iterable, typename = typename std::enable_if<std::is_convertible<
-                                     typename Iterable::iterator::value_type, T>::value>::type>
-    constexpr InArrayExpr<Nvp<Base, T>, Iterable> in(const Iterable& iter) const {
-        return {*this, iter};
-    }
-
-    /**
-     * Creates an expression that checks whether the value of this field matches none of the values
-     * in the given iterable.
-     * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
-     * to the type of this name-value pair.
-     */
-    template <typename Iterable, typename = typename std::enable_if<std::is_convertible<
-                                     typename Iterable::iterator::value_type, T>::value>::type>
-    constexpr InArrayExpr<Nvp<Base, T>, Iterable> nin(const Iterable& iter) const {
-        return {*this, iter, true};
+        : t(t), name(name), parent(parent) {
     }
 
     std::string get_name() const {
@@ -216,7 +151,53 @@ class NvpChild : public Nvp<Base, T> {
         return full_name;
     }
 
+    T Base::*t;
+    const char* name;
     const Parent parent;
+};
+
+/**
+ * A CRTP base class that contains member functions for name-value pairs.
+ * These functions are identical between Nvp<...> and NvpChild<...>, but their return types are
+ * templated on the Nvp's types, so they are defined here using CRTP.
+ */
+template <typename NvpT>
+class NvpCRTP {
+    template <typename U>
+    constexpr NvpChild<typename NvpT::type, U, NvpT> operator->*(
+        const Nvp<typename NvpT::type, U>& child) const {
+        return {child.t, child.name, *this};
+    }
+
+    constexpr UpdateExpr<NvpT> operator=(const typename NvpT::type& val) const {
+        return {*this, val, "$set"};
+    }
+
+    /**
+     * Creates an expression that checks whether the value of this field matches any value in the
+     * given iterable.
+     * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
+     * to the type of this name-value pair.
+     */
+    template <typename Iterable,
+              typename = typename std::enable_if<std::is_convertible<
+                  typename Iterable::iterator::value_type, typename NvpT::type>::value>::type>
+    constexpr InArrayExpr<NvpT, Iterable> in(const Iterable& iter) const {
+        return {*this, iter};
+    }
+
+    /**
+     * Creates an expression that checks whether the value of this field matches none of the values
+     * in the given iterable.
+     * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
+     * to the type of this name-value pair.
+     */
+    template <typename Iterable,
+              typename = typename std::enable_if<std::is_convertible<
+                  typename Iterable::iterator::value_type, typename NvpT::type>::value>::type>
+    constexpr InArrayExpr<NvpT, Iterable> nin(const Iterable& iter) const {
+        return {*this, iter, true};
+    }
 };
 
 /* Create a name-value pair from a object member and its name */
