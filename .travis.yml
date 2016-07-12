@@ -77,7 +77,8 @@ before_script:
 
     # Build the odm and the tests
     - cd build
-    - ${CMAKE_BINARY} -DCMAKE_BUILD_TYPE=$CONFIG -DCMAKE_MODULE_PATH=/home/travis/build/mongodb/mongo-cxx-odm/mongo-cxx-driver/cmake -DCMAKE_INSTALL_PREFIX=/home/travis/install -DCMAKE_C_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers -Wno-error=maybe-uninitialized" -DCMAKE_CXX_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers -Wno-error=maybe-uninitialized" ..
+    - if [ "$CONFIG" == "Release" ]; then ${CMAKE_BINARY} -DCMAKE_BUILD_TYPE=$CONFIG -DCMAKE_MODULE_PATH=/home/travis/build/mongodb/mongo-cxx-odm/mongo-cxx-driver/cmake -DCMAKE_INSTALL_PREFIX=/home/travis/install -DCMAKE_C_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers -Wno-error=maybe-uninitialized" -DCMAKE_CXX_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers -Wno-error=maybe-uninitialized" ..; fi
+    - if [ "$CONFIG" == "Debug" ]; then ${CMAKE_BINARY} -DCMAKE_BUILD_TYPE=$CONFIG -DCMAKE_MODULE_PATH=/home/travis/build/mongodb/mongo-cxx-odm/mongo-cxx-driver/cmake -DCMAKE_INSTALL_PREFIX=/home/travis/install -DCMAKE_C_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers" -DCMAKE_CXX_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers" ..; fi
 
 script:
     - make format-lint
