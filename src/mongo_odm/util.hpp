@@ -24,25 +24,26 @@ namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
 /**
- * A type trait struct for determining whether a variadic list of boolean conditions is all true.
+ * A templated struct for determining whether a variadic list of boolean conditions is all true.
  */
 template <bool...>
 struct bool_pack;
 template <bool... bs>
 struct all_true : public std::is_same<bool_pack<bs..., true>, bool_pack<true, bs...>> {};
 
+/**
+ * A type trait struct for determining whether a type is an optional.
+ */
 template <typename T>
 struct is_optional : public std::false_type {};
 
 template <typename T>
 struct is_optional<bsoncxx::stdx::optional<T>> : public std::true_type {};
 
-template <typename T>
-struct is_arithmetic_optional : public std::false_type {};
-
-template <typename T>
-struct is_arithmetic_optional<bsoncxx::stdx::optional<T>> : public std::is_arithmetic<T> {};
-
+/**
+ * A templated struct that contains its templated type, but with optionals unwrapped.
+ * So `remove_optional<optional<int>>::type` is defined as `int`.
+ */
 template <typename T>
 struct remove_optional {
     using type = T;

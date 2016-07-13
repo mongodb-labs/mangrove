@@ -149,9 +149,9 @@ class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
 template <typename Base, typename T, typename Parent>
 class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
    public:
-    using type = T;
     // In case this field is wrapped in an optional, store the underlying type.
     using no_opt_type = remove_optional_t<T>;
+    using type = T;
 
     constexpr NvpChild(T Base::*t, const char* name, Parent parent)
         : t(t), name(name), parent(parent) {
@@ -181,13 +181,12 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
 template <typename NvpT, typename T>
 class NvpCRTP {
    public:
+    // In case this field is wrapped in an optional, store the underlying type.
+    using no_opt_type = remove_optional_t<T>;
+
     template <typename U>
     constexpr NvpChild<T, U, NvpT> operator->*(const Nvp<T, U>& child) const {
         return {child.t, child.name, *static_cast<const NvpT*>(this)};
-    }
-
-    constexpr UpdateExpr<NvpT> operator=(const T& val) const {
-        return {*static_cast<const NvpT*>(this), val, "$set"};
     }
 
     /**
@@ -196,8 +195,9 @@ class NvpCRTP {
      * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
      * to the type of this name-value pair.
      */
-    template <typename Iterable, typename = typename std::enable_if<std::is_convertible<
-                                     typename Iterable::iterator::value_type, T>::value>::type>
+    template <typename Iterable,
+              typename = typename std::enable_if<std::is_convertible<
+                  typename Iterable::iterator::value_type, no_opt_type>::value>::type>
     constexpr InArrayExpr<NvpT, Iterable> in(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter};
     }
@@ -208,8 +208,9 @@ class NvpCRTP {
      * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
      * to the type of this name-value pair.
      */
-    template <typename Iterable, typename = typename std::enable_if<std::is_convertible<
-                                     typename Iterable::iterator::value_type, T>::value>::type>
+    template <typename Iterable,
+              typename = typename std::enable_if<std::is_convertible<
+                  typename Iterable::iterator::value_type, no_opt_type>::value>::type>
     constexpr InArrayExpr<NvpT, Iterable> nin(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, true};
     }

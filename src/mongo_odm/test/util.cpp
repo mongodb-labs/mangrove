@@ -18,7 +18,8 @@
 
 using bsoncxx::stdx::optional;
 
-TEST_CASE("Test all_true template struct.", "[mongo_odm::all_true]") {
+TEST_CASE("all_true struct contains true only if all boolean template parameters are true.",
+          "[mongo_odm::all_true]") {
     REQUIRE((mongo_odm::all_true<false>::value) == false);
     REQUIRE((mongo_odm::all_true<false, true>::value) == false);
     REQUIRE((mongo_odm::all_true<true, false>::value) == false);
@@ -27,13 +28,18 @@ TEST_CASE("Test all_true template struct.", "[mongo_odm::all_true]") {
     REQUIRE((mongo_odm::all_true<true, true, true>::value) == true);
 }
 
+TEST_CASE("is_optional struct contains true only if template type parameter is an optional",
+          "[mongo_odm::is_optional]") {
+    REQUIRE(mongo_odm::is_optional<int>::value == false);
+    REQUIRE(mongo_odm::is_optional<optional<int>>::value == true);
+}
+
 TEST_CASE(
-    "is_arithmetic_optional should contain true only for types that are optionas containing "
-    "arithmetic types.",
-    "[mongo_odm::is_arithmetic_optional]") {
-    REQUIRE((mongo_odm::is_arithmetic_optional<int>::value) == false);
-    REQUIRE((mongo_odm::is_arithmetic_optional<char *>::value) == false);
-    REQUIRE((mongo_odm::is_arithmetic_optional<optional<char *>>::value) == false);
-    REQUIRE((mongo_odm::is_arithmetic_optional<optional<int>>::value) == true);
-    REQUIRE((mongo_odm::is_arithmetic_optional<optional<double>>::value) == true);
+    "remove_optional, when templated with an optional type, contains the underlying wrapped type",
+    "[mongo_odm::remove_optional]") {
+    REQUIRE((std::is_same<mongo_odm::remove_optional<int>::type, int>::value));
+    REQUIRE((std::is_same<mongo_odm::remove_optional<std::string>::type, std::string>::value));
+    REQUIRE((std::is_same<mongo_odm::remove_optional<optional<int>>::type, int>::value));
+    REQUIRE((
+        std::is_same<mongo_odm::remove_optional<optional<std::string>>::type, std::string>::value));
 }

@@ -361,6 +361,9 @@ class BooleanListExpr {
  * Represents an update operator that modifies a certain elements.
  * This creates BSON expressions of the form "$op: {field: value}",
  * where $op can be $set, $inc, etc.
+ *
+ * The value should be convertible to the type of the name-value pair. (For an optional field, the
+ * type wrapped by the stdx::optional.)
  */
 template <typename NvpT>
 class UpdateExpr {
@@ -574,6 +577,11 @@ constexpr BooleanExpr<Expr1, Expr2> operator||(const Expr1 &lhs, const Expr2 &rh
     return {lhs, rhs, "$or"};
 }
 
+// TODO I'd like list ops for "and" and "or" as well, but these are reserved keywords.
+// Perhaps use list_and, list_or, list_nor instead?
+// Currently chaining &&'s or ||'s provides the same results as a boolean operation on a list, and
+// not much different in terms of performance.
+
 /**
  * A function that creates a $nor operator out of an ExpressionList containing arguments
  * @param list The list of arguments to the $nor operator, as an expression list.
@@ -603,57 +611,50 @@ constexpr auto nor(QueryExpressions... args)
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
-                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
-constexpr UpdateExpr<NvpT> operator+=(const NvpT &nvp, const typename NvpT::type &val) {
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
+constexpr UpdateExpr<NvpT> operator+=(const NvpT &nvp, const typename NvpT::no_opt_type &val) {
     return {nvp, val, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
-                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
-constexpr UpdateExpr<NvpT> operator-=(const NvpT &nvp, const typename NvpT::type &val) {
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
+constexpr UpdateExpr<NvpT> operator-=(const NvpT &nvp, const typename NvpT::no_opt_type &val) {
     return {nvp, -val, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
-                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
 constexpr UpdateExpr<NvpT> operator++(const NvpT &nvp) {
     return {nvp, 1, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
-                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
 constexpr UpdateExpr<NvpT> operator++(const NvpT &nvp, int) {
     return {nvp, 1, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
-                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
 constexpr UpdateExpr<NvpT> operator--(const NvpT &nvp) {
     return {nvp, -1, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
-                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
 constexpr UpdateExpr<NvpT> operator--(const NvpT &nvp, int) {
     return {nvp, -1, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::type>::value ||
-                                       is_arithmetic_optional<typename NvpT::type>::value>::type>
-constexpr UpdateExpr<NvpT> operator*=(const NvpT &nvp, const typename NvpT::type &val) {
+    typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
+constexpr UpdateExpr<NvpT> operator*=(const NvpT &nvp, const typename NvpT::no_opt_type &val) {
     return {nvp, val, "$mul"};
 }
 
