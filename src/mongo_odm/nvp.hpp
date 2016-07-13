@@ -105,29 +105,28 @@ struct hasField<Base, T, N, M, true>
  */
 
 // forward declarations for wrapbool
-template <typename Base, typename T, size_t N, size_t M>
-    constexpr std::enable_if_t < N<M && !hasField<Base, T, N, M>::value, bool> wrapbool(T Base::*t);
+template <typename Base, typename T, size_t N, size_t M, T Base::*t>
+    constexpr std::enable_if_t < N<M && !hasField<Base, T, N, M>::value, bool> wrapbool();
 
-template <typename Base, typename T, size_t N, size_t M>
-constexpr std::enable_if_t<N == M, bool> wrapbool(T Base::*t);
+template <typename Base, typename T, size_t N, size_t M, T Base::*>
+constexpr std::enable_if_t<N == M, bool> wrapbool();
 
-template <typename Base, typename T, size_t N, size_t M>
-    constexpr std::enable_if_t < N<M && hasField<Base, T, N, M>::value, bool> wrapbool(T Base::*t) {
+template <typename Base, typename T, size_t N, size_t M, T Base::*t>
+    constexpr std::enable_if_t < N<M && hasField<Base, T, N, M>::value, bool> wrapbool() {
     if (std::get<N>(Base::mongo_odm_mapped_fields()).t == t) {
         return true;
     } else {
-        return wrapbool<Base, T, N + 1, M>(t);
+        return wrapbool<Base, T, N + 1, M, t>();
     }
 }
 
-template <typename Base, typename T, size_t N, size_t M>
-    constexpr std::enable_if_t <
-    N<M && !hasField<Base, T, N, M>::value, bool> wrapbool(T Base::*t) {
-    return wrapbool<Base, T, N + 1, M>(t);
+template <typename Base, typename T, size_t N, size_t M, T Base::*t>
+    constexpr std::enable_if_t < N<M && !hasField<Base, T, N, M>::value, bool> wrapbool() {
+    return wrapbool<Base, T, N + 1, M, t>();
 }
 
-template <typename Base, typename T, size_t N, size_t M>
-constexpr std::enable_if_t<N == M, bool> wrapbool(T Base::*) {
+template <typename Base, typename T, size_t N, size_t M, T Base::*>
+constexpr std::enable_if_t<N == M, bool> wrapbool() {
     return false;
 }
 
@@ -195,7 +194,7 @@ template <typename Base, typename T, T Base::*ptr>
 struct hasCallIfFieldIsPresent<
     T Base::*, ptr,
     std::enable_if_t<wrapbool<
-        Base, T, 0, std::tuple_size<decltype(Base::mongo_odm_mapped_fields())>::value>(ptr)>> {
+        Base, T, 0, std::tuple_size<decltype(Base::mongo_odm_mapped_fields())>::value, ptr>()>> {
     static constexpr const Nvp<Base, T> call() {
         return wrap(ptr);
     }
