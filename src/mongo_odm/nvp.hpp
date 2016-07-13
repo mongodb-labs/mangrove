@@ -218,11 +218,13 @@ class NvpCRTP {
     /**
      * Creates an expression that checks the existence of a certain field.
      * This is only enabled for fields that are optional types.
-     * @param negate    If true, checks whether a certain field does *not* exist. False by default.
+     * {field: {$exists: <bool>}}
+     * @param exists    If false, checks that the given field does *not* exist in a document.
+     *                  True by default.
      */
     template <typename U = T, typename = typename std::enable_if<is_optional<U>::value>::type>
-    constexpr ComparisonExpr<NvpT, bool> exists(const bool& negate = false) {
-        return {*static_cast<const NvpT*>(this), negate, "$exists"};
+    constexpr ComparisonExpr<NvpT, bool> exists(const bool& exists) const {
+        return {*static_cast<const NvpT*>(this), exists, "$exists"};
     }
 };
 

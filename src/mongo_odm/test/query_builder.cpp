@@ -48,7 +48,7 @@ class Bar : public mongo_odm::model<Bar> {
     MONGO_ODM_MAKE_KEYS_MODEL(Bar, MONGO_ODM_NVP(w), MONGO_ODM_NVP(x1), MONGO_ODM_NVP(x2),
                               MONGO_ODM_NVP(y), MONGO_ODM_NVP(z), MONGO_ODM_NVP(p))
 
-    Bar(int64_t w, int x1, int x2, bool y, std::string z, Point p)
+    Bar(int64_t w, int x1, stdx::optional<int> x2, bool y, std::string z, Point p)
         : w(w), x1(x1), x2(x2), y(y), z(z), p(p) {
         _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
     }
@@ -363,8 +363,17 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(b.p.x != 0);
     }
 
-    SECTION("Test $exists operator.", "[mongo_odm::Nvp::exists]") {
-        ;
+    SECTION("Test $exists operator on optional fields.", "[mongo_odm::Nvp::exists]") {
+        // auto query = (bsoncxx::document::view_or_value)(MONGO_ODM_KEY(Bar::x2).exists());
+        // std::cout << bsoncxx::to_json(query.view()) << std::endl;
+
+        auto count = coll.count(MONGO_ODM_KEY(Bar::x2).exists(true));
+        REQUIRE(count == 3);
+
+        Bar(444, 1, stdx::nullopt, false, "hello", {0, 0}).save();
+        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x2).exists(false));
+        REQUIRE(res);
+        REQUIRE(!res.value().x2);
     }
 }
 
