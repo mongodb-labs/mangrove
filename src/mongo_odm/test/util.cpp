@@ -21,11 +21,46 @@ using bsoncxx::stdx::optional;
 TEST_CASE("all_true struct contains true only if all boolean template parameters are true.",
           "[mongo_odm::all_true]") {
     REQUIRE((mongo_odm::all_true<false>::value) == false);
+    REQUIRE((mongo_odm::all_true<true>::value) == true);
     REQUIRE((mongo_odm::all_true<false, true>::value) == false);
     REQUIRE((mongo_odm::all_true<true, false>::value) == false);
     REQUIRE((mongo_odm::all_true<true, false, true>::value) == false);
     REQUIRE((mongo_odm::all_true<true, true>::value) == true);
     REQUIRE((mongo_odm::all_true<true, true, true>::value) == true);
+}
+
+// TEST_CASE(
+//     "any_true struct contains true if at least one of the boolean template parameters is true.",
+//     "[mongo_odm::any_true]") {
+//     REQUIRE((mongo_odm::any_true<false>::value) == false);
+//     REQUIRE((mongo_odm::any_true<true>::value) == true);
+//     REQUIRE((mongo_odm::any_true<false, true>::value) == true);
+//     REQUIRE((mongo_odm::any_true<true, false>::value) == true);
+//     REQUIRE((mongo_odm::any_true<true, false, true>::value) == true);
+//     REQUIRE((mongo_odm::any_true<true, true>::value) == true);
+//     REQUIRE((mongo_odm::any_true<true, true, true>::value) == true);
+//     REQUIRE((mongo_odm::any_true<false, false, false>::value) == false);
+// }
+
+TEST_CASE(
+    "is_string contains true only if the template type parameter is an std::basic string, or some "
+    "form of C string.") {
+    REQUIRE(mongo_odm::is_string<int>::value == false);
+    REQUIRE(mongo_odm::is_string<const int>::value == false);
+    REQUIRE(mongo_odm::is_string<char const *>::value == true);
+    REQUIRE(mongo_odm::is_string<wchar_t const *>::value == true);
+    REQUIRE(mongo_odm::is_string<char *>::value == true);
+    REQUIRE(mongo_odm::is_string<wchar_t *>::value == true);
+    REQUIRE(mongo_odm::is_string<char[5]>::value == true);
+    REQUIRE(mongo_odm::is_string<wchar_t[5]>::value == true);
+    REQUIRE(mongo_odm::is_string<char const[5]>::value == true);
+    REQUIRE(mongo_odm::is_string<wchar_t const[5]>::value == true);
+    REQUIRE(mongo_odm::is_string<char(&)[5]>::value == true);
+    REQUIRE(mongo_odm::is_string<wchar_t(&)[5]>::value == true);
+    REQUIRE(mongo_odm::is_string<char const(&)[5]>::value == true);
+    REQUIRE(mongo_odm::is_string<wchar_t const(&)[5]>::value == true);
+    REQUIRE(mongo_odm::is_string<std::string>::value == true);
+    REQUIRE(mongo_odm::is_string<std::basic_string<wchar_t>>::value == true);
 }
 
 TEST_CASE("is_optional struct contains true only if template type parameter is an optional",

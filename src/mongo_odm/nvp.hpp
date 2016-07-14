@@ -247,6 +247,8 @@ class NvpCRTP {
     }
 
     // TODO type trait to restric these to string values
+    template <typename U = T,
+              typename = typename std::enable_if<is_string<remove_optional_t<U>>::value>::type>
     constexpr RegexExpr<NvpT> regex(const char* regex, const char* options = "") const {
         return {*static_cast<const NvpT*>(this), regex, options};
     }

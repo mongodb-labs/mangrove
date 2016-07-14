@@ -23,13 +23,29 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
-/**
- * A templated struct for determining whether a variadic list of boolean conditions is all true.
- */
 template <bool...>
 struct bool_pack;
+
+/**
+ * A templated struct for determining whether a variadic list of boolean conditions is all true.
+ * i.e. a logical AND of a set of conditions.
+ */
 template <bool... bs>
 struct all_true : public std::is_same<bool_pack<bs..., true>, bool_pack<true, bs...>> {};
+
+/**
+ * A type trait struct for determining whether a type is a string or C string.
+ */
+template <typename S>
+struct is_string
+    : std::integral_constant<
+          bool, std::is_same<char *, typename std::decay<S>::type>::value ||
+                    std::is_same<const char *, typename std::decay<S>::type>::value ||
+                    std::is_same<wchar_t *, typename std::decay<S>::type>::value ||
+                    std::is_same<const wchar_t *, typename std::decay<S>::type>::value> {};
+
+template <typename Char, typename Traits, typename Allocator>
+struct is_string<std::basic_string<Char, Traits, Allocator>> : std::true_type {};
 
 /**
  * A type trait struct for determining whether a type is an optional.
