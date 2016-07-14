@@ -1,6 +1,8 @@
 # Directories that are generated
 /docs
+/hugo/public
 /tags
+
 
 # Filetypes
 *~
