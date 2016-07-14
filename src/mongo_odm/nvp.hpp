@@ -103,6 +103,12 @@ class ComparisonExpr;
 template <typename NvpT, typename Iterable>
 class InArrayExpr;
 
+template <typename NvpT>
+class ModExpr;
+
+template <typename NvpT>
+class RegexExpr;
+
 template <typename Parent>
 class UpdateExpr;
 
@@ -225,6 +231,24 @@ class NvpCRTP {
     template <typename U = T, typename = typename std::enable_if<is_optional<U>::value>::type>
     constexpr ComparisonExpr<NvpT, bool> exists(const bool& exists) const {
         return {*static_cast<const NvpT*>(this), exists, "$exists"};
+    }
+
+    /**
+     * Creates a ModExpression that represents a query with the $mod operator.
+     * Such a query essentially checks that "nvp_value % divisor == remainder"
+     * @param divisor   The divisor for the modulus operation
+     * @param remainder   The remainder after dividing a value by `divisor`
+     * @returns A ModExpr representing this query.
+     */
+    template <typename U = T, typename = typename std::enable_if<
+                                  std::is_arithmetic<remove_optional_t<U>>::value>::type>
+    constexpr ModExpr<NvpT> mod(const int& divisor, const int& remainder) const {
+        return {*static_cast<const NvpT*>(this), divisor, remainder};
+    }
+
+    // TODO type trait to restric these to string values
+    constexpr RegexExpr<NvpT> regex(const char* regex, const char* options = "") const {
+        return {*static_cast<const NvpT*>(this), regex, options};
     }
 };
 

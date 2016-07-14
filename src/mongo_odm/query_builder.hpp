@@ -193,6 +193,194 @@ class InArrayExpr {
     const bool _negate;
 };
 
+/**
+ * This class represents a query expression using the $mod operator, that checks the modulus of a
+ * certain numerical field.
+ */
+template <typename NvpT>
+class ModExpr {
+   public:
+    /**
+     * Constructs a ModExpr that represents a query with the $mod operator.
+     * @param  nvp       The name-value pair to compare against.
+     * @param  divisor   The divisor used in the modulus operation.
+     * @param  remainder The remainder produced when dividing the field by the divisor.
+     */
+    constexpr ModExpr(NvpT nvp, const int &divisor, const int &remainder)
+        : _nvp(nvp), _divisor(divisor), _remainder(remainder) {
+    }
+
+    /**
+     * Appends this expression to a BSON core builder,
+     * as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } "
+.
+     * @param builder a BSON core builder
+     * @param wrap  Whether to wrap the BSON in a document.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+        builder.key_view(_nvp.get_name());
+        builder.open_document();
+        builder.key_view("$mod");
+        builder.open_array();
+        builder.append(_divisor);
+        builder.append(_remainder);
+        builder.close_array();
+        builder.close_document();
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    /**
+     * Converts the expression to a BSON filter for a query.
+     * The resulting BSON is of the form "{ key: { $mod: [ divisor, remainder ] } }".
+     */
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return builder.extract_document();
+    }
+
+   private:
+    const NvpT _nvp;
+    const int &_divisor;
+    const int &_remainder;
+};
+
+/**
+ * Represents a query that performs a text search with the $text operator.
+ * TODO check values of `language` against spec?
+ */
+class TextSearchExpr {
+   public:
+    /**
+     * Creates a text search expression.
+     * These parameters correspond to the parameters for the $text operator in MongoDB.
+     * @param  search               A string of terms use to query the text index.
+     * @param  language             The language of the text index.
+     * @param  case_sensitive      A boolean flag to specify case-sensitive search. Optional, false
+     *                             by default.
+     * @param  diacritic_sensitive A boolean flag to specify case-sensitive search. Optional, false
+     *                             by default.
+     */
+    constexpr TextSearchExpr(const char *search, const char *language, bool case_sensitive = false,
+                             bool diacritic_sensitive = false)
+        : _search(search),
+          _language(language),
+          _case_sensitive(case_sensitive),
+          _diacritic_sensitive(diacritic_sensitive) {
+    }
+
+    /**
+     * Creates a text search expression, with the default `language` setting of the text index.
+     * These parameters correspond to the parameters for the $text operator in MongoDB.
+     * @param  search               A string of terms use to query the text index.
+     * @param  case_sensitive      A boolean flag to specify case-sensitive search. Optional, false
+     *                             by default.
+     * @param  diacritic_sensitive A boolean flag to specify case-sensitive search. Optional, false
+     *                             by default.
+     */
+    constexpr TextSearchExpr(const char *search, bool case_sensitive = false,
+                             bool diacritic_sensitive = false)
+        : _search(search),
+          _case_sensitive(case_sensitive),
+          _diacritic_sensitive(diacritic_sensitive) {
+    }
+
+    /**
+     * Appends this expression to a BSON core builder,
+     * as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } "
+    .
+     * @param builder a BSON core builder
+     * @param wrap  Whether to wrap the BSON in a document.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+        builder.key_view("$text");
+        builder.open_document();
+        builder.key_view("$search");
+        builder.append(_search);
+        if (_language) {
+            builder.key_view("$language");
+            builder.append(_language.value());
+        }
+        builder.key_view("$caseSensitive");
+        builder.append(_case_sensitive);
+        builder.key_view("$diacriticSensitive");
+        builder.append(_diacritic_sensitive);
+        builder.close_document();
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    /**
+     * Converts the expression to a BSON filter for a query.
+     * The resulting BSON is of the form "{ key: { $mod: [ divisor, remainder ] } }".
+     */
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return builder.extract_document();
+    }
+
+   private:
+    const char *_search;
+    const mongocxx::stdx::optional<const char *> _language;
+    const bool _case_sensitive;
+    const bool _diacritic_sensitive;
+};
+
+template <typename NvpT>
+class RegexExpr {
+   public:
+    constexpr RegexExpr(NvpT nvp, const char *regex, const char *options = "")
+        : _nvp(nvp), _regex(regex), _options(options) {
+    }
+    /**
+     * Appends this expression to a BSON core builder,
+     * as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } "
+    .
+     * @param builder a BSON core builder
+     * @param wrap  Whether to wrap the BSON in a document.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+        builder.key_view(_nvp.get_name());
+        builder.open_document();
+        builder.key_view("$regex");
+        builder.append(_regex);
+        builder.key_view("$options");
+        builder.append(_options);
+        builder.close_document();
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    /**
+     * Converts the expression to a BSON filter for a query.
+     * The resulting BSON is of the form "{ key: { $mod: [ divisor, remainder ] } }".
+     */
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return builder.extract_document();
+    }
+
+   private:
+    const NvpT _nvp;
+    const char *_regex;
+    const char *_options;
+};
+
 template <typename Head, typename Tail>
 class ExpressionList {
    public:
@@ -419,6 +607,15 @@ struct is_query_expression<NotExpr<NvpT, U>> : public std::true_type {};
 template <typename NvpT, typename Iterable>
 struct is_query_expression<InArrayExpr<NvpT, Iterable>> : public std::true_type {};
 
+template <typename NvpT>
+struct is_query_expression<ModExpr<NvpT>> : public std::true_type {};
+
+template <>
+struct is_query_expression<TextSearchExpr> : public std::true_type {};
+
+template <typename NvpT>
+struct is_query_expression<RegexExpr<NvpT>> : public std::true_type {};
+
 template <typename Head, typename Tail>
 struct is_query_expression<ExpressionList<Head, Tail>> {
     constexpr static bool value =
@@ -602,6 +799,32 @@ template <typename... QueryExpressions,
 constexpr auto nor(QueryExpressions... args)
     -> BooleanListExpr<decltype(make_expression_list(args...))> {
     return {make_expression_list(args...), "$nor"};
+}
+
+/**
+* Creates a text search expression.
+* These parameters correspond to the parameters for the $text operator in MongoDB.
+* @param  search               A string of terms use to query the text index.
+* @param  language             The language of the text index.
+* @param  case_sensitive      A boolean flag to specify case-sensitive search. Optional, false
+*                             by default.
+* @param  diacritic_sensitive A boolean flag to specify case-sensitive search. Optional, false
+*                             by default.
+* @return                     A TextSearchExpr with the given parameters.
+*/
+constexpr TextSearchExpr text(const char *search, const char *language, bool case_sensitive = false,
+                              bool diacritic_sensitive = false) {
+    return {search, language, case_sensitive, diacritic_sensitive};
+}
+
+/**
+ * Creats a TextSearchExpr, with the $language parameter unspecified.
+ * See documentation for `TextSearchExpr text(const char *search, const char *language, bool
+                                              case_sensitive, bool diacritic_sensitive)` above.
+ */
+constexpr TextSearchExpr text(const char *search, bool case_sensitive = false,
+                              bool diacritic_sensitive = false) {
+    return {search, case_sensitive, diacritic_sensitive};
 }
 
 /**

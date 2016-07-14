@@ -364,9 +364,6 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     }
 
     SECTION("Test $exists operator on optional fields.", "[mongo_odm::Nvp::exists]") {
-        // auto query = (bsoncxx::document::view_or_value)(MONGO_ODM_KEY(Bar::x2).exists());
-        // std::cout << bsoncxx::to_json(query.view()) << std::endl;
-
         auto count = coll.count(MONGO_ODM_KEY(Bar::x2).exists(true));
         REQUIRE(count == 3);
 
@@ -374,6 +371,32 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x2).exists(false));
         REQUIRE(res);
         REQUIRE(!res.value().x2);
+    }
+
+    SECTION("Test $mod operator.", "[mongo_odm::ModExpr]") {
+        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::w).mod(50, 5));
+        REQUIRE(res);
+        REQUIRE(res.value().w == 555);
+    }
+
+    SECTION("Test $text operator.", "[mongo_odm::TextSearchExpr]") {
+        auto res = Bar::find_one(mongo_odm::text("goodbye"));
+        REQUIRE(res);
+        REQUIRE(res.value().z == "goodbye");
+
+        res = Bar::find_one(mongo_odm::text("goodbye", "en"));
+        REQUIRE(res);
+        REQUIRE(res.value().z == "goodbye");
+    }
+
+    SECTION("Test $regex operator.", "[mongo_odm::RegexExpr]") {
+        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::z).regex("o+d"));
+        REQUIRE(res);
+        REQUIRE(res.value().z == "goodbye");
+
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::z).regex("O+D", "i"));
+        REQUIRE(res);
+        REQUIRE(res.value().z == "goodbye");
     }
 }
 
