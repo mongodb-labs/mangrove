@@ -48,6 +48,30 @@ template <typename Char, typename Traits, typename Allocator>
 struct is_string<std::basic_string<Char, Traits, Allocator>> : std::true_type {};
 
 /**
+ * A type trait struct for determining whether a type is an iterable container type. This include
+ * any type that can be used with std::begin() and std::end().
+ */
+
+// To allow ADL with custom begin/end
+using std::begin;
+using std::end;
+
+template <typename T>
+auto is_iterable_impl(int)
+    -> decltype(begin(std::declval<T &>()) !=
+                    end(std::declval<T &>()),  // begin/end and operator !=
+                void(),                        // Handle evil operator ,
+                ++std::declval<decltype(begin(std::declval<T &>())) &>(),  // operator ++
+                void(*begin(std::declval<T &>())),                         // operator*
+                std::true_type{});
+
+template <typename T>
+std::false_type is_iterable_impl(...);
+
+template <typename T>
+using is_iterable = decltype(is_iterable_impl<T>(0));
+
+/**
  * A type trait struct for determining whether a type is an optional.
  */
 template <typename T>

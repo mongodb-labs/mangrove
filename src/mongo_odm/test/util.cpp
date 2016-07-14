@@ -14,6 +14,14 @@
 
 #include "catch.hpp"
 
+#include <deque>
+#include <forward_list>
+#include <list>
+#include <queue>
+#include <set>
+#include <unordered_set>
+#include <valarray>
+
 #include <mongo_odm/util.hpp>
 
 using bsoncxx::stdx::optional;
@@ -61,6 +69,26 @@ TEST_CASE(
     REQUIRE(mongo_odm::is_string<wchar_t const(&)[5]>::value == true);
     REQUIRE(mongo_odm::is_string<std::string>::value == true);
     REQUIRE(mongo_odm::is_string<std::basic_string<wchar_t>>::value == true);
+}
+
+TEST_CASE(
+    "is_iterable contains true only if the template type parameter is an iterable container. This "
+    "includes std::string's and C arrays.",
+    "[mongo_odm::is_iterable]") {
+    CHECK(mongo_odm::is_iterable<int>::value == false);
+    CHECK(mongo_odm::is_iterable<const int *>::value == false);
+    // C arrays are iterable (i.e. can be passed by reference into std::begin() and std::end())
+    CHECK(mongo_odm::is_iterable<int[5]>::value == true);
+    // NOTE: std::string's are iterable
+    CHECK(mongo_odm::is_iterable<std::string>::value == true);
+    // Check that the container types supported by the BSON Archiver are iterable
+    CHECK(mongo_odm::is_iterable<std::vector<int>>::value == true);
+    CHECK(mongo_odm::is_iterable<std::set<int>>::value == true);
+    CHECK(mongo_odm::is_iterable<std::forward_list<int>>::value == true);
+    CHECK(mongo_odm::is_iterable<std::list<int>>::value == true);
+    CHECK(mongo_odm::is_iterable<std::deque<int>>::value == true);
+    CHECK(mongo_odm::is_iterable<std::unordered_set<int>>::value == true);
+    CHECK(mongo_odm::is_iterable<std::valarray<int>>::value == true);
 }
 
 TEST_CASE("is_optional struct contains true only if template type parameter is an optional",

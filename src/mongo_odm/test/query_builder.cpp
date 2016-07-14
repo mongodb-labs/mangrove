@@ -16,6 +16,8 @@
 
 #include <iostream>
 
+#include <cereal/types/vector.hpp>
+
 #include <bsoncxx/builder/stream/document.hpp>
 #include <mongocxx/client.hpp>
 #include <mongocxx/instance.hpp>
@@ -26,6 +28,8 @@
 #include <mongo_odm/odm_collection.hpp>
 #include <mongo_odm/query_builder.hpp>
 
+#include <bsoncxx/types.hpp>
+
 using namespace mongocxx;
 
 // An ODM class that does not rely on model
@@ -34,6 +38,10 @@ class Point {
     int x;
     int y;
     MONGO_ODM_MAKE_KEYS(Point, MONGO_ODM_NVP(x), MONGO_ODM_NVP(y));
+
+    bool operator==(const Point& rhs) {
+        return (x == rhs.x) && (y == rhs.y);
+    }
 };
 
 // An ODM class that inherits from model
@@ -45,11 +53,14 @@ class Bar : public mongo_odm::model<Bar> {
     bool y;
     std::string z;
     Point p;
+    std::vector<int> arr;
     MONGO_ODM_MAKE_KEYS_MODEL(Bar, MONGO_ODM_NVP(w), MONGO_ODM_NVP(x1), MONGO_ODM_NVP(x2),
-                              MONGO_ODM_NVP(y), MONGO_ODM_NVP(z), MONGO_ODM_NVP(p))
+                              MONGO_ODM_NVP(y), MONGO_ODM_NVP(z), MONGO_ODM_NVP(p),
+                              MONGO_ODM_NVP(arr));
 
-    Bar(int64_t w, int x1, stdx::optional<int> x2, bool y, std::string z, Point p)
-        : w(w), x1(x1), x2(x2), y(y), z(z), p(p) {
+    Bar(int64_t w, int x1, stdx::optional<int> x2, bool y, std::string z, Point p,
+        std::vector<int> arr)
+        : w(w), x1(x1), x2(x2), y(y), z(z), p(p), arr(arr) {
         _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
     }
 
@@ -134,9 +145,9 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     coll.delete_many({});
 
     Bar::setCollection(coll);
-    Bar(444, 1, 2, false, "hello", {0, 0}).save();
-    Bar(444, 1, 3, false, "hello", {0, 1}).save();
-    Bar(555, 10, 2, true, "goodbye", {1, 0}).save();
+    Bar(444, 1, 2, false, "hello", {0, 0}, {4, 5, 6}).save();
+    Bar(444, 1, 3, false, "hello", {0, 1}, {4, 5, 6}).save();
+    Bar(555, 10, 2, true, "goodbye", {1, 0}, {4, 5, 6}).save();
 
     SECTION("Test == comparison.", "[mongo_odm::ComparisonExpr]") {
         auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x1) == 1);
@@ -156,6 +167,16 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(MONGO_ODM_KEY(Bar::p)->*MONGO_ODM_KEY(Point::x) == 1);
         REQUIRE(res);
         REQUIRE(res.value().p.x == 1);
+
+        // Complex type test
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::p) == Point{0, 1});
+        REQUIRE(res);
+        REQUIRE((res.value().p == Point{0, 1}));
+
+        // // array (vector) member test
+        // res = Bar::find_one(MONGO_ODM_KEY(Bar::arr) == std::vector<int>{4, 5, 6});
+        // REQUIRE(res);
+        // REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
     }
 
     SECTION("Test > comparison.", "[mongo_odm::ComparisonExpr]") {
@@ -367,7 +388,7 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         auto count = coll.count(MONGO_ODM_KEY(Bar::x2).exists(true));
         REQUIRE(count == 3);
 
-        Bar(444, 1, stdx::nullopt, false, "hello", {0, 0}).save();
+        Bar(444, 1, stdx::nullopt, false, "hello", {0, 0}, {4, 5, 6}).save();
         auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x2).exists(false));
         REQUIRE(res);
         REQUIRE(!res.value().x2);
@@ -398,6 +419,13 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(res);
         REQUIRE(res.value().z == "goodbye");
     }
+
+    /* Array query operators */
+    SECTION("Test $size operator.", "[mongo_odm::Nvp::size]") {
+        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::arr).size(3));
+        REQUIRE(res);
+        REQUIRE(res.value().arr.size() == 3);
+    }
 }
 
 TEST_CASE("Query builder works with non-ODM class") {
@@ -421,9 +449,9 @@ TEST_CASE("Update Builder", "mongo_odm::UpdateExpr") {
     coll.delete_many({});
 
     Bar::setCollection(coll);
-    Bar(444, 1, 2, false, "hello", {0, 0}).save();
-    Bar(444, 1, 3, false, "hello", {0, 1}).save();
-    Bar(555, 10, 2, true, "goodbye", {1, 0}).save();
+    Bar(444, 1, 2, false, "hello", {0, 0}, {4, 5, 6}).save();
+    Bar(444, 1, 3, false, "hello", {0, 1}, {4, 5, 6}).save();
+    Bar(555, 10, 2, true, "goodbye", {1, 0}, {4, 5, 6}).save();
 
     SECTION("Test = assignment.", "[mongo_odm::UpdateExpr]") {
         auto res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,

@@ -30,6 +30,45 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
+// Primary template with a static assertion
+// for a meaningful error message
+// if it ever gets instantiated.
+// We could leave it undefined if we didn't care.
+
+template <typename, typename T>
+struct is_bson_appendable {};
+
+// specialization that does the checking
+template <typename C, typename Ret, typename... Args>
+struct is_bson_appendable<C, Ret(Args...)> {
+   private:
+    template <typename T>
+    static constexpr auto check(T *) ->
+        typename std::is_same<decltype(std::declval<T>().append(std::declval<Args>()...)),
+                              Ret>::type;
+
+    template <typename>
+    static constexpr std::false_type check(...);
+
+    typedef decltype(check<C>(0)) type;
+
+   public:
+    static constexpr bool value = type::value;
+};
+
+template <typename T>
+typename std::enable_if<is_bson_appendable<bsoncxx::builder::core, void(T)>::value, void>::type
+append_value_to_bson(T value, bsoncxx::builder::core &builder) {
+    builder.append(value);
+}
+
+template <typename T>
+typename std::enable_if<!is_bson_appendable<bsoncxx::builder::core, void(T)>::value, void>::type
+append_value_to_bson(T value, bsoncxx::builder::core &builder) {
+    auto serialized_value = bson_mapper::to_document<T>(value);
+    builder.append(bsoncxx::types::b_document{serialized_value});
+}
+
 // Forward declarations
 template <typename NvpT, typename U>
 class NotExpr;
@@ -64,7 +103,11 @@ class ComparisonExpr {
         builder.key_view(_nvp.get_name());
         builder.open_document();
         builder.key_view(_selector_type);
-        builder.append(_field);
+        // NOTE: currently this can only append types that the builder can capture.
+        // (Hmmm.... if only we had some way of easily converting C++ objects to BSON.... )
+        // TODO: Look into using the BSON archiver here for _field.
+        append_value_to_bson(_field, builder);
+        // builder.append(_field);
         builder.close_document();
         if (wrap) {
             builder.close_document();
@@ -118,7 +161,8 @@ class NotExpr {
         builder.key_view("$not");
         builder.open_document();
         builder.key_view(_expr._selector_type);
-        builder.append(_expr._field);
+        append_value_to_bson(_expr._field, builder);
+        // builder.append(_expr._field);
         builder.close_document();
         builder.close_document();
         if (wrap) {
@@ -339,7 +383,7 @@ class TextSearchExpr {
 template <typename NvpT>
 class RegexExpr {
    public:
-    constexpr RegexExpr(NvpT nvp, const char *regex, const char *options = "")
+    constexpr RegexExpr(NvpT nvp, const char *regex, const char *options = "    ")
         : _nvp(nvp), _regex(regex), _options(options) {
     }
     /**
