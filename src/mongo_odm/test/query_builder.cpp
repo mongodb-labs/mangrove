@@ -173,10 +173,10 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(res);
         REQUIRE((res.value().p == Point{0, 1}));
 
-        // // array (vector) member test
-        // res = Bar::find_one(MONGO_ODM_KEY(Bar::arr) == std::vector<int>{4, 5, 6});
-        // REQUIRE(res);
-        // REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
+        // array (vector) member test
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::arr) == std::vector<int>{4, 5, 6});
+        REQUIRE(res);
+        REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
     }
 
     SECTION("Test > comparison.", "[mongo_odm::ComparisonExpr]") {
@@ -198,6 +198,16 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(MONGO_ODM_KEY(Bar::p)->*MONGO_ODM_KEY(Point::x) > 0);
         REQUIRE(res);
         REQUIRE(res.value().p.x > 0);
+
+        // Complex type test, lexicographical comparison
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::p) > Point{0, 1});
+        REQUIRE(res);
+        REQUIRE((res.value().p == Point{1, 0}));
+
+        // array (vector) member test (lexicographical comparison)
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::arr) > std::vector<int>{1, 2, 3});
+        REQUIRE(res);
+        REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
     }
 
     SECTION("Test >= comparison.", "[mongo_odm::ComparisonExpr]") {
@@ -262,6 +272,11 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(res);
         REQUIRE(res.value().z == "goodbye");
 
+        // Complex type test
+        res = Bar::find_one(!(MONGO_ODM_KEY(Bar::p) < Point{1, 0}));
+        REQUIRE(res);
+        REQUIRE((res.value().p == Point{1, 0}));
+
         // nested member test
         res = Bar::find_one(MONGO_ODM_KEY(Bar::p)->*MONGO_ODM_KEY(Point::x) != 0);
         REQUIRE(res);
@@ -286,6 +301,11 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(!(MONGO_ODM_KEY(Bar::p)->*MONGO_ODM_KEY(Point::x) == 1));
         REQUIRE(res);
         REQUIRE(res.value().p.x != 1);
+
+        // array (vector) member test
+        res = Bar::find_one(!(MONGO_ODM_KEY(Bar::arr) == std::vector<int>{1, 5, 6}));
+        REQUIRE(res);
+        REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
     }
 
     SECTION("Test $nin and $in operators.", "[mongo_odm::InArrayExpr]") {
@@ -319,6 +339,16 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(res);
         REQUIRE(res.value().w == 555);
         REQUIRE(res.value().p.y == 0);
+
+        // Test query builder with arrays of complex values
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::p).in(std::vector<Point>{{0, 1}, {0, 2}}));
+        REQUIRE(res);
+        REQUIRE((res.value().p == Point{0, 1}));
+
+        // array (vector) member test
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::arr).in(std::vector<int>{1, 2, 6}));
+        REQUIRE(res);
+        REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
     }
 
     SECTION("Test expression list.", "[mongo_odm::ExpressionList]") {

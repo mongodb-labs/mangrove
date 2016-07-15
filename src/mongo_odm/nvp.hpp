@@ -203,7 +203,7 @@ class NvpCRTP {
      */
     template <typename Iterable,
               typename = typename std::enable_if<std::is_convertible<
-                  typename Iterable::iterator::value_type, no_opt_type>::value>::type>
+                  iterable_value<Iterable>, iterable_value<no_opt_type>>::value>::type>
     constexpr InArrayExpr<NvpT, Iterable> in(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter};
     }
@@ -216,7 +216,7 @@ class NvpCRTP {
      */
     template <typename Iterable,
               typename = typename std::enable_if<std::is_convertible<
-                  typename Iterable::iterator::value_type, no_opt_type>::value>::type>
+                  iterable_value<Iterable>, iterable_value<no_opt_type>>::value>::type>
     constexpr InArrayExpr<NvpT, Iterable> nin(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, true};
     }

@@ -30,11 +30,6 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
-// Primary template with a static assertion
-// for a meaningful error message
-// if it ever gets instantiated.
-// We could leave it undefined if we didn't care.
-
 template <typename, typename T>
 struct is_bson_appendable {};
 
@@ -45,10 +40,14 @@ struct is_bson_appendable<C, Ret(Args...)> {
     template <typename T>
     static constexpr auto check(T *) ->
         typename std::is_same<decltype(std::declval<T>().append(std::declval<Args>()...)),
-                              Ret>::type;
+                              Ret>::type {
+        return {};
+    }
 
     template <typename>
-    static constexpr std::false_type check(...);
+    static constexpr std::false_type check(...) {
+        return {};
+    }
 
     typedef decltype(check<C>(0)) type;
 
@@ -56,6 +55,12 @@ struct is_bson_appendable<C, Ret(Args...)> {
     static constexpr bool value = type::value;
 };
 
+/**
+ * Templated function for appending a value to a BSON builder. If possible, the function simply
+ * passes the value directly to the builder. If it cannot be nicely appended, it is first serialized
+ * and then added as a sub-document to the builder. If the value is a container/iterable, it is
+ * serialized into a BSON array.
+ */
 template <typename T>
 typename std::enable_if<is_bson_appendable<bsoncxx::builder::core, void(T)>::value, void>::type
 append_value_to_bson(T value, bsoncxx::builder::core &builder) {
@@ -63,10 +68,22 @@ append_value_to_bson(T value, bsoncxx::builder::core &builder) {
 }
 
 template <typename T>
-typename std::enable_if<!is_bson_appendable<bsoncxx::builder::core, void(T)>::value, void>::type
+typename std::enable_if<!is_bson_appendable<bsoncxx::builder::core, void(T)>::value &&
+                            !is_iterable<T>::value,
+                        void>::type
 append_value_to_bson(T value, bsoncxx::builder::core &builder) {
     auto serialized_value = bson_mapper::to_document<T>(value);
     builder.append(bsoncxx::types::b_document{serialized_value});
+}
+
+template <typename Iterable>
+typename std::enable_if<is_iterable<Iterable>::value, void>::type append_value_to_bson(
+    Iterable arr, bsoncxx::builder::core &builder) {
+    builder.open_array();
+    for (auto x : arr) {
+        append_value_to_bson(x, builder);
+    }
+    builder.close_array();
 }
 
 // Forward declarations
@@ -210,11 +227,7 @@ class InArrayExpr {
         builder.key_view(_nvp.get_name());
         builder.open_document();
         builder.key_view(_negate ? "$nin" : "$in");
-        builder.open_array();
-        for (auto i : _iter) {
-            builder.append(i);
-        }
-        builder.close_array();
+        append_value_to_bson(_iter, builder);
         builder.close_document();
         if (wrap) {
             builder.close_document();

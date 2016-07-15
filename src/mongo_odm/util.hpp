@@ -48,7 +48,7 @@ template <typename Char, typename Traits, typename Allocator>
 struct is_string<std::basic_string<Char, Traits, Allocator>> : std::true_type {};
 
 /**
- * A type trait struct for determining whether a type is an iterable container type. This include
+ * A type trait for determining whether a type is an iterable container type. This include
  * any type that can be used with std::begin() and std::end().
  */
 
@@ -70,6 +70,20 @@ std::false_type is_iterable_impl(...);
 
 template <typename T>
 using is_iterable = decltype(is_iterable_impl<T>(0));
+
+/**
+ * A templated function whose return type is the underlying value type of a given container.
+ * If the given type parameter is not a container, then the function simply returns that type
+ * unchanged.
+ */
+template <typename T>
+typename T::iterator::value_type iterable_value_impl(int);
+
+template <typename T>
+T iterable_value_impl(...);
+
+template <typename T>
+using iterable_value = decltype(iterable_value_impl<T>(0));
 
 /**
  * A type trait struct for determining whether a type is an optional.

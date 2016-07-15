@@ -37,19 +37,6 @@ TEST_CASE("all_true struct contains true only if all boolean template parameters
     REQUIRE((mongo_odm::all_true<true, true, true>::value) == true);
 }
 
-// TEST_CASE(
-//     "any_true struct contains true if at least one of the boolean template parameters is true.",
-//     "[mongo_odm::any_true]") {
-//     REQUIRE((mongo_odm::any_true<false>::value) == false);
-//     REQUIRE((mongo_odm::any_true<true>::value) == true);
-//     REQUIRE((mongo_odm::any_true<false, true>::value) == true);
-//     REQUIRE((mongo_odm::any_true<true, false>::value) == true);
-//     REQUIRE((mongo_odm::any_true<true, false, true>::value) == true);
-//     REQUIRE((mongo_odm::any_true<true, true>::value) == true);
-//     REQUIRE((mongo_odm::any_true<true, true, true>::value) == true);
-//     REQUIRE((mongo_odm::any_true<false, false, false>::value) == false);
-// }
-
 TEST_CASE(
     "is_string contains true only if the template type parameter is an std::basic string, or some "
     "form of C string.") {
@@ -89,6 +76,18 @@ TEST_CASE(
     CHECK(mongo_odm::is_iterable<std::deque<int>>::value == true);
     CHECK(mongo_odm::is_iterable<std::unordered_set<int>>::value == true);
     CHECK(mongo_odm::is_iterable<std::valarray<int>>::value == true);
+}
+
+TEST_CASE(
+    "iterable_value contains the value type of an iterable container, or the given type if it is "
+    "not a container. ") {
+    CHECK((std::is_same<mongo_odm::iterable_value<int>, int>::value));
+    CHECK((std::is_same<mongo_odm::iterable_value<std::string>, char>::value));
+    CHECK((std::is_same<mongo_odm::iterable_value<std::vector<int>>, int>::value));
+    CHECK((std::is_same<mongo_odm::iterable_value<std::vector<std::string>>, std::string>::value));
+    // iterable_value only unwraps one level of container.
+    CHECK((std::is_same<mongo_odm::iterable_value<std::vector<std::vector<int>>>,
+                        std::vector<int>>::value));
 }
 
 TEST_CASE("is_optional struct contains true only if template type parameter is an optional",
