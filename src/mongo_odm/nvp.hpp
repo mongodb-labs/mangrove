@@ -100,9 +100,6 @@ class NvpCRTP;
 template <typename NvpT, typename U>
 class ComparisonExpr;
 
-template <typename NvpT, typename Iterable>
-class InArrayExpr;
-
 template <typename NvpT>
 class ModExpr;
 
@@ -204,8 +201,8 @@ class NvpCRTP {
     template <typename Iterable,
               typename = typename std::enable_if<std::is_convertible<
                   iterable_value<Iterable>, iterable_value<no_opt_type>>::value>::type>
-    constexpr InArrayExpr<NvpT, Iterable> in(const Iterable& iter) const {
-        return {*static_cast<const NvpT*>(this), iter};
+    constexpr ComparisonExpr<NvpT, Iterable> in(const Iterable& iter) const {
+        return {*static_cast<const NvpT*>(this), iter, "$in"};
     }
 
     /**
@@ -217,8 +214,8 @@ class NvpCRTP {
     template <typename Iterable,
               typename = typename std::enable_if<std::is_convertible<
                   iterable_value<Iterable>, iterable_value<no_opt_type>>::value>::type>
-    constexpr InArrayExpr<NvpT, Iterable> nin(const Iterable& iter) const {
-        return {*static_cast<const NvpT*>(this), iter, true};
+    constexpr ComparisonExpr<NvpT, Iterable> nin(const Iterable& iter) const {
+        return {*static_cast<const NvpT*>(this), iter, "$nin"};
     }
 
     /**

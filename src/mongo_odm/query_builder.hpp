@@ -120,11 +120,7 @@ class ComparisonExpr {
         builder.key_view(_nvp.get_name());
         builder.open_document();
         builder.key_view(_selector_type);
-        // NOTE: currently this can only append types that the builder can capture.
-        // (Hmmm.... if only we had some way of easily converting C++ objects to BSON.... )
-        // TODO: Look into using the BSON archiver here for _field.
         append_value_to_bson(_field, builder);
-        // builder.append(_field);
         builder.close_document();
         if (wrap) {
             builder.close_document();
@@ -179,7 +175,6 @@ class NotExpr {
         builder.open_document();
         builder.key_view(_expr._selector_type);
         append_value_to_bson(_expr._field, builder);
-        // builder.append(_expr._field);
         builder.close_document();
         builder.close_document();
         if (wrap) {
@@ -199,55 +194,6 @@ class NotExpr {
 
    private:
     const ComparisonExpr<NvpT, U> _expr;
-};
-
-/**
- * An expression that compares a key-value pair to a set of values in an iterable.
- * @tparam NvpT     The type of the key-value pair used in this expression.
- * @tparam Iterable A type that can be used inside a range-based for loop. The objects retreived by
- * iterating must be convertible to the type of the key-value pair.
- */
-template <typename NvpT, typename Iterable>
-class InArrayExpr {
-   public:
-    constexpr InArrayExpr(const NvpT &nvp, const Iterable &iter, const bool negate = false)
-        : _nvp(nvp), _iter(iter), _negate(negate) {
-    }
-
-    /**
-     * Appends this expression to a BSON core builder, as a key-value pair of the form
-     * "key: {$cmp: val}", where $cmp is some comparison operator.
-     * @param builder A BSON core builder
-     * @param wrap  Whether to wrap the BSON inside a document.
-     */
-    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
-        if (wrap) {
-            builder.open_document();
-        }
-        builder.key_view(_nvp.get_name());
-        builder.open_document();
-        builder.key_view(_negate ? "$nin" : "$in");
-        append_value_to_bson(_iter, builder);
-        builder.close_document();
-        if (wrap) {
-            builder.close_document();
-        }
-    }
-
-    /**
-     * Converts the expression to a BSON filter for a query.
-     * The resulting BSON is of the form "{key: {$cmp: val}}".
-     */
-    operator bsoncxx::document::view_or_value() const {
-        auto builder = bsoncxx::builder::core(false);
-        append_to_bson(builder);
-        return builder.extract_document();
-    }
-
-   private:
-    const NvpT _nvp;
-    const Iterable &_iter;
-    const bool _negate;
 };
 
 /**
@@ -629,7 +575,7 @@ class UpdateExpr {
         builder.key_view(_op);
         builder.open_document();
         builder.key_view(_nvp.get_name());
-        builder.append(_val);
+        append_value_to_bson(_val, builder);
         builder.close_document();
         if (wrap) {
             builder.close_document();
@@ -660,9 +606,6 @@ struct is_query_expression<ComparisonExpr<NvpT, U>> : public std::true_type {};
 
 template <typename NvpT, typename U>
 struct is_query_expression<NotExpr<NvpT, U>> : public std::true_type {};
-
-template <typename NvpT, typename Iterable>
-struct is_query_expression<InArrayExpr<NvpT, Iterable>> : public std::true_type {};
 
 template <typename NvpT>
 struct is_query_expression<ModExpr<NvpT>> : public std::true_type {};
