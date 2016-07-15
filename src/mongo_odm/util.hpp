@@ -71,6 +71,11 @@ std::false_type is_iterable_impl(...);
 template <typename T>
 using is_iterable = decltype(is_iterable_impl<T>(0));
 
+// Matches iterables, but NOT strings or char arrays.
+template <typename T>
+using is_iterable_not_string =
+    std::integral_constant<int, is_iterable<T>::value && !is_string<T>::value>;
+
 /**
  * A templated function whose return type is the underlying value type of a given container.
  * If the given type parameter is not a container, then the function simply returns that type
@@ -110,6 +115,15 @@ struct remove_optional<bsoncxx::stdx::optional<T>> {
 
 template <typename T>
 using remove_optional_t = typename remove_optional<T>::type;
+
+constexpr std::uint64_t bit_positions_to_mask() {
+    return 0;
+}
+
+template <typename... Args>
+constexpr std::uint64_t bit_positions_to_mask(std::uint64_t pos, Args... positions) {
+    return (1 << pos) | bit_positions_to_mask(positions...);
+}
 
 MONGO_ODM_INLINE_NAMESPACE_END
 }  // namespace bson_mapper

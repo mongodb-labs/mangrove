@@ -456,6 +456,61 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(res);
         REQUIRE(res.value().arr.size() == 3);
     }
+
+    /* Bitwise operations */
+
+    SECTION("Test $bitsAllSet operators.", "[mongo_odm::Nvp::bits_all_set]") {
+        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_all_set(10));
+        REQUIRE(res);
+        REQUIRE(res.value().x1 == 10);
+
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_all_set(1, 3));
+        REQUIRE(res);
+        REQUIRE(res.value().x1 == 10);
+
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_all_set(1, 2, 3, 4));
+        REQUIRE(!res);
+    }
+
+    SECTION("Test $bitsAnySet operators.", "[mongo_odm::Nvp::bits_any_set]") {
+        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_any_set(10));
+        REQUIRE(res);
+        REQUIRE((res.value().x1 | 10) > 0);
+
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_any_set(1, 3));
+        REQUIRE(res);
+        REQUIRE((res.value().x1 | (1 << 1) | (1 << 3)) > 0);
+
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_any_set(12, 13));
+        REQUIRE(!res);
+    }
+
+    SECTION("Test $bitsAllClear operators.", "[mongo_odm::Nvp::bits_all_set]") {
+        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_all_clear((~555) & 0xFFFF));
+        REQUIRE(res);
+        REQUIRE(res.value().w == 555);
+
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_all_clear(2, 4, 6, 7, 8));
+        REQUIRE(res);
+        REQUIRE(res.value().w == 555);
+
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_all_clear(0, 1, 2, 3, 4, 5, 6));
+        REQUIRE(!res);
+    }
+
+    SECTION("Test $bitsAnyClear operators.", "[mongo_odm::Nvp::bits_any_set]") {
+        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_any_clear(21));
+        REQUIRE(res);
+        REQUIRE((res.value().w & 21) < 21);
+
+        // These are the bits of the number "444", so the result must be not 444, i.e. 555.
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_any_clear(2, 3, 4, 5, 7, 8));
+        REQUIRE(res);
+        REQUIRE(res.value().w == 555);
+
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_any_clear(3, 5));
+        REQUIRE(!res);
+    }
 }
 
 TEST_CASE("Query builder works with non-ODM class") {

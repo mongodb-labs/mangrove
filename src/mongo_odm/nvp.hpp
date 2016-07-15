@@ -97,6 +97,7 @@ MONGO_ODM_INLINE_NAMESPACE_BEGIN
 template <typename NvpT, typename T>
 class NvpCRTP;
 
+// Forward declarations for Expression Types
 template <typename NvpT, typename U>
 class ComparisonExpr;
 
@@ -108,6 +109,12 @@ class RegexExpr;
 
 template <typename Parent>
 class UpdateExpr;
+
+// Forward declarations for Expression type trait structs
+template <typename>
+struct is_query_expression;
+template <typename>
+struct is_update_expression;
 
 /**
  * An object that represents a name-value pair of a member in an object.
@@ -187,6 +194,14 @@ class NvpCRTP {
     // In case this field is wrapped in an optional, store the underlying type.
     using no_opt_type = remove_optional_t<T>;
 
+    // Type trait that checks if the given iterable class contains the same value type as either
+    // a) this Nvp's type, or
+    // b) this Nvp's value type, is this Nvp is also an iterable.
+    template <typename Iterable>
+    using enable_if_matching_iterable_t = typename std::enable_if<
+        is_iterable_not_string<Iterable>::value &&
+        std::is_convertible<iterable_value<Iterable>, iterable_value<no_opt_type>>::value>::type;
+
     template <typename U>
     constexpr NvpChild<T, U, NvpT> operator->*(const Nvp<T, U>& child) const {
         return {child.t, child.name, *static_cast<const NvpT*>(this)};
@@ -198,9 +213,7 @@ class NvpCRTP {
      * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
      * to the type of this name-value pair.
      */
-    template <typename Iterable,
-              typename = typename std::enable_if<std::is_convertible<
-                  iterable_value<Iterable>, iterable_value<no_opt_type>>::value>::type>
+    template <typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
     constexpr ComparisonExpr<NvpT, Iterable> in(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, "$in"};
     }
@@ -211,9 +224,7 @@ class NvpCRTP {
      * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
      * to the type of this name-value pair.
      */
-    template <typename Iterable,
-              typename = typename std::enable_if<std::is_convertible<
-                  iterable_value<Iterable>, iterable_value<no_opt_type>>::value>::type>
+    template <typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
     constexpr ComparisonExpr<NvpT, Iterable> nin(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, "$nin"};
     }
@@ -231,7 +242,7 @@ class NvpCRTP {
     }
 
     /**
-     * Creates a ModExpression that represents a query with the $mod operator.
+     * Creates a ModExpr that represents a query with the $mod operator.
      * Such a query essentially checks that "nvp_value % divisor == remainder"
      * @param divisor   The divisor for the modulus operation
      * @param remainder   The remainder after dividing a value by `divisor`
@@ -243,6 +254,12 @@ class NvpCRTP {
         return {*static_cast<const NvpT*>(this), divisor, remainder};
     }
 
+    /**
+     * Creates a RegexExpr that represents a query with a $regex operator.
+     * Such a query only works for string fields.
+     * @param regex     The regex to check against.
+     * @param options   Options to pass to the regex.
+     */
     template <typename U = T,
               typename = typename std::enable_if<is_string<remove_optional_t<U>>::value>::type>
     constexpr RegexExpr<NvpT> regex(const char* regex, const char* options = "") const {
@@ -250,12 +267,156 @@ class NvpCRTP {
     }
 
     /* Array Query operators */
-    // Restrict this function to iterable types, but not strings.
-    template <typename U = T,
-              typename = typename std::enable_if<is_iterable<remove_optional_t<U>>::value>::type,
-              typename = typename std::enable_if<!is_string<remove_optional_t<U>>::value>::type>
+
+    template <typename U = T, typename = typename std::enable_if<
+                                  is_iterable_not_string<remove_optional_t<U>>::value>::type>
     constexpr ComparisonExpr<NvpT, std::int64_t> size(const std::int64_t& n) const {
         return {*static_cast<const NvpT*>(this), n, "$size"};
+    }
+
+    template <typename Iterable, typename = enable_if_matching_iterable_t<Iterable>, typename U = T,
+              typename = typename std::enable_if<
+                  is_iterable_not_string<remove_optional_t<U>>::value>::type>
+    constexpr ComparisonExpr<NvpT, Iterable> all(const Iterable& iter) const {
+        return {*static_cast<const NvpT*>(this), iter, "$all"};
+    }
+
+    template <typename List,
+              typename = typename std::enable_if<is_query_expression<List>::value>::type,
+              typename U = T, typename = typename std::enable_if<
+                                  is_iterable_not_string<remove_optional_t<U>>::value>::type>
+    constexpr ComparisonExpr<NvpT, List> elem_match(const List& queries) const {
+        return {*static_cast<const NvpT*>(this), queries, "$elemMatch"};
+    }
+
+    // bitwise queryies, enabled only for integral types.
+
+    /**
+     * Creates a query that uses the $bitsAllSet operator to check a numerical field with a bitmask.
+     * $bitsAllSet checks that every bit in the bitmask is set in the field's value.
+     * @param bitmask - A bitmask to pass to the $bitsAllSet operator
+     * @returns A ComparisonExpr representing this query
+     */
+    template <typename U = T, typename = typename std::enable_if<
+                                  std::is_integral<remove_optional_t<U>>::value>::type>
+    constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_set(const std::uint64_t& bitmask) const {
+        return {*static_cast<const NvpT*>(this), bitmask, "$bitsAllSet"};
+    }
+
+    /**
+     * Creates a query that uses the $bitsAllSet operator to check a series of bits, given as bit
+     * positions. This function has two positional arguments to distinguish from the signature that
+     * takes a bit mask (see above)
+     * @param pos1  The first bit position to check
+     * @param pos2  The second bit position to check
+     * @param positions...  Variadic argument containing further bit positions.
+     * @returns A ComparisonExpr representing this query
+     */
+    template <typename U = T, typename = typename std::enable_if<
+                                  std::is_integral<remove_optional_t<U>>::value>::type,
+              typename... Args>
+    constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_set(std::uint64_t pos1,
+                                                              std::uint64_t pos2,
+                                                              Args... positions) const {
+        return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
+                "$bitsAllSet"};
+    }
+
+    /**
+     * Creates a query that uses the $bitsAnySet operator to check a numerical field with a bitmask.
+     * $bitsAnySet checks that a least one bit in the bitmask is set in the field's value.
+     * @param bitmask - A bitmask to pass to the $bitsAnySet operator
+     * @returns A ComparisonExpr representing this query
+     */
+    template <typename U = T, typename = typename std::enable_if<
+                                  std::is_integral<remove_optional_t<U>>::value>::type>
+    constexpr ComparisonExpr<NvpT, std::int64_t> bits_any_set(const std::uint64_t& bitmask) const {
+        return {*static_cast<const NvpT*>(this), bitmask, "$bitsAnySet"};
+    }
+
+    /**
+     * Creates a query that uses the $bitsAnySet operator to check a series of bits, given as bit
+     * positions. This function has two positional arguments to distinguish from the signature that
+     * takes a bit mask (see above)
+     * @param pos1  The first bit position to check
+     * @param pos2  The second bit position to check
+     * @param positions...  Variadic argument containing further bit positions.
+     * @returns A ComparisonExpr representing this query
+     */
+    template <typename U = T, typename = typename std::enable_if<
+                                  std::is_integral<remove_optional_t<U>>::value>::type,
+              typename... Args>
+    constexpr ComparisonExpr<NvpT, std::int64_t> bits_any_set(std::uint64_t pos1,
+                                                              std::uint64_t pos2,
+                                                              Args... positions) const {
+        return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
+                "$bitsAnySet"};
+    }
+
+    /**
+     * Creates a query that uses the $bitsAllClear operator to check a numerical field with a
+     * bitmask.
+     * $bitsAllClear checks that every bit in the bitmask is cleared in the field's value.
+     * @param bitmask - A bitmask to pass to the $bitsAllClear operator
+     * @returns A ComparisonExpr representing this query
+     */
+    template <typename U = T, typename = typename std::enable_if<
+                                  std::is_integral<remove_optional_t<U>>::value>::type>
+    constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_clear(
+        const std::uint64_t& bitmask) const {
+        return {*static_cast<const NvpT*>(this), bitmask, "$bitsAllClear"};
+    }
+
+    /**
+     * Creates a query that uses the $bitsAllClear operator to check a series of bits, given as bit
+     * positions. This function has two positional arguments to distinguish from the signature that
+     * takes a bit mask (see above)
+     * @param pos1  The first bit position to check
+     * @param pos2  The second bit position to check
+     * @param positions...  Variadic argument containing further bit positions.
+     * @returns A ComparisonExpr representing this query
+     */
+    template <typename U = T, typename = typename std::enable_if<
+                                  std::is_integral<remove_optional_t<U>>::value>::type,
+              typename... Args>
+    constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_clear(std::uint64_t pos1,
+                                                                std::uint64_t pos2,
+                                                                Args... positions) const {
+        return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
+                "$bitsAllClear"};
+    }
+
+    /**
+     * Creates a query that uses the $bitsAnyClear operator to check a numerical field with a
+     * bitmask.
+     * $bitsAnyClear checks that a least one bit in the bitmask is cleared in the field's value.
+     * @param bitmask - A bitmask to pass to the $bitsAnyClear operator
+     * @returns A ComparisonExpr representing this query
+     */
+    template <typename U = T, typename = typename std::enable_if<
+                                  std::is_integral<remove_optional_t<U>>::value>::type>
+    constexpr ComparisonExpr<NvpT, std::int64_t> bits_any_clear(
+        const std::uint64_t& bitmask) const {
+        return {*static_cast<const NvpT*>(this), bitmask, "$bitsAnyClear"};
+    }
+
+    /**
+     * Creates a query that uses the $bitsAnyClear operator to check a series of bits, given as bit
+     * positions. This function has two positional arguments to distinguish from the signature that
+     * takes a bit mask (see above)
+     * @param pos1  The first bit position to check
+     * @param pos2  The second bit position to check
+     * @param positions...  Variadic argument containing further bit positions.
+     * @returns A ComparisonExpr representing this query
+     */
+    template <typename U = T, typename = typename std::enable_if<
+                                  std::is_integral<remove_optional_t<U>>::value>::type,
+              typename... Args>
+    constexpr ComparisonExpr<NvpT, std::int64_t> bits_any_clear(std::uint64_t pos1,
+                                                                std::uint64_t pos2,
+                                                                Args... positions) const {
+        return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
+                "$bitsAnyClear"};
     }
 };
 

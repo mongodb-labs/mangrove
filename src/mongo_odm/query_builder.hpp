@@ -30,9 +30,16 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
+// Forward declarations for Expression type trait structs
+template <typename>
+struct is_query_expression;
+template <typename>
+struct is_update_expression;
+
 template <typename, typename T>
 struct is_bson_appendable {};
 
+// TODO this expects an arbitrary function, we can just specify .append() directly.
 // specialization that does the checking
 template <typename C, typename Ret, typename... Args>
 struct is_bson_appendable<C, Ret(Args...)> {
@@ -69,7 +76,8 @@ append_value_to_bson(T value, bsoncxx::builder::core &builder) {
 
 template <typename T>
 typename std::enable_if<!is_bson_appendable<bsoncxx::builder::core, void(T)>::value &&
-                            !is_iterable<T>::value,
+                            !is_iterable<T>::value &&
+                            !(is_query_expression<T>::value || is_update_expression<T>::value),
                         void>::type
 append_value_to_bson(T value, bsoncxx::builder::core &builder) {
     auto serialized_value = bson_mapper::to_document<T>(value);
@@ -84,6 +92,15 @@ typename std::enable_if<is_iterable<Iterable>::value, void>::type append_value_t
         append_value_to_bson(x, builder);
     }
     builder.close_array();
+}
+
+template <typename Expression>
+typename std::enable_if<
+    is_query_expression<Expression>::value || is_update_expression<Expression>::value, void>::type
+append_value_to_bson(Expression expr, bsoncxx::builder::core &builder) {
+    builder.open_document();
+    expr.append_to_bson(builder);
+    builder.close_document();
 }
 
 // Forward declarations
