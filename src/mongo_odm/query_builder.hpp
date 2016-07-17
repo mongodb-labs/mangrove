@@ -36,47 +36,42 @@ struct is_query_expression;
 template <typename>
 struct is_update_expression;
 
-template <typename, typename T>
-struct is_bson_appendable {};
+/**
+ * Type trait that contains true if a type T can be appended to a BSON builder using
+ * builder.append(T val);
+ */
+template <typename T>
+constexpr auto is_bson_appendable_impl(int)
+    -> decltype(std::declval<bsoncxx::builder::core>().append(std::declval<T>()),
+                std::true_type{}) {
+    return {};
+}
 
-// TODO this expects an arbitrary function, we can just specify .append() directly.
-// specialization that does the checking
-template <typename C, typename Ret, typename... Args>
-struct is_bson_appendable<C, Ret(Args...)> {
-   private:
-    template <typename T>
-    static constexpr auto check(T *) ->
-        typename std::is_same<decltype(std::declval<T>().append(std::declval<Args>()...)),
-                              Ret>::type {
-        return {};
-    }
+template <typename T>
+constexpr std::false_type is_bson_appendable_impl(...) {
+    return {};
+}
 
-    template <typename>
-    static constexpr std::false_type check(...) {
-        return {};
-    }
-
-    typedef decltype(check<C>(0)) type;
-
-   public:
-    static constexpr bool value = type::value;
-};
+template <typename T>
+using is_bson_appendable = decltype(is_bson_appendable_impl<T>(0));
 
 /**
  * Templated function for appending a value to a BSON builder. If possible, the function simply
  * passes the value directly to the builder. If it cannot be nicely appended, it is first serialized
  * and then added as a sub-document to the builder. If the value is a container/iterable, it is
- * serialized into a BSON array.
+ * serialized into a BSON array. If the value is a query builder epxression, it is serialized using
+ * its member function .append_to_bson(builder).
  */
+// Specialization for appendable types.
 template <typename T>
-typename std::enable_if<is_bson_appendable<bsoncxx::builder::core, void(T)>::value, void>::type
-append_value_to_bson(T value, bsoncxx::builder::core &builder) {
+typename std::enable_if<is_bson_appendable<T>::value, void>::type append_value_to_bson(
+    T value, bsoncxx::builder::core &builder) {
     builder.append(value);
 }
 
+// Specialization for non-iterable, non-expression types that must be serialized.
 template <typename T>
-typename std::enable_if<!is_bson_appendable<bsoncxx::builder::core, void(T)>::value &&
-                            !is_iterable<T>::value &&
+typename std::enable_if<!is_bson_appendable<T>::value && !is_iterable_not_string<T>::value &&
                             !(is_query_expression<T>::value || is_update_expression<T>::value),
                         void>::type
 append_value_to_bson(T value, bsoncxx::builder::core &builder) {
@@ -84,8 +79,9 @@ append_value_to_bson(T value, bsoncxx::builder::core &builder) {
     builder.append(bsoncxx::types::b_document{serialized_value});
 }
 
+// Specialization for iterable types that must be serialized.
 template <typename Iterable>
-typename std::enable_if<is_iterable<Iterable>::value, void>::type append_value_to_bson(
+typename std::enable_if<is_iterable_not_string<Iterable>::value, void>::type append_value_to_bson(
     Iterable arr, bsoncxx::builder::core &builder) {
     builder.open_array();
     for (auto x : arr) {
@@ -94,6 +90,7 @@ typename std::enable_if<is_iterable<Iterable>::value, void>::type append_value_t
     builder.close_array();
 }
 
+// Specialization for expression types that must be serialized.
 template <typename Expression>
 typename std::enable_if<
     is_query_expression<Expression>::value || is_update_expression<Expression>::value, void>::type
@@ -102,10 +99,6 @@ append_value_to_bson(Expression expr, bsoncxx::builder::core &builder) {
     expr.append_to_bson(builder);
     builder.close_document();
 }
-
-// Forward declarations
-template <typename NvpT, typename U>
-class NotExpr;
 
 /**
  * Represents a query expression with the syntax "key: {$op: value}".
@@ -119,81 +112,52 @@ class ComparisonExpr {
      * Constructs a query expression for the given key, value, and comparison type
      * @param  nvp           A name-value pair corresponding to a key in a document
      * @param  field         The value that the key is being compared to.
-     * @param  selector_type The type of comparison operator, such at gt (>) or ne (!=).
+     * @param  op The type of comparison operator, such at gt (>) or ne
+     * (!=).
      */
-    constexpr ComparisonExpr(const NvpT &nvp, const U &field, const char *selector_type)
-        : _nvp(nvp), _field(field), _selector_type(selector_type) {
+    constexpr ComparisonExpr(const NvpT &nvp, const U &field, const char *op)
+        : _nvp(nvp), _field(field), _operator(op) {
     }
+
+    /**
+     * Takes a comparison expression, and creates a new one with a different operator, but the same
+     * value and field.
+     * @param  expr          A comparison expresison with a similar field type and value type.
+     * @param  op The new operator to use.
+     * @return               [description]
+     */
+    constexpr ComparisonExpr(const ComparisonExpr<NvpT, U> &expr, const char *op)
+        : _nvp(expr._nvp), _field(expr._field), _operator(op) {
+    }
+
+    std::string get_name() const {
+        return _nvp.get_name();
+    }
+
     /**
      * Appends this expression to a BSON core builder, as a key-value pair of the form
      * "key: {$cmp: val}", where $cmp is some comparison operator.
      * @param builder A BSON core builder
-     * @param wrap  Whether to wrap the BSON inside a document.
+     * @param wrap      Whether to wrap the BSON inside a document.
+     * @param omit_name Whether to skip the name of the field. This is used primarily in NotExpr and
+     * FreeExpr to append just the value of the expression.
      */
-    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false,
+                        bool omit_name = false) const {
         if (wrap) {
             builder.open_document();
         }
-        builder.key_view(_nvp.get_name());
-        builder.open_document();
-        builder.key_view(_selector_type);
+        if (!omit_name) {
+            builder.key_view(_nvp.get_name());
+            builder.open_document();
+        }
+
+        builder.key_view(_operator);
         append_value_to_bson(_field, builder);
-        builder.close_document();
-        if (wrap) {
+
+        if (!omit_name) {
             builder.close_document();
         }
-    }
-
-    /**
-     * Converts the expression to a BSON filter for a query.
-     * The resulting BSON is of the form "{key: {$cmp: val}}".
-     */
-    operator bsoncxx::document::view_or_value() const {
-        auto builder = bsoncxx::builder::core(false);
-        append_to_bson(builder);
-        return builder.extract_document();
-    }
-
-    friend NotExpr<NvpT, U>;
-
-   private:
-    const NvpT _nvp;
-    const U &_field;
-    const char *_selector_type;
-};
-
-/**
- * This represents an expression with the $not operator, which wraps a comparison expression and
- * negates it.
- */
-template <typename NvpT, typename U>
-class NotExpr {
-   public:
-    /**
-     * Creates a $not expression that negates the given comparison expression.
-     * @param  expr A comparison expression
-     */
-    constexpr NotExpr(const ComparisonExpr<NvpT, U> &expr) : _expr(expr) {
-    }
-
-    /**
-     * Appends this expression to a BSON core builder,
-     * as a key-value pair of the form "key: {$not: {$cmp: val}}".
-     * @param builder a BSON core builder
-     * @param wrap  Whether to wrap the BSON in a document.
-     */
-    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
-        if (wrap) {
-            builder.open_document();
-        }
-        builder.key_view(_expr._nvp.get_name());
-        builder.open_document();
-        builder.key_view("$not");
-        builder.open_document();
-        builder.key_view(_expr._selector_type);
-        append_value_to_bson(_expr._field, builder);
-        builder.close_document();
-        builder.close_document();
         if (wrap) {
             builder.close_document();
         }
@@ -210,7 +174,9 @@ class NotExpr {
     }
 
    private:
-    const ComparisonExpr<NvpT, U> _expr;
+    const NvpT _nvp;
+    const U &_field;
+    const char *_operator;
 };
 
 /**
@@ -230,25 +196,34 @@ class ModExpr {
         : _nvp(nvp), _divisor(divisor), _remainder(remainder) {
     }
 
+    std::string get_name() const {
+        return _nvp.get_name();
+    }
+
     /**
      * Appends this expression to a BSON core builder,
      * as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } "
 .
      * @param builder a BSON core builder
-     * @param wrap  Whether to wrap the BSON in a document.
+     * @param wrap	    Whether to wrap the BSON inside a document.
      */
-    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false,
+                        bool omit_name = false) const {
         if (wrap) {
             builder.open_document();
         }
-        builder.key_view(_nvp.get_name());
-        builder.open_document();
+        if (!omit_name) {
+            builder.key_view(_nvp.get_name());
+            builder.open_document();
+        }
         builder.key_view("$mod");
         builder.open_array();
         builder.append(_divisor);
         builder.append(_remainder);
         builder.close_array();
-        builder.close_document();
+        if (!omit_name) {
+            builder.close_document();
+        }
         if (wrap) {
             builder.close_document();
         }
@@ -312,10 +287,9 @@ class TextSearchExpr {
 
     /**
      * Appends this expression to a BSON core builder,
-     * as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } "
-    .
+     * as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } ".
      * @param builder a BSON core builder
-     * @param wrap  Whether to wrap the BSON in a document.
+     * @param wrap      Whether to wrap the BSON inside a document.
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
         if (wrap) {
@@ -356,30 +330,69 @@ class TextSearchExpr {
     const bool _diacritic_sensitive;
 };
 
+/**
+ * Represents an expression that uses the $regex operator.
+ * Internally, it uses a ComparisonExpr whose value is a b_regex.
+ */
 template <typename NvpT>
-class RegexExpr {
+class RegexExpr : public ComparisonExpr<NvpT, bsoncxx::types::b_regex> {
    public:
-    constexpr RegexExpr(NvpT nvp, const char *regex, const char *options = "    ")
-        : _nvp(nvp), _regex(regex), _options(options) {
+    constexpr RegexExpr(NvpT nvp, const char *regex, const char *options = "")
+        : ComparisonExpr<NvpT, bsoncxx::types::b_regex>(nvp, _regex, "$regex"),
+          _regex(regex, options) {
     }
+
+   private:
+    const bsoncxx::types::b_regex _regex;
+};
+
+/**
+ * This represents an expression with the $not operator, which wraps a
+ * comparison expression and
+ * negates it.
+ */
+// Make sure this is only a query expression.
+// This might actually be done implicitly by relating on get_name() and append_to_bson().
+template <typename Expr>
+class NotExpr {
+   public:
+    /**
+     * Creates a $not expression that negates the given comparison expression.
+     * @param  expr A comparison expression
+     */
+    constexpr NotExpr(const Expr &expr) : _expr(expr) {
+    }
+
+    std::string get_name() const {
+        return _expr.get_name();
+    }
+
     /**
      * Appends this expression to a BSON core builder,
-     * as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } "
-    .
+     * as a key-value pair of the form "key: {$not: {$cmp: val}}".
      * @param builder a BSON core builder
-     * @param wrap  Whether to wrap the BSON in a document.
+     * @param wrap      Whether to wrap the BSON inside a document.
+     * @param omit_name Whether to skip the name of the field. This is used primarily in $elemMatch
+     * queries with scalar arrays, so one can have a query like
+     * {array: {$elemMatch: {$not: {$gt: 5}}}}
      */
-    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false,
+                        bool omit_name = false) const {
         if (wrap) {
             builder.open_document();
         }
-        builder.key_view(_nvp.get_name());
-        builder.open_document();
-        builder.key_view("$regex");
-        builder.append(_regex);
-        builder.key_view("$options");
-        builder.append(_options);
-        builder.close_document();
+        if (!omit_name) {
+            builder.key_view(_expr.get_name());
+            builder.open_document();
+        }
+
+        builder.key_view("$not");
+        // Append contained expression in a document, without its name.
+        _expr.append_to_bson(builder, true, true);
+
+        if (!omit_name) {
+            builder.close_document();
+        }
         if (wrap) {
             builder.close_document();
         }
@@ -387,7 +400,7 @@ class RegexExpr {
 
     /**
      * Converts the expression to a BSON filter for a query.
-     * The resulting BSON is of the form "{ key: { $mod: [ divisor, remainder ] } }".
+     * The resulting BSON is of the form "{key: {$cmp: val}}".
      */
     operator bsoncxx::document::view_or_value() const {
         auto builder = bsoncxx::builder::core(false);
@@ -396,9 +409,32 @@ class RegexExpr {
     }
 
    private:
-    const NvpT _nvp;
-    const char *_regex;
-    const char *_options;
+    const Expr _expr;
+};
+
+template <typename Expr>
+class FreeExpr {
+   public:
+    constexpr FreeExpr(Expr expr) : expr(expr) {
+    }
+
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+        // Append expression without name
+        expr.append_to_bson(builder, false, true);
+
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    // This should never be top-level, and thus does not have a conversion operator directly to
+    // BSON.
+
+   private:
+    const Expr expr;
 };
 
 template <typename Head, typename Tail>
@@ -621,11 +657,14 @@ struct is_query_expression : public std::false_type {};
 template <typename NvpT, typename U>
 struct is_query_expression<ComparisonExpr<NvpT, U>> : public std::true_type {};
 
-template <typename NvpT, typename U>
-struct is_query_expression<NotExpr<NvpT, U>> : public std::true_type {};
-
 template <typename NvpT>
 struct is_query_expression<ModExpr<NvpT>> : public std::true_type {};
+
+template <typename Expr>
+struct is_query_expression<NotExpr<Expr>> : public std::true_type {};
+
+template <typename Expr>
+struct is_query_expression<FreeExpr<Expr>> : public std::true_type {};
 
 template <>
 struct is_query_expression<TextSearchExpr> : public std::true_type {};
@@ -753,10 +792,19 @@ constexpr ComparisonExpr<NvpT, U> operator!=(const NvpT &lhs, const U &rhs) {
 /**
  * Negates a comparison expression in a $not expression.
  */
-template <typename NvpT, typename U,
-          typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
-constexpr NotExpr<NvpT, U> operator!(const ComparisonExpr<NvpT, U> &expr) {
+// TODO replace is_query_expression with is_unary_expression or something.
+template <typename Expr, typename = typename std::enable_if<is_query_expression<Expr>::value>::type>
+constexpr NotExpr<Expr> operator!(const Expr &expr) {
     return {expr};
+}
+
+// Specialization of the ! operator for regexes, since the $regex operator cannot appear inside a
+// $not operator.
+// Instead, create an expression of the form {field: {$not: /regex/}}
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, bsoncxx::types::b_regex> operator!(
+    const RegexExpr<NvpT> &regex_expr) {
+    return {regex_expr, "$not"};
 }
 
 /**
@@ -835,7 +883,7 @@ constexpr TextSearchExpr text(const char *search, const char *language, bool cas
 }
 
 /**
- * Creats a TextSearchExpr, with the $language parameter unspecified.
+ * Creates a TextSearchExpr, with the $language parameter unspecified.
  * See documentation for `TextSearchExpr text(const char *search, const char *language, bool
                                               case_sensitive, bool diacritic_sensitive)` above.
  */
@@ -845,8 +893,20 @@ constexpr TextSearchExpr text(const char *search, bool case_sensitive = false,
 }
 
 /**
+ * Creates a "free expression", that does not provide the name of a name-value pair. This is used
+ * for $elemMatch queries on scalar arrays, e.g. {arr: {$elemMatch: {$gt: 5}}}
+ * @param expr  The query expression to wrap, and make into a free expression. This should be a
+ * unary (i.e. not a list or binary) query expression.
+ * @returns     A FreeExpr that wraps the given expression.
+ */
+// TODO replace is_query_expression with is_unary_expression
+template <typename Expr, typename = typename std::enable_if<is_query_expression<Expr>::value>::type>
+constexpr FreeExpr<Expr> free_expr(const Expr &expr) {
+    return {expr};
+}
+
+/**
  * Arithmetic update operators.
- * TODO: allow stdx::optional arithmetic types to work with this as well.
  */
 
 template <

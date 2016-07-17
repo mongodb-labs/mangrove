@@ -65,7 +65,7 @@ auto is_iterable_impl(int)
                 void(*begin(std::declval<T &>())),                         // operator*
                 std::true_type{});
 
-template <typename T>
+template <typename>
 std::false_type is_iterable_impl(...);
 
 template <typename T>

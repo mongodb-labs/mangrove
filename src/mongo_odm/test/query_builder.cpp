@@ -428,6 +428,15 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         auto res = Bar::find_one(MONGO_ODM_KEY(Bar::w).mod(50, 5));
         REQUIRE(res);
         REQUIRE(res.value().w == 555);
+
+        // Not Expressions can contain Mod Expressions
+        res = Bar::find_one(!MONGO_ODM_KEY(Bar::w).mod(50, 5));
+        REQUIRE(res);
+        REQUIRE(res.value().w == 444);
+
+        res = Bar::find_one(!!MONGO_ODM_KEY(Bar::w).mod(50, 5));
+        REQUIRE(res);
+        REQUIRE(res.value().w == 555);
     }
 
     SECTION("Test $text operator.", "[mongo_odm::TextSearchExpr]") {
@@ -440,76 +449,107 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(res.value().z == "goodbye");
     }
 
-    SECTION("Test $regex operator.", "[mongo_odm::RegexExpr]") {
-        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::z).regex("o+d"));
+    SECTION("Test $regex operator.", "[mongo_odm::Nvp::regex]") {
+        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::z).regex("o+d", ""));
         REQUIRE(res);
         REQUIRE(res.value().z == "goodbye");
 
         res = Bar::find_one(MONGO_ODM_KEY(Bar::z).regex("O+D", "i"));
         REQUIRE(res);
         REQUIRE(res.value().z == "goodbye");
+
+        // Test $not with regex.
+        res = Bar::find_one(!MONGO_ODM_KEY(Bar::z).regex("O+D", "i"));
+        REQUIRE(res);
+        REQUIRE(res.value().z == "hello");
+
+        res = Bar::find_one(!!MONGO_ODM_KEY(Bar::z).regex("O+D", "i"));
+        REQUIRE(res);
+        REQUIRE(res.value().z == "goodbye");
     }
 
-    /* Array query operators */
-    SECTION("Test $size operator.", "[mongo_odm::Nvp::size]") {
-        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::arr).size(3));
-        REQUIRE(res);
-        REQUIRE(res.value().arr.size() == 3);
+    SECTION("Test array query operators") {
+        SECTION("Test $size operator.", "[mongo_odm::Nvp::size]") {
+            auto res = Bar::find_one(MONGO_ODM_KEY(Bar::arr).size(3));
+            REQUIRE(res);
+            REQUIRE(res.value().arr.size() == 3);
+        }
+
+        SECTION("Test $all operator.", "[mongo_odm::Nvp::all]") {
+            auto res = Bar::find_one(MONGO_ODM_KEY(Bar::arr).all(std::vector<int>{4, 5, 6}));
+            REQUIRE(res);
+            REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
+
+            res = Bar::find_one(MONGO_ODM_KEY(Bar::arr).all(std::vector<int>{4, 5, 6, 7}));
+            REQUIRE(!res);
+        }
+
+        SECTION("Test $elem_match operator.", "[mongo_odm::Nvp::elem_match]") {
+            auto res = Bar::find_one(MONGO_ODM_KEY(Bar::arr).elem_match(
+                (mongo_odm::free_expr(MONGO_ODM_KEY(Bar::arr).element() > 5),
+                 mongo_odm::free_expr(MONGO_ODM_KEY(Bar::arr).element() < 7))));
+            REQUIRE(res);
+
+            REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
+            res = Bar::find_one(MONGO_ODM_KEY(Bar::arr).elem_match(
+                mongo_odm::free_expr(MONGO_ODM_KEY(Bar::arr).element() > 6)));
+            REQUIRE(!res);
+        }
     }
 
-    /* Bitwise operations */
+    SECTION("Test bitwise query operators") {
+        SECTION("Test $bitsAllSet operators.", "[mongo_odm::Nvp::bits_all_set]") {
+            auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_all_set(10));
+            REQUIRE(res);
+            REQUIRE(res.value().x1 == 10);
 
-    SECTION("Test $bitsAllSet operators.", "[mongo_odm::Nvp::bits_all_set]") {
-        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_all_set(10));
-        REQUIRE(res);
-        REQUIRE(res.value().x1 == 10);
+            res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_all_set(1, 3));
+            REQUIRE(res);
+            REQUIRE(res.value().x1 == 10);
 
-        res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_all_set(1, 3));
-        REQUIRE(res);
-        REQUIRE(res.value().x1 == 10);
+            res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_all_set(1, 2, 3, 4));
+            REQUIRE(!res);
+        }
 
-        res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_all_set(1, 2, 3, 4));
-        REQUIRE(!res);
-    }
+        SECTION("Test $bitsAnySet operators.", "[mongo_odm::Nvp::bits_any_set]") {
+            auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_any_set(10));
+            REQUIRE(res);
+            REQUIRE((res.value().x1 | 10) > 0);
 
-    SECTION("Test $bitsAnySet operators.", "[mongo_odm::Nvp::bits_any_set]") {
-        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_any_set(10));
-        REQUIRE(res);
-        REQUIRE((res.value().x1 | 10) > 0);
+            res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_any_set(1, 3));
+            REQUIRE(res);
+            REQUIRE((res.value().x1 | (1 << 1) | (1 << 3)) > 0);
 
-        res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_any_set(1, 3));
-        REQUIRE(res);
-        REQUIRE((res.value().x1 | (1 << 1) | (1 << 3)) > 0);
+            res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_any_set(12, 13));
+            REQUIRE(!res);
+        }
 
-        res = Bar::find_one(MONGO_ODM_KEY(Bar::x1).bits_any_set(12, 13));
-        REQUIRE(!res);
-    }
+        SECTION("Test $bitsAllClear operators.", "[mongo_odm::Nvp::bits_all_clear]") {
+            auto res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_all_clear((~555) & 0xFFFF));
+            REQUIRE(res);
+            REQUIRE(res.value().w == 555);
 
-    SECTION("Test $bitsAllClear operators.", "[mongo_odm::Nvp::bits_all_set]") {
-        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_all_clear((~555) & 0xFFFF));
-        REQUIRE(res);
-        REQUIRE(res.value().w == 555);
+            res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_all_clear(2, 4, 6, 7, 8));
+            REQUIRE(res);
+            REQUIRE(res.value().w == 555);
 
-        res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_all_clear(2, 4, 6, 7, 8));
-        REQUIRE(res);
-        REQUIRE(res.value().w == 555);
+            res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_all_clear(0, 1, 2, 3, 4, 5, 6));
+            REQUIRE(!res);
+        }
 
-        res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_all_clear(0, 1, 2, 3, 4, 5, 6));
-        REQUIRE(!res);
-    }
+        SECTION("Test $bitsAnyClear operators.", "[mongo_odm::Nvp::bits_any_clear]") {
+            auto res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_any_clear(21));
+            REQUIRE(res);
+            REQUIRE((res.value().w & 21) < 21);
 
-    SECTION("Test $bitsAnyClear operators.", "[mongo_odm::Nvp::bits_any_set]") {
-        auto res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_any_clear(21));
-        REQUIRE(res);
-        REQUIRE((res.value().w & 21) < 21);
+            // These are the bits of the number "444", so the result must be not 444, i.e. 555.
+            res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_any_clear(2, 3, 4, 5, 7, 8));
+            REQUIRE(res);
+            REQUIRE(res.value().w == 555);
 
-        // These are the bits of the number "444", so the result must be not 444, i.e. 555.
-        res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_any_clear(2, 3, 4, 5, 7, 8));
-        REQUIRE(res);
-        REQUIRE(res.value().w == 555);
-
-        res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_any_clear(3, 5));
-        REQUIRE(!res);
+            res = Bar::find_one(MONGO_ODM_KEY(Bar::w).bits_any_clear(3, 5));
+            REQUIRE(!res);
+        }
     }
 }
 

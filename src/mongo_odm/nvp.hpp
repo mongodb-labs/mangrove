@@ -183,6 +183,23 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
     const Parent parent;
 };
 
+template <typename T>
+class FreeNvp : public NvpCRTP<FreeNvp<T>, T> {
+   public:
+    // In case this corresponds to an optional type, store the underlying type.
+    using no_opt_type = remove_optional_t<T>;
+    using type = T;
+
+    constexpr UpdateExpr<FreeNvp<T>> operator=(const no_opt_type& val) const {
+        return {*this, val, "$set"};
+    }
+
+    // TODO This shouldn't have a name, but it needs to work with Expressions when building queries.
+    std::string get_name() const {
+        return "";
+    }
+};
+
 /**
  * A CRTP base class that contains member functions for name-value pairs.
  * These functions are identical between Nvp<...> and NvpChild<...>, but their return types are
@@ -248,48 +265,57 @@ class NvpCRTP {
      * @param remainder   The remainder after dividing a value by `divisor`
      * @returns A ModExpr representing this query.
      */
-    template <typename U = T, typename = typename std::enable_if<
-                                  std::is_arithmetic<remove_optional_t<U>>::value>::type>
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<std::is_arithmetic<U>::value>::type>
     constexpr ModExpr<NvpT> mod(const int& divisor, const int& remainder) const {
         return {*static_cast<const NvpT*>(this), divisor, remainder};
     }
 
     /**
-     * Creates a RegexExpr that represents a query with a $regex operator.
+     * Creates a comparison expression that represents a query with a $regex operator.
      * Such a query only works for string fields.
      * @param regex     The regex to check against.
      * @param options   Options to pass to the regex.
      */
-    template <typename U = T,
-              typename = typename std::enable_if<is_string<remove_optional_t<U>>::value>::type>
-    constexpr RegexExpr<NvpT> regex(const char* regex, const char* options = "") const {
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<is_string<U>::value>::type>
+    constexpr RegexExpr<NvpT> regex(const char* regex, const char* options) const {
         return {*static_cast<const NvpT*>(this), regex, options};
     }
 
     /* Array Query operators */
 
-    template <typename U = T, typename = typename std::enable_if<
-                                  is_iterable_not_string<remove_optional_t<U>>::value>::type>
-    constexpr ComparisonExpr<NvpT, std::int64_t> size(const std::int64_t& n) const {
-        return {*static_cast<const NvpT*>(this), n, "$size"};
-    }
-
-    template <typename Iterable, typename = enable_if_matching_iterable_t<Iterable>, typename U = T,
-              typename = typename std::enable_if<
-                  is_iterable_not_string<remove_optional_t<U>>::value>::type>
+    template <typename Iterable, typename = enable_if_matching_iterable_t<Iterable>, typename U,
+              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr ComparisonExpr<NvpT, Iterable> all(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, "$all"};
     }
 
-    template <typename List,
-              typename = typename std::enable_if<is_query_expression<List>::value>::type,
-              typename U = T, typename = typename std::enable_if<
-                                  is_iterable_not_string<remove_optional_t<U>>::value>::type>
-    constexpr ComparisonExpr<NvpT, List> elem_match(const List& queries) const {
+    template <typename Expr,
+              typename = typename std::enable_if<is_query_expression<Expr>::value>::type,
+              typename U = no_opt_type,
+              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
+    constexpr ComparisonExpr<NvpT, Expr> elem_match(const Expr& queries) const {
         return {*static_cast<const NvpT*>(this), queries, "$elemMatch"};
     }
 
-    // bitwise queryies, enabled only for integral types.
+    /**
+     * Constructs a nameless name-value-pair that corresponds to an element in a scalar array, if
+     * this field is an array. This is used to create expressions with $elemMatch.
+     */
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
+    constexpr FreeNvp<iterable_value<no_opt_type>> element() const {
+        return {};
+    }
+
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
+    constexpr ComparisonExpr<NvpT, std::int64_t> size(const std::int64_t& n) const {
+        return {*static_cast<const NvpT*>(this), n, "$size"};
+    }
+
+    /* bitwise queryies, enabled only for integral types. */
 
     /**
      * Creates a query that uses the $bitsAllSet operator to check a numerical field with a bitmask.
@@ -297,8 +323,8 @@ class NvpCRTP {
      * @param bitmask - A bitmask to pass to the $bitsAllSet operator
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = T, typename = typename std::enable_if<
-                                  std::is_integral<remove_optional_t<U>>::value>::type>
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<std::is_integral<U>::value>::type>
     constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_set(const std::uint64_t& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAllSet"};
     }
@@ -312,8 +338,8 @@ class NvpCRTP {
      * @param positions...  Variadic argument containing further bit positions.
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = T, typename = typename std::enable_if<
-                                  std::is_integral<remove_optional_t<U>>::value>::type,
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<std::is_integral<U>::value>::type,
               typename... Args>
     constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_set(std::uint64_t pos1,
                                                               std::uint64_t pos2,
@@ -328,8 +354,8 @@ class NvpCRTP {
      * @param bitmask - A bitmask to pass to the $bitsAnySet operator
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = T, typename = typename std::enable_if<
-                                  std::is_integral<remove_optional_t<U>>::value>::type>
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<std::is_integral<U>::value>::type>
     constexpr ComparisonExpr<NvpT, std::int64_t> bits_any_set(const std::uint64_t& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAnySet"};
     }
@@ -343,8 +369,8 @@ class NvpCRTP {
      * @param positions...  Variadic argument containing further bit positions.
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = T, typename = typename std::enable_if<
-                                  std::is_integral<remove_optional_t<U>>::value>::type,
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<std::is_integral<U>::value>::type,
               typename... Args>
     constexpr ComparisonExpr<NvpT, std::int64_t> bits_any_set(std::uint64_t pos1,
                                                               std::uint64_t pos2,
@@ -360,8 +386,8 @@ class NvpCRTP {
      * @param bitmask - A bitmask to pass to the $bitsAllClear operator
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = T, typename = typename std::enable_if<
-                                  std::is_integral<remove_optional_t<U>>::value>::type>
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<std::is_integral<U>::value>::type>
     constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_clear(
         const std::uint64_t& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAllClear"};
@@ -376,8 +402,8 @@ class NvpCRTP {
      * @param positions...  Variadic argument containing further bit positions.
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = T, typename = typename std::enable_if<
-                                  std::is_integral<remove_optional_t<U>>::value>::type,
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<std::is_integral<U>::value>::type,
               typename... Args>
     constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_clear(std::uint64_t pos1,
                                                                 std::uint64_t pos2,
@@ -393,8 +419,8 @@ class NvpCRTP {
      * @param bitmask - A bitmask to pass to the $bitsAnyClear operator
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = T, typename = typename std::enable_if<
-                                  std::is_integral<remove_optional_t<U>>::value>::type>
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<std::is_integral<U>::value>::type>
     constexpr ComparisonExpr<NvpT, std::int64_t> bits_any_clear(
         const std::uint64_t& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAnyClear"};
@@ -409,8 +435,8 @@ class NvpCRTP {
      * @param positions...  Variadic argument containing further bit positions.
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = T, typename = typename std::enable_if<
-                                  std::is_integral<remove_optional_t<U>>::value>::type,
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<std::is_integral<U>::value>::type,
               typename... Args>
     constexpr ComparisonExpr<NvpT, std::int64_t> bits_any_clear(std::uint64_t pos1,
                                                                 std::uint64_t pos2,
@@ -419,6 +445,23 @@ class NvpCRTP {
                 "$bitsAnyClear"};
     }
 };
+
+/**
+ * A type trait struct that inherits from std::true_type
+ * if the given type parameter is a name-value pair,
+ * and from std::false_type otherwise.
+ */
+template <typename>
+struct is_nvp_type : public std::false_type {};
+
+template <typename Base, typename T>
+struct is_nvp_type<Nvp<Base, T>> : public std::true_type {};
+
+template <typename Base, typename T, typename Parent>
+struct is_nvp_type<NvpChild<Base, T, Parent>> : public std::true_type {};
+
+template <typename T>
+struct is_nvp_type<FreeNvp<T>> : public std::true_type {};
 
 /* Create a name-value pair from a object member and its name */
 template <typename Base, typename T>
@@ -435,20 +478,6 @@ NvpChild<Base, T, Parent> constexpr makeNvpWithParent(const Nvp<Base, T>& child,
                                                       const Parent& parent) {
     return NvpChild<Base, T, Parent>(child.t, child.name, parent);
 }
-
-/**
- * A type trait struct that inherits from std::true_type
- * if the given type parameter is a name-value pair,
- * and from std::false_type otherwise.
- */
-template <typename>
-struct is_nvp_type : public std::false_type {};
-
-template <typename Base, typename T>
-struct is_nvp_type<Nvp<Base, T>> : public std::true_type {};
-
-template <typename Base, typename T, typename Parent>
-struct is_nvp_type<NvpChild<Base, T, Parent>> : public std::true_type {};
 
 /**
  * hasField determines whether a type Base has a member of the given type T as
