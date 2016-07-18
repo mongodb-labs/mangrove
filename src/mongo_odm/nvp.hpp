@@ -482,8 +482,8 @@ class NvpCRTP {
                 "$bitsAnyClear"};
     }
 
-    constexpr UpdateExpr<FreeNvp<T>, no_opt_type> set_on_insert(const no_opt_type& val) const {
-        return {*this, val, "$setOnInsert"};
+    constexpr UpdateExpr<NvpT, no_opt_type> set_on_insert(const no_opt_type& val) const {
+        return {*static_cast<const NvpT*>(this), val, "$setOnInsert"};
     }
 
     /* Update operators */

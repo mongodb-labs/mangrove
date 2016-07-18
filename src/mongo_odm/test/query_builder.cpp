@@ -762,6 +762,67 @@ TEST_CASE("Update Builder", "mongo_odm::UpdateExpr") {
         auto bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
         REQUIRE(bar);
         int initial_x1 = bar->x1;
+
+        // Bitwise OR
+        auto res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555, MONGO_ODM_KEY(Bar::x1) |= 7);
+        REQUIRE(res);
+        REQUIRE(res->modified_count() == 1);
+
+        bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
+        REQUIRE(bar);
+        REQUIRE(bar->x1 == (initial_x1 | 7));
+
+        // Bitwise AND
+        initial_x1 = bar->x1;
+        res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555, MONGO_ODM_KEY(Bar::x1) &= 20);
+        REQUIRE(res);
+        REQUIRE(res->modified_count() == 1);
+
+        bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
+        REQUIRE(bar);
+        REQUIRE(bar->x1 == (initial_x1 & 20));
+
+        // Bitwise XOR
+        initial_x1 = bar->x1;
+        res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555, MONGO_ODM_KEY(Bar::x1) ^= initial_x1);
+        REQUIRE(res);
+        REQUIRE(res->modified_count() == 1);
+
+        bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
+        REQUIRE(bar);
+        REQUIRE(bar->x1 == 0);
+    }
+
+    SECTION("Test $setOnInsert operator.", "[mongo_odm::Nvp::set_on_insert]") {
+        auto opts = mongocxx::options::update{};
+        opts.upsert(true);
+
+        // This should match an existing document, and thus not modify Bar::z.
+        auto res =
+            coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
+                            MONGO_ODM_KEY(Bar::z).set_on_insert("This was set on insert!"), opts);
+        REQUIRE(res);
+        REQUIRE(!res->upserted_id());
+        auto bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
+        REQUIRE(bar);
+        REQUIRE(bar->z != "This was set on insert!");
+
+        // This should create a new document, and set Bar::z to the new value.
+        coll.delete_many(MONGO_ODM_KEY(Bar::w) == -999);
+        res = coll.update_one(
+            MONGO_ODM_KEY(Bar::w) == -999,
+            (MONGO_ODM_KEY(Bar::x1) = bar->x1, MONGO_ODM_KEY(Bar::x2) = bar->x2.value(),
+             MONGO_ODM_KEY(Bar::y) = bar->y,
+             MONGO_ODM_KEY(Bar::z).set_on_insert("This was set on insert!"),
+             MONGO_ODM_KEY(Bar::p) = bar->p, MONGO_ODM_KEY(Bar::arr) = bar->arr,
+             MONGO_ODM_KEY(Bar::pts) = bar->pts, MONGO_ODM_KEY(Bar::t) = bar->t),
+            opts);
+        REQUIRE(res);
+        REQUIRE(res->upserted_id());
+
+        bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == -999);
+        REQUIRE(bar);
+        REQUIRE(bar->z == "This was set on insert!");
     }
 
     SECTION("Test $unset operator.", "[mongo_odm::Nvp::unset]") {
