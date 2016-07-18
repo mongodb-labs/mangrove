@@ -21,6 +21,8 @@
 #include <tuple>
 #include <type_traits>
 
+#include <bsoncxx/types.hpp>
+
 #include <mongo_odm/util.hpp>
 
 #define PP_NARG(...) PP_NARG_(__VA_ARGS__, PP_RSEQ_N())
@@ -107,11 +109,17 @@ class ModExpr;
 template <typename NvpT>
 class RegexExpr;
 
-template <typename Parent>
+template <typename NvpT, typename U>
 class UpdateExpr;
+
+template <typename NvpT, typename U>
+class UpdateValueExpr;
 
 template <typename NvpT>
 class UnsetExpr;
+
+template <typename NvpT>
+class CurrentDateExpr;
 
 // Forward declarations for Expression type trait structs
 template <typename>
@@ -138,7 +146,7 @@ class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
     constexpr Nvp(T Base::*t, const char* name) : t(t), name(name) {
     }
 
-    constexpr UpdateExpr<Nvp<Base, T>> operator=(const no_opt_type& val) const {
+    constexpr UpdateExpr<Nvp<Base, T>, no_opt_type> operator=(const no_opt_type& val) const {
         return {*this, val, "$set"};
     }
 
@@ -170,7 +178,8 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
         : t(t), name(name), parent(parent) {
     }
 
-    constexpr UpdateExpr<NvpChild<Base, T, Parent>> operator=(const no_opt_type& val) const {
+    constexpr UpdateExpr<NvpChild<Base, T, Parent>, no_opt_type> operator=(
+        const no_opt_type& val) const {
         return {*this, val, "$set"};
     }
 
@@ -193,7 +202,7 @@ class FreeNvp : public NvpCRTP<FreeNvp<T>, T> {
     using no_opt_type = remove_optional_t<T>;
     using type = T;
 
-    constexpr UpdateExpr<FreeNvp<T>> operator=(const no_opt_type& val) const {
+    constexpr UpdateExpr<FreeNvp<T>, no_opt_type> operator=(const no_opt_type& val) const {
         return {*this, val, "$set"};
     }
 
@@ -217,10 +226,11 @@ class NvpCRTP {
     // Type trait that checks if the given iterable class contains the same value type as either
     // a) this Nvp's type, or
     // b) this Nvp's value type, is this Nvp is also an iterable.
-    template <typename Iterable>
+    template <typename Iterable, typename Default = void>
     using enable_if_matching_iterable_t = typename std::enable_if<
         is_iterable_not_string<Iterable>::value &&
-        std::is_convertible<iterable_value<Iterable>, iterable_value<no_opt_type>>::value>::type;
+            std::is_convertible<iterable_value<Iterable>, iterable_value<no_opt_type>>::value,
+        Default>::type;
 
     template <typename U>
     constexpr NvpChild<T, U, NvpT> operator->*(const Nvp<T, U>& child) const {
@@ -454,17 +464,66 @@ class NvpCRTP {
     /**
      * Creates an expression that unsets the current field. The field must be of optional type.
      */
+
+    constexpr UpdateExpr<FreeNvp<T>, no_opt_type> set_on_insert(const no_opt_type& val) const {
+        return {*this, val, "$setOnInsert"};
+    }
+
     template <typename U = T, typename = typename std::enable_if<is_optional<U>::value>::type>
     constexpr UnsetExpr<NvpT> unset() {
         return {*static_cast<const NvpT*>(this)};
     }
 
-    constexpr UpdateExpr<NvpT> min(const no_opt_type& val) {
+    constexpr UpdateExpr<NvpT, no_opt_type> min(const no_opt_type& val) {
         return {*static_cast<const NvpT*>(this), val, "$min"};
     }
 
-    constexpr UpdateExpr<NvpT> max(const no_opt_type& val) {
+    constexpr UpdateExpr<NvpT, no_opt_type> max(const no_opt_type& val) {
         return {*static_cast<const NvpT*>(this), val, "$max"};
+    }
+
+    template <typename U = no_opt_type>
+    constexpr typename std::enable_if<is_date<U>::value, CurrentDateExpr<NvpT>>::type
+    current_date() {
+        return {*static_cast<const NvpT*>(this), true};
+    }
+
+    template <typename U = no_opt_type>
+    constexpr typename std::enable_if<std::is_same<bsoncxx::types::b_timestamp, U>::value,
+                                      CurrentDateExpr<NvpT>>::type
+    current_date() {
+        return {*static_cast<const NvpT*>(this), false};
+    }
+
+    /* Array update operators */
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
+    constexpr UpdateValueExpr<NvpT, int> pop(bool last) {
+        return {*static_cast<const NvpT*>(this), last ? 1 : -1, "$pop"};
+    }
+
+    // pull by value
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
+    constexpr UpdateExpr<NvpT, no_opt_type> pull(const no_opt_type& val) {
+        return {*static_cast<const NvpT*>(this), val, "$pull"};
+    }
+
+    // pull by query
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
+              typename Expr>
+    constexpr
+        typename std::enable_if<is_query_expression<Expr>::value, UpdateExpr<NvpT, Expr>>::type
+        pull(const Expr& expr) {
+        return {*static_cast<const NvpT*>(this), expr, "$pull"};
+    }
+
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
+              typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
+    constexpr UpdateExpr<NvpT, Iterable> pullAll(const Iterable& iter) {
+        return {*static_cast<const NvpT*>(this), iter, "$pullAll"};
     }
 };
 

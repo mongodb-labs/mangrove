@@ -16,9 +16,13 @@
 
 #include <mongo_odm/config/prelude.hpp>
 
+#include <chrono>
+#include <ctime>
+#include <string>
 #include <type_traits>
 
 #include <bsoncxx/stdx/optional.hpp>
+#include <bsoncxx/types.hpp>
 
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
@@ -124,6 +128,26 @@ template <typename... Args>
 constexpr std::uint64_t bit_positions_to_mask(std::uint64_t pos, Args... positions) {
     return (1 << pos) | bit_positions_to_mask(positions...);
 }
+
+/**
+ * A type traits struct that determines whether a certain type stores a date. This includes the C
+ * time_t, <chrono> time types, and the BSON b_date type.
+ */
+
+template <typename T>
+struct is_date : public std::false_type {};
+
+template <typename Rep, typename Period>
+struct is_date<std::chrono::duration<Rep, Period>> : public std::true_type {};
+
+template <typename Clock, typename Duration>
+struct is_date<std::chrono::time_point<Clock, Duration>> : public std::true_type {};
+
+template <>
+struct is_date<std::time_t> : public std::true_type {};
+
+template <>
+struct is_date<bsoncxx::types::b_date> : public std::true_type {};
 
 MONGO_ODM_INLINE_NAMESPACE_END
 }  // namespace bson_mapper

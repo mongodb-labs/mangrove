@@ -601,6 +601,42 @@ class BooleanListExpr {
     const char *_op;
 };
 
+template <typename Expr>
+class IsolatedExpr {
+   public:
+    constexpr IsolatedExpr(const Expr &expr) : _expr(expr) {
+    }
+
+    /**
+     * Appends this query to a BSON core builder, with $isolated set as an extra field.
+     *
+     * @param builder A basic BSON core builder.
+     * @param Whether to wrap this expression inside a document.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+
+        _expr.append_to_bson(builder, false);
+        builder.key_view("$isolated");
+        builder.append(1);
+
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return {builder.extract_document()};
+    }
+
+   private:
+    const Expr _expr;
+};
+
 /**
  * Represents an update operator that modifies a certain elements.
  * This creates BSON expressions of the form "$op: {field: value}",
@@ -609,10 +645,10 @@ class BooleanListExpr {
  * The value should be convertible to the type of the name-value pair. (For an optional field, the
  * type wrapped by the stdx::optional.)
  */
-template <typename NvpT>
+template <typename NvpT, typename U>
 class UpdateExpr {
    public:
-    constexpr UpdateExpr(const NvpT &nvp, const typename NvpT::no_opt_type &val, const char *op)
+    constexpr UpdateExpr(const NvpT &nvp, const U &val, const char *op)
         : _nvp(nvp), _val(val), _op(op) {
     }
 
@@ -643,19 +679,19 @@ class UpdateExpr {
 
    private:
     NvpT _nvp;
-    const typename NvpT::no_opt_type &_val;
+    const U &_val;
     const char *_op;
 };
 
-template <typename NvpT>
-class UpdateValueExpr : public UpdateExpr<NvpT> {
+template <typename NvpT, typename U>
+class UpdateValueExpr : public UpdateExpr<NvpT, U> {
    public:
-    constexpr UpdateValueExpr(NvpT nvp, typename NvpT::no_opt_type value, const char *op)
-        : UpdateExpr<NvpT>(nvp, _val, op), _val(value) {
+    constexpr UpdateValueExpr(NvpT nvp, U value, const char *op)
+        : UpdateExpr<NvpT, U>(nvp, _val, op), _val(value) {
     }
 
    private:
-    const typename NvpT::no_opt_type _val;
+    const U _val;
 };
 
 /**
@@ -694,6 +730,93 @@ class UnsetExpr {
 
    private:
     NvpT _nvp;
+};
+
+template <typename NvpT>
+class CurrentDateExpr {
+   public:
+    constexpr CurrentDateExpr(const NvpT &nvp, bool is_date) : _nvp(nvp), _is_date(is_date) {
+    }
+
+    /**
+     * Appends this query to a BSON core builder as an expression
+     * '$currentDate: {field: {$type "timestamp|date"}}'
+     * @param builder A basic BSON core builder.
+     * @param Whether to wrap this expression inside a document.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+        builder.key_view("$currentDate");
+        builder.open_document();
+        builder.key_view(_nvp.get_name());
+
+        // type specification
+        builder.open_document();
+        builder.key_view("$type");
+        builder.append(_is_date ? "date" : "timestamp");
+        builder.close_document();
+
+        builder.close_document();
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return {builder.extract_document()};
+    }
+
+   private:
+    NvpT _nvp;
+    const bool _is_date;
+};
+
+template <typename NvpT, typename Integer>
+class BitUpdateExpr {
+   public:
+    constexpr BitUpdateExpr(const NvpT &nvp, Integer mask, const char *op)
+        : _nvp(nvp), _mask(mask), _operation(op){};
+
+    /**
+     * Appends this query to a BSON core builder as an expression
+     * '$bit: { <field>: { <and|or|xor>: <int> } }'
+     * @param builder A basic BSON core builder.
+     * @param Whether to wrap this expression inside a document.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+        builder.key_view("$bit");
+        builder.open_document();
+        builder.key_view(_nvp.get_name());
+
+        // bit operation
+        builder.open_document();
+        builder.key_view(_operation);
+        builder.append(_mask);
+        builder.close_document();
+
+        builder.close_document();
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return {builder.extract_document()};
+    }
+
+   private:
+    NvpT _nvp;
+    const Integer _mask;
+    const char *_operation;
 };
 
 /* A templated struct that holds a boolean value.
@@ -740,11 +863,17 @@ struct is_query_expression<BooleanListExpr<List>> : public std::true_type {};
 template <typename>
 struct is_update_expression : public std::false_type {};
 
-template <typename NvpT>
-struct is_update_expression<UpdateExpr<NvpT>> : public std::true_type {};
+template <typename NvpT, typename U>
+struct is_update_expression<UpdateExpr<NvpT, U>> : public std::true_type {};
+
+template <typename NvpT, typename U>
+struct is_update_expression<UpdateValueExpr<NvpT, U>> : public std::true_type {};
 
 template <typename NvpT>
-struct is_update_expression<UpdateValueExpr<NvpT>> : public std::true_type {};
+struct is_update_expression<UnsetExpr<NvpT>> : public std::true_type {};
+
+template <typename NvpT>
+struct is_update_expression<CurrentDateExpr<NvpT>> : public std::true_type {};
 
 template <typename Head, typename Tail>
 struct is_update_expression<ExpressionList<Head, Tail>> {
@@ -946,56 +1075,91 @@ constexpr FreeExpr<Expr> free_expr(const Expr &expr) {
 }
 
 /**
+ * Creates a query expression with an isolation level set.
+ */
+template <typename Expr, typename = typename std::enable_if<is_query_expression<Expr>::value>::type>
+constexpr IsolatedExpr<Expr> isolated(const Expr &expr) {
+    return {expr};
+}
+
+/**
  * Arithmetic update operators.
  */
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
     typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
-constexpr UpdateExpr<NvpT> operator+=(const NvpT &nvp, const typename NvpT::no_opt_type &val) {
+constexpr UpdateExpr<NvpT, typename NvpT::no_opt_type> operator+=(
+    const NvpT &nvp, const typename NvpT::no_opt_type &val) {
     return {nvp, val, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
     typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
-constexpr UpdateValueExpr<NvpT> operator-=(const NvpT &nvp, const typename NvpT::no_opt_type &val) {
+constexpr UpdateValueExpr<NvpT, typename NvpT::no_opt_type> operator-=(
+    const NvpT &nvp, const typename NvpT::no_opt_type &val) {
     return {nvp, -val, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
     typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
-constexpr UpdateValueExpr<NvpT> operator++(const NvpT &nvp) {
+constexpr UpdateValueExpr<NvpT, typename NvpT::no_opt_type> operator++(const NvpT &nvp) {
     return {nvp, 1, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
     typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
-constexpr UpdateValueExpr<NvpT> operator++(const NvpT &nvp, int) {
+constexpr UpdateValueExpr<NvpT, typename NvpT::no_opt_type> operator++(const NvpT &nvp, int) {
     return {nvp, 1, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
     typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
-constexpr UpdateValueExpr<NvpT> operator--(const NvpT &nvp) {
+constexpr UpdateValueExpr<NvpT, typename NvpT::no_opt_type> operator--(const NvpT &nvp) {
     return {nvp, -1, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
     typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
-constexpr UpdateValueExpr<NvpT> operator--(const NvpT &nvp, int) {
+constexpr UpdateValueExpr<NvpT, typename NvpT::no_opt_type> operator--(const NvpT &nvp, int) {
     return {nvp, -1, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
     typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
-constexpr UpdateExpr<NvpT> operator*=(const NvpT &nvp, const typename NvpT::no_opt_type &val) {
+constexpr UpdateExpr<NvpT, typename NvpT::no_opt_type> operator*=(
+    const NvpT &nvp, const typename NvpT::no_opt_type &val) {
     return {nvp, val, "$mul"};
+}
+
+template <
+    typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_integral<typename NvpT::no_opt_type>::value>::type>
+constexpr BitUpdateExpr<NvpT, typename NvpT::no_opt_type> operator&=(
+    const NvpT &nvp, const typename NvpT::no_opt_type &mask) {
+    return {nvp, mask, "and"};
+}
+
+template <
+    typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_integral<typename NvpT::no_opt_type>::value>::type>
+constexpr BitUpdateExpr<NvpT, typename NvpT::no_opt_type> operator|=(
+    const NvpT &nvp, const typename NvpT::no_opt_type &mask) {
+    return {nvp, mask, "or"};
+}
+
+template <
+    typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
+    typename = typename std::enable_if<std::is_integral<typename NvpT::no_opt_type>::value>::type>
+constexpr BitUpdateExpr<NvpT, typename NvpT::no_opt_type> operator^=(
+    const NvpT &nvp, const typename NvpT::no_opt_type &mask) {
+    return {nvp, mask, "xor"};
 }
 
 MONGO_ODM_INLINE_NAMESPACE_END
