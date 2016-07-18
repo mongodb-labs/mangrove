@@ -285,12 +285,15 @@ class NvpCRTP {
 
     /* Array Query operators */
 
-    template <typename Iterable, typename = enable_if_matching_iterable_t<Iterable>, typename U,
+    template <typename Iterable, typename = enable_if_matching_iterable_t<Iterable>,
+              typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr ComparisonExpr<NvpT, Iterable> all(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, "$all"};
     }
 
+    // TODO type-checking that the given queries correspond to children of the current field's
+    // array.
     template <typename Expr,
               typename = typename std::enable_if<is_query_expression<Expr>::value>::type,
               typename U = no_opt_type,

@@ -39,7 +39,7 @@ class Point {
     int y;
     MONGO_ODM_MAKE_KEYS(Point, MONGO_ODM_NVP(x), MONGO_ODM_NVP(y));
 
-    bool operator==(const Point& rhs) {
+    bool operator==(const Point& rhs) const {
         return (x == rhs.x) && (y == rhs.y);
     }
 };
@@ -54,13 +54,14 @@ class Bar : public mongo_odm::model<Bar> {
     std::string z;
     Point p;
     std::vector<int> arr;
+    std::vector<Point> pts;
     MONGO_ODM_MAKE_KEYS_MODEL(Bar, MONGO_ODM_NVP(w), MONGO_ODM_NVP(x1), MONGO_ODM_NVP(x2),
                               MONGO_ODM_NVP(y), MONGO_ODM_NVP(z), MONGO_ODM_NVP(p),
-                              MONGO_ODM_NVP(arr));
+                              MONGO_ODM_NVP(arr), MONGO_ODM_NVP(pts));
 
     Bar(int64_t w, int x1, stdx::optional<int> x2, bool y, std::string z, Point p,
-        std::vector<int> arr)
-        : w(w), x1(x1), x2(x2), y(y), z(z), p(p), arr(arr) {
+        std::vector<int> arr, std::vector<Point> pts)
+        : w(w), x1(x1), x2(x2), y(y), z(z), p(p), arr(arr), pts(pts) {
         _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
     }
 
@@ -145,9 +146,9 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     coll.delete_many({});
 
     Bar::setCollection(coll);
-    Bar(444, 1, 2, false, "hello", {0, 0}, {4, 5, 6}).save();
-    Bar(444, 1, 3, false, "hello", {0, 1}, {4, 5, 6}).save();
-    Bar(555, 10, 2, true, "goodbye", {1, 0}, {4, 5, 6}).save();
+    Bar(444, 1, 2, false, "hello", {0, 0}, {4, 5, 6}, {{1, 2}, {3, 4}}).save();
+    Bar(444, 1, 3, false, "hello", {0, 1}, {4, 5, 6}, {{5, 6}, {7, 8}}).save();
+    Bar(555, 10, 2, true, "goodbye", {1, 0}, {4, 5, 6}, {{9, 10}, {11, 12}}).save();
 
     SECTION("Test == comparison.", "[mongo_odm::ComparisonExpr]") {
         auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x1) == 1);
@@ -173,10 +174,15 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(res);
         REQUIRE((res.value().p == Point{0, 1}));
 
-        // array (vector) member test
+        // scalar array (vector) member test
         res = Bar::find_one(MONGO_ODM_KEY(Bar::arr) == std::vector<int>{4, 5, 6});
         REQUIRE(res);
         REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
+
+        // document array (vector) member test
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::pts) == std::vector<Point>{{1, 2}, {3, 4}});
+        REQUIRE(res);
+        REQUIRE((res.value().pts == std::vector<Point>{{1, 2}, {3, 4}}));
     }
 
     SECTION("Test > comparison.", "[mongo_odm::ComparisonExpr]") {
@@ -204,10 +210,15 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(res);
         REQUIRE((res.value().p == Point{1, 0}));
 
-        // array (vector) member test (lexicographical comparison)
+        // scalar array (vector) member test (lexicographical comparison)
         res = Bar::find_one(MONGO_ODM_KEY(Bar::arr) > std::vector<int>{1, 2, 3});
         REQUIRE(res);
         REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
+
+        // document array (vector) member test
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::pts) > std::vector<Point>{{5, 6}, {7, 8}});
+        REQUIRE(res);
+        REQUIRE((res.value().pts == std::vector<Point>{{9, 10}, {11, 12}}));
     }
 
     SECTION("Test >= comparison.", "[mongo_odm::ComparisonExpr]") {
@@ -306,6 +317,11 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(!(MONGO_ODM_KEY(Bar::arr) == std::vector<int>{1, 5, 6}));
         REQUIRE(res);
         REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
+
+        // document array (vector) member test
+        res = Bar::find_one(!(MONGO_ODM_KEY(Bar::pts) == std::vector<Point>{{1, 2}, {3, 4}}));
+        REQUIRE(res);
+        REQUIRE((res.value().pts != std::vector<Point>{{1, 2}, {3, 4}}));
     }
 
     SECTION("Test $nin and $in operators.", "[mongo_odm::InArrayExpr]") {
@@ -345,10 +361,15 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(res);
         REQUIRE((res.value().p == Point{0, 1}));
 
-        // array (vector) member test
+        // scalar array (vector) member test
         res = Bar::find_one(MONGO_ODM_KEY(Bar::arr).in(std::vector<int>{1, 2, 6}));
         REQUIRE(res);
         REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
+
+        // document array (vector) member test
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::pts).in(std::vector<Point>{{1, 2}, {3, 4}}));
+        REQUIRE(res);
+        REQUIRE((res.value().pts == std::vector<Point>{{1, 2}, {3, 4}}));
     }
 
     SECTION("Test expression list.", "[mongo_odm::ExpressionList]") {
@@ -418,7 +439,7 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         auto count = coll.count(MONGO_ODM_KEY(Bar::x2).exists(true));
         REQUIRE(count == 3);
 
-        Bar(444, 1, stdx::nullopt, false, "hello", {0, 0}, {4, 5, 6}).save();
+        Bar(444, 1, stdx::nullopt, false, "hello", {0, 0}, {4, 5, 6}, {{1, 2}}).save();
         auto res = Bar::find_one(MONGO_ODM_KEY(Bar::x2).exists(false));
         REQUIRE(res);
         REQUIRE(!res.value().x2);
@@ -485,15 +506,30 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         }
 
         SECTION("Test $elem_match operator.", "[mongo_odm::Nvp::elem_match]") {
+            // Test scalar array
             auto res = Bar::find_one(MONGO_ODM_KEY(Bar::arr).elem_match(
                 (mongo_odm::free_expr(MONGO_ODM_KEY(Bar::arr).element() > 5),
                  mongo_odm::free_expr(MONGO_ODM_KEY(Bar::arr).element() < 7))));
             REQUIRE(res);
-
             REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
-            res = Bar::find_one(MONGO_ODM_KEY(Bar::arr).elem_match(
+
+            // Test scalar array with $not
+            res = Bar::find_one(!MONGO_ODM_KEY(Bar::arr).elem_match(
                 mongo_odm::free_expr(MONGO_ODM_KEY(Bar::arr).element() > 6)));
-            REQUIRE(!res);
+            REQUIRE(res);
+            REQUIRE((res.value().arr == std::vector<int>{4, 5, 6}));
+
+            // Test document array
+            res = Bar::find_one(MONGO_ODM_KEY(Bar::pts).elem_match(
+                (MONGO_ODM_KEY(Point::x) > 7, MONGO_ODM_KEY(Point::y) > 8)));
+            REQUIRE(res);
+            REQUIRE((res.value().pts == std::vector<Point>{{9, 10}, {11, 12}}));
+
+            // Test document array with $not
+            res = Bar::find_one(!MONGO_ODM_KEY(Bar::pts).elem_match(
+                (MONGO_ODM_KEY(Point::x) <= 7, MONGO_ODM_KEY(Point::y) <= 8)));
+            REQUIRE(res);
+            REQUIRE((res.value().pts == std::vector<Point>{{9, 10}, {11, 12}}));
         }
     }
 
@@ -574,9 +610,9 @@ TEST_CASE("Update Builder", "mongo_odm::UpdateExpr") {
     coll.delete_many({});
 
     Bar::setCollection(coll);
-    Bar(444, 1, 2, false, "hello", {0, 0}, {4, 5, 6}).save();
-    Bar(444, 1, 3, false, "hello", {0, 1}, {4, 5, 6}).save();
-    Bar(555, 10, 2, true, "goodbye", {1, 0}, {4, 5, 6}).save();
+    Bar(444, 1, 2, false, "hello", {0, 0}, {4, 5, 6}, {{1, 2}, {3, 4}}).save();
+    Bar(444, 1, 3, false, "hello", {0, 1}, {4, 5, 6}, {{5, 6}, {7, 8}}).save();
+    Bar(555, 10, 2, true, "goodbye", {1, 0}, {4, 5, 6}, {{9, 10}, {11, 12}}).save();
 
     SECTION("Test = assignment.", "[mongo_odm::UpdateExpr]") {
         auto res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
