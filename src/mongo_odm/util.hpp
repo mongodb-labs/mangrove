@@ -130,8 +130,9 @@ constexpr std::uint64_t bit_positions_to_mask(std::uint64_t pos, Args... positio
 }
 
 /**
- * A type traits struct that determines whether a certain type stores a date. This includes the C
- * time_t, <chrono> time types, and the BSON b_date type.
+ * A type traits struct that determines whether a certain type stores a date. This includes <chrono>
+ * time types, and the BSON b_date type. time_t is not included due to potential problems with
+ * conversion to BSON.
  */
 
 template <typename T>
@@ -142,9 +143,6 @@ struct is_date<std::chrono::duration<Rep, Period>> : public std::true_type {};
 
 template <typename Clock, typename Duration>
 struct is_date<std::chrono::time_point<Clock, Duration>> : public std::true_type {};
-
-template <>
-struct is_date<std::time_t> : public std::true_type {};
 
 template <>
 struct is_date<bsoncxx::types::b_date> : public std::true_type {};

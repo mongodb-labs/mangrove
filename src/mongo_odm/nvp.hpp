@@ -99,6 +99,9 @@ MONGO_ODM_INLINE_NAMESPACE_BEGIN
 template <typename NvpT, typename T>
 class NvpCRTP;
 
+template <typename NvpT>
+class SortExpr;
+
 // Forward declarations for Expression Types
 template <typename NvpT, typename U>
 class ComparisonExpr;
@@ -121,7 +124,15 @@ class UnsetExpr;
 template <typename NvpT>
 class CurrentDateExpr;
 
+template <typename NvpT, typename U>
+class AddToSetUpdateExpr;
+
+template <typename NvpT, typename U, typename Sort = int>
+class PushUpdateExpr;
+
 // Forward declarations for Expression type trait structs
+template <typename>
+struct is_sort_expression;
 template <typename>
 struct is_query_expression;
 template <typename>
@@ -238,6 +249,16 @@ class NvpCRTP {
     }
 
     /**
+     * Creates a sort expression that sorts documents by this field.
+     * @param ascending Whether to sort by ascending order (+1 in MongoDB syntax).
+     *                  If false, sorts by descending order (-1 in MongoDB syntax).
+     * @return a SortExpr that reprsents the sort expression {field: +/-1}.
+     */
+    constexpr SortExpr<NvpT> sort(bool ascending) const {
+        return {*static_cast<const NvpT*>(this), ascending};
+    }
+
+    /**
      * Creates an expression that checks whether the value of this field matches any value in the
      * given iterable.
      * @tparam Iterable A type that works in range-based for loops, and yields objects convertible
@@ -331,7 +352,7 @@ class NvpCRTP {
         return {*static_cast<const NvpT*>(this), n, "$size"};
     }
 
-    /* bitwise queryies, enabled only for integral types. */
+    /* bitwise queries, enabled only for integral types. */
 
     /**
      * Creates a query that uses the $bitsAllSet operator to check a numerical field with a bitmask.
@@ -461,51 +482,55 @@ class NvpCRTP {
                 "$bitsAnyClear"};
     }
 
-    /**
-     * Creates an expression that unsets the current field. The field must be of optional type.
-     */
-
     constexpr UpdateExpr<FreeNvp<T>, no_opt_type> set_on_insert(const no_opt_type& val) const {
         return {*this, val, "$setOnInsert"};
     }
 
+    /* Update operators */
+
+    /**
+     * Creates an expression that unsets the current field. The field must be of optional type.
+     * @returns An UnsetExpr that unsets the current field.
+     */
     template <typename U = T, typename = typename std::enable_if<is_optional<U>::value>::type>
-    constexpr UnsetExpr<NvpT> unset() {
+    constexpr UnsetExpr<NvpT> unset() const {
         return {*static_cast<const NvpT*>(this)};
     }
 
-    constexpr UpdateExpr<NvpT, no_opt_type> min(const no_opt_type& val) {
+    constexpr UpdateExpr<NvpT, no_opt_type> min(const no_opt_type& val) const {
         return {*static_cast<const NvpT*>(this), val, "$min"};
     }
 
-    constexpr UpdateExpr<NvpT, no_opt_type> max(const no_opt_type& val) {
+    constexpr UpdateExpr<NvpT, no_opt_type> max(const no_opt_type& val) const {
         return {*static_cast<const NvpT*>(this), val, "$max"};
     }
 
     template <typename U = no_opt_type>
-    constexpr typename std::enable_if<is_date<U>::value, CurrentDateExpr<NvpT>>::type
-    current_date() {
+    constexpr typename std::enable_if<is_date<U>::value, CurrentDateExpr<NvpT>>::type current_date()
+        const {
         return {*static_cast<const NvpT*>(this), true};
     }
 
     template <typename U = no_opt_type>
     constexpr typename std::enable_if<std::is_same<bsoncxx::types::b_timestamp, U>::value,
                                       CurrentDateExpr<NvpT>>::type
-    current_date() {
+    current_date() const {
         return {*static_cast<const NvpT*>(this), false};
     }
 
     /* Array update operators */
+    // pop a single element off of a list
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
-    constexpr UpdateValueExpr<NvpT, int> pop(bool last) {
+    constexpr UpdateValueExpr<NvpT, int> pop(bool last) const {
         return {*static_cast<const NvpT*>(this), last ? 1 : -1, "$pop"};
     }
 
     // pull by value
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
-    constexpr UpdateExpr<NvpT, no_opt_type> pull(const no_opt_type& val) {
+    constexpr UpdateExpr<NvpT, iterable_value<no_opt_type>> pull(
+        const iterable_value<no_opt_type>& val) const {
         return {*static_cast<const NvpT*>(this), val, "$pull"};
     }
 
@@ -515,15 +540,53 @@ class NvpCRTP {
               typename Expr>
     constexpr
         typename std::enable_if<is_query_expression<Expr>::value, UpdateExpr<NvpT, Expr>>::type
-        pull(const Expr& expr) {
+        pull(const Expr& expr) const {
         return {*static_cast<const NvpT*>(this), expr, "$pull"};
     }
 
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
               typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
-    constexpr UpdateExpr<NvpT, Iterable> pullAll(const Iterable& iter) {
+    constexpr UpdateExpr<NvpT, Iterable> pull_all(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, "$pullAll"};
+    }
+
+    // add a single value to set
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
+    constexpr AddToSetUpdateExpr<NvpT, iterable_value<no_opt_type>> add_to_set(
+        const iterable_value<no_opt_type>& val) const {
+        return {*static_cast<const NvpT*>(this), val, false};
+    }
+
+    // add an array of several elements at once, using $each, to set
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
+              typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
+    constexpr AddToSetUpdateExpr<NvpT, Iterable> add_to_set(const Iterable& iter) const {
+        return {*static_cast<const NvpT*>(this), iter, true};
+    }
+
+    // push a single value to an array.
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
+    constexpr PushUpdateExpr<NvpT, iterable_value<no_opt_type>> push(
+        const iterable_value<no_opt_type>& val) const {
+        return {*static_cast<const NvpT*>(this), val, false};
+    }
+
+    // push an array of several elements at once using $each, to an array.
+    template <typename U = no_opt_type,
+              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
+              typename Iterable, typename = enable_if_matching_iterable_t<Iterable>,
+              typename Sort = int,
+              typename = typename std::enable_if<is_sort_expression<Sort>::value ||
+                                                 std::is_same<int, Sort>::value>::type>
+    constexpr PushUpdateExpr<NvpT, Iterable, Sort> push(
+        const Iterable& val, bsoncxx::stdx::optional<std::int32_t> slice = bsoncxx::stdx::nullopt,
+        const bsoncxx::stdx::optional<Sort>& sort = bsoncxx::stdx::nullopt,
+        bsoncxx::stdx::optional<std::int32_t> position = bsoncxx::stdx::nullopt) const {
+        return {*static_cast<const NvpT*>(this), val, true, slice, sort, position};
     }
 };
 

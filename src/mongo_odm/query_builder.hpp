@@ -16,6 +16,7 @@
 
 #include <mongo_odm/config/prelude.hpp>
 
+#include <chrono>
 #include <cstddef>
 #include <stdexcept>
 #include <tuple>
@@ -31,6 +32,8 @@ namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
 // Forward declarations for Expression type trait structs
+template <typename>
+struct is_sort_expression;
 template <typename>
 struct is_query_expression;
 template <typename>
@@ -72,7 +75,8 @@ typename std::enable_if<is_bson_appendable<T>::value, void>::type append_value_t
 // Specialization for non-iterable, non-expression types that must be serialized.
 template <typename T>
 typename std::enable_if<!is_bson_appendable<T>::value && !is_iterable_not_string<T>::value &&
-                            !(is_query_expression<T>::value || is_update_expression<T>::value),
+                            !(is_sort_expression<T>::value || is_query_expression<T>::value ||
+                              is_update_expression<T>::value),
                         void>::type
 append_value_to_bson(T value, bsoncxx::builder::core &builder) {
     auto serialized_value = bson_mapper::to_document<T>(value);
@@ -92,13 +96,62 @@ typename std::enable_if<is_iterable_not_string<Iterable>::value, void>::type app
 
 // Specialization for expression types that must be serialized.
 template <typename Expression>
-typename std::enable_if<
-    is_query_expression<Expression>::value || is_update_expression<Expression>::value, void>::type
+typename std::enable_if<is_sort_expression<Expression>::value ||
+                            is_query_expression<Expression>::value ||
+                            is_update_expression<Expression>::value,
+                        void>::type
 append_value_to_bson(Expression expr, bsoncxx::builder::core &builder) {
     builder.open_document();
     expr.append_to_bson(builder);
     builder.close_document();
 }
+
+// std::chrono::time_point must be explicitly serialized into b_date
+template <typename Clock, typename Duration>
+void append_value_to_bson(const std::chrono::time_point<Clock, Duration> &tp,
+                          bsoncxx::builder::core &builder) {
+    builder.append(bsoncxx::types::b_date(tp));
+}
+
+template <typename NvpT>
+class SortExpr {
+   public:
+    constexpr SortExpr(const NvpT &nvp, bool ascending) : _nvp(nvp), _ascending(ascending) {
+    }
+
+    /**
+     * Appends this expression to a BSON core builder, as a key-value pair of the
+     * form "key: +/-1".
+     * @param builder A BSON core builder
+     * @param wrap      Whether to wrap the BSON inside a document.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+
+        builder.key_view(_nvp.get_name());
+        builder.append(_ascending ? 1 : -1);
+
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    /**
+     * Converts the expression to a BSON filter for a query.
+     * The resulting BSON is of the form "{key: +/-1}"
+     */
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return builder.extract_document();
+    }
+
+   private:
+    NvpT _nvp;
+    const bool _ascending;
+};
 
 /**
  * Represents a query expression with the syntax "key: {$op: value}".
@@ -775,6 +828,152 @@ class CurrentDateExpr {
     const bool _is_date;
 };
 
+template <typename NvpT, typename U>
+class AddToSetUpdateExpr {
+   public:
+    constexpr AddToSetUpdateExpr(const NvpT &nvp, const U &val, bool each)
+        : _nvp(nvp), _val(val), _each(each) {
+    }
+
+    /**
+     * Appends this query to a BSON core builder as an expression
+     * '$currentDate: {field: {$type "timestamp|date"}}'
+     * @param builder A basic BSON core builder.
+     * @param Whether to wrap this expression inside a document.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+        builder.key_view("$addToSet");
+        builder.open_document();
+        builder.key_view(_nvp.get_name());
+
+        // wrap value in $each: {} if necessary.
+        if (_each) {
+            builder.open_document();
+            builder.key_view("$each");
+        }
+        append_value_to_bson(_val, builder);
+        if (_each) {
+            builder.close_document();
+        }
+
+        builder.close_document();
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return {builder.extract_document()};
+    }
+
+   private:
+    NvpT _nvp;
+    const U &_val;
+    bool _each;
+};
+
+template <typename NvpT, typename U, typename Sort>
+class PushUpdateExpr {
+   public:
+    constexpr PushUpdateExpr(
+        const NvpT &nvp, const U &val, bool each,
+        bsoncxx::stdx::optional<std::int32_t> slice = bsoncxx::stdx::nullopt,
+        const bsoncxx::stdx::optional<Sort> &sort = bsoncxx::stdx::nullopt,
+        bsoncxx::stdx::optional<std::int32_t> position = bsoncxx::stdx::nullopt)
+        : _nvp(nvp), _val(val), _each(each), _slice(slice), _sort(sort), _position(position) {
+    }
+
+    constexpr PushUpdateExpr<NvpT, U, Sort> slice(std::int32_t slice) {
+        return {_nvp, _val, _each, slice, _sort, _position};
+    }
+
+    constexpr PushUpdateExpr<NvpT, U, Sort> slice() {
+        return {_nvp, _val, _each, bsoncxx::stdx::nullopt, _sort, _position};
+    }
+
+    template <typename OtherNvpT>
+    constexpr PushUpdateExpr<NvpT, U, SortExpr<OtherNvpT>> sort(const SortExpr<OtherNvpT> &sort) {
+        return {_nvp, _val, _each, _slice, sort, _position};
+    }
+
+    constexpr PushUpdateExpr<NvpT, U, int> sort(int sort) {
+        return {_nvp, _val, _each, _slice, sort, _position};
+    }
+
+    constexpr PushUpdateExpr<NvpT, U, Sort> sort() {
+        return {_nvp, _val, _each, _slice, bsoncxx::stdx::nullopt, _position};
+    }
+
+    constexpr PushUpdateExpr<NvpT, U, Sort> position(std::int32_t position) {
+        return {_nvp, _val, _each, _slice, _sort, position};
+    }
+
+    constexpr PushUpdateExpr<NvpT, U, Sort> position() {
+        return {_nvp, _val, _each, _slice, _sort, bsoncxx::stdx::nullopt};
+    }
+
+    /**
+     * Appends this query to a BSON core builder as an expression
+     * '$currentDate: {field: {$type "timestamp|date"}}'
+     * @param builder A basic BSON core builder.
+     * @param Whether to wrap this expression inside a document.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+        builder.key_view("$push");
+        builder.open_document();
+        builder.key_view(_nvp.get_name());
+
+        // wrap value in "$each: {}" if necessary.
+        if (_each) {
+            builder.open_document();
+            builder.key_view("$each");
+        }
+        append_value_to_bson(_val, builder);
+        if (_each) {
+            if (_slice) {
+                builder.key_view("$slice");
+                builder.append(_slice.value());
+            }
+            if (_sort) {
+                builder.key_view("$sort");
+                append_value_to_bson(_sort.value(), builder);
+            }
+            if (_position) {
+                builder.key_view("$position");
+                builder.append(_position.value());
+            }
+            builder.close_document();
+        }
+
+        builder.close_document();
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return {builder.extract_document()};
+    }
+
+   private:
+    NvpT _nvp;
+    const U &_val;
+    bool _each;
+    bsoncxx::stdx::optional<std::int32_t> _slice;
+    bsoncxx::stdx::optional<Sort> _sort;
+    bsoncxx::stdx::optional<std::int32_t> _position;
+};
+
 template <typename NvpT, typename Integer>
 class BitUpdateExpr {
    public:
@@ -817,6 +1016,22 @@ class BitUpdateExpr {
     NvpT _nvp;
     const Integer _mask;
     const char *_operation;
+};
+
+/* A templated struct that holds a boolean value.
+* This value is TRUE for types that are sort expressions,
+* and FALSE for all other types.
+*/
+template <typename>
+struct is_sort_expression : public std::false_type {};
+
+template <typename NvpT>
+struct is_sort_expression<SortExpr<NvpT>> : public std::true_type {};
+
+template <typename Head, typename Tail>
+struct is_sort_expression<ExpressionList<Head, Tail>> {
+    constexpr static bool value =
+        is_sort_expression<Head>::value && is_sort_expression<Tail>::value;
 };
 
 /* A templated struct that holds a boolean value.
@@ -874,6 +1089,15 @@ struct is_update_expression<UnsetExpr<NvpT>> : public std::true_type {};
 
 template <typename NvpT>
 struct is_update_expression<CurrentDateExpr<NvpT>> : public std::true_type {};
+
+template <typename NvpT, typename U>
+struct is_update_expression<AddToSetUpdateExpr<NvpT, U>> : public std::true_type {};
+
+template <typename NvpT, typename U>
+struct is_update_expression<PushUpdateExpr<NvpT, U>> : public std::true_type {};
+
+template <typename NvpT, typename Integer>
+struct is_update_expression<BitUpdateExpr<NvpT, Integer>> : public std::true_type {};
 
 template <typename Head, typename Tail>
 struct is_update_expression<ExpressionList<Head, Tail>> {
@@ -985,6 +1209,7 @@ constexpr ComparisonExpr<NvpT, bsoncxx::types::b_regex> operator!(
  */
 template <typename Head, typename Tail,
           typename = typename std::enable_if<
+              (is_sort_expression<Head>::value && is_sort_expression<Tail>::value) ||
               (is_query_expression<Head>::value && is_query_expression<Tail>::value) ||
               (is_update_expression<Head>::value && is_update_expression<Tail>::value)>::type>
 constexpr ExpressionList<Head, Tail> operator,(Tail &&tail, Head &&head) {
