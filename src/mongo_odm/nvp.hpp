@@ -110,6 +110,9 @@ class RegexExpr;
 template <typename Parent>
 class UpdateExpr;
 
+template <typename NvpT>
+class UnsetExpr;
+
 // Forward declarations for Expression type trait structs
 template <typename>
 struct is_query_expression;
@@ -446,6 +449,22 @@ class NvpCRTP {
                                                                 Args... positions) const {
         return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
                 "$bitsAnyClear"};
+    }
+
+    /**
+     * Creates an expression that unsets the current field. The field must be of optional type.
+     */
+    template <typename U = T, typename = typename std::enable_if<is_optional<U>::value>::type>
+    constexpr UnsetExpr<NvpT> unset() {
+        return {*static_cast<const NvpT*>(this)};
+    }
+
+    constexpr UpdateExpr<NvpT> min(const no_opt_type& val) {
+        return {*static_cast<const NvpT*>(this), val, "$min"};
+    }
+
+    constexpr UpdateExpr<NvpT> max(const no_opt_type& val) {
+        return {*static_cast<const NvpT*>(this), val, "$max"};
     }
 };
 

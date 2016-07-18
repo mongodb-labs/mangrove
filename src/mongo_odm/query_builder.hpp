@@ -643,8 +643,57 @@ class UpdateExpr {
 
    private:
     NvpT _nvp;
-    typename NvpT::no_opt_type _val;
+    const typename NvpT::no_opt_type &_val;
     const char *_op;
+};
+
+template <typename NvpT>
+class UpdateValueExpr : public UpdateExpr<NvpT> {
+   public:
+    constexpr UpdateValueExpr(NvpT nvp, typename NvpT::no_opt_type value, const char *op)
+        : UpdateExpr<NvpT>(nvp, _val, op), _val(value) {
+    }
+
+   private:
+    const typename NvpT::no_opt_type _val;
+};
+
+/**
+ * Represents an expresion that uses the $unset operator.
+ */
+template <typename NvpT>
+class UnsetExpr {
+   public:
+    constexpr UnsetExpr(const NvpT &nvp) : _nvp(nvp) {
+    }
+
+    /**
+     * Appends this query to a BSON core builder as a key-value pair "$unset: {field: ''}"
+     * @param builder A basic BSON core builder.
+     * @param Whether to wrap this expression inside a document.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+        builder.key_view("$unset");
+        builder.open_document();
+        builder.key_view(_nvp.get_name());
+        builder.append("");
+        builder.close_document();
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return {builder.extract_document()};
+    }
+
+   private:
+    NvpT _nvp;
 };
 
 /* A templated struct that holds a boolean value.
@@ -694,6 +743,9 @@ struct is_update_expression : public std::false_type {};
 template <typename NvpT>
 struct is_update_expression<UpdateExpr<NvpT>> : public std::true_type {};
 
+template <typename NvpT>
+struct is_update_expression<UpdateValueExpr<NvpT>> : public std::true_type {};
+
 template <typename Head, typename Tail>
 struct is_update_expression<ExpressionList<Head, Tail>> {
     constexpr static bool value =
@@ -705,87 +757,75 @@ struct is_update_expression<ExpressionList<Head, Tail>> {
 /* Overload comparison operators for name-value pairs to create expressions.
  */
 
-template <
-    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
-constexpr ComparisonExpr<NvpT, U> eq(const NvpT &lhs, const U &rhs) {
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> eq(
+    const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return {lhs, rhs, "$eq"};
 }
 
-template <
-    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
-constexpr ComparisonExpr<NvpT, U> operator==(const NvpT &lhs, const U &rhs) {
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> operator==(
+    const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return eq(lhs, rhs);
 }
 
-template <
-    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
-constexpr ComparisonExpr<NvpT, U> gt(const NvpT &lhs, const U &rhs) {
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> gt(
+    const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return {lhs, rhs, "$gt"};
 }
 
-template <
-    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
-constexpr ComparisonExpr<NvpT, U> operator>(const NvpT &lhs, const U &rhs) {
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> operator>(
+    const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return gt(lhs, rhs);
 }
 
-template <
-    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
-constexpr ComparisonExpr<NvpT, U> gte(const NvpT &lhs, const U &rhs) {
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> gte(
+    const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return {lhs, rhs, "$gte"};
 }
 
-template <
-    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
-constexpr ComparisonExpr<NvpT, U> operator>=(const NvpT &lhs, const U &rhs) {
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> operator>=(
+    const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return gte(lhs, rhs);
 }
 
-template <
-    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
-constexpr ComparisonExpr<NvpT, U> lt(const NvpT &lhs, const U &rhs) {
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> lt(
+    const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return {lhs, rhs, "$lt"};
 }
 
-template <
-    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
-constexpr ComparisonExpr<NvpT, U> operator<(const NvpT &lhs, const U &rhs) {
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> operator<(
+    const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return lt(lhs, rhs);
 }
 
-template <
-    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
-constexpr ComparisonExpr<NvpT, U> lte(const NvpT &lhs, const U &rhs) {
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> lte(
+    const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return {lhs, rhs, "$lte"};
 }
 
-template <
-    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
-constexpr ComparisonExpr<NvpT, U> operator<=(const NvpT &lhs, const U &rhs) {
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> operator<=(
+    const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return lte(lhs, rhs);
 }
 
-template <
-    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
-constexpr ComparisonExpr<NvpT, U> ne(const NvpT &lhs, const U &rhs) {
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> ne(
+    const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return {lhs, rhs, "$ne"};
 }
 
-template <
-    typename NvpT, typename U, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
-    typename = typename std::enable_if<std::is_convertible<U, typename NvpT::type>::value>::type>
-constexpr ComparisonExpr<NvpT, U> operator!=(const NvpT &lhs, const U &rhs) {
+template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
+constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> operator!=(
+    const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return ne(lhs, rhs);
 }
 
@@ -919,35 +959,35 @@ constexpr UpdateExpr<NvpT> operator+=(const NvpT &nvp, const typename NvpT::no_o
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
     typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
-constexpr UpdateExpr<NvpT> operator-=(const NvpT &nvp, const typename NvpT::no_opt_type &val) {
+constexpr UpdateValueExpr<NvpT> operator-=(const NvpT &nvp, const typename NvpT::no_opt_type &val) {
     return {nvp, -val, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
     typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
-constexpr UpdateExpr<NvpT> operator++(const NvpT &nvp) {
+constexpr UpdateValueExpr<NvpT> operator++(const NvpT &nvp) {
     return {nvp, 1, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
     typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
-constexpr UpdateExpr<NvpT> operator++(const NvpT &nvp, int) {
+constexpr UpdateValueExpr<NvpT> operator++(const NvpT &nvp, int) {
     return {nvp, 1, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
     typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
-constexpr UpdateExpr<NvpT> operator--(const NvpT &nvp) {
+constexpr UpdateValueExpr<NvpT> operator--(const NvpT &nvp) {
     return {nvp, -1, "$inc"};
 }
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
     typename = typename std::enable_if<std::is_arithmetic<typename NvpT::no_opt_type>::value>::type>
-constexpr UpdateExpr<NvpT> operator--(const NvpT &nvp, int) {
+constexpr UpdateValueExpr<NvpT> operator--(const NvpT &nvp, int) {
     return {nvp, -1, "$inc"};
 }
 

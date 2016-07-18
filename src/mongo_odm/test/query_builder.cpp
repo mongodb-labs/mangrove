@@ -616,12 +616,13 @@ TEST_CASE("Update Builder", "mongo_odm::UpdateExpr") {
 
     SECTION("Test = assignment.", "[mongo_odm::UpdateExpr]") {
         auto res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
-                                   (MONGO_ODM_KEY(Bar::x1) = 73, MONGO_ODM_KEY(Bar::x2) = 99,
-                                    MONGO_ODM_CHILD(Bar, p, x) = 100));
+                                   (MONGO_ODM_KEY(Bar::z) = "new_str", MONGO_ODM_KEY(Bar::x1) = 73,
+                                    MONGO_ODM_KEY(Bar::x2) = 99, MONGO_ODM_CHILD(Bar, p, x) = 100));
         REQUIRE(res);
         REQUIRE(res.value().modified_count() == 1);
         auto bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
         REQUIRE(bar);
+        REQUIRE(bar.value().z == "new_str");
         REQUIRE(bar.value().x1 == 73);
         REQUIRE(bar.value().x2.value() == 99);
         REQUIRE(bar.value().p.x == 100);
