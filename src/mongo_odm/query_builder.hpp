@@ -113,9 +113,19 @@ void append_value_to_bson(const std::chrono::time_point<Clock, Duration> &tp,
     builder.append(bsoncxx::types::b_date(tp));
 }
 
+/**
+ * An expression that represents a sorting order.
+ * This consists of a name-value pair and a boolean specifying ascending or descending sort order.
+ * The resulting BSON is {field: +/-1}, where +/-1 corresponds to the sort order.
+ */
 template <typename NvpT>
 class SortExpr {
    public:
+    /**
+     * Creates a sort expression with the given name-value-pair and sort order.
+     * @param  nvp       The name-value pair to order against.
+     * @param  ascending Whether to use ascending (true) or descending (false) order.
+     */
     constexpr SortExpr(const NvpT &nvp, bool ascending) : _nvp(nvp), _ascending(ascending) {
     }
 
@@ -156,7 +166,11 @@ class SortExpr {
 /**
  * Represents a query expression with the syntax "key: {$op: value}".
  * This usually means queries that are comparisons, such as (User.age > 21).
- * However, this also covers operators such as $exists.
+ * However, this also covers operators such as $exists, or any operator that has the above syntax.
+ * @tparam NvpT The type of the name-value pair this expression uses.
+ * @tparam U    The type of the value to compare against. This could be the same as the value type
+ *         		of NvpT, or the type of some other parameter, or even a query builder
+ *           	expression.
  */
 template <typename NvpT, typename U>
 class ComparisonExpr {
@@ -165,8 +179,7 @@ class ComparisonExpr {
      * Constructs a query expression for the given key, value, and comparison type
      * @param  nvp           A name-value pair corresponding to a key in a document
      * @param  field         The value that the key is being compared to.
-     * @param  op The type of comparison operator, such at gt (>) or ne
-     * (!=).
+     * @param  op            The type of comparison operator, such at gt (>) or ne (!=).
      */
     constexpr ComparisonExpr(const NvpT &nvp, const U &field, const char *op)
         : _nvp(nvp), _field(field), _operator(op) {
@@ -177,12 +190,14 @@ class ComparisonExpr {
      * value and field.
      * @param  expr          A comparison expresison with a similar field type and value type.
      * @param  op The new operator to use.
-     * @return               [description]
      */
     constexpr ComparisonExpr(const ComparisonExpr<NvpT, U> &expr, const char *op)
         : _nvp(expr._nvp), _field(expr._field), _operator(op) {
     }
 
+    /**
+     * @return The name of the contained field.
+     */
     std::string get_name() const {
         return _nvp.get_name();
     }
@@ -249,6 +264,9 @@ class ModExpr {
         : _nvp(nvp), _divisor(divisor), _remainder(remainder) {
     }
 
+    /**
+     * @return The name of the contained field.
+     */
     std::string get_name() const {
         return _nvp.get_name();
     }
@@ -404,8 +422,6 @@ class RegexExpr : public ComparisonExpr<NvpT, bsoncxx::types::b_regex> {
  * comparison expression and
  * negates it.
  */
-// Make sure this is only a query expression.
-// This might actually be done implicitly by relating on get_name() and append_to_bson().
 template <typename Expr>
 class NotExpr {
    public:
@@ -416,6 +432,9 @@ class NotExpr {
     constexpr NotExpr(const Expr &expr) : _expr(expr) {
     }
 
+    /**
+     * @return The name of the contained field.
+     */
     std::string get_name() const {
         return _expr.get_name();
     }
@@ -465,12 +484,22 @@ class NotExpr {
     const Expr _expr;
 };
 
+/**
+ * This represents an expression without a field name, for instance used inside $elemMatch queries
+ * for scalar arrays.
+ * The class wraps an existing query expression, and omits the field name when converting to BSON.
+ */
 template <typename Expr>
 class FreeExpr {
    public:
     constexpr FreeExpr(Expr expr) : expr(expr) {
     }
 
+    /**
+     * Appends this expression to a BSON builder, in the form {$op: val} (without a field name)
+     * @param builder A BSON core builder.
+     * @param wrap    Whether to contain this expression inside its own document.
+     */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
         if (wrap) {
             builder.open_document();
@@ -490,6 +519,9 @@ class FreeExpr {
     const Expr expr;
 };
 
+/**
+ * This represents a list of expressions.
+ */
 template <typename Head, typename Tail>
 class ExpressionList {
    public:
@@ -529,11 +561,16 @@ class ExpressionList {
 
 /**
  * Function for creating an ExpressionList out of a variadic list of epxressions.
+ *
+ * During recursion, `e1` is used as the "tail" that contains
+ * the intermediate expression list, and `e2` is a single element to be appended to the list.
+ *
+ * @param e1    An expression to combine into a list.
+ * @param e2    An expression to combine into a list.
+ * @param args  A variadix list of other expressions to add to the list.
  */
 template <typename Expr1, typename Expr2, typename... Expressions>
 constexpr auto make_expression_list(Expr1 e1, Expr2 e2, Expressions... args) {
-    // Expr1 is the "tail" that contains the intermediate expression list, Expr2 is a single
-    // expression being added onto the list.
     return make_expression_list(ExpressionList<Expr2, Expr1>(e2, e1), args...);
 }
 
@@ -547,6 +584,7 @@ constexpr List make_expression_list(List l) {
 
 /**
  * This represents a boolean expression with two arguments.
+ * The arguments can, in turn, be boolean expressions.
  */
 template <typename Expr1, typename Expr2>
 class BooleanExpr {
@@ -654,6 +692,9 @@ class BooleanListExpr {
     const char *_op;
 };
 
+/**
+ * An expression that wraps another expression and adds an $isolated operator.
+ */
 template <typename Expr>
 class IsolatedExpr {
    public:
@@ -680,6 +721,9 @@ class IsolatedExpr {
         }
     }
 
+    /**
+     * Converts this query to BSON, in the form {$isolated: 1, <underlying expression BSON>}
+     */
     operator bsoncxx::document::view_or_value() const {
         auto builder = bsoncxx::builder::core(false);
         append_to_bson(builder);
@@ -695,8 +739,11 @@ class IsolatedExpr {
  * This creates BSON expressions of the form "$op: {field: value}",
  * where $op can be $set, $inc, etc.
  *
- * The value should be convertible to the type of the name-value pair. (For an optional field, the
- * type wrapped by the stdx::optional.)
+ * This class stores the value to be compared by reference.
+ * To store a temporary or computed value, use UpdateExprValue.
+ *
+ * @tparam NvpT The type of the name-value pair
+ * @tparam U    The type of the value being compared.
  */
 template <typename NvpT, typename U>
 class UpdateExpr {
@@ -724,6 +771,9 @@ class UpdateExpr {
         }
     }
 
+    /**
+     * Creates a BSON value of the form "$op: {field: value}"
+     */
     operator bsoncxx::document::view_or_value() const {
         auto builder = bsoncxx::builder::core(false);
         append_to_bson(builder);
@@ -785,9 +835,17 @@ class UnsetExpr {
     NvpT _nvp;
 };
 
+/**
+ * Creates an expression that uses the $currentDate operator.
+ */
 template <typename NvpT>
 class CurrentDateExpr {
    public:
+    /**
+     * Creates an expression that uses the $currentDate operator with a given field and type.
+     * @param  nvp     The given field
+     * @param  is_date Whether the field's type is a date (true) or a timestmap (false)
+     */
     constexpr CurrentDateExpr(const NvpT &nvp, bool is_date) : _nvp(nvp), _is_date(is_date) {
     }
 
@@ -828,16 +886,27 @@ class CurrentDateExpr {
     const bool _is_date;
 };
 
+/**
+ * An expression that uses the $addToSet operator to add unique elements to an array.
+ * @tparam NvpT The name-value pair to use
+ * @tparam U    The type of the value to pass to $addToSet
+ */
 template <typename NvpT, typename U>
 class AddToSetUpdateExpr {
    public:
+    /**
+     * Constructs an AddToSetUpdateExpr with the given parameters.
+     * @param  nvp  The given field.
+     * @param  val  The value to add to the field.
+     * @param  each Whether to use the $each modifier.
+     */
     constexpr AddToSetUpdateExpr(const NvpT &nvp, const U &val, bool each)
         : _nvp(nvp), _val(val), _each(each) {
     }
 
     /**
      * Appends this query to a BSON core builder as an expression
-     * '$currentDate: {field: {$type "timestamp|date"}}'
+     * '$addToSet: {field: value | {$each: value}}'
      * @param builder A basic BSON core builder.
      * @param Whether to wrap this expression inside a document.
      */
@@ -877,49 +946,112 @@ class AddToSetUpdateExpr {
     bool _each;
 };
 
+/**
+ * Represents an array update epression that uses the $push operator.
+ * Modifiers can be set either in the constructor, or by calling the corresponding member functions.
+ * @tparam NvpT    The name-value-pair type of the corresponding field.
+ * @tparam U        The value being $push'ed to the array
+ * @tparam Sort     The type of the sort expression used in the $sort modifier.
+ *         			This can be either an integer, +/- 1, or a SortExpr.
+ */
 template <typename NvpT, typename U, typename Sort>
 class PushUpdateExpr {
    public:
+    /**
+     * Constructs a $push expression, with the given optional modifiers
+     * @param  nvp      The field to modify
+     * @param  val      The value to append to the field
+     * @param  each     Whether to append a single value, or a bunch of values in an array.
+     * @param  slice    An optional value to give the $slice modifier. This only takes effect with
+     *                  each=true.
+     * @param  sort     An optional value to give the $sort modifier. This only takes effect with
+     *                  each=true.
+     * @param  position An optional value to give the $position modifier. This only takes effect
+     *                  with each=true.
+     */
     constexpr PushUpdateExpr(
         const NvpT &nvp, const U &val, bool each,
         bsoncxx::stdx::optional<std::int32_t> slice = bsoncxx::stdx::nullopt,
         const bsoncxx::stdx::optional<Sort> &sort = bsoncxx::stdx::nullopt,
-        bsoncxx::stdx::optional<std::int32_t> position = bsoncxx::stdx::nullopt)
+        bsoncxx::stdx::optional<std::uint32_t> position = bsoncxx::stdx::nullopt)
         : _nvp(nvp), _val(val), _each(each), _slice(slice), _sort(sort), _position(position) {
     }
 
+    /* Functions that set new values for modifers. These create new copies of the expression,
+     * primarily because $sort can take different types of parameters. */
+
+    /**
+     * Create a copy of this expression with a different $slice modifier value.
+     * @param slice    The integer value of the $slice modifier.
+     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     *                 $slice modifier.
+     */
     constexpr PushUpdateExpr<NvpT, U, Sort> slice(std::int32_t slice) {
         return {_nvp, _val, _each, slice, _sort, _position};
     }
 
+    /**
+     * Create a copy of this expression without a $slice modifier.
+     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     *                 $slice modifier.
+     */
     constexpr PushUpdateExpr<NvpT, U, Sort> slice() {
         return {_nvp, _val, _each, bsoncxx::stdx::nullopt, _sort, _position};
     }
 
+    /**
+     * Create a copy of this expression with a different $sort modifier value.
+     * @tparam OtherNvpT    The name-value-pair used by the given Sort Expression.
+     * @param sort          The sort expression to use.
+     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     *                 $sort modifier.
+     */
     template <typename OtherNvpT>
     constexpr PushUpdateExpr<NvpT, U, SortExpr<OtherNvpT>> sort(const SortExpr<OtherNvpT> &sort) {
         return {_nvp, _val, _each, _slice, sort, _position};
     }
 
+    /**
+     * Create a copy of this expression with a different $slice modifier value.
+     * @param sort    The integer value of the $sort modifier, +/-1.
+     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     *                 $sort modifier.
+     */
     constexpr PushUpdateExpr<NvpT, U, int> sort(int sort) {
         return {_nvp, _val, _each, _slice, sort, _position};
     }
 
+    /**
+     * Create a copy of this expression without a $sort modifier.
+     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     *                 $sort modifier.
+     */
     constexpr PushUpdateExpr<NvpT, U, Sort> sort() {
         return {_nvp, _val, _each, _slice, bsoncxx::stdx::nullopt, _position};
     }
 
-    constexpr PushUpdateExpr<NvpT, U, Sort> position(std::int32_t position) {
+    /**
+     * Create a copy of this expression with a different $position modifier value.
+     * @param position    The integer value of the $position modifier.
+     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     *                 $position modifier.
+     */
+    constexpr PushUpdateExpr<NvpT, U, Sort> position(std::uint32_t position) {
         return {_nvp, _val, _each, _slice, _sort, position};
     }
 
+    /**
+     * Create a copy of this expression without $position modifier.
+     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     *                 $position modifier.
+     */
     constexpr PushUpdateExpr<NvpT, U, Sort> position() {
         return {_nvp, _val, _each, _slice, _sort, bsoncxx::stdx::nullopt};
     }
 
     /**
      * Appends this query to a BSON core builder as an expression
-     * '$currentDate: {field: {$type "timestamp|date"}}'
+     * '$push: {field: value | {$each: value, $modifiers: params...}}'
      * @param builder A basic BSON core builder.
      * @param Whether to wrap this expression inside a document.
      */
@@ -948,7 +1080,7 @@ class PushUpdateExpr {
             }
             if (_position) {
                 builder.key_view("$position");
-                builder.append(_position.value());
+                builder.append(static_cast<std::int64_t>(_position.value()));
             }
             builder.close_document();
         }
@@ -968,12 +1100,18 @@ class PushUpdateExpr {
    private:
     NvpT _nvp;
     const U &_val;
-    bool _each;
-    bsoncxx::stdx::optional<std::int32_t> _slice;
-    bsoncxx::stdx::optional<Sort> _sort;
-    bsoncxx::stdx::optional<std::int32_t> _position;
+    const bool _each;
+    const bsoncxx::stdx::optional<std::int32_t> _slice;
+    const bsoncxx::stdx::optional<Sort> _sort;
+    const bsoncxx::stdx::optional<std::uint32_t> _position;
 };
 
+/**
+ * Expression that updates field using the $bit operator, which does bitwise operations using a
+ * mask.
+ * @tparam NvpT     The name-value-pair type corresponding to a field
+ * @tparam Integer  The integral type used as a bit mask
+ */
 template <typename NvpT, typename Integer>
 class BitUpdateExpr {
    public:
@@ -1018,10 +1156,7 @@ class BitUpdateExpr {
     const char *_operation;
 };
 
-/* A templated struct that holds a boolean value.
-* This value is TRUE for types that are sort expressions,
-* and FALSE for all other types.
-*/
+/* Type traits struct for sort expressions */
 template <typename>
 struct is_sort_expression : public std::false_type {};
 
@@ -1034,10 +1169,7 @@ struct is_sort_expression<ExpressionList<Head, Tail>> {
         is_sort_expression<Head>::value && is_sort_expression<Tail>::value;
 };
 
-/* A templated struct that holds a boolean value.
-* This value is TRUE for types that are query expressions,
-* and FALSE for all other types.
-*/
+/* Type traits struct for query expressions */
 template <typename>
 struct is_query_expression : public std::false_type {};
 
@@ -1071,10 +1203,8 @@ struct is_query_expression<BooleanExpr<Expr1, Expr2>> : public std::true_type {}
 template <typename List>
 struct is_query_expression<BooleanListExpr<List>> : public std::true_type {};
 
-/**
- * A templated struct that holds a boolean value.
- * This value is TRUE for types that are update expressions, and false otherwise.
- */
+/* Type traits struct for update expressions */
+
 template <typename>
 struct is_update_expression : public std::false_type {};
 
@@ -1105,10 +1235,7 @@ struct is_update_expression<ExpressionList<Head, Tail>> {
         is_update_expression<Head>::value && is_update_expression<Tail>::value;
 };
 
-/* Operator overloads for creating and combining expressions */
-
-/* Overload comparison operators for name-value pairs to create expressions.
- */
+/* Query comparison operators */
 
 template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
 constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> eq(
@@ -1307,9 +1434,7 @@ constexpr IsolatedExpr<Expr> isolated(const Expr &expr) {
     return {expr};
 }
 
-/**
- * Arithmetic update operators.
- */
+/* Arithmetic update operators */
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,
@@ -1362,6 +1487,8 @@ constexpr UpdateExpr<NvpT, typename NvpT::no_opt_type> operator*=(
     const NvpT &nvp, const typename NvpT::no_opt_type &val) {
     return {nvp, val, "$mul"};
 }
+
+/* Bitwise update operators */
 
 template <
     typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type,

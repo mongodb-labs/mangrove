@@ -118,3 +118,12 @@ TEST_CASE(
     REQUIRE(bit_positions_to_mask(1, 3, 4) == 26);
     REQUIRE(bit_positions_to_mask(1, 1, 3, 3, 4, 4) == 26);
 }
+
+TEST_CASE("is_date determines whether a certain time is a date.") {
+    REQUIRE(is_date<bsoncxx::types::b_date>::value == true);
+    REQUIRE(is_date<std::chrono::milliseconds>::value == true);
+    REQUIRE(is_date<std::chrono::system_clock::time_point>::value == true);
+    REQUIRE(is_date<time_t>::value == false);
+    REQUIRE(is_date<int>::value == false);
+    REQUIRE(is_date<std::string>::value == false);
+}

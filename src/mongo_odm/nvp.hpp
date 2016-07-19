@@ -25,6 +25,7 @@
 
 #include <mongo_odm/util.hpp>
 
+// Preprocessor templates for manipulating multiple arguments.
 #define PP_NARG(...) PP_NARG_(__VA_ARGS__, PP_RSEQ_N())
 #define PP_NARG_(...) PP_ARG_N(__VA_ARGS__)
 #define PP_ARG_N(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, \
@@ -37,6 +38,7 @@
         40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, \
         18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
 
+// Wrap a field name to create a corresponding NVP
 #define MONGO_ODM_NVP(x) mongo_odm::makeNvp(&mongo_odm_wrap_base::x, #x)
 
 // Creates serialize() function
@@ -157,6 +159,9 @@ class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
     constexpr Nvp(T Base::*t, const char* name) : t(t), name(name) {
     }
 
+    /**
+     * Assignment operator that creaptes an update expression to set the field to a given value.
+     */
     constexpr UpdateExpr<Nvp<Base, T>, no_opt_type> operator=(const no_opt_type& val) const {
         return {*this, val, "$set"};
     }
@@ -189,11 +194,18 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
         : t(t), name(name), parent(parent) {
     }
 
+    /**
+     * Creates an update expression that sets the field to the given value.
+     */
     constexpr UpdateExpr<NvpChild<Base, T, Parent>, no_opt_type> operator=(
         const no_opt_type& val) const {
         return {*this, val, "$set"};
     }
 
+    /**
+     * Returns the qualified name of this field in dot notation, i.e. "parent.child".
+     * @return A string containing the name of this field in dot notation.
+     */
     std::string get_name() const {
         std::string full_name;
         full_name += (parent.get_name() + ".");
@@ -206,6 +218,12 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
     const Parent parent;
 };
 
+/**
+ * Represents a field that does not have a name, i.e. an array element.
+ * This is used in $elemMatch expressions on scalar arrays, where the elements can be compared but
+ * don't have fields of their own.
+ * @tparam T    The type of the field.
+ */
 template <typename T>
 class FreeNvp : public NvpCRTP<FreeNvp<T>, T> {
    public:
@@ -227,6 +245,8 @@ class FreeNvp : public NvpCRTP<FreeNvp<T>, T> {
  * A CRTP base class that contains member functions for name-value pairs.
  * These functions are identical between Nvp<...> and NvpChild<...>, but their return types are
  * templated on the Nvp's types, so they are defined here using CRTP.
+ * @tparam NvpT The type of the name-value pair
+ * @tparam T    The type of the field referred to by the name-value pair.
  */
 template <typename NvpT, typename T>
 class NvpCRTP {
@@ -236,13 +256,21 @@ class NvpCRTP {
 
     // Type trait that checks if the given iterable class contains the same value type as either
     // a) this Nvp's type, or
-    // b) this Nvp's value type, is this Nvp is also an iterable.
+    // b) this Nvp's value type, if this Nvp is also an iterable.
     template <typename Iterable, typename Default = void>
     using enable_if_matching_iterable_t = typename std::enable_if<
         is_iterable_not_string<Iterable>::value &&
             std::is_convertible<iterable_value<Iterable>, iterable_value<no_opt_type>>::value,
         Default>::type;
 
+    /**
+     * Chains two name-value pairs to access a sub-field, i.e. a field with the name "parent.child".
+     * @tparam U    The type of the child NVP
+     * @param child An NVP that corresponds to a sub-field of this NVP. Its base class must be the
+     * same as this field's current type.
+     * @return      An NVP with the same base class and type as the subfield, but with a link to a
+     * parent so that its name is qualified in dot notation.
+     */
     template <typename U>
     constexpr NvpChild<T, U, NvpT> operator->*(const Nvp<T, U>& child) const {
         return {child.t, child.name, *static_cast<const NvpT*>(this)};
@@ -319,6 +347,13 @@ class NvpCRTP {
 
     /* Array Query operators */
 
+    /**
+     * Creates a query with the $all operator that compares values in this field's array to values
+     * in another array.
+     * This is only enabled if the current field is an iterable itself.
+     * @param  iter     An iterable containing elements of the same type as this field's elements.
+     * @returns         A comparison expression with the $all oeprator.
+     */
     template <typename Iterable, typename = enable_if_matching_iterable_t<Iterable>,
               typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
@@ -326,8 +361,18 @@ class NvpCRTP {
         return {*static_cast<const NvpT*>(this), iter, "$all"};
     }
 
-    // TODO type-checking that the given queries correspond to children of the current field's
-    // array.
+    /**
+     * Creates a query with the $elemMatch operator that finds elements in this field that match the
+     * given queries. This can include "FreeExpr" expressions, that don't contain a field name,
+ * In the case of a scalar array. e.g. "arr: {$elemMatch: {$gt: 4, .....}}"
+     * This is only enabled if the current field is an iterable itself.
+     * TODO type-checking that the given queries correspond to children of the current array's
+     * elements.
+     *
+     * @tparam Expr     A query expression object.
+     * @param queries   Queries to comapre values against.
+     * @returns         A comparison expression with the $elemMatch operator.
+     */
     template <typename Expr,
               typename = typename std::enable_if<is_query_expression<Expr>::value>::type,
               typename U = no_opt_type,
@@ -339,6 +384,7 @@ class NvpCRTP {
     /**
      * Constructs a nameless name-value-pair that corresponds to an element in a scalar array, if
      * this field is an array. This is used to create expressions with $elemMatch.
+     * This is only enabled if this current field is an array.
      */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
@@ -346,6 +392,11 @@ class NvpCRTP {
         return {};
     }
 
+    /**
+     * Creates an array query expression with the $size operator.
+     * This is only enabled if this current field is an array.
+     * @param n The size the array should be.
+     */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr ComparisonExpr<NvpT, std::int64_t> size(const std::int64_t& n) const {
@@ -362,7 +413,7 @@ class NvpCRTP {
      */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<std::is_integral<U>::value>::type>
-    constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_set(const std::uint64_t& bitmask) const {
+    constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_set(const std::int64_t& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAllSet"};
     }
 
@@ -497,20 +548,40 @@ class NvpCRTP {
         return {*static_cast<const NvpT*>(this)};
     }
 
+    /**
+     * Creates an expression that uses the $min operator to only update a field if the new value is
+     * lower than the current value.
+     * @param val   The (tentative) new value.
+     * @returns     An UpdateExpression with the $min operator.
+     */
     constexpr UpdateExpr<NvpT, no_opt_type> min(const no_opt_type& val) const {
         return {*static_cast<const NvpT*>(this), val, "$min"};
     }
 
+    /**
+     * Creates an expression that uses the $max operator to only update a field if the new value is
+     * greater than the current value.
+     * @param val   The (tentative) new value.
+     * @returns     An UpdateExpression with the $max operator.
+     */
     constexpr UpdateExpr<NvpT, no_opt_type> max(const no_opt_type& val) const {
         return {*static_cast<const NvpT*>(this), val, "$max"};
     }
 
+    /**
+     * Creats an expression that sets a date value to the current date.
+     * This is only enabled for std::chrono::time/duration values, as well as b_date.
+     */
     template <typename U = no_opt_type>
     constexpr typename std::enable_if<is_date<U>::value, CurrentDateExpr<NvpT>>::type current_date()
         const {
         return {*static_cast<const NvpT*>(this), true};
     }
 
+    /**
+     * Creats an expression that sets a b_timestamp value to the current date.
+     * This is only enabled for b_timestamp values. (Use of which is discouraged by users.)
+     */
     template <typename U = no_opt_type>
     constexpr typename std::enable_if<std::is_same<bsoncxx::types::b_timestamp, U>::value,
                                       CurrentDateExpr<NvpT>>::type
@@ -519,22 +590,38 @@ class NvpCRTP {
     }
 
     /* Array update operators */
-    // pop a single element off of a list
+    /**
+     * Creates an update expression with the $pop operator.
+     * This is only enabled if the current field is an array type.
+     * @param last  If true, removes the element from the end of the array.
+     *              If false, from the start.
+     */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr UpdateValueExpr<NvpT, int> pop(bool last) const {
         return {*static_cast<const NvpT*>(this), last ? 1 : -1, "$pop"};
     }
 
-    // pull by value
+    /**
+     * Creates an update expression with the $pull operator, that removes an element if it matches
+     * the given value exactly.
+     * This is only enabled if the current field is an array type.
+     * @param val   The value to remove. This must match the type *contained* by this array field.
+     */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr UpdateExpr<NvpT, iterable_value<no_opt_type>> pull(
         const iterable_value<no_opt_type>& val) const {
         return {*static_cast<const NvpT*>(this), val, "$pull"};
     }
-
-    // pull by query
+    /**
+     * Creates an update expression with the $pull operator, that removes an element if it matches
+     * the given query.
+     * This query can contain free expressions, similarly to the $elemMatch operator.
+     * This is only enabled if the current field is an array type.
+     * @tparam Expr The type of the given query, must satisfy is_query_expression.
+     * @param  expr A query expression against which to compare
+     */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
               typename Expr>
@@ -544,6 +631,12 @@ class NvpCRTP {
         return {*static_cast<const NvpT*>(this), expr, "$pull"};
     }
 
+    /**
+     * Creates an update expression with the $pull operator, that removes an element if it matches
+     * the given value exactly.
+     * This is only enabled if the current field is an array type.
+     * @param iter   An iterable containing the values to remove.
+     */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
               typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
@@ -551,7 +644,12 @@ class NvpCRTP {
         return {*static_cast<const NvpT*>(this), iter, "$pullAll"};
     }
 
-    // add a single value to set
+    /**
+     * Creates an update expression with the $addToSet operator,
+     * that adds a single value to an array, if it is unique.
+     * This is only enabled if the current field is an array type.
+     * @param val   The value to add.
+     */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr AddToSetUpdateExpr<NvpT, iterable_value<no_opt_type>> add_to_set(
@@ -559,7 +657,12 @@ class NvpCRTP {
         return {*static_cast<const NvpT*>(this), val, false};
     }
 
-    // add an array of several elements at once, using $each, to set
+    /**
+     * Creates an update expression with the $addToSet operator and the $each modifier,
+     * that adds a list of value to an array, only keeping the unique values.
+     * This is only enabled if the current field is an array.
+     * @param iter   The list of values to add.
+     */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
               typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
@@ -567,7 +670,11 @@ class NvpCRTP {
         return {*static_cast<const NvpT*>(this), iter, true};
     }
 
-    // push a single value to an array.
+    /**
+     * Creates an update epxression with the $push operator, that adds a single value to an array.
+     * This is only enabled if the current field is an array.
+     * @param val   The value to add.
+     */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr PushUpdateExpr<NvpT, iterable_value<no_opt_type>> push(
@@ -575,7 +682,19 @@ class NvpCRTP {
         return {*static_cast<const NvpT*>(this), val, false};
     }
 
-    // push an array of several elements at once using $each, to an array.
+    /**
+     * Creates an update epxression with the $push operator and the $each modifier,
+     * that adds a list of value to an array. Further modifiers can be given as arguments to this
+     * function, or by modifying the resulting PushUpdateExpr object.
+     * This is only enabled if the current field is an array.
+
+     * @tparam Iterable An iterable that contains the same value type as this field's array.
+     * @tparam Sort     The type of the given sort expression, if one is given.
+     * @param  iter     The iterable containing values to add.
+     * @param  slice    An optional argument containing the value of the $slice modifier.
+     * @param  sort    An optional argument containing an expression for the $sort modifier.
+     * @param  potision    An optional argument containing the value of the $position modifier.
+     */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
               typename Iterable, typename = enable_if_matching_iterable_t<Iterable>,
@@ -583,10 +702,10 @@ class NvpCRTP {
               typename = typename std::enable_if<is_sort_expression<Sort>::value ||
                                                  std::is_same<int, Sort>::value>::type>
     constexpr PushUpdateExpr<NvpT, Iterable, Sort> push(
-        const Iterable& val, bsoncxx::stdx::optional<std::int32_t> slice = bsoncxx::stdx::nullopt,
+        const Iterable& iter, bsoncxx::stdx::optional<std::int32_t> slice = bsoncxx::stdx::nullopt,
         const bsoncxx::stdx::optional<Sort>& sort = bsoncxx::stdx::nullopt,
-        bsoncxx::stdx::optional<std::int32_t> position = bsoncxx::stdx::nullopt) const {
-        return {*static_cast<const NvpT*>(this), val, true, slice, sort, position};
+        bsoncxx::stdx::optional<std::uint32_t> position = bsoncxx::stdx::nullopt) const {
+        return {*static_cast<const NvpT*>(this), iter, true, slice, sort, position};
     }
 };
 
