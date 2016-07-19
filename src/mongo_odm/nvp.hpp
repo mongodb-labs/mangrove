@@ -108,11 +108,11 @@ class SortExpr;
 template <typename NvpT, typename U>
 class ComparisonExpr;
 
-template <typename NvpT>
-class ModExpr;
+template <typename NvpT, typename U>
+class ComparisonValueExpr;
 
 template <typename NvpT>
-class RegexExpr;
+class ModExpr;
 
 template <typename NvpT, typename U>
 class UpdateExpr;
@@ -341,8 +341,9 @@ class NvpCRTP {
      */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_string<U>::value>::type>
-    constexpr RegexExpr<NvpT> regex(const char* regex, const char* options) const {
-        return {*static_cast<const NvpT*>(this), regex, options};
+    constexpr ComparisonValueExpr<NvpT, bsoncxx::types::b_regex> regex(const char* regex,
+                                                                       const char* options) const {
+        return {*static_cast<const NvpT*>(this), bsoncxx::types::b_regex(regex, options), "$regex"};
     }
 
     /* Array Query operators */
@@ -413,7 +414,8 @@ class NvpCRTP {
      */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<std::is_integral<U>::value>::type>
-    constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_set(const std::int64_t& bitmask) const {
+    constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_all_set(
+        const std::int64_t& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAllSet"};
     }
 
@@ -429,9 +431,9 @@ class NvpCRTP {
     template <typename U = no_opt_type,
               typename = typename std::enable_if<std::is_integral<U>::value>::type,
               typename... Args>
-    constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_set(std::uint64_t pos1,
-                                                              std::uint64_t pos2,
-                                                              Args... positions) const {
+    constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_all_set(std::int64_t pos1,
+                                                                   std::int64_t pos2,
+                                                                   Args... positions) const {
         return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
                 "$bitsAllSet"};
     }
@@ -444,7 +446,8 @@ class NvpCRTP {
      */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<std::is_integral<U>::value>::type>
-    constexpr ComparisonExpr<NvpT, std::int64_t> bits_any_set(const std::uint64_t& bitmask) const {
+    constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_any_set(
+        const std::int64_t& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAnySet"};
     }
 
@@ -460,9 +463,9 @@ class NvpCRTP {
     template <typename U = no_opt_type,
               typename = typename std::enable_if<std::is_integral<U>::value>::type,
               typename... Args>
-    constexpr ComparisonExpr<NvpT, std::int64_t> bits_any_set(std::uint64_t pos1,
-                                                              std::uint64_t pos2,
-                                                              Args... positions) const {
+    constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_any_set(std::int64_t pos1,
+                                                                   std::int64_t pos2,
+                                                                   Args... positions) const {
         return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
                 "$bitsAnySet"};
     }
@@ -476,8 +479,8 @@ class NvpCRTP {
      */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<std::is_integral<U>::value>::type>
-    constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_clear(
-        const std::uint64_t& bitmask) const {
+    constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_all_clear(
+        const std::int64_t& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAllClear"};
     }
 
@@ -493,9 +496,9 @@ class NvpCRTP {
     template <typename U = no_opt_type,
               typename = typename std::enable_if<std::is_integral<U>::value>::type,
               typename... Args>
-    constexpr ComparisonExpr<NvpT, std::int64_t> bits_all_clear(std::uint64_t pos1,
-                                                                std::uint64_t pos2,
-                                                                Args... positions) const {
+    constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_all_clear(std::int64_t pos1,
+                                                                     std::int64_t pos2,
+                                                                     Args... positions) const {
         return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
                 "$bitsAllClear"};
     }
@@ -509,8 +512,8 @@ class NvpCRTP {
      */
     template <typename U = no_opt_type,
               typename = typename std::enable_if<std::is_integral<U>::value>::type>
-    constexpr ComparisonExpr<NvpT, std::int64_t> bits_any_clear(
-        const std::uint64_t& bitmask) const {
+    constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_any_clear(
+        const std::int64_t& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAnyClear"};
     }
 
@@ -526,9 +529,9 @@ class NvpCRTP {
     template <typename U = no_opt_type,
               typename = typename std::enable_if<std::is_integral<U>::value>::type,
               typename... Args>
-    constexpr ComparisonExpr<NvpT, std::int64_t> bits_any_clear(std::uint64_t pos1,
-                                                                std::uint64_t pos2,
-                                                                Args... positions) const {
+    constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_any_clear(std::int64_t pos1,
+                                                                     std::int64_t pos2,
+                                                                     Args... positions) const {
         return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
                 "$bitsAnyClear"};
     }

@@ -111,12 +111,12 @@ TEST_CASE(
     "bit_positions_to_mask converts a variadic list of bit positions to a mask in which bits at "
     "those positions are 1, and elsewhere are 0.",
     "bit_positions_to_mask") {
-    REQUIRE(bit_positions_to_mask() == 0);
-    REQUIRE(bit_positions_to_mask(0) == 1);
-    REQUIRE(bit_positions_to_mask(1) == 2);
-    REQUIRE(bit_positions_to_mask(1, 3) == 10);
-    REQUIRE(bit_positions_to_mask(1, 3, 4) == 26);
-    REQUIRE(bit_positions_to_mask(1, 1, 3, 3, 4, 4) == 26);
+    REQUIRE(bit_positions_to_mask() == std::int64_t(0));
+    REQUIRE(bit_positions_to_mask(0) == std::int64_t(1));
+    REQUIRE(bit_positions_to_mask(1) == std::int64_t(2));
+    REQUIRE(bit_positions_to_mask(1, 3) == std::int64_t(10));
+    REQUIRE(bit_positions_to_mask(1, 3, 4) == std::int64_t(26));
+    REQUIRE(bit_positions_to_mask(1, 1, 3, 3, 4, 4) == std::int64_t(26));
 }
 
 TEST_CASE("is_date determines whether a certain time is a date.") {

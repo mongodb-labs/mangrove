@@ -65,7 +65,6 @@ class Bar : public mongo_odm::model<Bar> {
     Bar(int64_t w, int x1, stdx::optional<int> x2, bool y, std::string z, Point p,
         std::vector<int> arr, std::vector<Point> pts, system_clock::time_point t)
         : w(w), x1(x1), x2(x2), y(y), z(z), p(p), arr(arr), pts(pts), t(t) {
-        _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
     }
 
     // default constructor

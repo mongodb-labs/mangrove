@@ -120,12 +120,12 @@ struct remove_optional<bsoncxx::stdx::optional<T>> {
 template <typename T>
 using remove_optional_t = typename remove_optional<T>::type;
 
-constexpr std::uint64_t bit_positions_to_mask() {
+constexpr std::int64_t bit_positions_to_mask() {
     return 0;
 }
 
 template <typename... Args>
-constexpr std::uint64_t bit_positions_to_mask(std::uint64_t pos, Args... positions) {
+constexpr std::int64_t bit_positions_to_mask(std::int64_t pos, Args... positions) {
     return (1 << pos) | bit_positions_to_mask(positions...);
 }
 

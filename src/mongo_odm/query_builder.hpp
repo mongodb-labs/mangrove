@@ -248,6 +248,22 @@ class ComparisonExpr {
 };
 
 /**
+ * Represents a comparison expression as above, but stores a value instead of a reference.
+ * This is useful for storing temporary or computed values.
+ * Internally, it uses a ComparisonExpr whose value is a b_regex.
+ */
+template <typename NvpT, typename U>
+class ComparisonValueExpr : public ComparisonExpr<NvpT, U> {
+   public:
+    constexpr ComparisonValueExpr(NvpT nvp, const U &value, const char *op)
+        : ComparisonExpr<NvpT, U>(nvp, _value, op), _value(value) {
+    }
+
+   private:
+    const U _value;
+};
+
+/**
  * This class represents a query expression using the $mod operator, that checks the modulus of a
  * certain numerical field.
  */
@@ -399,22 +415,6 @@ class TextSearchExpr {
     const mongocxx::stdx::optional<const char *> _language;
     const bool _case_sensitive;
     const bool _diacritic_sensitive;
-};
-
-/**
- * Represents an expression that uses the $regex operator.
- * Internally, it uses a ComparisonExpr whose value is a b_regex.
- */
-template <typename NvpT>
-class RegexExpr : public ComparisonExpr<NvpT, bsoncxx::types::b_regex> {
-   public:
-    constexpr RegexExpr(NvpT nvp, const char *regex, const char *options = "")
-        : ComparisonExpr<NvpT, bsoncxx::types::b_regex>(nvp, _regex, "$regex"),
-          _regex(regex, options) {
-    }
-
-   private:
-    const bsoncxx::types::b_regex _regex;
 };
 
 /**
@@ -1176,6 +1176,9 @@ struct is_query_expression : public std::false_type {};
 template <typename NvpT, typename U>
 struct is_query_expression<ComparisonExpr<NvpT, U>> : public std::true_type {};
 
+template <typename NvpT, typename U>
+struct is_query_expression<ComparisonValueExpr<NvpT, U>> : public std::true_type {};
+
 template <typename NvpT>
 struct is_query_expression<ModExpr<NvpT>> : public std::true_type {};
 
@@ -1187,9 +1190,6 @@ struct is_query_expression<FreeExpr<Expr>> : public std::true_type {};
 
 template <>
 struct is_query_expression<TextSearchExpr> : public std::true_type {};
-
-template <typename NvpT>
-struct is_query_expression<RegexExpr<NvpT>> : public std::true_type {};
 
 template <typename Head, typename Tail>
 struct is_query_expression<ExpressionList<Head, Tail>> {
@@ -1323,7 +1323,7 @@ constexpr NotExpr<Expr> operator!(const Expr &expr) {
 // Instead, create an expression of the form {field: {$not: /regex/}}
 template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
 constexpr ComparisonExpr<NvpT, bsoncxx::types::b_regex> operator!(
-    const RegexExpr<NvpT> &regex_expr) {
+    const ComparisonValueExpr<NvpT, bsoncxx::types::b_regex> &regex_expr) {
     return {regex_expr, "$not"};
 }
 
