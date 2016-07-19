@@ -40,13 +40,10 @@ class Bar : public mongo_odm::model<Bar> {
                               MONGO_ODM_NVP(y), MONGO_ODM_NVP(z))
 
     Bar(int64_t w, int x1, int x2, bool y, std::string z) : w(w), x1(x1), x2(x2), y(y), z(z) {
-        _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
     }
 
     // default constructor
-    Bar() {
-        _id = bsoncxx::oid{bsoncxx::oid::init_tag_t{}};
-    }
+    Bar() = default;
 
     bsoncxx::oid getID() {
         return _id;

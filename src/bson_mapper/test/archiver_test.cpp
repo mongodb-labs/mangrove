@@ -169,8 +169,8 @@ for (var prop in obj) {
         test_doc.value = bsoncxx::document::view();
         test_arr.value = bsoncxx::array::view();
         test_bin.size = 0;
-        test_oid.value = bsoncxx::oid(bsoncxx::oid::init_tag_t{});
-        test_oid2 = bsoncxx::oid(bsoncxx::oid::init_tag_t{});
+        test_oid.value = bsoncxx::oid();
+        test_oid2 = bsoncxx::oid();
         test_bool.value = false;
         test_date.value = std::chrono::milliseconds{0};
         test_int32.value = 0;
@@ -184,7 +184,7 @@ for (var prop in obj) {
         test_timestamp.increment = 0;
         test_timestamp.timestamp = 0;
         test_dbpointer.collection = "";
-        test_dbpointer.value = bsoncxx::oid(bsoncxx::oid::init_tag_t{});
+        test_dbpointer.value = bsoncxx::oid();
     }
 };
 

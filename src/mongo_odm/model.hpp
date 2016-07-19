@@ -35,62 +35,8 @@ struct FirstTypeIsTheSame : public std::false_type {};
 template <typename T, typename T2, typename... Ts>
 struct FirstTypeIsTheSame<T, T2, Ts...> : public std::is_same<T, std::decay_t<T2>> {};
 
-/**
- * Base class for mongo_odm::model that provides _id and _id construction.
- * TODO: Once CXX-940 is resolved, this model_odm_base will no longer be necessary and the argument
- *       forwarding logic can take place in the mongo_odm::model class.
- */
-template <typename IdType>
-class model_odm_base {
-   public:
-    /**
-     * Forward the arguments to the constructor of IdType.
-     *
-     * A std::enable_if is included to disable the template for the copy constructor case so the
-     * default is used.
-     *
-     * @param ts
-     *    The variadic pack of arguments to be forwarded to the constructor of IdType.
-     */
-    template <typename... Ts,
-              typename = std::enable_if_t<!FirstTypeIsTheSame<model_odm_base, Ts...>::value>>
-    model_odm_base(Ts&&... ts) : _id(std::forward<Ts>(ts)...) {
-    }
-
-   protected:
-    IdType _id;
-};
-
-/**
- * Specialization of mongo_odm::model base class for IdType=bsoncxx::oid that provides a default
- * constructor for _id which safely constructs a bsoncxx::oid.
- */
-template <>
-class model_odm_base<bsoncxx::oid> {
-   public:
-    /**
-     * Forward the arguments to the constructor of bsoncxx::oid.
-     *
-     * A std::enable_if is included to disable the template for the copy constructor case so the
-     * default is used.
-     *
-     * @param ts
-     *    The variadic pack of arguments to be forwarded to the constructor of bsoncxx::oid.
-     */
-    template <typename... Ts,
-              typename = std::enable_if_t<!FirstTypeIsTheSame<model_odm_base, Ts...>::value>>
-    model_odm_base(Ts&&... ts) : _id(std::forward<Ts>(ts)...) {
-    }
-
-    model_odm_base() : _id(bsoncxx::oid::init_tag_t{}) {
-    }
-
-   protected:
-    bsoncxx::oid _id;
-};
-
 template <typename T, typename IdType = bsoncxx::oid>
-class model : public model_odm_base<IdType> {
+class model {
    private:
 // TODO: When XCode 8 is released, this can always be thread_local. Until then, the model class
 //       will not be thread-safe on OS X.
@@ -104,15 +50,17 @@ class model : public model_odm_base<IdType> {
     /**
      * Forward the arguments to the constructor of IdType.
      *
-     * This is done via the model_odm_base class. A std::enable_if is included to disable the
-     * template for the copy constructor case so the default is used.
+     * A std::enable_if is included to disable the template for the copy constructor case so the
+     * default is used.
      *
      * @param ts
      *    The variadic pack of arguments to be forwarded to the constructor of IdType.
      */
     template <typename... Ts, typename = std::enable_if_t<!FirstTypeIsTheSame<model, Ts...>::value>>
-    model(Ts&&... ts) : model_odm_base<IdType>(std::forward<Ts>(ts)...) {
+    model(Ts&&... ts) : _id(std::forward<Ts>(ts)...) {
     }
+
+    model() = default;
 
     /**
      * Returns a copy of the underlying collection.
@@ -234,6 +182,9 @@ class model : public model_odm_base<IdType> {
         const mongocxx::options::find& options = mongocxx::options::find()) {
         return _coll.find_one(std::move(filter), options);
     }
+
+   protected:
+    IdType _id;
 };
 
 #ifdef __APPLE__
