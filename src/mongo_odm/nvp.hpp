@@ -100,6 +100,29 @@ class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
         return {*this, val, "$set"};
     }
 
+    /**
+    * Creates an expression that sets a date value to the current date.
+    * This is only enabled for std::chrono::time/duration values, as well as b_date.
+    */
+    template <typename U = no_opt_type>
+    constexpr typename std::enable_if<is_date<U>::value, CurrentDateExpr<Nvp<Base, T>>>::type
+    operator=(const current_date_t& cd) const {
+        (void)cd;
+        return {*this, true};
+    }
+
+    /**
+     * Creates an expression that sets a date value to the current date.
+     * This is only enabled for std::chrono::time/duration values, as well as b_date.
+     */
+    template <typename U = no_opt_type>
+    constexpr typename std::enable_if<std::is_same<bsoncxx::types::b_timestamp, U>::value,
+                                      CurrentDateExpr<Nvp<Base, T>>>::type
+    operator=(const current_date_t& cd) const {
+        (void)cd;
+        return {*this, false};
+    }
+
     std::string get_name() const {
         return name;
     }
@@ -133,6 +156,30 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
      */
     constexpr UpdateExpr<NvpChild<Base, T, Parent>, T> operator=(const no_opt_type& val) const {
         return {*this, val, "$set"};
+    }
+
+    /**
+    * Creates an expression that sets a date value to the current date.
+    * This is only enabled for std::chrono::time/duration values, as well as b_date.
+    */
+    template <typename U = no_opt_type>
+    constexpr
+        typename std::enable_if<is_date<U>::value, CurrentDateExpr<NvpChild<Base, T, Parent>>>::type
+        operator=(const current_date_t& cd) const {
+        (void)cd;
+        return {*this, true};
+    }
+
+    /**
+     * Creates an expression that sets a date value to the current date.
+     * This is only enabled for std::chrono::time/duration values, as well as b_date.
+     */
+    template <typename U = no_opt_type>
+    constexpr typename std::enable_if<std::is_same<bsoncxx::types::b_timestamp, U>::value,
+                                      CurrentDateExpr<NvpChild<Base, T, Parent>>>::type
+    operator=(const current_date_t& cd) const {
+        (void)cd;
+        return {*this, false};
     }
 
     /**
@@ -200,29 +247,6 @@ class NvpCRTP {
 
     constexpr NvpCRTP() : self(static_cast<const NvpT*>(this)) {
     }
-
-    // /**
-    // * Creates an expression that sets a date value to the current date.
-    // * This is only enabled for std::chrono::time/duration values, as well as b_date.
-    // */
-    // template <typename U = no_opt_type>
-    // constexpr typename std::enable_if<is_date<U>::value, CurrentDateExpr<NvpT>>::type operator=(
-    //     const current_date_t& cd) const {
-    //     (void)cd;
-    //     return {*static_cast<const NvpT*>(this), true};
-    // }
-    //
-    // /**
-    //  * Creates an expression that sets a date value to the current date.
-    //  * This is only enabled for std::chrono::time/duration values, as well as b_date.
-    //  */
-    // template <typename U = no_opt_type>
-    // constexpr typename std::enable_if<std::is_same<bsoncxx::types::b_timestamp, U>::value,
-    //                                   CurrentDateExpr<NvpT>>::type
-    // operator=(const current_date_t& cd) const {
-    //     (void)cd;
-    //     return {*static_cast<const NvpT*>(this), false};
-    // }
 
     /**
      * Chains two name-value pairs to access a sub-field, i.e. a field with the name "parent.child".

@@ -877,27 +877,26 @@ TEST_CASE("Update Builder", "mongo_odm::UpdateExpr") {
         REQUIRE(res->modified_count() == 1);
     }
 
-    // SECTION("Test $currentDate operator.") {
-    //     // initialize document with old date
-    //     hours hrs(1);
-    //     system_clock::time_point old_time = system_clock::now() - hrs;
-    //     auto res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555, MONGO_ODM_KEY(Bar::t) =
-    //     old_time);
-    //     REQUIRE(res);
-    //
-    //     // set document with current date
-    //     res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
-    //                           MONGO_ODM_KEY(Bar::t) = mongo_odm::current_date);
-    //     REQUIRE(res);
-    //     REQUIRE(res->modified_count() == 1);
-    //
-    //     // Check that document's date is more recent than old date.
-    //     auto bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
-    //     REQUIRE(bar);
-    //     auto time_diff =
-    //         std::chrono::duration_cast<std::chrono::milliseconds>(system_clock::now() - bar->t);
-    //     REQUIRE(time_diff < hrs);
-    // }
+    SECTION("Test $currentDate operator.") {
+        // initialize document with old date
+        hours hrs(1);
+        system_clock::time_point old_time = system_clock::now() - hrs;
+        auto res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555, MONGO_ODM_KEY(Bar::t) = old_time);
+        REQUIRE(res);
+
+        // set document with current date
+        res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
+                              MONGO_ODM_KEY(Bar::t) = mongo_odm::current_date);
+        REQUIRE(res);
+        REQUIRE(res->modified_count() == 1);
+
+        // Check that document's date is more recent than old date.
+        auto bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
+        REQUIRE(bar);
+        auto time_diff =
+            std::chrono::duration_cast<std::chrono::milliseconds>(system_clock::now() - bar->t);
+        REQUIRE(time_diff < hrs);
+    }
 
     /* Array update operators */
 
