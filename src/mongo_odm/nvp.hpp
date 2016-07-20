@@ -209,7 +209,7 @@ class NvpCRTP {
     // constexpr typename std::enable_if<is_date<U>::value, CurrentDateExpr<NvpT>>::type operator=(
     //     const current_date_t& cd) const {
     //     (void)cd;
-    //     return {*self, true};
+    //     return {*static_cast<const NvpT*>(this), true};
     // }
     //
     // /**
@@ -221,7 +221,7 @@ class NvpCRTP {
     //                                   CurrentDateExpr<NvpT>>::type
     // operator=(const current_date_t& cd) const {
     //     (void)cd;
-    //     return {*self, false};
+    //     return {*static_cast<const NvpT*>(this), false};
     // }
 
     /**
@@ -234,7 +234,7 @@ class NvpCRTP {
      */
     template <typename U>
     constexpr NvpChild<T, U, NvpT> operator->*(const Nvp<T, U>& child) const {
-        return {child.t, child.name, *self};
+        return {child.t, child.name, *static_cast<const NvpT*>(this)};
     }
 
     /**
@@ -244,7 +244,7 @@ class NvpCRTP {
      * @return a SortExpr that reprsents the sort expression {field: +/-1}.
      */
     constexpr SortExpr<NvpT> sort(bool ascending) const {
-        return {*self, ascending};
+        return {*static_cast<const NvpT*>(this), ascending};
     }
 
     /**
@@ -255,7 +255,7 @@ class NvpCRTP {
      */
     template <typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
     constexpr ComparisonExpr<NvpT, Iterable> in(const Iterable& iter) const {
-        return {*self, iter, "$in"};
+        return {*static_cast<const NvpT*>(this), iter, "$in"};
     }
 
     /**
@@ -266,7 +266,7 @@ class NvpCRTP {
      */
     template <typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
     constexpr ComparisonExpr<NvpT, Iterable> nin(const Iterable& iter) const {
-        return {*self, iter, "$nin"};
+        return {*static_cast<const NvpT*>(this), iter, "$nin"};
     }
 
     /**
@@ -278,7 +278,7 @@ class NvpCRTP {
      */
     template <typename U = T, typename = typename std::enable_if<is_optional<U>::value>::type>
     constexpr ComparisonExpr<NvpT, bool> exists(const bool& exists) const {
-        return {*self, exists, "$exists"};
+        return {*static_cast<const NvpT*>(this), exists, "$exists"};
     }
 
     /**
@@ -291,7 +291,7 @@ class NvpCRTP {
     template <typename U = no_opt_type,
               typename = typename std::enable_if<std::is_arithmetic<U>::value>::type>
     constexpr ModExpr<NvpT> mod(const int& divisor, const int& remainder) const {
-        return {*self, divisor, remainder};
+        return {*static_cast<const NvpT*>(this), divisor, remainder};
     }
 
     /**
@@ -304,7 +304,7 @@ class NvpCRTP {
               typename = typename std::enable_if<is_string<U>::value>::type>
     constexpr ComparisonValueExpr<NvpT, bsoncxx::types::b_regex> regex(const char* regex,
                                                                        const char* options) const {
-        return {*self, bsoncxx::types::b_regex(regex, options), "$regex"};
+        return {*static_cast<const NvpT*>(this), bsoncxx::types::b_regex(regex, options), "$regex"};
     }
 
     /* Array Query operators */
@@ -320,7 +320,7 @@ class NvpCRTP {
               typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr ComparisonExpr<NvpT, Iterable> all(const Iterable& iter) const {
-        return {*self, iter, "$all"};
+        return {*static_cast<const NvpT*>(this), iter, "$all"};
     }
 
     /**
@@ -340,7 +340,7 @@ class NvpCRTP {
               typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr ComparisonExpr<NvpT, Expr> elem_match(const Expr& queries) const {
-        return {*self, queries, "$elemMatch"};
+        return {*static_cast<const NvpT*>(this), queries, "$elemMatch"};
     }
 
     /**
@@ -362,7 +362,7 @@ class NvpCRTP {
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr ComparisonExpr<NvpT, std::int64_t> size(const std::int64_t& n) const {
-        return {*self, n, "$size"};
+        return {*static_cast<const NvpT*>(this), n, "$size"};
     }
 
     /* bitwise queries, enabled only for integral types. */
@@ -377,7 +377,7 @@ class NvpCRTP {
               typename = typename std::enable_if<std::is_integral<U>::value>::type>
     constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_all_set(
         const std::int64_t& bitmask) const {
-        return {*self, bitmask, "$bitsAllSet"};
+        return {*static_cast<const NvpT*>(this), bitmask, "$bitsAllSet"};
     }
 
     /**
@@ -395,7 +395,8 @@ class NvpCRTP {
     constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_all_set(std::int64_t pos1,
                                                                    std::int64_t pos2,
                                                                    Args... positions) const {
-        return {*self, bit_positions_to_mask(pos1, pos2, positions...), "$bitsAllSet"};
+        return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
+                "$bitsAllSet"};
     }
 
     /**
@@ -408,7 +409,7 @@ class NvpCRTP {
               typename = typename std::enable_if<std::is_integral<U>::value>::type>
     constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_any_set(
         const std::int64_t& bitmask) const {
-        return {*self, bitmask, "$bitsAnySet"};
+        return {*static_cast<const NvpT*>(this), bitmask, "$bitsAnySet"};
     }
 
     /**
@@ -426,7 +427,8 @@ class NvpCRTP {
     constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_any_set(std::int64_t pos1,
                                                                    std::int64_t pos2,
                                                                    Args... positions) const {
-        return {*self, bit_positions_to_mask(pos1, pos2, positions...), "$bitsAnySet"};
+        return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
+                "$bitsAnySet"};
     }
 
     /**
@@ -440,7 +442,7 @@ class NvpCRTP {
               typename = typename std::enable_if<std::is_integral<U>::value>::type>
     constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_all_clear(
         const std::int64_t& bitmask) const {
-        return {*self, bitmask, "$bitsAllClear"};
+        return {*static_cast<const NvpT*>(this), bitmask, "$bitsAllClear"};
     }
 
     /**
@@ -458,7 +460,8 @@ class NvpCRTP {
     constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_all_clear(std::int64_t pos1,
                                                                      std::int64_t pos2,
                                                                      Args... positions) const {
-        return {*self, bit_positions_to_mask(pos1, pos2, positions...), "$bitsAllClear"};
+        return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
+                "$bitsAllClear"};
     }
 
     /**
@@ -472,7 +475,7 @@ class NvpCRTP {
               typename = typename std::enable_if<std::is_integral<U>::value>::type>
     constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_any_clear(
         const std::int64_t& bitmask) const {
-        return {*self, bitmask, "$bitsAnyClear"};
+        return {*static_cast<const NvpT*>(this), bitmask, "$bitsAnyClear"};
     }
 
     /**
@@ -490,11 +493,12 @@ class NvpCRTP {
     constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_any_clear(std::int64_t pos1,
                                                                      std::int64_t pos2,
                                                                      Args... positions) const {
-        return {*self, bit_positions_to_mask(pos1, pos2, positions...), "$bitsAnyClear"};
+        return {*static_cast<const NvpT*>(this), bit_positions_to_mask(pos1, pos2, positions...),
+                "$bitsAnyClear"};
     }
 
     constexpr UpdateExpr<NvpT, no_opt_type> set_on_insert(const no_opt_type& val) const {
-        return {*self, val, "$setOnInsert"};
+        return {*static_cast<const NvpT*>(this), val, "$setOnInsert"};
     }
 
     /* Update operators */
@@ -505,7 +509,7 @@ class NvpCRTP {
      */
     template <typename U = T, typename = typename std::enable_if<is_optional<U>::value>::type>
     constexpr UnsetExpr<NvpT> unset() const {
-        return {*self};
+        return {*static_cast<const NvpT*>(this)};
     }
 
     /**
@@ -515,7 +519,7 @@ class NvpCRTP {
      * @returns     An UpdateExpression with the $min operator.
      */
     constexpr UpdateExpr<NvpT, no_opt_type> min(const no_opt_type& val) const {
-        return {*self, val, "$min"};
+        return {*static_cast<const NvpT*>(this), val, "$min"};
     }
 
     /**
@@ -525,7 +529,7 @@ class NvpCRTP {
      * @returns     An UpdateExpression with the $max operator.
      */
     constexpr UpdateExpr<NvpT, no_opt_type> max(const no_opt_type& val) const {
-        return {*self, val, "$max"};
+        return {*static_cast<const NvpT*>(this), val, "$max"};
     }
 
     /**
@@ -535,7 +539,7 @@ class NvpCRTP {
     template <typename U = no_opt_type>
     constexpr typename std::enable_if<is_date<U>::value, CurrentDateExpr<NvpT>>::type current_date()
         const {
-        return {*self, true};
+        return {*static_cast<const NvpT*>(this), true};
     }
 
     /**
@@ -546,7 +550,7 @@ class NvpCRTP {
     constexpr typename std::enable_if<std::is_same<bsoncxx::types::b_timestamp, U>::value,
                                       CurrentDateExpr<NvpT>>::type
     current_date() const {
-        return {*self, false};
+        return {*static_cast<const NvpT*>(this), false};
     }
 
     /* Array update operators */
@@ -559,7 +563,7 @@ class NvpCRTP {
     template <typename U = no_opt_type,
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr UpdateValueExpr<NvpT, int> pop(bool last) const {
-        return {*self, last ? 1 : -1, "$pop"};
+        return {*static_cast<const NvpT*>(this), last ? 1 : -1, "$pop"};
     }
 
     /**
@@ -572,7 +576,7 @@ class NvpCRTP {
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr UpdateExpr<NvpT, iterable_value<no_opt_type>> pull(
         const iterable_value<no_opt_type>& val) const {
-        return {*self, val, "$pull"};
+        return {*static_cast<const NvpT*>(this), val, "$pull"};
     }
     /**
      * Creates an update expression with the $pull operator, that removes an element if it matches
@@ -588,7 +592,7 @@ class NvpCRTP {
     constexpr
         typename std::enable_if<is_query_expression<Expr>::value, UpdateExpr<NvpT, Expr>>::type
         pull(const Expr& expr) const {
-        return {*self, expr, "$pull"};
+        return {*static_cast<const NvpT*>(this), expr, "$pull"};
     }
 
     /**
@@ -601,7 +605,7 @@ class NvpCRTP {
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
               typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
     constexpr UpdateExpr<NvpT, Iterable> pull_all(const Iterable& iter) const {
-        return {*self, iter, "$pullAll"};
+        return {*static_cast<const NvpT*>(this), iter, "$pullAll"};
     }
 
     /**
@@ -614,7 +618,7 @@ class NvpCRTP {
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr AddToSetUpdateExpr<NvpT, iterable_value<no_opt_type>> add_to_set(
         const iterable_value<no_opt_type>& val) const {
-        return {*self, val, false};
+        return {*static_cast<const NvpT*>(this), val, false};
     }
 
     /**
@@ -627,7 +631,7 @@ class NvpCRTP {
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
               typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
     constexpr AddToSetUpdateExpr<NvpT, Iterable> add_to_set(const Iterable& iter) const {
-        return {*self, iter, true};
+        return {*static_cast<const NvpT*>(this), iter, true};
     }
 
     /**
@@ -639,7 +643,7 @@ class NvpCRTP {
               typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
     constexpr PushUpdateExpr<NvpT, iterable_value<no_opt_type>> push(
         const iterable_value<no_opt_type>& val) const {
-        return {*self, val, false};
+        return {*static_cast<const NvpT*>(this), val, false};
     }
 
     /**
@@ -665,7 +669,7 @@ class NvpCRTP {
         const Iterable& iter, bsoncxx::stdx::optional<std::int32_t> slice = bsoncxx::stdx::nullopt,
         const bsoncxx::stdx::optional<Sort>& sort = bsoncxx::stdx::nullopt,
         bsoncxx::stdx::optional<std::uint32_t> position = bsoncxx::stdx::nullopt) const {
-        return {*self, iter, true, slice, sort, position};
+        return {*static_cast<const NvpT*>(this), iter, true, slice, sort, position};
     }
 };
 
