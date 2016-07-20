@@ -535,68 +535,99 @@ class FreeExpr {
     const Expr expr;
 };
 
-/**
- * This represents a list of expressions.
- */
-template <typename Head, typename Tail>
+enum struct expression_list_type {
+    k_none,
+    k_update,
+    k_query,
+    k_sort,
+    // etc.
+}
+
+template <typename Map, typename... Ts, size_t... idxs>
+constexpr void tupleForEachImpl(const std::tuple<Ts...> &tup, Map &&map,
+                                std::index_sequence<idxs...>) {
+    std::initializer_list<int>{(map(idxs, std::get<idxs>(tup)), 0)...};
+}
+
+template <typename Map, typename... Ts>
+constexpr void tupleForEach(const std::tuple<Ts...> &tup, Map &&map) {
+    return tupleForEachImpl(tup, std::forward<Map>(map), std::index_sequence_for<Ts...>());
+}
+
+template <expression_list_type list_type, typename... Args>
 class ExpressionList {
-   public:
-    /**
-     * Constructs an expression list.
-     * @param head  The first element in the list.
-     * @param tail  The remainder of the list
-     */
-    constexpr ExpressionList(const Head &head, const Tail &tail) : _head(head), _tail(tail) {
+    ExpressionList(const Args &... args) : storage(std::make_tuple(args...)) {
     }
 
-    /**
-     * Appends this expression list to the given core builder by appending the first expression
-     * in the list, and then recursing on the rest of the list.
-     * @param builder A basic BSON core builder.
-     * @param Whether to wrap individual elements inside a document. This is useful when the
-     * ExpressionList is used as a BSON array.
-     */
-    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
-        _head.append_to_bson(builder, wrap);
-        _tail.append_to_bson(builder, wrap);
+    void append_to_bson(builder::core &builder, bool wrap = false) const {
+        tupleForEach(storage, [&](const auto &v) { v.append_to_bson(builder, wrap); });
     }
 
-    /**
-     * Casts the expression list to a BSON query of  the form { expr1, expr2, ....}
-     */
-    operator bsoncxx::document::view_or_value() const {
-        auto builder = bsoncxx::builder::core(false);
-        append_to_bson(builder);
-        return builder.extract_document();
-    }
-
-   private:
-    const Head _head;
-    const Tail _tail;
+    std::tuple<Args...> storage;
 };
 
-/**
- * Function for creating an ExpressionList out of a variadic list of epxressions.
- *
- * During recursion, `e1` is used as the "tail" that contains
- * the intermediate expression list, and `e2` is a single element to be appended to the list.
- *
- * @param e1    An expression to combine into a list.
- * @param e2    An expression to combine into a list.
- * @param args  A variadix list of other expressions to add to the list.
- */
-template <typename Expr1, typename Expr2, typename... Expressions>
-constexpr auto make_expression_list(Expr1 e1, Expr2 e2, Expressions... args) {
-    return make_expression_list(ExpressionList<Expr2, Expr1>(e2, e1), args...);
-}
+// /**
+//  * This represents a list of expressions.
+//  */
+// template <typename Head, typename Tail>
+// class ExpressionList {
+//    public:
+//     /**
+//      * Constructs an expression list.
+//      * @param head  The first element in the list.
+//      * @param tail  The remainder of the list
+//      */
+//     constexpr ExpressionList(const Head &head, const Tail &tail) : _head(head), _tail(tail) {
+//     }
+//
+//     /**
+//      * Appends this expression list to the given core builder by appending the first expression
+//      * in the list, and then recursing on the rest of the list.
+//      * @param builder A basic BSON core builder.
+//      * @param Whether to wrap individual elements inside a document. This is useful when the
+//      * ExpressionList is used as a BSON array.
+//      */
+//     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+//         _head.append_to_bson(builder, wrap);
+//         _tail.append_to_bson(builder, wrap);
+//     }
+//
+//     /**
+//      * Casts the expression list to a BSON query of  the form { expr1, expr2, ....}
+//      */
+//     operator bsoncxx::document::view_or_value() const {
+//         auto builder = bsoncxx::builder::core(false);
+//         append_to_bson(builder);
+//         return builder.extract_document();
+//     }
+//
+//    private:
+//     const Head _head;
+//     const Tail _tail;
+// };
 
-/**
- * Base case for variadic ExpressionList builder, simply returns the list it receives.
- */
-template <typename List>
-constexpr List make_expression_list(List l) {
-    return l;
-}
+// /**
+//  * Function for creating an ExpressionList out of a variadic list of epxressions.
+//  *
+//  * During recursion, `e1` is used as the "tail" that contains
+//  * the intermediate expression list, and `e2` is a single element to be appended to the list.
+//  *
+//  * @param e1    An expression to combine into a list.
+//  * @param e2    An expression to combine into a list.
+//  * @param args  A variadix list of other expressions to add to the list.
+//  */
+// template <typename Expr1, typename Expr2, typename... Expressions>
+// constexpr auto make_expression_list(Expr1 e1, Expr2 e2, Expressions... args) {
+//     return make_expression_list(ExpressionList<Expr2, Expr1>(e2, e1), args...);
+// }
+//
+// /**
+//  * Base case for variadic ExpressionList builder, simply returns the list it receives.
+//  */
+// template <typename List>
+// constexpr List make_expression_list(List l) {
+//     return l;
+// }
 
 /**
  * This represents a boolean expression with two arguments.
@@ -1183,17 +1214,20 @@ class BitUpdateExpr {
 };
 
 /* Type traits struct for sort expressions */
+
+template <typename>
+struct expression_type {
+    expression_list_type value;
+};
+
 template <typename>
 struct is_sort_expression : public std::false_type {};
 
 template <typename NvpT>
 struct is_sort_expression<SortExpr<NvpT>> : public std::true_type {};
 
-template <typename Head, typename Tail>
-struct is_sort_expression<ExpressionList<Head, Tail>> {
-    constexpr static bool value =
-        is_sort_expression<Head>::value && is_sort_expression<Tail>::value;
-};
+template <typename... Args>
+struct is_sort_expression<ExpressionList<k_sort, Args...>> : public std::true_type {};
 
 /* Type traits struct for query expressions */
 template <typename>
@@ -1217,11 +1251,8 @@ struct is_query_expression<FreeExpr<Expr>> : public std::true_type {};
 template <>
 struct is_query_expression<TextSearchExpr> : public std::true_type {};
 
-template <typename Head, typename Tail>
-struct is_query_expression<ExpressionList<Head, Tail>> {
-    constexpr static bool value =
-        is_query_expression<Head>::value && is_query_expression<Tail>::value;
-};
+template <typename... Args>
+struct is_query_expression<ExpressionList<k_query, Args...>> : public std::true_type {};
 
 template <typename Expr1, typename Expr2>
 struct is_query_expression<BooleanExpr<Expr1, Expr2>> : public std::true_type {};
@@ -1255,11 +1286,8 @@ struct is_update_expression<PushUpdateExpr<NvpT, U>> : public std::true_type {};
 template <typename NvpT, typename Integer>
 struct is_update_expression<BitUpdateExpr<NvpT, Integer>> : public std::true_type {};
 
-template <typename Head, typename Tail>
-struct is_update_expression<ExpressionList<Head, Tail>> {
-    constexpr static bool value =
-        is_update_expression<Head>::value && is_update_expression<Tail>::value;
-};
+template <typename... Args>
+struct is_query_expression<ExpressionList<k_update, Args...>> : public std::true_type {};
 
 /* Query comparison operators */
 
@@ -1364,13 +1392,26 @@ constexpr ComparisonExpr<NvpT, bsoncxx::types::b_regex> operator!(
  * get expensive. Perhaps we could store the "expression category" inside the ExpressionList
  * object?
  */
-template <typename Head, typename Tail,
+template <expression_list_type list_type, typename Args..., typename Expr,
           typename = typename std::enable_if<
-              (is_sort_expression<Head>::value && is_sort_expression<Tail>::value) ||
-              (is_query_expression<Head>::value && is_query_expression<Tail>::value) ||
-              (is_update_expression<Head>::value && is_update_expression<Tail>::value)>::type>
-constexpr ExpressionList<Head, Tail> operator,(Tail &&tail, Head &&head) {
-    return {head, tail};
+              (is_sort_expression<Expr>::value && list_type == k_sort) ||
+              (is_query_expression<Expr>::value && list_type == k_query) ||
+              (is_update_expression<Expr>::value && list_type == k_update)>::type>
+constexpr ExpressionList<list_type, Expr, Args...> operator,(
+    ExpressionList<list_type, Args...> &&list, Expr &&expr) {
+    return ExpressionList<list_type, Expr, Args...>(
+        expr, std::get<std::index_sequence_for<Args...>()>(list.storage));
+}
+
+template <typename Expr1, typename Expr2,
+          typename = typename std::enable_if<
+              (is_sort_expression<Expr1>::value && is_sort_expression<Expr2>::value) ||
+              (is_query_expression<Expr1>::value && is_query_expression<Expr2>::value) ||
+              (is_update_expression<Expr1>::value && is_update_expression<Expr2>::value)>::type>
+constexpr ExpressionList<list_type, Expr, Args...> operator,(
+    ExpressionList<list_type, Args...> &&list, Expr &&expr) {
+    return ExpressionList<list_type, Expr1, Expr2>(
+        expr, std::get<std::index_sequence_for<Args...>()>(list.storage));
 }
 
 /**
@@ -1415,7 +1456,7 @@ template <typename... QueryExpressions,
           typename = typename all_true<is_query_expression<QueryExpressions>::value...>::type>
 constexpr auto nor(QueryExpressions... args)
     -> BooleanListExpr<decltype(make_expression_list(args...))> {
-    return {make_expression_list(args...), "$nor"};
+    return {ExpressionList(args...), "$nor"};
 }
 
 /**
