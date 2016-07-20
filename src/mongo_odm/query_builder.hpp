@@ -851,7 +851,7 @@ class CurrentDateExpr {
 
     /**
      * Appends this query to a BSON core builder as an expression
-     * '$currentDate: {field: {$type "timestamp|date"}}'
+     * '$currentDate: {field: {$type: "timestamp|date"}}'
      * @param builder A basic BSON core builder.
      * @param Whether to wrap this expression inside a document.
      */
