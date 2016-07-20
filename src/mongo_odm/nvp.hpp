@@ -572,27 +572,6 @@ class NvpCRTP {
         return {*static_cast<const NvpT*>(this), val, "$max"};
     }
 
-    /**
-     * Creates an expression that sets a date value to the current date.
-     * This is only enabled for std::chrono::time/duration values, as well as b_date.
-     */
-    template <typename U = no_opt_type>
-    constexpr typename std::enable_if<is_date<U>::value, CurrentDateExpr<NvpT>>::type current_date()
-        const {
-        return {*static_cast<const NvpT*>(this), true};
-    }
-
-    /**
-     * Creats an expression that sets a b_timestamp value to the current date.
-     * This is only enabled for b_timestamp values. (Use of which is discouraged by users.)
-     */
-    template <typename U = no_opt_type>
-    constexpr typename std::enable_if<std::is_same<bsoncxx::types::b_timestamp, U>::value,
-                                      CurrentDateExpr<NvpT>>::type
-    current_date() const {
-        return {*static_cast<const NvpT*>(this), false};
-    }
-
     /* Array update operators */
     /**
      * Creates an update expression with the $pop operator.
