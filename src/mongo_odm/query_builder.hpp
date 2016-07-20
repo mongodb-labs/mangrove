@@ -60,9 +60,11 @@ using is_bson_appendable = decltype(is_bson_appendable_impl<T>(0));
 
 /**
  * Templated function for appending a value to a BSON builder. If possible, the function simply
- * passes the value directly to the builder. If it cannot be nicely appended, it is first serialized
+ * passes the value directly to the builder. If it cannot be nicely appended, it is first
+ * serialized
  * and then added as a sub-document to the builder. If the value is a container/iterable, it is
- * serialized into a BSON array. If the value is a query builder epxression, it is serialized using
+ * serialized into a BSON array. If the value is a query builder epxression, it is serialized
+ * using
  * its member function .append_to_bson(builder).
  */
 // Specialization for appendable types.
@@ -78,7 +80,7 @@ typename std::enable_if<!is_bson_appendable<T>::value && !is_iterable_not_string
                             !(is_sort_expression<T>::value || is_query_expression<T>::value ||
                               is_update_expression<T>::value),
                         void>::type
-append_value_to_bson(T value, bsoncxx::builder::core &builder) {
+append_value_to_bson(const T &value, bsoncxx::builder::core &builder) {
     auto serialized_value = bson_mapper::to_document<T>(value);
     builder.append(bsoncxx::types::b_document{serialized_value});
 }
@@ -86,9 +88,9 @@ append_value_to_bson(T value, bsoncxx::builder::core &builder) {
 // Specialization for iterable types that must be serialized.
 template <typename Iterable>
 typename std::enable_if<is_iterable_not_string<Iterable>::value, void>::type append_value_to_bson(
-    Iterable arr, bsoncxx::builder::core &builder) {
+    const Iterable &arr, bsoncxx::builder::core &builder) {
     builder.open_array();
-    for (auto x : arr) {
+    for (const auto &x : arr) {
         append_value_to_bson(x, builder);
     }
     builder.close_array();
@@ -100,7 +102,7 @@ typename std::enable_if<is_sort_expression<Expression>::value ||
                             is_query_expression<Expression>::value ||
                             is_update_expression<Expression>::value,
                         void>::type
-append_value_to_bson(Expression expr, bsoncxx::builder::core &builder) {
+append_value_to_bson(const Expression &expr, bsoncxx::builder::core &builder) {
     builder.open_document();
     expr.append_to_bson(builder);
     builder.close_document();
@@ -115,7 +117,8 @@ void append_value_to_bson(const std::chrono::time_point<Clock, Duration> &tp,
 
 /**
  * An expression that represents a sorting order.
- * This consists of a name-value pair and a boolean specifying ascending or descending sort order.
+ * This consists of a name-value pair and a boolean specifying ascending or descending sort
+ * order.
  * The resulting BSON is {field: +/-1}, where +/-1 corresponds to the sort order.
  */
 template <typename NvpT>
@@ -166,9 +169,11 @@ class SortExpr {
 /**
  * Represents a query expression with the syntax "key: {$op: value}".
  * This usually means queries that are comparisons, such as (User.age > 21).
- * However, this also covers operators such as $exists, or any operator that has the above syntax.
+ * However, this also covers operators such as $exists, or any operator that has the above
+ * syntax.
  * @tparam NvpT The type of the name-value pair this expression uses.
- * @tparam U    The type of the value to compare against. This could be the same as the value type
+ * @tparam U    The type of the value to compare against. This could be the same as the value
+ * type
  *         		of NvpT, or the type of some other parameter, or even a query builder
  *           	expression.
  */
@@ -186,8 +191,10 @@ class ComparisonExpr {
     }
 
     /**
-     * Takes a comparison expression, and creates a new one with a different operator, but the same
-     * value and field.
+     * Takes a comparison expression, and creates a new one with a different operator, but the
+     * same value and field.
+     * This is primarily used to wrap $regex operators in $not,
+     * since $not cannot contains a $regex operator, it must directly contain the regex itself.
      * @param  expr          A comparison expresison with a similar field type and value type.
      * @param  op The new operator to use.
      */
@@ -207,7 +214,8 @@ class ComparisonExpr {
      * "key: {$cmp: val}", where $cmp is some comparison operator.
      * @param builder A BSON core builder
      * @param wrap      Whether to wrap the BSON inside a document.
-     * @param omit_name Whether to skip the name of the field. This is used primarily in NotExpr and
+     * @param omit_name Whether to skip the name of the field. This is used primarily in NotExpr
+     * and
      * FreeExpr to append just the value of the expression.
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false,
@@ -264,7 +272,8 @@ class ComparisonValueExpr : public ComparisonExpr<NvpT, U> {
 };
 
 /**
- * This class represents a query expression using the $mod operator, that checks the modulus of a
+ * This class represents a query expression using the $mod operator, that checks the modulus of
+ * a
  * certain numerical field.
  */
 template <typename NvpT>
@@ -343,9 +352,11 @@ class TextSearchExpr {
      * These parameters correspond to the parameters for the $text operator in MongoDB.
      * @param  search               A string of terms use to query the text index.
      * @param  language             The language of the text index.
-     * @param  case_sensitive      A boolean flag to specify case-sensitive search. Optional, false
+     * @param  case_sensitive      A boolean flag to specify case-sensitive search. Optional,
+     * false
      *                             by default.
-     * @param  diacritic_sensitive A boolean flag to specify case-sensitive search. Optional, false
+     * @param  diacritic_sensitive A boolean flag to specify case-sensitive search. Optional,
+     * false
      *                             by default.
      */
     constexpr TextSearchExpr(const char *search, const char *language, bool case_sensitive = false,
@@ -360,9 +371,11 @@ class TextSearchExpr {
      * Creates a text search expression, with the default `language` setting of the text index.
      * These parameters correspond to the parameters for the $text operator in MongoDB.
      * @param  search               A string of terms use to query the text index.
-     * @param  case_sensitive      A boolean flag to specify case-sensitive search. Optional, false
+     * @param  case_sensitive      A boolean flag to specify case-sensitive search. Optional,
+     * false
      *                             by default.
-     * @param  diacritic_sensitive A boolean flag to specify case-sensitive search. Optional, false
+     * @param  diacritic_sensitive A boolean flag to specify case-sensitive search. Optional,
+     * false
      *                             by default.
      */
     constexpr TextSearchExpr(const char *search, bool case_sensitive = false,
@@ -444,7 +457,8 @@ class NotExpr {
      * as a key-value pair of the form "key: {$not: {$cmp: val}}".
      * @param builder a BSON core builder
      * @param wrap      Whether to wrap the BSON inside a document.
-     * @param omit_name Whether to skip the name of the field. This is used primarily in $elemMatch
+     * @param omit_name Whether to skip the name of the field. This is used primarily in
+     * $elemMatch
      * queries with scalar arrays, so one can have a query like
      * {array: {$elemMatch: {$not: {$gt: 5}}}}
      */
@@ -485,9 +499,11 @@ class NotExpr {
 };
 
 /**
- * This represents an expression without a field name, for instance used inside $elemMatch queries
+ * This represents an expression without a field name, for instance used inside $elemMatch
+ * queries
  * for scalar arrays.
- * The class wraps an existing query expression, and omits the field name when converting to BSON.
+ * The class wraps an existing query expression, and omits the field name when converting to
+ * BSON.
  */
 template <typename Expr>
 class FreeExpr {
@@ -948,7 +964,8 @@ class AddToSetUpdateExpr {
 
 /**
  * Represents an array update epression that uses the $push operator.
- * Modifiers can be set either in the constructor, or by calling the corresponding member functions.
+ * Modifiers can be set either in the constructor, or by calling the corresponding member
+ * functions.
  * @tparam NvpT    The name-value-pair type of the corresponding field.
  * @tparam U        The value being $push'ed to the array
  * @tparam Sort     The type of the sort expression used in the $sort modifier.
@@ -962,9 +979,11 @@ class PushUpdateExpr {
      * @param  nvp      The field to modify
      * @param  val      The value to append to the field
      * @param  each     Whether to append a single value, or a bunch of values in an array.
-     * @param  slice    An optional value to give the $slice modifier. This only takes effect with
+     * @param  slice    An optional value to give the $slice modifier. This only takes effect
+     * with
      *                  each=true.
-     * @param  sort     An optional value to give the $sort modifier. This only takes effect with
+     * @param  sort     An optional value to give the $sort modifier. This only takes effect
+     * with
      *                  each=true.
      * @param  position An optional value to give the $position modifier. This only takes effect
      *                  with each=true.
@@ -983,7 +1002,8 @@ class PushUpdateExpr {
     /**
      * Create a copy of this expression with a different $slice modifier value.
      * @param slice    The integer value of the $slice modifier.
-     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     * @return         A new PushUpdateExpr with the same properties as this one, except a
+     * different
      *                 $slice modifier.
      */
     constexpr PushUpdateExpr<NvpT, U, Sort> slice(std::int32_t slice) {
@@ -992,7 +1012,8 @@ class PushUpdateExpr {
 
     /**
      * Create a copy of this expression without a $slice modifier.
-     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     * @return         A new PushUpdateExpr with the same properties as this one, except a
+     * different
      *                 $slice modifier.
      */
     constexpr PushUpdateExpr<NvpT, U, Sort> slice() {
@@ -1003,7 +1024,8 @@ class PushUpdateExpr {
      * Create a copy of this expression with a different $sort modifier value.
      * @tparam OtherNvpT    The name-value-pair used by the given Sort Expression.
      * @param sort          The sort expression to use.
-     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     * @return         A new PushUpdateExpr with the same properties as this one, except a
+     * different
      *                 $sort modifier.
      */
     template <typename OtherNvpT>
@@ -1014,7 +1036,8 @@ class PushUpdateExpr {
     /**
      * Create a copy of this expression with a different $slice modifier value.
      * @param sort    The integer value of the $sort modifier, +/-1.
-     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     * @return         A new PushUpdateExpr with the same properties as this one, except a
+     * different
      *                 $sort modifier.
      */
     constexpr PushUpdateExpr<NvpT, U, int> sort(int sort) {
@@ -1023,7 +1046,8 @@ class PushUpdateExpr {
 
     /**
      * Create a copy of this expression without a $sort modifier.
-     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     * @return         A new PushUpdateExpr with the same properties as this one, except a
+     * different
      *                 $sort modifier.
      */
     constexpr PushUpdateExpr<NvpT, U, Sort> sort() {
@@ -1033,7 +1057,8 @@ class PushUpdateExpr {
     /**
      * Create a copy of this expression with a different $position modifier value.
      * @param position    The integer value of the $position modifier.
-     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     * @return         A new PushUpdateExpr with the same properties as this one, except a
+     * different
      *                 $position modifier.
      */
     constexpr PushUpdateExpr<NvpT, U, Sort> position(std::uint32_t position) {
@@ -1042,7 +1067,8 @@ class PushUpdateExpr {
 
     /**
      * Create a copy of this expression without $position modifier.
-     * @return         A new PushUpdateExpr with the same properties as this one, except a different
+     * @return         A new PushUpdateExpr with the same properties as this one, except a
+     * different
      *                 $position modifier.
      */
     constexpr PushUpdateExpr<NvpT, U, Sort> position() {
@@ -1318,7 +1344,8 @@ constexpr NotExpr<Expr> operator!(const Expr &expr) {
     return {expr};
 }
 
-// Specialization of the ! operator for regexes, since the $regex operator cannot appear inside a
+// Specialization of the ! operator for regexes, since the $regex operator cannot appear inside
+// a
 // $not operator.
 // Instead, create an expression of the form {field: {$not: /regex/}}
 template <typename NvpT, typename = typename std::enable_if<is_nvp_type<NvpT>::value>::type>
@@ -1330,9 +1357,12 @@ constexpr ComparisonExpr<NvpT, bsoncxx::types::b_regex> operator!(
 /**
  * Comma operator that combines two expressions or an expression and an expression list into a
  * new expression list.
- * NOTE: This recursively checks that the elements of the list are either all query expressions or
- * all update expressions. This happens each time an element is appended to the list, so this could
- * get expensive. Perhaps we could store the "expression category" inside the ExpressionList object?
+ * NOTE: This recursively checks that the elements of the list are either all query expressions
+ * or
+ * all update expressions. This happens each time an element is appended to the list, so this
+ * could
+ * get expensive. Perhaps we could store the "expression category" inside the ExpressionList
+ * object?
  */
 template <typename Head, typename Tail,
           typename = typename std::enable_if<
@@ -1362,7 +1392,8 @@ constexpr BooleanExpr<Expr1, Expr2> operator||(const Expr1 &lhs, const Expr2 &rh
 
 // TODO I'd like list ops for "and" and "or" as well, but these are reserved keywords.
 // Perhaps use list_and, list_or, list_nor instead?
-// Currently chaining &&'s or ||'s provides the same results as a boolean operation on a list, and
+// Currently chaining &&'s or ||'s provides the same results as a boolean operation on a list,
+// and
 // not much different in terms of performance.
 
 /**
@@ -1414,7 +1445,8 @@ constexpr TextSearchExpr text(const char *search, bool case_sensitive = false,
 }
 
 /**
- * Creates a "free expression", that does not provide the name of a name-value pair. This is used
+ * Creates a "free expression", that does not provide the name of a name-value pair. This is
+ * used
  * for $elemMatch queries on scalar arrays, e.g. {arr: {$elemMatch: {$gt: 5}}}
  * @param expr  The query expression to wrap, and make into a free expression. This should be a
  * unary (i.e. not a list or binary) query expression.
