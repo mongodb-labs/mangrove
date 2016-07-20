@@ -373,10 +373,13 @@ class NvpCRTP {
      * @param bitmask - A bitmask to pass to the $bitsAllSet operator
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = no_opt_type,
-              typename = typename std::enable_if<std::is_integral<U>::value>::type>
-    constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_all_set(
-        const std::int64_t& bitmask) const {
+    template <typename U = no_opt_type, typename = typename std::enable_if<
+                                            std::is_integral<U>::value ||
+                                            std::is_same<U, bsoncxx::types::b_binary>::value>::type,
+              typename Mask, typename = typename std::enable_if<
+                                 std::is_integral<Mask>::value ||
+                                 std::is_same<Mask, bsoncxx::types::b_binary>::value>::type>
+    constexpr ComparisonExpr<NvpT, Mask> bits_all_set(const Mask& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAllSet"};
     }
 
@@ -389,8 +392,9 @@ class NvpCRTP {
      * @param positions...  Variadic argument containing further bit positions.
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = no_opt_type,
-              typename = typename std::enable_if<std::is_integral<U>::value>::type,
+    template <typename U = no_opt_type, typename = typename std::enable_if<
+                                            std::is_integral<U>::value ||
+                                            std::is_same<U, bsoncxx::types::b_binary>::value>::type,
               typename... Args>
     constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_all_set(std::int64_t pos1,
                                                                    std::int64_t pos2,
@@ -405,10 +409,13 @@ class NvpCRTP {
      * @param bitmask - A bitmask to pass to the $bitsAnySet operator
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = no_opt_type,
-              typename = typename std::enable_if<std::is_integral<U>::value>::type>
-    constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_any_set(
-        const std::int64_t& bitmask) const {
+    template <typename U = no_opt_type, typename = typename std::enable_if<
+                                            std::is_integral<U>::value ||
+                                            std::is_same<U, bsoncxx::types::b_binary>::value>::type,
+              typename Mask, typename = typename std::enable_if<
+                                 std::is_integral<Mask>::value ||
+                                 std::is_same<Mask, bsoncxx::types::b_binary>::value>::type>
+    constexpr ComparisonExpr<NvpT, Mask> bits_any_set(const Mask& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAnySet"};
     }
 
@@ -421,8 +428,9 @@ class NvpCRTP {
      * @param positions...  Variadic argument containing further bit positions.
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = no_opt_type,
-              typename = typename std::enable_if<std::is_integral<U>::value>::type,
+    template <typename U = no_opt_type, typename = typename std::enable_if<
+                                            std::is_integral<U>::value ||
+                                            std::is_same<U, bsoncxx::types::b_binary>::value>::type,
               typename... Args>
     constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_any_set(std::int64_t pos1,
                                                                    std::int64_t pos2,
@@ -438,10 +446,13 @@ class NvpCRTP {
      * @param bitmask - A bitmask to pass to the $bitsAllClear operator
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = no_opt_type,
-              typename = typename std::enable_if<std::is_integral<U>::value>::type>
-    constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_all_clear(
-        const std::int64_t& bitmask) const {
+    template <typename U = no_opt_type, typename = typename std::enable_if<
+                                            std::is_integral<U>::value ||
+                                            std::is_same<U, bsoncxx::types::b_binary>::value>::type,
+              typename Mask, typename = typename std::enable_if<
+                                 std::is_integral<Mask>::value ||
+                                 std::is_same<Mask, bsoncxx::types::b_binary>::value>::type>
+    constexpr ComparisonValueExpr<NvpT, Mask> bits_all_clear(const Mask& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAllClear"};
     }
 
@@ -454,8 +465,9 @@ class NvpCRTP {
      * @param positions...  Variadic argument containing further bit positions.
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = no_opt_type,
-              typename = typename std::enable_if<std::is_integral<U>::value>::type,
+    template <typename U = no_opt_type, typename = typename std::enable_if<
+                                            std::is_integral<U>::value ||
+                                            std::is_same<U, bsoncxx::types::b_binary>::value>::type,
               typename... Args>
     constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_all_clear(std::int64_t pos1,
                                                                      std::int64_t pos2,
@@ -471,10 +483,13 @@ class NvpCRTP {
      * @param bitmask - A bitmask to pass to the $bitsAnyClear operator
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = no_opt_type,
-              typename = typename std::enable_if<std::is_integral<U>::value>::type>
-    constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_any_clear(
-        const std::int64_t& bitmask) const {
+    template <typename U = no_opt_type, typename = typename std::enable_if<
+                                            std::is_integral<U>::value ||
+                                            std::is_same<U, bsoncxx::types::b_binary>::value>::type,
+              typename Mask, typename = typename std::enable_if<
+                                 std::is_integral<Mask>::value ||
+                                 std::is_same<Mask, bsoncxx::types::b_binary>::value>::type>
+    constexpr ComparisonExpr<NvpT, Mask> bits_any_clear(const Mask& bitmask) const {
         return {*static_cast<const NvpT*>(this), bitmask, "$bitsAnyClear"};
     }
 
@@ -487,8 +502,9 @@ class NvpCRTP {
      * @param positions...  Variadic argument containing further bit positions.
      * @returns A ComparisonExpr representing this query
      */
-    template <typename U = no_opt_type,
-              typename = typename std::enable_if<std::is_integral<U>::value>::type,
+    template <typename U = no_opt_type, typename = typename std::enable_if<
+                                            std::is_integral<U>::value ||
+                                            std::is_same<U, bsoncxx::types::b_binary>::value>::type,
               typename... Args>
     constexpr ComparisonValueExpr<NvpT, std::int64_t> bits_any_clear(std::int64_t pos1,
                                                                      std::int64_t pos2,
