@@ -172,6 +172,48 @@ class nvp_child : public nvp_base<nvp_child<Base, T, Parent>, T> {
     const Parent& parent;
 };
 
+template <typename NvpT>
+class array_element_nvp
+    : public nvp_base<array_element_nvp<NvpT>, iterable_value_t<typename NvpT::no_opt_type>> {
+   public:
+    using type = iterable_value_t<typename NvpT::no_opt_type>;
+    // In case this field is wrapped in an optional, store the underlying type.
+    using no_opt_type = remove_optional_t<type>;
+
+    constexpr array_element_nvp(const NvpT& nvp, std::size_t i) : _nvp(nvp), _i(i) {
+    }
+
+    /**
+     * Creates an update expression that sets the field to the given value.
+     */
+    constexpr update_expr<array_element_nvp<NvpT>, no_opt_type> operator=(
+        const no_opt_type& val) const {
+        return {*this, val, "$set"};
+    }
+
+    /**
+     * Returns the qualified name of this field in dot notation, i.e. "array.i".
+     * @return A string containing the name of this field in dot notation.
+     */
+    std::string get_name() const {
+        std::string s;
+        return append_name(s);
+    }
+
+    /**
+     * Returns the qualified name of this field in dot notation, i.e. "field.<index>", where index
+     * is a number.
+     * @return A string containing the name of this field in dot notation.
+     */
+    std::string& append_name(std::string& s) const {
+        return _nvp.append_name(s).append(1, '.').append(std::to_string(_i));
+    }
+
+   private:
+    const NvpT& _nvp;
+    const std::size_t _i;
+};
+
 /**
  * Represents a field that does not have a name, i.e. an array element.
  * This is used in $elemMatch expressions on scalar arrays, where the elements can be compared but
@@ -199,6 +241,48 @@ struct is_free_nvp<free_nvp<T>> : public std::true_type {};
 
 template <typename T>
 constexpr bool is_free_nvp_v = is_free_nvp<T>::value;
+
+/**
+ * Represents the $ operator applied to a field.
+ */
+template <typename NvpT>
+class dollar_operator_nvp : public nvp_base<dollar_operator_nvp<NvpT>, typename NvpT::type> {
+   public:
+    using type = iterable_value_t<typename NvpT::no_opt_type>;
+    // In case this field is wrapped in an optional, store the underlying type.
+    using no_opt_type = remove_optional_t<type>;
+
+    constexpr dollar_operator_nvp(const NvpT& nvp) : _nvp(nvp) {
+    }
+
+    /**
+     * Creates an update expression that sets the field to the given value.
+     */
+    constexpr update_expr<dollar_operator_nvp<NvpT>, no_opt_type> operator=(
+        const no_opt_type& val) const {
+        return {*this, val, "$set"};
+    }
+
+    /**
+     * Returns the qualified name of this field in dot notation, i.e. "array.i".
+     * @return A string containing the name of this field in dot notation.
+     */
+    std::string get_name() const {
+        std::string s;
+        return append_name(s);
+    }
+
+    /**
+     * Returns the name of this field with the $ operator, i.e. "field.$"
+     * @return A string containing the name of this field in dot notation.
+     */
+    std::string& append_name(std::string& s) const {
+        return _nvp.append_name(s).append(1, '.').append(1, '$');
+    }
+
+   private:
+    const NvpT& _nvp;
+};
 
 /**
  * A CRTP base class that contains member functions for name-value pairs.
@@ -236,6 +320,11 @@ class nvp_base {
     template <typename U>
     constexpr nvp_child<T, U, NvpT> operator->*(const nvp<T, U>& child) const {
         return {child.t, child.name, *static_cast<const NvpT*>(this)};
+    }
+
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>>
+    constexpr array_element_nvp<NvpT> operator[](std::size_t i) const {
+        return {*static_cast<const NvpT*>(this), i};
     }
 
     /**
@@ -542,6 +631,17 @@ class nvp_base {
 
     /* Array update operators */
     /**
+     * Returns a name-value pair with the $ operator appended to it.
+     * When used in an update expression, this modifies the first array element that satisfies a
+     * query.
+     * @returns a dollar_operator_nvp that corresponds to "<field_name>.$"
+     */
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>>
+    constexpr dollar_operator_nvp<NvpT> first_match() const {
+        return {*static_cast<const NvpT*>(this)};
+    }
+
+    /**
      * Creates an update expression with the $pop operator.
      * This is only enabled if the current field is an array type.
      * @param last  If true, removes the element from the end of the array.
@@ -667,6 +767,9 @@ struct is_nvp<nvp_child<Base, T, Parent>> : public std::true_type {};
 
 template <typename T>
 struct is_nvp<free_nvp<T>> : public std::true_type {};
+
+template <typename NvpT>
+struct is_nvp<array_element_nvp<NvpT>> : public std::true_type {};
 
 template <typename T>
 constexpr bool is_nvp_v = is_nvp<T>::value;

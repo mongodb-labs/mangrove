@@ -115,6 +115,7 @@ TEST_CASE("Test nested member access.", "[mongo_odm::nvp_child]") {
     }
 
     SECTION("Multiple nested member access using operator->*") {
+        // Nvp's must be used as temporary objects.
         auto test_lambda = [](const auto& nvp_child) {
             REQUIRE(nvp_child.get_name() == "b.p.x");
             REQUIRE(nvp_child.t == &Point::x);
@@ -127,6 +128,7 @@ TEST_CASE("Test nested member access.", "[mongo_odm::nvp_child]") {
     }
 
     SECTION("Nested member access using MONGO_ODM_CHILD macro") {
+        // Nvp's must be used as temporary objects.
         auto test_lambda = [](const auto& nvp_child) {
             REQUIRE(nvp_child.get_name() == "p.x");
             REQUIRE(nvp_child.t == &Point::x);
@@ -137,6 +139,7 @@ TEST_CASE("Test nested member access.", "[mongo_odm::nvp_child]") {
     }
 
     SECTION("Multiple nested member access using MONGO_ODM_CHILD macro") {
+        // Nvp's must be used as temporary objects.
         auto test_lambda = [](const auto& nvp_child) {
             REQUIRE(nvp_child.get_name() == "b.p.x");
             REQUIRE(nvp_child.t == &Point::x);
@@ -197,6 +200,18 @@ TEST_CASE("Test keys with custom names") {
     REQUIRE(obj.x == 4);
 }
 
+TEST_CASE("Test member array access") {
+    // Nvp's must be used as temporary objects.
+    REQUIRE((MONGO_ODM_KEY(Bar::arr)[1].get_name() == "arr.1"));
+    REQUIRE((std::is_same<typename decltype(MONGO_ODM_KEY(Bar::arr)[1])::no_opt_type, int>::value ==
+             true));
+
+    REQUIRE(((MONGO_ODM_KEY(Bar::pts)[1]->*MONGO_ODM_KEY(Point::x)).get_name() == "pts.1.x"));
+    REQUIRE((std::is_same<typename decltype(
+                              MONGO_ODM_KEY(Bar::pts)[1]->*MONGO_ODM_KEY(Point::x))::no_opt_type,
+                          int>::value == true));
+}
+
 TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     instance::current();
     client conn{uri{}};
@@ -242,6 +257,11 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(MONGO_ODM_KEY(Bar::pts) == std::vector<Point>{{1, 2}, {3, 4}});
         REQUIRE(res);
         REQUIRE((res->pts == std::vector<Point>{{1, 2}, {3, 4}}));
+
+        // Array element test
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::arr)[2] == 6);
+        REQUIRE(res);
+        REQUIRE(res->arr[2] == 6);
     }
 
     SECTION("Test > comparison.", "[mongo_odm::comparison_expr]") {
@@ -278,6 +298,11 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(MONGO_ODM_KEY(Bar::pts) > std::vector<Point>{{5, 6}, {7, 8}});
         REQUIRE(res);
         REQUIRE((res->pts == std::vector<Point>{{9, 10}, {11, 12}}));
+
+        // Array element test
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::arr)[2] > 5);
+        REQUIRE(res);
+        REQUIRE(res->arr[2] == 6);
     }
 
     SECTION("Test >= comparison.", "[mongo_odm::comparison_expr]") {
@@ -351,6 +376,11 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(MONGO_ODM_KEY(Bar::p)->*MONGO_ODM_KEY(Point::x) != 0);
         REQUIRE(res);
         REQUIRE(res->p.x != 0);
+
+        // Array element test
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::arr)[2] != 5);
+        REQUIRE(res);
+        REQUIRE(res->arr[2] == 6);
     }
 
     SECTION("Test $not expression, with operator!.", "[mongo_odm::not_expr]") {
@@ -381,6 +411,11 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(!(MONGO_ODM_KEY(Bar::pts) == std::vector<Point>{{1, 2}, {3, 4}}));
         REQUIRE(res);
         REQUIRE((res->pts != std::vector<Point>{{1, 2}, {3, 4}}));
+
+        // Array element test
+        res = Bar::find_one(!(MONGO_ODM_KEY(Bar::arr)[2] < 5));
+        REQUIRE(res);
+        REQUIRE(res->arr[2] == 6);
     }
 
     SECTION("Test $nin and $in operators.", "[mongo_odm::in_array_expr]") {
@@ -507,6 +542,11 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         res = Bar::find_one(!!MONGO_ODM_KEY(Bar::w).mod(50, 5));
         REQUIRE(res);
         REQUIRE(res->w == 555);
+
+        // Test with array element
+        res = Bar::find_one(MONGO_ODM_KEY(Bar::arr)[2].mod(5, 1));
+        REQUIRE(res);
+        REQUIRE(res->arr[2] == 6);
     }
 
     SECTION("Test $text operator.", "[mongo_odm::text_search_expr]") {
@@ -686,7 +726,8 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
     SECTION("Test = assignment.", "[mongo_odm::update_expr]") {
         auto res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
                                    (MONGO_ODM_KEY(Bar::z) = "new_str", MONGO_ODM_KEY(Bar::x1) = 73,
-                                    MONGO_ODM_KEY(Bar::x2) = 99, MONGO_ODM_CHILD(Bar, p, x) = 100));
+                                    MONGO_ODM_KEY(Bar::x2) = 99, MONGO_ODM_CHILD(Bar, p, x) = 100,
+                                    MONGO_ODM_KEY(Bar::arr)[2] = 600));
         REQUIRE(res);
         REQUIRE(res->modified_count() == 1);
         auto bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
@@ -695,6 +736,7 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
         REQUIRE(bar->x1 == 73);
         REQUIRE(bar->x2.value() == 99);
         REQUIRE(bar->p.x == 100);
+        REQUIRE(bar->arr[2] == 600);
     }
 
     SECTION("Test increment operators.", "[mongo_odm::update_expr]") {
@@ -703,12 +745,14 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
         int initial_x1 = bar->x1;
         int initial_x2 = bar->x2.value();
         int initial_p_x = bar->p.x;
+        int initial_arr_2 = bar->arr[2];
 
         {
             // Test postfix ++
-            auto res = coll.update_one(
-                MONGO_ODM_KEY(Bar::w) == 555,
-                (MONGO_ODM_KEY(Bar::x1)++, MONGO_ODM_KEY(Bar::x2)++, MONGO_ODM_CHILD(Bar, p, x)++));
+            auto res =
+                coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
+                                (MONGO_ODM_KEY(Bar::x1)++, MONGO_ODM_KEY(Bar::x2)++,
+                                 MONGO_ODM_CHILD(Bar, p, x)++, MONGO_ODM_KEY(Bar::arr)[2]++));
             REQUIRE(res);
             REQUIRE(res->modified_count() == 1);
             bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
@@ -716,6 +760,7 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             REQUIRE(bar->x1 == initial_x1 + 1);
             REQUIRE(bar->x2.value() == initial_x2 + 1);
             REQUIRE(bar->p.x == initial_p_x + 1);
+            REQUIRE(bar->arr[2] == initial_arr_2 + 1);
         }
 
         {
@@ -723,9 +768,11 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             initial_x1 = bar->x1;
             initial_x2 = bar->x2.value();
             initial_p_x = bar->p.x;
-            auto res = coll.update_one(
-                MONGO_ODM_KEY(Bar::w) == 555,
-                (++MONGO_ODM_KEY(Bar::x1), ++MONGO_ODM_KEY(Bar::x2), ++MONGO_ODM_CHILD(Bar, p, x)));
+            initial_arr_2 = bar->arr[2];
+            auto res =
+                coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
+                                (++MONGO_ODM_KEY(Bar::x1), ++MONGO_ODM_KEY(Bar::x2),
+                                 ++MONGO_ODM_CHILD(Bar, p, x), ++MONGO_ODM_KEY(Bar::arr)[2]));
             REQUIRE(res);
             REQUIRE(res->modified_count() == 1);
             bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
@@ -733,6 +780,7 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             REQUIRE(bar->x1 == initial_x1 + 1);
             REQUIRE(bar->x2.value() == initial_x2 + 1);
             REQUIRE(bar->p.x == initial_p_x + 1);
+            REQUIRE(bar->arr[2] == initial_arr_2 + 1);
         }
 
         {
@@ -740,9 +788,11 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             initial_x1 = bar->x1;
             initial_x2 = bar->x2.value();
             initial_p_x = bar->p.x;
-            auto res = coll.update_one(
-                MONGO_ODM_KEY(Bar::w) == 555,
-                (MONGO_ODM_KEY(Bar::x1)--, MONGO_ODM_KEY(Bar::x2)--, MONGO_ODM_CHILD(Bar, p, x)--));
+            initial_arr_2 = bar->arr[2];
+            auto res =
+                coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
+                                (MONGO_ODM_KEY(Bar::x1)--, MONGO_ODM_KEY(Bar::x2)--,
+                                 MONGO_ODM_CHILD(Bar, p, x)--, MONGO_ODM_KEY(Bar::arr)[2]--));
             REQUIRE(res);
             REQUIRE(res->modified_count() == 1);
             bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
@@ -750,6 +800,7 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             REQUIRE(bar->x1 == initial_x1 - 1);
             REQUIRE(bar->x2.value() == initial_x2 - 1);
             REQUIRE(bar->p.x == initial_p_x - 1);
+            REQUIRE(bar->arr[2] == initial_arr_2 - 1);
         }
 
         {
@@ -757,9 +808,11 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             initial_x1 = bar->x1;
             initial_x2 = bar->x2.value();
             initial_p_x = bar->p.x;
-            auto res = coll.update_one(
-                MONGO_ODM_KEY(Bar::w) == 555,
-                (--MONGO_ODM_KEY(Bar::x1), --MONGO_ODM_KEY(Bar::x2), --MONGO_ODM_CHILD(Bar, p, x)));
+            initial_arr_2 = bar->arr[2];
+            auto res =
+                coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
+                                (--MONGO_ODM_KEY(Bar::x1), --MONGO_ODM_KEY(Bar::x2),
+                                 --MONGO_ODM_CHILD(Bar, p, x), --MONGO_ODM_KEY(Bar::arr)[2]));
             REQUIRE(res);
             REQUIRE(res->modified_count() == 1);
             bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
@@ -767,6 +820,7 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             REQUIRE(bar->x1 == initial_x1 - 1);
             REQUIRE(bar->x2.value() == initial_x2 - 1);
             REQUIRE(bar->p.x == initial_p_x - 1);
+            REQUIRE(bar->arr[2] == initial_arr_2 - 1);
         }
 
         {
@@ -774,9 +828,11 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             initial_x1 = bar->x1;
             initial_x2 = bar->x2.value();
             initial_p_x = bar->p.x;
-            auto res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
-                                       (MONGO_ODM_KEY(Bar::x1) += 5, MONGO_ODM_KEY(Bar::x2) += 5,
-                                        MONGO_ODM_CHILD(Bar, p, x) += 5));
+            initial_arr_2 = bar->arr[2];
+            auto res =
+                coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
+                                (MONGO_ODM_KEY(Bar::x1) += 5, MONGO_ODM_KEY(Bar::x2) += 5,
+                                 MONGO_ODM_CHILD(Bar, p, x) += 5, MONGO_ODM_KEY(Bar::arr)[2] += 5));
             REQUIRE(res);
             REQUIRE(res->modified_count() == 1);
             bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
@@ -784,6 +840,7 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             REQUIRE(bar->x1 == initial_x1 + 5);
             REQUIRE(bar->x2.value() == initial_x2 + 5);
             REQUIRE(bar->p.x == initial_p_x + 5);
+            REQUIRE(bar->arr[2] == initial_arr_2 + 5);
         }
 
         {
@@ -791,9 +848,11 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             initial_x1 = bar->x1;
             initial_x2 = bar->x2.value();
             initial_p_x = bar->p.x;
-            auto res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
-                                       (MONGO_ODM_KEY(Bar::x1) -= 5, MONGO_ODM_KEY(Bar::x2) -= 5,
-                                        MONGO_ODM_CHILD(Bar, p, x) -= 5));
+            initial_arr_2 = bar->arr[2];
+            auto res =
+                coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
+                                (MONGO_ODM_KEY(Bar::x1) -= 5, MONGO_ODM_KEY(Bar::x2) -= 5,
+                                 MONGO_ODM_CHILD(Bar, p, x) -= 5, MONGO_ODM_KEY(Bar::arr)[2] -= 5));
             REQUIRE(res);
             REQUIRE(res->modified_count() == 1);
             bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
@@ -801,6 +860,7 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             REQUIRE(bar->x1 == initial_x1 - 5);
             REQUIRE(bar->x2.value() == initial_x2 - 5);
             REQUIRE(bar->p.x == initial_p_x - 5);
+            REQUIRE(bar->arr[2] == initial_arr_2 - 5);
         }
 
         {
@@ -808,9 +868,11 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             initial_x1 = bar->x1;
             initial_x2 = bar->x2.value();
             initial_p_x = bar->p.x;
-            auto res = coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
-                                       (MONGO_ODM_KEY(Bar::x1) *= 5, MONGO_ODM_KEY(Bar::x2) *= 5,
-                                        MONGO_ODM_CHILD(Bar, p, x) *= 5));
+            initial_arr_2 = bar->arr[2];
+            auto res =
+                coll.update_one(MONGO_ODM_KEY(Bar::w) == 555,
+                                (MONGO_ODM_KEY(Bar::x1) *= 5, MONGO_ODM_KEY(Bar::x2) *= 5,
+                                 MONGO_ODM_CHILD(Bar, p, x) *= 5, MONGO_ODM_KEY(Bar::arr)[2] *= 5));
             REQUIRE(res);
             REQUIRE(res->modified_count() == 1);
             bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
@@ -818,6 +880,7 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
             REQUIRE(bar->x1 == initial_x1 * 5);
             REQUIRE(bar->x2.value() == initial_x2 * 5);
             REQUIRE(bar->p.x == initial_p_x * 5);
+            REQUIRE(bar->arr[2] == initial_arr_2 * 5);
         }
     }
 
@@ -960,6 +1023,19 @@ TEST_CASE("Update Builder", "mongo_odm::update_expr") {
     }
 
     /* Array update operators */
+
+    SECTION("Test $ array update operator.", "[mongo_odm::dollar_operator_nvp]") {
+        auto res =
+            coll.update_one((MONGO_ODM_KEY(Bar::w) == 555,
+                             MONGO_ODM_KEY(Bar::arr).elem_match(MONGO_ODM_ELEM(Bar::arr) == 5)),
+                            MONGO_ODM_KEY(Bar::arr).first_match() = 500);
+        REQUIRE(res);
+        REQUIRE(res->modified_count() == 1);
+
+        auto bar = Bar::find_one(MONGO_ODM_KEY(Bar::w) == 555);
+        REQUIRE(bar);
+        REQUIRE(bar->arr[1] == 500);
+    }
 
     SECTION("Test $pop array update operator.", "[mongo_odm::nvp::pop]") {
         Bar(777, 10, 999, true, "pop", {1, 0}, {4, 5, 6}, {{9, 10}, {11, 12}}, system_clock::now())
