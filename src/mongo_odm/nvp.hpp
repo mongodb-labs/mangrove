@@ -242,12 +242,6 @@ class NvpCRTP {
     // In case this field is wrapped in an optional, store the underlying type.
     using no_opt_type = remove_optional_t<T>;
 
-    // keeps track of pointer to base class, for convenience.
-    const NvpT* self;
-
-    constexpr NvpCRTP() : self(static_cast<const NvpT*>(this)) {
-    }
-
     /**
      * Chains two name-value pairs to access a sub-field, i.e. a field with the name "parent.child".
      * @tparam U    The type of the child NVP
