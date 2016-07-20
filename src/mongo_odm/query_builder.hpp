@@ -535,7 +535,7 @@ class FreeExpr {
     const Expr expr;
 };
 
-enum struct expression_list_type {
+enum struct expression_category_enum {
     k_none,
     k_update,
     k_query,
@@ -554,7 +554,7 @@ constexpr void tupleForEach(const std::tuple<Ts...> &tup, Map &&map) {
     return tupleForEachImpl(tup, std::forward<Map>(map), std::index_sequence_for<Ts...>());
 }
 
-template <expression_list_type list_type, typename... Args>
+template <expression_category_enum list_type, typename... Args>
 class ExpressionList {
     ExpressionList(const Args &... args) : storage(std::make_tuple(args...)) {
     }
@@ -1213,27 +1213,33 @@ class BitUpdateExpr {
     const char *_operation;
 };
 
-/* Type traits struct for sort expressions */
+/* Type traits structs for various expressions */
 
-template <typename>
-struct expression_type {
-    expression_list_type value;
+struct expression_category_type<expression_category_enum v> {
+    static constexpr expression_category_enum value = v;
 };
 
+using expression_none_type = expression_category_type<k_none>;
+
+using expression_sort_type = expression_category_type<k_sort>;
+
+using expression_query_type = expression_category_type<k_query>;
+
+using expression_update_type = expression_category_type<k_update>;
+
 template <typename>
-struct is_sort_expression : public std::false_type {};
+struct expression_type : public expression_none_type {};
 
 template <typename NvpT>
-struct is_sort_expression<SortExpr<NvpT>> : public std::true_type {};
+struct expression_type<SortExpr<NvpT>> : public expression_sort_type {};
 
-template <typename... Args>
-struct is_sort_expression<ExpressionList<k_sort, Args...>> : public std::true_type {};
-
-/* Type traits struct for query expressions */
-template <typename>
-struct is_query_expression : public std::false_type {};
+template <typename list_type, typename... Args>
+struct expression_type<ExpressionList<list_type, Args...>>
+    : public expression_category_type<list_type> {};
 
 template <typename NvpT, typename U>
+struct expression_type<ComparisonExpr<NvpT, U>> : public expression_query_type {};
+
 struct is_query_expression<ComparisonExpr<NvpT, U>> : public std::true_type {};
 
 template <typename NvpT, typename U>
@@ -1392,7 +1398,7 @@ constexpr ComparisonExpr<NvpT, bsoncxx::types::b_regex> operator!(
  * get expensive. Perhaps we could store the "expression category" inside the ExpressionList
  * object?
  */
-template <expression_list_type list_type, typename Args..., typename Expr,
+template <expression_category_enum list_type, typename Args..., typename Expr,
           typename = typename std::enable_if<
               (is_sort_expression<Expr>::value && list_type == k_sort) ||
               (is_query_expression<Expr>::value && list_type == k_query) ||
