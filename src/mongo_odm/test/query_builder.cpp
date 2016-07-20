@@ -465,6 +465,9 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
     }
 
     SECTION("Test $text operator.", "[mongo_odm::TextSearchExpr]") {
+        auto value = bsoncxx::from_json(R"({"z": "text"})");
+        coll.create_index(value.view());
+
         auto res = Bar::find_one(mongo_odm::text("goodbye"));
         REQUIRE(res);
         REQUIRE(res->z == "goodbye");
