@@ -190,7 +190,7 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
     using no_opt_type = remove_optional_t<T>;
     using type = T;
 
-    constexpr NvpChild(T Base::*t, const char* name, Parent parent)
+    constexpr NvpChild(T Base::*t, const char* name, const Parent& parent)
         : t(t), name(name), parent(parent) {
     }
 
@@ -215,7 +215,7 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
 
     T Base::*t;
     const char* name;
-    const Parent parent;
+    const Parent& parent;
 };
 
 /**
