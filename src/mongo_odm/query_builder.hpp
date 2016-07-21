@@ -31,13 +31,12 @@
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
 
+// Enum of possible expressiokn types.
+enum struct expression_category_enum { none, update, query, sort };
+
 // Forward declarations for Expression type trait structs
-template <typename>
-struct is_sort_expression;
-template <typename>
-struct is_query_expression;
-template <typename>
-struct is_update_expression;
+template <expression_category_enum, typename>
+struct is_expression_type;
 
 /**
  * Type trait that contains true if a type T can be appended to a BSON builder using
@@ -77,8 +76,7 @@ typename std::enable_if<is_bson_appendable<T>::value, void>::type append_value_t
 // Specialization for non-iterable, non-expression types that must be serialized.
 template <typename T>
 typename std::enable_if<!is_bson_appendable<T>::value && !is_iterable_not_string<T>::value &&
-                            !(is_sort_expression<T>::value || is_query_expression<T>::value ||
-                              is_update_expression<T>::value),
+                            is_expression_type<expression_category_enum::none, T>::value,
                         void>::type
 append_value_to_bson(const T &value, bsoncxx::builder::core &builder) {
     auto serialized_value = bson_mapper::to_document<T>(value);
@@ -98,9 +96,7 @@ typename std::enable_if<is_iterable_not_string<Iterable>::value, void>::type app
 
 // Specialization for expression types that must be serialized.
 template <typename Expression>
-typename std::enable_if<is_sort_expression<Expression>::value ||
-                            is_query_expression<Expression>::value ||
-                            is_update_expression<Expression>::value,
+typename std::enable_if<!is_expression_type<expression_category_enum::none, Expression>::value,
                         void>::type
 append_value_to_bson(const Expression &expr, bsoncxx::builder::core &builder) {
     builder.open_document();
@@ -535,18 +531,10 @@ class FreeExpr {
     const Expr expr;
 };
 
-enum struct expression_category_enum {
-    k_none,
-    k_update,
-    k_query,
-    k_sort,
-    // etc.
-}
-
 template <typename Map, typename... Ts, size_t... idxs>
 constexpr void tupleForEachImpl(const std::tuple<Ts...> &tup, Map &&map,
                                 std::index_sequence<idxs...>) {
-    std::initializer_list<int>{(map(idxs, std::get<idxs>(tup)), 0)...};
+    std::initializer_list<int>{(map(std::get<idxs>(tup)), 0)...};
 }
 
 template <typename Map, typename... Ts>
@@ -554,80 +542,42 @@ constexpr void tupleForEach(const std::tuple<Ts...> &tup, Map &&map) {
     return tupleForEachImpl(tup, std::forward<Map>(map), std::index_sequence_for<Ts...>());
 }
 
+/**
+ * This represents a list of expressions.
+ * @tparam list_typ The category of the expressions, such as "update" or "query".
+ * @tparam Args...  The types of the various expressions that make up the list.
+ */
 template <expression_category_enum list_type, typename... Args>
 class ExpressionList {
+   public:
+    /**
+     * Constructs an expression list of the given arguments.
+     * @tparam args  The individual elements of the list.
+     */
     ExpressionList(const Args &... args) : storage(std::make_tuple(args...)) {
     }
 
-    void append_to_bson(builder::core &builder, bool wrap = false) const {
+    /**
+     * Appends each element to a BSON code builder.
+     * @param builder A code BSON builder
+     * @param wrap    Whether to wrap individual elements inside a BSON document, e.g.
+     *                "{elt1...}, {elt2, ...}, ..."
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
         tupleForEach(storage, [&](const auto &v) { v.append_to_bson(builder, wrap); });
+    }
+
+    /**
+     * Casts the expression list to a BSON query of  the form { expr1, expr2, ....}
+     */
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return builder.extract_document();
     }
 
     std::tuple<Args...> storage;
 };
-
-// /**
-//  * This represents a list of expressions.
-//  */
-// template <typename Head, typename Tail>
-// class ExpressionList {
-//    public:
-//     /**
-//      * Constructs an expression list.
-//      * @param head  The first element in the list.
-//      * @param tail  The remainder of the list
-//      */
-//     constexpr ExpressionList(const Head &head, const Tail &tail) : _head(head), _tail(tail) {
-//     }
-//
-//     /**
-//      * Appends this expression list to the given core builder by appending the first expression
-//      * in the list, and then recursing on the rest of the list.
-//      * @param builder A basic BSON core builder.
-//      * @param Whether to wrap individual elements inside a document. This is useful when the
-//      * ExpressionList is used as a BSON array.
-//      */
-//     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
-//         _head.append_to_bson(builder, wrap);
-//         _tail.append_to_bson(builder, wrap);
-//     }
-//
-//     /**
-//      * Casts the expression list to a BSON query of  the form { expr1, expr2, ....}
-//      */
-//     operator bsoncxx::document::view_or_value() const {
-//         auto builder = bsoncxx::builder::core(false);
-//         append_to_bson(builder);
-//         return builder.extract_document();
-//     }
-//
-//    private:
-//     const Head _head;
-//     const Tail _tail;
-// };
-
-// /**
-//  * Function for creating an ExpressionList out of a variadic list of epxressions.
-//  *
-//  * During recursion, `e1` is used as the "tail" that contains
-//  * the intermediate expression list, and `e2` is a single element to be appended to the list.
-//  *
-//  * @param e1    An expression to combine into a list.
-//  * @param e2    An expression to combine into a list.
-//  * @param args  A variadix list of other expressions to add to the list.
-//  */
-// template <typename Expr1, typename Expr2, typename... Expressions>
-// constexpr auto make_expression_list(Expr1 e1, Expr2 e2, Expressions... args) {
-//     return make_expression_list(ExpressionList<Expr2, Expr1>(e2, e1), args...);
-// }
-//
-// /**
-//  * Base case for variadic ExpressionList builder, simply returns the list it receives.
-//  */
-// template <typename List>
-// constexpr List make_expression_list(List l) {
-//     return l;
-// }
 
 /**
  * This represents a boolean expression with two arguments.
@@ -1214,18 +1164,18 @@ class BitUpdateExpr {
 };
 
 /* Type traits structs for various expressions */
-
-struct expression_category_type<expression_category_enum v> {
-    static constexpr expression_category_enum value = v;
+template <expression_category_enum expr_type>
+struct expression_category_type {
+    static constexpr expression_category_enum value = expr_type;
 };
 
-using expression_none_type = expression_category_type<k_none>;
+using expression_none_type = expression_category_type<expression_category_enum::none>;
 
-using expression_sort_type = expression_category_type<k_sort>;
+using expression_sort_type = expression_category_type<expression_category_enum::sort>;
 
-using expression_query_type = expression_category_type<k_query>;
+using expression_query_type = expression_category_type<expression_category_enum::query>;
 
-using expression_update_type = expression_category_type<k_update>;
+using expression_update_type = expression_category_type<expression_category_enum::update>;
 
 template <typename>
 struct expression_type : public expression_none_type {};
@@ -1233,67 +1183,76 @@ struct expression_type : public expression_none_type {};
 template <typename NvpT>
 struct expression_type<SortExpr<NvpT>> : public expression_sort_type {};
 
-template <typename list_type, typename... Args>
+template <expression_category_enum list_type, typename... Args>
 struct expression_type<ExpressionList<list_type, Args...>>
     : public expression_category_type<list_type> {};
 
 template <typename NvpT, typename U>
 struct expression_type<ComparisonExpr<NvpT, U>> : public expression_query_type {};
 
-struct is_query_expression<ComparisonExpr<NvpT, U>> : public std::true_type {};
-
 template <typename NvpT, typename U>
-struct is_query_expression<ComparisonValueExpr<NvpT, U>> : public std::true_type {};
+struct expression_type<ComparisonValueExpr<NvpT, U>> : public expression_query_type {};
 
 template <typename NvpT>
-struct is_query_expression<ModExpr<NvpT>> : public std::true_type {};
+struct expression_type<ModExpr<NvpT>> : public expression_query_type {};
 
 template <typename Expr>
-struct is_query_expression<NotExpr<Expr>> : public std::true_type {};
+struct expression_type<NotExpr<Expr>> : public expression_query_type {};
 
 template <typename Expr>
-struct is_query_expression<FreeExpr<Expr>> : public std::true_type {};
+struct expression_type<FreeExpr<Expr>> : public expression_query_type {};
 
 template <>
-struct is_query_expression<TextSearchExpr> : public std::true_type {};
+struct expression_type<TextSearchExpr> : public expression_query_type {};
 
 template <typename... Args>
-struct is_query_expression<ExpressionList<k_query, Args...>> : public std::true_type {};
+struct expression_type<ExpressionList<expression_category_enum::query, Args...>>
+    : public expression_query_type {};
 
 template <typename Expr1, typename Expr2>
-struct is_query_expression<BooleanExpr<Expr1, Expr2>> : public std::true_type {};
+struct expression_type<BooleanExpr<Expr1, Expr2>> : public expression_query_type {};
 
 template <typename List>
-struct is_query_expression<BooleanListExpr<List>> : public std::true_type {};
-
-/* Type traits struct for update expressions */
-
-template <typename>
-struct is_update_expression : public std::false_type {};
+struct expression_type<BooleanListExpr<List>> : public expression_query_type {};
 
 template <typename NvpT, typename U>
-struct is_update_expression<UpdateExpr<NvpT, U>> : public std::true_type {};
+struct expression_type<UpdateExpr<NvpT, U>> : public expression_update_type {};
 
 template <typename NvpT, typename U>
-struct is_update_expression<UpdateValueExpr<NvpT, U>> : public std::true_type {};
+struct expression_type<UpdateValueExpr<NvpT, U>> : public expression_update_type {};
 
 template <typename NvpT>
-struct is_update_expression<UnsetExpr<NvpT>> : public std::true_type {};
+struct expression_type<UnsetExpr<NvpT>> : public expression_update_type {};
 
 template <typename NvpT>
-struct is_update_expression<CurrentDateExpr<NvpT>> : public std::true_type {};
+struct expression_type<CurrentDateExpr<NvpT>> : public expression_update_type {};
 
 template <typename NvpT, typename U>
-struct is_update_expression<AddToSetUpdateExpr<NvpT, U>> : public std::true_type {};
+struct expression_type<AddToSetUpdateExpr<NvpT, U>> : public expression_update_type {};
 
 template <typename NvpT, typename U>
-struct is_update_expression<PushUpdateExpr<NvpT, U>> : public std::true_type {};
+struct expression_type<PushUpdateExpr<NvpT, U>> : public expression_update_type {};
 
 template <typename NvpT, typename Integer>
-struct is_update_expression<BitUpdateExpr<NvpT, Integer>> : public std::true_type {};
+struct expression_type<BitUpdateExpr<NvpT, Integer>> : public expression_update_type {};
 
 template <typename... Args>
-struct is_query_expression<ExpressionList<k_update, Args...>> : public std::true_type {};
+struct expression_type<ExpressionList<expression_category_enum::update, Args...>>
+    : public expression_update_type {};
+
+template <expression_category_enum type, typename T>
+struct is_expression_type {
+    static constexpr bool value = (type == expression_type<T>::value);
+};
+
+template <typename T>
+struct is_sort_expression : public is_expression_type<expression_category_enum::sort, T> {};
+
+template <typename T>
+struct is_query_expression : public is_expression_type<expression_category_enum::query, T> {};
+
+template <typename T>
+struct is_update_expression : public is_expression_type<expression_category_enum::update, T> {};
 
 /* Query comparison operators */
 
@@ -1373,7 +1332,8 @@ constexpr ComparisonExpr<NvpT, typename NvpT::no_opt_type> operator!=(
  * Negates a comparison expression in a $not expression.
  */
 // TODO replace is_query_expression with is_unary_expression or something.
-template <typename Expr, typename = typename std::enable_if<is_query_expression<Expr>::value>::type>
+template <typename Expr, typename = typename std::enable_if<is_expression_type<
+                             expression_category_enum::query, Expr>::value>::type>
 constexpr NotExpr<Expr> operator!(const Expr &expr) {
     return {expr};
 }
@@ -1388,6 +1348,12 @@ constexpr ComparisonExpr<NvpT, bsoncxx::types::b_regex> operator!(
     return {regex_expr, "$not"};
 }
 
+template <typename Expr, expression_category_enum list_type, typename... Args, size_t... idxs>
+constexpr ExpressionList<list_type, Expr, Args...> append_impl(
+    ExpressionList<list_type, Args...> list, Expr expr, std::index_sequence<idxs...>) {
+    return {expr, std::get<idxs>(list.storage)...};
+}
+
 /**
  * Comma operator that combines two expressions or an expression and an expression list into a
  * new expression list.
@@ -1398,41 +1364,38 @@ constexpr ComparisonExpr<NvpT, bsoncxx::types::b_regex> operator!(
  * get expensive. Perhaps we could store the "expression category" inside the ExpressionList
  * object?
  */
-template <expression_category_enum list_type, typename Args..., typename Expr,
-          typename = typename std::enable_if<
-              (is_sort_expression<Expr>::value && list_type == k_sort) ||
-              (is_query_expression<Expr>::value && list_type == k_query) ||
-              (is_update_expression<Expr>::value && list_type == k_update)>::type>
+template <typename Expr, expression_category_enum list_type,
+          typename = typename std::enable_if<is_expression_type<list_type, Expr>::value>::type,
+          typename... Args>
 constexpr ExpressionList<list_type, Expr, Args...> operator,(
     ExpressionList<list_type, Args...> &&list, Expr &&expr) {
-    return ExpressionList<list_type, Expr, Args...>(
-        expr, std::get<std::index_sequence_for<Args...>()>(list.storage));
+    return append_impl(list, expr, std::index_sequence_for<Args...>());
 }
 
 template <typename Expr1, typename Expr2,
           typename = typename std::enable_if<
-              (is_sort_expression<Expr1>::value && is_sort_expression<Expr2>::value) ||
-              (is_query_expression<Expr1>::value && is_query_expression<Expr2>::value) ||
-              (is_update_expression<Expr1>::value && is_update_expression<Expr2>::value)>::type>
-constexpr ExpressionList<list_type, Expr, Args...> operator,(
-    ExpressionList<list_type, Args...> &&list, Expr &&expr) {
-    return ExpressionList<list_type, Expr1, Expr2>(
-        expr, std::get<std::index_sequence_for<Args...>()>(list.storage));
+              !is_expression_type<expression_category_enum::none, Expr1>::value &&
+              (expression_type<Expr1>::value == expression_type<Expr2>::value)>::type>
+constexpr ExpressionList<expression_type<Expr1>::value, Expr1, Expr2> operator,(Expr1 &&expr1,
+                                                                                Expr2 &&expr2) {
+    return {expr1, expr2};
 }
 
 /**
  * Boolean operator overloads for expressions.
  */
 template <typename Expr1, typename Expr2,
-          typename = typename std::enable_if<is_query_expression<Expr1>::value &&
-                                             is_query_expression<Expr2>::value>::type>
+          typename = typename std::enable_if<
+              is_expression_type<expression_category_enum::query, Expr1>::value &&
+              is_expression_type<expression_category_enum::query, Expr2>::value>::type>
 constexpr BooleanExpr<Expr1, Expr2> operator&&(const Expr1 &lhs, const Expr2 &rhs) {
     return {lhs, rhs, "$and"};
 }
 
 template <typename Expr1, typename Expr2,
-          typename = typename std::enable_if<is_query_expression<Expr1>::value &&
-                                             is_query_expression<Expr2>::value>::type>
+          typename = typename std::enable_if<
+              is_expression_type<expression_category_enum::query, Expr1>::value &&
+              is_expression_type<expression_category_enum::query, Expr2>::value>::type>
 constexpr BooleanExpr<Expr1, Expr2> operator||(const Expr1 &lhs, const Expr2 &rhs) {
     return {lhs, rhs, "$or"};
 }
@@ -1448,10 +1411,9 @@ constexpr BooleanExpr<Expr1, Expr2> operator||(const Expr1 &lhs, const Expr2 &rh
  * @param list The list of arguments to the $nor operator, as an expression list.
  * @return A BooleanLlistExpr that wraps the given list.
  */
-template <typename Head, typename Tail,
-          typename =
-              typename std::enable_if<is_query_expression<ExpressionList<Head, Tail>>::value>::type>
-constexpr BooleanListExpr<ExpressionList<Head, Tail>> nor(const ExpressionList<Head, Tail> &list) {
+template <typename... Args>
+constexpr BooleanListExpr<ExpressionList<expression_category_enum::query, Args...>> nor(
+    const ExpressionList<expression_category_enum::query, Args...> &list) {
     return {list, "$nor"};
 }
 
@@ -1459,10 +1421,11 @@ constexpr BooleanListExpr<ExpressionList<Head, Tail>> nor(const ExpressionList<H
  * Function that creates a $nor operator out of a list of arguments.
  */
 template <typename... QueryExpressions,
-          typename = typename all_true<is_query_expression<QueryExpressions>::value...>::type>
-constexpr auto nor(QueryExpressions... args)
-    -> BooleanListExpr<decltype(make_expression_list(args...))> {
-    return {ExpressionList(args...), "$nor"};
+          typename = typename all_true<is_expression_type<expression_category_enum::query,
+                                                          QueryExpressions>::value...>::type>
+constexpr BooleanListExpr<ExpressionList<expression_category_enum::query, QueryExpressions...>> nor(
+    QueryExpressions... args) {
+    return {{args...}, "$nor"};
 }
 
 /**
@@ -1500,7 +1463,8 @@ constexpr TextSearchExpr text(const char *search, bool case_sensitive = false,
  * @returns     A FreeExpr that wraps the given expression.
  */
 // TODO replace is_query_expression with is_unary_expression
-template <typename Expr, typename = typename std::enable_if<is_query_expression<Expr>::value>::type>
+template <typename Expr, typename = typename std::enable_if<is_expression_type<
+                             expression_category_enum::query, Expr>::value>::type>
 constexpr FreeExpr<Expr> free_expr(const Expr &expr) {
     return {expr};
 }
@@ -1508,7 +1472,8 @@ constexpr FreeExpr<Expr> free_expr(const Expr &expr) {
 /**
  * Creates a query expression with an isolation level set.
  */
-template <typename Expr, typename = typename std::enable_if<is_query_expression<Expr>::value>::type>
+template <typename Expr, typename = typename std::enable_if<is_expression_type<
+                             expression_category_enum::query, Expr>::value>::type>
 constexpr IsolatedExpr<Expr> isolated(const Expr &expr) {
     return {expr};
 }

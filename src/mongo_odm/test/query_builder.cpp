@@ -383,17 +383,6 @@ TEST_CASE("Query Builder", "[mongo_odm::query_builder]") {
         REQUIRE(res->x2 == 2);
         REQUIRE(res->w >= 444);
         REQUIRE(res->p.x == 0);
-
-        // Test variadic ExpressionList builder. ODM clients shouldn't need to use this,
-        // but it's used internally by functions such as nor(...) that accept variadic arguments.
-        res = Bar::find_one(mongo_odm::make_expression_list(
-            MONGO_ODM_KEY(Bar::x1) == 1, MONGO_ODM_KEY(Bar::x2) == 2, MONGO_ODM_KEY(Bar::w) >= 444,
-            MONGO_ODM_CHILD(Bar, p, y) == 0));
-        REQUIRE(res);
-        REQUIRE(res->x1 == 1);
-        REQUIRE(res->x2 == 2);
-        REQUIRE(res->w >= 444);
-        REQUIRE(res->p.x == 0);
     }
 
     SECTION("Test boolean expressions.", "[mongo_odm::BooleanExpr]") {

@@ -67,11 +67,14 @@ struct current_date_t {};
 const current_date_t current_date;
 
 // Forward declarations for Expression type trait structs
-template <typename>
+
+template <typename T>
 struct is_sort_expression;
-template <typename>
+
+template <typename T>
 struct is_query_expression;
-template <typename>
+
+template <typename T>
 struct is_update_expression;
 
 /**
@@ -596,7 +599,7 @@ class NvpCRTP {
      * the given query.
      * This query can contain free expressions, similarly to the $elemMatch operator.
      * This is only enabled if the current field is an array type.
-     * @tparam Expr The type of the given query, must satisfy is_query_expression.
+     * @tparam Expr The type of the given query, must be a query expression.
      * @param  expr A query expression against which to compare
      */
     template <typename U = no_opt_type,
