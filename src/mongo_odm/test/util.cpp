@@ -61,35 +61,36 @@ TEST_CASE(
 }
 
 TEST_CASE(
-    "is_iterable contains true only if the template type parameter is an iterable container. This "
+    "is_iterable_t contains true only if the template type parameter is an iterable container. "
+    "This "
     "includes C arrays and std strings.",
-    "[is_iterable]") {
-    CHECK(is_iterable<int>::value == false);
-    CHECK(is_iterable<const int *>::value == false);
+    "[is_iterable_t]") {
+    CHECK(is_iterable_t<int>::value == false);
+    CHECK(is_iterable_t<const int *>::value == false);
     // C arrays are iterable (i.e. can be passed by reference into std::begin() and std::end())
-    CHECK(is_iterable<int[5]>::value == true);
+    CHECK(is_iterable_t<int[5]>::value == true);
     // NOTE: std::string's are iterable
-    CHECK(is_iterable<std::string>::value == true);
-    CHECK(is_iterable_not_string<std::string>::value == false);
+    CHECK(is_iterable_t<std::string>::value == true);
+    CHECK(is_iterable_not_string_t<std::string>::value == false);
     // Check that the container types supported by the BSON Archiver are iterable
-    CHECK(is_iterable<std::vector<int>>::value == true);
-    CHECK(is_iterable<std::set<int>>::value == true);
-    CHECK(is_iterable<std::forward_list<int>>::value == true);
-    CHECK(is_iterable<std::list<int>>::value == true);
-    CHECK(is_iterable<std::deque<int>>::value == true);
-    CHECK(is_iterable<std::unordered_set<int>>::value == true);
-    CHECK(is_iterable<std::valarray<int>>::value == true);
+    CHECK(is_iterable_t<std::vector<int>>::value == true);
+    CHECK(is_iterable_t<std::set<int>>::value == true);
+    CHECK(is_iterable_t<std::forward_list<int>>::value == true);
+    CHECK(is_iterable_t<std::list<int>>::value == true);
+    CHECK(is_iterable_t<std::deque<int>>::value == true);
+    CHECK(is_iterable_t<std::unordered_set<int>>::value == true);
+    CHECK(is_iterable_t<std::valarray<int>>::value == true);
 }
 
 TEST_CASE(
-    "iterable_value contains the value type of an iterable container, or the given type if it is "
+    "iterable_value_t contains the value type of an iterable container, or the given type if it is "
     "not a container. ") {
-    CHECK((std::is_same<iterable_value<int>, int>::value));
-    CHECK((std::is_same<iterable_value<std::string>, char>::value));
-    CHECK((std::is_same<iterable_value<std::vector<int>>, int>::value));
-    CHECK((std::is_same<iterable_value<std::vector<std::string>>, std::string>::value));
-    // iterable_value only unwraps one level of container.
-    CHECK((std::is_same<iterable_value<std::vector<std::vector<int>>>, std::vector<int>>::value));
+    CHECK((std::is_same<iterable_value_t<int>, int>::value));
+    CHECK((std::is_same<iterable_value_t<std::string>, char>::value));
+    CHECK((std::is_same<iterable_value_t<std::vector<int>>, int>::value));
+    CHECK((std::is_same<iterable_value_t<std::vector<std::string>>, std::string>::value));
+    // iterable_value_t only unwraps one level of container.
+    CHECK((std::is_same<iterable_value_t<std::vector<std::vector<int>>>, std::vector<int>>::value));
 }
 
 TEST_CASE("is_optional struct contains true only if template type parameter is an optional",
@@ -126,4 +127,11 @@ TEST_CASE("is_date determines whether a certain time is a date.") {
     REQUIRE(is_date<time_t>::value == false);
     REQUIRE(is_date<int>::value == false);
     REQUIRE(is_date<std::string>::value == false);
+}
+
+TEST_CASE("tuple_for_each maps functions over elements in a tuple") {
+    auto tup = std::make_tuple(1, 2, 3, 4, 5);
+    int sum = 0;
+    tuple_for_each(tup, [&](const auto &v) { sum += v * v; });
+    REQUIRE(sum == 55);
 }

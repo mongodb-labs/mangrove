@@ -70,7 +70,7 @@ typename std::enable_if<is_bson_appendable<T>::value, void>::type append_value_t
 
 // Specialization for non-iterable, non-expression types that must be serialized.
 template <typename T>
-typename std::enable_if<!is_bson_appendable<T>::value && !is_iterable_not_string<T>::value &&
+typename std::enable_if<!is_bson_appendable<T>::value && !is_iterable_not_string_t<T>::value &&
                             is_expression_type<expression_category_enum::none, T>::value,
                         void>::type
 append_value_to_bson(const T &value, bsoncxx::builder::core &builder) {
@@ -80,7 +80,7 @@ append_value_to_bson(const T &value, bsoncxx::builder::core &builder) {
 
 // Specialization for iterable types that must be serialized.
 template <typename Iterable>
-typename std::enable_if<is_iterable_not_string<Iterable>::value, void>::type append_value_to_bson(
+typename std::enable_if<is_iterable_not_string_t<Iterable>::value, void>::type append_value_to_bson(
     const Iterable &arr, bsoncxx::builder::core &builder) {
     builder.open_array();
     for (const auto &x : arr) {
@@ -526,20 +526,9 @@ class FreeExpr {
     const Expr expr;
 };
 
-template <typename Map, typename... Ts, size_t... idxs>
-constexpr void tupleForEachImpl(const std::tuple<Ts...> &tup, Map &&map,
-                                std::index_sequence<idxs...>) {
-    (void)std::initializer_list<int>{(map(std::get<idxs>(tup)), 0)...};
-}
-
-template <typename Map, typename... Ts>
-constexpr void tupleForEach(const std::tuple<Ts...> &tup, Map &&map) {
-    return tupleForEachImpl(tup, std::forward<Map>(map), std::index_sequence_for<Ts...>());
-}
-
 /**
  * This represents a list of expressions.
- * @tparam list_typ The category of the expressions, such as "update" or "query".
+ * @tparam list_type The category of the expressions, such as "update" or "query".
  * @tparam Args...  The types of the various expressions that make up the list.
  */
 template <expression_category_enum list_type, typename... Args>
@@ -559,7 +548,7 @@ class ExpressionList {
      *                "{elt1...}, {elt2, ...}, ..."
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
-        tupleForEach(storage, [&](const auto &v) { v.append_to_bson(builder, wrap); });
+        tuple_for_each(storage, [&](const auto &v) { v.append_to_bson(builder, wrap); });
     }
 
     /**

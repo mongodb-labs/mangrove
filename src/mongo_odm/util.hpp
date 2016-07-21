@@ -19,7 +19,9 @@
 #include <chrono>
 #include <ctime>
 #include <string>
+#include <tuple>
 #include <type_traits>
+#include <utility>
 
 #include <bsoncxx/stdx/optional.hpp>
 #include <bsoncxx/types.hpp>
@@ -73,12 +75,12 @@ template <typename>
 std::false_type is_iterable_impl(...);
 
 template <typename T>
-using is_iterable = decltype(is_iterable_impl<T>(0));
+using is_iterable_t = decltype(is_iterable_impl<T>(0));
 
 // Matches iterables, but NOT strings or char arrays.
 template <typename T>
-using is_iterable_not_string =
-    std::integral_constant<int, is_iterable<T>::value && !is_string<T>::value>;
+using is_iterable_not_string_t =
+    std::integral_constant<int, is_iterable_t<T>::value && !is_string<T>::value>;
 
 /**
  * A templated function whose return type is the underlying value type of a given container.
@@ -92,7 +94,7 @@ template <typename T>
 T iterable_value_impl(...);
 
 template <typename T>
-using iterable_value = decltype(iterable_value_impl<T>(0));
+using iterable_value_t = decltype(iterable_value_impl<T>(0));
 
 /**
  * A type trait struct for determining whether a type is an optional.
@@ -147,6 +149,20 @@ struct is_date<std::chrono::time_point<Clock, Duration>> : public std::true_type
 
 template <>
 struct is_date<bsoncxx::types::b_date> : public std::true_type {};
+
+/**
+ * Method for passing each element in a tuple to a callback function.
+ */
+template <typename Map, typename... Ts, size_t... idxs>
+constexpr void tuple_for_each_impl(const std::tuple<Ts...> &tup, Map &&map,
+                                   std::index_sequence<idxs...>) {
+    (void)std::initializer_list<int>{(map(std::get<idxs>(tup)), 0)...};
+}
+
+template <typename Map, typename... Ts>
+constexpr void tuple_for_each(const std::tuple<Ts...> &tup, Map &&map) {
+    return tuple_for_each_impl(tup, std::forward<Map>(map), std::index_sequence_for<Ts...>());
+}
 
 MONGO_ODM_INLINE_NAMESPACE_END
 }  // namespace bson_mapper

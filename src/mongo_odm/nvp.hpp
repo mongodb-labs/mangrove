@@ -112,8 +112,7 @@ class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
     */
     template <typename U = no_opt_type>
     constexpr typename std::enable_if<is_date<U>::value, CurrentDateExpr<Nvp<Base, T>>>::type
-    operator=(const current_date_t& cd) const {
-        (void)cd;
+    operator=(const current_date_t&) const {
         return {*this, true};
     }
 
@@ -124,8 +123,7 @@ class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
     template <typename U = no_opt_type>
     constexpr typename std::enable_if<std::is_same<bsoncxx::types::b_timestamp, U>::value,
                                       CurrentDateExpr<Nvp<Base, T>>>::type
-    operator=(const current_date_t& cd) const {
-        (void)cd;
+    operator=(const current_date_t&) const {
         return {*this, false};
     }
 
@@ -171,8 +169,7 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
     template <typename U = no_opt_type>
     constexpr
         typename std::enable_if<is_date<U>::value, CurrentDateExpr<NvpChild<Base, T, Parent>>>::type
-        operator=(const current_date_t& cd) const {
-        (void)cd;
+        operator=(const current_date_t&) const {
         return {*this, true};
     }
 
@@ -183,8 +180,7 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
     template <typename U = no_opt_type>
     constexpr typename std::enable_if<std::is_same<bsoncxx::types::b_timestamp, U>::value,
                                       CurrentDateExpr<NvpChild<Base, T, Parent>>>::type
-    operator=(const current_date_t& cd) const {
-        (void)cd;
+    operator=(const current_date_t&) const {
         return {*this, false};
     }
 
@@ -238,9 +234,9 @@ class NvpCRTP {
     // b) this Nvp's value type, if this Nvp is also an iterable.
     template <typename Iterable, typename Default = void>
     using enable_if_matching_iterable_t = typename std::enable_if<
-        is_iterable_not_string<Iterable>::value &&
-            std::is_convertible<iterable_value<Iterable>,
-                                iterable_value<remove_optional_t<T>>>::value,
+        is_iterable_not_string_t<Iterable>::value &&
+            std::is_convertible<iterable_value_t<Iterable>,
+                                iterable_value_t<remove_optional_t<T>>>::value,
         Default>::type;
 
    public:
@@ -342,7 +338,7 @@ class NvpCRTP {
      */
     template <typename Iterable, typename = enable_if_matching_iterable_t<Iterable>,
               typename U = no_opt_type,
-              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
+              typename = typename std::enable_if<is_iterable_not_string_t<U>::value>::type>
     constexpr ComparisonExpr<NvpT, Iterable> all(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, "$all"};
     }
@@ -362,7 +358,7 @@ class NvpCRTP {
     template <typename Expr,
               typename = typename std::enable_if<is_query_expression<Expr>::value>::type,
               typename U = no_opt_type,
-              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
+              typename = typename std::enable_if<is_iterable_not_string_t<U>::value>::type>
     constexpr ComparisonExpr<NvpT, Expr> elem_match(const Expr& queries) const {
         return {*static_cast<const NvpT*>(this), queries, "$elemMatch"};
     }
@@ -373,8 +369,8 @@ class NvpCRTP {
      * This is only enabled if this current field is an array.
      */
     template <typename U = no_opt_type,
-              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
-    constexpr FreeNvp<iterable_value<no_opt_type>> element() const {
+              typename = typename std::enable_if<is_iterable_not_string_t<U>::value>::type>
+    constexpr FreeNvp<iterable_value_t<no_opt_type>> element() const {
         return {};
     }
 
@@ -384,7 +380,7 @@ class NvpCRTP {
      * @param n The size the array should be.
      */
     template <typename U = no_opt_type,
-              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
+              typename = typename std::enable_if<is_iterable_not_string_t<U>::value>::type>
     constexpr ComparisonExpr<NvpT, std::int64_t> size(const std::int64_t& n) const {
         return {*static_cast<const NvpT*>(this), n, "$size"};
     }
@@ -580,7 +576,7 @@ class NvpCRTP {
      *              If false, from the start.
      */
     template <typename U = no_opt_type,
-              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
+              typename = typename std::enable_if<is_iterable_not_string_t<U>::value>::type>
     constexpr UpdateValueExpr<NvpT, int> pop(bool last) const {
         return {*static_cast<const NvpT*>(this), last ? 1 : -1, "$pop"};
     }
@@ -592,9 +588,9 @@ class NvpCRTP {
      * @param val   The value to remove. This must match the type *contained* by this array field.
      */
     template <typename U = no_opt_type,
-              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
-    constexpr UpdateExpr<NvpT, iterable_value<no_opt_type>> pull(
-        const iterable_value<no_opt_type>& val) const {
+              typename = typename std::enable_if<is_iterable_not_string_t<U>::value>::type>
+    constexpr UpdateExpr<NvpT, iterable_value_t<no_opt_type>> pull(
+        const iterable_value_t<no_opt_type>& val) const {
         return {*static_cast<const NvpT*>(this), val, "$pull"};
     }
     /**
@@ -606,7 +602,7 @@ class NvpCRTP {
      * @param  expr A query expression against which to compare
      */
     template <typename U = no_opt_type,
-              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
+              typename = typename std::enable_if<is_iterable_not_string_t<U>::value>::type,
               typename Expr>
     constexpr
         typename std::enable_if<is_query_expression<Expr>::value, UpdateExpr<NvpT, Expr>>::type
@@ -621,7 +617,7 @@ class NvpCRTP {
      * @param iter   An iterable containing the values to remove.
      */
     template <typename U = no_opt_type,
-              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
+              typename = typename std::enable_if<is_iterable_not_string_t<U>::value>::type,
               typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
     constexpr UpdateExpr<NvpT, Iterable> pull_all(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, "$pullAll"};
@@ -634,9 +630,9 @@ class NvpCRTP {
      * @param val   The value to add.
      */
     template <typename U = no_opt_type,
-              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
-    constexpr AddToSetUpdateExpr<NvpT, iterable_value<no_opt_type>> add_to_set(
-        const iterable_value<no_opt_type>& val) const {
+              typename = typename std::enable_if<is_iterable_not_string_t<U>::value>::type>
+    constexpr AddToSetUpdateExpr<NvpT, iterable_value_t<no_opt_type>> add_to_set(
+        const iterable_value_t<no_opt_type>& val) const {
         return {*static_cast<const NvpT*>(this), val, false};
     }
 
@@ -647,7 +643,7 @@ class NvpCRTP {
      * @param iter   The list of values to add.
      */
     template <typename U = no_opt_type,
-              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
+              typename = typename std::enable_if<is_iterable_not_string_t<U>::value>::type,
               typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
     constexpr AddToSetUpdateExpr<NvpT, Iterable> add_to_set(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, true};
@@ -659,9 +655,9 @@ class NvpCRTP {
      * @param val   The value to add.
      */
     template <typename U = no_opt_type,
-              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type>
-    constexpr PushUpdateExpr<NvpT, iterable_value<no_opt_type>> push(
-        const iterable_value<no_opt_type>& val) const {
+              typename = typename std::enable_if<is_iterable_not_string_t<U>::value>::type>
+    constexpr PushUpdateExpr<NvpT, iterable_value_t<no_opt_type>> push(
+        const iterable_value_t<no_opt_type>& val) const {
         return {*static_cast<const NvpT*>(this), val, false};
     }
 
@@ -679,7 +675,7 @@ class NvpCRTP {
      * @param  potision    An optional argument containing the value of the $position modifier.
      */
     template <typename U = no_opt_type,
-              typename = typename std::enable_if<is_iterable_not_string<U>::value>::type,
+              typename = typename std::enable_if<is_iterable_not_string_t<U>::value>::type,
               typename Iterable, typename = enable_if_matching_iterable_t<Iterable>,
               typename Sort = int,
               typename = typename std::enable_if<is_sort_expression<Sort>::value ||
