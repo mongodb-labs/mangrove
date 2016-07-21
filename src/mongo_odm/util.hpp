@@ -126,6 +126,7 @@ constexpr std::int64_t bit_positions_to_mask() {
 
 template <typename... Args>
 constexpr std::int64_t bit_positions_to_mask(std::int64_t pos, Args... positions) {
+    pos<0 || pos> 63 ? throw std::logic_error("Invalid pos") : 0;
     return (1 << pos) | bit_positions_to_mask(positions...);
 }
 

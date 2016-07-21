@@ -43,16 +43,11 @@ struct is_expression_type;
  * builder.append(T val);
  */
 template <typename T>
-constexpr auto is_bson_appendable_impl(int)
-    -> decltype(std::declval<bsoncxx::builder::core>().append(std::declval<T>()),
-                std::true_type{}) {
-    return {};
-}
+auto is_bson_appendable_impl(int)
+    -> decltype(std::declval<bsoncxx::builder::core>().append(std::declval<T>()), std::true_type{});
 
 template <typename T>
-constexpr std::false_type is_bson_appendable_impl(...) {
-    return {};
-}
+std::false_type is_bson_appendable_impl(...);
 
 template <typename T>
 using is_bson_appendable = decltype(is_bson_appendable_impl<T>(0));
@@ -534,7 +529,7 @@ class FreeExpr {
 template <typename Map, typename... Ts, size_t... idxs>
 constexpr void tupleForEachImpl(const std::tuple<Ts...> &tup, Map &&map,
                                 std::index_sequence<idxs...>) {
-    std::initializer_list<int>{(map(std::get<idxs>(tup)), 0)...};
+    (void)std::initializer_list<int>{(map(std::get<idxs>(tup)), 0)...};
 }
 
 template <typename Map, typename... Ts>

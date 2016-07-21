@@ -63,8 +63,11 @@ class AddToSetUpdateExpr;
 template <typename NvpT, typename U, typename Sort = int>
 class PushUpdateExpr;
 
-struct current_date_t {};
-const current_date_t current_date;
+struct current_date_t {
+    constexpr current_date_t() {
+    }
+};
+constexpr current_date_t current_date;
 
 // Forward declarations for Expression type trait structs
 
