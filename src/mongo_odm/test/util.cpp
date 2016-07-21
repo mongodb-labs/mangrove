@@ -135,3 +135,12 @@ TEST_CASE("tuple_for_each maps functions over elements in a tuple") {
     tuple_for_each(tup, [&](const auto &v) { sum += v * v; });
     REQUIRE(sum == 55);
 }
+
+TEST_CASE("cexpr_strlen behaves the same strlen, but constexpr") {
+    constexpr size_t l0 = cexpr_strlen("");
+    REQUIRE(l0 == 0);
+    constexpr size_t l1 = cexpr_strlen("a");
+    REQUIRE(l1 == 1);
+    constexpr size_t l5 = cexpr_strlen("hello");
+    REQUIRE(l5 == 5);
+}

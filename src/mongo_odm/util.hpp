@@ -164,6 +164,10 @@ constexpr void tuple_for_each(const std::tuple<Ts...> &tup, Map &&map) {
     return tuple_for_each_impl(tup, std::forward<Map>(map), std::index_sequence_for<Ts...>());
 }
 
+constexpr size_t cexpr_strlen(const char *s) {
+    return (*s == 0) ? 0 : 1 + cexpr_strlen(s + 1);
+}
+
 MONGO_ODM_INLINE_NAMESPACE_END
 }  // namespace bson_mapper
 

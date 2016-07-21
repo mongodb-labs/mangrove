@@ -84,8 +84,8 @@ struct is_update_expression;
  * An object that represents a name-value pair of a member in an object.
  * It is templated on the class of the member and its type.
  */
-template <typename Base, typename T>
-class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
+template <typename Base, typename T, size_t NameLen>
+class Nvp : public NvpCRTP<Nvp<Base, T, NameLen>, T> {
    public:
     using type = T;
     // In case this field is wrapped in an optional, store the underlying type.
@@ -96,13 +96,14 @@ class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
      * @param  t    A pointer to the member
      * @param  name The name of the member
      */
-    constexpr Nvp(T Base::*t, const char* name) : t(t), name(name) {
+    constexpr Nvp(T Base::*t, const char* name) : t(t), name_len(NameLen), name(name) {
     }
 
     /**
      * Creates an update expression that sets the field to the given value.
      */
-    constexpr UpdateExpr<Nvp<Base, T>, no_opt_type> operator=(const no_opt_type& val) const {
+    constexpr UpdateExpr<Nvp<Base, T, NameLen>, no_opt_type> operator=(
+        const no_opt_type& val) const {
         return {*this, val, "$set"};
     }
 
@@ -111,8 +112,9 @@ class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
     * This is only enabled for std::chrono::time/duration values, as well as b_date.
     */
     template <typename U = no_opt_type>
-    constexpr typename std::enable_if<is_date<U>::value, CurrentDateExpr<Nvp<Base, T>>>::type
-    operator=(const current_date_t&) const {
+    constexpr
+        typename std::enable_if<is_date<U>::value, CurrentDateExpr<Nvp<Base, T, NameLen>>>::type
+        operator=(const current_date_t&) const {
         return {*this, true};
     }
 
@@ -122,7 +124,7 @@ class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
      */
     template <typename U = no_opt_type>
     constexpr typename std::enable_if<std::is_same<bsoncxx::types::b_timestamp, U>::value,
-                                      CurrentDateExpr<Nvp<Base, T>>>::type
+                                      CurrentDateExpr<Nvp<Base, T, NameLen>>>::type
     operator=(const current_date_t&) const {
         return {*this, false};
     }
@@ -132,6 +134,7 @@ class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
     }
 
     T Base::*t;
+    const size_t name_len;
     const char* name;
 };
 
@@ -144,7 +147,7 @@ class Nvp : public NvpCRTP<Nvp<Base, T>, T> {
  * @tparam T    The type of the field
  * @tparam Parent The type of the parent name-value pair, either an Nvp<...> or NvpChild<...>.
  */
-template <typename Base, typename T, typename Parent>
+template <typename Base, typename T, typename Parent, size_t NameLen>
 class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
    public:
     // In case this field is wrapped in an optional, store the underlying type.
@@ -152,7 +155,15 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
     using type = T;
 
     constexpr NvpChild(T Base::*t, const char* name, const Parent& parent)
-        : t(t), name(name), parent(parent) {
+        : t(t), name_len(NameLen), parent(parent) {
+        for (size_t i = 0; parent.name[i] != 0; i++) {
+            this->name[i] = parent.name[i];
+        }
+        name[i] = '.';
+        i++;
+        for (size_t j = 0; name[j] != 0; j++) {
+            this->name[i + j] = name[j];
+        }
     }
 
     /**
@@ -196,7 +207,8 @@ class NvpChild : public NvpCRTP<NvpChild<Base, T, Parent>, T> {
     }
 
     T Base::*t;
-    const char* name;
+    constexpr size_t name_len;
+    const char name[NameLen + 1];  // add one for null byte
     const Parent& parent;
 };
 
@@ -252,8 +264,9 @@ class NvpCRTP {
      * @return      An NVP with the same base class and type as the subfield, but with a link to a
      * parent so that its name is qualified in dot notation.
      */
-    template <typename U>
-    constexpr NvpChild<T, U, NvpT> operator->*(const Nvp<T, U>& child) const {
+    template <typename U, size_t ChildNameLen>
+    constexpr NvpChild<T, U, NvpT, static_cast<const NvpT*>(this)->name_len + 1 + ChildNameLen>
+    operator->*(const Nvp<T, U, ChildNameLen>& child) const {
         return {child.t, child.name, *static_cast<const NvpT*>(this)};
     }
 
@@ -696,29 +709,29 @@ class NvpCRTP {
 template <typename>
 struct is_nvp_type : public std::false_type {};
 
-template <typename Base, typename T>
+template <typename Base, typename T, size_t NameLen>
 struct is_nvp_type<Nvp<Base, T>> : public std::true_type {};
 
-template <typename Base, typename T, typename Parent>
-struct is_nvp_type<NvpChild<Base, T, Parent>> : public std::true_type {};
+template <typename Base, typename T, typename Parent, size_t NameLen>
+struct is_nvp_type<NvpChild<Base, T, Parent, NameLen>> : public std::true_type {};
 
 template <typename T>
 struct is_nvp_type<FreeNvp<T>> : public std::true_type {};
 
 /* Create a name-value pair from a object member and its name */
 template <typename Base, typename T>
-Nvp<Base, T> constexpr makeNvp(T Base::*t, const char* name) {
-    return Nvp<Base, T>(t, name);
+constexpr auto makeNvp(T Base::*t, const char* name) -> Nvp<Base, T, cexpr_strlen(name)> {
+    return {t, name};
 }
 
 /**
  * Constructs a name-value pair that is a subfield of a `parent` object.
  * The resulting name-value pair will have the name "rootfield.subfield".
  */
-template <typename Base, typename T, typename Parent>
-NvpChild<Base, T, Parent> constexpr makeNvpWithParent(const Nvp<Base, T>& child,
-                                                      const Parent& parent) {
-    return NvpChild<Base, T, Parent>(child.t, child.name, parent);
+template <typename Base, typename T, typename Parent, size_t ChildNameLen>
+constexpr auto makeNvpWithParent(const Nvp<Base, T, ChildNameLen>& child, const Parent& parent)
+    -> NvpChild<Base, T, Parent, parent.name_len + 1 + ChildNameLen> {
+    return {child.t, child.name, parent};
 }
 
 /**
