@@ -1,7 +1,7 @@
 +++
 chapter = true
 icon = "<b>3. </b>"
-next = "/4-updates"
+next = "/3-queries/introduction"
 prev = "/2-models/dynamic-schemas"
 title = "Queries"
 weight = 0

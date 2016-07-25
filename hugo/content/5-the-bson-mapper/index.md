@@ -1,7 +1,7 @@
 +++
 chapter = true
 icon = "<b>5. </b>"
-prev = "/4-updates"
+prev = "/4-updates/operators/"
 title = "The BSON Mapper"
 weight = 0
 
