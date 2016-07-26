@@ -6,9 +6,20 @@ Mangrove lets you map your C++ classes to collections in MongoDB for seamless da
 
 #### Documentation
 
-The documentation for Mangrove is currently not hosted anywhere. You can generate the documentation on your own by running the `generate_docs.sh` script in this root directory. It requires that you have [Hugo](https://gohugo.io/) and [Doxygen](http://www.stack.nl/~dimitri/doxygen/) installed on your system. If you're on OS X, both can be installed with [Homebrew](http://brew.sh/).
+The documentation for Mangrove is currently hosted at <http://mongodb.github.io/mongo-cxx-odm>.
 
-The documentation will be installed in `./docs` and contains an installation guide, a quick tour of Mangrove's features, detailed chapters about each of the features, and a Doxygen-generated API reference. The documentation must be viewed on a static web server, even when viewing locally. If you have Node.js intalled, you can use the [`http-server`](https://www.npmjs.com/package/http-server) package to host the docs locally:
+We generate the documentation with the following commands:
+
+```
+hugo -b http://mongodb.github.io/mongo-cxx-odm/ --canonifyURLs=true -s ./hugo -d ../docs
+doxygen
+```
+
+We then host `docs` by copying its contents to the `gh-pages` branch.
+
+You can generate the documentation on your own by running the `generate_docs.sh` script in this root directory. It requires that you have [Hugo](https://gohugo.io/) and [Doxygen](http://www.stack.nl/~dimitri/doxygen/) installed on your system. If you're on OS X, both can be installed with [Homebrew](http://brew.sh/).
+
+The documentation will be installed in `./docs` with a base URL of `http://localhost:8080/` and contains an installation guide, a quick tour of Mangrove's features, detailed chapters about each of the features, and a Doxygen-generated API reference. The documentation must be viewed on a static web server, even when viewing locally. If you have Node.js intalled, you can use the [`http-server`](https://www.npmjs.com/package/http-server) package to host the docs locally:
 
 ```
 ./generate_docs.sh
@@ -17,6 +28,7 @@ http-server ./docs
 ```
 
 If you'd like to run the docs in such a way that the page will refresh when the content is updated, you can run `hugo serve` in the `hugo` directory:
+
 ```
 cd hugo
 hugo serve
