@@ -1,0 +1,343 @@
+\hypertarget{classmongo__odm_1_1odm__collection}{}\section{mongo\+\_\+odm\+:\+:odm\+\_\+collection$<$ T $>$ Class Template Reference}
+\label{classmongo__odm_1_1odm__collection}\index{mongo\+\_\+odm\+::odm\+\_\+collection$<$ T $>$@{mongo\+\_\+odm\+::odm\+\_\+collection$<$ T $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+mongocxx\+::collection \hyperlink{classmongo__odm_1_1odm__collection_a65bf78cfb9fe5e977d5a9fe49bfcf387}{collection} ()
+\begin{DoxyCompactList}\small\item\em Returns a copy of the underlying collection. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Result  = T$>$ }\\\hyperlink{classmongo__odm_1_1deserializing__cursor}{deserializing\+\_\+cursor}$<$ Result $>$ \hyperlink{classmongo__odm_1_1odm__collection_a1be075e3d2b05b4bd328050d3566806c}{aggregate} (const mongocxx\+::pipeline \&pipeline, const mongocxx\+::options\+::aggregate \&options=mongocxx\+::options\+::aggregate())
+\begin{DoxyCompactList}\small\item\em Runs an aggregation framework pipeline against this collection, and returns the results as de-\/serialized objects. \end{DoxyCompactList}\item 
+\hyperlink{classmongo__odm_1_1deserializing__cursor}{deserializing\+\_\+cursor}$<$ T $>$ \hyperlink{classmongo__odm_1_1odm__collection_aef03132e2d00396555832734c75f43a1}{find} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find \&options=mongocxx\+::options\+::find())
+\begin{DoxyCompactList}\small\item\em Finds the documents in this collection which match the provided filter. \end{DoxyCompactList}\item 
+mongocxx\+::stdx\+::optional$<$ T $>$ \hyperlink{classmongo__odm_1_1odm__collection_a76f81952f53bacb0e4516abe3d680230}{find\+\_\+one} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find \&options=mongocxx\+::options\+::find())
+\begin{DoxyCompactList}\small\item\em Finds a single document in this collection that match the provided filter. \end{DoxyCompactList}\item 
+mongocxx\+::stdx\+::optional$<$ T $>$ \hyperlink{classmongo__odm_1_1odm__collection_a7b07969d21159f5dad3f86c5b37c6581}{find\+\_\+one\+\_\+and\+\_\+delete} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find\+\_\+one\+\_\+and\+\_\+delete \&options=mongocxx\+::options\+::find\+\_\+one\+\_\+and\+\_\+delete())
+\begin{DoxyCompactList}\small\item\em Finds a single document matching the filter, deletes it, and returns the original as a deserialized object. \end{DoxyCompactList}\item 
+mongocxx\+::stdx\+::optional$<$ T $>$ \hyperlink{classmongo__odm_1_1odm__collection_adbcbf110fd4b3d14f70206020eee24d3}{find\+\_\+one\+\_\+and\+\_\+replace} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const T \&replacement, const mongocxx\+::options\+::find\+\_\+one\+\_\+and\+\_\+replace \&options=mongocxx\+::options\+::find\+\_\+one\+\_\+and\+\_\+replace())
+\begin{DoxyCompactList}\small\item\em Finds a single document matching the filter, replaces it, and returns either the original or the replacement document as a deserialized object. \end{DoxyCompactList}\item 
+mongocxx\+::stdx\+::optional$<$ mongocxx\+::result\+::insert\+\_\+one $>$ \hyperlink{classmongo__odm_1_1odm__collection_af11f78449ec0938caa49346da8eed19d}{insert\+\_\+one} (T obj, const mongocxx\+::options\+::insert \&options=mongocxx\+::options\+::insert())
+\begin{DoxyCompactList}\small\item\em Inserts a single serializable object into the collection. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename container\+\_\+type $>$ }\\mongocxx\+::stdx\+::optional$<$ mongocxx\+::result\+::insert\+\_\+many $>$ \hyperlink{classmongo__odm_1_1odm__collection_a9503db6dacc66f8af5466bd22479a90e}{insert\+\_\+many} (const container\+\_\+type \&container, const mongocxx\+::options\+::insert \&options=mongocxx\+::options\+::insert())
+\begin{DoxyCompactList}\small\item\em Inserts multiple serializable objects into the collection. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename object\+\_\+iterator\+\_\+type $>$ }\\mongocxx\+::stdx\+::optional$<$ mongocxx\+::result\+::insert\+\_\+many $>$ \hyperlink{classmongo__odm_1_1odm__collection_a411c5e06bd3dab97a15ee478f6dae540}{insert\+\_\+many} (object\+\_\+iterator\+\_\+type begin, object\+\_\+iterator\+\_\+type end, const mongocxx\+::options\+::insert \&options=mongocxx\+::options\+::insert())
+\begin{DoxyCompactList}\small\item\em Inserts multiple serializable objects into the collection. \end{DoxyCompactList}\item 
+mongocxx\+::stdx\+::optional$<$ mongocxx\+::result\+::replace\+\_\+one $>$ \hyperlink{classmongo__odm_1_1odm__collection_adf1ed50140b16bde3bef54a6f701e1a6}{replace\+\_\+one} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const T \&replacement, const mongocxx\+::options\+::update \&options=mongocxx\+::options\+::update())
+\begin{DoxyCompactList}\small\item\em Replaces a single document matching the provided filter in this collection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}!aggregate@{aggregate}}
+\index{aggregate@{aggregate}!mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}}
+\subsubsection[{\texorpdfstring{aggregate(const mongocxx\+::pipeline \&pipeline, const mongocxx\+::options\+::aggregate \&options=mongocxx\+::options\+::aggregate())}{aggregate(const mongocxx::pipeline &pipeline, const mongocxx::options::aggregate &options=mongocxx::options::aggregate())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ template$<$class Result  = T$>$ {\bf deserializing\+\_\+cursor}$<$Result$>$ {\bf mongo\+\_\+odm\+::odm\+\_\+collection}$<$ T $>$\+::aggregate (
+\begin{DoxyParamCaption}
+\item[{const mongocxx\+::pipeline \&}]{pipeline, }
+\item[{const mongocxx\+::options\+::aggregate \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:aggregate()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1odm__collection_a1be075e3d2b05b4bd328050d3566806c}{}\label{classmongo__odm_1_1odm__collection_a1be075e3d2b05b4bd328050d3566806c}
+
+
+Runs an aggregation framework pipeline against this collection, and returns the results as de-\/serialized objects. 
+
+This function is templated on the result\textquotesingle{}s type, which is not necessarily the same as the type of the documents in the colleciton.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Result} & -\/ The type of the aggregation result. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em pipeline} & The pipeline of aggregation operations to perform. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::mongocxx\+::options\+::aggregate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A deserializing\+\_\+cursor$<$\+Result$>$ with the results. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em If} & the operation failed, the returned cursor will throw an mongocxx\+::exception\+::query when it is iterated.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.mongodb.org/manual/reference/command/aggregate/}{\tt http\+://docs.\+mongodb.\+org/manual/reference/command/aggregate/} 
+\end{DoxySeeAlso}
+\index{mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}!collection@{collection}}
+\index{collection@{collection}!mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}}
+\subsubsection[{\texorpdfstring{collection()}{collection()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ mongocxx\+::collection {\bf mongo\+\_\+odm\+::odm\+\_\+collection}$<$ T $>$\+::collection (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1odm__collection_a65bf78cfb9fe5e977d5a9fe49bfcf387}{}\label{classmongo__odm_1_1odm__collection_a65bf78cfb9fe5e977d5a9fe49bfcf387}
+
+
+Returns a copy of the underlying collection. 
+
+\begin{DoxyReturn}{Returns}
+The mongocxx\+::collection that this object wraps 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}!find@{find}}
+\index{find@{find}!mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}}
+\subsubsection[{\texorpdfstring{find(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find \&options=mongocxx\+::options\+::find())}{find(bsoncxx::document::view_or_value filter, const mongocxx::options::find &options=mongocxx::options::find())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf deserializing\+\_\+cursor}$<$T$>$ {\bf mongo\+\_\+odm\+::odm\+\_\+collection}$<$ T $>$\+::find (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{const mongocxx\+::options\+::find \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:find()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1odm__collection_aef03132e2d00396555832734c75f43a1}{}\label{classmongo__odm_1_1odm__collection_aef03132e2d00396555832734c75f43a1}
+
+
+Finds the documents in this collection which match the provided filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document view representing a document that should match the query. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::find\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Cursor with deserialized objects from the collection. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em If} & the find failed, the returned cursor will throw mongocxx\+::exception\+::query when it is iterated.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.mongodb.org/manual/core/read-operations-introduction/}{\tt http\+://docs.\+mongodb.\+org/manual/core/read-\/operations-\/introduction/} 
+\end{DoxySeeAlso}
+\index{mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}!find\+\_\+one@{find\+\_\+one}}
+\index{find\+\_\+one@{find\+\_\+one}!mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}}
+\subsubsection[{\texorpdfstring{find\+\_\+one(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find \&options=mongocxx\+::options\+::find())}{find_one(bsoncxx::document::view_or_value filter, const mongocxx::options::find &options=mongocxx::options::find())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ mongocxx\+::stdx\+::optional$<$T$>$ {\bf mongo\+\_\+odm\+::odm\+\_\+collection}$<$ T $>$\+::find\+\_\+one (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{const mongocxx\+::options\+::find \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:find()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1odm__collection_a76f81952f53bacb0e4516abe3d680230}{}\label{classmongo__odm_1_1odm__collection_a76f81952f53bacb0e4516abe3d680230}
+
+
+Finds a single document in this collection that match the provided filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document view representing a document that should match the query. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::find\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An optional object that matched the filter. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::query} & if the operation fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.mongodb.org/manual/core/read-operations-introduction/}{\tt http\+://docs.\+mongodb.\+org/manual/core/read-\/operations-\/introduction/} 
+\end{DoxySeeAlso}
+\index{mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}!find\+\_\+one\+\_\+and\+\_\+delete@{find\+\_\+one\+\_\+and\+\_\+delete}}
+\index{find\+\_\+one\+\_\+and\+\_\+delete@{find\+\_\+one\+\_\+and\+\_\+delete}!mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}}
+\subsubsection[{\texorpdfstring{find\+\_\+one\+\_\+and\+\_\+delete(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find\+\_\+one\+\_\+and\+\_\+delete \&options=mongocxx\+::options\+::find\+\_\+one\+\_\+and\+\_\+delete())}{find_one_and_delete(bsoncxx::document::view_or_value filter, const mongocxx::options::find_one_and_delete &options=mongocxx::options::find_one_and_delete())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ mongocxx\+::stdx\+::optional$<$T$>$ {\bf mongo\+\_\+odm\+::odm\+\_\+collection}$<$ T $>$\+::find\+\_\+one\+\_\+and\+\_\+delete (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{const mongocxx\+::options\+::find\+\_\+one\+\_\+and\+\_\+delete \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:find\+\_\+one\+\_\+and\+\_\+delete()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1odm__collection_a7b07969d21159f5dad3f86c5b37c6581}{}\label{classmongo__odm_1_1odm__collection_a7b07969d21159f5dad3f86c5b37c6581}
+
+
+Finds a single document matching the filter, deletes it, and returns the original as a deserialized object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document view representing a document that should be deleted. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::find\+\_\+one\+\_\+and\+\_\+delete\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The deserialized object that was deleted from the database. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::write} & if the operation fails. \\
+\hline
+\end{DoxyExceptions}
+\index{mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}!find\+\_\+one\+\_\+and\+\_\+replace@{find\+\_\+one\+\_\+and\+\_\+replace}}
+\index{find\+\_\+one\+\_\+and\+\_\+replace@{find\+\_\+one\+\_\+and\+\_\+replace}!mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}}
+\subsubsection[{\texorpdfstring{find\+\_\+one\+\_\+and\+\_\+replace(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const T \&replacement, const mongocxx\+::options\+::find\+\_\+one\+\_\+and\+\_\+replace \&options=mongocxx\+::options\+::find\+\_\+one\+\_\+and\+\_\+replace())}{find_one_and_replace(bsoncxx::document::view_or_value filter, const T &replacement, const mongocxx::options::find_one_and_replace &options=mongocxx::options::find_one_and_replace())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ mongocxx\+::stdx\+::optional$<$T$>$ {\bf mongo\+\_\+odm\+::odm\+\_\+collection}$<$ T $>$\+::find\+\_\+one\+\_\+and\+\_\+replace (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{const T \&}]{replacement, }
+\item[{const mongocxx\+::options\+::find\+\_\+one\+\_\+and\+\_\+replace \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:find\+\_\+one\+\_\+and\+\_\+replace()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1odm__collection_adbcbf110fd4b3d14f70206020eee24d3}{}\label{classmongo__odm_1_1odm__collection_adbcbf110fd4b3d14f70206020eee24d3}
+
+
+Finds a single document matching the filter, replaces it, and returns either the original or the replacement document as a deserialized object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document view representing a document that should be replaced. \\
+\hline
+{\em replacement} & Serializable object representing the replacement for a matching document. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::find\+\_\+one\+\_\+and\+\_\+replace.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The original or replaced object. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::write} & if the operation fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Note}
+In order to pass a write concern to this, you must use the collection level set write concern -\/ collection\+::write\+\_\+concern(wc). 
+\end{DoxyNote}
+\index{mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}!insert\+\_\+many@{insert\+\_\+many}}
+\index{insert\+\_\+many@{insert\+\_\+many}!mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}}
+\subsubsection[{\texorpdfstring{insert\+\_\+many(const container\+\_\+type \&container, const mongocxx\+::options\+::insert \&options=mongocxx\+::options\+::insert())}{insert_many(const container_type &container, const mongocxx::options::insert &options=mongocxx::options::insert())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ template$<$typename container\+\_\+type $>$ mongocxx\+::stdx\+::optional$<$mongocxx\+::result\+::insert\+\_\+many$>$ {\bf mongo\+\_\+odm\+::odm\+\_\+collection}$<$ T $>$\+::insert\+\_\+many (
+\begin{DoxyParamCaption}
+\item[{const container\+\_\+type \&}]{container, }
+\item[{const mongocxx\+::options\+::insert \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:insert()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1odm__collection_a9503db6dacc66f8af5466bd22479a90e}{}\label{classmongo__odm_1_1odm__collection_a9503db6dacc66f8af5466bd22479a90e}
+
+
+Inserts multiple serializable objects into the collection. 
+
+// T\+O\+DO how to deal w/ identifiers If any of the are missing identifiers the driver will generate them.
+
+\begin{DoxyWarning}{Warning}
+This method uses the bulk insert command to execute the insertion as opposed to the legacy O\+P\+\_\+\+I\+N\+S\+E\+RT wire protocol message. As a result, using this method to insert many documents on Mongo\+DB $<$ 2.\+6 will be slow. 
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em containter\+\_\+type} & The container type. Must contain an iterator that yields serializable objects.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em container} & Container of serializable objects to insert. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::insert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of attempting to performing the insert. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::write} & when the operation fails. \\
+\hline
+\end{DoxyExceptions}
+\index{mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}!insert\+\_\+many@{insert\+\_\+many}}
+\index{insert\+\_\+many@{insert\+\_\+many}!mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}}
+\subsubsection[{\texorpdfstring{insert\+\_\+many(object\+\_\+iterator\+\_\+type begin, object\+\_\+iterator\+\_\+type end, const mongocxx\+::options\+::insert \&options=mongocxx\+::options\+::insert())}{insert_many(object_iterator_type begin, object_iterator_type end, const mongocxx::options::insert &options=mongocxx::options::insert())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ template$<$typename object\+\_\+iterator\+\_\+type $>$ mongocxx\+::stdx\+::optional$<$mongocxx\+::result\+::insert\+\_\+many$>$ {\bf mongo\+\_\+odm\+::odm\+\_\+collection}$<$ T $>$\+::insert\+\_\+many (
+\begin{DoxyParamCaption}
+\item[{object\+\_\+iterator\+\_\+type}]{begin, }
+\item[{object\+\_\+iterator\+\_\+type}]{end, }
+\item[{const mongocxx\+::options\+::insert \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:insert()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1odm__collection_a411c5e06bd3dab97a15ee478f6dae540}{}\label{classmongo__odm_1_1odm__collection_a411c5e06bd3dab97a15ee478f6dae540}
+
+
+Inserts multiple serializable objects into the collection. 
+
+T\+O\+DO how to deal w/ identifiers If any of the documents are missing /// identifiers the driver will generate them.
+
+\begin{DoxyWarning}{Warning}
+This method uses the bulk insert command to execute the insertion as opposed to the legacy O\+P\+\_\+\+I\+N\+S\+E\+RT wire protocol message. As a result, using this method to insert many documents on Mongo\+DB $<$ 2.\+6 will be slow.
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em object\+\_\+iterator\+\_\+type} & The iterator type. Must meet the requirements for the input iterator concept with a value type that is a serializable object.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em begin} & Iterator pointing to the first document to be inserted. \\
+\hline
+{\em end} & Iterator pointing to the end of the documents to be inserted. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::insert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of attempting to performing the insert. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::write} & if the operation fails.\\
+\hline
+\end{DoxyExceptions}
+T\+O\+DO\+: document Document\+View\+Iterator concept or static assert \index{mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}!insert\+\_\+one@{insert\+\_\+one}}
+\index{insert\+\_\+one@{insert\+\_\+one}!mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}}
+\subsubsection[{\texorpdfstring{insert\+\_\+one(\+T obj, const mongocxx\+::options\+::insert \&options=mongocxx\+::options\+::insert())}{insert_one(T obj, const mongocxx::options::insert &options=mongocxx::options::insert())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ mongocxx\+::stdx\+::optional$<$mongocxx\+::result\+::insert\+\_\+one$>$ {\bf mongo\+\_\+odm\+::odm\+\_\+collection}$<$ T $>$\+::insert\+\_\+one (
+\begin{DoxyParamCaption}
+\item[{T}]{obj, }
+\item[{const mongocxx\+::options\+::insert \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:insert()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1odm__collection_af11f78449ec0938caa49346da8eed19d}{}\label{classmongo__odm_1_1odm__collection_af11f78449ec0938caa49346da8eed19d}
+
+
+Inserts a single serializable object into the collection. 
+
+// T\+O\+DO how to deal w/ identifiers If the document is missing an identifier ({\ttfamily \+\_\+id} field) one will be generated for it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em document} & The document to insert. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::insert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of attempting to perform the insert. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::write} & if the operation fails. \\
+\hline
+\end{DoxyExceptions}
+\index{mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}!replace\+\_\+one@{replace\+\_\+one}}
+\index{replace\+\_\+one@{replace\+\_\+one}!mongo\+\_\+odm\+::odm\+\_\+collection@{mongo\+\_\+odm\+::odm\+\_\+collection}}
+\subsubsection[{\texorpdfstring{replace\+\_\+one(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const T \&replacement, const mongocxx\+::options\+::update \&options=mongocxx\+::options\+::update())}{replace_one(bsoncxx::document::view_or_value filter, const T &replacement, const mongocxx::options::update &options=mongocxx::options::update())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ mongocxx\+::stdx\+::optional$<$mongocxx\+::result\+::replace\+\_\+one$>$ {\bf mongo\+\_\+odm\+::odm\+\_\+collection}$<$ T $>$\+::replace\+\_\+one (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{const T \&}]{replacement, }
+\item[{const mongocxx\+::options\+::update \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:update()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1odm__collection_adf1ed50140b16bde3bef54a6f701e1a6}{}\label{classmongo__odm_1_1odm__collection_adf1ed50140b16bde3bef54a6f701e1a6}
+
+
+Replaces a single document matching the provided filter in this collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document representing the match criteria. \\
+\hline
+{\em replacement} & The replacement document, as a serializable object. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::update.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of attempting to replace a document. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::write} & if the operation fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.mongodb.org/manual/reference/command/update/}{\tt http\+://docs.\+mongodb.\+org/manual/reference/command/update/} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/odm\+\_\+collection.\+hpp\end{DoxyCompactItemize}

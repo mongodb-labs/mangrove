@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1hasField_3_01Base_00_01T_00_01N_00_01M_00_01true_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::hasField&lt; Base, T, N, M, true &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::is_same&lt; T Base::*, decltype(std::get&lt; N &gt;(Base::mongo_odm_mapped_fields()).t)&gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename Base</type>
+      </param>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>size_t</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+      <param>
+        <type>size_t</type>
+        <declname>M</declname>
+        <defname>M</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="56">
+        <label>std::is_same&lt; T Base::*, decltype(std::get&lt; N &gt;(Base::mongo_odm_mapped_fields()).t)&gt;</label>
+      </node>
+      <node id="55">
+        <label>mongo_odm::hasField&lt; Base, T, N, M, true &gt;</label>
+        <link refid="structmongo__odm_1_1hasField_3_01Base_00_01T_00_01N_00_01M_00_01true_01_4"/>
+        <childnode refid="56" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="58">
+        <label>std::is_same&lt; T Base::*, decltype(std::get&lt; N &gt;(Base::mongo_odm_mapped_fields()).t)&gt;</label>
+      </node>
+      <node id="57">
+        <label>mongo_odm::hasField&lt; Base, T, N, M, true &gt;</label>
+        <link refid="structmongo__odm_1_1hasField_3_01Base_00_01T_00_01N_00_01M_00_01true_01_4"/>
+        <childnode refid="58" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/nvp.hpp" line="100" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="99" bodyend="100"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1ExpressionList" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::ExpressionList</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Head</type>
+      </param>
+      <param>
+        <type>typename Tail</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1ExpressionList_1aecc3c6879314bdb995fc87b9fb17e0c6" prot="private" static="no" mutable="no">
+        <type>const Head</type>
+        <definition>const Head mongo_odm::ExpressionList&lt; Head, Tail &gt;::_head</definition>
+        <argsstring></argsstring>
+        <name>_head</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="157" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1ExpressionList_1a5c139e82d077e3f05b5ba51a1cf46736" prot="private" static="no" mutable="no">
+        <type>const Tail</type>
+        <definition>const Tail mongo_odm::ExpressionList&lt; Head, Tail &gt;::_tail</definition>
+        <argsstring></argsstring>
+        <name>_tail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="158" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1ExpressionList_1a77d2708484097a9aafa068cc7f1a9ebe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mongo_odm::ExpressionList&lt; Head, Tail &gt;::ExpressionList</definition>
+        <argsstring>(const Head &amp;head, const Tail &amp;tail)</argsstring>
+        <name>ExpressionList</name>
+        <param>
+          <type>const Head &amp;</type>
+          <declname>head</declname>
+        </param>
+        <param>
+          <type>const Tail &amp;</type>
+          <declname>tail</declname>
+        </param>
+        <briefdescription>
+<para>Constructs an expression list. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>head</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first element in the list </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tail</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The remainder of the list </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="134" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="134" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1ExpressionList_1acce8b8732ff446bb9a36c64ec055f23f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::ExpressionList&lt; Head, Tail &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+<para>Appends this expression list to the given core builder by appending the first expression in the list, and then recursing on the rest of the list. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A basic BSON core builder. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="142" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="142" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1ExpressionList_1a09d23e240065afc839e4b791a7916163" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::ExpressionList&lt; Head, Tail &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Casts the expression list to a BSON query of the form { expr1, expr2, .... </para>        </briefdescription>
+        <detaileddescription>
+<para>} </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="150" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="150" bodyend="154"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mongo_odm/query_builder.hpp" line="127" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="127" bodyend="159"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1ExpressionList_1aecc3c6879314bdb995fc87b9fb17e0c6" prot="private" virt="non-virtual"><scope>mongo_odm::ExpressionList</scope><name>_head</name></member>
+      <member refid="classmongo__odm_1_1ExpressionList_1a5c139e82d077e3f05b5ba51a1cf46736" prot="private" virt="non-virtual"><scope>mongo_odm::ExpressionList</scope><name>_tail</name></member>
+      <member refid="classmongo__odm_1_1ExpressionList_1acce8b8732ff446bb9a36c64ec055f23f" prot="public" virt="non-virtual"><scope>mongo_odm::ExpressionList</scope><name>append_to_bson</name></member>
+      <member refid="classmongo__odm_1_1ExpressionList_1a77d2708484097a9aafa068cc7f1a9ebe" prot="public" virt="non-virtual"><scope>mongo_odm::ExpressionList</scope><name>ExpressionList</name></member>
+      <member refid="classmongo__odm_1_1ExpressionList_1a09d23e240065afc839e4b791a7916163" prot="public" virt="non-virtual"><scope>mongo_odm::ExpressionList</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

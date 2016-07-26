@@ -1,0 +1,394 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="query__builder_8hpp" kind="file" language="C++">
+    <compoundname>query_builder.hpp</compoundname>
+    <includes refid="mongo__odm_2config_2prelude_8hpp" local="no">mongo_odm/config/prelude.hpp</includes>
+    <includes local="no">cstddef</includes>
+    <includes local="no">stdexcept</includes>
+    <includes local="no">tuple</includes>
+    <includes local="no">type_traits</includes>
+    <includes local="no">bsoncxx/builder/core.hpp</includes>
+    <includes local="no">bsoncxx/view_or_value.hpp</includes>
+    <includes refid="nvp_8hpp" local="no">mongo_odm/nvp.hpp</includes>
+    <includes refid="mongo__odm_2config_2postlude_8hpp" local="no">mongo_odm/config/postlude.hpp</includes>
+    <incdepgraph>
+      <node id="274">
+        <label>bsoncxx/builder/core.hpp</label>
+      </node>
+      <node id="275">
+        <label>bsoncxx/view_or_value.hpp</label>
+      </node>
+      <node id="271">
+        <label>stdexcept</label>
+      </node>
+      <node id="277">
+        <label>mongo_odm/config/postlude.hpp</label>
+        <link refid="mongo__odm_2config_2postlude_8hpp_source"/>
+      </node>
+      <node id="267">
+        <label>mongo_odm/config/config.hpp</label>
+      </node>
+      <node id="264">
+        <label>src/mongo_odm/query_builder.hpp</label>
+        <link refid="query_builder.hpp"/>
+        <childnode refid="265" relation="include">
+        </childnode>
+        <childnode refid="270" relation="include">
+        </childnode>
+        <childnode refid="271" relation="include">
+        </childnode>
+        <childnode refid="272" relation="include">
+        </childnode>
+        <childnode refid="273" relation="include">
+        </childnode>
+        <childnode refid="274" relation="include">
+        </childnode>
+        <childnode refid="275" relation="include">
+        </childnode>
+        <childnode refid="276" relation="include">
+        </childnode>
+        <childnode refid="277" relation="include">
+        </childnode>
+      </node>
+      <node id="268">
+        <label>mongo_odm/config/export.hpp</label>
+      </node>
+      <node id="276">
+        <label>mongo_odm/nvp.hpp</label>
+        <link refid="nvp_8hpp_source"/>
+        <childnode refid="265" relation="include">
+        </childnode>
+        <childnode refid="270" relation="include">
+        </childnode>
+        <childnode refid="271" relation="include">
+        </childnode>
+        <childnode refid="272" relation="include">
+        </childnode>
+        <childnode refid="273" relation="include">
+        </childnode>
+        <childnode refid="277" relation="include">
+        </childnode>
+      </node>
+      <node id="272">
+        <label>tuple</label>
+      </node>
+      <node id="269">
+        <label>mongo_odm/config/version.hpp</label>
+      </node>
+      <node id="270">
+        <label>cstddef</label>
+      </node>
+      <node id="265">
+        <label>mongo_odm/config/prelude.hpp</label>
+        <link refid="mongo__odm_2config_2prelude_8hpp_source"/>
+        <childnode refid="266" relation="include">
+        </childnode>
+        <childnode refid="267" relation="include">
+        </childnode>
+        <childnode refid="268" relation="include">
+        </childnode>
+        <childnode refid="269" relation="include">
+        </childnode>
+      </node>
+      <node id="273">
+        <label>type_traits</label>
+      </node>
+      <node id="266">
+        <label>mongo_odm/config/compiler.hpp</label>
+        <link refid="mongo__odm_2config_2compiler_8hpp_source"/>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classmongo__odm_1_1NotExpr" prot="public">mongo_odm::NotExpr</innerclass>
+    <innerclass refid="classmongo__odm_1_1ComparisonExpr" prot="public">mongo_odm::ComparisonExpr</innerclass>
+    <innerclass refid="classmongo__odm_1_1NotExpr" prot="public">mongo_odm::NotExpr</innerclass>
+    <innerclass refid="classmongo__odm_1_1ExpressionList" prot="public">mongo_odm::ExpressionList</innerclass>
+    <innerclass refid="classmongo__odm_1_1BooleanExpr" prot="public">mongo_odm::BooleanExpr</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__expression" prot="public">mongo_odm::is_expression</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__expression_3_01ComparisonExpr_3_01Base_00_01T_01_4_01_4" prot="public">mongo_odm::is_expression&lt; ComparisonExpr&lt; Base, T &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__expression_3_01NotExpr_3_01Base_00_01T_01_4_01_4" prot="public">mongo_odm::is_expression&lt; NotExpr&lt; Base, T &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__expression_3_01ExpressionList_3_01Head_00_01Tail_01_4_01_4" prot="public">mongo_odm::is_expression&lt; ExpressionList&lt; Head, Tail &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__expression_3_01BooleanExpr_3_01Expr1_00_01Expr2_01_4_01_4" prot="public">mongo_odm::is_expression&lt; BooleanExpr&lt; Expr1, Expr2 &gt; &gt;</innerclass>
+    <innernamespace refid="namespacemongo__odm">mongo_odm</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016<sp/>MongoDB<sp/>Inc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/config/prelude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tuple&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;bsoncxx/builder/core.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;bsoncxx/view_or_value.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/nvp.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemongo__odm" kindref="compound">mongo_odm</ref><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">MONGO_ODM_INLINE_NAMESPACE_BEGIN</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forward<sp/>declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="34" refid="classmongo__odm_1_1NotExpr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1NotExpr" kindref="compound">NotExpr</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="40" refid="classmongo__odm_1_1ComparisonExpr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="48" refid="classmongo__odm_1_1ComparisonExpr_1a00cedfa66e6c8622149739dffde2e23e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr_1a00cedfa66e6c8622149739dffde2e23e" kindref="member">ComparisonExpr</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp&lt;Base, T&gt;</ref><sp/>&amp;nvp,<sp/>T<sp/>field,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*selector_type)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>_nvp(nvp),<sp/>_field(std::move(field)),<sp/>_selector_type(selector_type)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56" refid="classmongo__odm_1_1ComparisonExpr_1afcfc49aa8b1a0d024fe8a8c0d2441e40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1ComparisonExpr_1afcfc49aa8b1a0d024fe8a8c0d2441e40" kindref="member">append_to_bson</ref>(bsoncxx::builder::core<sp/>&amp;builder)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.key_view(_nvp.name);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.open_document();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.key_view(_selector_type);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.append(_field);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.close_document();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classmongo__odm_1_1ComparisonExpr_1a8174f54d033e934b141b3a9ef4480a84" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>bsoncxx::document::view_or_value()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>builder<sp/>=<sp/>bsoncxx::builder::core(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmongo__odm_1_1ComparisonExpr_1afcfc49aa8b1a0d024fe8a8c0d2441e40" kindref="member">append_to_bson</ref>(builder);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>builder.extract_document();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1NotExpr" kindref="compound">NotExpr&lt;Base, T&gt;</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp&lt;Base, T&gt;</ref><sp/>&amp;_nvp;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>_field;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*_selector_type;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1NotExpr" kindref="compound">NotExpr</ref><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="93" refid="classmongo__odm_1_1NotExpr_1a817dba48751e400a44e83c79ac57872f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/><ref refid="classmongo__odm_1_1NotExpr_1a817dba48751e400a44e83c79ac57872f" kindref="member">NotExpr</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>&amp;expr)<sp/>:<sp/>_expr(expr)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classmongo__odm_1_1NotExpr_1aee3b9cef41a1fa5f4e60e141cefd1357" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1NotExpr_1aee3b9cef41a1fa5f4e60e141cefd1357" kindref="member">append_to_bson</ref>(bsoncxx::builder::core<sp/>&amp;builder)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.key_view(_expr._nvp.name);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.open_document();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.key_view(</highlight><highlight class="stringliteral">&quot;$not&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.open_document();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.key_view(_expr._selector_type);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.append(_expr._field);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.close_document();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.close_document();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classmongo__odm_1_1NotExpr_1a6f2e9d9b79c21dafbf30f05d231ee52c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>bsoncxx::document::view_or_value()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>builder<sp/>=<sp/>bsoncxx::builder::core(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmongo__odm_1_1ComparisonExpr_1afcfc49aa8b1a0d024fe8a8c0d2441e40" kindref="member">append_to_bson</ref>(builder);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>builder.extract_document();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>_expr;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Head,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Tail&gt;</highlight></codeline>
+<codeline lineno="127" refid="classmongo__odm_1_1ExpressionList" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1ExpressionList" kindref="compound">ExpressionList</ref><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="134" refid="classmongo__odm_1_1ExpressionList_1a77d2708484097a9aafa068cc7f1a9ebe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/><ref refid="classmongo__odm_1_1ExpressionList_1a77d2708484097a9aafa068cc7f1a9ebe" kindref="member">ExpressionList</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Head<sp/>&amp;head,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Tail<sp/>&amp;tail)<sp/>:<sp/>_head(head),<sp/>_tail(tail)<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classmongo__odm_1_1ExpressionList_1acce8b8732ff446bb9a36c64ec055f23f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1ExpressionList_1acce8b8732ff446bb9a36c64ec055f23f" kindref="member">append_to_bson</ref>(bsoncxx::builder::core<sp/>&amp;builder)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_head.append_to_bson(builder);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_tail.append_to_bson(builder);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classmongo__odm_1_1ExpressionList_1a09d23e240065afc839e4b791a7916163" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>bsoncxx::document::view_or_value()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>builder<sp/>=<sp/>bsoncxx::builder::core(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmongo__odm_1_1ComparisonExpr_1afcfc49aa8b1a0d024fe8a8c0d2441e40" kindref="member">append_to_bson</ref>(builder);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>builder.extract_document();</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Head<sp/>_head;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Tail<sp/>_tail;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr1,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr2&gt;</highlight></codeline>
+<codeline lineno="162" refid="classmongo__odm_1_1BooleanExpr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1BooleanExpr" kindref="compound">BooleanExpr</ref><sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="170" refid="classmongo__odm_1_1BooleanExpr_1a47afd7061d2494c8baf629667f0a7a25" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/><ref refid="classmongo__odm_1_1BooleanExpr_1a47afd7061d2494c8baf629667f0a7a25" kindref="member">BooleanExpr</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Expr1<sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Expr2<sp/>&amp;rhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*op)</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>_lhs(lhs),<sp/>_rhs(rhs),<sp/>_op(op)<sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="classmongo__odm_1_1BooleanExpr_1a7e4a898b2a56dd7d07595c0f3195be94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1BooleanExpr_1a7e4a898b2a56dd7d07595c0f3195be94" kindref="member">append_to_bson</ref>(bsoncxx::builder::core<sp/>&amp;builder)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.key_view(_op);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.open_array();</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>append<sp/>left<sp/>hand<sp/>side</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.open_document();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_lhs.append_to_bson(builder);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.close_document();</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>append<sp/>right<sp/>hand<sp/>side</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.open_document();</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_rhs.append_to_bson(builder);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.close_document();</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>builder.close_array();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199" refid="classmongo__odm_1_1BooleanExpr_1a8c86b1be15ed3d9a22c81dc0bdb4e7a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>bsoncxx::document::view_or_value()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>builder<sp/>=<sp/>bsoncxx::builder::core(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmongo__odm_1_1ComparisonExpr_1afcfc49aa8b1a0d024fe8a8c0d2441e40" kindref="member">append_to_bson</ref>(builder);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>builder.extract_document();</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Expr1<sp/>_lhs;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Expr2<sp/>_rhs;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*_op;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>A<sp/>templated<sp/>struct<sp/>that<sp/>holds<sp/>a<sp/>boolean<sp/>value.</highlight></codeline>
+<codeline lineno="211"><highlight class="comment">*<sp/>This<sp/>value<sp/>is<sp/>TRUE<sp/>for<sp/>types<sp/>that<sp/>are<sp/>query<sp/>expression,</highlight></codeline>
+<codeline lineno="212"><highlight class="comment">*<sp/>and<sp/>FALSE<sp/>for<sp/>all<sp/>other<sp/>types.</highlight></codeline>
+<codeline lineno="213"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="215" refid="structmongo__odm_1_1is__expression" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1is__expression" kindref="compound">is_expression</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::false_type<sp/>{};</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="218" refid="structmongo__odm_1_1is__expression_3_01ComparisonExpr_3_01Base_00_01T_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1is__expression" kindref="compound">is_expression</ref>&lt;<ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt;Base,<sp/>T&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::true_type<sp/>{};</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="221" refid="structmongo__odm_1_1is__expression_3_01NotExpr_3_01Base_00_01T_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1is__expression" kindref="compound">is_expression</ref>&lt;<ref refid="classmongo__odm_1_1NotExpr" kindref="compound">NotExpr</ref>&lt;Base,<sp/>T&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::true_type<sp/>{};</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Head,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Tail&gt;</highlight></codeline>
+<codeline lineno="224" refid="structmongo__odm_1_1is__expression_3_01ExpressionList_3_01Head_00_01Tail_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1is__expression" kindref="compound">is_expression</ref>&lt;<ref refid="classmongo__odm_1_1ExpressionList" kindref="compound">ExpressionList</ref>&lt;Head,<sp/>Tail&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::true_type<sp/>{};</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr1,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr2&gt;</highlight></codeline>
+<codeline lineno="227" refid="structmongo__odm_1_1is__expression_3_01BooleanExpr_3_01Expr1_00_01Expr2_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1is__expression" kindref="compound">is_expression</ref>&lt;<ref refid="classmongo__odm_1_1BooleanExpr" kindref="compound">BooleanExpr</ref>&lt;Expr1,<sp/>Expr2&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::true_type<sp/>{};</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Operator<sp/>overloads<sp/>for<sp/>creating<sp/>and<sp/>combining<sp/>expressions<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Overload<sp/>comparison<sp/>operators<sp/>for<sp/>name-value<sp/>pairs<sp/>to<sp/>create<sp/>expressions.</highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/>*<sp/>Separate<sp/>operators<sp/>are<sp/>defined<sp/>for<sp/>bool<sp/>types<sp/>to<sp/>prevent<sp/>confusing<sp/>implicit<sp/>casting<sp/>to<sp/>bool</highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/>*<sp/>for<sp/>non-bool<sp/>types.</highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U,</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if_t&lt;!std::is_same&lt;T,<sp/>bool&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp&lt;Base, T&gt;</ref><sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>U<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$eq&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="239"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if_t&lt;std::is_same&lt;T,<sp/>bool&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp&lt;Base, T&gt;</ref><sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$eq&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U,</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if_t&lt;!std::is_same&lt;T,<sp/>bool&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>operator&gt;(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp&lt;Base, T&gt;</ref><sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>U<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$gt&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="251"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if_t&lt;std::is_same&lt;T,<sp/>bool&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>operator&gt;(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp&lt;Base, T&gt;</ref><sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$gt&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="257"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U,</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if_t&lt;!std::is_same&lt;T,<sp/>bool&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>operator&gt;=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp&lt;Base, T&gt;</ref><sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>U<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$gte&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="263"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if_t&lt;std::is_same&lt;T,<sp/>bool&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>operator&gt;=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp&lt;Base, T&gt;</ref><sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$gte&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="269"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U,</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if_t&lt;!std::is_same&lt;T,<sp/>bool&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>operator&lt;(const<sp/>Nvp&lt;Base,<sp/>T&gt;<sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>U<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$lt&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="275"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if_t&lt;std::is_same&lt;T,<sp/>bool&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>operator&lt;(const<sp/>Nvp&lt;Base,<sp/>T&gt;<sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$lt&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="281"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U,</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if_t&lt;!std::is_same&lt;T,<sp/>bool&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>operator&lt;=(const<sp/>Nvp&lt;Base,<sp/>T&gt;<sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>U<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$lte&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="287"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if_t&lt;std::is_same&lt;T,<sp/>bool&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>operator&lt;=(const<sp/>Nvp&lt;Base,<sp/>T&gt;<sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$lte&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="293"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U,</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if_t&lt;!std::is_same&lt;T,<sp/>bool&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp&lt;Base, T&gt;</ref><sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>U<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$ne&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if_t&lt;std::is_same&lt;T,<sp/>bool&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp&lt;Base, T&gt;</ref><sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$ne&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="305"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1NotExpr" kindref="compound">NotExpr&lt;Base, T&gt;</ref><sp/>operator!(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr&lt;Base, T&gt;</ref><sp/>&amp;expr)<sp/>{</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{expr};</highlight></codeline>
+<codeline lineno="313"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Head,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Tail,</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;is_expression&lt;Head&gt;::value<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structmongo__odm_1_1is__expression" kindref="compound">is_expression&lt;Tail&gt;::value</ref>&gt;::type&gt;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1ExpressionList" kindref="compound">ExpressionList&lt;Head, Tail&gt;</ref><sp/>operator,(Tail<sp/>&amp;&amp;tail,<sp/>Head<sp/>&amp;&amp;head)<sp/>{</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{head,<sp/>tail};</highlight></codeline>
+<codeline lineno="324"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr1,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr2,</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;is_expression&lt;Expr1&gt;::value<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structmongo__odm_1_1is__expression" kindref="compound">is_expression&lt;Expr2&gt;::value</ref>&gt;::type&gt;</highlight></codeline>
+<codeline lineno="332"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1BooleanExpr" kindref="compound">BooleanExpr&lt;Expr1, Expr2&gt;</ref><sp/>operator&amp;&amp;(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Expr1<sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Expr2<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$and&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="334"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr1,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr2,</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;is_expression&lt;Expr1&gt;::value<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structmongo__odm_1_1is__expression" kindref="compound">is_expression&lt;Expr2&gt;::value</ref>&gt;::type&gt;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal">constexpr<sp/><ref refid="classmongo__odm_1_1BooleanExpr" kindref="compound">BooleanExpr&lt;Expr1, Expr2&gt;</ref><sp/>operator||(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Expr1<sp/>&amp;lhs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Expr2<sp/>&amp;rhs)<sp/>{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{lhs,<sp/>rhs,<sp/></highlight><highlight class="stringliteral">&quot;$or&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="341"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal">MONGO_ODM_INLINE_NAMESPACE_END</highlight></codeline>
+<codeline lineno="344"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>bson_mapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/config/postlude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/mongo_odm/query_builder.hpp"/>
+  </compounddef>
+</doxygen>

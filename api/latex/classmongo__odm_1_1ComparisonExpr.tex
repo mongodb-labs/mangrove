@@ -1,0 +1,88 @@
+\hypertarget{classmongo__odm_1_1ComparisonExpr}{}\section{mongo\+\_\+odm\+:\+:Comparison\+Expr$<$ Base, T $>$ Class Template Reference}
+\label{classmongo__odm_1_1ComparisonExpr}\index{mongo\+\_\+odm\+::\+Comparison\+Expr$<$ Base, T $>$@{mongo\+\_\+odm\+::\+Comparison\+Expr$<$ Base, T $>$}}
+
+
+Represents a binary comparison expression between a key and a value.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmongo__odm_1_1ComparisonExpr_a00cedfa66e6c8622149739dffde2e23e}{Comparison\+Expr} (const \hyperlink{structmongo__odm_1_1Nvp}{Nvp}$<$ Base, T $>$ \&nvp, T field, const char $\ast$selector\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Constructs a query expression for the given key, value, and comparison type. \end{DoxyCompactList}\item 
+void \hyperlink{classmongo__odm_1_1ComparisonExpr_afcfc49aa8b1a0d024fe8a8c0d2441e40}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder) const 
+\begin{DoxyCompactList}\small\item\em Appends this expression to a B\+S\+ON core builder, as a key-\/value pair of the form \char`\"{}key\+: \{\$cmp\+: val\}\char`\"{}, where \$cmp is some comparison operator. \end{DoxyCompactList}\item 
+\hyperlink{classmongo__odm_1_1ComparisonExpr_a8174f54d033e934b141b3a9ef4480a84}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const 
+\begin{DoxyCompactList}\small\item\em Converts the expression to a B\+S\+ON filter for a query. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Base, typename T$>$\\*
+class mongo\+\_\+odm\+::\+Comparison\+Expr$<$ Base, T $>$}
+
+Represents a binary comparison expression between a key and a value. 
+
+e.\+g. (User.\+age $>$ 21). 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mongo\+\_\+odm\+::\+Comparison\+Expr@{mongo\+\_\+odm\+::\+Comparison\+Expr}!Comparison\+Expr@{Comparison\+Expr}}
+\index{Comparison\+Expr@{Comparison\+Expr}!mongo\+\_\+odm\+::\+Comparison\+Expr@{mongo\+\_\+odm\+::\+Comparison\+Expr}}
+\subsubsection[{\texorpdfstring{Comparison\+Expr(const Nvp$<$ Base, T $>$ \&nvp, T field, const char $\ast$selector\+\_\+type)}{ComparisonExpr(const Nvp< Base, T > &nvp, T field, const char *selector_type)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base, typename T$>$ constexpr {\bf mongo\+\_\+odm\+::\+Comparison\+Expr}$<$ Base, T $>$\+::{\bf Comparison\+Expr} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Nvp}$<$ Base, T $>$ \&}]{nvp, }
+\item[{T}]{field, }
+\item[{const char $\ast$}]{selector\+\_\+type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1ComparisonExpr_a00cedfa66e6c8622149739dffde2e23e}{}\label{classmongo__odm_1_1ComparisonExpr_a00cedfa66e6c8622149739dffde2e23e}
+
+
+Constructs a query expression for the given key, value, and comparison type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nvp} & A name-\/value pair corresponding to a key in a document \\
+\hline
+{\em field} & The value that the key is being compared to. \\
+\hline
+{\em selector\+\_\+type} & The type of comparison operator, such at gt ($>$) or ne (!=). \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::\+Comparison\+Expr@{mongo\+\_\+odm\+::\+Comparison\+Expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mongo\+\_\+odm\+::\+Comparison\+Expr@{mongo\+\_\+odm\+::\+Comparison\+Expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder) const }{append_to_bson(bsoncxx::builder::core &builder) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base, typename T$>$ void {\bf mongo\+\_\+odm\+::\+Comparison\+Expr}$<$ Base, T $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1ComparisonExpr_afcfc49aa8b1a0d024fe8a8c0d2441e40}{}\label{classmongo__odm_1_1ComparisonExpr_afcfc49aa8b1a0d024fe8a8c0d2441e40}
+
+
+Appends this expression to a B\+S\+ON core builder, as a key-\/value pair of the form \char`\"{}key\+: \{\$cmp\+: val\}\char`\"{}, where \$cmp is some comparison operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A B\+S\+ON core builder \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::\+Comparison\+Expr@{mongo\+\_\+odm\+::\+Comparison\+Expr}!operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}}
+\index{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}!mongo\+\_\+odm\+::\+Comparison\+Expr@{mongo\+\_\+odm\+::\+Comparison\+Expr}}
+\subsubsection[{\texorpdfstring{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value() const }{operator bsoncxx::document::view_or_value() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base, typename T$>$ {\bf mongo\+\_\+odm\+::\+Comparison\+Expr}$<$ Base, T $>$\+::operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1ComparisonExpr_a8174f54d033e934b141b3a9ef4480a84}{}\label{classmongo__odm_1_1ComparisonExpr_a8174f54d033e934b141b3a9ef4480a84}
+
+
+Converts the expression to a B\+S\+ON filter for a query. 
+
+The resulting B\+S\+ON is of the form \char`\"{}\{key\+: \{\$cmp\+: val\}\}\char`\"{}. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

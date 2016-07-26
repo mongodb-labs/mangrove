@@ -1,0 +1,350 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classbson__mapper_1_1BSONOutputArchive" kind="class" language="C++" prot="public">
+    <compoundname>bson_mapper::BSONOutputArchive</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">cereal::OutputArchive&lt; BSONOutputArchive &gt;</basecompoundref>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classbson__mapper_1_1BSONOutputArchive_1a352e90363868ba971d8aa1e571de3429" prot="private" static="no">
+        <name>OutputNodeType</name>
+        <enumvalue id="classbson__mapper_1_1BSONOutputArchive_1a352e90363868ba971d8aa1e571de3429ad34204d72ef88942903d871c12f1cc50" prot="private">
+          <name>StartObject</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classbson__mapper_1_1BSONOutputArchive_1a352e90363868ba971d8aa1e571de3429adaff60416e9ab0d467514f2ceec55d2b" prot="private">
+          <name>InObject</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classbson__mapper_1_1BSONOutputArchive_1a352e90363868ba971d8aa1e571de3429a996340e132bfc11a3480cfd8b1e748e9" prot="private">
+          <name>StartArray</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classbson__mapper_1_1BSONOutputArchive_1a352e90363868ba971d8aa1e571de3429a1dd434ab03234427196327564f19f2e9" prot="private">
+          <name>InArray</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The possible states for the BSON nodes being output by the archive. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="150" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="150" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classbson__mapper_1_1BSONOutputArchive_1a003db8221019d4e4d4c8b57fd51024a4" prot="private" static="no">
+        <type>bsoncxx::builder::core</type>
+        <definition>using bson_mapper::BSONOutputArchive::BSONBuilder =  bsoncxx::builder::core</definition>
+        <argsstring></argsstring>
+        <name>BSONBuilder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="152" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1aa0cdb1a218d82162a913b812a2c8f083" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>bson_mapper::BSONOutputArchive::_bsonBuilder</definition>
+        <argsstring></argsstring>
+        <name>_bsonBuilder</name>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="175" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1a007a205e045e17e6755aa6fdc4d500a3" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>bson_mapper::BSONOutputArchive::_writeStream</definition>
+        <argsstring></argsstring>
+        <name>_writeStream</name>
+        <initializer>{stream}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="176" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1a06ff6ebefd6b6f1652bd524e72936c9b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>bson_mapper::BSONOutputArchive::_nextName</definition>
+        <argsstring></argsstring>
+        <name>_nextName</name>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="177" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1a8861eb26b028f6525b9f8e254d7916fe" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>bson_mapper::BSONOutputArchive::_objAsRootElement</definition>
+        <argsstring></argsstring>
+        <name>_objAsRootElement</name>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="178" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1a186b61ce69e988c144b63e8d7cf33fe7" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>bson_mapper::BSONOutputArchive::_dotNotationMode</definition>
+        <argsstring></argsstring>
+        <name>_dotNotationMode</name>
+        <initializer>{dotNotationMode}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="179" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1ab8ba969fdfee6bee6ae7c41ea2234c15" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>bson_mapper::BSONOutputArchive::_arrayNestingLevel</definition>
+        <argsstring></argsstring>
+        <name>_arrayNestingLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="180" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1adcb8ab245d7dc48570b90de1990900a7" prot="public" static="no" mutable="no">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; bson_mapper::BSONOutputArchive::_writeStream</definition>
+        <argsstring></argsstring>
+        <name>_writeStream</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="426" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1a05de792b5e3354d4bc99f3d787d70381" prot="public" static="no" mutable="no">
+        <type>char const *</type>
+        <definition>char const* bson_mapper::BSONOutputArchive::_nextName</definition>
+        <argsstring></argsstring>
+        <name>_nextName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="429" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="429" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1a5cd7e8270f054483655f23880ebb9fe8" prot="public" static="no" mutable="no">
+        <type>char const *</type>
+        <definition>char const* bson_mapper::BSONOutputArchive::_nextPotentialNodeName</definition>
+        <argsstring></argsstring>
+        <name>_nextPotentialNodeName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="433" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="433" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1a74597711fec52b205f461b6454eea5d6" prot="public" static="no" mutable="no">
+        <type>std::stack&lt; OutputNodeType &gt;</type>
+        <definition>std::stack&lt;OutputNodeType&gt; bson_mapper::BSONOutputArchive::_nodeTypeStack</definition>
+        <argsstring></argsstring>
+        <name>_nodeTypeStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="436" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="436" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1afa21107aebd2906969ab9c0509a787fc" prot="public" static="no" mutable="no">
+        <type>std::stack&lt; bool &gt;</type>
+        <definition>std::stack&lt;bool&gt; bson_mapper::BSONOutputArchive::_curNodeInheritsUnderlyingBSONDataBase</definition>
+        <argsstring></argsstring>
+        <name>_curNodeInheritsUnderlyingBSONDataBase</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="440" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="440" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1af7adec47ebe8bc721c1a177b607ebf72" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; bson_mapper::BSONOutputArchive::_embeddedNameStack</definition>
+        <argsstring></argsstring>
+        <name>_embeddedNameStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="444" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="444" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1ae4e9cd4dee03737ae2b602bdeaae98fa" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool bson_mapper::BSONOutputArchive::_objAsRootElement</definition>
+        <argsstring></argsstring>
+        <name>_objAsRootElement</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="448" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="448" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1a6c7eae745c5426c2765b76ff2800cff3" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool bson_mapper::BSONOutputArchive::_dotNotationMode</definition>
+        <argsstring></argsstring>
+        <name>_dotNotationMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="452" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="452" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1BSONOutputArchive_1ae416406695931ce6c92c2b1f67083c68" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t bson_mapper::BSONOutputArchive::_arrayNestingLevel</definition>
+        <argsstring></argsstring>
+        <name>_arrayNestingLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="456" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="456" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classbson__mapper_1_1BSONOutputArchive_1a07af9bf8f5a9fa281c6424bfe39f453f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>bson_mapper::BSONOutputArchive::BSONOutputArchive</definition>
+        <argsstring>(std::ostream &amp;stream, bool dotNotationMode=false)</argsstring>
+        <name>BSONOutputArchive</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>dotNotationMode</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Construct a <ref refid="classbson__mapper_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> that will output serialized classes as BSON to the provided stream. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stream to which the archiver will output BSON data.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dotNotationMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to true, the <ref refid="classbson__mapper_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> will output the values in embedded documents in dot notation. This is useful when specifying the arguments to a $set field in a MongoDB update command.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ulink url="https://docs.mongodb.com/manual/core/document/#embedded-documents">https://docs.mongodb.com/manual/core/document/#embedded-documents</ulink></para></simplesect>
+<simplesect kind="warning"><para>Documents produced by the archiver in dotNotationMode are not compatible with the BSONInputArchiver and are only intended to be used as a way to produce the argument to $set. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="173" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="173" bodyend="174"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="25">
+        <label>cereal::OutputArchive&lt; BSONOutputArchive &gt;</label>
+      </node>
+      <node id="24">
+        <label>bson_mapper::BSONOutputArchive</label>
+        <link refid="classbson__mapper_1_1BSONOutputArchive"/>
+        <childnode refid="25" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="27">
+        <label>cereal::OutputArchive&lt; BSONOutputArchive &gt;</label>
+      </node>
+      <node id="26">
+        <label>bson_mapper::BSONOutputArchive</label>
+        <link refid="classbson__mapper_1_1BSONOutputArchive"/>
+        <childnode refid="27" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/bson_mapper/bson_archiver.hpp" line="146" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="146" bodyend="458"/>
+    <listofallmembers>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1ab8ba969fdfee6bee6ae7c41ea2234c15" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_arrayNestingLevel</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1ae416406695931ce6c92c2b1f67083c68" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_arrayNestingLevel</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1aa0cdb1a218d82162a913b812a2c8f083" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_bsonBuilder</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1afa21107aebd2906969ab9c0509a787fc" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_curNodeInheritsUnderlyingBSONDataBase</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1a186b61ce69e988c144b63e8d7cf33fe7" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_dotNotationMode</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1a6c7eae745c5426c2765b76ff2800cff3" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_dotNotationMode</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1af7adec47ebe8bc721c1a177b607ebf72" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_embeddedNameStack</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1a06ff6ebefd6b6f1652bd524e72936c9b" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_nextName</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1a05de792b5e3354d4bc99f3d787d70381" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_nextName</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1a5cd7e8270f054483655f23880ebb9fe8" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_nextPotentialNodeName</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1a74597711fec52b205f461b6454eea5d6" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_nodeTypeStack</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1a8861eb26b028f6525b9f8e254d7916fe" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_objAsRootElement</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1ae4e9cd4dee03737ae2b602bdeaae98fa" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_objAsRootElement</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1a007a205e045e17e6755aa6fdc4d500a3" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_writeStream</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1adcb8ab245d7dc48570b90de1990900a7" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>_writeStream</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1a003db8221019d4e4d4c8b57fd51024a4" prot="private" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>BSONBuilder</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1a07af9bf8f5a9fa281c6424bfe39f453f" prot="public" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>BSONOutputArchive</name></member>
+      <member refid="classbson__mapper_1_1BSONOutputArchive_1a352e90363868ba971d8aa1e571de3429" prot="private" virt="non-virtual"><scope>bson_mapper::BSONOutputArchive</scope><name>OutputNodeType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

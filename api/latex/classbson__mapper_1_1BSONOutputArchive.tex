@@ -1,0 +1,46 @@
+\hypertarget{classbson__mapper_1_1BSONOutputArchive}{}\section{bson\+\_\+mapper\+:\+:B\+S\+O\+N\+Output\+Archive Class Reference}
+\label{classbson__mapper_1_1BSONOutputArchive}\index{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Output\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Output\+Archive}}
+Inheritance diagram for bson\+\_\+mapper\+:\+:B\+S\+O\+N\+Output\+Archive\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbson__mapper_1_1BSONOutputArchive}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classbson__mapper_1_1BSONOutputArchive_a07af9bf8f5a9fa281c6424bfe39f453f}{B\+S\+O\+N\+Output\+Archive} (std\+::ostream \&stream, bool dot\+Notation\+Mode=false)
+\begin{DoxyCompactList}\small\item\em Construct a \hyperlink{classbson__mapper_1_1BSONOutputArchive}{B\+S\+O\+N\+Output\+Archive} that will output serialized classes as B\+S\+ON to the provided stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Output\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Output\+Archive}!B\+S\+O\+N\+Output\+Archive@{B\+S\+O\+N\+Output\+Archive}}
+\index{B\+S\+O\+N\+Output\+Archive@{B\+S\+O\+N\+Output\+Archive}!bson\+\_\+mapper\+::\+B\+S\+O\+N\+Output\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Output\+Archive}}
+\subsubsection[{\texorpdfstring{B\+S\+O\+N\+Output\+Archive(std\+::ostream \&stream, bool dot\+Notation\+Mode=false)}{BSONOutputArchive(std::ostream &stream, bool dotNotationMode=false)}}]{\setlength{\rightskip}{0pt plus 5cm}bson\+\_\+mapper\+::\+B\+S\+O\+N\+Output\+Archive\+::\+B\+S\+O\+N\+Output\+Archive (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{stream, }
+\item[{bool}]{dot\+Notation\+Mode = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classbson__mapper_1_1BSONOutputArchive_a07af9bf8f5a9fa281c6424bfe39f453f}{}\label{classbson__mapper_1_1BSONOutputArchive_a07af9bf8f5a9fa281c6424bfe39f453f}
+
+
+Construct a \hyperlink{classbson__mapper_1_1BSONOutputArchive}{B\+S\+O\+N\+Output\+Archive} that will output serialized classes as B\+S\+ON to the provided stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & The stream to which the archiver will output B\+S\+ON data.\\
+\hline
+{\em dot\+Notation\+Mode} & If set to true, the \hyperlink{classbson__mapper_1_1BSONOutputArchive}{B\+S\+O\+N\+Output\+Archive} will output the values in embedded documents in dot notation. This is useful when specifying the arguments to a \$set field in a Mongo\+DB update command.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/core/document/#embedded-documents}{\tt https\+://docs.\+mongodb.\+com/manual/core/document/\#embedded-\/documents}
+\end{DoxySeeAlso}
+\begin{DoxyWarning}{Warning}
+Documents produced by the archiver in dot\+Notation\+Mode are not compatible with the B\+S\+O\+N\+Input\+Archiver and are only intended to be used as a way to produce the argument to \$set. 
+\end{DoxyWarning}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/bson\+\_\+mapper/bson\+\_\+archiver.\+hpp\end{DoxyCompactItemize}

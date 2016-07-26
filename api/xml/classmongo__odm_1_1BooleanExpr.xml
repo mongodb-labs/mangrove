@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1BooleanExpr" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::BooleanExpr</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Expr1</type>
+      </param>
+      <param>
+        <type>typename Expr2</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1BooleanExpr_1a45d0fcaecaa93284296d25a3723eb8e0" prot="public" static="no" mutable="no">
+        <type>const Expr1</type>
+        <definition>const Expr1 mongo_odm::BooleanExpr&lt; Expr1, Expr2 &gt;::_lhs</definition>
+        <argsstring></argsstring>
+        <name>_lhs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="205" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1BooleanExpr_1a18e2772b2d92ed450b9fea3927347ca6" prot="public" static="no" mutable="no">
+        <type>const Expr2</type>
+        <definition>const Expr2 mongo_odm::BooleanExpr&lt; Expr1, Expr2 &gt;::_rhs</definition>
+        <argsstring></argsstring>
+        <name>_rhs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="206" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="206" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1BooleanExpr_1acc4f674d65ef3bb5a6a500e41de79c05" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* mongo_odm::BooleanExpr&lt; Expr1, Expr2 &gt;::_op</definition>
+        <argsstring></argsstring>
+        <name>_op</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="207" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1BooleanExpr_1a47afd7061d2494c8baf629667f0a7a25" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mongo_odm::BooleanExpr&lt; Expr1, Expr2 &gt;::BooleanExpr</definition>
+        <argsstring>(const Expr1 &amp;lhs, const Expr2 &amp;rhs, const char *op)</argsstring>
+        <name>BooleanExpr</name>
+        <param>
+          <type>const Expr1 &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const Expr2 &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a boolean expression from two other expressions, and a certain operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The left-hand side of the expression. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The right-hand side of the expression. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>op</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The operator of the expression, e.g. AND or OR. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="170" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="170" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1BooleanExpr_1a7e4a898b2a56dd7d07595c0f3195be94" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::BooleanExpr&lt; Expr1, Expr2 &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+<para>Appends this query to a BSON core builder as a key-value pair &quot;$op: [{lhs}, {rhs}]&quot;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A basic BSON core builder. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="178" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="178" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1BooleanExpr_1a8c86b1be15ed3d9a22c81dc0bdb4e7a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::BooleanExpr&lt; Expr1, Expr2 &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Converts the expression to a BSON filter for a query, in the form &quot;{ $op: [{lhs}, {rhs}] }&quot;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="199" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="199" bodyend="203"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mongo_odm/query_builder.hpp" line="162" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="162" bodyend="208"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1BooleanExpr_1a45d0fcaecaa93284296d25a3723eb8e0" prot="public" virt="non-virtual"><scope>mongo_odm::BooleanExpr</scope><name>_lhs</name></member>
+      <member refid="classmongo__odm_1_1BooleanExpr_1acc4f674d65ef3bb5a6a500e41de79c05" prot="public" virt="non-virtual"><scope>mongo_odm::BooleanExpr</scope><name>_op</name></member>
+      <member refid="classmongo__odm_1_1BooleanExpr_1a18e2772b2d92ed450b9fea3927347ca6" prot="public" virt="non-virtual"><scope>mongo_odm::BooleanExpr</scope><name>_rhs</name></member>
+      <member refid="classmongo__odm_1_1BooleanExpr_1a7e4a898b2a56dd7d07595c0f3195be94" prot="public" virt="non-virtual"><scope>mongo_odm::BooleanExpr</scope><name>append_to_bson</name></member>
+      <member refid="classmongo__odm_1_1BooleanExpr_1a47afd7061d2494c8baf629667f0a7a25" prot="public" virt="non-virtual"><scope>mongo_odm::BooleanExpr</scope><name>BooleanExpr</name></member>
+      <member refid="classmongo__odm_1_1BooleanExpr_1a8c86b1be15ed3d9a22c81dc0bdb4e7a9" prot="public" virt="non-virtual"><scope>mongo_odm::BooleanExpr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

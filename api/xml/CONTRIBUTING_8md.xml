@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="CONTRIBUTING_8md" kind="file" language="Markdown">
+    <compoundname>CONTRIBUTING.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Contributing<sp/>Guidelines</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Lifecycle<sp/>Methods</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>default-or-argument-bearing<sp/>&apos;user&apos;<sp/>constructors</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>declaration-or-deletion-of-copy-contructor</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>declaration-or-deletetion-of-move-constructor</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>declaration-or-deletion-of-copy-assignment-operator</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>declaration-or-deletion-of-move-assignment-operator</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>declaration-of-dtor</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Headers</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>License</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Include<sp/>Guard<sp/>(`#pragma<sp/>once`)</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Header<sp/>Prelude</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>System<sp/>Headers<sp/>`&lt;vector&gt;`<sp/>(alphabetical<sp/>order)</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Driver<sp/>Headers<sp/>`&lt;path/to/header.hpp&gt;`<sp/>(alphabetical<sp/>order)</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Open<sp/>Namespace<sp/>mongocxx<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`MONGOCXX_INLINE_NAMESPACE_BEGIN`</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/><sp/><sp/><sp/>Code</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`MONGOCXX_INLINE_NAMESPACE_END`</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Close<sp/>Namespace<sp/>mongocxx</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Header<sp/>Postlude</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Example:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.cpp}</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Copyright<sp/>2016<sp/>MongoDB<sp/>Inc.</highlight></codeline>
+<codeline><highlight class="normal">//</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline><highlight class="normal">//</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline><highlight class="normal">//</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#pragma<sp/>once</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;driver/config/prelude.hpp&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;vector&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;driver/blah.hpp&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>mongocxx<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">MONGOCXX_INLINE_NAMESPACE_BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Declarations</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Inline<sp/>Implementations</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MONGOCXX_INLINE_NAMESPACE_END</highlight></codeline>
+<codeline><highlight class="normal">}<sp/><sp/>//<sp/>namespace<sp/>mongocxx</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;driver/config/postlude.hpp&gt;</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Class<sp/>Declarations</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Guidelines:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Blank<sp/>line<sp/>at<sp/>beginning<sp/>and<sp/>end<sp/>of<sp/>class<sp/>declaration</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Public<sp/>section<sp/>up<sp/>top<sp/>/<sp/>private<sp/>at<sp/>bottom</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Lifecycle<sp/>methods<sp/>first<sp/>(see<sp/>rules<sp/>above)</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Private<sp/>Member<sp/>Ordering</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>-<sp/>Friendships</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>-<sp/>Private<sp/>Constructors</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>-<sp/>Private<sp/>Methods</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>-<sp/>Private<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Example:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.cpp}</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>foo<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>foo();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>foo(foo&amp;&amp;<sp/>other)<sp/>noexcept;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>foo&amp;<sp/>operator=(foo&amp;&amp;<sp/>other)<sp/>noexcept;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>~foo();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>private:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>friend<sp/>baz;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>class<sp/>MONGOCXX_PRIVATE<sp/>impl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::unique_ptr&lt;impl&gt;<sp/>_impl;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Inlines</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Define<sp/>outside<sp/>of<sp/>class<sp/>declaration</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Specify<sp/>inline<sp/>keyword<sp/>in<sp/>declaration<sp/>and<sp/>definition<sp/>(for<sp/>clarity)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Relational<sp/>Operators</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Prefer<sp/>to<sp/>use<sp/>free<sp/>functions</highlight></codeline>
+    </programlisting>
+    <location file="CONTRIBUTING.md"/>
+  </compounddef>
+</doxygen>

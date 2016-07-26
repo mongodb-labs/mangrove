@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classbson__mapper_1_1serializing__iterator" kind="class" language="C++" prot="public">
+    <compoundname>bson_mapper::serializing_iterator</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::iterator&lt; std::input_iterator_tag, bsoncxx::document::value &gt;</basecompoundref>
+    <includes refid="mapping__functions_8hpp" local="no">mapping_functions.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class Iter</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classbson__mapper_1_1serializing__iterator_1a33d80e23be61966d8794db505b45d044" prot="private" static="no" mutable="no">
+        <type>Iter</type>
+        <definition>Iter bson_mapper::serializing_iterator&lt; Iter &gt;::_ci</definition>
+        <argsstring></argsstring>
+        <name>_ci</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/mapping_functions.hpp" line="160" column="1" bodyfile="src/bson_mapper/mapping_functions.hpp" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classbson__mapper_1_1serializing__iterator_1a03e7ef2686dad0250b6d9606caf1a03e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>bson_mapper::serializing_iterator&lt; Iter &gt;::serializing_iterator</definition>
+        <argsstring>(Iter ci)</argsstring>
+        <name>serializing_iterator</name>
+        <param>
+          <type>Iter</type>
+          <declname>ci</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/mapping_functions.hpp" line="132" column="1" bodyfile="src/bson_mapper/mapping_functions.hpp" bodystart="132" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classbson__mapper_1_1serializing__iterator_1a5ca9504207d1b6d9d96aaaa6fd9b8af7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>bson_mapper::serializing_iterator&lt; Iter &gt;::serializing_iterator</definition>
+        <argsstring>(const serializing_iterator &amp;si)</argsstring>
+        <name>serializing_iterator</name>
+        <param>
+          <type>const <ref refid="classbson__mapper_1_1serializing__iterator" kindref="compound">serializing_iterator</ref> &amp;</type>
+          <declname>si</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/mapping_functions.hpp" line="135" column="1" bodyfile="src/bson_mapper/mapping_functions.hpp" bodystart="135" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classbson__mapper_1_1serializing__iterator_1ae56b646217e4e3ddec1eb1185109a296" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classbson__mapper_1_1serializing__iterator" kindref="compound">serializing_iterator</ref> &amp;</type>
+        <definition>serializing_iterator&amp; bson_mapper::serializing_iterator&lt; Iter &gt;::operator++</definition>
+        <argsstring>()</argsstring>
+        <name>operator++</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/mapping_functions.hpp" line="138" column="1" bodyfile="src/bson_mapper/mapping_functions.hpp" bodystart="138" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classbson__mapper_1_1serializing__iterator_1ac93b977922ff4e76fdffd94146217063" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void bson_mapper::serializing_iterator&lt; Iter &gt;::operator++</definition>
+        <argsstring>(int)</argsstring>
+        <name>operator++</name>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/mapping_functions.hpp" line="143" column="1" bodyfile="src/bson_mapper/mapping_functions.hpp" bodystart="143" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classbson__mapper_1_1serializing__iterator_1acb01eb65d5cf824683d2898a07d57da1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool bson_mapper::serializing_iterator&lt; Iter &gt;::operator==</definition>
+        <argsstring>(const serializing_iterator &amp;rhs)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classbson__mapper_1_1serializing__iterator" kindref="compound">serializing_iterator</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/mapping_functions.hpp" line="147" column="1" bodyfile="src/bson_mapper/mapping_functions.hpp" bodystart="147" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classbson__mapper_1_1serializing__iterator_1a3b08c6844b32797fba51dd211af26673" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool bson_mapper::serializing_iterator&lt; Iter &gt;::operator!=</definition>
+        <argsstring>(const serializing_iterator &amp;rhs)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classbson__mapper_1_1serializing__iterator" kindref="compound">serializing_iterator</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/mapping_functions.hpp" line="151" column="1" bodyfile="src/bson_mapper/mapping_functions.hpp" bodystart="151" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classbson__mapper_1_1serializing__iterator_1adaccf5c18cab21ddce0d6d8d6771170b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bsoncxx::document::value</type>
+        <definition>bsoncxx::document::value bson_mapper::serializing_iterator&lt; Iter &gt;::operator*</definition>
+        <argsstring>()</argsstring>
+        <name>operator*</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/mapping_functions.hpp" line="155" column="1" bodyfile="src/bson_mapper/mapping_functions.hpp" bodystart="155" bodyend="157"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An iterator that wraps another iterator of serializable objects, and yields BSON document views corresponding to those documents. </para>    </briefdescription>
+    <detaileddescription>
+<para>TODO what to do if serialization fails? </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="95">
+        <label>bson_mapper::serializing_iterator&lt; Iter &gt;</label>
+        <link refid="classbson__mapper_1_1serializing__iterator"/>
+        <childnode refid="96" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="96">
+        <label>std::iterator&lt; std::input_iterator_tag, bsoncxx::document::value &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="97">
+        <label>bson_mapper::serializing_iterator&lt; Iter &gt;</label>
+        <link refid="classbson__mapper_1_1serializing__iterator"/>
+        <childnode refid="98" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="98">
+        <label>std::iterator&lt; std::input_iterator_tag, bsoncxx::document::value &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/bson_mapper/mapping_functions.hpp" line="130" column="1" bodyfile="src/bson_mapper/mapping_functions.hpp" bodystart="129" bodyend="161"/>
+    <listofallmembers>
+      <member refid="classbson__mapper_1_1serializing__iterator_1a33d80e23be61966d8794db505b45d044" prot="private" virt="non-virtual"><scope>bson_mapper::serializing_iterator</scope><name>_ci</name></member>
+      <member refid="classbson__mapper_1_1serializing__iterator_1a3b08c6844b32797fba51dd211af26673" prot="public" virt="non-virtual"><scope>bson_mapper::serializing_iterator</scope><name>operator!=</name></member>
+      <member refid="classbson__mapper_1_1serializing__iterator_1adaccf5c18cab21ddce0d6d8d6771170b" prot="public" virt="non-virtual"><scope>bson_mapper::serializing_iterator</scope><name>operator*</name></member>
+      <member refid="classbson__mapper_1_1serializing__iterator_1ae56b646217e4e3ddec1eb1185109a296" prot="public" virt="non-virtual"><scope>bson_mapper::serializing_iterator</scope><name>operator++</name></member>
+      <member refid="classbson__mapper_1_1serializing__iterator_1ac93b977922ff4e76fdffd94146217063" prot="public" virt="non-virtual"><scope>bson_mapper::serializing_iterator</scope><name>operator++</name></member>
+      <member refid="classbson__mapper_1_1serializing__iterator_1acb01eb65d5cf824683d2898a07d57da1" prot="public" virt="non-virtual"><scope>bson_mapper::serializing_iterator</scope><name>operator==</name></member>
+      <member refid="classbson__mapper_1_1serializing__iterator_1a03e7ef2686dad0250b6d9606caf1a03e" prot="public" virt="non-virtual"><scope>bson_mapper::serializing_iterator</scope><name>serializing_iterator</name></member>
+      <member refid="classbson__mapper_1_1serializing__iterator_1a5ca9504207d1b6d9d96aaaa6fd9b8af7" prot="public" virt="non-virtual"><scope>bson_mapper::serializing_iterator</scope><name>serializing_iterator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structbson__mapper_1_1Exception" kind="struct" language="C++" prot="public">
+    <compoundname>bson_mapper::Exception</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">runtime_error</basecompoundref>
+    <includes refid="bson__archiver_8hpp" local="no">bson_archiver.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structbson__mapper_1_1Exception_1a0c9b4a59130d7fa3e83b40a729bf9227" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>bson_mapper::Exception::Exception</definition>
+        <argsstring>(const std::string &amp;desc)</argsstring>
+        <name>Exception</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>desc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="67" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="67" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="structbson__mapper_1_1Exception_1a0b06448d1250bd8b4f87caf5d03a06b2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>bson_mapper::Exception::Exception</definition>
+        <argsstring>(const char *desc)</argsstring>
+        <name>Exception</name>
+        <param>
+          <type>const char *</type>
+          <declname>desc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="69" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="69" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An exception class thrown when things go wrong at runtime. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="38">
+        <label>std::runtime_error</label>
+      </node>
+      <node id="37">
+        <label>bson_mapper::Exception</label>
+        <link refid="structbson__mapper_1_1Exception"/>
+        <childnode refid="38" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="40">
+        <label>std::runtime_error</label>
+      </node>
+      <node id="39">
+        <label>bson_mapper::Exception</label>
+        <link refid="structbson__mapper_1_1Exception"/>
+        <childnode refid="40" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/bson_mapper/bson_archiver.hpp" line="66" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="66" bodyend="71"/>
+    <listofallmembers>
+      <member refid="structbson__mapper_1_1Exception_1a0c9b4a59130d7fa3e83b40a729bf9227" prot="public" virt="non-virtual"><scope>bson_mapper::Exception</scope><name>Exception</name></member>
+      <member refid="structbson__mapper_1_1Exception_1a0b06448d1250bd8b4f87caf5d03a06b2" prot="public" virt="non-virtual"><scope>bson_mapper::Exception</scope><name>Exception</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

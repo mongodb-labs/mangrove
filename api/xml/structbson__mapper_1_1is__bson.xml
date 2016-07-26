@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structbson__mapper_1_1is__bson" kind="struct" language="C++" prot="public">
+    <compoundname>bson_mapper::is_bson</compoundname>
+    <includes refid="bson__archiver_8hpp" local="no">bson_archiver.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class BsonT</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structbson__mapper_1_1is__bson_1a500b79013aecd87985d901709ff2b31a" prot="public" static="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto bson_mapper::is_bson&lt; BsonT &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <initializer>= std::is_same&lt;BsonT, bsoncxx::types::b_double&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_utf8&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_document&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_array&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_binary&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_oid&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_bool&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_date&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_int32&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_int64&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::oid&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_undefined&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_null&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_regex&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_code&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_symbol&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_codewscope&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_timestamp&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_minkey&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_maxkey&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_dbpointer&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="106" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A templated struct containing a bool value that specifies whether the provided template parameter is a BSON type. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/bson_mapper/bson_archiver.hpp" line="105" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="105" bodyend="127"/>
+    <listofallmembers>
+      <member refid="structbson__mapper_1_1is__bson_1a500b79013aecd87985d901709ff2b31a" prot="public" virt="non-virtual"><scope>bson_mapper::is_bson</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

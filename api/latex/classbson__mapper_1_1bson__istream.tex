@@ -1,0 +1,29 @@
+\hypertarget{classbson__mapper_1_1bson__istream}{}\section{bson\+\_\+mapper\+:\+:bson\+\_\+istream Class Reference}
+\label{classbson__mapper_1_1bson__istream}\index{bson\+\_\+mapper\+::bson\+\_\+istream@{bson\+\_\+mapper\+::bson\+\_\+istream}}
+
+
+An istream that uses a B\+S\+ON document as a buffer.  
+
+
+
+
+{\ttfamily \#include $<$bson\+\_\+streambuf.\+hpp$>$}
+
+Inheritance diagram for bson\+\_\+mapper\+:\+:bson\+\_\+istream\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbson__mapper_1_1bson__istream}
+\end{center}
+\end{figure}
+
+
+\subsection{Detailed Description}
+An istream that uses a B\+S\+ON document as a buffer. 
+
+While objects of this class do not own the underlying buffer, they do own the streambuf object associated with it.
+
+By default, istream objects do not delete their streambuffers when they are destroyed, so this class allows one to create a stream without dealing with the underlying streambuf object. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/bson\+\_\+mapper/bson\+\_\+streambuf.\+hpp\end{DoxyCompactItemize}

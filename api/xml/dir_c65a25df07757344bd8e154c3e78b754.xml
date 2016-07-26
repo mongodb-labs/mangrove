@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_c65a25df07757344bd8e154c3e78b754" kind="dir">
+    <compoundname>src/bson_mapper</compoundname>
+    <innerdir refid="dir_b915b7774d4b80e69fe40167734a0ca3">src/bson_mapper/config</innerdir>
+    <innerdir refid="dir_819a5479fdfc568cee662b9fe92dd436">src/bson_mapper/stdx</innerdir>
+    <innerfile refid="bson__archiver_8hpp">bson_archiver.hpp</innerfile>
+    <innerfile refid="bson__streambuf_8hpp">bson_streambuf.hpp</innerfile>
+    <innerfile refid="mapping__functions_8hpp">mapping_functions.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/bson_mapper/"/>
+  </compounddef>
+</doxygen>

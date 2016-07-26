@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.16" />
+    <meta name="description" content="">
+
+
+    <link rel="shortcut icon" href="http://mongodb.github.io/mongo-cxx-odm/images/favicon.png" type="image/x-icon" />
+
+    
+    <title>Dynamic Schemas</title>
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/nucleus.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/hybrid.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/featherlight.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/theme.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/hugo-theme.css" rel="stylesheet">
+    <style type="text/css">:root #header + #content > #left > #rlblock_left
+    {display:none !important;}</style>
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/docs.css" rel="stylesheet">
+
+  </head>
+  <body class="" data-url="/2-models/dynamic-schemas/">
+    <nav id="sidebar">
+  <div id="header-wrapper">
+    <div id="header">
+      <html>
+<body>
+	<img src="http://mongodb.github.io/mongo-cxx-odm/images/logo.png"/>
+</body>
+</html>
+
+      
+    </div>
+</div>
+
+
+  <div class="highlightable">
+    <ul class="topics">
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/1-basics/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/">
+          <span>
+            
+              <b>1. </b>
+            
+             Basics
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/what-is-mangrove/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/">
+                <span>What is Mangrove?     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/installation/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/installation/">
+                <span>Installation     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/quick-tour/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/quick-tour/">
+                <span>Quick Tour     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  parent" data-nav-id="/2-models/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/">
+          <span>
+            
+              <b>2. </b>
+            
+             Models
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/introduction/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/">
+                <span>Introduction     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/allowed-types/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/">
+                <span>Allowed Types     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/custom_id/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id/">
+                <span>Custom _id Type     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item active" data-nav-id="/2-models/dynamic-schemas/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/dynamic-schemas/">
+                <span>Dynamic Schemas     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/3-queries/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/3-queries/">
+          <span>
+            
+              <b>3. </b>
+            
+             Queries
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/4-updates/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/4-updates/">
+          <span>
+            
+              <b>4. </b>
+            
+             Updates
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/5-the-bson-mapper/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/5-the-bson-mapper/">
+          <span>
+            
+              <b>5. </b>
+            
+             The BSON Mapper
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+      <li class="dd-item">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/api/html">
+          <span> 
+            <b> 6. </b> API Docs
+          </span>
+        </a>
+      </li>
+      <li class="dd-item">
+        <a href="https://github.com/mongodb/mongo-cxx-odm">
+          <span> 
+            <b> 7. </b> Source Code
+          </span>
+        </a>
+      </li>
+    </ul>
+    <hr>
+      
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+    </section>
+  </div>
+</nav>
+
+        <section id="body">
+        <div id="overlay"></div>
+
+        <div class="padding highlightable">
+
+            <div id="top-bar">
+              
+              <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                  <span id="sidebar-toggle-span">
+                      <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                        <i class="fa fa-bars"></i>
+                      </a>
+                  </span>
+                
+                <span id="toc-menu"><a href=""><i class="fa fa-list-alt"></i></a></span>
+                
+                
+                
+                
+                  
+                
+                  
+                    
+                    
+                <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/" itemprop="url"><span itemprop="title">Models</span></a> <i class="fa fa-angle-right"></i>
+                    
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                <span itemprop="title"> Dynamic Schemas</span>
+              </div>
+              
+                  <div class="progress">
+    <div class="wrapper">
+
+    </div>
+</div>
+
+              
+
+            </div>
+            
+    	        <div id="body-inner">
+                
+                <h1>Dynamic Schemas</h1>
+                
+
+<p>One of MongoDB&rsquo;s most attractive features is its ability to store &ldquo;unstructured&rdquo; data. While this seems irrelevant in the context of an ODM like Mangrove, we can actually take advantage of this.</p>
+
+<p>Let&rsquo;s say that you are storing a collection of web video metadata. You might want to store the number of views, the length of the video in seconds, and the web URL to access the video. If the video is hosted on YouTube, you may also want to store the name of the channel it&rsquo;s hosted on. MongoDB lets you do this by having a &ldquo;youtube_channel&rdquo; field that only exists in some documents.</p>
+
+<p>You can accomplish this in Mangrove with <code>optional</code> fields.</p>
+
+<pre><code class="language-cpp">using bson_mapper::stdx::optional;
+
+class VideoMetadata : public mangrove::model&lt;VideoMetadata&gt; {
+	int64_t view_count;
+	int32_t video_length;
+
+	std::string url;
+	optional&lt;std::string&gt; youtube_channel;
+
+	MANGROVE_MAKE_KEYS_MODEL(VideoMetadata,
+                             MANGROVE_NVP(view_count),
+                             MANGROVE_NVP(video_length),
+                             MANGROVE_NVP(url),
+                             MANGROVE_NVP(youtube_channel))
+}
+</code></pre>
+
+<p>An <code>optional&lt;T&gt;</code> in C++ either contains a value of type <code>T</code>, or contains nothing at all. When the optional is holding a type, Mangrove will serialize it normally. When it isn&rsquo;t, Mangrove will exclude it entirely.</p>
+
+<p>Here are two sample documents that could be produced by the above model:</p>
+
+<pre><code class="language-json">{
+	&quot;view_count&quot; : 224651625,
+	&quot;video_length&quot; : 212,
+	&quot;url&quot; : &quot;https://www.youtube.com/watch?v=dQw4w9WgXcQ&quot;,
+	&quot;youtube_channel&quot; : &quot;RickAstleyVEVO&quot;
+}
+
+{
+	&quot;view_count&quot; : 305420,
+	&quot;video_length&quot; : 193,
+	&quot;url&quot; : &quot;https://vimeo.com/53520224&quot;
+}
+</code></pre>
+
+<p>You can have as many optional types as you want in a model (and you can even have only optionals) so that your model can be as flexible as your data.</p>
+
+
+      
+      </div>
+    </div>
+
+    <div id="navigation">
+        <a class="nav nav-prev" href="http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id"> <i class="fa fa-chevron-left"></i></a>
+        <a class="nav nav-next" href="http://mongodb.github.io/mongo-cxx-odm/3-queries/" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+    </div>
+
+    </section>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/jquery-2.x.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/clipboard.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/perfect-scrollbar.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/jquery.sticky-kit.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/featherlight.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/html5shiv-printshiv.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/modernizr.custom.71422.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/learn.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/hugo-learn.js"></script>
+    
+
+  </body>
+</html>
+

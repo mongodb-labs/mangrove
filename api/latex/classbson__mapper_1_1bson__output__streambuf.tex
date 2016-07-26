@@ -1,0 +1,91 @@
+\hypertarget{classbson__mapper_1_1bson__output__streambuf}{}\section{bson\+\_\+mapper\+:\+:bson\+\_\+output\+\_\+streambuf Class Reference}
+\label{classbson__mapper_1_1bson__output__streambuf}\index{bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf@{bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf}}
+
+
+A streambuffer that accepts one or more B\+S\+ON documents as bytes of B\+S\+ON data.  
+
+
+
+
+{\ttfamily \#include $<$bson\+\_\+streambuf.\+hpp$>$}
+
+Inheritance diagram for bson\+\_\+mapper\+:\+:bson\+\_\+output\+\_\+streambuf\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbson__mapper_1_1bson__output__streambuf}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classbson__mapper_1_1bson__output__streambuf_afbbff25db476b5ec8c166a030664579a}{bson\+\_\+output\+\_\+streambuf} (document\+\_\+callback cb)
+\begin{DoxyCompactList}\small\item\em Constructs a new B\+S\+ON Output Streambuffer that passes documents to the given callback function. \end{DoxyCompactList}\item 
+int \hyperlink{classbson__mapper_1_1bson__output__streambuf_aebf518d6dd7cad563dced7299b05456e}{overflow} (int ch) override
+\begin{DoxyCompactList}\small\item\em This function is called when writing to the stream and the buffer is full. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classbson__mapper_1_1bson__output__streambuf_abf1753938d33b31f2408967589ca64ee}{underflow} () override
+\begin{DoxyCompactList}\small\item\em This function always returns E\+OF, since one should not write from an output stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A streambuffer that accepts one or more B\+S\+ON documents as bytes of B\+S\+ON data. 
+
+When a document is complete, it is passed into the user-\/provided callback. N\+O\+TE\+: This does not perform any validation on the B\+S\+ON files, and simply uses their first four bytes to judge the document length. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf@{bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf}!bson\+\_\+output\+\_\+streambuf@{bson\+\_\+output\+\_\+streambuf}}
+\index{bson\+\_\+output\+\_\+streambuf@{bson\+\_\+output\+\_\+streambuf}!bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf@{bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf}}
+\subsubsection[{\texorpdfstring{bson\+\_\+output\+\_\+streambuf(document\+\_\+callback cb)}{bson_output_streambuf(document_callback cb)}}]{\setlength{\rightskip}{0pt plus 5cm}bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf\+::bson\+\_\+output\+\_\+streambuf (
+\begin{DoxyParamCaption}
+\item[{document\+\_\+callback}]{cb}
+\end{DoxyParamCaption}
+)}\hypertarget{classbson__mapper_1_1bson__output__streambuf_afbbff25db476b5ec8c166a030664579a}{}\label{classbson__mapper_1_1bson__output__streambuf_afbbff25db476b5ec8c166a030664579a}
+
+
+Constructs a new B\+S\+ON Output Streambuffer that passes documents to the given callback function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cb} & A function that takes a document\+::value and returns void. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf@{bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf}!overflow@{overflow}}
+\index{overflow@{overflow}!bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf@{bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf}}
+\subsubsection[{\texorpdfstring{overflow(int ch) override}{overflow(int ch) override}}]{\setlength{\rightskip}{0pt plus 5cm}int bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf\+::overflow (
+\begin{DoxyParamCaption}
+\item[{int}]{ch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}}\hypertarget{classbson__mapper_1_1bson__output__streambuf_aebf518d6dd7cad563dced7299b05456e}{}\label{classbson__mapper_1_1bson__output__streambuf_aebf518d6dd7cad563dced7299b05456e}
+
+
+This function is called when writing to the stream and the buffer is full. 
+
+Since we don\textquotesingle{}t define a buffer, this is called with every character. 
+\begin{DoxyParams}{Parameters}
+{\em ch} & The byte of B\+S\+ON to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The inserted byte, or E\+OF if something failed. 
+\end{DoxyReturn}
+\index{bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf@{bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf}!underflow@{underflow}}
+\index{underflow@{underflow}!bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf@{bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf}}
+\subsubsection[{\texorpdfstring{underflow() override}{underflow() override}}]{\setlength{\rightskip}{0pt plus 5cm}virtual int bson\+\_\+mapper\+::bson\+\_\+output\+\_\+streambuf\+::underflow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{classbson__mapper_1_1bson__output__streambuf_abf1753938d33b31f2408967589ca64ee}{}\label{classbson__mapper_1_1bson__output__streambuf_abf1753938d33b31f2408967589ca64ee}
+
+
+This function always returns E\+OF, since one should not write from an output stream. 
+
+\begin{DoxyReturn}{Returns}
+E\+OF 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/bson\+\_\+mapper/bson\+\_\+streambuf.\+hpp\end{DoxyCompactItemize}

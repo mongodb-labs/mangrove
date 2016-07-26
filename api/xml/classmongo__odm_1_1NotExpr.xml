@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1NotExpr" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::NotExpr</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Base</type>
+      </param>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1NotExpr_1a3fb83d9ef53245bfe4ad1218ed92e2f7" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>const ComparisonExpr&lt;Base, T&gt; mongo_odm::NotExpr&lt; Base, T &gt;::_expr</definition>
+        <argsstring></argsstring>
+        <name>_expr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="123" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1NotExpr_1a817dba48751e400a44e83c79ac57872f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mongo_odm::NotExpr&lt; Base, T &gt;::NotExpr</definition>
+        <argsstring>(const ComparisonExpr&lt; Base, T &gt; &amp;expr)</argsstring>
+        <name>NotExpr</name>
+        <param>
+          <type>const <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>expr</declname>
+        </param>
+        <briefdescription>
+<para>Creates a $not expression taht negates the given comparison expression. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>expr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A comparison expression </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="93" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="93" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1NotExpr_1aee3b9cef41a1fa5f4e60e141cefd1357" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::NotExpr&lt; Base, T &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+<para>Appends this expression to a BSON core builder, as a key-value pair of the form &quot;key: {$not: {$cmp: val}}&quot;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a BSON core builder </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="101" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="101" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1NotExpr_1a6f2e9d9b79c21dafbf30f05d231ee52c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::NotExpr&lt; Base, T &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Converts the expression to a BSON filter for a query. </para>        </briefdescription>
+        <detaileddescription>
+<para>The format of the BSON is &quot;{key: {$not: {$cmp: val}}}&quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="116" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="116" bodyend="120"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This represents an expression with the $not operator, which wraps a comparison expression and negates it. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mongo_odm/query_builder.hpp" line="34" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="34" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1NotExpr_1a3fb83d9ef53245bfe4ad1218ed92e2f7" prot="private" virt="non-virtual"><scope>mongo_odm::NotExpr</scope><name>_expr</name></member>
+      <member refid="classmongo__odm_1_1NotExpr_1aee3b9cef41a1fa5f4e60e141cefd1357" prot="public" virt="non-virtual"><scope>mongo_odm::NotExpr</scope><name>append_to_bson</name></member>
+      <member refid="classmongo__odm_1_1NotExpr_1a817dba48751e400a44e83c79ac57872f" prot="public" virt="non-virtual"><scope>mongo_odm::NotExpr</scope><name>NotExpr</name></member>
+      <member refid="classmongo__odm_1_1NotExpr_1a6f2e9d9b79c21dafbf30f05d231ee52c" prot="public" virt="non-virtual"><scope>mongo_odm::NotExpr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1ComparisonExpr" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::ComparisonExpr</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>Base</declname>
+        <defname>Base</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1ComparisonExpr_1aa7a215ad54573c3bfb3deffd391abe0b" prot="public" static="no" mutable="no">
+        <type>friend</type>
+        <definition>friend mongo_odm::ComparisonExpr&lt; Base, T &gt;::NotExpr&lt; Base, T &gt;</definition>
+        <argsstring></argsstring>
+        <name>NotExpr&lt; Base, T &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="74" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1ComparisonExpr_1a4004e8422f37afa0092758e96c036123" prot="private" static="no" mutable="no">
+        <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+        <definition>const Nvp&lt;Base, T&gt;&amp; mongo_odm::ComparisonExpr&lt; Base, T &gt;::_nvp</definition>
+        <argsstring></argsstring>
+        <name>_nvp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="77" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1ComparisonExpr_1afee50e98ebbcf4ee066f04c0c445674b" prot="private" static="no" mutable="no">
+        <type>T</type>
+        <definition>T mongo_odm::ComparisonExpr&lt; Base, T &gt;::_field</definition>
+        <argsstring></argsstring>
+        <name>_field</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="78" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1ComparisonExpr_1ad6a4e8dec854fadfe23448fa7584ac6e" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* mongo_odm::ComparisonExpr&lt; Base, T &gt;::_selector_type</definition>
+        <argsstring></argsstring>
+        <name>_selector_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="79" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1ComparisonExpr_1a00cedfa66e6c8622149739dffde2e23e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mongo_odm::ComparisonExpr&lt; Base, T &gt;::ComparisonExpr</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;nvp, T field, const char *selector_type)</argsstring>
+        <name>ComparisonExpr</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>field</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>selector_type</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a query expression for the given key, value, and comparison type. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nvp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A name-value pair corresponding to a key in a document </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>field</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value that the key is being compared to. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>selector_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of comparison operator, such at gt (&gt;) or ne (!=). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="48" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="48" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1ComparisonExpr_1afcfc49aa8b1a0d024fe8a8c0d2441e40" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::ComparisonExpr&lt; Base, T &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+<para>Appends this expression to a BSON core builder, as a key-value pair of the form &quot;key: {$cmp: val}&quot;, where $cmp is some comparison operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A BSON core builder </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="56" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="56" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1ComparisonExpr_1a8174f54d033e934b141b3a9ef4480a84" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::ComparisonExpr&lt; Base, T &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Converts the expression to a BSON filter for a query. </para>        </briefdescription>
+        <detaileddescription>
+<para>The resulting BSON is of the form &quot;{key: {$cmp: val}}&quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="68" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="68" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a binary comparison expression between a key and a value. </para>    </briefdescription>
+    <detaileddescription>
+<para>e.g. (User.age &gt; 21). </para>    </detaileddescription>
+    <location file="src/mongo_odm/query_builder.hpp" line="40" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="40" bodyend="80"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1ComparisonExpr_1afee50e98ebbcf4ee066f04c0c445674b" prot="private" virt="non-virtual"><scope>mongo_odm::ComparisonExpr</scope><name>_field</name></member>
+      <member refid="classmongo__odm_1_1ComparisonExpr_1a4004e8422f37afa0092758e96c036123" prot="private" virt="non-virtual"><scope>mongo_odm::ComparisonExpr</scope><name>_nvp</name></member>
+      <member refid="classmongo__odm_1_1ComparisonExpr_1ad6a4e8dec854fadfe23448fa7584ac6e" prot="private" virt="non-virtual"><scope>mongo_odm::ComparisonExpr</scope><name>_selector_type</name></member>
+      <member refid="classmongo__odm_1_1ComparisonExpr_1afcfc49aa8b1a0d024fe8a8c0d2441e40" prot="public" virt="non-virtual"><scope>mongo_odm::ComparisonExpr</scope><name>append_to_bson</name></member>
+      <member refid="classmongo__odm_1_1ComparisonExpr_1a00cedfa66e6c8622149739dffde2e23e" prot="public" virt="non-virtual"><scope>mongo_odm::ComparisonExpr</scope><name>ComparisonExpr</name></member>
+      <member refid="classmongo__odm_1_1ComparisonExpr_1aa7a215ad54573c3bfb3deffd391abe0b" prot="public" virt="non-virtual"><scope>mongo_odm::ComparisonExpr</scope><name>NotExpr&lt; Base, T &gt;</name></member>
+      <member refid="classmongo__odm_1_1ComparisonExpr_1a8174f54d033e934b141b3a9ef4480a84" prot="public" virt="non-virtual"><scope>mongo_odm::ComparisonExpr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

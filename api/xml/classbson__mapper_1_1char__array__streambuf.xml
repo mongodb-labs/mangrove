@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classbson__mapper_1_1char__array__streambuf" kind="class" language="C++" prot="public">
+    <compoundname>bson_mapper::char_array_streambuf</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">streambuf</basecompoundref>
+    <derivedcompoundref refid="classbson__mapper_1_1bson__input__streambuf" prot="public" virt="non-virtual">bson_mapper::bson_input_streambuf</derivedcompoundref>
+    <includes refid="bson__streambuf_8hpp" local="no">bson_streambuf.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classbson__mapper_1_1char__array__streambuf_1a15cfce2ee260b25849438d40aec2a689" prot="private" static="no" mutable="no">
+        <type>const char *const</type>
+        <definition>const char* const bson_mapper::char_array_streambuf::_begin</definition>
+        <argsstring></argsstring>
+        <name>_begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="145" column="1" bodyfile="src/bson_mapper/bson_streambuf.hpp" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1char__array__streambuf_1a027b871ee87f8ff1f21dafdbb5b613f5" prot="private" static="no" mutable="no">
+        <type>const char *const</type>
+        <definition>const char* const bson_mapper::char_array_streambuf::_end</definition>
+        <argsstring></argsstring>
+        <name>_end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="146" column="1" bodyfile="src/bson_mapper/bson_streambuf.hpp" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbson__mapper_1_1char__array__streambuf_1ac3bd8fb9404bfc3da4e5f06da711feac" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* bson_mapper::char_array_streambuf::_current</definition>
+        <argsstring></argsstring>
+        <name>_current</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="147" column="1" bodyfile="src/bson_mapper/bson_streambuf.hpp" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classbson__mapper_1_1char__array__streambuf_1a5cba6b0b5b8fab77b956375b4f8f9355" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>bson_mapper::char_array_streambuf::char_array_streambuf</definition>
+        <argsstring>(const char *data, size_t len)</argsstring>
+        <name>char_array_streambuf</name>
+        <param>
+          <type>const char *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Create a streambuf around the given byte array. </para>        </briefdescription>
+        <detaileddescription>
+<para>The caller is responsible for maintaining the lifetime of the underlying data. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the data to be read </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The length of the data </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="107" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classbson__mapper_1_1char__array__streambuf_1a03df64552bf43d55c641fb9900a4a837" prot="private" static="no" const="no" explicit="no" inline="no" final="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int bson_mapper::char_array_streambuf::underflow</definition>
+        <argsstring>() final override</argsstring>
+        <name>underflow</name>
+        <briefdescription>
+<para>This reads and returns a character from the buffer, and increments the read pointer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>[description] </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="114" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classbson__mapper_1_1char__array__streambuf_1a0ede84e812ffaef431ea2b2eaee62f34" prot="private" static="no" const="no" explicit="no" inline="no" final="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int bson_mapper::char_array_streambuf::uflow</definition>
+        <argsstring>() final override</argsstring>
+        <name>uflow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="117" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classbson__mapper_1_1char__array__streambuf_1a4e23ee5601365b2bdd31c076fbbd084c" prot="private" static="no" const="no" explicit="no" inline="no" final="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int bson_mapper::char_array_streambuf::pbackfail</definition>
+        <argsstring>(int ch) final override</argsstring>
+        <name>pbackfail</name>
+        <param>
+          <type>int</type>
+          <declname>ch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="118" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classbson__mapper_1_1char__array__streambuf_1a1b7d0e32357c308eeaa585c05b9c0a4a" prot="private" static="no" const="no" explicit="no" inline="no" final="yes" virt="non-virtual">
+        <type>std::streamsize</type>
+        <definition>std::streamsize bson_mapper::char_array_streambuf::showmanyc</definition>
+        <argsstring>() final override</argsstring>
+        <name>showmanyc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="119" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classbson__mapper_1_1char__array__streambuf_1a2e45ebf927032cf0853b945b8cde33b1" prot="private" static="no" const="no" explicit="no" inline="no" final="yes" virt="non-virtual">
+        <type>std::streampos</type>
+        <definition>std::streampos bson_mapper::char_array_streambuf::seekpos</definition>
+        <argsstring>(std::streampos sp, std::ios_base::openmode which=std::ios_base::in|std::ios_base::out) final override</argsstring>
+        <name>seekpos</name>
+        <param>
+          <type>std::streampos</type>
+          <declname>sp</declname>
+        </param>
+        <param>
+          <type>std::ios_base::openmode</type>
+          <declname>which</declname>
+          <defval>std::ios_base::in|std::ios_base::out</defval>
+        </param>
+        <briefdescription>
+<para>This function seeks to an absolute position in the buffer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The absolute position in the buffer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>which</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Which character sequence to write to. In this case, we only care about &quot;in&quot;, the input character sequence. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The absolute (relative to start) position of the current pointer. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="128" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classbson__mapper_1_1char__array__streambuf_1a432e5e2f9e9e0ee430f2516eb454a1a8" prot="private" static="no" const="no" explicit="no" inline="no" final="yes" virt="non-virtual">
+        <type>std::streampos</type>
+        <definition>std::streampos bson_mapper::char_array_streambuf::seekoff</definition>
+        <argsstring>(std::streamoff off, std::ios_base::seekdir way, std::ios_base::openmode which=std::ios_base::in|std::ios_base::out) final override</argsstring>
+        <name>seekoff</name>
+        <param>
+          <type>std::streamoff</type>
+          <declname>off</declname>
+        </param>
+        <param>
+          <type>std::ios_base::seekdir</type>
+          <declname>way</declname>
+        </param>
+        <param>
+          <type>std::ios_base::openmode</type>
+          <declname>which</declname>
+          <defval>std::ios_base::in|std::ios_base::out</defval>
+        </param>
+        <briefdescription>
+<para>This function seeks to a relative position in the buffer, based on an offset. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>off</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relative offset to seek to. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>way</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the offset is relative to the beginning, current pointer, or end of the buffer. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>which</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Which character sequence to write to. In this case, we only care about &quot;in&quot;, the input character sequence. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The absolute (relative to start) position of the current pointer. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="141" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An input streambuf that uses an existing byte array as a buffer. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="28">
+        <label>bson_mapper::char_array_streambuf</label>
+        <link refid="classbson__mapper_1_1char__array__streambuf"/>
+        <childnode refid="29" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>std::streambuf</label>
+      </node>
+      <node id="30">
+        <label>bson_mapper::bson_input_streambuf</label>
+        <link refid="classbson__mapper_1_1bson__input__streambuf"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="31">
+        <label>bson_mapper::char_array_streambuf</label>
+        <link refid="classbson__mapper_1_1char__array__streambuf"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>std::streambuf</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/bson_mapper/bson_streambuf.hpp" line="99" column="1" bodyfile="src/bson_mapper/bson_streambuf.hpp" bodystart="99" bodyend="148"/>
+    <listofallmembers>
+      <member refid="classbson__mapper_1_1char__array__streambuf_1a15cfce2ee260b25849438d40aec2a689" prot="private" virt="non-virtual"><scope>bson_mapper::char_array_streambuf</scope><name>_begin</name></member>
+      <member refid="classbson__mapper_1_1char__array__streambuf_1ac3bd8fb9404bfc3da4e5f06da711feac" prot="private" virt="non-virtual"><scope>bson_mapper::char_array_streambuf</scope><name>_current</name></member>
+      <member refid="classbson__mapper_1_1char__array__streambuf_1a027b871ee87f8ff1f21dafdbb5b613f5" prot="private" virt="non-virtual"><scope>bson_mapper::char_array_streambuf</scope><name>_end</name></member>
+      <member refid="classbson__mapper_1_1char__array__streambuf_1a5cba6b0b5b8fab77b956375b4f8f9355" prot="public" virt="non-virtual"><scope>bson_mapper::char_array_streambuf</scope><name>char_array_streambuf</name></member>
+      <member refid="classbson__mapper_1_1char__array__streambuf_1a4e23ee5601365b2bdd31c076fbbd084c" prot="private" virt="non-virtual"><scope>bson_mapper::char_array_streambuf</scope><name>pbackfail</name></member>
+      <member refid="classbson__mapper_1_1char__array__streambuf_1a432e5e2f9e9e0ee430f2516eb454a1a8" prot="private" virt="non-virtual"><scope>bson_mapper::char_array_streambuf</scope><name>seekoff</name></member>
+      <member refid="classbson__mapper_1_1char__array__streambuf_1a2e45ebf927032cf0853b945b8cde33b1" prot="private" virt="non-virtual"><scope>bson_mapper::char_array_streambuf</scope><name>seekpos</name></member>
+      <member refid="classbson__mapper_1_1char__array__streambuf_1a1b7d0e32357c308eeaa585c05b9c0a4a" prot="private" virt="non-virtual"><scope>bson_mapper::char_array_streambuf</scope><name>showmanyc</name></member>
+      <member refid="classbson__mapper_1_1char__array__streambuf_1a0ede84e812ffaef431ea2b2eaee62f34" prot="private" virt="non-virtual"><scope>bson_mapper::char_array_streambuf</scope><name>uflow</name></member>
+      <member refid="classbson__mapper_1_1char__array__streambuf_1a03df64552bf43d55c641fb9900a4a837" prot="private" virt="non-virtual"><scope>bson_mapper::char_array_streambuf</scope><name>underflow</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1hasField" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::hasField</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">false_type</basecompoundref>
+    <includes refid="nvp_8hpp" local="no">nvp.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Base</type>
+      </param>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>size_t</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+      <param>
+        <type>size_t</type>
+        <declname>M</declname>
+        <defname>M</defname>
+      </param>
+      <param>
+        <type>bool</type>
+        <defval>(N &lt; M)</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para><ref refid="structmongo__odm_1_1hasField" kindref="compound">hasField</ref> determines whether a type Base has a member of the given type T as the Nth member out of M total members which have name value pairs. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="52">
+        <label>false_type</label>
+      </node>
+      <node id="51">
+        <label>mongo_odm::hasField&lt; Base, T, N, M, bool &gt;</label>
+        <link refid="structmongo__odm_1_1hasField"/>
+        <childnode refid="52" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="54">
+        <label>false_type</label>
+      </node>
+      <node id="53">
+        <label>mongo_odm::hasField&lt; Base, T, N, M, bool &gt;</label>
+        <link refid="structmongo__odm_1_1hasField"/>
+        <childnode refid="54" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/nvp.hpp" line="93" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="93" bodyend="93"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

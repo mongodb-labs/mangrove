@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="md_CONTRIBUTING" kind="page">
+    <compoundname>md_CONTRIBUTING</compoundname>
+    <title>Contributing Guidelines</title>
+    <detaileddescription>
+<para><heading level="3">Lifecycle Methods</heading>
+</para><para><itemizedlist>
+<listitem><para>default-or-argument-bearing &apos;user&apos; constructors</para></listitem><listitem><para>declaration-or-deletion-of-copy-contructor</para></listitem><listitem><para>declaration-or-deletetion-of-move-constructor</para></listitem><listitem><para>declaration-or-deletion-of-copy-assignment-operator</para></listitem><listitem><para>declaration-or-deletion-of-move-assignment-operator</para></listitem><listitem><para>declaration-of-dtor</para></listitem></itemizedlist>
+</para><para><heading level="3">Headers</heading>
+</para><para><itemizedlist>
+<listitem><para>License</para></listitem><listitem><para>Include Guard (<computeroutput>#pragma once</computeroutput>)</para></listitem><listitem><para>Header Prelude</para></listitem><listitem><para>System Headers <computeroutput>&lt;vector&gt;</computeroutput> (alphabetical order)</para></listitem><listitem><para>Driver Headers <computeroutput>&lt;path/to/header.hpp&gt;</computeroutput> (alphabetical order)</para></listitem><listitem><para>Open Namespace mongocxx</para></listitem><listitem><para><computeroutput>MONGOCXX_INLINE_NAMESPACE_BEGIN</computeroutput></para></listitem><listitem><para>Code</para></listitem><listitem><para><computeroutput>MONGOCXX_INLINE_NAMESPACE_END</computeroutput></para></listitem><listitem><para>Close Namespace mongocxx</para></listitem><listitem><para>Header Postlude</para></listitem></itemizedlist>
+</para><para>Example:</para><para><programlisting><codeline><highlight class="comment">//<sp/>Copyright<sp/>2016<sp/>MongoDB<sp/>Inc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;driver/config/prelude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;driver/blah.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mongocxx<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">MONGOCXX_INLINE_NAMESPACE_BEGIN</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Inline<sp/>Implementations</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">MONGOCXX_INLINE_NAMESPACE_END</highlight></codeline>
+<codeline><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mongocxx</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;driver/config/postlude.hpp&gt;</highlight></codeline>
+</programlisting></para><para><heading level="3">Class Declarations</heading>
+</para><para>Guidelines:</para><para><itemizedlist>
+<listitem><para>Blank line at beginning and end of class declaration</para></listitem><listitem><para>Public section up top / private at bottom</para></listitem><listitem><para>Lifecycle methods first (see rules above)</para></listitem><listitem><para>Private Member Ordering<itemizedlist>
+<listitem><para>Friendships</para></listitem><listitem><para>Private Constructors</para></listitem><listitem><para>Private Methods</para></listitem><listitem><para>Private Variables</para></listitem></itemizedlist>
+</para></listitem></itemizedlist>
+</para><para>Example:</para><para><programlisting><codeline><highlight class="keyword">class<sp/></highlight><highlight class="normal">foo<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>foo();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>foo(foo&amp;&amp;<sp/>other)<sp/>noexcept;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>foo&amp;<sp/>operator=(foo&amp;&amp;<sp/>other)<sp/>noexcept;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>~foo();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>private:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>friend<sp/>baz;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>class<sp/>MONGOCXX_PRIVATE<sp/>impl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::unique_ptr&lt;impl&gt;<sp/>_impl;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+</programlisting></para><para><heading level="3">Inlines</heading>
+</para><para><itemizedlist>
+<listitem><para>Define outside of class declaration</para></listitem><listitem><para>Specify inline keyword in declaration and definition (for clarity)</para></listitem></itemizedlist>
+</para><para><heading level="3">Relational Operators</heading>
+</para><para><itemizedlist>
+<listitem><para>Prefer to use free functions </para></listitem></itemizedlist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

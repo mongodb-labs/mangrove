@@ -1,0 +1,160 @@
+\hypertarget{classbson__mapper_1_1BSONInputArchive}{}\section{bson\+\_\+mapper\+:\+:B\+S\+O\+N\+Input\+Archive Class Reference}
+\label{classbson__mapper_1_1BSONInputArchive}\index{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}}
+Inheritance diagram for bson\+\_\+mapper\+:\+:B\+S\+O\+N\+Input\+Archive\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbson__mapper_1_1BSONInputArchive}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classbson__mapper_1_1BSONInputArchive_a6b8ddbbd18800ef0f8e250c31da095e8}{B\+S\+O\+N\+Input\+Archive} (std\+::istream \&stream)
+\begin{DoxyCompactList}\small\item\em Construct a \hyperlink{classbson__mapper_1_1BSONInputArchive}{B\+S\+O\+N\+Input\+Archive} from an input stream of B\+S\+ON data. \end{DoxyCompactList}\item 
+bool \hyperlink{classbson__mapper_1_1BSONInputArchive_a0b8d043db14caa7d4e35d8e5300cd69f}{will\+Search\+Yield\+Value} ()
+\begin{DoxyCompactList}\small\item\em Checks if the next invocation of search() will yield a value. \end{DoxyCompactList}\item 
+bool \hyperlink{classbson__mapper_1_1BSONInputArchive_ab0b224d34f6dd2fd9ee542571536638b}{start\+Root\+Element\+If\+Root} ()
+\begin{DoxyCompactList}\small\item\em Pushes a root element on the node stack if we\textquotesingle{}re in root. \end{DoxyCompactList}\item 
+void \hyperlink{classbson__mapper_1_1BSONInputArchive_a1100f99901973ebefab2198d2381e953}{finish\+Root\+Element\+If\+Root\+Element} ()\hypertarget{classbson__mapper_1_1BSONInputArchive_a1100f99901973ebefab2198d2381e953}{}\label{classbson__mapper_1_1BSONInputArchive_a1100f99901973ebefab2198d2381e953}
+
+\begin{DoxyCompactList}\small\item\em Pops the node stack and iterates to the next B\+S\+ON view if the top of the stack specifies that we are in a root element. \end{DoxyCompactList}\item 
+void \hyperlink{classbson__mapper_1_1BSONInputArchive_a6f74b53f0989e9222be00dec0e6d350f}{start\+Node} ()\hypertarget{classbson__mapper_1_1BSONInputArchive_a6f74b53f0989e9222be00dec0e6d350f}{}\label{classbson__mapper_1_1BSONInputArchive_a6f74b53f0989e9222be00dec0e6d350f}
+
+\begin{DoxyCompactList}\small\item\em Starts a new node, and update the stacks so that we fetch the correct data when calling search(). \end{DoxyCompactList}\item 
+void \hyperlink{classbson__mapper_1_1BSONInputArchive_a9360961eba7c7c430329eed30667a2de}{finish\+Node} ()\hypertarget{classbson__mapper_1_1BSONInputArchive_a9360961eba7c7c430329eed30667a2de}{}\label{classbson__mapper_1_1BSONInputArchive_a9360961eba7c7c430329eed30667a2de}
+
+\begin{DoxyCompactList}\small\item\em Finishes the most recently started node by popping relevant stacks and, if necessary, iterating to the next root B\+S\+ON document. \end{DoxyCompactList}\item 
+void \hyperlink{classbson__mapper_1_1BSONInputArchive_a5536f703a1f8d0f19fca666290ee6b42}{set\+Next\+Name} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Sets the name for the next node created with start\+Node. \end{DoxyCompactList}\item 
+void \hyperlink{classbson__mapper_1_1BSONInputArchive_a457680690d03b26a9600b9139d1b9bd9}{load\+Value} (std\+::chrono\+::system\+\_\+clock\+::time\+\_\+point \&val)
+\begin{DoxyCompactList}\small\item\em Loads a B\+S\+ON datetime from the current node and puts it into a std\+::chrono\+::system\+\_\+clock\+::time\+\_\+point. \end{DoxyCompactList}\item 
+void \hyperlink{classbson__mapper_1_1BSONInputArchive_afa63fee8fca6808c51178fb6a7767abd}{load\+Value} (std\+::string \&val)
+\begin{DoxyCompactList}\small\item\em Loads a B\+S\+ON U\+T\+F-\/8 value from the current node and puts it into a std\+::string. \end{DoxyCompactList}\item 
+void \hyperlink{classbson__mapper_1_1BSONInputArchive_a28c16081fe45749c56f5d65b1ab01d40}{load\+Size} (cereal\+::size\+\_\+type \&size)
+\begin{DoxyCompactList}\small\item\em Loads the size for a Size\+Tag, which is used by Cereal to determine how many elements to put into a container such as a std\+::vector. \end{DoxyCompactList}\item 
+void \hyperlink{classbson__mapper_1_1BSONInputArchive_ad3fae22817ce463e8a3055a1f04e7a91}{load\+Underlying\+Data\+For\+Current\+Node} (\hyperlink{classbson__mapper_1_1UnderlyingBSONDataBase}{Underlying\+B\+S\+O\+N\+Data\+Base} \&underlying\+Data)\hypertarget{classbson__mapper_1_1BSONInputArchive_ad3fae22817ce463e8a3055a1f04e7a91}{}\label{classbson__mapper_1_1BSONInputArchive_ad3fae22817ce463e8a3055a1f04e7a91}
+
+\begin{DoxyCompactList}\small\item\em Returns a shared pointer to the underlying data of the current node, loading the size in bytes in a size\+\_\+t reference argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}!B\+S\+O\+N\+Input\+Archive@{B\+S\+O\+N\+Input\+Archive}}
+\index{B\+S\+O\+N\+Input\+Archive@{B\+S\+O\+N\+Input\+Archive}!bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}}
+\subsubsection[{\texorpdfstring{B\+S\+O\+N\+Input\+Archive(std\+::istream \&stream)}{BSONInputArchive(std::istream &stream)}}]{\setlength{\rightskip}{0pt plus 5cm}bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive\+::\+B\+S\+O\+N\+Input\+Archive (
+\begin{DoxyParamCaption}
+\item[{std\+::istream \&}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classbson__mapper_1_1BSONInputArchive_a6b8ddbbd18800ef0f8e250c31da095e8}{}\label{classbson__mapper_1_1BSONInputArchive_a6b8ddbbd18800ef0f8e250c31da095e8}
+
+
+Construct a \hyperlink{classbson__mapper_1_1BSONInputArchive}{B\+S\+O\+N\+Input\+Archive} from an input stream of B\+S\+ON data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & The stream from which to read B\+S\+ON data. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}!load\+Size@{load\+Size}}
+\index{load\+Size@{load\+Size}!bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}}
+\subsubsection[{\texorpdfstring{load\+Size(cereal\+::size\+\_\+type \&size)}{loadSize(cereal::size_type &size)}}]{\setlength{\rightskip}{0pt plus 5cm}void bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive\+::load\+Size (
+\begin{DoxyParamCaption}
+\item[{cereal\+::size\+\_\+type \&}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classbson__mapper_1_1BSONInputArchive_a28c16081fe45749c56f5d65b1ab01d40}{}\label{classbson__mapper_1_1BSONInputArchive_a28c16081fe45749c56f5d65b1ab01d40}
+
+
+Loads the size for a Size\+Tag, which is used by Cereal to determine how many elements to put into a container such as a std\+::vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & A reference to the size value that will be set to the size of the array at the top of the stack. \\
+\hline
+\end{DoxyParams}
+\index{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}!load\+Value@{load\+Value}}
+\index{load\+Value@{load\+Value}!bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}}
+\subsubsection[{\texorpdfstring{load\+Value(std\+::chrono\+::system\+\_\+clock\+::time\+\_\+point \&val)}{loadValue(std::chrono::system_clock::time_point &val)}}]{\setlength{\rightskip}{0pt plus 5cm}void bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive\+::load\+Value (
+\begin{DoxyParamCaption}
+\item[{std\+::chrono\+::system\+\_\+clock\+::time\+\_\+point \&}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classbson__mapper_1_1BSONInputArchive_a457680690d03b26a9600b9139d1b9bd9}{}\label{classbson__mapper_1_1BSONInputArchive_a457680690d03b26a9600b9139d1b9bd9}
+
+
+Loads a B\+S\+ON datetime from the current node and puts it into a std\+::chrono\+::system\+\_\+clock\+::time\+\_\+point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & The time\+\_\+point variable into which the datetime will be loaded. \\
+\hline
+\end{DoxyParams}
+\index{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}!load\+Value@{load\+Value}}
+\index{load\+Value@{load\+Value}!bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}}
+\subsubsection[{\texorpdfstring{load\+Value(std\+::string \&val)}{loadValue(std::string &val)}}]{\setlength{\rightskip}{0pt plus 5cm}void bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive\+::load\+Value (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classbson__mapper_1_1BSONInputArchive_afa63fee8fca6808c51178fb6a7767abd}{}\label{classbson__mapper_1_1BSONInputArchive_afa63fee8fca6808c51178fb6a7767abd}
+
+
+Loads a B\+S\+ON U\+T\+F-\/8 value from the current node and puts it into a std\+::string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & The std\+::string variable into which the U\+T\+F-\/8 will be loaded. \\
+\hline
+\end{DoxyParams}
+\index{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}!set\+Next\+Name@{set\+Next\+Name}}
+\index{set\+Next\+Name@{set\+Next\+Name}!bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}}
+\subsubsection[{\texorpdfstring{set\+Next\+Name(const char $\ast$name)}{setNextName(const char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}void bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive\+::set\+Next\+Name (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classbson__mapper_1_1BSONInputArchive_a5536f703a1f8d0f19fca666290ee6b42}{}\label{classbson__mapper_1_1BSONInputArchive_a5536f703a1f8d0f19fca666290ee6b42}
+
+
+Sets the name for the next node created with start\+Node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the next node \\
+\hline
+\end{DoxyParams}
+\index{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}!start\+Root\+Element\+If\+Root@{start\+Root\+Element\+If\+Root}}
+\index{start\+Root\+Element\+If\+Root@{start\+Root\+Element\+If\+Root}!bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}}
+\subsubsection[{\texorpdfstring{start\+Root\+Element\+If\+Root()}{startRootElementIfRoot()}}]{\setlength{\rightskip}{0pt plus 5cm}bool bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive\+::start\+Root\+Element\+If\+Root (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classbson__mapper_1_1BSONInputArchive_ab0b224d34f6dd2fd9ee542571536638b}{}\label{classbson__mapper_1_1BSONInputArchive_ab0b224d34f6dd2fd9ee542571536638b}
+
+
+Pushes a root element on the node stack if we\textquotesingle{}re in root. 
+
+\begin{DoxyReturn}{Returns}
+true if a root element was created, false otherwise. 
+\end{DoxyReturn}
+\index{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}!will\+Search\+Yield\+Value@{will\+Search\+Yield\+Value}}
+\index{will\+Search\+Yield\+Value@{will\+Search\+Yield\+Value}!bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive@{bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive}}
+\subsubsection[{\texorpdfstring{will\+Search\+Yield\+Value()}{willSearchYieldValue()}}]{\setlength{\rightskip}{0pt plus 5cm}bool bson\+\_\+mapper\+::\+B\+S\+O\+N\+Input\+Archive\+::will\+Search\+Yield\+Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classbson__mapper_1_1BSONInputArchive_a0b8d043db14caa7d4e35d8e5300cd69f}{}\label{classbson__mapper_1_1BSONInputArchive_a0b8d043db14caa7d4e35d8e5300cd69f}
+
+
+Checks if the next invocation of search() will yield a value. 
+
+Used to check if a particular optional element, embedded document, or embedded array exists.
+
+If search() would indeed return a value, it is cached here so that the logic in search() will not need to be repeated.
+
+\begin{DoxyReturn}{Returns}
+true if the next invocation of search with the current \+\_\+next\+Name yields a value, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/bson\+\_\+mapper/bson\+\_\+archiver.\+hpp\end{DoxyCompactItemize}

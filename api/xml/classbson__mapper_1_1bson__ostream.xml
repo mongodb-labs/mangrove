@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classbson__mapper_1_1bson__ostream" kind="class" language="C++" prot="public">
+    <compoundname>bson_mapper::bson_ostream</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ostream</basecompoundref>
+    <includes refid="bson__streambuf_8hpp" local="no">bson_streambuf.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classbson__mapper_1_1bson__ostream_1a18e3bfcc83bdc38d768b7706af6d069d" prot="private" static="no" mutable="no">
+        <type><ref refid="classbson__mapper_1_1bson__output__streambuf" kindref="compound">bson_output_streambuf</ref></type>
+        <definition>bson_output_streambuf bson_mapper::bson_ostream::bs_buf</definition>
+        <argsstring></argsstring>
+        <name>bs_buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="93" column="1" bodyfile="src/bson_mapper/bson_streambuf.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classbson__mapper_1_1bson__ostream_1a22037e678220515e3235829a4704c9ae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>bson_mapper::bson_ostream::bson_ostream</definition>
+        <argsstring>(bson_output_streambuf::document_callback cb)</argsstring>
+        <name>bson_ostream</name>
+        <param>
+          <type>bson_output_streambuf::document_callback</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="87" column="1" bodyfile="src/bson_mapper/bson_streambuf.hpp" bodystart="87" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An ostream that writes bytes of BSON documents into a collection. </para>    </briefdescription>
+    <detaileddescription>
+<para>The stream owns its own <ref refid="classbson__mapper_1_1bson__output__streambuf" kindref="compound">bson_output_streambuf</ref> object, making creation and management of such streams easier. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="12">
+        <label>bson_mapper::bson_ostream</label>
+        <link refid="classbson__mapper_1_1bson__ostream"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>std::ostream</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="14">
+        <label>bson_mapper::bson_ostream</label>
+        <link refid="classbson__mapper_1_1bson__ostream"/>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>std::ostream</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/bson_mapper/bson_streambuf.hpp" line="85" column="1" bodyfile="src/bson_mapper/bson_streambuf.hpp" bodystart="85" bodyend="94"/>
+    <listofallmembers>
+      <member refid="classbson__mapper_1_1bson__ostream_1a18e3bfcc83bdc38d768b7706af6d069d" prot="private" virt="non-virtual"><scope>bson_mapper::bson_ostream</scope><name>bs_buf</name></member>
+      <member refid="classbson__mapper_1_1bson__ostream_1a22037e678220515e3235829a4704c9ae" prot="public" virt="non-virtual"><scope>bson_mapper::bson_ostream</scope><name>bson_ostream</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

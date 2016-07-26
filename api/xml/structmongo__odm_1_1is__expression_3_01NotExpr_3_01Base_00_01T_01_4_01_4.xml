@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1is__expression_3_01NotExpr_3_01Base_00_01T_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::is_expression&lt; NotExpr&lt; Base, T &gt; &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">true_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename Base</type>
+      </param>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="79">
+        <label>mongo_odm::is_expression&lt; NotExpr&lt; Base, T &gt; &gt;</label>
+        <link refid="structmongo__odm_1_1is__expression_3_01NotExpr_3_01Base_00_01T_01_4_01_4"/>
+        <childnode refid="80" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>true_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="81">
+        <label>mongo_odm::is_expression&lt; NotExpr&lt; Base, T &gt; &gt;</label>
+        <link refid="structmongo__odm_1_1is__expression_3_01NotExpr_3_01Base_00_01T_01_4_01_4"/>
+        <childnode refid="82" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>true_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/query_builder.hpp" line="221" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="221" bodyend="221"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,125 @@
+\subsubsection*{Lifecycle Methods}
+
+
+\begin{DoxyItemize}
+\item default-\/or-\/argument-\/bearing \textquotesingle{}user\textquotesingle{} constructors
+\item declaration-\/or-\/deletion-\/of-\/copy-\/contructor
+\item declaration-\/or-\/deletetion-\/of-\/move-\/constructor
+\item declaration-\/or-\/deletion-\/of-\/copy-\/assignment-\/operator
+\item declaration-\/or-\/deletion-\/of-\/move-\/assignment-\/operator
+\item declaration-\/of-\/dtor
+\end{DoxyItemize}
+
+\subsubsection*{Headers}
+
+
+\begin{DoxyItemize}
+\item License
+\item Include Guard ({\ttfamily \#pragma once})
+\item Header Prelude
+\item System Headers {\ttfamily $<$vector$>$} (alphabetical order)
+\item Driver Headers {\ttfamily $<$path/to/header.\+hpp$>$} (alphabetical order)
+\item Open Namespace mongocxx
+\item {\ttfamily M\+O\+N\+G\+O\+C\+X\+X\+\_\+\+I\+N\+L\+I\+N\+E\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+B\+E\+G\+IN}
+\item Code
+\item {\ttfamily M\+O\+N\+G\+O\+C\+X\+X\+\_\+\+I\+N\+L\+I\+N\+E\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+E\+ND}
+\item Close Namespace mongocxx
+\item Header Postlude
+\end{DoxyItemize}
+
+Example\+:
+
+
+\begin{DoxyCode}
+\textcolor{comment}{// Copyright 2016 MongoDB Inc.}
+\textcolor{comment}{//}
+\textcolor{comment}{// Licensed under the Apache License, Version 2.0 (the "License");}
+\textcolor{comment}{// you may not use this file except in compliance with the License.}
+\textcolor{comment}{// You may obtain a copy of the License at}
+\textcolor{comment}{//}
+\textcolor{comment}{// http://www.apache.org/licenses/LICENSE-2.0}
+\textcolor{comment}{//}
+\textcolor{comment}{// Unless required by applicable law or agreed to in writing, software}
+\textcolor{comment}{// distributed under the License is distributed on an "AS IS" BASIS,}
+\textcolor{comment}{// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.}
+\textcolor{comment}{// See the License for the specific language governing permissions and}
+\textcolor{comment}{// limitations under the License.}
+
+\textcolor{preprocessor}{#pragma once}
+
+\textcolor{preprocessor}{#include <driver/config/prelude.hpp>}
+
+\textcolor{preprocessor}{#include <vector>}
+
+\textcolor{preprocessor}{#include <driver/blah.hpp>}
+
+\textcolor{keyword}{namespace }mongocxx \{
+MONGOCXX\_INLINE\_NAMESPACE\_BEGIN
+
+\textcolor{comment}{// Declarations}
+
+\textcolor{comment}{// Inline Implementations}
+
+MONGOCXX\_INLINE\_NAMESPACE\_END
+\}  \textcolor{comment}{// namespace mongocxx}
+
+\textcolor{preprocessor}{#include <driver/config/postlude.hpp>}
+\end{DoxyCode}
+
+
+\subsubsection*{Class Declarations}
+
+Guidelines\+:
+
+
+\begin{DoxyItemize}
+\item Blank line at beginning and end of class declaration
+\item Public section up top / private at bottom
+\item Lifecycle methods first (see rules above)
+\item Private Member Ordering
+\begin{DoxyItemize}
+\item Friendships
+\item Private Constructors
+\item Private Methods
+\item Private Variables
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+Example\+:
+
+
+\begin{DoxyCode}
+\textcolor{keyword}{class }foo \{
+
+    \textcolor{keyword}{public}:
+      foo();
+
+      foo(foo&& other) noexcept;
+      foo& operator=(foo&& other) noexcept;
+
+      ~foo();
+
+    private:
+      friend baz;
+
+      class MONGOCXX\_PRIVATE impl;
+      std::unique\_ptr<impl> \_impl;
+
+\};
+\end{DoxyCode}
+
+
+\subsubsection*{Inlines}
+
+
+\begin{DoxyItemize}
+\item Define outside of class declaration
+\item Specify inline keyword in declaration and definition (for clarity)
+\end{DoxyItemize}
+
+\subsubsection*{Relational Operators}
+
+
+\begin{DoxyItemize}
+\item Prefer to use free functions 
+\end{DoxyItemize}

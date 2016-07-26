@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>Mangrove</title>
+    <detaileddescription>
+<para>Welcome to the generated API reference for Mangrove, the official MongoDB C++ ODM! </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

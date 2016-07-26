@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1is__expression" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::is_expression</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">false_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="64">
+        <label>false_type</label>
+      </node>
+      <node id="63">
+        <label>mongo_odm::is_expression&lt; typename &gt;</label>
+        <link refid="structmongo__odm_1_1is__expression"/>
+        <childnode refid="64" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="66">
+        <label>false_type</label>
+      </node>
+      <node id="65">
+        <label>mongo_odm::is_expression&lt; typename &gt;</label>
+        <link refid="structmongo__odm_1_1is__expression"/>
+        <childnode refid="66" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/query_builder.hpp" line="215" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="215" bodyend="215"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

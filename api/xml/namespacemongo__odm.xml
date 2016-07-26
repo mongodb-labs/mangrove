@@ -1,0 +1,597 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespacemongo__odm" kind="namespace" language="C++">
+    <compoundname>mongo_odm</compoundname>
+    <innerclass refid="classmongo__odm_1_1BooleanExpr" prot="public">mongo_odm::BooleanExpr</innerclass>
+    <innerclass refid="classmongo__odm_1_1ComparisonExpr" prot="public">mongo_odm::ComparisonExpr</innerclass>
+    <innerclass refid="classmongo__odm_1_1deserializing__cursor" prot="public">mongo_odm::deserializing_cursor</innerclass>
+    <innerclass refid="classmongo__odm_1_1ExpressionList" prot="public">mongo_odm::ExpressionList</innerclass>
+    <innerclass refid="structmongo__odm_1_1FirstTypeIsTheSame" prot="public">mongo_odm::FirstTypeIsTheSame</innerclass>
+    <innerclass refid="structmongo__odm_1_1FirstTypeIsTheSame_3_01T_00_01T2_00_01Ts_8_8_8_01_4" prot="public">mongo_odm::FirstTypeIsTheSame&lt; T, T2, Ts... &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1hasField" prot="public">mongo_odm::hasField</innerclass>
+    <innerclass refid="structmongo__odm_1_1hasField_3_01Base_00_01T_00_01N_00_01M_00_01true_01_4" prot="public">mongo_odm::hasField&lt; Base, T, N, M, true &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__expression" prot="public">mongo_odm::is_expression</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__expression_3_01BooleanExpr_3_01Expr1_00_01Expr2_01_4_01_4" prot="public">mongo_odm::is_expression&lt; BooleanExpr&lt; Expr1, Expr2 &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__expression_3_01ComparisonExpr_3_01Base_00_01T_01_4_01_4" prot="public">mongo_odm::is_expression&lt; ComparisonExpr&lt; Base, T &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__expression_3_01ExpressionList_3_01Head_00_01Tail_01_4_01_4" prot="public">mongo_odm::is_expression&lt; ExpressionList&lt; Head, Tail &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__expression_3_01NotExpr_3_01Base_00_01T_01_4_01_4" prot="public">mongo_odm::is_expression&lt; NotExpr&lt; Base, T &gt; &gt;</innerclass>
+    <innerclass refid="classmongo__odm_1_1model" prot="public">mongo_odm::model</innerclass>
+    <innerclass refid="classmongo__odm_1_1NotExpr" prot="public">mongo_odm::NotExpr</innerclass>
+    <innerclass refid="structmongo__odm_1_1Nvp" prot="public">mongo_odm::Nvp</innerclass>
+    <innerclass refid="classmongo__odm_1_1odm__collection" prot="public">mongo_odm::odm_collection</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="nvp_8hpp_1a4bcde0a19f13329eff299eea6ce6fa74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; constexpr</type>
+        <definition>Nvp&lt;Base, T&gt; constexpr mongo_odm::makeNvp</definition>
+        <argsstring>(T Base::*t, const char *name)</argsstring>
+        <name>makeNvp</name>
+        <param>
+          <type>T Base::*</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="83" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="83" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a9c9c9d64aa9388c6ad98b9a104f177b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename U</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if_t&lt;!std::is_same&lt;T, bool&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator==</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const U &amp;rhs)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const U &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="237" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="237" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a51c00ea3a069e984d1bc868282e09a23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if_t&lt;std::is_same&lt;T, bool&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator==</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const T &amp;rhs)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="243" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="243" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a11fda3f6bc5d81153422149fbf1637e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename U</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if_t&lt;!std::is_same&lt;T, bool&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&gt;</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const U &amp;rhs)</argsstring>
+        <name>operator&gt;</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const U &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="249" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="249" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ad9b9f03a100ac8813dd1b38948999060" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if_t&lt;std::is_same&lt;T, bool&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&gt;</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const T &amp;rhs)</argsstring>
+        <name>operator&gt;</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="255" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="255" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1adfa348f70a4a6e94250abb533a7927b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename U</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if_t&lt;!std::is_same&lt;T, bool&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&gt;=</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const U &amp;rhs)</argsstring>
+        <name>operator&gt;=</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const U &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="261" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="261" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ae6357cd27791779713539df04cd97f45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if_t&lt;std::is_same&lt;T, bool&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&gt;=</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const T &amp;rhs)</argsstring>
+        <name>operator&gt;=</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="267" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="267" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ae7fe3be8b9fff14981d078de356c557f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename U</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if_t&lt;!std::is_same&lt;T, bool&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&lt;</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const U &amp;rhs)</argsstring>
+        <name>operator&lt;</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const U &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="273" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="273" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1abbd6e2aef205a48868935b5a4004af77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if_t&lt;std::is_same&lt;T, bool&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&lt;</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const T &amp;rhs)</argsstring>
+        <name>operator&lt;</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="279" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="279" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ab9d4721762bf6cf0d661488835503828" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename U</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if_t&lt;!std::is_same&lt;T, bool&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&lt;=</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const U &amp;rhs)</argsstring>
+        <name>operator&lt;=</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const U &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="285" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="285" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a75f5db9502140243c02f911fcfddf89c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if_t&lt;std::is_same&lt;T, bool&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&lt;=</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const T &amp;rhs)</argsstring>
+        <name>operator&lt;=</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="291" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="291" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a3b363c532be9639b3a6f737ee7e89cb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename U</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if_t&lt;!std::is_same&lt;T, bool&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator!=</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const U &amp;rhs)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const U &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="297" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="297" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1adda975f2de7cb87e6bc2616175a7ca13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if_t&lt;std::is_same&lt;T, bool&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator!=</definition>
+        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const T &amp;rhs)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="303" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="303" bodyend="305"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a9f0469fd613155372d7228b178107bce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1NotExpr" kindref="compound">NotExpr</ref>&lt; Base, T &gt;</type>
+        <definition>constexpr NotExpr&lt;Base, T&gt; mongo_odm::operator!</definition>
+        <argsstring>(const ComparisonExpr&lt; Base, T &gt; &amp;expr)</argsstring>
+        <name>operator!</name>
+        <param>
+          <type>const <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>expr</declname>
+        </param>
+        <briefdescription>
+<para>Negates a comparison expression in a $not expression. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="311" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="311" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1aa683880e2126866b9edb9d9a7b7bb7b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Head</type>
+          </param>
+          <param>
+            <type>typename Tail</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if&lt;is_expression&lt;Head&gt;::value &amp;&amp;                                             is_expression&lt;Tail&gt;::value&gt;::type</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1ExpressionList" kindref="compound">ExpressionList</ref>&lt; Head, Tail &gt;</type>
+        <definition>constexpr ExpressionList&lt;Head, Tail&gt; mongo_odm::operator,</definition>
+        <argsstring>(Tail &amp;&amp;tail, Head &amp;&amp;head)</argsstring>
+        <name>operator,</name>
+        <param>
+          <type>Tail &amp;&amp;</type>
+          <declname>tail</declname>
+        </param>
+        <param>
+          <type>Head &amp;&amp;</type>
+          <declname>head</declname>
+        </param>
+        <briefdescription>
+<para>Comma operator that combines two expressions or an expression and an expression list into a new expression list. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="322" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="322" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a3570a42d1e178135c80e97f9cac00e7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr1</type>
+          </param>
+          <param>
+            <type>typename Expr2</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if&lt;is_expression&lt;Expr1&gt;::value &amp;&amp;                                             is_expression&lt;Expr2&gt;::value&gt;::type</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1BooleanExpr" kindref="compound">BooleanExpr</ref>&lt; Expr1, Expr2 &gt;</type>
+        <definition>constexpr BooleanExpr&lt;Expr1, Expr2&gt; mongo_odm::operator&amp;&amp;</definition>
+        <argsstring>(const Expr1 &amp;lhs, const Expr2 &amp;rhs)</argsstring>
+        <name>operator&amp;&amp;</name>
+        <param>
+          <type>const Expr1 &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const Expr2 &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Boolean operator overloads for expressions. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="332" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="332" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a7dc445a8fef0bc28175f75ba710e9eac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr1</type>
+          </param>
+          <param>
+            <type>typename Expr2</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename std::enable_if&lt;is_expression&lt;Expr1&gt;::value &amp;&amp;                                             is_expression&lt;Expr2&gt;::value&gt;::type</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1BooleanExpr" kindref="compound">BooleanExpr</ref>&lt; Expr1, Expr2 &gt;</type>
+        <definition>constexpr BooleanExpr&lt;Expr1, Expr2&gt; mongo_odm::operator||</definition>
+        <argsstring>(const Expr1 &amp;lhs, const Expr2 &amp;rhs)</argsstring>
+        <name>operator||</name>
+        <param>
+          <type>const Expr1 &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const Expr2 &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="339" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="339" bodyend="341"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mongo_odm/deserializing_cursor.hpp" line="27" column="1"/>
+  </compounddef>
+</doxygen>

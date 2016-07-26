@@ -1,0 +1,199 @@
+\hypertarget{classmongo__odm_1_1model}{}\section{mongo\+\_\+odm\+:\+:model$<$ T, Id\+Type $>$ Class Template Reference}
+\label{classmongo__odm_1_1model}\index{mongo\+\_\+odm\+::model$<$ T, Id\+Type $>$@{mongo\+\_\+odm\+::model$<$ T, Id\+Type $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Ts, typename  = std\+::enable\+\_\+if\+\_\+t$<$!\+First\+Type\+Is\+The\+Same$<$model, Ts...$>$\+::value$>$$>$ }\\\hyperlink{classmongo__odm_1_1model_ae00ec1da4db3b0851ccb3990a33a8f8e}{model} (Ts \&\&...ts)
+\begin{DoxyCompactList}\small\item\em Forward the arguments to the constructor of Id\+Type. \end{DoxyCompactList}\item 
+void \hyperlink{classmongo__odm_1_1model_a248cf30be3ee63741af5396a337b2694}{save} ()
+\begin{DoxyCompactList}\small\item\em Performs an update in the database that saves the current T object instance to the collection mapped to this class. \end{DoxyCompactList}\item 
+void \hyperlink{classmongo__odm_1_1model_a63b9538d2226531814bee3b7e7d26586}{remove} ()
+\begin{DoxyCompactList}\small\item\em Deletes this object from the underlying collection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const mongocxx\+::collection \hyperlink{classmongo__odm_1_1model_a889659470cbceaa2f9134ff383171e48}{collection} ()
+\begin{DoxyCompactList}\small\item\em Returns a copy of the underlying collection. \end{DoxyCompactList}\item 
+static void \hyperlink{classmongo__odm_1_1model_af47852c3aa1b8a9e5c07fa96c8530401}{drop} ()
+\begin{DoxyCompactList}\small\item\em Drops the underlying collection and all its contained documents from the database. \end{DoxyCompactList}\item 
+static void \hyperlink{classmongo__odm_1_1model_abff58cf53410faa6e0fe3ef820ca1612}{set\+Collection} (const mongocxx\+::collection \&coll)
+\begin{DoxyCompactList}\small\item\em Sets the underlying mongocxx\+::collection used to store and load instances of T. \end{DoxyCompactList}\item 
+static \hyperlink{classmongo__odm_1_1deserializing__cursor}{deserializing\+\_\+cursor}$<$ T $>$ \hyperlink{classmongo__odm_1_1model_a82419c85a1aa7de0de1c1202d4fafa2f}{find} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find \&options=mongocxx\+::options\+::find())
+\begin{DoxyCompactList}\small\item\em Finds the documents in this collection which match the provided filter. \end{DoxyCompactList}\item 
+static mongocxx\+::stdx\+::optional$<$ T $>$ \hyperlink{classmongo__odm_1_1model_a34b44af2a382b63b33e88dfb092e747c}{find\+\_\+one} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find \&options=mongocxx\+::options\+::find())
+\begin{DoxyCompactList}\small\item\em Finds a single document in this collection that matches the provided filter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}!model@{model}}
+\index{model@{model}!mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}}
+\subsubsection[{\texorpdfstring{model(\+Ts \&\&...\+ts)}{model(Ts &&...ts)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ template$<$typename... Ts, typename  = std\+::enable\+\_\+if\+\_\+t$<$!\+First\+Type\+Is\+The\+Same$<$model, Ts...$>$\+::value$>$$>$ {\bf mongo\+\_\+odm\+::model}$<$ T, Id\+Type $>$\+::{\bf model} (
+\begin{DoxyParamCaption}
+\item[{Ts \&\&...}]{ts}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1model_ae00ec1da4db3b0851ccb3990a33a8f8e}{}\label{classmongo__odm_1_1model_ae00ec1da4db3b0851ccb3990a33a8f8e}
+
+
+Forward the arguments to the constructor of Id\+Type. 
+
+A std\+::enable\+\_\+if is included to disable the template for the copy constructor case so the default is used.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ts} & The variadic pack of arguments to be forwarded to the constructor of Id\+Type. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}!collection@{collection}}
+\index{collection@{collection}!mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}}
+\subsubsection[{\texorpdfstring{collection()}{collection()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static const mongocxx\+::collection {\bf mongo\+\_\+odm\+::model}$<$ T, Id\+Type $>$\+::collection (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmongo__odm_1_1model_a889659470cbceaa2f9134ff383171e48}{}\label{classmongo__odm_1_1model_a889659470cbceaa2f9134ff383171e48}
+
+
+Returns a copy of the underlying collection. 
+
+\begin{DoxyReturn}{Returns}
+A copy of the underlying mongocxx\+::collection that this class uses to store and load instances of T. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}!drop@{drop}}
+\index{drop@{drop}!mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}}
+\subsubsection[{\texorpdfstring{drop()}{drop()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static void {\bf mongo\+\_\+odm\+::model}$<$ T, Id\+Type $>$\+::drop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmongo__odm_1_1model_af47852c3aa1b8a9e5c07fa96c8530401}{}\label{classmongo__odm_1_1model_af47852c3aa1b8a9e5c07fa96c8530401}
+
+
+Drops the underlying collection and all its contained documents from the database. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em exception\+::operation} & if the operation fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/reference/method/db.collection.drop/}{\tt https\+://docs.\+mongodb.\+com/manual/reference/method/db.\+collection.\+drop/} 
+\end{DoxySeeAlso}
+\index{mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}!find@{find}}
+\index{find@{find}!mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}}
+\subsubsection[{\texorpdfstring{find(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find \&options=mongocxx\+::options\+::find())}{find(bsoncxx::document::view_or_value filter, const mongocxx::options::find &options=mongocxx::options::find())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static {\bf deserializing\+\_\+cursor}$<$T$>$ {\bf mongo\+\_\+odm\+::model}$<$ T, Id\+Type $>$\+::find (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{const mongocxx\+::options\+::find \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:find()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmongo__odm_1_1model_a82419c85a1aa7de0de1c1202d4fafa2f}{}\label{classmongo__odm_1_1model_a82419c85a1aa7de0de1c1202d4fafa2f}
+
+
+Finds the documents in this collection which match the provided filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document view representing a document that should match the query. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::find\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Cursor with deserialized objects from the collection. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em If} & the find failed, the returned cursor will throw mongocxx\+::exception\+::query when it is iterated.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/tutorial/query-documents/}{\tt https\+://docs.\+mongodb.\+com/manual/tutorial/query-\/documents/} 
+\end{DoxySeeAlso}
+\index{mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}!find\+\_\+one@{find\+\_\+one}}
+\index{find\+\_\+one@{find\+\_\+one}!mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}}
+\subsubsection[{\texorpdfstring{find\+\_\+one(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find \&options=mongocxx\+::options\+::find())}{find_one(bsoncxx::document::view_or_value filter, const mongocxx::options::find &options=mongocxx::options::find())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static mongocxx\+::stdx\+::optional$<$T$>$ {\bf mongo\+\_\+odm\+::model}$<$ T, Id\+Type $>$\+::find\+\_\+one (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{const mongocxx\+::options\+::find \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:find()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmongo__odm_1_1model_a34b44af2a382b63b33e88dfb092e747c}{}\label{classmongo__odm_1_1model_a34b44af2a382b63b33e88dfb092e747c}
+
+
+Finds a single document in this collection that matches the provided filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document view representing a document that should match the query. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::find\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An optional object that matched the filter. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::query} & if the operation fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/tutorial/query-documents/}{\tt https\+://docs.\+mongodb.\+com/manual/tutorial/query-\/documents/} 
+\end{DoxySeeAlso}
+\index{mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}!remove@{remove}}
+\index{remove@{remove}!mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}}
+\subsubsection[{\texorpdfstring{remove()}{remove()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ void {\bf mongo\+\_\+odm\+::model}$<$ T, Id\+Type $>$\+::remove (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1model_a63b9538d2226531814bee3b7e7d26586}{}\label{classmongo__odm_1_1model_a63b9538d2226531814bee3b7e7d26586}
+
+
+Deletes this object from the underlying collection. 
+
+In the terms of the C\+R\+UD specification, this uses delete\+One with the \+\_\+id as the sole argument to the query filter.
+
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/}{\tt https\+://docs.\+mongodb.\+com/manual/reference/method/db.\+collection.\+delete\+One/} 
+\end{DoxySeeAlso}
+\index{mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}!save@{save}}
+\index{save@{save}!mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}}
+\subsubsection[{\texorpdfstring{save()}{save()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ void {\bf mongo\+\_\+odm\+::model}$<$ T, Id\+Type $>$\+::save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1model_a248cf30be3ee63741af5396a337b2694}{}\label{classmongo__odm_1_1model_a248cf30be3ee63741af5396a337b2694}
+
+
+Performs an update in the database that saves the current T object instance to the collection mapped to this class. 
+
+In the terms of the C\+R\+UD specification, this uses update\+One with the \+\_\+id as the sole argument to the query filter, the T object serialized to dotted notation B\+S\+ON as the \$set operand, and upsert=true so that objects that aren\textquotesingle{}t already in the collection are automatically inserted.
+
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/}{\tt https\+://docs.\+mongodb.\+com/manual/reference/method/db.\+collection.\+update\+One/} 
+\end{DoxySeeAlso}
+\index{mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}!set\+Collection@{set\+Collection}}
+\index{set\+Collection@{set\+Collection}!mongo\+\_\+odm\+::model@{mongo\+\_\+odm\+::model}}
+\subsubsection[{\texorpdfstring{set\+Collection(const mongocxx\+::collection \&coll)}{setCollection(const mongocxx::collection &coll)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static void {\bf mongo\+\_\+odm\+::model}$<$ T, Id\+Type $>$\+::set\+Collection (
+\begin{DoxyParamCaption}
+\item[{const mongocxx\+::collection \&}]{coll}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmongo__odm_1_1model_abff58cf53410faa6e0fe3ef820ca1612}{}\label{classmongo__odm_1_1model_abff58cf53410faa6e0fe3ef820ca1612}
+
+
+Sets the underlying mongocxx\+::collection used to store and load instances of T. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coll} & The mongocxx\+::collection object to be mapped to this class.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This must be called with a new mongocxx\+::collection instance for every thread for the O\+DM to be thread-\/safe.
+
+The parent mongocxx\+::client from which the mongocxx\+::collection argument was created must outlive any of this model\textquotesingle{}s C\+R\+UD methods. If the client object goes out of scope, a new collection must be passed to this method before using any C\+R\+UD methods. 
+\end{DoxyWarning}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/model.\+hpp\end{DoxyCompactItemize}

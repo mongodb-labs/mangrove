@@ -1,0 +1,358 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.11">
+  <compound refid="classmongo__odm_1_1BooleanExpr" kind="class"><name>mongo_odm::BooleanExpr</name>
+    <member refid="classmongo__odm_1_1BooleanExpr_1a45d0fcaecaa93284296d25a3723eb8e0" kind="variable"><name>_lhs</name></member>
+    <member refid="classmongo__odm_1_1BooleanExpr_1a18e2772b2d92ed450b9fea3927347ca6" kind="variable"><name>_rhs</name></member>
+    <member refid="classmongo__odm_1_1BooleanExpr_1acc4f674d65ef3bb5a6a500e41de79c05" kind="variable"><name>_op</name></member>
+    <member refid="classmongo__odm_1_1BooleanExpr_1a47afd7061d2494c8baf629667f0a7a25" kind="function"><name>BooleanExpr</name></member>
+    <member refid="classmongo__odm_1_1BooleanExpr_1a7e4a898b2a56dd7d07595c0f3195be94" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1BooleanExpr_1a8c86b1be15ed3d9a22c81dc0bdb4e7a9" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="classbson__mapper_1_1bson__input__streambuf" kind="class"><name>bson_mapper::bson_input_streambuf</name>
+    <member refid="classbson__mapper_1_1bson__input__streambuf_1a589736aaa0c2edd9399b6d921442dac3" kind="function"><name>bson_input_streambuf</name></member>
+  </compound>
+  <compound refid="classbson__mapper_1_1bson__istream" kind="class"><name>bson_mapper::bson_istream</name>
+    <member refid="classbson__mapper_1_1bson__istream_1a69d5c210c92f1bd987bc6b016f220e4e" kind="variable"><name>bs_buf</name></member>
+    <member refid="classbson__mapper_1_1bson__istream_1aad33813bd74c1f6e6758406df6268e75" kind="function"><name>bson_istream</name></member>
+  </compound>
+  <compound refid="classbson__mapper_1_1bson__ostream" kind="class"><name>bson_mapper::bson_ostream</name>
+    <member refid="classbson__mapper_1_1bson__ostream_1a18e3bfcc83bdc38d768b7706af6d069d" kind="variable"><name>bs_buf</name></member>
+    <member refid="classbson__mapper_1_1bson__ostream_1a22037e678220515e3235829a4704c9ae" kind="function"><name>bson_ostream</name></member>
+  </compound>
+  <compound refid="classbson__mapper_1_1bson__output__streambuf" kind="class"><name>bson_mapper::bson_output_streambuf</name>
+    <member refid="classbson__mapper_1_1bson__output__streambuf_1a75a4af09278f7a16d3d78ddcc45c838e" kind="typedef"><name>document_callback</name></member>
+    <member refid="classbson__mapper_1_1bson__output__streambuf_1a6f442497a51da59618250fb7ac461b3e" kind="variable"><name>_cb</name></member>
+    <member refid="classbson__mapper_1_1bson__output__streambuf_1ac307a4319d5b02b75c8aa1a9e764b1fb" kind="variable"><name>_data</name></member>
+    <member refid="classbson__mapper_1_1bson__output__streambuf_1a9e639a4fb54a38b0e862f653aa13319c" kind="variable"><name>_len</name></member>
+    <member refid="classbson__mapper_1_1bson__output__streambuf_1a5f1f143f66c17ae72907f3d916a1faa6" kind="variable"><name>_bytes_read</name></member>
+    <member refid="classbson__mapper_1_1bson__output__streambuf_1afbbff25db476b5ec8c166a030664579a" kind="function"><name>bson_output_streambuf</name></member>
+    <member refid="classbson__mapper_1_1bson__output__streambuf_1aebf518d6dd7cad563dced7299b05456e" kind="function"><name>overflow</name></member>
+    <member refid="classbson__mapper_1_1bson__output__streambuf_1abf1753938d33b31f2408967589ca64ee" kind="function"><name>underflow</name></member>
+    <member refid="classbson__mapper_1_1bson__output__streambuf_1a740af11a1c94b4272a0fbafa612f4b73" kind="function"><name>insert</name></member>
+  </compound>
+  <compound refid="classbson__mapper_1_1BSONInputArchive" kind="class"><name>bson_mapper::BSONInputArchive</name>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1aafd8477cdeea393e5a2bc0640635d1f3" kind="enum"><name>InputNodeType</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1aafd8477cdeea393e5a2bc0640635d1f3adaff60416e9ab0d467514f2ceec55d2b" kind="enumvalue"><name>InObject</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1aafd8477cdeea393e5a2bc0640635d1f3a53c55f2d410e0ecdc77028764957eb05" kind="enumvalue"><name>InEmbeddedObject</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1aafd8477cdeea393e5a2bc0640635d1f3aec605dceae057b8afe96012584061e42" kind="enumvalue"><name>InEmbeddedArray</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1aafd8477cdeea393e5a2bc0640635d1f3ac681db7d5f639e112892d2ce9a67a536" kind="enumvalue"><name>InRootElement</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a539f11876fc0111fa43e28d350882546" kind="variable"><name>_nextName</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a99f2007a5e468d52c196c46340ef951a" kind="variable"><name>_readStream</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a227df2db32e2631d38c4fc714850c81d" kind="variable"><name>_readFirstDoc</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a2764478a217acc134530c36728af5523" kind="variable"><name>_cachedSearchResult</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a199bd76a66229f613e1a891d20b9ada3" kind="variable"><name>_curBsonData</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a65b460899abfbd69356d20bc43181fb1" kind="variable"><name>_curBsonDataSize</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1ae4ed085179302884862b1637461b9eb7" kind="variable"><name>_curBsonDoc</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a7894605ce1c2e69da4c1b54c84d08601" kind="variable"><name>_embeddedBsonDocStack</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a17e97ec5437e8993474f65172465b3c1" kind="variable"><name>_embeddedBsonArrayStack</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1ad73dff393d7e51d512b43b8eaaf2944c" kind="variable"><name>_embeddedBsonArrayIteratorStack</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1ab23b53d7894fd540b41246cbdb13bb7e" kind="variable"><name>_nodeTypeStack</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a6b8ddbbd18800ef0f8e250c31da095e8" kind="function"><name>BSONInputArchive</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a0b8d043db14caa7d4e35d8e5300cd69f" kind="function"><name>willSearchYieldValue</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1ab0b224d34f6dd2fd9ee542571536638b" kind="function"><name>startRootElementIfRoot</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a1100f99901973ebefab2198d2381e953" kind="function"><name>finishRootElementIfRootElement</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a6f74b53f0989e9222be00dec0e6d350f" kind="function"><name>startNode</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a9360961eba7c7c430329eed30667a2de" kind="function"><name>finishNode</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a5536f703a1f8d0f19fca666290ee6b42" kind="function"><name>setNextName</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a457680690d03b26a9600b9139d1b9bd9" kind="function"><name>loadValue</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1afa63fee8fca6808c51178fb6a7767abd" kind="function"><name>loadValue</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a28c16081fe45749c56f5d65b1ab01d40" kind="function"><name>loadSize</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1ad3fae22817ce463e8a3055a1f04e7a91" kind="function"><name>loadUnderlyingDataForCurrentNode</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1a1592bc712c69190fb10ce57fe84a4453" kind="function"><name>readNextDoc</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1aac41a653859be589d83d5d3782c8033b" kind="function"><name>search</name></member>
+    <member refid="classbson__mapper_1_1BSONInputArchive_1ae037bcfc8881678b75c606f3643e1f2a" kind="function"><name>assert_type</name></member>
+  </compound>
+  <compound refid="classbson__mapper_1_1BSONOutputArchive" kind="class"><name>bson_mapper::BSONOutputArchive</name>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a352e90363868ba971d8aa1e571de3429" kind="enum"><name>OutputNodeType</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a352e90363868ba971d8aa1e571de3429ad34204d72ef88942903d871c12f1cc50" kind="enumvalue"><name>StartObject</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a352e90363868ba971d8aa1e571de3429adaff60416e9ab0d467514f2ceec55d2b" kind="enumvalue"><name>InObject</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a352e90363868ba971d8aa1e571de3429a996340e132bfc11a3480cfd8b1e748e9" kind="enumvalue"><name>StartArray</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a352e90363868ba971d8aa1e571de3429a1dd434ab03234427196327564f19f2e9" kind="enumvalue"><name>InArray</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a003db8221019d4e4d4c8b57fd51024a4" kind="typedef"><name>BSONBuilder</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1aa0cdb1a218d82162a913b812a2c8f083" kind="variable"><name>_bsonBuilder</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a007a205e045e17e6755aa6fdc4d500a3" kind="variable"><name>_writeStream</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a06ff6ebefd6b6f1652bd524e72936c9b" kind="variable"><name>_nextName</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a8861eb26b028f6525b9f8e254d7916fe" kind="variable"><name>_objAsRootElement</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a186b61ce69e988c144b63e8d7cf33fe7" kind="variable"><name>_dotNotationMode</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1ab8ba969fdfee6bee6ae7c41ea2234c15" kind="variable"><name>_arrayNestingLevel</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1adcb8ab245d7dc48570b90de1990900a7" kind="variable"><name>_writeStream</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a05de792b5e3354d4bc99f3d787d70381" kind="variable"><name>_nextName</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a5cd7e8270f054483655f23880ebb9fe8" kind="variable"><name>_nextPotentialNodeName</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a74597711fec52b205f461b6454eea5d6" kind="variable"><name>_nodeTypeStack</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1afa21107aebd2906969ab9c0509a787fc" kind="variable"><name>_curNodeInheritsUnderlyingBSONDataBase</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1af7adec47ebe8bc721c1a177b607ebf72" kind="variable"><name>_embeddedNameStack</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1ae4e9cd4dee03737ae2b602bdeaae98fa" kind="variable"><name>_objAsRootElement</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a6c7eae745c5426c2765b76ff2800cff3" kind="variable"><name>_dotNotationMode</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1ae416406695931ce6c92c2b1f67083c68" kind="variable"><name>_arrayNestingLevel</name></member>
+    <member refid="classbson__mapper_1_1BSONOutputArchive_1a07af9bf8f5a9fa281c6424bfe39f453f" kind="function"><name>BSONOutputArchive</name></member>
+  </compound>
+  <compound refid="classbson__mapper_1_1char__array__streambuf" kind="class"><name>bson_mapper::char_array_streambuf</name>
+    <member refid="classbson__mapper_1_1char__array__streambuf_1a15cfce2ee260b25849438d40aec2a689" kind="variable"><name>_begin</name></member>
+    <member refid="classbson__mapper_1_1char__array__streambuf_1a027b871ee87f8ff1f21dafdbb5b613f5" kind="variable"><name>_end</name></member>
+    <member refid="classbson__mapper_1_1char__array__streambuf_1ac3bd8fb9404bfc3da4e5f06da711feac" kind="variable"><name>_current</name></member>
+    <member refid="classbson__mapper_1_1char__array__streambuf_1a5cba6b0b5b8fab77b956375b4f8f9355" kind="function"><name>char_array_streambuf</name></member>
+    <member refid="classbson__mapper_1_1char__array__streambuf_1a03df64552bf43d55c641fb9900a4a837" kind="function"><name>underflow</name></member>
+    <member refid="classbson__mapper_1_1char__array__streambuf_1a0ede84e812ffaef431ea2b2eaee62f34" kind="function"><name>uflow</name></member>
+    <member refid="classbson__mapper_1_1char__array__streambuf_1a4e23ee5601365b2bdd31c076fbbd084c" kind="function"><name>pbackfail</name></member>
+    <member refid="classbson__mapper_1_1char__array__streambuf_1a1b7d0e32357c308eeaa585c05b9c0a4a" kind="function"><name>showmanyc</name></member>
+    <member refid="classbson__mapper_1_1char__array__streambuf_1a2e45ebf927032cf0853b945b8cde33b1" kind="function"><name>seekpos</name></member>
+    <member refid="classbson__mapper_1_1char__array__streambuf_1a432e5e2f9e9e0ee430f2516eb454a1a8" kind="function"><name>seekoff</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1ComparisonExpr" kind="class"><name>mongo_odm::ComparisonExpr</name>
+    <member refid="classmongo__odm_1_1ComparisonExpr_1aa7a215ad54573c3bfb3deffd391abe0b" kind="variable"><name>NotExpr&lt; Base, T &gt;</name></member>
+    <member refid="classmongo__odm_1_1ComparisonExpr_1a4004e8422f37afa0092758e96c036123" kind="variable"><name>_nvp</name></member>
+    <member refid="classmongo__odm_1_1ComparisonExpr_1afee50e98ebbcf4ee066f04c0c445674b" kind="variable"><name>_field</name></member>
+    <member refid="classmongo__odm_1_1ComparisonExpr_1ad6a4e8dec854fadfe23448fa7584ac6e" kind="variable"><name>_selector_type</name></member>
+    <member refid="classmongo__odm_1_1ComparisonExpr_1a00cedfa66e6c8622149739dffde2e23e" kind="function"><name>ComparisonExpr</name></member>
+    <member refid="classmongo__odm_1_1ComparisonExpr_1afcfc49aa8b1a0d024fe8a8c0d2441e40" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1ComparisonExpr_1a8174f54d033e934b141b3a9ef4480a84" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1deserializing__cursor" kind="class"><name>mongo_odm::deserializing_cursor</name>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1a4f4399516301748c2354b2b9605f2da9" kind="variable"><name>_c</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1a04e43239f2764c045f5f42c893142af2" kind="function"><name>deserializing_cursor</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1a6935d6068f68a856a33f9566156d0a89" kind="function"><name>begin</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1a68215d5abbe2b5cf9da32e189b9b7aef" kind="function"><name>end</name></member>
+  </compound>
+  <compound refid="structbson__mapper_1_1Exception" kind="struct"><name>bson_mapper::Exception</name>
+    <member refid="structbson__mapper_1_1Exception_1a0c9b4a59130d7fa3e83b40a729bf9227" kind="function"><name>Exception</name></member>
+    <member refid="structbson__mapper_1_1Exception_1a0b06448d1250bd8b4f87caf5d03a06b2" kind="function"><name>Exception</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1ExpressionList" kind="class"><name>mongo_odm::ExpressionList</name>
+    <member refid="classmongo__odm_1_1ExpressionList_1aecc3c6879314bdb995fc87b9fb17e0c6" kind="variable"><name>_head</name></member>
+    <member refid="classmongo__odm_1_1ExpressionList_1a5c139e82d077e3f05b5ba51a1cf46736" kind="variable"><name>_tail</name></member>
+    <member refid="classmongo__odm_1_1ExpressionList_1a77d2708484097a9aafa068cc7f1a9ebe" kind="function"><name>ExpressionList</name></member>
+    <member refid="classmongo__odm_1_1ExpressionList_1acce8b8732ff446bb9a36c64ec055f23f" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1ExpressionList_1a09d23e240065afc839e4b791a7916163" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="structmongo__odm_1_1FirstTypeIsTheSame" kind="struct"><name>mongo_odm::FirstTypeIsTheSame</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1FirstTypeIsTheSame_3_01T_00_01T2_00_01Ts_8_8_8_01_4" kind="struct"><name>mongo_odm::FirstTypeIsTheSame&lt; T, T2, Ts... &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1hasField" kind="struct"><name>mongo_odm::hasField</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1hasField_3_01Base_00_01T_00_01N_00_01M_00_01true_01_4" kind="struct"><name>mongo_odm::hasField&lt; Base, T, N, M, true &gt;</name>
+  </compound>
+  <compound refid="structbson__mapper_1_1is__bson" kind="struct"><name>bson_mapper::is_bson</name>
+    <member refid="structbson__mapper_1_1is__bson_1a500b79013aecd87985d901709ff2b31a" kind="variable"><name>value</name></member>
+  </compound>
+  <compound refid="structbson__mapper_1_1is__bson__view" kind="struct"><name>bson_mapper::is_bson_view</name>
+    <member refid="structbson__mapper_1_1is__bson__view_1aca07d7b17481c21be0087eb3ca754f5f" kind="variable"><name>value</name></member>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__expression" kind="struct"><name>mongo_odm::is_expression</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__expression_3_01BooleanExpr_3_01Expr1_00_01Expr2_01_4_01_4" kind="struct"><name>mongo_odm::is_expression&lt; BooleanExpr&lt; Expr1, Expr2 &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__expression_3_01ComparisonExpr_3_01Base_00_01T_01_4_01_4" kind="struct"><name>mongo_odm::is_expression&lt; ComparisonExpr&lt; Base, T &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__expression_3_01ExpressionList_3_01Head_00_01Tail_01_4_01_4" kind="struct"><name>mongo_odm::is_expression&lt; ExpressionList&lt; Head, Tail &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__expression_3_01NotExpr_3_01Base_00_01T_01_4_01_4" kind="struct"><name>mongo_odm::is_expression&lt; NotExpr&lt; Base, T &gt; &gt;</name>
+  </compound>
+  <compound refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kind="class"><name>mongo_odm::deserializing_cursor::iterator</name>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1af61aceb2bac404154b474b9044ec0c37" kind="variable"><name>_ci</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1abb4ab5f2a81d9937f78233957105da24" kind="variable"><name>_ci_end</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1a51943092da6d83f97385df13dfb52811" kind="variable"><name>_opt</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1ac096cc9f017e2911d1e4961a44decc3d" kind="function"><name>iterator</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1a9f4aa838a25e7ace759870f2be226cdb" kind="function"><name>iterator</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1ad65c0ad15f521efaece08903b5df2331" kind="function"><name>operator++</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1ae6a7d1cfa5a96d956f6df8cd0ebc9aee" kind="function"><name>operator++</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1a9f3ddf5ac78cb20f3ee749c37b8ac865" kind="function"><name>operator==</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1a2b894f7a62d36e6634cef41657363332" kind="function"><name>operator!=</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1ad7b8718a44ef73460ed9196c719acaf6" kind="function"><name>operator*</name></member>
+    <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1a2a8e0052c04541bc5469348c09bcad6f" kind="function"><name>skip_invalid_documents</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1model" kind="class"><name>mongo_odm::model</name>
+    <member refid="classmongo__odm_1_1model_1a12b395f088eb02c12b694b9eec6b4191" kind="variable"><name>_coll</name></member>
+    <member refid="classmongo__odm_1_1model_1adbcc23e4f85398fdb643b16bde5a02d0" kind="variable"><name>_id</name></member>
+    <member refid="classmongo__odm_1_1model_1ae00ec1da4db3b0851ccb3990a33a8f8e" kind="function"><name>model</name></member>
+    <member refid="classmongo__odm_1_1model_1a6a66b59a69651aed321670be56554660" kind="function"><name>model</name></member>
+    <member refid="classmongo__odm_1_1model_1a248cf30be3ee63741af5396a337b2694" kind="function"><name>save</name></member>
+    <member refid="classmongo__odm_1_1model_1a63b9538d2226531814bee3b7e7d26586" kind="function"><name>remove</name></member>
+    <member refid="classmongo__odm_1_1model_1a889659470cbceaa2f9134ff383171e48" kind="function"><name>collection</name></member>
+    <member refid="classmongo__odm_1_1model_1af47852c3aa1b8a9e5c07fa96c8530401" kind="function"><name>drop</name></member>
+    <member refid="classmongo__odm_1_1model_1abff58cf53410faa6e0fe3ef820ca1612" kind="function"><name>setCollection</name></member>
+    <member refid="classmongo__odm_1_1model_1afb4d4afbd2040a145a13406d803f4809" kind="function"><name>setCollection</name></member>
+    <member refid="classmongo__odm_1_1model_1a82419c85a1aa7de0de1c1202d4fafa2f" kind="function"><name>find</name></member>
+    <member refid="classmongo__odm_1_1model_1a34b44af2a382b63b33e88dfb092e747c" kind="function"><name>find_one</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1NotExpr" kind="class"><name>mongo_odm::NotExpr</name>
+    <member refid="classmongo__odm_1_1NotExpr_1a3fb83d9ef53245bfe4ad1218ed92e2f7" kind="variable"><name>_expr</name></member>
+    <member refid="classmongo__odm_1_1NotExpr_1a817dba48751e400a44e83c79ac57872f" kind="function"><name>NotExpr</name></member>
+    <member refid="classmongo__odm_1_1NotExpr_1aee3b9cef41a1fa5f4e60e141cefd1357" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1NotExpr_1a6f2e9d9b79c21dafbf30f05d231ee52c" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="structmongo__odm_1_1Nvp" kind="struct"><name>mongo_odm::Nvp</name>
+    <member refid="structmongo__odm_1_1Nvp_1afdc65cec4247bceeed2d5968faeb2ec1" kind="variable"><name>t</name></member>
+    <member refid="structmongo__odm_1_1Nvp_1a3efbb3978077573d3a6676209a85247d" kind="variable"><name>name</name></member>
+    <member refid="structmongo__odm_1_1Nvp_1a0892863bcb5093550a0f3bfad3a16580" kind="function"><name>Nvp</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1odm__collection" kind="class"><name>mongo_odm::odm_collection</name>
+    <member refid="classmongo__odm_1_1odm__collection_1a95f798d1ddb22d9b2c554f3908d95aad" kind="variable"><name>_coll</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1aef6b7a20067a2f5e956f76922289f6ab" kind="function"><name>odm_collection</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1a35f0436318ad8dedce9103c73713d406" kind="function"><name>odm_collection</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1a0c45a60da7ab5c6eadeb65959b7c237d" kind="function"><name>odm_collection</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1a48ddb30bdc18f320816de8be3d94e384" kind="function"><name>odm_collection</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1a68bc9db35d12cc07e317f5147f96ea5c" kind="function"><name>operator=</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1a6a6485675aafabd7c7bc717361807810" kind="function"><name>~odm_collection</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1a65bf78cfb9fe5e977d5a9fe49bfcf387" kind="function"><name>collection</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1a1be075e3d2b05b4bd328050d3566806c" kind="function"><name>aggregate</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1aef03132e2d00396555832734c75f43a1" kind="function"><name>find</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1a76f81952f53bacb0e4516abe3d680230" kind="function"><name>find_one</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1a7b07969d21159f5dad3f86c5b37c6581" kind="function"><name>find_one_and_delete</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1adbcbf110fd4b3d14f70206020eee24d3" kind="function"><name>find_one_and_replace</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1af11f78449ec0938caa49346da8eed19d" kind="function"><name>insert_one</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1a9503db6dacc66f8af5466bd22479a90e" kind="function"><name>insert_many</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1a411c5e06bd3dab97a15ee478f6dae540" kind="function"><name>insert_many</name></member>
+    <member refid="classmongo__odm_1_1odm__collection_1adf1ed50140b16bde3bef54a6f701e1a6" kind="function"><name>replace_one</name></member>
+  </compound>
+  <compound refid="classbson__mapper_1_1serializing__iterator" kind="class"><name>bson_mapper::serializing_iterator</name>
+    <member refid="classbson__mapper_1_1serializing__iterator_1a33d80e23be61966d8794db505b45d044" kind="variable"><name>_ci</name></member>
+    <member refid="classbson__mapper_1_1serializing__iterator_1a03e7ef2686dad0250b6d9606caf1a03e" kind="function"><name>serializing_iterator</name></member>
+    <member refid="classbson__mapper_1_1serializing__iterator_1a5ca9504207d1b6d9d96aaaa6fd9b8af7" kind="function"><name>serializing_iterator</name></member>
+    <member refid="classbson__mapper_1_1serializing__iterator_1ae56b646217e4e3ddec1eb1185109a296" kind="function"><name>operator++</name></member>
+    <member refid="classbson__mapper_1_1serializing__iterator_1ac93b977922ff4e76fdffd94146217063" kind="function"><name>operator++</name></member>
+    <member refid="classbson__mapper_1_1serializing__iterator_1acb01eb65d5cf824683d2898a07d57da1" kind="function"><name>operator==</name></member>
+    <member refid="classbson__mapper_1_1serializing__iterator_1a3b08c6844b32797fba51dd211af26673" kind="function"><name>operator!=</name></member>
+    <member refid="classbson__mapper_1_1serializing__iterator_1adaccf5c18cab21ddce0d6d8d6771170b" kind="function"><name>operator*</name></member>
+  </compound>
+  <compound refid="classbson__mapper_1_1UnderlyingBSONDataBase" kind="class"><name>bson_mapper::UnderlyingBSONDataBase</name>
+    <member refid="classbson__mapper_1_1UnderlyingBSONDataBase_1a6a91619d3c3b86ff3ebc0a6fb59884ca" kind="variable"><name>_underlyingBSONData</name></member>
+    <member refid="classbson__mapper_1_1UnderlyingBSONDataBase_1a5af0b1977ed0c701d25e301eb74d51ab" kind="variable"><name>_underlyingBSONDataSize</name></member>
+    <member refid="classbson__mapper_1_1UnderlyingBSONDataBase_1a458b72e49e74fcaef97c9fd3db540bc1" kind="function"><name>setUnderlyingBSONData</name></member>
+    <member refid="classbson__mapper_1_1UnderlyingBSONDataBase_1a635e3c7c2a8c0627f58424b623f639b5" kind="function"><name>getUnderlyingBSONData</name></member>
+  </compound>
+  <compound refid="namespacebson__mapper" kind="namespace"><name>bson_mapper</name>
+    <member refid="bson__archiver_8hpp_1a9e2d82ad85a76da8a8b8fc21a2e17c9f" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1a4faf2e29465afbd22487522bd1914385" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1aa14feb71f8b7361577df8da285e8cae8" kind="function"><name>epilogue</name></member>
+    <member refid="bson__archiver_8hpp_1a59067bb3ea87f522659c8ade32e0fff0" kind="function"><name>epilogue</name></member>
+    <member refid="bson__archiver_8hpp_1a47902b1a08993a7fa95f8b08b839e4ac" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1ac9f2a4d4ab4e6c99ef11f79ee3b6e3c3" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1a0592017334df2e29c3dd9eec794d6bbf" kind="function"><name>epilogue</name></member>
+    <member refid="bson__archiver_8hpp_1a161c2d3700fa4c9df82dcfaed6670823" kind="function"><name>epilogue</name></member>
+    <member refid="bson__archiver_8hpp_1a9d6a090312b3b9b00f6b9cdf4fbe2eae" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1aecf3421d2a30d25a285fe206729aeab0" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1a4159a8aa96406190e6c45f11e0eb0dd6" kind="function"><name>epilogue</name></member>
+    <member refid="bson__archiver_8hpp_1a4eaf31bc99b4cfa895a1096dbc67bc93" kind="function"><name>epilogue</name></member>
+    <member refid="bson__archiver_8hpp_1a6d441811b74c04dbe8335da5b430979a" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1a71b523ae8522d5840cc07fb82d5bc4a7" kind="function"><name>epilogue</name></member>
+    <member refid="bson__archiver_8hpp_1a95917fb5d6785bb155dbf5f8fe72646a" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1a775c8345bf0068a4f193c66652b326dd" kind="function"><name>epilogue</name></member>
+    <member refid="bson__archiver_8hpp_1a52dd4b4de49cfeb7968ddc9bf6af03f0" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1a5c879df4c68101fe9efa96c2f240f0a3" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1a1745d657c8174d7b4e0a9bdca6d674d3" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1a6e07a0809ac9313661cf8a6c8c1960d9" kind="function"><name>epilogue</name></member>
+    <member refid="bson__archiver_8hpp_1afaab92247d8c6bbaf244409e27ad24ab" kind="function"><name>epilogue</name></member>
+    <member refid="bson__archiver_8hpp_1a80606dffde28bec69a64b55093e92e07" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1add70c05da18e978e0b050134bb2c6d69" kind="function"><name>prologue</name></member>
+    <member refid="bson__archiver_8hpp_1aac75169d82579b3e9356309dd54b63f5" kind="function"><name>epilogue</name></member>
+    <member refid="bson__archiver_8hpp_1a9d9b72f81b6ea5fdbdf7ae0822a7f4bd" kind="function"><name>epilogue</name></member>
+    <member refid="bson__archiver_8hpp_1a3d2d0aeb16e182b999a02d0079fec78a" kind="function"><name>CEREAL_SAVE_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1ace0ad1dfb47d538b30eaf4833e3cf64e" kind="function"><name>CEREAL_LOAD_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1a576d25c80a512b7762ca2403b2f115f1" kind="function"><name>CEREAL_SAVE_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1af2b5c79e2d4d4605ac34975f9dbe4741" kind="function"><name>CEREAL_LOAD_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1afbd463c3b2e6835c45c711f165784983" kind="function"><name>CEREAL_LOAD_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1ac02d100c533957f51928763406ff8d62" kind="function"><name>CEREAL_LOAD_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1a02316a7b228e618590cc5a402fdc6a66" kind="function"><name>CEREAL_LOAD_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1aa21201c89b175bb21869aa20dc8d30dd" kind="function"><name>CEREAL_LOAD_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1a7a41d88e3baf91e76209e7f659878722" kind="function"><name>CEREAL_LOAD_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1a5f69959f9b5e73059a55869d16cea90e" kind="function"><name>CEREAL_LOAD_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1a41f3c5c87fa37f91c071dd8fcb41ef2f" kind="function"><name>CEREAL_SAVE_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1a630902747dd65324d49931c784f59213" kind="function"><name>CEREAL_LOAD_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1a93a2176a1a5894bde93f91d71121669e" kind="function"><name>CEREAL_SAVE_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1af6632fb54c61c4f8fefff98e85fee56d" kind="function"><name>CEREAL_LOAD_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1a3fb4bdcdb429f92708c98285fa84bdff" kind="function"><name>CEREAL_SAVE_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1abcb510741314f138cdc6c1215c10fd42" kind="function"><name>CEREAL_LOAD_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1abdc78cdf6254fab95e8b96e236cb5522" kind="function"><name>CEREAL_SAVE_FUNCTION_NAME</name></member>
+    <member refid="bson__archiver_8hpp_1aec6919929e53e0e6a2421c60d10264b0" kind="function"><name>CEREAL_LOAD_FUNCTION_NAME</name></member>
+    <member refid="mapping__functions_8hpp_1a8b7167a0e48a07414ba07f6b98e62a49" kind="function"><name>to_document</name></member>
+    <member refid="mapping__functions_8hpp_1ac35aa4dbf3db80e7dff3173309118418" kind="function"><name>to_dotted_notation_document</name></member>
+    <member refid="mapping__functions_8hpp_1a3f5063ec061a892b1fe53e52b602d631" kind="function"><name>to_obj</name></member>
+    <member refid="mapping__functions_8hpp_1a35214232eae846212b311b3e9580f8d6" kind="function"><name>to_obj</name></member>
+    <member refid="mapping__functions_8hpp_1a14c9a7e8af9006222a21772c06890cea" kind="function"><name>to_optional_obj</name></member>
+  </compound>
+  <compound refid="namespacebson__mapper_1_1stdx" kind="namespace"><name>bson_mapper::stdx</name>
+  </compound>
+  <compound refid="namespacemongo__odm" kind="namespace"><name>mongo_odm</name>
+    <member refid="nvp_8hpp_1a4bcde0a19f13329eff299eea6ce6fa74" kind="function"><name>makeNvp</name></member>
+    <member refid="query__builder_8hpp_1a9c9c9d64aa9388c6ad98b9a104f177b9" kind="function"><name>operator==</name></member>
+    <member refid="query__builder_8hpp_1a51c00ea3a069e984d1bc868282e09a23" kind="function"><name>operator==</name></member>
+    <member refid="query__builder_8hpp_1a11fda3f6bc5d81153422149fbf1637e0" kind="function"><name>operator&gt;</name></member>
+    <member refid="query__builder_8hpp_1ad9b9f03a100ac8813dd1b38948999060" kind="function"><name>operator&gt;</name></member>
+    <member refid="query__builder_8hpp_1adfa348f70a4a6e94250abb533a7927b9" kind="function"><name>operator&gt;=</name></member>
+    <member refid="query__builder_8hpp_1ae6357cd27791779713539df04cd97f45" kind="function"><name>operator&gt;=</name></member>
+    <member refid="query__builder_8hpp_1ae7fe3be8b9fff14981d078de356c557f" kind="function"><name>operator&lt;</name></member>
+    <member refid="query__builder_8hpp_1abbd6e2aef205a48868935b5a4004af77" kind="function"><name>operator&lt;</name></member>
+    <member refid="query__builder_8hpp_1ab9d4721762bf6cf0d661488835503828" kind="function"><name>operator&lt;=</name></member>
+    <member refid="query__builder_8hpp_1a75f5db9502140243c02f911fcfddf89c" kind="function"><name>operator&lt;=</name></member>
+    <member refid="query__builder_8hpp_1a3b363c532be9639b3a6f737ee7e89cb0" kind="function"><name>operator!=</name></member>
+    <member refid="query__builder_8hpp_1adda975f2de7cb87e6bc2616175a7ca13" kind="function"><name>operator!=</name></member>
+    <member refid="query__builder_8hpp_1a9f0469fd613155372d7228b178107bce" kind="function"><name>operator!</name></member>
+    <member refid="query__builder_8hpp_1aa683880e2126866b9edb9d9a7b7bb7b7" kind="function"><name>operator,</name></member>
+    <member refid="query__builder_8hpp_1a3570a42d1e178135c80e97f9cac00e7f" kind="function"><name>operator&amp;&amp;</name></member>
+    <member refid="query__builder_8hpp_1a7dc445a8fef0bc28175f75ba710e9eac" kind="function"><name>operator||</name></member>
+  </compound>
+  <compound refid="CONTRIBUTING_8md" kind="file"><name>CONTRIBUTING.md</name>
+  </compound>
+  <compound refid="DOXYGEN__README_8md" kind="file"><name>DOXYGEN_README.md</name>
+  </compound>
+  <compound refid="bson__archiver_8hpp" kind="file"><name>bson_archiver.hpp</name>
+    <member refid="bson__archiver_8hpp_1a6a7de93a9bf17899e35e779deea00f10" kind="define"><name>MONGO_ODM_BSON_LOAD_VALUE_FUNC</name></member>
+    <member refid="bson__archiver_8hpp_1a3d49a64a5018ac02979af313762b147a" kind="define"><name>MONGO_ODM_NON_BSON_LOAD_VALUE_FUNC</name></member>
+  </compound>
+  <compound refid="bson__streambuf_8hpp" kind="file"><name>bson_streambuf.hpp</name>
+  </compound>
+  <compound refid="bson__mapper_2config_2compiler_8hpp" kind="file"><name>compiler.hpp</name>
+    <member refid="bson__mapper_2config_2compiler_8hpp_1aebbbc076097a6cbec39cd6381d1c96bc" kind="define"><name>BSON_MAPPER_INLINE</name></member>
+    <member refid="bson__mapper_2config_2compiler_8hpp_1ad4e80752dd03d7e85e832615ea98a5d5" kind="define"><name>BSON_MAPPER_CALL</name></member>
+  </compound>
+  <compound refid="mongo__odm_2config_2compiler_8hpp" kind="file"><name>compiler.hpp</name>
+    <member refid="mongo__odm_2config_2compiler_8hpp_1a175e919740d572a2bb8d59aa525d65cb" kind="define"><name>MONGO_ODM_INLINE</name></member>
+    <member refid="mongo__odm_2config_2compiler_8hpp_1a4657c20d8af5151eb60b3f90bb47b262" kind="define"><name>MONGO_ODM_CALL</name></member>
+  </compound>
+  <compound refid="bson__mapper_2config_2postlude_8hpp" kind="file"><name>postlude.hpp</name>
+  </compound>
+  <compound refid="mongo__odm_2config_2postlude_8hpp" kind="file"><name>postlude.hpp</name>
+  </compound>
+  <compound refid="bson__mapper_2config_2prelude_8hpp" kind="file"><name>prelude.hpp</name>
+    <member refid="bson__mapper_2config_2prelude_8hpp_1a83adb7f5e5ab7c72dbf61a959fe521d8" kind="define"><name>BSON_MAPPER_UNREACHABLE</name></member>
+  </compound>
+  <compound refid="mongo__odm_2config_2prelude_8hpp" kind="file"><name>prelude.hpp</name>
+    <member refid="mongo__odm_2config_2prelude_8hpp_1ad43e0129ee96bb2680be0d79e8f8d1e8" kind="define"><name>MONGO_ODM_UNREACHABLE</name></member>
+  </compound>
+  <compound refid="mapping__functions_8hpp" kind="file"><name>mapping_functions.hpp</name>
+  </compound>
+  <compound refid="optional_8hpp" kind="file"><name>optional.hpp</name>
+  </compound>
+  <compound refid="deserializing__cursor_8hpp" kind="file"><name>deserializing_cursor.hpp</name>
+  </compound>
+  <compound refid="model_8hpp" kind="file"><name>model.hpp</name>
+  </compound>
+  <compound refid="nvp_8hpp" kind="file"><name>nvp.hpp</name>
+    <member refid="nvp_8hpp_1acb202b07b2886bb05cf9addb50bc9333" kind="define"><name>MONGO_ODM_NVP</name></member>
+    <member refid="nvp_8hpp_1ad96a748cd5ba0b9df97bc31da164f9d9" kind="define"><name>MONGO_ODM_SERIALIZE_KEYS</name></member>
+    <member refid="nvp_8hpp_1aede6ddd0eb0787bceb13387a0cddb1dc" kind="define"><name>MONGO_ODM_MAKE_KEYS</name></member>
+    <member refid="nvp_8hpp_1a98fb841a9854884333db1a577f724512" kind="define"><name>MONGO_ODM_MAKE_KEYS_MODEL</name></member>
+    <member refid="nvp_8hpp_1a414bd8cb6b2a9d8c6a2d39849a2a3dc4" kind="define"><name>MONGO_ODM_KEY</name></member>
+  </compound>
+  <compound refid="odm__collection_8hpp" kind="file"><name>odm_collection.hpp</name>
+  </compound>
+  <compound refid="query__builder_8hpp" kind="file"><name>query_builder.hpp</name>
+  </compound>
+  <compound refid="md_CONTRIBUTING" kind="page"><name>md_CONTRIBUTING</name>
+  </compound>
+  <compound refid="dir_c65a25df07757344bd8e154c3e78b754" kind="dir"><name>src/bson_mapper</name>
+  </compound>
+  <compound refid="dir_ecac7df9db3903293080f8b1c816dbd7" kind="dir"><name>src/mongo_odm/config</name>
+  </compound>
+  <compound refid="dir_b915b7774d4b80e69fe40167734a0ca3" kind="dir"><name>src/bson_mapper/config</name>
+  </compound>
+  <compound refid="dir_9813b190ffb7cc6c2345aca5c0b75257" kind="dir"><name>src/mongo_odm</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+  <compound refid="dir_819a5479fdfc568cee662b9fe92dd436" kind="dir"><name>src/bson_mapper/stdx</name>
+  </compound>
+  <compound refid="indexpage" kind="page"><name>index</name>
+  </compound>
+</doxygenindex>

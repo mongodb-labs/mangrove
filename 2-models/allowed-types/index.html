@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.16" />
+    <meta name="description" content="">
+
+
+    <link rel="shortcut icon" href="http://mongodb.github.io/mongo-cxx-odm/images/favicon.png" type="image/x-icon" />
+
+    
+    <title>Allowed Types</title>
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/nucleus.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/hybrid.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/featherlight.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/theme.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/hugo-theme.css" rel="stylesheet">
+    <style type="text/css">:root #header + #content > #left > #rlblock_left
+    {display:none !important;}</style>
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/docs.css" rel="stylesheet">
+
+  </head>
+  <body class="" data-url="/2-models/allowed-types/">
+    <nav id="sidebar">
+  <div id="header-wrapper">
+    <div id="header">
+      <html>
+<body>
+	<img src="http://mongodb.github.io/mongo-cxx-odm/images/logo.png"/>
+</body>
+</html>
+
+      
+    </div>
+</div>
+
+
+  <div class="highlightable">
+    <ul class="topics">
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/1-basics/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/">
+          <span>
+            
+              <b>1. </b>
+            
+             Basics
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/what-is-mangrove/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/">
+                <span>What is Mangrove?     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/installation/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/installation/">
+                <span>Installation     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/quick-tour/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/quick-tour/">
+                <span>Quick Tour     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  parent" data-nav-id="/2-models/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/">
+          <span>
+            
+              <b>2. </b>
+            
+             Models
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/introduction/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/">
+                <span>Introduction     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item active" data-nav-id="/2-models/allowed-types/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/">
+                <span>Allowed Types     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/custom_id/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id/">
+                <span>Custom _id Type     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/dynamic-schemas/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/dynamic-schemas/">
+                <span>Dynamic Schemas     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/3-queries/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/3-queries/">
+          <span>
+            
+              <b>3. </b>
+            
+             Queries
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/4-updates/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/4-updates/">
+          <span>
+            
+              <b>4. </b>
+            
+             Updates
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/5-the-bson-mapper/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/5-the-bson-mapper/">
+          <span>
+            
+              <b>5. </b>
+            
+             The BSON Mapper
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+      <li class="dd-item">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/api/html">
+          <span> 
+            <b> 6. </b> API Docs
+          </span>
+        </a>
+      </li>
+      <li class="dd-item">
+        <a href="https://github.com/mongodb/mongo-cxx-odm">
+          <span> 
+            <b> 7. </b> Source Code
+          </span>
+        </a>
+      </li>
+    </ul>
+    <hr>
+      
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+    </section>
+  </div>
+</nav>
+
+        <section id="body">
+        <div id="overlay"></div>
+
+        <div class="padding highlightable">
+
+            <div id="top-bar">
+              
+              <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                  <span id="sidebar-toggle-span">
+                      <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                        <i class="fa fa-bars"></i>
+                      </a>
+                  </span>
+                
+                <span id="toc-menu"><a href=""><i class="fa fa-list-alt"></i></a></span>
+                
+                
+                
+                
+                  
+                
+                  
+                    
+                    
+                <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/" itemprop="url"><span itemprop="title">Models</span></a> <i class="fa fa-angle-right"></i>
+                    
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                <span itemprop="title"> Allowed Types</span>
+              </div>
+              
+                  <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#primitive-types">Primitive Types</a></li>
+<li><a href="#strings">Strings</a></li>
+<li><a href="#time-points">Time Points</a></li>
+<li><a href="#containers">Containers</a></li>
+<li><a href="#embedded-documents">Embedded Documents</a></li>
+<li><a href="#optionals">Optionals</a></li>
+<li><a href="#objectids">ObjectIDs</a></li>
+<li><a href="#bson-types">BSON Types</a>
+<ul>
+<li><a href="#bson-view-types">BSON &ldquo;View&rdquo; Types</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+              
+
+            </div>
+            
+    	        <div id="body-inner">
+                
+                <h1>Allowed Types</h1>
+                
+
+
+
+<p>As we discussed in the previous section, there are a limited number of types that you can save and load, or <strong>serialize</strong> in the database within your models. Here we&rsquo;ll enumerate every type that you can include in the <code>MANGROVE_MAKE_KEYS_MODEL</code> macro.</p>
+
+<h2 id="primitive-types">Primitive Types</h2>
+
+<p>Mangrove officially supports the following four primitive types:</p>
+
+<ul>
+<li><code>int32_t</code></li>
+<li><code>int64_t</code></li>
+<li><code>double</code></li>
+<li><code>bool</code></li>
+</ul>
+
+<div class="notices warning" ><p>Mangrove will also accept other primitive types such as <code>int</code>, <code>long</code>, or <code>unsigned int</code>, but we highly recommend that you go with one of the four supported types. Other types will be implicitly cast to one of the four supported types, which might cause unpredictable behavior that differs from platform to platform.</p>
+</div>
+
+
+<h2 id="strings">Strings</h2>
+
+<p>Mangrove supports the serialization of <code>std::string</code>. If you prefer to use string &ldquo;views&rdquo; that minimize the number of copies your program makes, check out the <code>bsoncxx::types::b_utf8</code> type discussed in <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/#bson-view-types">BSON &ldquo;View&rdquo; Types</a>.</p>
+
+<h2 id="time-points">Time Points</h2>
+
+<p>Mangrove supports <code>std::chrono::system_clock::time_point</code>. This type is preferred for representing a point in time. If your program uses the C-style <code>std::time_t</code> type, we recommend that you use the <code>to_time_t()</code> and <code>from_time_t()</code> functions discussed in 
+<a target="_blank" href="http://en.cppreference.com/w/cpp/chrono/system_clock">the documentation for <code>std::chrono::system_clock</code> <i class="fa fa-external-link"></i></a>
+ so that your class can support <code>time_point</code>.</p>
+
+<h2 id="containers">Containers</h2>
+
+<p>Mangrove supports a number of C++ STL Containers as serializable. The following containers will work as long as the type they contain is one of the allowed types discussed on this page.</p>
+
+<ul>
+<li><code>std::vector</code></li>
+<li><code>std::set</code></li>
+<li><code>std::unordered_set</code></li>
+<li><code>std::list</code></li>
+<li><code>std::forward_list</code></li>
+<li><code>std::deque</code></li>
+<li><code>std::valarray</code></li>
+</ul>
+
+<p>These are all serialized in the database as BSON arrays.</p>
+
+<h2 id="embedded-documents">Embedded Documents</h2>
+
+<p>MongoDB documents often contain embedded documents, which most likely don&rsquo;t logically map to a common C++ type. Fortunately, Mangrove allows you to create classes that represent subdocuments that may be present in a normal document.</p>
+
+<p>Creating a serializable subclass is straightfoward, and very similar to creating a model. Simply take your class, and instead of inheriting from <code>mangrove::model</code> and calling <code>MANGROVE_MAKE_KEYS_MODEL</code>, just call <code>MANGROVE_MAKE_KEYS</code> on the types you want serialized in the subdocument.</p>
+
+<pre><code class="language-cpp">class ContactCard {
+    std::string description;
+    std::string address;
+    std::string phone;
+
+    MANGROVE_MAKE_KEYS(ContactCard,
+                       MANGROVE_NVP(description),
+                       MANGROVE_NVP(address),
+                       MANGROVE_NVP(phone))
+}
+</code></pre>
+
+<p>With the above class definition, you can now have a model like this:</p>
+
+<pre><code class="language-cpp">class Employee : public mmangrove::model&lt;Employee&gt; {
+    std::string name;
+    double hourly_wage;
+    ContactCard contact_info;
+
+    MANGROVE_MAKE_KEYS_MODEL(Employee,
+                             MANGROVE_NVP(name),
+                             MANGROVE_NVP(hourly_wage),
+                             MANGROVE_NVP(contact_info))
+}
+</code></pre>
+
+<p>You can even include subdocuments in an STL container like this:</p>
+
+<pre><code class="language-cpp">class Employee : public mmangrove::model&lt;Employee&gt; {
+    std::string name;
+    double hourly_wage;
+    std::vector&lt;ContactCard&gt; contact_info;
+
+    MANGROVE_MAKE_KEYS_MODEL(Employee,
+                             MANGROVE_NVP(name),
+                             MANGROVE_NVP(hourly_wage),
+                             MANGROVE_NVP(contact_info))
+}
+</code></pre>
+
+<p>And the resulting document would look something like this:</p>
+
+<pre><code class="language-json">{
+    &quot;_id&quot; : ObjectId(&quot;578fcf796119b016e0a3b079&quot;),
+    &quot;name&quot; : &quot;Jenny&quot;,
+    &quot;hourly_wage&quot; : 19.81,
+    &quot;contact_info&quot; : [
+        {
+            &quot;type&quot; : &quot;home&quot;,
+            &quot;phone&quot; : &quot;212-867-5309&quot;,
+            &quot;address&quot; : &quot;247 E 26 St, New York, NY&quot;
+        },
+        {
+            &quot;type&quot; : &quot;work&quot;,
+            &quot;phone&quot; : &quot;555-123-4567&quot;,
+            &quot;address&quot; : &quot;570 Second Ave, New York, NY&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>The only restriction regarding serializable subdocuments is that they must be <em>default constructible</em>.</p>
+
+<h2 id="optionals">Optionals</h2>
+
+<p>Although 
+<a target="_blank" href="http://en.cppreference.com/w/cpp/utility/optional/optional"><code>std::optional&lt;T&gt;</code> <i class="fa fa-external-link"></i></a>
+ won&rsquo;t be available until C++17, Mangrove offers it as a serializable type in the form of <code>bson_mapper::stdx::optional&lt;T&gt;</code>. <code>optional</code> is a powerful new C++ type that specifies a value that may or may not exist.</p>
+
+<p>Mangrove offers support for optional types where <code>T</code> is a type discussed on this page. This gives Mangrove support for dynamic, flexible schemas, which will be discussed in a <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/dynamic-schemas">later section</a>.</p>
+
+<h2 id="objectids">ObjectIDs</h2>
+
+<p>One of the fundamental types in MongoDB is the 
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/bson-types/#objectid">ObjectID <i class="fa fa-external-link"></i></a>
+. ObjectIDs are the default type used for the <code>_id</code> field in documents, so you may want to use them in your project.</p>
+
+<p>The MongoDB C++ Driver offers the 
+<a target="_blank" href="http://mongodb.github.io/mongo-cxx-driver/classbsoncxx_1_1oid.html"><code>bsoncxx::oid</code> <i class="fa fa-external-link"></i></a>
+, which is a simple class that can be used to create and compare ObjectIDs. Mangrove offers serialization support for <code>bsoncxx::oid</code> so you can include them in your models as well.</p>
+
+<h2 id="bson-types">BSON Types</h2>
+
+<p>The MongoDB C++ Driver offers a library called <code>libbsoncxx</code> that contains a set of utilities for using and manipulating BSON in C++. One of these utilities is a set of C++ types that cover every supported type in the 
+<a target="_blank" href="http://bsonspec.org/spec.html">BSON Specification <i class="fa fa-external-link"></i></a>
+.</p>
+
+<div class="notices warning" ><p>While the following types are all technically supported, we do not recommend using them if you can accomplish the same result with one of types discussed in the other sections. Many of the following types are dangerous and only used internally by MongoDB.</p>
+</div>
+
+
+<p>These types, which are all defined in 
+<a target="_blank" href="http://mongodb.github.io/mongo-cxx-driver/types_8hpp_source.html"><code>bsoncxx/types.hpp</code> <i class="fa fa-external-link"></i></a>
+, are all supported as serializable by Mangrove.</p>
+
+<p>The following types, which are in the <code>bsoncxx::types::</code> namespace are supported without any further configuration:</p>
+
+<ul>
+<li><code>b_double</code></li>
+<li><code>b_bool</code></li>
+<li><code>b_date</code></li>
+<li><code>b_int32</code></li>
+<li><code>b_int64</code></li>
+<li><code>b_undefined</code></li>
+<li><code>b_null</code></li>
+<li><code>b_timestamp</code></li>
+<li><code>b_minkey</code></li>
+<li><code>b_maxkey</code></li>
+<li><code>b_oid</code>
+
+<ul>
+<li>Not to be confused with the <code>bsoncxx::oid</code> discussed in the previous section.</li>
+</ul></li>
+</ul>
+
+<h3 id="bson-view-types">BSON &ldquo;View&rdquo; Types</h3>
+
+<p>Some of the types defined in the <code>bsoncxx::types::</code> namespace are non-owning &ldquo;views&rdquo; to their underlying data, meaning that they can be dangerous if the address they pointing to is freed from memory. The following types are BSON &ldquo;views&rdquo;:</p>
+
+<ul>
+<li><code>b_utf8</code></li>
+<li><code>b_document</code></li>
+<li><code>b_array</code></li>
+<li><code>b_binary</code></li>
+<li><code>b_regex</code></li>
+<li><code>b_dbpointer</code></li>
+<li><code>b_code</code></li>
+<li><code>b_codewscope</code></li>
+<li><code>b_symbol</code></li>
+</ul>
+
+<p>Mangrove only supports these types if, in the class containing them, you inherit from <code>bson_mapper::UnderlyingBSONDataBase</code>. When data is loaded from the database and deserialized into this class, 
+<a target="_blank" href="http://mongodb.github.io/mongo-cxx-odm/api/html/classbson__mapper_1_1UnderlyingBSONDataBase.html"><code>UnderlyingBSONDataBase</code> <i class="fa fa-external-link"></i></a>
+ holds a <code>std::shared_ptr</code> to the original BSON data from which it was deserialized. This ensures that any BSON view types in the class will never point to deallocated memory after being read from the database.</p>
+
+
+      
+      </div>
+    </div>
+
+    <div id="navigation">
+        <a class="nav nav-prev" href="http://mongodb.github.io/mongo-cxx-odm/2-models/introduction"> <i class="fa fa-chevron-left"></i></a>
+        <a class="nav nav-next" href="http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+    </div>
+
+    </section>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/jquery-2.x.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/clipboard.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/perfect-scrollbar.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/jquery.sticky-kit.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/featherlight.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/html5shiv-printshiv.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/modernizr.custom.71422.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/learn.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/hugo-learn.js"></script>
+    
+
+  </body>
+</html>
+

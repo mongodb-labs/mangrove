@@ -1,0 +1,319 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1model" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::model</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename IdType</type>
+        <defval>bsoncxx::oid</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1model_1a12b395f088eb02c12b694b9eec6b4191" prot="private" static="yes" mutable="no">
+        <type>thread_local <ref refid="classmongo__odm_1_1odm__collection" kindref="compound">odm_collection</ref>&lt; T &gt;</type>
+        <definition>thread_local odm_collection&lt; T &gt; mongo_odm::model&lt; T, IdType &gt;::_coll</definition>
+        <argsstring></argsstring>
+        <name>_coll</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/model.hpp" line="46" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1model_1adbcc23e4f85398fdb643b16bde5a02d0" prot="protected" static="no" mutable="no">
+        <type>IdType</type>
+        <definition>IdType mongo_odm::model&lt; T, IdType &gt;::_id</definition>
+        <argsstring></argsstring>
+        <name>_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/model.hpp" line="187" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1model_1ae00ec1da4db3b0851ccb3990a33a8f8e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;!<ref refid="structmongo__odm_1_1FirstTypeIsTheSame" kindref="compound">FirstTypeIsTheSame</ref>&lt;<ref refid="classmongo__odm_1_1model" kindref="compound">model</ref>, Ts...&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>mongo_odm::model&lt; T, IdType &gt;::model</definition>
+        <argsstring>(Ts &amp;&amp;...ts)</argsstring>
+        <name>model</name>
+        <param>
+          <type>Ts &amp;&amp;...</type>
+          <declname>ts</declname>
+        </param>
+        <briefdescription>
+<para>Forward the arguments to the constructor of IdType. </para>        </briefdescription>
+        <detaileddescription>
+<para>A std::enable_if is included to disable the template for the copy constructor case so the default is used.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The variadic pack of arguments to be forwarded to the constructor of IdType. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/model.hpp" line="60" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="60" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1model_1a6a66b59a69651aed321670be56554660" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::model&lt; T, IdType &gt;::model</definition>
+        <argsstring>()=default</argsstring>
+        <name>model</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/model.hpp" line="63" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1model_1a248cf30be3ee63741af5396a337b2694" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::model&lt; T, IdType &gt;::save</definition>
+        <argsstring>()</argsstring>
+        <name>save</name>
+        <briefdescription>
+<para>Performs an update in the database that saves the current T object instance to the collection mapped to this class. </para>        </briefdescription>
+        <detaileddescription>
+<para>In the terms of the CRUD specification, this uses updateOne with the _id as the sole argument to the query filter, the T object serialized to dotted notation BSON as the $set operand, and upsert=true so that objects that aren&apos;t already in the collection are automatically inserted.</para><para><simplesect kind="see"><para><ulink url="https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/">https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/model.hpp" line="116" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="116" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1model_1a63b9538d2226531814bee3b7e7d26586" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::model&lt; T, IdType &gt;::remove</definition>
+        <argsstring>()</argsstring>
+        <name>remove</name>
+        <briefdescription>
+<para>Deletes this object from the underlying collection. </para>        </briefdescription>
+        <detaileddescription>
+<para>In the terms of the CRUD specification, this uses deleteOne with the _id as the sole argument to the query filter.</para><para><simplesect kind="see"><para><ulink url="https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/">https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/model.hpp" line="139" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="139" bodyend="144"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classmongo__odm_1_1model_1a889659470cbceaa2f9134ff383171e48" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const mongocxx::collection</type>
+        <definition>static const mongocxx::collection mongo_odm::model&lt; T, IdType &gt;::collection</definition>
+        <argsstring>()</argsstring>
+        <name>collection</name>
+        <briefdescription>
+<para>Returns a copy of the underlying collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A copy of the underlying mongocxx::collection that this class uses to store and load instances of T. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/model.hpp" line="71" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="71" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1model_1af47852c3aa1b8a9e5c07fa96c8530401" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void mongo_odm::model&lt; T, IdType &gt;::drop</definition>
+        <argsstring>()</argsstring>
+        <name>drop</name>
+        <briefdescription>
+<para>Drops the underlying collection and all its contained documents from the database. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>exception::operation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the operation fails.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ulink url="https://docs.mongodb.com/manual/reference/method/db.collection.drop/">https://docs.mongodb.com/manual/reference/method/db.collection.drop/</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/model.hpp" line="82" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="82" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1model_1abff58cf53410faa6e0fe3ef820ca1612" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void mongo_odm::model&lt; T, IdType &gt;::setCollection</definition>
+        <argsstring>(const mongocxx::collection &amp;coll)</argsstring>
+        <name>setCollection</name>
+        <param>
+          <type>const mongocxx::collection &amp;</type>
+          <declname>coll</declname>
+        </param>
+        <briefdescription>
+<para>Sets the underlying mongocxx::collection used to store and load instances of T. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coll</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mongocxx::collection object to be mapped to this class.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="warning"><para>This must be called with a new mongocxx::collection instance for every thread for the ODM to be thread-safe.</para></simplesect>
+<simplesect kind="warning"><para>The parent mongocxx::client from which the mongocxx::collection argument was created must outlive any of this model&apos;s CRUD methods. If the client object goes out of scope, a new collection must be passed to this method before using any CRUD methods. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/model.hpp" line="98" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="98" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1model_1afb4d4afbd2040a145a13406d803f4809" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void mongo_odm::model&lt; T, IdType &gt;::setCollection</definition>
+        <argsstring>(mongocxx::collection &amp;&amp;coll)</argsstring>
+        <name>setCollection</name>
+        <param>
+          <type>mongocxx::collection &amp;&amp;</type>
+          <declname>coll</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/model.hpp" line="101" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="101" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1model_1a82419c85a1aa7de0de1c1202d4fafa2f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmongo__odm_1_1deserializing__cursor" kindref="compound">deserializing_cursor</ref>&lt; T &gt;</type>
+        <definition>static deserializing_cursor&lt;T&gt; mongo_odm::model&lt; T, IdType &gt;::find</definition>
+        <argsstring>(bsoncxx::document::view_or_value filter, const mongocxx::options::find &amp;options=mongocxx::options::find())</argsstring>
+        <name>find</name>
+        <param>
+          <type>bsoncxx::document::view_or_value</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>const mongocxx::options::find &amp;</type>
+          <declname>options</declname>
+          <defval>mongocxx::options::find()</defval>
+        </param>
+        <briefdescription>
+<para>Finds the documents in this collection which match the provided filter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Document view representing a document that should match the query. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional arguments, see mongocxx::options::find</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Cursor with deserialized objects from the collection. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>If</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the find failed, the returned cursor will throw mongocxx::exception::query when it is iterated.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ulink url="https://docs.mongodb.com/manual/tutorial/query-documents/">https://docs.mongodb.com/manual/tutorial/query-documents/</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/model.hpp" line="161" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="161" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1model_1a34b44af2a382b63b33e88dfb092e747c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mongocxx::stdx::optional&lt; T &gt;</type>
+        <definition>static mongocxx::stdx::optional&lt;T&gt; mongo_odm::model&lt; T, IdType &gt;::find_one</definition>
+        <argsstring>(bsoncxx::document::view_or_value filter, const mongocxx::options::find &amp;options=mongocxx::options::find())</argsstring>
+        <name>find_one</name>
+        <param>
+          <type>bsoncxx::document::view_or_value</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>const mongocxx::options::find &amp;</type>
+          <declname>options</declname>
+          <defval>mongocxx::options::find()</defval>
+        </param>
+        <briefdescription>
+<para>Finds a single document in this collection that matches the provided filter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Document view representing a document that should match the query. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional arguments, see mongocxx::options::find</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An optional object that matched the filter. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>mongocxx::exception::query</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the operation fails.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ulink url="https://docs.mongodb.com/manual/tutorial/query-documents/">https://docs.mongodb.com/manual/tutorial/query-documents/</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/model.hpp" line="180" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="180" bodyend="184"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mongo_odm/model.hpp" line="39" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="39" bodyend="188"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1model_1a12b395f088eb02c12b694b9eec6b4191" prot="private" virt="non-virtual"><scope>mongo_odm::model</scope><name>_coll</name></member>
+      <member refid="classmongo__odm_1_1model_1adbcc23e4f85398fdb643b16bde5a02d0" prot="protected" virt="non-virtual"><scope>mongo_odm::model</scope><name>_id</name></member>
+      <member refid="classmongo__odm_1_1model_1a889659470cbceaa2f9134ff383171e48" prot="public" virt="non-virtual"><scope>mongo_odm::model</scope><name>collection</name></member>
+      <member refid="classmongo__odm_1_1model_1af47852c3aa1b8a9e5c07fa96c8530401" prot="public" virt="non-virtual"><scope>mongo_odm::model</scope><name>drop</name></member>
+      <member refid="classmongo__odm_1_1model_1a82419c85a1aa7de0de1c1202d4fafa2f" prot="public" virt="non-virtual"><scope>mongo_odm::model</scope><name>find</name></member>
+      <member refid="classmongo__odm_1_1model_1a34b44af2a382b63b33e88dfb092e747c" prot="public" virt="non-virtual"><scope>mongo_odm::model</scope><name>find_one</name></member>
+      <member refid="classmongo__odm_1_1model_1ae00ec1da4db3b0851ccb3990a33a8f8e" prot="public" virt="non-virtual"><scope>mongo_odm::model</scope><name>model</name></member>
+      <member refid="classmongo__odm_1_1model_1a6a66b59a69651aed321670be56554660" prot="public" virt="non-virtual"><scope>mongo_odm::model</scope><name>model</name></member>
+      <member refid="classmongo__odm_1_1model_1a63b9538d2226531814bee3b7e7d26586" prot="public" virt="non-virtual"><scope>mongo_odm::model</scope><name>remove</name></member>
+      <member refid="classmongo__odm_1_1model_1a248cf30be3ee63741af5396a337b2694" prot="public" virt="non-virtual"><scope>mongo_odm::model</scope><name>save</name></member>
+      <member refid="classmongo__odm_1_1model_1abff58cf53410faa6e0fe3ef820ca1612" prot="public" virt="non-virtual"><scope>mongo_odm::model</scope><name>setCollection</name></member>
+      <member refid="classmongo__odm_1_1model_1afb4d4afbd2040a145a13406d803f4809" prot="public" virt="non-virtual"><scope>mongo_odm::model</scope><name>setCollection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.16" />
+    <meta name="description" content="">
+
+
+    <link rel="shortcut icon" href="http://mongodb.github.io/mongo-cxx-odm/images/favicon.png" type="image/x-icon" />
+
+    
+    <title>Quick Tour</title>
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/nucleus.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/hybrid.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/featherlight.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/theme.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/hugo-theme.css" rel="stylesheet">
+    <style type="text/css">:root #header + #content > #left > #rlblock_left
+    {display:none !important;}</style>
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/docs.css" rel="stylesheet">
+
+  </head>
+  <body class="" data-url="/1-basics/quick-tour/">
+    <nav id="sidebar">
+  <div id="header-wrapper">
+    <div id="header">
+      <html>
+<body>
+	<img src="http://mongodb.github.io/mongo-cxx-odm/images/logo.png"/>
+</body>
+</html>
+
+      
+    </div>
+</div>
+
+
+  <div class="highlightable">
+    <ul class="topics">
+      
+      
+      
+      
+
+      <li class="dd-item  parent" data-nav-id="/1-basics/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/">
+          <span>
+            
+              <b>1. </b>
+            
+             Basics
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/what-is-mangrove/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/">
+                <span>What is Mangrove?     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/installation/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/installation/">
+                <span>Installation     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item active" data-nav-id="/1-basics/quick-tour/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/quick-tour/">
+                <span>Quick Tour     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/2-models/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/">
+          <span>
+            
+              <b>2. </b>
+            
+             Models
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/introduction/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/">
+                <span>Introduction     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/allowed-types/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/">
+                <span>Allowed Types     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/custom_id/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id/">
+                <span>Custom _id Type     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/dynamic-schemas/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/dynamic-schemas/">
+                <span>Dynamic Schemas     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/3-queries/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/3-queries/">
+          <span>
+            
+              <b>3. </b>
+            
+             Queries
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/4-updates/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/4-updates/">
+          <span>
+            
+              <b>4. </b>
+            
+             Updates
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/5-the-bson-mapper/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/5-the-bson-mapper/">
+          <span>
+            
+              <b>5. </b>
+            
+             The BSON Mapper
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+      <li class="dd-item">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/api/html">
+          <span> 
+            <b> 6. </b> API Docs
+          </span>
+        </a>
+      </li>
+      <li class="dd-item">
+        <a href="https://github.com/mongodb/mongo-cxx-odm">
+          <span> 
+            <b> 7. </b> Source Code
+          </span>
+        </a>
+      </li>
+    </ul>
+    <hr>
+      
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+    </section>
+  </div>
+</nav>
+
+        <section id="body">
+        <div id="overlay"></div>
+
+        <div class="padding highlightable">
+
+            <div id="top-bar">
+              
+              <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                  <span id="sidebar-toggle-span">
+                      <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                        <i class="fa fa-bars"></i>
+                      </a>
+                  </span>
+                
+                <span id="toc-menu"><a href=""><i class="fa fa-list-alt"></i></a></span>
+                
+                
+                
+                
+                  
+                    
+                    
+                <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/" itemprop="url"><span itemprop="title">Basics</span></a> <i class="fa fa-angle-right"></i>
+                    
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                <span itemprop="title"> Quick Tour</span>
+              </div>
+              
+                  <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#creating-a-blog-entry-model">Creating a Blog Entry Model</a></li>
+<li><a href="#registering-the-model-with-a-mongodb-collection">Registering the Model with a MongoDB Collection</a></li>
+<li><a href="#saving-objects">Saving Objects</a></li>
+<li><a href="#querying-objects">Querying Objects</a></li>
+<li><a href="#bulk-updates">Bulk Updates</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+              
+
+            </div>
+            
+    	        <div id="body-inner">
+                
+                <h1>Quick Tour</h1>
+                
+
+
+
+<p>Now that you have Mangrove installed on your system, we can get started with a quick tour of Mangrove&rsquo;s features. To do this, we&rsquo;ll develop the data model for a very simple persistent blog application.</p>
+
+<div class="notices note" ><p>This guide assumes a basic working knowledge of both C++ and MongoDB. You can find a basic introduction to the concepts of MongoDB in
+<a target="_blank" href="https://docs.mongodb.com/manual/introduction/">MongoDB&rsquo;s manual <i class="fa fa-external-link"></i></a>
+.</p>
+</div>
+
+
+<h2 id="creating-a-blog-entry-model">Creating a Blog Entry Model</h2>
+
+<p>First, we&rsquo;ll want to set up a class to represent a blog entry. A blog entry will have a title, an author, some content, and a posting time. We can represent this in C++ with something like the following:</p>
+
+<pre><code class="language-cpp">#include &lt;chrono&gt;
+
+class BlogEntry {
+public:
+    std::string title;
+    std::string author;
+    std::string content;
+    std::chrono::system_clock::time_point time_posted;
+}
+</code></pre>
+
+<p>If we want to store blog entries in the database, we&rsquo;ll have to make the <code>BlogEntry</code> class a Mangrove <strong>model</strong>. Making a class a <strong>model</strong> gives the class the semantics of a MongoDB <strong>collection</strong>, as well as instance <code>save()</code> and <code>remove()</code> functions for 
+<a target="_blank" href="https://en.wikipedia.org/wiki/Active_record_pattern">active record <i class="fa fa-external-link"></i></a>
+ style access to the database.</p>
+
+<p>To make <code>BlogEntry</code> a <strong>model</strong>, simply have it inherit from <code>mangrove::model&lt;BlogEntry&gt;</code>:</p>
+
+<pre><code class="language-cpp">#include &lt;chrono&gt;
+
+#include &lt;mangrove/model.hpp&gt;
+
+class BlogEntry : public mangrove::model&lt;BlogEntry&gt; {
+public:
+    std::string title;
+    std::string author;
+    std::string content;
+    std::chrono::system_clock::time_point time_posted;
+}
+</code></pre>
+
+<p>Notice that the model class is templated on the class that you want to make a model. This is an example of a 
+<a target="_blank" href="https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern">curiously recurring template parameter <i class="fa fa-external-link"></i></a>
+, a C++ pattern that lets the parent class have access to the type inheriting from it.</p>
+
+<p>Before we can use the model, we must also specify which fields we want to be included when a <code>BlogEntry</code> is saved in the database. We can do this with the <code>MANGROVE_MAKE_KEYS_MODEL</code> macro:</p>
+
+<pre><code class="language-cpp">#include &lt;chrono&gt;
+
+#include &lt;mangrove/nvp.hpp&gt;
+
+class BlogEntry : public mangrove::model&lt;BlogEntry&gt; {
+public:
+    std::string title;
+    std::string contents;
+    std::string author;
+    std::chrono::system_clock::time_point time_posted;
+
+    MANGROVE_MAKE_KEYS_MODEL(BlogEntry, 
+                             MANGROVE_NVP(title),
+                             MANGROVE_NVP(contents),
+                             MANGROVE_NVP(author),
+                             MANGROVE_NVP(time_posted))
+}
+</code></pre>
+
+<p>This macro specifies that blog entries should be stored in the database with the title, author, content, and time posted, and where the name of those fields should be the name of the variables. Manually specifying which class members are included when saving to the database lets you have class members that you might not necessarily want to store persistently in the database.</p>
+
+<h2 id="registering-the-model-with-a-mongodb-collection">Registering the Model with a MongoDB Collection</h2>
+
+<p>The last step you must take before you can use the <code>BlogEntry</code> model is to register the model with a MongoDB database using the MongoDB C++ Driver. In the following example, we&rsquo;ll use a connection to the database hosted at <code>localhost</code> on port 27017.</p>
+
+<pre><code class="language-cpp">#include &lt;mongocxx/client.hpp&gt;
+#include &lt;mongocxx/instance.hpp&gt;
+
+int main() {
+    mongocxx::instance{};
+    mongocxx::client 
+        conn{mongocxx::uri{&quot;mongodb://localhost:27017&quot;};
+
+    BlogEntry::setCollection(conn[&quot;my_blog&quot;][&quot;entries&quot;]);
+}
+</code></pre>
+
+<p>The <code>BlogEntry</code> model has a static function <code>setCollection()</code> that lets you specify in which collection to save and retrieve instances of <code>BlogEntry</code>. It accepts a <code>mongocxx::collection</code>, which is accessible via the <code>mongocxx::client</code>. The code above sets <code>BlogEntry</code>&rsquo;s collection to the <code>&quot;entries&quot;</code> collection in the <code>&quot;my_blog&quot;</code> database hosted at <code>&quot;mongodb://localhost:27017&quot;</code>.</p>
+
+<p>If you&rsquo;re planning on writing multi-threaded applications with Mangrove, be sure to carefully read the warning <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/#linking-with-the-database">here</a></p>
+
+<h2 id="saving-objects">Saving Objects</h2>
+
+<p>Now that you&rsquo;ve set up the model and registered it with a collection, you can start interacting with the database. The simplest way to do this is to create instances of the object and call the save() method. The following very simple function will save a blog entry to the database.</p>
+
+<pre><code class="language-cpp">void newEntry(std::string title, std::string author, std::string content) { 
+    BlogEntry entry{title, author, content,
+                    std::chrono::system_clock::now()};
+    entry.save();
+}
+</code></pre>
+
+<p>This particular function doesn&rsquo;t do anything with the object after saving it to the database, but you are able to modify the <code>entry</code> object and call save() again to modify the object and save the changes in the database.</p>
+
+<h2 id="querying-objects">Querying Objects</h2>
+
+<p>Querying objects in Mangrove is just as easy as saving them. When you make <code>BlogEntry</code> a <strong>model</strong>, you gave it the static methods <code>find()</code> and <code>findOne()</code>, which have very similar semantics to 
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/method/db.collection.find/">their <i class="fa fa-external-link"></i></a>
+ 
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/method/db.collection.findOne/">equivalents <i class="fa fa-external-link"></i></a>
+ in the mongo shell.</p>
+
+<p>The following function prints out the titles of every blog entry by a particular author using a <code>find()</code> query:</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+#include &lt;mangrove/query_builder.hpp&gt;
+
+void printTitlesBy(std::string author) {
+    std::cout &lt;&lt; &quot;All blog entries by &quot; &lt;&lt; author &lt;&lt; &quot;:\n&quot;;
+    for (auto entry : BlogEntry::find(MANGROVE_KEY(BlogEntry::author) == author)) {
+        std::cout &lt;&lt; entry.title &lt;&lt; &quot;\n&quot;;
+    }
+}
+</code></pre>
+
+<p>There&rsquo;s a lot happening here, but it&rsquo;s very simple once you understand what&rsquo;s going on.</p>
+
+<p>Inside the parameter list for <code>BlogEntry::find()</code>, you&rsquo;ll see <code>MANGROVE_KEY(BlogEntry::author) == author</code>. In Mangrove, you can build MongoDB queries using the standard C++ comparison and logical operators. This is discussed more in <a href="http://mongodb.github.io/mongo-cxx-odm/3-queries">Chapter 3</a>, but the main thing you have to remember is to wrap the value you are comparing in a <code>MANGROVE_KEY</code> macro.</p>
+
+<p>The return type of <code>BlogEntry::find()</code> is an iterator of <code>BlogEntry</code>s. This makes it very easy to work with the often large cursors of objects that are returned from MongoDB queries. In this case, we are interacting with the cursor via the C++11 
+<a target="_blank" href="http://en.cppreference.com/w/cpp/language/range-for">range-based for loop <i class="fa fa-external-link"></i></a>
+.</p>
+
+<div class="notices info" ><p>The iterator returned by the model&rsquo;s <code>find()</code> method has the semantics of a MongoDB <strong>cursor</strong>. This is useful for large queries where you want to periodically read from the database as you&rsquo;re reading from the query results, but this also gives the cursors some interesting behavior such as inactive cursor closure and the lack of cursor isolation. If you want to learn more about these behaviors, check out
+<a target="_blank" href="https://docs.mongodb.com/v3.2/tutorial/iterate-a-cursor/#cursor-behaviors">this page <i class="fa fa-external-link"></i></a>
+ in the MongoDB manual.</p>
+</div>
+
+
+<h2 id="bulk-updates">Bulk Updates</h2>
+
+<p>TODO</p>
+
+
+      
+      </div>
+    </div>
+
+    <div id="navigation">
+        <a class="nav nav-prev" href="http://mongodb.github.io/mongo-cxx-odm/1-basics/installation"> <i class="fa fa-chevron-left"></i></a>
+        <a class="nav nav-next" href="http://mongodb.github.io/mongo-cxx-odm/2-models" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+    </div>
+
+    </section>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/jquery-2.x.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/clipboard.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/perfect-scrollbar.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/jquery.sticky-kit.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/featherlight.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/html5shiv-printshiv.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/modernizr.custom.71422.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/learn.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/hugo-learn.js"></script>
+    
+
+  </body>
+</html>
+

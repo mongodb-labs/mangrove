@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classbson__mapper_1_1bson__istream" kind="class" language="C++" prot="public">
+    <compoundname>bson_mapper::bson_istream</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">istream</basecompoundref>
+    <includes refid="bson__streambuf_8hpp" local="no">bson_streambuf.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classbson__mapper_1_1bson__istream_1a69d5c210c92f1bd987bc6b016f220e4e" prot="private" static="no" mutable="no">
+        <type><ref refid="classbson__mapper_1_1bson__input__streambuf" kindref="compound">bson_input_streambuf</ref></type>
+        <definition>bson_input_streambuf bson_mapper::bson_istream::bs_buf</definition>
+        <argsstring></argsstring>
+        <name>bs_buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="174" column="1" bodyfile="src/bson_mapper/bson_streambuf.hpp" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classbson__mapper_1_1bson__istream_1aad33813bd74c1f6e6758406df6268e75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>bson_mapper::bson_istream::bson_istream</definition>
+        <argsstring>(const bsoncxx::document::view &amp;v)</argsstring>
+        <name>bson_istream</name>
+        <param>
+          <type>const bsoncxx::document::view &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_streambuf.hpp" line="168" column="1" bodyfile="src/bson_mapper/bson_streambuf.hpp" bodystart="168" bodyend="170"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An istream that uses a BSON document as a buffer. </para>    </briefdescription>
+    <detaileddescription>
+<para>While objects of this class do not own the underlying buffer, they do own the streambuf object associated with it.</para><para>By default, istream objects do not delete their streambuffers when they are destroyed, so this class allows one to create a stream without dealing with the underlying streambuf object. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9">
+        <label>std::istream</label>
+      </node>
+      <node id="8">
+        <label>bson_mapper::bson_istream</label>
+        <link refid="classbson__mapper_1_1bson__istream"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="11">
+        <label>std::istream</label>
+      </node>
+      <node id="10">
+        <label>bson_mapper::bson_istream</label>
+        <link refid="classbson__mapper_1_1bson__istream"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/bson_mapper/bson_streambuf.hpp" line="166" column="1" bodyfile="src/bson_mapper/bson_streambuf.hpp" bodystart="166" bodyend="175"/>
+    <listofallmembers>
+      <member refid="classbson__mapper_1_1bson__istream_1a69d5c210c92f1bd987bc6b016f220e4e" prot="private" virt="non-virtual"><scope>bson_mapper::bson_istream</scope><name>bs_buf</name></member>
+      <member refid="classbson__mapper_1_1bson__istream_1aad33813bd74c1f6e6758406df6268e75" prot="public" virt="non-virtual"><scope>bson_mapper::bson_istream</scope><name>bson_istream</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

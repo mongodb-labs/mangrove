@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1-basics on Mangrove</title>
+    <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/</link>
+    <description>Recent content in 1-basics on Mangrove</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://mongodb.github.io/mongo-cxx-odm/1-basics/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Basics</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/1-basics/</guid>
+      <description>
+
+&lt;h3 id=&#34;chapter-1&#34;&gt;Chapter 1&lt;/h3&gt;
+
+&lt;h1 id=&#34;basics&#34;&gt;Basics&lt;/h1&gt;
+
+&lt;p&gt;Learn what &lt;strong&gt;Mangrove&lt;/strong&gt; is and how it can help you build C++ applications with MongoDB.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>What is Mangrove?</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/</guid>
+      <description>&lt;p&gt;Mangrove is a C++ &lt;strong&gt;object document mapper (ODM)&lt;/strong&gt; for MongoDB. An &lt;strong&gt;ODM&lt;/strong&gt; lets you map classes in an object-oriented programming language to collections in a document-oriented database like MongoDB.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;ve ever used an &lt;strong&gt;object relational mapper (ORM)&lt;/strong&gt;, an &lt;strong&gt;ODM&lt;/strong&gt; is quite similar, except that the underlying structure of the data in the database is actually very similar to the structure of your objects.&lt;/p&gt;
+
+&lt;p&gt;If you know how to create and manipulate classes in C++, you can easily get started with Mangrove!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;
+class BlogEntry : public mangrove::model&amp;lt;BlogEntry&amp;gt; {
+   public:
+    std::string title;
+    std::string contents;
+    std::string author;
+    std::chrono::system_clock::time_point time_posted;
+
+    // Register fields with Mangrove.
+    MANGROVE_MAKE_KEYS_MODEL(BlogEntry, 
+                             MANGROVE_NVP(title),
+                             MANGROVE_NVP(contents),
+                             MANGROVE_NVP(author),
+                             MANGROVE_NVP(time_posted))
+};
+
+int main() {
+    mongocxx::instance{};
+    mongocxx::client conn{mongocxx::uri{}};
+
+    // Map the BlogEntry class to the &#39;entries&#39; collection
+    // in the &#39;my_blog&#39; database.
+    auto db = conn[&amp;quot;my_blog&amp;quot;];
+    BlogEntry::setCollection(db[&amp;quot;entries&amp;quot;]);
+
+    // Create a new entry just like any other C++ object.
+    BlogEntry new_entry{&amp;quot;Check out Mangrove&amp;quot;,
+                        &amp;quot;It&#39;s really cool!&amp;quot;,
+                        &amp;quot;Ben Franklin&amp;quot;,
+                        std::chrono::system_clock::now()}
+
+
+    // Save the entry in the collection.
+    new_entry.save();
+
+    // There is now a document in the &#39;entries&#39; collection
+    // and it looks like this:
+    // {
+    //    &amp;quot;_id&amp;quot; : ObjectId(&amp;quot;577d5b36e24939f3b82e2331&amp;quot;),
+    //    &amp;quot;title&amp;quot; : &amp;quot;Check out Mangrove!&amp;quot;,
+    //    &amp;quot;contents&amp;quot; : &amp;quot;It&#39;s really cool&amp;quot;,
+    //    &amp;quot;author&amp;quot; : &amp;quot;Ben Franklin&amp;quot;,
+    //    &amp;quot;time_posted&amp;quot; : ISODate(&amp;quot;2016-07-15T19:25:42.073Z&amp;quot;)
+    // }
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/installation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/1-basics/installation/</guid>
+      <description>
+
+&lt;p&gt;To get Mangrove up and running in your project, simply follow these instructions to install Mangrove on your system.&lt;/p&gt;
+
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Any little-endian platform.&lt;/li&gt;
+&lt;li&gt;A modern compiler that supports C++14.
+
+&lt;ul&gt;
+&lt;li&gt;Mangrove has been confirmed to work with Clang 3.8+, Apple Clang 7.3+, or GCC 6.1+.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;CMake 3.2+.&lt;/li&gt;
+&lt;li&gt;The MongoDB C driver version 1.3.5+. (see below)&lt;/li&gt;
+&lt;li&gt;The MongoDB C++ driver version 3.0.2+. (see below)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;(Optional)&lt;/em&gt; pkg-config&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;build-and-install-the-c-driver&#34;&gt;Build and install the C driver&lt;/h2&gt;
+
+&lt;p&gt;Mangrove uses 
+&lt;a target=&#34;_blank&#34; href=&#34;https://api.mongodb.com/libbson/current/&#34;&gt;libbson &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ and 
+&lt;a target=&#34;_blank&#34; href=&#34;https://api.mongodb.com/c/current/&#34;&gt;libmongoc &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ internally. If you don&amp;rsquo;t already have a new enough version of libmongoc and libbson installed, then you need to build them.&lt;/p&gt;
+
+&lt;p&gt;Build and install libmongoc according to the section 
+&lt;a target=&#34;_blank&#34; href=&#34;https://api.mongodb.com/c/current/installing.html#unix-build&#34;&gt;Building From a Release Tarball &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ in the install instructions. libmongoc installs libbson if necessary.&lt;/p&gt;
+
+&lt;h2 id=&#34;build-and-install-the-c-11-driver&#34;&gt;Build and install the C++11 driver&lt;/h2&gt;
+
+&lt;p&gt;Mangrove also uses the 
+&lt;a target=&#34;_blank&#34; href=&#34;https://github.com/mongodb/mongo-cxx-driver&#34;&gt;MongoDB C++11 Driver &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ internally.&lt;/p&gt;
+
+&lt;p&gt;Build and install the C++ driver according to its 
+&lt;a target=&#34;_blank&#34; href=&#34;https://github.com/mongodb/mongo-cxx-driver/wiki/Quickstart-Guide-%28New-Driver%29&#34;&gt;quickstart guide &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+.&lt;/p&gt;
+
+&lt;h2 id=&#34;build-and-install-mangrove&#34;&gt;Build and install Mangrove&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Clone the repository, and check out the latest stable release.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git clone -b master https://github.com/mongodb/mongo-cxx-odm&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Build Mangrove. Note that if you installed the C driver and C++ driver to a path that is automatically searched by &lt;code&gt;pkg-config&lt;/code&gt;, you can omit the &lt;code&gt;PKG_CONFIG_PATH&lt;/code&gt; environment variable. If you don&amp;rsquo;t have &lt;code&gt;pkg-config&lt;/code&gt;, you can explicitly set the path to the libbson, libmongoc, libbsoncxx, and libmongocxx install prefixes with the &lt;code&gt;-DLIBBSON_DIR&lt;/code&gt;, &lt;code&gt;-DLIBMONGOC_DIR&lt;/code&gt;, -&lt;code&gt;Dlibbsoncxx_DIR&lt;/code&gt;, and &lt;code&gt;-Dlibmongocxx_DIR&lt;/code&gt; CMake arguments.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cd mongo-cxx-odm/build&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[PKG_CONFIG_PATH=CXXDRIVER_INSTALL_PATH/lib/pkgconfig] cmake -DCMAKE_BUILD_TYPE=Release [-DCMAKE_INSTALL_PREFIX=DESIRED_INSTALL_PATH] ..&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;make &amp;amp;&amp;amp; sudo make install&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Quick Tour</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/quick-tour/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/1-basics/quick-tour/</guid>
+      <description>
+
+&lt;p&gt;Now that you have Mangrove installed on your system, we can get started with a quick tour of Mangrove&amp;rsquo;s features. To do this, we&amp;rsquo;ll develop the data model for a very simple persistent blog application.&lt;/p&gt;
+
+&lt;div class=&#34;notices note&#34; &gt;&lt;p&gt;This guide assumes a basic working knowledge of both C++ and MongoDB. You can find a basic introduction to the concepts of MongoDB in
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/introduction/&#34;&gt;MongoDB&amp;rsquo;s manual &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;creating-a-blog-entry-model&#34;&gt;Creating a Blog Entry Model&lt;/h2&gt;
+
+&lt;p&gt;First, we&amp;rsquo;ll want to set up a class to represent a blog entry. A blog entry will have a title, an author, some content, and a posting time. We can represent this in C++ with something like the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;chrono&amp;gt;
+
+class BlogEntry {
+public:
+    std::string title;
+    std::string author;
+    std::string content;
+    std::chrono::system_clock::time_point time_posted;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If we want to store blog entries in the database, we&amp;rsquo;ll have to make the &lt;code&gt;BlogEntry&lt;/code&gt; class a Mangrove &lt;strong&gt;model&lt;/strong&gt;. Making a class a &lt;strong&gt;model&lt;/strong&gt; gives the class the semantics of a MongoDB &lt;strong&gt;collection&lt;/strong&gt;, as well as instance &lt;code&gt;save()&lt;/code&gt; and &lt;code&gt;remove()&lt;/code&gt; functions for 
+&lt;a target=&#34;_blank&#34; href=&#34;https://en.wikipedia.org/wiki/Active_record_pattern&#34;&gt;active record &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ style access to the database.&lt;/p&gt;
+
+&lt;p&gt;To make &lt;code&gt;BlogEntry&lt;/code&gt; a &lt;strong&gt;model&lt;/strong&gt;, simply have it inherit from &lt;code&gt;mangrove::model&amp;lt;BlogEntry&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;chrono&amp;gt;
+
+#include &amp;lt;mangrove/model.hpp&amp;gt;
+
+class BlogEntry : public mangrove::model&amp;lt;BlogEntry&amp;gt; {
+public:
+    std::string title;
+    std::string author;
+    std::string content;
+    std::chrono::system_clock::time_point time_posted;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that the model class is templated on the class that you want to make a model. This is an example of a 
+&lt;a target=&#34;_blank&#34; href=&#34;https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern&#34;&gt;curiously recurring template parameter &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+, a C++ pattern that lets the parent class have access to the type inheriting from it.&lt;/p&gt;
+
+&lt;p&gt;Before we can use the model, we must also specify which fields we want to be included when a &lt;code&gt;BlogEntry&lt;/code&gt; is saved in the database. We can do this with the &lt;code&gt;MANGROVE_MAKE_KEYS_MODEL&lt;/code&gt; macro:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;chrono&amp;gt;
+
+#include &amp;lt;mangrove/nvp.hpp&amp;gt;
+
+class BlogEntry : public mangrove::model&amp;lt;BlogEntry&amp;gt; {
+public:
+    std::string title;
+    std::string contents;
+    std::string author;
+    std::chrono::system_clock::time_point time_posted;
+
+    MANGROVE_MAKE_KEYS_MODEL(BlogEntry, 
+                             MANGROVE_NVP(title),
+                             MANGROVE_NVP(contents),
+                             MANGROVE_NVP(author),
+                             MANGROVE_NVP(time_posted))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This macro specifies that blog entries should be stored in the database with the title, author, content, and time posted, and where the name of those fields should be the name of the variables. Manually specifying which class members are included when saving to the database lets you have class members that you might not necessarily want to store persistently in the database.&lt;/p&gt;
+
+&lt;h2 id=&#34;registering-the-model-with-a-mongodb-collection&#34;&gt;Registering the Model with a MongoDB Collection&lt;/h2&gt;
+
+&lt;p&gt;The last step you must take before you can use the &lt;code&gt;BlogEntry&lt;/code&gt; model is to register the model with a MongoDB database using the MongoDB C++ Driver. In the following example, we&amp;rsquo;ll use a connection to the database hosted at &lt;code&gt;localhost&lt;/code&gt; on port 27017.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;mongocxx/client.hpp&amp;gt;
+#include &amp;lt;mongocxx/instance.hpp&amp;gt;
+
+int main() {
+    mongocxx::instance{};
+    mongocxx::client 
+        conn{mongocxx::uri{&amp;quot;mongodb://localhost:27017&amp;quot;};
+
+    BlogEntry::setCollection(conn[&amp;quot;my_blog&amp;quot;][&amp;quot;entries&amp;quot;]);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;BlogEntry&lt;/code&gt; model has a static function &lt;code&gt;setCollection()&lt;/code&gt; that lets you specify in which collection to save and retrieve instances of &lt;code&gt;BlogEntry&lt;/code&gt;. It accepts a &lt;code&gt;mongocxx::collection&lt;/code&gt;, which is accessible via the &lt;code&gt;mongocxx::client&lt;/code&gt;. The code above sets &lt;code&gt;BlogEntry&lt;/code&gt;&amp;rsquo;s collection to the &lt;code&gt;&amp;quot;entries&amp;quot;&lt;/code&gt; collection in the &lt;code&gt;&amp;quot;my_blog&amp;quot;&lt;/code&gt; database hosted at &lt;code&gt;&amp;quot;mongodb://localhost:27017&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re planning on writing multi-threaded applications with Mangrove, be sure to carefully read the warning &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/#linking-with-the-database&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;saving-objects&#34;&gt;Saving Objects&lt;/h2&gt;
+
+&lt;p&gt;Now that you&amp;rsquo;ve set up the model and registered it with a collection, you can start interacting with the database. The simplest way to do this is to create instances of the object and call the save() method. The following very simple function will save a blog entry to the database.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;void newEntry(std::string title, std::string author, std::string content) { 
+    BlogEntry entry{title, author, content,
+                    std::chrono::system_clock::now()};
+    entry.save();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This particular function doesn&amp;rsquo;t do anything with the object after saving it to the database, but you are able to modify the &lt;code&gt;entry&lt;/code&gt; object and call save() again to modify the object and save the changes in the database.&lt;/p&gt;
+
+&lt;h2 id=&#34;querying-objects&#34;&gt;Querying Objects&lt;/h2&gt;
+
+&lt;p&gt;Querying objects in Mangrove is just as easy as saving them. When you make &lt;code&gt;BlogEntry&lt;/code&gt; a &lt;strong&gt;model&lt;/strong&gt;, you gave it the static methods &lt;code&gt;find()&lt;/code&gt; and &lt;code&gt;findOne()&lt;/code&gt;, which have very similar semantics to 
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/method/db.collection.find/&#34;&gt;their &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ 
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/method/db.collection.findOne/&#34;&gt;equivalents &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ in the mongo shell.&lt;/p&gt;
+
+&lt;p&gt;The following function prints out the titles of every blog entry by a particular author using a &lt;code&gt;find()&lt;/code&gt; query:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;iostream&amp;gt;
+
+#include &amp;lt;mangrove/query_builder.hpp&amp;gt;
+
+void printTitlesBy(std::string author) {
+    std::cout &amp;lt;&amp;lt; &amp;quot;All blog entries by &amp;quot; &amp;lt;&amp;lt; author &amp;lt;&amp;lt; &amp;quot;:\n&amp;quot;;
+    for (auto entry : BlogEntry::find(MANGROVE_KEY(BlogEntry::author) == author)) {
+        std::cout &amp;lt;&amp;lt; entry.title &amp;lt;&amp;lt; &amp;quot;\n&amp;quot;;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There&amp;rsquo;s a lot happening here, but it&amp;rsquo;s very simple once you understand what&amp;rsquo;s going on.&lt;/p&gt;
+
+&lt;p&gt;Inside the parameter list for &lt;code&gt;BlogEntry::find()&lt;/code&gt;, you&amp;rsquo;ll see &lt;code&gt;MANGROVE_KEY(BlogEntry::author) == author&lt;/code&gt;. In Mangrove, you can build MongoDB queries using the standard C++ comparison and logical operators. This is discussed more in &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/3-queries&#34;&gt;Chapter 3&lt;/a&gt;, but the main thing you have to remember is to wrap the value you are comparing in a &lt;code&gt;MANGROVE_KEY&lt;/code&gt; macro.&lt;/p&gt;
+
+&lt;p&gt;The return type of &lt;code&gt;BlogEntry::find()&lt;/code&gt; is an iterator of &lt;code&gt;BlogEntry&lt;/code&gt;s. This makes it very easy to work with the often large cursors of objects that are returned from MongoDB queries. In this case, we are interacting with the cursor via the C++11 
+&lt;a target=&#34;_blank&#34; href=&#34;http://en.cppreference.com/w/cpp/language/range-for&#34;&gt;range-based for loop &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+.&lt;/p&gt;
+
+&lt;div class=&#34;notices info&#34; &gt;&lt;p&gt;The iterator returned by the model&amp;rsquo;s &lt;code&gt;find()&lt;/code&gt; method has the semantics of a MongoDB &lt;strong&gt;cursor&lt;/strong&gt;. This is useful for large queries where you want to periodically read from the database as you&amp;rsquo;re reading from the query results, but this also gives the cursors some interesting behavior such as inactive cursor closure and the lack of cursor isolation. If you want to learn more about these behaviors, check out
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/v3.2/tutorial/iterate-a-cursor/#cursor-behaviors&#34;&gt;this page &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ in the MongoDB manual.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;bulk-updates&#34;&gt;Bulk Updates&lt;/h2&gt;
+
+&lt;p&gt;TODO&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

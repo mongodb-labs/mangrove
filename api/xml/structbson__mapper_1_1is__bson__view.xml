@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structbson__mapper_1_1is__bson__view" kind="struct" language="C++" prot="public">
+    <compoundname>bson_mapper::is_bson_view</compoundname>
+    <includes refid="bson__archiver_8hpp" local="no">bson_archiver.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class BsonT</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structbson__mapper_1_1is__bson__view_1aca07d7b17481c21be0087eb3ca754f5f" prot="public" static="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto bson_mapper::is_bson_view&lt; BsonT &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <initializer>= std::is_same&lt;BsonT, bsoncxx::types::b_utf8&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_document&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_array&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_binary&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_regex&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_dbpointer&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_code&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_symbol&gt;::value ||
+                                  std::is_same&lt;BsonT, bsoncxx::types::b_codewscope&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/bson_mapper/bson_archiver.hpp" line="135" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A templated struct containing a bool value that specifies whether the provided template parameter is a BSON type that contains a view. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/bson_mapper/bson_archiver.hpp" line="134" column="1" bodyfile="src/bson_mapper/bson_archiver.hpp" bodystart="134" bodyend="144"/>
+    <listofallmembers>
+      <member refid="structbson__mapper_1_1is__bson__view_1aca07d7b17481c21be0087eb3ca754f5f" prot="public" virt="non-virtual"><scope>bson_mapper::is_bson_view</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

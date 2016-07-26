@@ -1,0 +1,16 @@
+/* background behind the logo*/
+#header {
+    background: #4ba749;
+    border-color: #449b45;
+}
+
+/* Background color of the menu */
+#sidebar {
+  background-color: #424242;
+}
+
+
+/* Background color of the menu, when clicked */
+#sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
+  background-color: #282828;
+}

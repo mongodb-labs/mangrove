@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2-models on Mangrove</title>
+    <link>http://mongodb.github.io/mongo-cxx-odm/2-models/</link>
+    <description>Recent content in 2-models on Mangrove</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://mongodb.github.io/mongo-cxx-odm/2-models/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Models</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/2-models/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/2-models/</guid>
+      <description>
+
+&lt;h3 id=&#34;chapter-2&#34;&gt;Chapter 2&lt;/h3&gt;
+
+&lt;h1 id=&#34;models&#34;&gt;Models&lt;/h1&gt;
+
+&lt;p&gt;Learn how to make the most of Mangrove &lt;strong&gt;models&lt;/strong&gt;, which allow you to map C++ classes to MongoDB collections.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/</guid>
+      <description>
+
+&lt;p&gt;A &lt;strong&gt;model&lt;/strong&gt; is the fundamental way you access data in MongoDB with Mangrove. Models lets you treat C++ classes as objects you can store in the database. When you make a class a model, it is given the semantics of a MongoDB collection, and has access to all of 
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-odm/api/html/classmongo__odm_1_1model.html&#34;&gt;these static methods &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+.&lt;/p&gt;
+
+&lt;h2 id=&#34;creating-a-model&#34;&gt;Creating a Model&lt;/h2&gt;
+
+&lt;p&gt;You can turn any &lt;em&gt;default-constructible&lt;/em&gt; C++ class into a model by having it inherit publicly from the &lt;code&gt;mangrove::model&amp;lt;T&amp;gt;&lt;/code&gt; base class, where &lt;code&gt;T&lt;/code&gt; is type of the class you are making a model.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Example of inheritance required for model
+class Message : mangrove::model&amp;lt;Message&amp;gt; {
+    bsoncxx::oid author_id;
+    std::string content;
+    std::chrono::system_clock::time_point time_sent;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This inheritance gives the inheriting class access to the interface specified 
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-odm/api/html/classmongo__odm_1_1model.html&#34;&gt;here &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+. The inheritance also gives you access to the &lt;code&gt;_id&lt;/code&gt; variable. Since every document stored in a MongoDB database contains an &lt;code&gt;_id&lt;/code&gt;, the model stores one automatically for you. By default this of type 
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-driver/classbsoncxx_1_1oid.html&#34;&gt;&lt;code&gt;bsoncxx::oid&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+, but you can customize it. We&amp;rsquo;ll discuss how to do this in a &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id&#34;&gt;later section&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;specifying-fields-to-serialize&#34;&gt;Specifying Fields to Serialize&lt;/h2&gt;
+
+&lt;p&gt;Before you can use a model, you must specify which of its fields you want to be included when an instance of a model is serialized and saved to the database. You can do this with the &lt;code&gt;MANGROVE_MAKE_KEYS_MODEL&lt;/code&gt; macro.&lt;/p&gt;
+
+&lt;p&gt;This macro accepts the class you are registering as a model, as well as a variadic list of the fields you want to include, wrapped as name-value pairs (&lt;strong&gt;NVPs&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Example of registering fields in model
+class Message : mangrove::model&amp;lt;Message&amp;gt; {
+    bsoncxx::oid author_id;
+    std::string content;
+    std::chrono::system_clock::time_point time_sent;
+    int dont_include_me;
+
+    MANGROVE_MAKE_KEYS_MODEL(Message,
+                             MANGROVE_NVP(author_id),
+                             MANGROVE_NVP(content),
+                             MANGROVE_NVP(time_sent))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;MANGROVE_NVP&lt;/code&gt; macro specifies that you want its argument serialized in such a way that its &lt;strong&gt;name&lt;/strong&gt; or &lt;strong&gt;key&lt;/strong&gt; is the name of the variable. For example, in the above code sample, the resulting saved BSON document would look something like the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+    &amp;quot;_id&amp;quot; : ObjectId(&amp;quot;576d7238e249391db3271e31&amp;quot;),
+    &amp;quot;author_id&amp;quot; : ObjectId(&amp;quot;576d5145e2493917691144f1&amp;quot;),
+    &amp;quot;content&amp;quot; : &amp;quot;Hey, did you see how cool Mangrove is?!&amp;quot;,
+    &amp;quot;time_sent&amp;quot; : ISODate(&amp;quot;2016-07-01T14:42:06.018Z&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;notices info&#34; &gt;&lt;p&gt;While there is no limitation to the complexity of the classes you can turn into a model, there are limitations regarding which types are serializable and can be included in the &lt;code&gt;MANGROVE_MAKE_KEYS_MODEL&lt;/code&gt; macro. These limitations are discussed in the &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types&#34;&gt;next section&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;If you don&amp;rsquo;t want the name of the field to be exactly the same as the name of your variable, you can use the macro &lt;code&gt;MANGROVE_CUSTOM_NVP&lt;/code&gt; to specify a custom name for the resulting BSON element of a particular field.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Example of registering fields in model with custom names
+class Message : mangrove::model&amp;lt;Message&amp;gt; {
+    bsoncxx::oid author_id;
+    std::string content;
+    std::chrono::system_clock::time_point time_sent;
+    int dont_include_me;
+
+    MANGROVE_MAKE_KEYS_MODEL(Message,
+                             MANGROVE_CUSTOM_NVP(&amp;quot;a_id&amp;quot;, author_id),
+                             MANGROVE_CUSTOM_NVP(&amp;quot;c&amp;quot;, content),
+                             MANGROVE_NVP(time_sent))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the above example, the resulting BSON documents would now look like the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+    &amp;quot;_id&amp;quot; : ObjectId(&amp;quot;576d7238e249391db3271e31&amp;quot;),
+    &amp;quot;a_id&amp;quot; : ObjectId(&amp;quot;576d5145e2493917691144f1&amp;quot;),
+    &amp;quot;c&amp;quot; : &amp;quot;Hey, did you see how cool Mangrove is?!&amp;quot;,
+    &amp;quot;time_sent&amp;quot; : ISODate(&amp;quot;2016-07-01T14:42:06.018Z&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;notices tip&#34; &gt;&lt;p&gt;If you have extremely large collections and want to save some disk space and bandwidth, you can use custom NVPs to shorten the names of fields associated with large variable names to a single-letter.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;h3 id=&#34;public-vs-private-members&#34;&gt;Public vs. Private Members&lt;/h3&gt;
+
+&lt;p&gt;In Mangrove, you can serialize both public and private class members. The only caveat with this is that you won&amp;rsquo;t be able to access private members in &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/3-queries&#34;&gt;queries&lt;/a&gt; or &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/4-updates&#34;&gt;updates&lt;/a&gt; that you build outside of the class. If you want to keep your models encapsulated, build all of the queries and updates you&amp;rsquo;ll be using inside your model&amp;rsquo;s member functions.&lt;/p&gt;
+
+&lt;h2 id=&#34;linking-with-the-database&#34;&gt;Linking With the Database&lt;/h2&gt;
+
+&lt;p&gt;The last step you must take before you can use a model is to register it with a MongoDB database. Mangrove itself doesn&amp;rsquo;t handle the connection to the database, that responsibility is held by the C++ Driver, which provides the &lt;code&gt;mongocxx::client&lt;/code&gt; class. You can learn more about that class in the C++ Driver&amp;rsquo;s 
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-driver/classmongocxx_1_1client.html&#34;&gt;API Documentation &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+.&lt;/p&gt;
+
+&lt;p&gt;In the following example, we&amp;rsquo;ll use a connection to the database hosted at &lt;code&gt;localhost&lt;/code&gt; on port 27017.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;mongocxx/client.hpp&amp;gt;
+#include &amp;lt;mongocxx/instance.hpp&amp;gt;
+
+int main() {
+    mongocxx::instance{};
+    mongocxx::client 
+        conn{mongocxx::uri{&amp;quot;mongodb://localhost:27017&amp;quot;};
+
+    Message::setCollection(conn[&amp;quot;testdb&amp;quot;][&amp;quot;messages&amp;quot;]);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All models have a static function &lt;code&gt;setCollection()&lt;/code&gt; that lets you specify in which collection to save and retrieve instances of that particular model. It accepts a &lt;code&gt;mongocxx::collection&lt;/code&gt;, which is accessible via the &lt;code&gt;mongocxx::client&lt;/code&gt;. The code above sets &lt;code&gt;Message&lt;/code&gt;&amp;rsquo;s collection to the &lt;code&gt;&amp;quot;entries&amp;quot;&lt;/code&gt; collection in the &lt;code&gt;&amp;quot;my_blog&amp;quot;&lt;/code&gt; database hosted at &lt;code&gt;&amp;quot;mongodb://localhost:27017&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&#34;notices warning&#34; &gt;&lt;p&gt;The &lt;code&gt;mongocxx::client&lt;/code&gt; class is &lt;em&gt;not thread-safe&lt;/em&gt;. To get around this, the &lt;code&gt;mangrove::model&lt;/code&gt; class provides thread-local storage for the collection associated with a particular model. You can make your applications thread-safe by calling the model&amp;rsquo;s &lt;code&gt;setCollection()&lt;/code&gt; function on each thread with a collection from a new &lt;code&gt;mongocxx::client&lt;/code&gt;. You can read more about the C++ Driver&amp;rsquo;s thread safety
+&lt;a target=&#34;_blank&#34; href=&#34;https://github.com/mongodb/mongo-cxx-driver/wiki/Library-Thread-Safety&#34;&gt;here &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;active-record-manipulation&#34;&gt;Active Record Manipulation&lt;/h2&gt;
+
+&lt;p&gt;The simplest way to add, modify, and remove objects of a particular model is through the 
+&lt;a target=&#34;_blank&#34; href=&#34;https://en.wikipedia.org/wiki/Active_record_pattern&#34;&gt;active record pattern &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+. When you create an instance of a model class, that instance can be saved to the database with its &lt;code&gt;save()&lt;/code&gt; method, and it can also be removed from the database with its &lt;code&gt;remove()&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;mongocxx/client.hpp&amp;gt;
+#include &amp;lt;mongocxx/instance.hpp&amp;gt;
+
+int main() {
+    mongocxx::instance{};
+    mongocxx::client 
+        conn{mongocxx::uri{&amp;quot;mongodb://localhost:27017&amp;quot;};
+
+    Message::setCollection(conn[&amp;quot;testdb&amp;quot;][&amp;quot;messages&amp;quot;]);
+
+    Message msg{bsoncxx::oid(&amp;quot;576d5145e2493917691144f1&amp;quot;),
+                &amp;quot;Hey, did you see how cool Mangrove is?!&amp;quot;.
+                std::chrono::system_clock::now(), 42};
+
+    // Inserts the message to the database.
+    msg.save();
+
+    // Updates the message in the database.
+    msg.content = &amp;quot;I edited my message!&amp;quot;;
+    msg.save();
+
+    // Removes the message from the database.
+    msg.remove();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This might not seem very interesting since we&amp;rsquo;ve only used the active record model on objects have been created within the program. However, the &lt;code&gt;save()&lt;/code&gt; and &lt;code&gt;remove()&lt;/code&gt; methods are also available with model objects that get returned from queries. We&amp;rsquo;ll go more in depth about queries in Mangrove in the &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/3-queries&#34;&gt;next chapter&lt;/a&gt;, but the following example demonstrates how we can use the active record model to delete every message from a particular user:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;for(auto msg : Message::find(MANGROVE_KEY(Message::author_id) == bsoncxx::oid(&amp;quot;576d5145e2493917691144f1&amp;quot;))) {
+    msg.remove();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;notices note&#34; &gt;&lt;p&gt;While the above code works, a more efficient way of achieving the same result is through a bulk delete with the model&amp;rsquo;s &lt;code&gt;deleteMany()&lt;/code&gt; method.&lt;/p&gt;
+&lt;/div&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Allowed Types</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/</guid>
+      <description>
+
+&lt;p&gt;As we discussed in the previous section, there are a limited number of types that you can save and load, or &lt;strong&gt;serialize&lt;/strong&gt; in the database within your models. Here we&amp;rsquo;ll enumerate every type that you can include in the &lt;code&gt;MANGROVE_MAKE_KEYS_MODEL&lt;/code&gt; macro.&lt;/p&gt;
+
+&lt;h2 id=&#34;primitive-types&#34;&gt;Primitive Types&lt;/h2&gt;
+
+&lt;p&gt;Mangrove officially supports the following four primitive types:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;int32_t&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;int64_t&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;double&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;notices warning&#34; &gt;&lt;p&gt;Mangrove will also accept other primitive types such as &lt;code&gt;int&lt;/code&gt;, &lt;code&gt;long&lt;/code&gt;, or &lt;code&gt;unsigned int&lt;/code&gt;, but we highly recommend that you go with one of the four supported types. Other types will be implicitly cast to one of the four supported types, which might cause unpredictable behavior that differs from platform to platform.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;strings&#34;&gt;Strings&lt;/h2&gt;
+
+&lt;p&gt;Mangrove supports the serialization of &lt;code&gt;std::string&lt;/code&gt;. If you prefer to use string &amp;ldquo;views&amp;rdquo; that minimize the number of copies your program makes, check out the &lt;code&gt;bsoncxx::types::b_utf8&lt;/code&gt; type discussed in &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/#bson-view-types&#34;&gt;BSON &amp;ldquo;View&amp;rdquo; Types&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;time-points&#34;&gt;Time Points&lt;/h2&gt;
+
+&lt;p&gt;Mangrove supports &lt;code&gt;std::chrono::system_clock::time_point&lt;/code&gt;. This type is preferred for representing a point in time. If your program uses the C-style &lt;code&gt;std::time_t&lt;/code&gt; type, we recommend that you use the &lt;code&gt;to_time_t()&lt;/code&gt; and &lt;code&gt;from_time_t()&lt;/code&gt; functions discussed in 
+&lt;a target=&#34;_blank&#34; href=&#34;http://en.cppreference.com/w/cpp/chrono/system_clock&#34;&gt;the documentation for &lt;code&gt;std::chrono::system_clock&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ so that your class can support &lt;code&gt;time_point&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;containers&#34;&gt;Containers&lt;/h2&gt;
+
+&lt;p&gt;Mangrove supports a number of C++ STL Containers as serializable. The following containers will work as long as the type they contain is one of the allowed types discussed on this page.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;std::vector&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;std::set&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;std::unordered_set&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;std::list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;std::forward_list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;std::deque&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;std::valarray&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These are all serialized in the database as BSON arrays.&lt;/p&gt;
+
+&lt;h2 id=&#34;embedded-documents&#34;&gt;Embedded Documents&lt;/h2&gt;
+
+&lt;p&gt;MongoDB documents often contain embedded documents, which most likely don&amp;rsquo;t logically map to a common C++ type. Fortunately, Mangrove allows you to create classes that represent subdocuments that may be present in a normal document.&lt;/p&gt;
+
+&lt;p&gt;Creating a serializable subclass is straightfoward, and very similar to creating a model. Simply take your class, and instead of inheriting from &lt;code&gt;mangrove::model&lt;/code&gt; and calling &lt;code&gt;MANGROVE_MAKE_KEYS_MODEL&lt;/code&gt;, just call &lt;code&gt;MANGROVE_MAKE_KEYS&lt;/code&gt; on the types you want serialized in the subdocument.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class ContactCard {
+    std::string description;
+    std::string address;
+    std::string phone;
+
+    MANGROVE_MAKE_KEYS(ContactCard,
+                       MANGROVE_NVP(description),
+                       MANGROVE_NVP(address),
+                       MANGROVE_NVP(phone))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With the above class definition, you can now have a model like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class Employee : public mmangrove::model&amp;lt;Employee&amp;gt; {
+    std::string name;
+    double hourly_wage;
+    ContactCard contact_info;
+
+    MANGROVE_MAKE_KEYS_MODEL(Employee,
+                             MANGROVE_NVP(name),
+                             MANGROVE_NVP(hourly_wage),
+                             MANGROVE_NVP(contact_info))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can even include subdocuments in an STL container like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class Employee : public mmangrove::model&amp;lt;Employee&amp;gt; {
+    std::string name;
+    double hourly_wage;
+    std::vector&amp;lt;ContactCard&amp;gt; contact_info;
+
+    MANGROVE_MAKE_KEYS_MODEL(Employee,
+                             MANGROVE_NVP(name),
+                             MANGROVE_NVP(hourly_wage),
+                             MANGROVE_NVP(contact_info))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And the resulting document would look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+    &amp;quot;_id&amp;quot; : ObjectId(&amp;quot;578fcf796119b016e0a3b079&amp;quot;),
+    &amp;quot;name&amp;quot; : &amp;quot;Jenny&amp;quot;,
+    &amp;quot;hourly_wage&amp;quot; : 19.81,
+    &amp;quot;contact_info&amp;quot; : [
+        {
+            &amp;quot;type&amp;quot; : &amp;quot;home&amp;quot;,
+            &amp;quot;phone&amp;quot; : &amp;quot;212-867-5309&amp;quot;,
+            &amp;quot;address&amp;quot; : &amp;quot;247 E 26 St, New York, NY&amp;quot;
+        },
+        {
+            &amp;quot;type&amp;quot; : &amp;quot;work&amp;quot;,
+            &amp;quot;phone&amp;quot; : &amp;quot;555-123-4567&amp;quot;,
+            &amp;quot;address&amp;quot; : &amp;quot;570 Second Ave, New York, NY&amp;quot;
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The only restriction regarding serializable subdocuments is that they must be &lt;em&gt;default constructible&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;optionals&#34;&gt;Optionals&lt;/h2&gt;
+
+&lt;p&gt;Although 
+&lt;a target=&#34;_blank&#34; href=&#34;http://en.cppreference.com/w/cpp/utility/optional/optional&#34;&gt;&lt;code&gt;std::optional&amp;lt;T&amp;gt;&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ won&amp;rsquo;t be available until C++17, Mangrove offers it as a serializable type in the form of &lt;code&gt;bson_mapper::stdx::optional&amp;lt;T&amp;gt;&lt;/code&gt;. &lt;code&gt;optional&lt;/code&gt; is a powerful new C++ type that specifies a value that may or may not exist.&lt;/p&gt;
+
+&lt;p&gt;Mangrove offers support for optional types where &lt;code&gt;T&lt;/code&gt; is a type discussed on this page. This gives Mangrove support for dynamic, flexible schemas, which will be discussed in a &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/dynamic-schemas&#34;&gt;later section&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;objectids&#34;&gt;ObjectIDs&lt;/h2&gt;
+
+&lt;p&gt;One of the fundamental types in MongoDB is the 
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/bson-types/#objectid&#34;&gt;ObjectID &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+. ObjectIDs are the default type used for the &lt;code&gt;_id&lt;/code&gt; field in documents, so you may want to use them in your project.&lt;/p&gt;
+
+&lt;p&gt;The MongoDB C++ Driver offers the 
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-driver/classbsoncxx_1_1oid.html&#34;&gt;&lt;code&gt;bsoncxx::oid&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+, which is a simple class that can be used to create and compare ObjectIDs. Mangrove offers serialization support for &lt;code&gt;bsoncxx::oid&lt;/code&gt; so you can include them in your models as well.&lt;/p&gt;
+
+&lt;h2 id=&#34;bson-types&#34;&gt;BSON Types&lt;/h2&gt;
+
+&lt;p&gt;The MongoDB C++ Driver offers a library called &lt;code&gt;libbsoncxx&lt;/code&gt; that contains a set of utilities for using and manipulating BSON in C++. One of these utilities is a set of C++ types that cover every supported type in the 
+&lt;a target=&#34;_blank&#34; href=&#34;http://bsonspec.org/spec.html&#34;&gt;BSON Specification &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+.&lt;/p&gt;
+
+&lt;div class=&#34;notices warning&#34; &gt;&lt;p&gt;While the following types are all technically supported, we do not recommend using them if you can accomplish the same result with one of types discussed in the other sections. Many of the following types are dangerous and only used internally by MongoDB.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;These types, which are all defined in 
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-driver/types_8hpp_source.html&#34;&gt;&lt;code&gt;bsoncxx/types.hpp&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+, are all supported as serializable by Mangrove.&lt;/p&gt;
+
+&lt;p&gt;The following types, which are in the &lt;code&gt;bsoncxx::types::&lt;/code&gt; namespace are supported without any further configuration:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;b_double&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_bool&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_date&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_int32&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_int64&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_undefined&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_null&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_timestamp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_minkey&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_maxkey&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_oid&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Not to be confused with the &lt;code&gt;bsoncxx::oid&lt;/code&gt; discussed in the previous section.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;bson-view-types&#34;&gt;BSON &amp;ldquo;View&amp;rdquo; Types&lt;/h3&gt;
+
+&lt;p&gt;Some of the types defined in the &lt;code&gt;bsoncxx::types::&lt;/code&gt; namespace are non-owning &amp;ldquo;views&amp;rdquo; to their underlying data, meaning that they can be dangerous if the address they pointing to is freed from memory. The following types are BSON &amp;ldquo;views&amp;rdquo;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;b_utf8&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_document&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_array&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_binary&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_regex&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_dbpointer&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_code&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_codewscope&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;b_symbol&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mangrove only supports these types if, in the class containing them, you inherit from &lt;code&gt;bson_mapper::UnderlyingBSONDataBase&lt;/code&gt;. When data is loaded from the database and deserialized into this class, 
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-odm/api/html/classbson__mapper_1_1UnderlyingBSONDataBase.html&#34;&gt;&lt;code&gt;UnderlyingBSONDataBase&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ holds a &lt;code&gt;std::shared_ptr&lt;/code&gt; to the original BSON data from which it was deserialized. This ensures that any BSON view types in the class will never point to deallocated memory after being read from the database.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Custom _id Type</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id/</guid>
+      <description>
+
+&lt;p&gt;As we mentioned in the chapter&amp;rsquo;s &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/introduction&#34;&gt;Introduction&lt;/a&gt;, Mangrove &lt;strong&gt;models&lt;/strong&gt; automatically include an &lt;code&gt;_id&lt;/code&gt; field that is automatically an ObjectID of type &lt;code&gt;bsoncxx::oid&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;There are various reasons that you might not want to use an ObjectId for the &lt;code&gt;_id&lt;/code&gt; field. Therefore, Mangrove supports the customization of the &lt;code&gt;_id&lt;/code&gt; type via a second template parameter to &lt;code&gt;mangrove::model&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Below is an exampe of a model that uses std::string as an &lt;code&gt;_id&lt;/code&gt; instead of an ObjectID:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class User : public mangrove::model&amp;lt;User, std::string&amp;gt; {
+	std::string username;
+	std::string password_hash;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The resulting BSON document may look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+	&amp;quot;_id&amp;quot; : &amp;quot;alan.turing@mongodb.com&amp;quot;,
+	&amp;quot;username&amp;quot; : &amp;quot;aturing&amp;quot;,
+	&amp;quot;password_hash&amp;quot; :
+		 &amp;quot;e9f5bd2bae1c70770ff8c6e6cf2d7b76&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;supported-types&#34;&gt;Supported Types&lt;/h2&gt;
+
+&lt;p&gt;Mangrove supports any type discussed in &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types&#34;&gt;Allowed Types&lt;/a&gt; as &lt;code&gt;_id&lt;/code&gt;&amp;rsquo;s type, except for container types, &lt;code&gt;b_regex&lt;/code&gt;, and &lt;code&gt;b_array&lt;/code&gt;. This means that you can even use an embedded document as your &lt;code&gt;_id&lt;/code&gt; type!&lt;/p&gt;
+
+&lt;p&gt;You can read 
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/core/document/#document-id-field&#34;&gt;this article &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ in the MongoDB Manual to learn more about the exact limitations of the &lt;code&gt;_id&lt;/code&gt; field.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Dynamic Schemas</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/2-models/dynamic-schemas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/2-models/dynamic-schemas/</guid>
+      <description>&lt;p&gt;One of MongoDB&amp;rsquo;s most attractive features is its ability to store &amp;ldquo;unstructured&amp;rdquo; data. While this seems irrelevant in the context of an ODM like Mangrove, we can actually take advantage of this.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s say that you are storing a collection of web video metadata. You might want to store the number of views, the length of the video in seconds, and the web URL to access the video. If the video is hosted on YouTube, you may also want to store the name of the channel it&amp;rsquo;s hosted on. MongoDB lets you do this by having a &amp;ldquo;youtube_channel&amp;rdquo; field that only exists in some documents.&lt;/p&gt;
+
+&lt;p&gt;You can accomplish this in Mangrove with &lt;code&gt;optional&lt;/code&gt; fields.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;using bson_mapper::stdx::optional;
+
+class VideoMetadata : public mangrove::model&amp;lt;VideoMetadata&amp;gt; {
+	int64_t view_count;
+	int32_t video_length;
+
+	std::string url;
+	optional&amp;lt;std::string&amp;gt; youtube_channel;
+
+	MANGROVE_MAKE_KEYS_MODEL(VideoMetadata,
+                             MANGROVE_NVP(view_count),
+                             MANGROVE_NVP(video_length),
+                             MANGROVE_NVP(url),
+                             MANGROVE_NVP(youtube_channel))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;An &lt;code&gt;optional&amp;lt;T&amp;gt;&lt;/code&gt; in C++ either contains a value of type &lt;code&gt;T&lt;/code&gt;, or contains nothing at all. When the optional is holding a type, Mangrove will serialize it normally. When it isn&amp;rsquo;t, Mangrove will exclude it entirely.&lt;/p&gt;
+
+&lt;p&gt;Here are two sample documents that could be produced by the above model:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+	&amp;quot;view_count&amp;quot; : 224651625,
+	&amp;quot;video_length&amp;quot; : 212,
+	&amp;quot;url&amp;quot; : &amp;quot;https://www.youtube.com/watch?v=dQw4w9WgXcQ&amp;quot;,
+	&amp;quot;youtube_channel&amp;quot; : &amp;quot;RickAstleyVEVO&amp;quot;
+}
+
+{
+	&amp;quot;view_count&amp;quot; : 305420,
+	&amp;quot;video_length&amp;quot; : 193,
+	&amp;quot;url&amp;quot; : &amp;quot;https://vimeo.com/53520224&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can have as many optional types as you want in a model (and you can even have only optionals) so that your model can be as flexible as your data.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

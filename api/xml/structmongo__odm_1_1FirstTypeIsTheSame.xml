@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1FirstTypeIsTheSame" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::FirstTypeIsTheSame</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">false_type</basecompoundref>
+    <includes refid="model_8hpp" local="no">model.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename...</type>
+        <declname>Ts</declname>
+        <defname>Ts</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>Helper type trait widget that helps properly forward arguments to _id constructor. </para>    </briefdescription>
+    <detaileddescription>
+<para>FirstTypeIsTheSame&lt;T1, T2, ...&gt;::value will be true when T1 and T2 are of the same type, and false otherwise. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="44">
+        <label>std::false_type</label>
+      </node>
+      <node id="43">
+        <label>mongo_odm::FirstTypeIsTheSame&lt; Ts &gt;</label>
+        <link refid="structmongo__odm_1_1FirstTypeIsTheSame"/>
+        <childnode refid="44" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="46">
+        <label>std::false_type</label>
+      </node>
+      <node id="45">
+        <label>mongo_odm::FirstTypeIsTheSame&lt; Ts &gt;</label>
+        <link refid="structmongo__odm_1_1FirstTypeIsTheSame"/>
+        <childnode refid="46" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/model.hpp" line="33" column="1" bodyfile="src/mongo_odm/model.hpp" bodystart="33" bodyend="33"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

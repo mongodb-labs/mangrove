@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>3-queries on Mangrove</title>
+    <link>http://mongodb.github.io/mongo-cxx-odm/3-queries/</link>
+    <description>Recent content in 3-queries on Mangrove</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://mongodb.github.io/mongo-cxx-odm/3-queries/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Queries</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/3-queries/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/3-queries/</guid>
+      <description>
+
+&lt;h3 id=&#34;chapter-3&#34;&gt;Chapter 3&lt;/h3&gt;
+
+&lt;h1 id=&#34;queries&#34;&gt;Queries&lt;/h1&gt;
+
+&lt;p&gt;Learn about the rich &lt;strong&gt;query&lt;/strong&gt; system supported by Mangrove&amp;rsquo;s &lt;strong&gt;models&lt;/strong&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
