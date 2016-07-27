@@ -19,21 +19,11 @@
 #include <bsoncxx/oid.hpp>
 #include <mongo_odm/config/prelude.hpp>
 #include <mongo_odm/odm_collection.hpp>
+#include <mongo_odm/util.hpp>
 #include <mongocxx/collection.hpp>
 
 namespace mongo_odm {
 MONGO_ODM_INLINE_NAMESPACE_BEGIN
-
-/**
- * Helper type trait widget that helps properly forward arguments to _id constructor.
- * FirstTypeIsTheSame<T1, T2, ...>::value will be true when T1 and T2 are of the same type, and
- * false otherwise.
- */
-template <typename... Ts>
-struct FirstTypeIsTheSame : public std::false_type {};
-
-template <typename T, typename T2, typename... Ts>
-struct FirstTypeIsTheSame<T, T2, Ts...> : public std::is_same<T, std::decay_t<T2>> {};
 
 template <typename T, typename IdType = bsoncxx::oid>
 class model {
@@ -56,11 +46,33 @@ class model {
      * @param ts
      *    The variadic pack of arguments to be forwarded to the constructor of IdType.
      */
-    template <typename... Ts, typename = std::enable_if_t<!FirstTypeIsTheSame<model, Ts...>::value>>
+    template <typename... Ts,
+              typename = std::enable_if_t<!first_two_types_are_same<model, Ts...>::value>>
     model(Ts&&... ts) : _id(std::forward<Ts>(ts)...) {
     }
 
     model() = default;
+
+    /**
+     * Counts the number of documents matching the provided filter.
+     *
+     *  @param filter
+     *    The filter that documents must match in order to be counted.
+     *    If a filter is not provided, count() will count the number
+     *    of documents in the entire collection.
+     *  @param options
+     *    Optional arguments, see mongocxx::options::count.
+     *
+     *  @return The count of the documents that matched the filter.
+     *  @throws mongocxx::exception::query if the count operation fails.
+     *
+     *  @see https://docs.mongodb.com/manual/reference/command/count/
+     */
+    static std::int64_t count(
+        bsoncxx::document::view_or_value filter = bsoncxx::document::view_or_value{},
+        const mongocxx::options::count& options = mongocxx::options::count()) {
+        return _coll.collection().count(filter, options);
+    }
 
     /**
      * Returns a copy of the underlying collection.
@@ -73,6 +85,44 @@ class model {
     }
 
     /**
+     *  Deletes all matching documents from the collection.
+     *
+     *  @param filter
+     *    Document view representing the data to be deleted.
+     *  @param options
+     *    Optional arguments, see mongocxx::options::delete_options.
+     *
+     *  @return The optional result of performing the deletion, a mongocxx::result::delete_result.
+     *  @throws mongocxx::exception::write if the delete fails.
+     *
+     *  @see http://docs.mongodb.com/manual/reference/command/delete/
+     */
+    static mongocxx::stdx::optional<mongocxx::result::delete_result> delete_many(
+        bsoncxx::document::view_or_value filter,
+        const mongocxx::options::delete_options& options = mongocxx::options::delete_options()) {
+        return _coll.collection().delete_many(filter, options);
+    }
+
+    /**
+     *  Deletes a single matching document from the collection.
+     *
+     *  @param filter
+     *    Document view representing the data to be deleted.
+     *  @param options
+     *    Optional arguments, see mongocxx::options::delete_options.
+     *
+     *  @return The optional result of performing the deletion, a mongocxx::result::delete_result.
+     *  @throws mongocxx::exception::write if the delete fails.
+     *
+     *  @see http://docs.mongodb.com/manual/reference/command/delete/
+     */
+    static mongocxx::stdx::optional<mongocxx::result::delete_result> delete_one(
+        bsoncxx::document::view_or_value filter,
+        const mongocxx::options::delete_options& options = mongocxx::options::delete_options()) {
+        return _coll.collection().delete_one(filter, options);
+    }
+
+    /**
      * Drops the underlying collection and all its contained documents from the database.
      *
      * @throws exception::operation if the operation fails.
@@ -81,6 +131,139 @@ class model {
      */
     static void drop() {
         _coll.collection().drop();
+    }
+
+    /**
+     * Finds the documents in this collection which match the provided filter.
+     *
+     * @param filter
+     *   Document view representing a document that should match the query.
+     * @param options
+     *   Optional arguments, see mongocxx::options::find
+     *
+     * @return Cursor with deserialized objects from the collection.
+     * @throws
+     *   If the find failed, the returned cursor will throw mongocxx::exception::query when it
+     *   is iterated.
+     *
+     * @see https://docs.mongodb.com/manual/tutorial/query-documents/
+     */
+    static deserializing_cursor<T> find(
+        bsoncxx::document::view_or_value filter,
+        const mongocxx::options::find& options = mongocxx::options::find()) {
+        return _coll.find(std::move(filter), options);
+    }
+
+    /**
+     * Finds a single document in this collection that matches the provided filter.
+     *
+     * @param filter
+     *   Document view representing a document that should match the query.
+     * @param options
+     *   Optional arguments, see mongocxx::options::find
+     *
+     * @return An optional object that matched the filter.
+     * @throws mongocxx::exception::query if the operation fails.
+     *
+     * @see https://docs.mongodb.com/manual/tutorial/query-documents/
+     */
+    static mongocxx::stdx::optional<T> find_one(
+        bsoncxx::document::view_or_value filter,
+        const mongocxx::options::find& options = mongocxx::options::find()) {
+        return _coll.find_one(std::move(filter), options);
+    }
+
+    /**
+     *  Inserts multiple object of the model into the collection.
+     *
+     *  @warning This method uses the bulk insert command to execute the insertion as opposed to
+     *  the legacy OP_INSERT wire protocol message. As a result, using this method to insert
+     *  many documents on MongoDB < 2.6 will be slow.
+     *
+     *  @tparam containter_type
+     *    The container type. Must contain an iterator that yields objects of this model.
+     *
+     *  @param container
+     *    Container of model objects to insert.
+     *  @param options
+     *    Optional arguments, see mongocxx::options::insert.
+     *
+     *  @see https://docs.mongodb.com/manual/tutorial/insert-documents/
+     *
+     *  @return The result of attempting to performing the insert.
+     *  @throws mongocxx::exception::write when the operation fails.
+     */
+    template <typename container_type,
+              typename = std::enable_if_t<container_of_v<container_type, T>>>
+    static mongocxx::stdx::optional<mongocxx::result::insert_many> insert_many(
+        const container_type& container,
+        const mongocxx::options::insert& options = mongocxx::options::insert()) {
+        return insert_many(container.begin(), container.end(), options);
+    }
+
+    /**
+     *  Inserts multiple objects of the model into the collection.
+     *
+     *  @warning This method uses the bulk insert command to execute the insertion as opposed to
+     *  the legacy OP_INSERT wire protocol message. As a result, using this method to insert
+     *  many documents on MongoDB < 2.6 will be slow.
+     *
+     *  @tparam object_iterator_type
+     *    The iterator type. Must meet the requirements for the input iterator concept with the
+     *    model class as the value type.
+     *
+     *  @param begin
+     *    Iterator pointing to the first document to be inserted.
+     *  @param end
+     *    Iterator pointing to the end of the documents to be inserted.
+     *  @param options
+     *    Optional arguments, see mongocxx::options::insert.
+     *
+     *  @see https://docs.mongodb.com/manual/tutorial/insert-documents/
+     *
+     *  @return The result of attempting to performing the insert.
+     *  @throws mongocxx::exception::write if the operation fails.
+     *
+     */
+    template <typename object_iterator_type,
+              typename = std::enable_if_t<iterator_of_v<object_iterator_type, T>>>
+    static mongocxx::stdx::optional<mongocxx::result::insert_many> insert_many(
+        object_iterator_type begin, object_iterator_type end,
+        const mongocxx::options::insert& options = mongocxx::options::insert()) {
+        return _coll.insert_many(begin, end, options);
+    }
+
+    /**
+     *  Inserts a single object of the model into the collection.
+     *
+     *  @param obj
+     *    The object of the model to insert.
+     *  @param options
+     *    Optional arguments, see mongocxx::options::insert.
+     *
+     *  @see https://docs.mongodb.com/manual/tutorial/insert-documents/
+     *
+     *  @return The result of attempting to perform the insert.
+     *  @throws mongocxx::exception::write if the operation fails.
+     */
+    static mongocxx::stdx::optional<mongocxx::result::insert_one> insert_one(
+        T obj, const mongocxx::options::insert& options = mongocxx::options::insert()) {
+        return _coll.insert_one(obj, options);
+    }
+
+    /**
+     * Deletes this object from the underlying collection.
+     *
+     * In the terms of the CRUD specification, this uses deleteOne with the _id as the sole
+     * argument to the query filter.
+     *
+     * @see https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/
+     */
+    void remove() {
+        auto id_match_filter = bsoncxx::builder::stream::document{}
+                               << "_id" << this->_id << bsoncxx::builder::stream::finalize;
+
+        _coll.collection().delete_one(id_match_filter.view());
     }
 
     /**
@@ -129,58 +312,45 @@ class model {
     };
 
     /**
-     * Deletes this object from the underlying collection.
+     *  Updates multiple documents matching the provided filter in this collection.
      *
-     * In the terms of the CRUD specification, this uses deleteOne with the _id as the sole
-     * argument to the query filter.
+     *  @param filter
+     *    Document representing the match criteria.
+     *  @param update
+     *    Document representing the update to be applied to matching documents.
+     *  @param options
+     *    Optional arguments, see mongocxx::options::update.
      *
-     * @see https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/
+     *  @return The result of attempting to update multiple documents.
+     *  @throws exception::write if the update operation fails.
+     *
+     *  @see http://docs.mongodb.com/manual/reference/command/update/
      */
-    void remove() {
-        auto id_match_filter = bsoncxx::builder::stream::document{}
-                               << "_id" << this->_id << bsoncxx::builder::stream::finalize;
-
-        _coll.collection().delete_one(id_match_filter.view());
+    static mongocxx::stdx::optional<mongocxx::result::update> update_many(
+        bsoncxx::document::view_or_value filter, bsoncxx::document::view_or_value update,
+        const mongocxx::options::update& options = mongocxx::options::update()) {
+        return _coll.collection().update_many(filter, update, options);
     }
 
     /**
-     * Finds the documents in this collection which match the provided filter.
+     *  Updates a single document matching the provided filter in this collection.
      *
-     * @param filter
-     *   Document view representing a document that should match the query.
-     * @param options
-     *   Optional arguments, see mongocxx::options::find
+     *  @param filter
+     *    Document representing the match criteria.
+     *  @param update
+     *    Document representing the update to be applied to a matching document.
+     *  @param options
+     *    Optional arguments, see mongocxx::options::update.
      *
-     * @return Cursor with deserialized objects from the collection.
-     * @throws
-     *   If the find failed, the returned cursor will throw mongocxx::exception::query when it
-     *   is iterated.
+     *  @return The result of attempting to update a document.
+     *  @throws mongocxx::exception::write if the update operation fails.
      *
-     * @see https://docs.mongodb.com/manual/tutorial/query-documents/
+     *  @see http://docs.mongodb.com/manual/reference/command/update/
      */
-    static deserializing_cursor<T> find(
-        bsoncxx::document::view_or_value filter,
-        const mongocxx::options::find& options = mongocxx::options::find()) {
-        return _coll.find(std::move(filter), options);
-    }
-
-    /**
-     * Finds a single document in this collection that matches the provided filter.
-     *
-     * @param filter
-     *   Document view representing a document that should match the query.
-     * @param options
-     *   Optional arguments, see mongocxx::options::find
-     *
-     * @return An optional object that matched the filter.
-     * @throws mongocxx::exception::query if the operation fails.
-     *
-     * @see https://docs.mongodb.com/manual/tutorial/query-documents/
-     */
-    static mongocxx::stdx::optional<T> find_one(
-        bsoncxx::document::view_or_value filter,
-        const mongocxx::options::find& options = mongocxx::options::find()) {
-        return _coll.find_one(std::move(filter), options);
+    static mongocxx::stdx::optional<mongocxx::result::update> update_one(
+        bsoncxx::document::view_or_value filter, bsoncxx::document::view_or_value update,
+        const mongocxx::options::update& options = mongocxx::options::update()) {
+        return _coll.collection().update_many(filter, update, options);
     }
 
    protected:

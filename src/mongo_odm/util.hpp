@@ -178,6 +178,42 @@ constexpr void tuple_for_each(const std::tuple<Ts...> &tup, Map &&map) {
     return tuple_for_each_impl(tup, std::forward<Map>(map), std::index_sequence_for<Ts...>());
 }
 
+/**
+ * Helper type trait widget that helps properly forward arguments to _id constructor in
+ * mongo_odm::model. first_two_types_are_same<T1, T2, ...>::value will be true when T1 and T2 are of
+ * the same type, and false otherwise.
+ */
+template <typename... Ts>
+struct first_two_types_are_same : public std::false_type {};
+
+template <typename T, typename T2, typename... Ts>
+struct first_two_types_are_same<T, T2, Ts...> : public std::is_same<T, std::decay_t<T2>> {};
+
+/**
+ * Type trait that checks whether or not a type is a container that contains a particular type.
+ *
+ * @tparam container_type The container being checked for containing a particular type.
+ * @tparam T The type that the container must hold for container_of::value to be true.
+ */
+template <typename container_type, typename T>
+struct container_of : public std::is_same<typename container_type::value_type, T> {};
+
+template <typename container_type, typename T>
+constexpr bool container_of_v = container_of<container_type, T>::value;
+
+/**
+ * Type trait that checks whether or not an iterator iterates a particular type.
+ *
+ * @tparam iterator_type The iterator being checked for iterating a particular type.
+ * @tparam T The type that the iterator must iterate for iterator_of::value to be true.
+ */
+template <typename iterator_type, typename T>
+struct iterator_of
+    : public std::is_same<typename std::iterator_traits<iterator_type>::value_type, T> {};
+
+template <typename iterator_type, typename T>
+constexpr bool iterator_of_v = iterator_of<iterator_type, T>::value;
+
 MONGO_ODM_INLINE_NAMESPACE_END
 }  // namespace bson_mapper
 

@@ -52,11 +52,9 @@ constexpr bool is_bson_appendable_v = is_bson_appendable<T>::value;
 /**
  * Templated function for appending a value to a BSON builder. If possible, the function simply
  * passes the value directly to the builder. If it cannot be nicely appended, it is first
- * serialized
- * and then added as a sub-document to the builder. If the value is a container/iterable, it is
- * serialized into a BSON array. If the value is a query builder epxression, it is serialized
- * using
- * its member function .append_to_bson(builder).
+ * serialized and then added as a sub-document to the builder. If the value is a container/iterable,
+ * it is serialized into a BSON array. If the value is a query builder epxression, it is serialized
+ * using its member function .append_to_bson(builder).
  */
 // Specialization for appendable types.
 template <typename T>
@@ -104,8 +102,7 @@ void append_value_to_bson(const std::chrono::time_point<Clock, Duration> &tp,
 /**
  * An expression that represents a sorting order.
  * This consists of a name-value pair and a boolean specifying ascending or descending sort
- * order.
- * The resulting BSON is {field: +/-1}, where +/-1 corresponds to the sort order.
+ * order. The resulting BSON is {field: +/-1}, where +/-1 corresponds to the sort order.
  */
 template <typename NvpT>
 class sort_expr {
@@ -122,7 +119,7 @@ class sort_expr {
     /**
      * Appends this expression to a BSON core builder, as a key-value pair of the
      * form "key: +/-1".
-     * @param builder A BSON core builder
+     * @param builder   A BSON core builder
      * @param wrap      Whether to wrap the BSON inside a document.
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
@@ -162,8 +159,8 @@ class sort_expr {
  * @tparam NvpT The type of the name-value pair this expression uses.
  * @tparam U    The type of the value to compare against. This could be the same as the value
  * type
- *         		of NvpT, or the type of some other parameter, or even a query builder
- *           	expression.
+ *              of NvpT, or the type of some other parameter, or even a query builder
+ *              expression.
  */
 template <typename NvpT, typename U>
 class comparison_expr {
@@ -185,7 +182,7 @@ class comparison_expr {
      * This is primarily used to wrap $regex operators in $not,
      * since $not cannot contains a $regex operator, it must directly contain the regex itself.
      * @param  expr          A comparison expresison with a similar field type and value type.
-     * @param  op The new operator to use.
+     * @param  op            The new operator to use.
      */
     constexpr comparison_expr(const comparison_expr &expr, const char *op)
         : _nvp(expr._nvp), _field(expr._field), _operator(op) {
@@ -201,11 +198,10 @@ class comparison_expr {
     /**
      * Appends this expression to a BSON core builder, as a key-value pair of the form
      * "key: {$cmp: val}", where $cmp is some comparison operator.
-     * @param builder A BSON core builder
+     * @param builder   A BSON core builder
      * @param wrap      Whether to wrap the BSON inside a document.
      * @param omit_name Whether to skip the name of the field. This is used primarily in not_expr
-     * and
-     * free_expr to append just the value of the expression.
+     *                  and free_expr to append just the value of the expression.
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false,
                         bool omit_name = false) const {
@@ -289,10 +285,9 @@ class mod_expr {
 
     /**
      * Appends this expression to a BSON core builder,
-     * as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } "
-.
-     * @param builder a BSON core builder
-     * @param wrap	    Whether to wrap the BSON inside a document.
+     * as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } ".
+     * @param builder   a BSON core builder
+     * @param wrap      Whether to wrap the BSON inside a document.
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false,
                         bool omit_name = false) const {
@@ -342,14 +337,12 @@ class text_search_expr {
     /**
      * Creates a text search expression.
      * These parameters correspond to the parameters for the $text operator in MongoDB.
-     * @param  search               A string of terms use to query the text index.
-     * @param  language             The language of the text index.
+     * @param  search              A string of terms use to query the text index.
+     * @param  language            The language of the text index.
      * @param  case_sensitive      A boolean flag to specify case-sensitive search. Optional,
-     * false
-     *                             by default.
+     *                             false by default.
      * @param  diacritic_sensitive A boolean flag to specify case-sensitive search. Optional,
-     * false
-     *                             by default.
+     *                             false by default.
      */
     text_search_expr(const char *search,
                      bsoncxx::stdx::optional<const char *> language = bsoncxx::stdx::nullopt,
@@ -394,7 +387,7 @@ class text_search_expr {
     /**
      * Appends this expression to a BSON core builder,
      * as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } ".
-     * @param builder a BSON core builder
+     * @param builder   a BSON core builder
      * @param wrap      Whether to wrap the BSON inside a document.
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
@@ -469,12 +462,11 @@ class not_expr {
     /**
      * Appends this expression to a BSON core builder,
      * as a key-value pair of the form "key: {$not: {$cmp: val}}".
-     * @param builder a BSON core builder
+     * @param builder   a BSON core builder
      * @param wrap      Whether to wrap the BSON inside a document.
      * @param omit_name Whether to skip the name of the field. This is used primarily in
-     * $elemMatch
-     * queries with scalar arrays, so one can have a query like
-     * {array: {$elemMatch: {$not: {$gt: 5}}}}
+     *                  $elemMatch queries with scalar arrays, so one can have a query like
+     *                  {array: {$elemMatch: {$not: {$gt: 5}}}}
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false,
                         bool omit_name = false) const {
@@ -516,7 +508,7 @@ class not_expr {
 /**
  * This represents a list of expressions.
  * @tparam list_type The category of the expressions, such as "update" or "query".
- * @tparam Args...  The types of the various expressions that make up the list.
+ * @tparam Args...   The types of the various expressions that make up the list.
  */
 template <expression_category list_type, typename... Args>
 class expression_list {
@@ -623,7 +615,7 @@ class boolean_list_expr {
     /**
      * Constructs a boolean expression from a list of sub-expressions, and a certain operator.
      * @param args An expression list of boolean conditions.
-     * @param  op  The operator of the expression, e.g. AND or OR.
+     * @param op   The operator of the expression, e.g. AND or OR.
      */
     constexpr boolean_list_expr(const List args, const char *op) : _args(args), _op(op) {
     }
@@ -631,7 +623,7 @@ class boolean_list_expr {
     /**
      * Appends this query to a BSON core builder as a key-value pair "$op: [{lhs}, {rhs}]"
      * @param builder A basic BSON core builder.
-     * @param wrap  Whether to wrap this expression inside a document.
+     * @param wrap    Whether to wrap this expression inside a document.
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
         if (wrap) {
@@ -883,7 +875,7 @@ class add_to_set_update_expr {
      * Appends this query to a BSON core builder as an expression
      * '$addToSet: {field: value | {$each: value}}'
      * @param builder A basic BSON core builder.
-     * @param Whether to wrap this expression inside a document.
+     * @param wrap    Whether to wrap this expression inside a document.
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
         if (wrap) {
@@ -926,10 +918,10 @@ class add_to_set_update_expr {
  * Represents an array update epression that uses the $push operator.
  * Modifiers can be set either in the constructor, or by calling the corresponding member
  * functions.
- * @tparam NvpT    The name-value-pair type of the corresponding field.
+ * @tparam NvpT     The name-value-pair type of the corresponding field.
  * @tparam U        The value being $push'ed to the array
  * @tparam Sort     The type of the sort expression used in the $sort modifier.
- *         			This can be either an integer, +/- 1, or a sort_expr.
+ *                  This can be either an integer, +/- 1, or a sort_expr.
  */
 template <typename NvpT, typename U, typename Sort>
 class push_update_expr {
@@ -944,8 +936,7 @@ class push_update_expr {
      * with
      *                  each=true.
      * @param  sort     An optional value to give the $sort modifier. This only takes effect
-     * with
-     *                  each=true.
+     *                  with each=true.
      * @param  position An optional value to give the $position modifier. This only takes effect
      *                  with each=true.
      */
@@ -964,8 +955,7 @@ class push_update_expr {
      * Create a copy of this expression with a different $slice modifier value.
      * @param slice    The integer value of the $slice modifier.
      * @return         A new push_update_expr with the same properties as this one, except a
-     * different
-     *                 $slice modifier.
+     *                 different $slice modifier.
      */
     constexpr push_update_expr<NvpT, U, Sort> slice(std::int32_t slice) {
         return {_nvp, _val, _each, slice, _sort, _position};
@@ -974,8 +964,7 @@ class push_update_expr {
     /**
      * Create a copy of this expression without a $slice modifier.
      * @return         A new push_update_expr with the same properties as this one, except a
-     * different
-     *                 $slice modifier.
+     *                 different $slice modifier.
      */
     constexpr push_update_expr<NvpT, U, Sort> slice() {
         return {_nvp, _val, _each, bsoncxx::stdx::nullopt, _sort, _position};
@@ -985,9 +974,8 @@ class push_update_expr {
      * Create a copy of this expression with a different $sort modifier value.
      * @tparam OtherNvpT    The name-value-pair used by the given Sort Expression.
      * @param sort          The sort expression to use.
-     * @return         A new push_update_expr with the same properties as this one, except a
-     * different
-     *                 $sort modifier.
+     * @return              A new push_update_expr with the same properties as this one, except a
+     *                      different $sort modifier.
      */
     template <typename OtherNvpT>
     constexpr push_update_expr<NvpT, U, sort_expr<OtherNvpT>> sort(
@@ -999,8 +987,7 @@ class push_update_expr {
      * Create a copy of this expression with a different $slice modifier value.
      * @param sort    The integer value of the $sort modifier, +/-1.
      * @return         A new push_update_expr with the same properties as this one, except a
-     * different
-     *                 $sort modifier.
+     *                 different $sort modifier.
      */
     constexpr push_update_expr<NvpT, U, int> sort(int sort) {
         return {_nvp, _val, _each, _slice, sort, _position};
@@ -1009,8 +996,7 @@ class push_update_expr {
     /**
      * Create a copy of this expression without a $sort modifier.
      * @return         A new push_update_expr with the same properties as this one, except a
-     * different
-     *                 $sort modifier.
+     *                 different $sort modifier.
      */
     constexpr push_update_expr<NvpT, U, Sort> sort() {
         return {_nvp, _val, _each, _slice, bsoncxx::stdx::nullopt, _position};
@@ -1019,9 +1005,8 @@ class push_update_expr {
     /**
      * Create a copy of this expression with a different $position modifier value.
      * @param position    The integer value of the $position modifier.
-     * @return         A new push_update_expr with the same properties as this one, except a
-     * different
-     *                 $position modifier.
+     * @return            A new push_update_expr with the same properties as this one, except a
+     *                    different $position modifier.
      */
     constexpr push_update_expr<NvpT, U, Sort> position(std::uint32_t position) {
         return {_nvp, _val, _each, _slice, _sort, position};
@@ -1030,8 +1015,7 @@ class push_update_expr {
     /**
      * Create a copy of this expression without $position modifier.
      * @return         A new push_update_expr with the same properties as this one, except a
-     * different
-     *                 $position modifier.
+     *                 different $position modifier.
      */
     constexpr push_update_expr<NvpT, U, Sort> position() {
         return {_nvp, _val, _each, _slice, _sort, bsoncxx::stdx::nullopt};
@@ -1231,8 +1215,7 @@ constexpr not_expr<Expr> operator!(const Expr &expr) {
 }
 
 // Specialization of the ! operator for regexes, since the $regex operator cannot appear inside
-// a
-// $not operator.
+// a $not operator.
 // Instead, create an expression of the form {field: {$not: /regex/}}
 template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>>
 constexpr comparison_expr<NvpT, bsoncxx::types::b_regex> operator!(
@@ -1316,18 +1299,18 @@ constexpr boolean_list_expr<expression_list<expression_category::query, QueryExp
 * These parameters correspond to the parameters for the $text operator in MongoDB.
 * Optional parameters can be passed as optional<> types here, or with "fluent" setters on the
 * resulting text_search_expr object.
-* @param  search               A string of terms use to query the text index.
-* @param  language             The language of the text index.
+* @param  search              A string of terms use to query the text index.
+* @param  language            The language of the text index.
 * @param  case_sensitive      A boolean flag to specify case-sensitive search. Optional, false
 *                             by default.
 * @param  diacritic_sensitive A boolean flag to specify case-sensitive search. Optional, false
 *                             by default.
 * @return                     A text_search_expr with the given parameters.
 */
-text_search_expr text(const char *search,
-                      bsoncxx::stdx::optional<const char *> language = bsoncxx::stdx::nullopt,
-                      bsoncxx::stdx::optional<bool> case_sensitive = bsoncxx::stdx::nullopt,
-                      bsoncxx::stdx::optional<bool> diacritic_sensitive = bsoncxx::stdx::nullopt) {
+inline text_search_expr text(
+    const char *search, bsoncxx::stdx::optional<const char *> language = bsoncxx::stdx::nullopt,
+    bsoncxx::stdx::optional<bool> case_sensitive = bsoncxx::stdx::nullopt,
+    bsoncxx::stdx::optional<bool> diacritic_sensitive = bsoncxx::stdx::nullopt) {
     return {search, language, case_sensitive, diacritic_sensitive};
 }
 

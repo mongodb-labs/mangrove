@@ -21,19 +21,19 @@
 #include <mongocxx/client.hpp>
 #include <mongocxx/instance.hpp>
 
+#include <mongo_odm/macros.hpp>
 #include <mongo_odm/model.hpp>
+#include <mongo_odm/nvp.hpp>
+#include <mongo_odm/query_builder.hpp>
 
 struct DataA : public mongo_odm::model<DataA> {
     int32_t x, y;
     double z;
 
+    MONGO_ODM_MAKE_KEYS_MODEL(DataA, MONGO_ODM_NVP(x), MONGO_ODM_NVP(y), MONGO_ODM_NVP(z))
+
     bool operator==(const DataA& other) {
         return std::tie(x, y, z) == std::tie(other.x, other.y, other.z);
-    }
-
-    template <class Archive>
-    void serialize(Archive& ar) {
-        ar(CEREAL_NVP(_id), CEREAL_NVP(x), CEREAL_NVP(y), CEREAL_NVP(z));
     }
 
     bsoncxx::oid getID() {
@@ -366,4 +366,104 @@ TEST_CASE(
     query_result->remove();
 
     REQUIRE(!DataE::find_one(query_filter.view()));
+}
+
+TEST_CASE("the model base class allows the counting of documents in the associated collection.",
+          "[mongo_odm::model]") {
+    mongocxx::instance{};
+    mongocxx::client conn{mongocxx::uri{}};
+
+    auto db = conn["mongo_cxx_odm_model_test"];
+
+    DataA::setCollection(db["data_a"]);
+    DataA::drop();
+
+    REQUIRE(DataA::count() == 0);
+
+    DataA x, y, z;
+
+    x.save();
+    y.save();
+    z.save();
+
+    REQUIRE(DataA::count() == 3);
+}
+
+TEST_CASE(
+    "the model base class allows the bulk and single insertion and deletion of documents in the "
+    "associated collection.",
+    "[mongo_odm::model]") {
+    mongocxx::instance{};
+    mongocxx::client conn{mongocxx::uri{}};
+
+    auto db = conn["mongo_cxx_odm_model_test"];
+
+    DataA::setCollection(db["data_a"]);
+    DataA::drop();
+
+    std::vector<DataA> data(10);
+
+    DataA::insert_many(data);
+
+    REQUIRE(DataA::count() == 10);
+
+    DataA single;
+    single.x = 1;
+    single.y = 2;
+    single.z = 3.0;
+    DataA::insert_one(single);
+
+    REQUIRE(DataA::count() == 11);
+
+    // Should not compile:
+    //     DataB other_data(10);
+    //     DataA::insert_many(other_data);
+    //     DataB other_single;
+    //     DataA::insert_one(other_single)
+
+    DataA::delete_one(MONGO_ODM_KEY(DataA::x) == 1);
+
+    REQUIRE(DataA::count() == 10);
+
+    DataA::delete_many({});
+
+    REQUIRE(DataA::count() == 0);
+}
+
+TEST_CASE(
+    "the model base class allows bulk and single updates of documents in the associated "
+    "collection.",
+    "[mongo_odm::model]") {
+    mongocxx::instance{};
+    mongocxx::client conn{mongocxx::uri{}};
+
+    auto db = conn["mongo_cxx_odm_model_test"];
+
+    DataA::setCollection(db["data_a"]);
+    DataA::drop();
+
+    DataA single;
+    single.x = 1;
+    single.y = 2;
+    single.z = 3.0;
+    single.save();
+
+    REQUIRE(DataA::find_one(MONGO_ODM_KEY(DataA::x) == 1));
+
+    DataA::update_one(MONGO_ODM_KEY(DataA::x) == 1, MONGO_ODM_KEY(DataA::x) = 10);
+
+    REQUIRE(!DataA::find_one(MONGO_ODM_KEY(DataA::x) == 1));
+    REQUIRE(DataA::find_one(MONGO_ODM_KEY(DataA::x) == 10));
+
+    DataA other;
+    other.x = 10;
+    other.y = 5;
+    other.z = 4.0;
+    other.save();
+
+    REQUIRE(DataA::count(MONGO_ODM_KEY(DataA::x) == 10) == 2);
+
+    DataA::update_many(MONGO_ODM_KEY(DataA::x) == 10, MONGO_ODM_KEY(DataA::y) = 229);
+
+    REQUIRE(DataA::count(MONGO_ODM_KEY(DataA::y) == 229) == 2);
 }
