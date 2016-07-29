@@ -79,8 +79,7 @@ class BarParent {
    public:
     Bar b;
 
-    BarParent() {
-    }
+    BarParent() = default;
 
     // default constructor
     BarParent(Bar b) : b(b) {
@@ -101,6 +100,21 @@ TEST_CASE("Test member access.", "[mongo_odm::nvp]") {
         REQUIRE(nvp.t == &Bar::p);
     }
 }
+
+class OptionalWithChildren {
+   public:
+    stdx::optional<Point> pt;
+    stdx::optional<std::vector<Point>> pts_vec;
+
+    OptionalWithChildren() = default;
+
+    // default constructor
+    OptionalWithChildren(Point pt, stdx::optional<std::vector<Point>> pts_vec)
+        : pt(pt), pts_vec(pts_vec) {
+    }
+
+    MONGO_ODM_MAKE_KEYS(OptionalWithChildren, MONGO_ODM_NVP(pt), MONGO_ODM_NVP(pts_vec));
+};
 
 TEST_CASE("Test nested member access.", "[mongo_odm::nvp_child]") {
     SECTION("Nested member access using operator->*") {
@@ -149,6 +163,33 @@ TEST_CASE("Test nested member access.", "[mongo_odm::nvp_child]") {
             REQUIRE(nvp_child.parent.parent.t == &BarParent::b);
         };
         test_lambda(MONGO_ODM_CHILD(BarParent, b, p, x));
+    }
+
+    SECTION("Test accessing nested members within optional") {
+        REQUIRE((MONGO_ODM_KEY(OptionalWithChildren::pt)->*MONGO_ODM_KEY(Point::x)).get_name() ==
+                "pt.x");
+        REQUIRE((MONGO_ODM_KEY(OptionalWithChildren::pt)->*MONGO_ODM_KEY(Point::x)).t == &Point::x);
+        REQUIRE(MONGO_ODM_CHILD(OptionalWithChildren, pt, x).get_name() == "pt.x");
+        REQUIRE(MONGO_ODM_CHILD(OptionalWithChildren, pt, x).t == &Point::x);
+    }
+
+    SECTION("Test accessing nested members within arrays") {
+        // test array element acces
+        REQUIRE((MONGO_ODM_KEY(Bar::pts)->*MONGO_ODM_KEY(Point::x)).get_name() == "pts.x");
+        REQUIRE((MONGO_ODM_KEY(Bar::pts)->*MONGO_ODM_KEY(Point::x)).t == &Point::x);
+
+        REQUIRE((MONGO_ODM_CHILD(Bar, pts, x).get_name() == "pts.x"));
+        REQUIRE((MONGO_ODM_CHILD(Bar, pts, x).t == &Point::x));
+
+        // test optional array element access
+        REQUIRE(
+            (MONGO_ODM_KEY(OptionalWithChildren::pts_vec)->*MONGO_ODM_KEY(Point::x)).get_name() ==
+            "pts_vec.x");
+        REQUIRE((MONGO_ODM_KEY(OptionalWithChildren::pts_vec)->*MONGO_ODM_KEY(Point::x)).t ==
+                &Point::x);
+
+        REQUIRE((MONGO_ODM_CHILD(OptionalWithChildren, pts_vec, x).get_name() == "pts_vec.x"));
+        REQUIRE((MONGO_ODM_CHILD(OptionalWithChildren, pts_vec, x).t == &Point::x));
     }
 }
 

@@ -19,10 +19,20 @@
 # This is used to to specify nested fields in the query builder.
 # BSON supports up to 100 levels of nesting.
 
+import StringIO
 import sys
 
 # variable for storing maximum BSON nesting depth, in case this changes.
 MAX_BSON_DEPTH = 100
+
+# A reference of what the generated macro should look like for n=3.
+# This is for use in testing and documentation.
+REFERENCE_MACRO_3 = (
+    "#define MONGO_ODM_CHILD3(base, field1, field2, field3) "
+    "make_nvp_with_parent(MONGO_ODM_KEY_BY_VALUE(&std::decay_t<typename decltype(MONGO_ODM_CHILD2("
+    "base, field1, field2))::child_base_type>::field3), "
+    "MONGO_ODM_CHILD2(base, field1, field2))")
+
 
 def usage():
     print("Usage: python generate_macros.py <outfile> [max_depth]")
@@ -30,66 +40,88 @@ def usage():
     print("to 'outfile'. ")
     exit()
 
+
+def make_mongo_odm_child(n):
+    """
+    Generates a cersion of the MONGO_ODM_CHILD* macro, with * = n.
+    :param n: The nesting level of the MONGO_ODM_CHILD macro, i.e. how many 'fieldN'
+              arguments it should accept.
+    """
+
+    if n < 2:
+        raise ValueError("Argument n must be at least 2. Received n=%d." % n)
+
+    prev_fields = ", ".join(["field" + str(i) for i in range(1, n)])
+    all_fields = prev_fields + ", field" + str(n)
+    s = ("#define MONGO_ODM_CHILD%d(base, %s) "
+         "make_nvp_with_parent(MONGO_ODM_KEY_BY_VALUE(&std::decay_t<"
+         "typename decltype(MONGO_ODM_CHILD%d(base, %s))::child_base_type>::field%d), "
+         "MONGO_ODM_CHILD%d(base, %s))") % \
+        (n, all_fields, n - 1, prev_fields, n, n - 1, prev_fields)
+    return s
+
+
+def test():
+    assert(make_mongo_odm_child(3) == REFERENCE_MACRO_3)
+
+
 def print_macros(outfile, max_n):
     """
     Prints the MONGO_ODM_CHILD* macros for *=2 to `max_n`.
+    :param outfile: The file to write generated code to.
     :param max_n: The maximum level to which the macro is generated.
     """
 
     outfile.write(
-    """// clang-format off
-    // Copyright 2016 MongoDB Inc.
-    //
-    // Licensed under the Apache License, Version 2.0 (the "License");
-    // you may not use this file except in compliance with the License.
-    // You may obtain a copy of the License at
-    //
-    // http://www.apache.org/licenses/LICENSE-2.0
-    //
-    // Unless required by applicable law or agreed to in writing, software
-    // distributed under the License is distributed on an "AS IS" BASIS,
-    // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    // See the License for the specific language governing permissions and
-    // limitations under the License.
+        """// clang-format off
+        // Copyright 2016 MongoDB Inc.
+        //
+        // Licensed under the Apache License, Version 2.0 (the "License");
+        // you may not use this file except in compliance with the License.
+        // You may obtain a copy of the License at
+        //
+        // http://www.apache.org/licenses/LICENSE-2.0
+        //
+        // Unless required by applicable law or agreed to in writing, software
+        // distributed under the License is distributed on an "AS IS" BASIS,
+        // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        // See the License for the specific language governing permissions and
+        // limitations under the License.
 
-    #pragma once
+        #pragma once
 
-    #include <mongo_odm/config/prelude.hpp>
+        #include <mongo_odm/config/prelude.hpp>
 
-    // Preprocessor templates for manipulating multiple arguments.
-    #define MONGO_ODM_PP_NARG(...) MONGO_ODM_PP_NARG_(__VA_ARGS__, MONGO_ODM_PP_RSEQ_N())
-    #define MONGO_ODM_PP_NARG_(...) MONGO_ODM_PP_ARG_N(__VA_ARGS__)
-    """)
+        // Preprocessor templates for manipulating multiple arguments.
+        #define MONGO_ODM_PP_NARG(...) MONGO_ODM_PP_NARG_(__VA_ARGS__, MONGO_ODM_PP_RSEQ_N())
+        #define MONGO_ODM_PP_NARG_(...) MONGO_ODM_PP_ARG_N(__VA_ARGS__)
+        """)
 
-
-    num_seq = "".join(["_%d, " % n for n in range(max_n+2)])
+    num_seq = "".join(["_%d, " % n for n in range(max_n + 2)])
     outfile.write("#define MONGO_ODM_PP_ARG_N(%s N, ...) N\n\n" % num_seq)
 
-    num_seq = ", ".join([str(i) for i in range(max_n+2, -1, -1)])
+    num_seq = ", ".join([str(i) for i in range(max_n + 2, -1, -1)])
     outfile.write("#define MONGO_ODM_PP_RSEQ_N() %s\n\n" % num_seq)
 
     outfile.write("#define MONGO_ODM_CHILD1(base, field1) MONGO_ODM_KEY_BY_VALUE(&base::field1)\n\n")
 
-    for i in range(2, max_n+1):
-        prev_fields = ", ".join(["field" + str(n) for n in range(1, i)])
-        all_fields = prev_fields + ", field" + str(i)
-        s = ("#define MONGO_ODM_CHILD%d(base, %s) "
-            "make_nvp_with_parent(MONGO_ODM_KEY_BY_VALUE(&std::decay_t<"
-            "typename decltype(MONGO_ODM_CHILD%d(base, %s))::type>::field%d), "
-            "MONGO_ODM_CHILD%d(base, %s))") % \
-            (i, all_fields, i-1, prev_fields, i, i-1, prev_fields)
-        outfile.write(s)
+    for i in range(2, max_n + 1):
+        outfile.write(make_mongo_odm_child(i))
         outfile.write("\n\n")
 
     outfile.write(
-    """
+        """
 
-    #include <mongo_odm/config/postlude.hpp>
-// clang-format on"""
+        #include <mongo_odm/config/postlude.hpp>
+    // clang-format on"""
     )
     outfile.write("\n")
 
-if __name__ == "__main__":
+
+def main():
+    # test generated macro against reference
+    test()
+
     args = sys.argv[1:]
     if len(args) not in [1, 2]:
         usage()
@@ -99,3 +131,7 @@ if __name__ == "__main__":
     else:
         # default value corresponds to max nested document depth in BSON.
         print_macros(outfile, MAX_BSON_DEPTH)
+
+
+if __name__ == "__main__":
+    main()

@@ -114,9 +114,9 @@ class nvp : public nvp_base<nvp<Base, T>, T> {
 template <typename Base, typename T, typename Parent>
 class nvp_child : public nvp_base<nvp_child<Base, T, Parent>, T> {
    public:
+    using type = T;
     // In case this field is wrapped in an optional, store the underlying type.
     using no_opt_type = remove_optional_t<T>;
-    using type = T;
 
     constexpr nvp_child(T Base::*t, const char* name, const Parent& parent)
         : t(t), name(name), parent(parent) {
@@ -308,17 +308,21 @@ class nvp_base {
     using type = T;
     // In case this field is wrapped in an optional, store the underlying type.
     using no_opt_type = remove_optional_t<T>;
+    using child_base_type = iterable_value_t<no_opt_type>;
 
     /**
      * Chains two name-value pairs to access a sub-field, i.e. a field with the name "parent.child".
+     * This also allows accessing the fields of documents that are in an array.
      * @tparam U    The type of the child NVP
      * @param child An NVP that corresponds to a sub-field of this NVP. Its base class must be the
-     * same as this field's current type.
+     * same as this field's current type. If this field is an array of documents,
+     * then 'child' corresponds to a subfield of the documents in this array.
      * @return      An NVP with the same base class and type as the subfield, but with a link to a
      * parent so that its name is qualified in dot notation.
      */
     template <typename U>
-    constexpr nvp_child<T, U, NvpT> operator->*(const nvp<T, U>& child) const {
+    constexpr nvp_child<iterable_value_t<no_opt_type>, U, NvpT> operator->*(
+        const nvp<iterable_value_t<no_opt_type>, U>& child) const {
         return {child.t, child.name, *static_cast<const NvpT*>(this)};
     }
 
