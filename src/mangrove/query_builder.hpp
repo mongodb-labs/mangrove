@@ -65,8 +65,7 @@ std::enable_if_t<is_bson_appendable_v<T>> append_value_to_bson(T value,
 
 // Specialization for non-iterable, non-expression types that must be serialized.
 template <typename T>
-std::enable_if_t<!is_bson_appendable_v<T> && !is_iterable_not_string_v<T> &&
-                 details::isnt_expression_v<T>>
+std::enable_if_t<!is_bson_appendable_v<T> && !is_iterable_v<T> && details::isnt_expression_v<T>>
 append_value_to_bson(const T &value, bsoncxx::builder::core &builder) {
     auto serialized_value = boson::to_document<T>(value);
     builder.append(bsoncxx::types::b_document{serialized_value});
@@ -74,8 +73,8 @@ append_value_to_bson(const T &value, bsoncxx::builder::core &builder) {
 
 // Specialization for iterable types that must be serialized.
 template <typename Iterable>
-std::enable_if_t<is_iterable_not_string_v<Iterable>> append_value_to_bson(
-    const Iterable &arr, bsoncxx::builder::core &builder) {
+std::enable_if_t<is_iterable_v<Iterable>> append_value_to_bson(const Iterable &arr,
+                                                               bsoncxx::builder::core &builder) {
     builder.open_array();
     for (const auto &x : arr) {
         append_value_to_bson(x, builder);
@@ -1132,10 +1131,23 @@ class bit_update_expr {
 };
 
 /* Query comparison operators */
+// Note that each comparison operator has two versions:
+// a) One in which a field is compared to a value of the same type, and
+// b) One in which an array field is compared to a value of the contained type.
+//    (e.g. an array of int's can be compared to a single integer)
+//    This is syntactic sugar for MongoDB's $elemMatch operator, and mirrors
+//    the syntax in the actual query language.
 
 template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>>
 constexpr comparison_expr<NvpT, typename NvpT::no_opt_type> eq(
     const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
+    return {lhs, rhs, "$eq"};
+}
+
+template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>,
+          typename = std::enable_if_t<is_iterable_v<typename NvpT::no_opt_type>>>
+constexpr comparison_expr<NvpT, typename NvpT::array_element_type> eq(
+    const NvpT &lhs, const typename NvpT::array_element_type &rhs) {
     return {lhs, rhs, "$eq"};
 }
 
@@ -1145,9 +1157,23 @@ constexpr comparison_expr<NvpT, typename NvpT::no_opt_type> operator==(
     return eq(lhs, rhs);
 }
 
+template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>,
+          typename = std::enable_if_t<is_iterable_v<typename NvpT::no_opt_type>>>
+constexpr comparison_expr<NvpT, typename NvpT::array_element_type> operator==(
+    const NvpT &lhs, const typename NvpT::array_element_type &rhs) {
+    return eq(lhs, rhs);
+}
+
 template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>>
 constexpr comparison_expr<NvpT, typename NvpT::no_opt_type> gt(
     const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
+    return {lhs, rhs, "$gt"};
+}
+
+template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>,
+          typename = std::enable_if_t<is_iterable_v<typename NvpT::no_opt_type>>>
+constexpr comparison_expr<NvpT, typename NvpT::array_element_type> gt(
+    const NvpT &lhs, const typename NvpT::array_element_type &rhs) {
     return {lhs, rhs, "$gt"};
 }
 
@@ -1157,9 +1183,23 @@ constexpr comparison_expr<NvpT, typename NvpT::no_opt_type> operator>(
     return gt(lhs, rhs);
 }
 
+template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>,
+          typename = std::enable_if_t<is_iterable_v<typename NvpT::no_opt_type>>>
+constexpr comparison_expr<NvpT, typename NvpT::array_element_type> operator>(
+    const NvpT &lhs, const typename NvpT::array_element_type &rhs) {
+    return gt(lhs, rhs);
+}
+
 template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>>
 constexpr comparison_expr<NvpT, typename NvpT::no_opt_type> gte(
     const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
+    return {lhs, rhs, "$gte"};
+}
+
+template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>,
+          typename = std::enable_if_t<is_iterable_v<typename NvpT::no_opt_type>>>
+constexpr comparison_expr<NvpT, typename NvpT::array_element_type> gte(
+    const NvpT &lhs, const typename NvpT::array_element_type &rhs) {
     return {lhs, rhs, "$gte"};
 }
 
@@ -1169,9 +1209,23 @@ constexpr comparison_expr<NvpT, typename NvpT::no_opt_type> operator>=(
     return gte(lhs, rhs);
 }
 
+template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>,
+          typename = std::enable_if_t<is_iterable_v<typename NvpT::no_opt_type>>>
+constexpr comparison_expr<NvpT, typename NvpT::array_element_type> operator>=(
+    const NvpT &lhs, const typename NvpT::array_element_type &rhs) {
+    return gte(lhs, rhs);
+}
+
 template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>>
 constexpr comparison_expr<NvpT, typename NvpT::no_opt_type> lt(
     const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
+    return {lhs, rhs, "$lt"};
+}
+
+template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>,
+          typename = std::enable_if_t<is_iterable_v<typename NvpT::no_opt_type>>>
+constexpr comparison_expr<NvpT, typename NvpT::array_element_type> lt(
+    const NvpT &lhs, const typename NvpT::array_element_type &rhs) {
     return {lhs, rhs, "$lt"};
 }
 
@@ -1181,9 +1235,23 @@ constexpr comparison_expr<NvpT, typename NvpT::no_opt_type> operator<(
     return lt(lhs, rhs);
 }
 
+template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>,
+          typename = std::enable_if_t<is_iterable_v<typename NvpT::no_opt_type>>>
+constexpr comparison_expr<NvpT, typename NvpT::array_element_type> operator<(
+    const NvpT &lhs, const typename NvpT::array_element_type &rhs) {
+    return lt(lhs, rhs);
+}
+
 template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>>
 constexpr comparison_expr<NvpT, typename NvpT::no_opt_type> lte(
     const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
+    return {lhs, rhs, "$lte"};
+}
+
+template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>,
+          typename = std::enable_if_t<is_iterable_v<typename NvpT::no_opt_type>>>
+constexpr comparison_expr<NvpT, typename NvpT::array_element_type> lte(
+    const NvpT &lhs, const typename NvpT::array_element_type &rhs) {
     return {lhs, rhs, "$lte"};
 }
 
@@ -1193,15 +1261,36 @@ constexpr comparison_expr<NvpT, typename NvpT::no_opt_type> operator<=(
     return lte(lhs, rhs);
 }
 
+template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>,
+          typename = std::enable_if_t<is_iterable_v<typename NvpT::no_opt_type>>>
+constexpr comparison_expr<NvpT, typename NvpT::array_element_type> operator<=(
+    const NvpT &lhs, const typename NvpT::array_element_type &rhs) {
+    return lte(lhs, rhs);
+}
+
 template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>>
 constexpr comparison_expr<NvpT, typename NvpT::no_opt_type> ne(
     const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
     return {lhs, rhs, "$ne"};
 }
 
+template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>,
+          typename = std::enable_if_t<is_iterable_v<typename NvpT::no_opt_type>>>
+constexpr comparison_expr<NvpT, typename NvpT::array_element_type> ne(
+    const NvpT &lhs, const typename NvpT::array_element_type &rhs) {
+    return {lhs, rhs, "$ne"};
+}
+
 template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>>
 constexpr comparison_expr<NvpT, typename NvpT::no_opt_type> operator!=(
     const NvpT &lhs, const typename NvpT::no_opt_type &rhs) {
+    return ne(lhs, rhs);
+}
+
+template <typename NvpT, typename = std::enable_if_t<is_nvp_v<NvpT>>,
+          typename = std::enable_if_t<is_iterable_v<typename NvpT::no_opt_type>>>
+constexpr comparison_expr<NvpT, typename NvpT::array_element_type> operator!=(
+    const NvpT &lhs, const typename NvpT::array_element_type &rhs) {
     return ne(lhs, rhs);
 }
 

@@ -17,6 +17,12 @@ They work on any field type, and the right-hand value must be the same type as t
 Free functions are also provided in the `mangrove` namespace that can be used in lieu of the overloaded
 operators.
 
+{{% notice tip %}}
+When working with array fields, one can also compare them to values that are the type of the array's elements.
+This provides similar functionality to using the `$elemMatch` operator, with a few caveats.
+For more information on this, and an example, see the Mangrove documentation for `$elemMatch`, under the [Array Operators]({{< relref "#array-operators" >}}).
+{{% /notice %}}
+
 - `{{% a_blank "$eq" "https://docs.mongodb.com/manual/reference/operator/query/eq/" %}}`
  ```cpp
  // { age: {$eq: 21} }
@@ -212,7 +218,7 @@ For the following code samples, assume that a User has a field `scores`, which c
     ```
 
 - `{{% a_blank "$elemMatch" "https://docs.mongodb.com/manual/reference/operator/elemMatch/" %}}`
-
+    
     This operator accepts a query, and returns documents if the elements inside a field's array match
     the given queries. The queries can be constructed in Mangrove using the same syntax as top-level queries.
 
@@ -238,6 +244,26 @@ For the following code samples, assume that a User has a field `scores`, which c
     auto results = User::find(MANGROVE_KEY(User::scores).elem_match(MANGROVE_KEY_ELEM(User::score) > 9000));
     results = User::find(MANGROVE_KEY(User::scores).elem_match(MANGROVE_KEY(User::score).element() > 9000));
     ```
+
+    In the MongoDB query language, if you're only checking one condition in `$elemMatch`,
+    you can omit the operator itself and compare the array and value directly:
+    `{num_array: {$gt: 5}}` is equivalent to `{num_array: {$elemMatch: {$gt: 5}}}`.
+    Mangrove mirrors this syntax by allowing you to directly compare values and array fields:
+
+    ```cpp
+    // The following queries are identical. They both return documents in which 'scores' contains at least one
+    // element greater than 9000.
+    auto results = User::find(MANGROVE_KEY(User::scores).elem_match(MANGROVE_KEY_ELEM(User::score) > 9000));
+    auto results = User::find(MANGROVE_KEY(User::scores) > 9000);
+    ```
+
+    Note that these two ways of querying arrays are the same **only when specifying one condition**.
+    With more conditions, there can be semantic differences.
+    When a query has several conditions,
+    `$elemMatch` retrieves all documents where at least one array element matches *all* the given condition,
+    while specifying several conditions using direct "array-to-scalar" comparison
+    returns documents that can contain *several different elements*, that each match an individual condition.
+    Further clarification on this is given in the MongoDB documentation for {{% a_blank "querying on arrays"  "https://docs.mongodb.com/manual/tutorial/query-documents/#query-on-arrays" %}}
 
 {{% notice note %}}
 When specifying conditions on the fields of documents in an array in the `$elemMatch` operator,

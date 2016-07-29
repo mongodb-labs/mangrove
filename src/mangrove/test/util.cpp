@@ -62,16 +62,14 @@ TEST_CASE(
 
 TEST_CASE(
     "is_iterable contains true only if the template type parameter is an iterable container. "
-    "This "
-    "includes C arrays and std strings.",
+    "This includes C arrays, but NOT std strings.",
     "[is_iterable]") {
     CHECK(is_iterable<int>::value == false);
     CHECK(is_iterable<const int *>::value == false);
     // C arrays are iterable (i.e. can be passed by reference into std::begin() and std::end())
     CHECK(is_iterable<int[5]>::value == true);
-    // NOTE: std::string's are iterable
-    CHECK(is_iterable<std::string>::value == true);
-    CHECK(is_iterable_not_string_v<std::string> == false);
+    // NOTE: std::string's are NOT iterable
+    CHECK(is_iterable<std::string>::value == false);
     // Check that the container types supported by the BSON Archiver are iterable
     CHECK(is_iterable<std::vector<int>>::value == true);
     CHECK(is_iterable<std::set<int>>::value == true);
@@ -86,7 +84,7 @@ TEST_CASE(
     "iterable_value_t contains the value type of an iterable container, or the given type if it is "
     "not a container. ") {
     CHECK((std::is_same<iterable_value_t<int>, int>::value));
-    CHECK((std::is_same<iterable_value_t<std::string>, char>::value));
+    CHECK((std::is_same<iterable_value_t<std::string>, std::string>::value));
     CHECK((std::is_same<iterable_value_t<std::vector<int>>, int>::value));
     CHECK((std::is_same<iterable_value_t<std::vector<std::string>>, std::string>::value));
     // iterable_value_t only unwraps one level of container.

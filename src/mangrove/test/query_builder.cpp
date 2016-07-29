@@ -188,6 +188,32 @@ TEST_CASE("Test nested member access.", "[mangrove::nvp_child]") {
         REQUIRE((MANGROVE_CHILD(OptionalWithChildren, pts_vec, x).get_name() == "pts_vec.x"));
         REQUIRE((MANGROVE_CHILD(OptionalWithChildren, pts_vec, x).t == &Point::x));
     }
+
+    SECTION("Test accessing nested members within optional") {
+        REQUIRE((MANGROVE_KEY(OptionalWithChildren::pt)->*MANGROVE_KEY(Point::x)).get_name() ==
+                "pt.x");
+        REQUIRE((MANGROVE_KEY(OptionalWithChildren::pt)->*MANGROVE_KEY(Point::x)).t == &Point::x);
+        REQUIRE(MANGROVE_CHILD(OptionalWithChildren, pt, x).get_name() == "pt.x");
+        REQUIRE(MANGROVE_CHILD(OptionalWithChildren, pt, x).t == &Point::x);
+    }
+
+    SECTION("Test accessing nested members within arrays") {
+        // test array element acces
+        REQUIRE((MANGROVE_KEY(Bar::pts)->*MANGROVE_KEY(Point::x)).get_name() == "pts.x");
+        REQUIRE((MANGROVE_KEY(Bar::pts)->*MANGROVE_KEY(Point::x)).t == &Point::x);
+
+        REQUIRE((MANGROVE_CHILD(Bar, pts, x).get_name() == "pts.x"));
+        REQUIRE((MANGROVE_CHILD(Bar, pts, x).t == &Point::x));
+
+        // test optional array element access
+        REQUIRE((MANGROVE_KEY(OptionalWithChildren::pts_vec)->*MANGROVE_KEY(Point::x)).get_name() ==
+                "pts_vec.x");
+        REQUIRE((MANGROVE_KEY(OptionalWithChildren::pts_vec)->*MANGROVE_KEY(Point::x)).t ==
+                &Point::x);
+
+        REQUIRE((MANGROVE_CHILD(OptionalWithChildren, pts_vec, x).get_name() == "pts_vec.x"));
+        REQUIRE((MANGROVE_CHILD(OptionalWithChildren, pts_vec, x).t == &Point::x));
+    }
 }
 
 TEST_CASE("Test *.element() and *_ELEM for referring to scalar array elements",
@@ -291,6 +317,11 @@ TEST_CASE("Query Builder", "[mangrove::query_builder]") {
         REQUIRE(res);
         REQUIRE((res->arr == std::vector<int>{4, 5, 6}));
 
+        // array-to-element comparison test (syntactic sugar for $elemMatch)
+        res = Bar::find_one(MANGROVE_KEY(Bar::arr) == 6);
+        REQUIRE(res);
+        REQUIRE((res->arr == std::vector<int>{4, 5, 6}));
+
         // document array (vector) member test
         res = Bar::find_one(MANGROVE_KEY(Bar::pts) == std::vector<Point>{{1, 2}, {3, 4}});
         REQUIRE(res);
@@ -329,6 +360,11 @@ TEST_CASE("Query Builder", "[mangrove::query_builder]") {
 
         // scalar array (vector) member test (lexicographical comparison)
         res = Bar::find_one(MANGROVE_KEY(Bar::arr) > std::vector<int>{1, 2, 3});
+        REQUIRE(res);
+        REQUIRE((res->arr == std::vector<int>{4, 5, 6}));
+
+        // array-to-element comparison test (syntactic sugar for $elemMatch)
+        res = Bar::find_one(MANGROVE_KEY(Bar::arr) > 5);
         REQUIRE(res);
         REQUIRE((res->arr == std::vector<int>{4, 5, 6}));
 
@@ -442,6 +478,11 @@ TEST_CASE("Query Builder", "[mangrove::query_builder]") {
 
         // array (vector) member test
         res = Bar::find_one(!(MANGROVE_KEY(Bar::arr) == std::vector<int>{1, 5, 6}));
+        REQUIRE(res);
+        REQUIRE((res->arr == std::vector<int>{4, 5, 6}));
+
+        // array-to-element comparison test (syntactic sugar for $elemMatch)
+        res = Bar::find_one(!(MANGROVE_KEY(Bar::arr) == 7));
         REQUIRE(res);
         REQUIRE((res->arr == std::vector<int>{4, 5, 6}));
 

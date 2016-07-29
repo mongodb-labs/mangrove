@@ -78,17 +78,11 @@ template <typename>
 std::false_type is_iterable_impl(...);
 
 template <typename T>
-using is_iterable = decltype(is_iterable_impl<T>(0));
+using is_iterable =
+    std::integral_constant<bool, decltype(is_iterable_impl<T>(0))::value && !is_string_v<T>>;
 
 template <typename T>
 constexpr bool is_iterable_v = is_iterable<T>::value;
-
-// Matches iterables, but NOT strings or char arrays.
-template <typename T>
-using is_iterable_not_string = std::integral_constant<int, is_iterable_v<T> && !is_string_v<T>>;
-
-template <typename T>
-constexpr bool is_iterable_not_string_v = is_iterable_not_string<T>::value;
 
 /**
  * A templated function whose return type is the underlying value type of a given container.
@@ -96,7 +90,7 @@ constexpr bool is_iterable_not_string_v = is_iterable_not_string<T>::value;
  * unchanged.
  */
 template <typename T>
-typename T::iterator::value_type iterable_value_impl(int);
+std::enable_if_t<!is_string_v<T>, typename T::iterator::value_type> iterable_value_impl(int);
 
 template <typename T>
 T iterable_value_impl(...);

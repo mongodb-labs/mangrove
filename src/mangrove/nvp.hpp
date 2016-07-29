@@ -174,9 +174,9 @@ class nvp_child : public nvp_base<nvp_child<Base, T, Parent>, T> {
 
 template <typename NvpT>
 class array_element_nvp
-    : public nvp_base<array_element_nvp<NvpT>, iterable_value_t<typename NvpT::no_opt_type>> {
+    : public nvp_base<array_element_nvp<NvpT>, typename NvpT::array_element_type> {
    public:
-    using type = iterable_value_t<typename NvpT::no_opt_type>;
+    using type = typename NvpT::array_element_type;
     // In case this field is wrapped in an optional, store the underlying type.
     using no_opt_type = remove_optional_t<type>;
 
@@ -294,12 +294,12 @@ class dollar_operator_nvp : public nvp_base<dollar_operator_nvp<NvpT>, typename 
 template <typename NvpT, typename T>
 class nvp_base {
    private:
-    // Type trait that checks if the given iterable class contains the same value type as either
+    // Type trait that checks if the given iterable class contains the same element type as either
     // a) this nvp's type, or
-    // b) this nvp's value type, if this nvp is also an iterable.
+    // b) this nvp's element type, if this nvp is also an iterable.
     template <typename Iterable, typename Default = void>
     using enable_if_matching_iterable_t =
-        std::enable_if_t<is_iterable_not_string_v<Iterable> &&
+        std::enable_if_t<is_iterable_v<Iterable> &&
                              std::is_convertible<iterable_value_t<Iterable>,
                                                  iterable_value_t<remove_optional_t<T>>>::value,
                          Default>;
@@ -308,25 +308,36 @@ class nvp_base {
     using type = T;
     // In case this field is wrapped in an optional, store the underlying type.
     using no_opt_type = remove_optional_t<T>;
+    // If this field is an array, this is the type of the elements.
+    // Otherwise, it is just this type, with optional<> upwrapped if necessary.
+    using array_element_type = iterable_value_t<no_opt_type>;
+
+    // The class to use as a parent class for child members.
+    // Usually, this is just the type of the field.
+    // If a field is an optional, then this is the contained type.
+    // If this field is an array, then this is the type of the elements.
     using child_base_type = iterable_value_t<no_opt_type>;
 
     /**
-     * Chains two name-value pairs to access a sub-field, i.e. a field with the name "parent.child".
+     * Chains two name-value pairs to access a sub-field, i.e. a field with the name
+     * "parent.child".
      * This also allows accessing the fields of documents that are in an array.
      * @tparam U    The type of the child NVP
-     * @param child An NVP that corresponds to a sub-field of this NVP. Its base class must be the
+     * @param child An NVP that corresponds to a sub-field of this NVP. Its base class must be
+     * the
      * same as this field's current type. If this field is an array of documents,
      * then 'child' corresponds to a subfield of the documents in this array.
-     * @return      An NVP with the same base class and type as the subfield, but with a link to a
+     * @return      An NVP with the same base class and type as the subfield, but with a link to
+     * a
      * parent so that its name is qualified in dot notation.
      */
     template <typename U>
-    constexpr nvp_child<iterable_value_t<no_opt_type>, U, NvpT> operator->*(
-        const nvp<iterable_value_t<no_opt_type>, U>& child) const {
+    constexpr nvp_child<array_element_type, U, NvpT> operator->*(
+        const nvp<array_element_type, U>& child) const {
         return {child.t, child.name, *static_cast<const NvpT*>(this)};
     }
 
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>>
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>>
     constexpr array_element_nvp<NvpT> operator[](std::size_t i) const {
         return {*static_cast<const NvpT*>(this), i};
     }
@@ -382,7 +393,8 @@ class nvp_base {
      * @param remainder   The remainder after dividing a value by `divisor`
      * @returns A mod_expr representing this query.
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<std::is_arithmetic<U>::value>>
+    template <typename U = array_element_type,
+              typename = std::enable_if_t<std::is_arithmetic<U>::value>>
     constexpr mod_expr<NvpT> mod(const int& divisor, const int& remainder) const {
         return {*static_cast<const NvpT*>(this), divisor, remainder};
     }
@@ -393,7 +405,7 @@ class nvp_base {
      * @param regex     The regex to check against.
      * @param options   Options to pass to the regex.
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_string_v<U>>>
+    template <typename U = array_element_type, typename = std::enable_if_t<is_string_v<U>>>
     constexpr comparison_value_expr<NvpT, bsoncxx::types::b_regex> regex(
         const char* regex, const char* options) const {
         return {*static_cast<const NvpT*>(this), bsoncxx::types::b_regex(regex, options), "$regex"};
@@ -409,7 +421,7 @@ class nvp_base {
      * @returns         A comparison expression with the $all oeprator.
      */
     template <typename Iterable, typename = enable_if_matching_iterable_t<Iterable>,
-              typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>>
+              typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>>
     constexpr comparison_expr<NvpT, Iterable> all(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, "$all"};
     }
@@ -435,8 +447,8 @@ class nvp_base {
      * this field is an array. This is used to create expressions with $elemMatch.
      * This is only enabled if this current field is an array.
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>>
-    constexpr free_nvp<iterable_value_t<no_opt_type>> element() const {
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>>
+    constexpr free_nvp<array_element_type> element() const {
         return {};
     }
 
@@ -445,7 +457,7 @@ class nvp_base {
      * This is only enabled if this current field is an array.
      * @param n The size the array should be.
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>>
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>>
     constexpr comparison_expr<NvpT, std::int64_t> size(const std::int64_t& n) const {
         return {*static_cast<const NvpT*>(this), n, "$size"};
     }
@@ -458,7 +470,7 @@ class nvp_base {
      * @param bitmask - A bitmask to pass to the $bitsAllSet operator
      * @returns A comparison_expr representing this query
      */
-    template <typename U = no_opt_type,
+    template <typename U = array_element_type,
               typename = std::enable_if_t<std::is_integral<U>::value ||
                                           std::is_same<U, bsoncxx::types::b_binary>::value>,
               typename Mask,
@@ -477,7 +489,7 @@ class nvp_base {
      * @param positions...  Variadic argument containing further bit positions.
      * @returns A comparison_expr representing this query
      */
-    template <typename U = no_opt_type,
+    template <typename U = array_element_type,
               typename = std::enable_if_t<std::is_integral<U>::value ||
                                           std::is_same<U, bsoncxx::types::b_binary>::value>,
               typename... Args>
@@ -494,7 +506,7 @@ class nvp_base {
      * @param bitmask - A bitmask to pass to the $bitsAnySet operator
      * @returns A comparison_expr representing this query
      */
-    template <typename U = no_opt_type,
+    template <typename U = array_element_type,
               typename = std::enable_if_t<std::is_integral<U>::value ||
                                           std::is_same<U, bsoncxx::types::b_binary>::value>,
               typename Mask,
@@ -513,7 +525,7 @@ class nvp_base {
      * @param positions...  Variadic argument containing further bit positions.
      * @returns A comparison_expr representing this query
      */
-    template <typename U = no_opt_type,
+    template <typename U = array_element_type,
               typename = std::enable_if_t<std::is_integral<U>::value ||
                                           std::is_same<U, bsoncxx::types::b_binary>::value>,
               typename... Args>
@@ -531,7 +543,7 @@ class nvp_base {
      * @param bitmask - A bitmask to pass to the $bitsAllClear operator
      * @returns A comparison_expr representing this query
      */
-    template <typename U = no_opt_type,
+    template <typename U = array_element_type,
               typename = std::enable_if_t<std::is_integral<U>::value ||
                                           std::is_same<U, bsoncxx::types::b_binary>::value>,
               typename Mask,
@@ -550,7 +562,7 @@ class nvp_base {
      * @param positions...  Variadic argument containing further bit positions.
      * @returns A comparison_expr representing this query
      */
-    template <typename U = no_opt_type,
+    template <typename U = array_element_type,
               typename = std::enable_if_t<std::is_integral<U>::value ||
                                           std::is_same<U, bsoncxx::types::b_binary>::value>,
               typename... Args>
@@ -568,7 +580,7 @@ class nvp_base {
      * @param bitmask - A bitmask to pass to the $bitsAnyClear operator
      * @returns A comparison_expr representing this query
      */
-    template <typename U = no_opt_type,
+    template <typename U = array_element_type,
               typename = std::enable_if_t<std::is_integral<U>::value ||
                                           std::is_same<U, bsoncxx::types::b_binary>::value>,
               typename Mask,
@@ -587,7 +599,7 @@ class nvp_base {
      * @param positions...  Variadic argument containing further bit positions.
      * @returns A comparison_expr representing this query
      */
-    template <typename U = no_opt_type,
+    template <typename U = array_element_type,
               typename = std::enable_if_t<std::is_integral<U>::value ||
                                           std::is_same<U, bsoncxx::types::b_binary>::value>,
               typename... Args>
@@ -640,7 +652,7 @@ class nvp_base {
      * query.
      * @returns a dollar_operator_nvp that corresponds to "<field_name>.$"
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>>
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>>
     constexpr dollar_operator_nvp<NvpT> first_match() const {
         return {*static_cast<const NvpT*>(this)};
     }
@@ -651,7 +663,7 @@ class nvp_base {
      * @param last  If true, removes the element from the end of the array.
      *              If false, from the start.
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>>
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>>
     constexpr update_value_expr<NvpT, int> pop(bool last) const {
         return {*static_cast<const NvpT*>(this), last ? 1 : -1, "$pop"};
     }
@@ -662,9 +674,8 @@ class nvp_base {
      * This is only enabled if the current field is an array type.
      * @param val   The value to remove. This must match the type *contained* by this array field.
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>>
-    constexpr update_expr<NvpT, iterable_value_t<no_opt_type>> pull(
-        const iterable_value_t<no_opt_type>& val) const {
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>>
+    constexpr update_expr<NvpT, array_element_type> pull(const array_element_type& val) const {
         return {*static_cast<const NvpT*>(this), val, "$pull"};
     }
     /**
@@ -675,7 +686,7 @@ class nvp_base {
      * @tparam Expr The type of the given query, must be a query expression.
      * @param  expr A query expression against which to compare
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>,
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>,
               typename Expr>
     constexpr std::enable_if_t<details::is_query_expression_v<Expr>, update_expr<NvpT, Expr>> pull(
         const Expr& expr) const {
@@ -688,7 +699,7 @@ class nvp_base {
      * This is only enabled if the current field is an array type.
      * @param iter   An iterable containing the values to remove.
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>,
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>,
               typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
     constexpr update_expr<NvpT, Iterable> pull_all(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, "$pullAll"};
@@ -700,9 +711,9 @@ class nvp_base {
      * This is only enabled if the current field is an array type.
      * @param val   The value to add.
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>>
-    constexpr add_to_set_update_expr<NvpT, iterable_value_t<no_opt_type>> add_to_set(
-        const iterable_value_t<no_opt_type>& val) const {
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>>
+    constexpr add_to_set_update_expr<NvpT, array_element_type> add_to_set(
+        const array_element_type& val) const {
         return {*static_cast<const NvpT*>(this), val, false};
     }
 
@@ -712,7 +723,7 @@ class nvp_base {
      * This is only enabled if the current field is an array.
      * @param iter   The list of values to add.
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>,
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>,
               typename Iterable, typename = enable_if_matching_iterable_t<Iterable>>
     constexpr add_to_set_update_expr<NvpT, Iterable> add_to_set(const Iterable& iter) const {
         return {*static_cast<const NvpT*>(this), iter, true};
@@ -723,9 +734,8 @@ class nvp_base {
      * This is only enabled if the current field is an array.
      * @param val   The value to add.
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>>
-    constexpr push_update_expr<NvpT, iterable_value_t<no_opt_type>> push(
-        const iterable_value_t<no_opt_type>& val) const {
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>>
+    constexpr push_update_expr<NvpT, array_element_type> push(const array_element_type& val) const {
         return {*static_cast<const NvpT*>(this), val, false};
     }
 
@@ -742,7 +752,7 @@ class nvp_base {
      * @param  sort    An optional argument containing an expression for the $sort modifier.
      * @param  position    An optional argument containing the value of the $position modifier.
      */
-    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_not_string_v<U>>,
+    template <typename U = no_opt_type, typename = std::enable_if_t<is_iterable_v<U>>,
               typename Iterable, typename = enable_if_matching_iterable_t<Iterable>,
               typename Sort = int,
               typename = std::enable_if_t<details::is_sort_expression_v<Sort> ||
