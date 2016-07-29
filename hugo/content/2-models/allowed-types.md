@@ -119,7 +119,7 @@ The only restriction regarding serializable subdocuments is that they must be *d
 
 ## Optionals
 
-Although {{% a_blank "`std::optional<T>`" "http://en.cppreference.com/w/cpp/utility/optional/optional" %}} won't be available until C++17, Mangrove offers it as a serializable type in the form of `bson_mapper::stdx::optional<T>`. `optional` is a powerful new C++ type that specifies a value that may or may not exist.
+Although {{% a_blank "`std::optional<T>`" "http://en.cppreference.com/w/cpp/utility/optional/optional" %}} won't be available until C++17, Mangrove offers it as a serializable type in the form of `boson::stdx::optional<T>`. `optional` is a powerful new C++ type that specifies a value that may or may not exist.
 
 Mangrove offers support for optional types where `T` is a type discussed on this page. This gives Mangrove support for dynamic, flexible schemas, which will be discussed in a [later section](/2-models/dynamic-schemas).
 
@@ -168,5 +168,5 @@ Some of the types defined in the `bsoncxx::types::` namespace are non-owning "vi
 * `b_codewscope`
 * `b_symbol`
 
-Mangrove only supports these types if, in the class containing them, you inherit from `bson_mapper::UnderlyingBSONDataBase`. When data is loaded from the database and deserialized into this class, {{% a_blank "`UnderlyingBSONDataBase`" "/api/html/classbson__mapper_1_1UnderlyingBSONDataBase.html" %}} holds a `std::shared_ptr` to the original BSON data from which it was deserialized. This ensures that any BSON view types in the class will never point to deallocated memory after being read from the database.
+Mangrove only supports these types if, in the class containing them, you inherit from `boson::UnderlyingBSONDataBase`. When data is loaded from the database and deserialized into this class, {{% a_blank "`UnderlyingBSONDataBase`" "/api/html/classboson_1_1UnderlyingBSONDataBase.html" %}} holds a `std::shared_ptr` to the original BSON data from which it was deserialized. This ensures that any BSON view types in the class will never point to deallocated memory after being read from the database.
 

@@ -1,4 +1,4 @@
-# Mangrove [![Build Status](https://travis-ci.org/mongodb/mongo-cxx-odm.svg?branch=master)](https://travis-ci.org/mongodb/mongo-cxx-odm)
+# Mangrove [![Build Status](https://travis-ci.org/mongodb/mangrove.svg?branch=master)](https://travis-ci.org/mongodb/mangrove)
 
 Welcome to Mangrove, the official MongoDB C++ ODM!
 
@@ -6,12 +6,12 @@ Mangrove lets you map your C++ classes to collections in MongoDB for seamless da
 
 #### Documentation
 
-The documentation for Mangrove is currently hosted at <http://mongodb.github.io/mongo-cxx-odm>.
+The documentation for Mangrove is currently hosted at <http://mongodb.github.io/mangrove>.
 
 We generate the documentation with the following commands:
 
 ```
-hugo -b http://mongodb.github.io/mongo-cxx-odm/ --canonifyURLs=true -s ./hugo -d ../docs
+hugo -b http://mongodb.github.io/mangrove/ --canonifyURLs=true -s ./hugo -d ../docs
 doxygen
 ```
 

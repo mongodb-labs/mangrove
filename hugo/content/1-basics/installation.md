@@ -34,9 +34,9 @@ Build and install the C++ driver according to its {{% a_blank "quickstart guide"
 ## Build and install Mangrove
 
 * Clone the repository, and check out the latest stable release.
-    - `git clone -b master https://github.com/mongodb/mongo-cxx-odm`
+    - `git clone -b master https://github.com/mongodb/mangrove`
 
 * Build Mangrove. Note that if you installed the C driver and C++ driver to a path that is automatically searched by `pkg-config`, you can omit the `PKG_CONFIG_PATH` environment variable. If you don't have `pkg-config`, you can explicitly set the path to the libbson, libmongoc, libbsoncxx, and libmongocxx install prefixes with the `-DLIBBSON_DIR`, `-DLIBMONGOC_DIR`, -`Dlibbsoncxx_DIR`, and `-Dlibmongocxx_DIR` CMake arguments.
-   - `cd mongo-cxx-odm/build`
+   - `cd mangrove/build`
    - `[PKG_CONFIG_PATH=CXXDRIVER_INSTALL_PATH/lib/pkgconfig] cmake -DCMAKE_BUILD_TYPE=Release [-DCMAKE_INSTALL_PREFIX=DESIRED_INSTALL_PATH] ..`
    - `make && sudo make install`

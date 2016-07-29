@@ -18,7 +18,7 @@ libdir=${prefix}/lib
 
 Name: libmangrove
 Description: Mangrove: MongoDB C++14 ODM Library
-URL: http://github.com/mongodb/mongo-cxx-odm
+URL: http://github.com/mongodb/mangrove
 Version: @MANGROVE_VERSION@
 Requires.private: libbsoncxx >= @LIBBSONCXX_REQUIRED_VERSION@
 Cflags: -I${includedir}/mangrove/@MANGROVE_INLINE_NAMESPACE@

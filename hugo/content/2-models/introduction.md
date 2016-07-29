@@ -7,7 +7,7 @@ weight = 1
 
 +++
 
-A **model** is the fundamental way you access data in MongoDB with Mangrove. Models lets you treat C++ classes as objects you can store in the database. When you make a class a model, it is given the semantics of a MongoDB collection, and has access to all of {{% a_blank "these static methods" "/api/html/classmongo__odm_1_1model.html" %}}.
+A **model** is the fundamental way you access data in MongoDB with Mangrove. Models lets you treat C++ classes as objects you can store in the database. When you make a class a model, it is given the semantics of a MongoDB collection, and has access to all of {{% a_blank "these static methods" "/api/html/classmangrove_1_1model.html" %}}.
 
 ## Creating a Model
 
@@ -22,7 +22,7 @@ class Message : mangrove::model<Message> {
 }
 ```
 
-This inheritance gives the inheriting class access to the interface specified {{% a_blank "here" "/api/html/classmongo__odm_1_1model.html" %}}. The inheritance also gives you access to the `_id` variable. Since every document stored in a MongoDB database contains an `_id`, the model stores one automatically for you. By default this of type {{% a_blank "`bsoncxx::oid`" "http://mongodb.github.io/mongo-cxx-driver/classbsoncxx_1_1oid.html" %}}, but you can customize it. We'll discuss how to do this in a [later section](/2-models/custom_id).
+This inheritance gives the inheriting class access to the interface specified {{% a_blank "here" "/api/html/classmangrove_1_1model.html" %}}. The inheritance also gives you access to the `_id` variable. Since every document stored in a MongoDB database contains an `_id`, the model stores one automatically for you. By default this of type {{% a_blank "`bsoncxx::oid`" "http://mongodb.github.io/mongo-cxx-driver/classbsoncxx_1_1oid.html" %}}, but you can customize it. We'll discuss how to do this in a [later section](/2-models/custom_id).
 
 ## Specifying Fields to Serialize
 

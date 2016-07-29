@@ -19,7 +19,7 @@ if [ ! -d "$HOME/deps/lib" ]; then
 	# Download and Install Mongo C++ Driver
 	git clone -b 'master' --single-branch https://github.com/mongodb/mongo-cxx-driver.git;
 	pushd mongo-cxx-driver/build;
-	$HOME/build/mongodb/mongo-cxx-odm/build/${CMAKE_BINARY} -DCMAKE_CXX_FLAGS="-Wno-ignored-attributes" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$HOME/deps/ .. && make -j$(grep -c ^processor /proc/cpuinfo) && make install;
+	$HOME/build/mongodb/mangrove/build/${CMAKE_BINARY} -DCMAKE_CXX_FLAGS="-Wno-ignored-attributes" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$HOME/deps/ .. && make -j$(grep -c ^processor /proc/cpuinfo) && make install;
 	popd;
 
 	# Leave deps directory
