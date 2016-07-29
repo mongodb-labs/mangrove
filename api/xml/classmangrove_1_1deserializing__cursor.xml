@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmangrove_1_1deserializing__cursor" kind="class" language="C++" prot="public">
+    <compoundname>mangrove::deserializing_cursor</compoundname>
+    <includes refid="deserializing__cursor_8hpp" local="no">deserializing_cursor.hpp</includes>
+    <innerclass refid="classmangrove_1_1deserializing__cursor_1_1iterator" prot="public">mangrove::deserializing_cursor::iterator</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmangrove_1_1deserializing__cursor_1a5290d6b9a9d8faf1e495000856fb55c9" prot="private" static="no" mutable="no">
+        <type>mongocxx::cursor</type>
+        <definition>mongocxx::cursor mangrove::deserializing_cursor&lt; T &gt;::_c</definition>
+        <argsstring></argsstring>
+        <name>_c</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/deserializing_cursor.hpp" line="53" column="1" bodyfile="src/mangrove/deserializing_cursor.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmangrove_1_1deserializing__cursor_1ad362111194233c6e2d7a79464b8d09b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::deserializing_cursor&lt; T &gt;::deserializing_cursor</definition>
+        <argsstring>(mongocxx::cursor &amp;&amp;c)</argsstring>
+        <name>deserializing_cursor</name>
+        <param>
+          <type>mongocxx::cursor &amp;&amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/deserializing_cursor.hpp" line="39" column="1" bodyfile="src/mangrove/deserializing_cursor.hpp" bodystart="39" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1deserializing__cursor_1ab83d636ddc466e4ee4c253f8011344c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref></type>
+        <definition>iterator mangrove::deserializing_cursor&lt; T &gt;::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/deserializing_cursor.hpp" line="44" column="1" bodyfile="src/mangrove/deserializing_cursor.hpp" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1deserializing__cursor_1ac987759539a237e251059cecb4c26b95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref></type>
+        <definition>iterator mangrove::deserializing_cursor&lt; T &gt;::end</definition>
+        <argsstring>()</argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/deserializing_cursor.hpp" line="48" column="1" bodyfile="src/mangrove/deserializing_cursor.hpp" bodystart="48" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A class that wraps a mongocxx::cursor. </para>    </briefdescription>
+    <detaileddescription>
+<para>It provides an iterator that deserializes the documents yielded by the underlying mongocxx cursor. NOTE: This iterator will skip documents that fail to be deserialized, e.g. due to non-matching schemas. </para>    </detaileddescription>
+    <location file="src/mangrove/deserializing_cursor.hpp" line="37" column="1" bodyfile="src/mangrove/deserializing_cursor.hpp" bodystart="37" bodyend="54"/>
+    <listofallmembers>
+      <member refid="classmangrove_1_1deserializing__cursor_1a5290d6b9a9d8faf1e495000856fb55c9" prot="private" virt="non-virtual"><scope>mangrove::deserializing_cursor</scope><name>_c</name></member>
+      <member refid="classmangrove_1_1deserializing__cursor_1ab83d636ddc466e4ee4c253f8011344c8" prot="public" virt="non-virtual"><scope>mangrove::deserializing_cursor</scope><name>begin</name></member>
+      <member refid="classmangrove_1_1deserializing__cursor_1ad362111194233c6e2d7a79464b8d09b0" prot="public" virt="non-virtual"><scope>mangrove::deserializing_cursor</scope><name>deserializing_cursor</name></member>
+      <member refid="classmangrove_1_1deserializing__cursor_1ac987759539a237e251059cecb4c26b95" prot="public" virt="non-virtual"><scope>mangrove::deserializing_cursor</scope><name>end</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmangrove_1_1comparison__value__expr" kind="class" language="C++" prot="public">
+    <compoundname>mangrove::comparison_value_expr</compoundname>
+    <basecompoundref refid="classmangrove_1_1comparison__expr" prot="public" virt="non-virtual">mangrove::comparison_expr&lt; NvpT, U &gt;</basecompoundref>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>NvpT</declname>
+        <defname>NvpT</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>U</declname>
+        <defname>U</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmangrove_1_1comparison__value__expr_1a6b34c54a1a0157505050e5852ad3bb65" prot="private" static="no" mutable="no">
+        <type>const U</type>
+        <definition>const U mangrove::comparison_value_expr&lt; NvpT, U &gt;::_value</definition>
+        <argsstring></argsstring>
+        <name>_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="257" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="257" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmangrove_1_1comparison__value__expr_1a96cc3fd9b5e14be77cfd26e8ab6bcf60" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mangrove::comparison_value_expr&lt; NvpT, U &gt;::comparison_value_expr</definition>
+        <argsstring>(NvpT nvp, const U &amp;value, const char *op)</argsstring>
+        <name>comparison_value_expr</name>
+        <param>
+          <type>NvpT</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const U &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="252" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="252" bodyend="254"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a comparison expression as above, but stores a value instead of a reference. </para>    </briefdescription>
+    <detaileddescription>
+<para>This is useful for storing temporary or computed values. Internally, it uses a <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref> whose value is a b_regex. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="55">
+        <label>mangrove::comparison_expr&lt; NvpT, U &gt;</label>
+        <link refid="classmangrove_1_1comparison__expr"/>
+      </node>
+      <node id="54">
+        <label>mangrove::comparison_value_expr&lt; NvpT, U &gt;</label>
+        <link refid="classmangrove_1_1comparison__value__expr"/>
+        <childnode refid="55" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="57">
+        <label>mangrove::comparison_expr&lt; NvpT, U &gt;</label>
+        <link refid="classmangrove_1_1comparison__expr"/>
+      </node>
+      <node id="56">
+        <label>mangrove::comparison_value_expr&lt; NvpT, U &gt;</label>
+        <link refid="classmangrove_1_1comparison__value__expr"/>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/expression_syntax.hpp" line="57" column="1" bodyfile="src/mangrove/expression_syntax.hpp" bodystart="57" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmangrove_1_1comparison__value__expr_1a6b34c54a1a0157505050e5852ad3bb65" prot="private" virt="non-virtual"><scope>mangrove::comparison_value_expr</scope><name>_value</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1a24cd33bfa502e97ff0fd16d059192332" prot="public" virt="non-virtual"><scope>mangrove::comparison_value_expr</scope><name>append_name</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1a2d534897e90161d1c0a71f9073c640e3" prot="public" virt="non-virtual"><scope>mangrove::comparison_value_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1a097fc0cca91f1746c11a78f08a5d4952" prot="public" virt="non-virtual"><scope>mangrove::comparison_value_expr</scope><name>comparison_expr</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1a0e69c2e073819f3dd6f736e2368385ff" prot="public" virt="non-virtual"><scope>mangrove::comparison_value_expr</scope><name>comparison_expr</name></member>
+      <member refid="classmangrove_1_1comparison__value__expr_1a96cc3fd9b5e14be77cfd26e8ab6bcf60" prot="public" virt="non-virtual"><scope>mangrove::comparison_value_expr</scope><name>comparison_value_expr</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1a348eb5ab8445abab8894d43e786c736b" prot="public" virt="non-virtual"><scope>mangrove::comparison_value_expr</scope><name>field_type</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1ae6101d0a1095f11ded179dd30f4268a6" prot="public" virt="non-virtual"><scope>mangrove::comparison_value_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

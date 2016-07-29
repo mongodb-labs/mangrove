@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmangrove_1_1mod__expr" kind="class" language="C++" prot="public">
+    <compoundname>mangrove::mod_expr</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename NvpT</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classmangrove_1_1mod__expr_1afc42bc477ef59d6351b6c286fd6461c2" prot="public" static="no">
+        <type>NvpT</type>
+        <definition>using mangrove::mod_expr&lt; NvpT &gt;::field_type =  NvpT</definition>
+        <argsstring></argsstring>
+        <name>field_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="268" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmangrove_1_1mod__expr_1aec1ac9fc216c987d95dbd6bb70bc70ff" prot="private" static="no" mutable="no">
+        <type>const NvpT</type>
+        <definition>const NvpT mangrove::mod_expr&lt; NvpT &gt;::_nvp</definition>
+        <argsstring></argsstring>
+        <name>_nvp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="326" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="326" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1mod__expr_1aa18c18b7bfbdf92b7b95554451128669" prot="private" static="no" mutable="no">
+        <type>const int &amp;</type>
+        <definition>const int&amp; mangrove::mod_expr&lt; NvpT &gt;::_divisor</definition>
+        <argsstring></argsstring>
+        <name>_divisor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="327" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="327" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1mod__expr_1a9cc974eca22388da8f5357aea4de1f12" prot="private" static="no" mutable="no">
+        <type>const int &amp;</type>
+        <definition>const int&amp; mangrove::mod_expr&lt; NvpT &gt;::_remainder</definition>
+        <argsstring></argsstring>
+        <name>_remainder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="328" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="328" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmangrove_1_1mod__expr_1aeed73f6f483586789bd8d6910c394a70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mangrove::mod_expr&lt; NvpT &gt;::mod_expr</definition>
+        <argsstring>(NvpT nvp, const int &amp;divisor, const int &amp;remainder)</argsstring>
+        <name>mod_expr</name>
+        <param>
+          <type>NvpT</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>divisor</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>remainder</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classmangrove_1_1mod__expr" kindref="compound">mod_expr</ref> that represents a query with the $mod operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nvp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name-value pair to compare against. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>divisor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The divisor used in the modulus operation. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>remainder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The remainder produced when dividing the field by the divisor. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="275" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="275" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1mod__expr_1a72cd731ea3c43dbf0798adf1f222f59b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string &amp;</type>
+        <definition>std::string&amp; mangrove::mod_expr&lt; NvpT &gt;::append_name</definition>
+        <argsstring>(std::string &amp;s) const </argsstring>
+        <name>append_name</name>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Appends the name of the contained field to a string. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="282" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="282" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1mod__expr_1a109ded32f02e7da37c21422092945a20" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mangrove::mod_expr&lt; NvpT &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false, bool omit_name=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>omit_name</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Appends this expression to a BSON core builder, as a key-value pair of the form &quot; key: { $mod: [ divisor, remainder ] } &quot;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a BSON core builder </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wrap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to wrap the BSON inside a document. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="292" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="292" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1mod__expr_1ade5c98722cadb244629cfd4df42d4631" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::mod_expr&lt; NvpT &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Converts the expression to a BSON filter for a query. </para>        </briefdescription>
+        <detaileddescription>
+<para>The resulting BSON is of the form &quot;{ key: { $mod: [ divisor, remainder ] } }&quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="319" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="319" bodyend="323"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This class represents a query expression using the $mod operator, that checks the modulus of a certain numerical field. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mangrove/expression_syntax.hpp" line="60" column="1" bodyfile="src/mangrove/expression_syntax.hpp" bodystart="60" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmangrove_1_1mod__expr_1aa18c18b7bfbdf92b7b95554451128669" prot="private" virt="non-virtual"><scope>mangrove::mod_expr</scope><name>_divisor</name></member>
+      <member refid="classmangrove_1_1mod__expr_1aec1ac9fc216c987d95dbd6bb70bc70ff" prot="private" virt="non-virtual"><scope>mangrove::mod_expr</scope><name>_nvp</name></member>
+      <member refid="classmangrove_1_1mod__expr_1a9cc974eca22388da8f5357aea4de1f12" prot="private" virt="non-virtual"><scope>mangrove::mod_expr</scope><name>_remainder</name></member>
+      <member refid="classmangrove_1_1mod__expr_1a72cd731ea3c43dbf0798adf1f222f59b" prot="public" virt="non-virtual"><scope>mangrove::mod_expr</scope><name>append_name</name></member>
+      <member refid="classmangrove_1_1mod__expr_1a109ded32f02e7da37c21422092945a20" prot="public" virt="non-virtual"><scope>mangrove::mod_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmangrove_1_1mod__expr_1afc42bc477ef59d6351b6c286fd6461c2" prot="public" virt="non-virtual"><scope>mangrove::mod_expr</scope><name>field_type</name></member>
+      <member refid="classmangrove_1_1mod__expr_1aeed73f6f483586789bd8d6910c394a70" prot="public" virt="non-virtual"><scope>mangrove::mod_expr</scope><name>mod_expr</name></member>
+      <member refid="classmangrove_1_1mod__expr_1ade5c98722cadb244629cfd4df42d4631" prot="public" virt="non-virtual"><scope>mangrove::mod_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

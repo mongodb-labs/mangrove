@@ -1,0 +1,1357 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespaceboson" kind="namespace" language="C++">
+    <compoundname>boson</compoundname>
+    <innerclass refid="classboson_1_1bson__input__streambuf" prot="public">boson::bson_input_streambuf</innerclass>
+    <innerclass refid="classboson_1_1bson__istream" prot="public">boson::bson_istream</innerclass>
+    <innerclass refid="classboson_1_1bson__ostream" prot="public">boson::bson_ostream</innerclass>
+    <innerclass refid="classboson_1_1bson__output__streambuf" prot="public">boson::bson_output_streambuf</innerclass>
+    <innerclass refid="classboson_1_1BSONInputArchive" prot="public">boson::BSONInputArchive</innerclass>
+    <innerclass refid="classboson_1_1BSONOutputArchive" prot="public">boson::BSONOutputArchive</innerclass>
+    <innerclass refid="classboson_1_1char__array__streambuf" prot="public">boson::char_array_streambuf</innerclass>
+    <innerclass refid="structboson_1_1Exception" prot="public">boson::Exception</innerclass>
+    <innerclass refid="structboson_1_1is__bson" prot="public">boson::is_bson</innerclass>
+    <innerclass refid="structboson_1_1is__bson__view" prot="public">boson::is_bson_view</innerclass>
+    <innerclass refid="classboson_1_1serializing__iterator" prot="public">boson::serializing_iterator</innerclass>
+    <innerclass refid="classboson_1_1UnderlyingBSONDataBase" prot="public">boson::UnderlyingBSONDataBase</innerclass>
+    <innernamespace refid="namespaceboson_1_1stdx">boson::stdx</innernamespace>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="bson__archiver_8hpp_1a019b26233160e4cc20531ca345b0a136" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONOutputArchive &amp;, cereal::NameValuePair&lt; T &gt; const &amp;)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+        </param>
+        <param>
+          <type>cereal::NameValuePair&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="927" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="927" bodyend="928"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1afa2a7602400356a45f736fa76ea7e611" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONInputArchive &amp;, cereal::NameValuePair&lt; T &gt; const &amp;)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+        </param>
+        <param>
+          <type>cereal::NameValuePair&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="932" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="932" bodyend="933"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a66a90aff726c447ea590a2205171a2db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::epilogue</definition>
+        <argsstring>(BSONOutputArchive &amp;, cereal::NameValuePair&lt; T &gt; const &amp;)</argsstring>
+        <name>epilogue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+        </param>
+        <param>
+          <type>cereal::NameValuePair&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="939" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="939" bodyend="940"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a104749e730a674a1ea0b68662ae3620d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::epilogue</definition>
+        <argsstring>(BSONInputArchive &amp;, cereal::NameValuePair&lt; T &gt; const &amp;)</argsstring>
+        <name>epilogue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+        </param>
+        <param>
+          <type>cereal::NameValuePair&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="945" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="945" bodyend="946"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a4fcc4a67af3ffd63d8501334fd35ba50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONOutputArchive &amp;, stdx::optional&lt; T &gt; const &amp;)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+        </param>
+        <param>
+          <type>stdx::optional&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="952" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="952" bodyend="953"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1ad07449c258d78616bda01ab0253dae42" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONInputArchive &amp;, stdx::optional&lt; T &gt; const &amp;)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+        </param>
+        <param>
+          <type>stdx::optional&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="957" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="957" bodyend="958"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a5b374516fcc14a14b068cd5581e99c92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::epilogue</definition>
+        <argsstring>(BSONOutputArchive &amp;, stdx::optional&lt; T &gt; const &amp;)</argsstring>
+        <name>epilogue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+        </param>
+        <param>
+          <type>stdx::optional&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="964" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="964" bodyend="965"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1af28aba5c4f99672e9966577d83e9dd83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::epilogue</definition>
+        <argsstring>(BSONInputArchive &amp;, stdx::optional&lt; T &gt; const &amp;)</argsstring>
+        <name>epilogue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+        </param>
+        <param>
+          <type>stdx::optional&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="970" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="970" bodyend="971"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1ae8ccd36fcb4d6a7795d8f68fae5ecb90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONOutputArchive &amp;ar, cereal::SizeTag&lt; T &gt; const &amp;)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>cereal::SizeTag&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="978" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="978" bodyend="980"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a227c3d1fb5f21aa4d5780e411b00a66e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONInputArchive &amp;, cereal::SizeTag&lt; T &gt; const &amp;)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+        </param>
+        <param>
+          <type>cereal::SizeTag&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="984" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="984" bodyend="985"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a3b7cdea968704ef4b2e46a4698eff0b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::epilogue</definition>
+        <argsstring>(BSONOutputArchive &amp;, cereal::SizeTag&lt; T &gt; const &amp;)</argsstring>
+        <name>epilogue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+        </param>
+        <param>
+          <type>cereal::SizeTag&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="991" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="991" bodyend="992"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1aafcf4fb2b8944137fb56573cce08afcb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::epilogue</definition>
+        <argsstring>(BSONInputArchive &amp;, cereal::SizeTag&lt; T &gt; const &amp;)</argsstring>
+        <name>epilogue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+        </param>
+        <param>
+          <type>cereal::SizeTag&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="996" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="996" bodyend="997"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1ac9426ca22b0080356439bc03592408a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class BsonT</type>
+          </param>
+          <param>
+            <type>cereal::traits::EnableIf&lt;                                                                                                      is_bson&lt; BsonT &gt;::value||                                                                                                   std::is_same&lt; BsonT, std::chrono::system_clock::time_point &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONOutputArchive &amp;ar, BsonT const &amp;)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>BsonT const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1007" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1007" bodyend="1009"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a177132a9ba73a532201df5f312f8cc6e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class BsonT</type>
+          </param>
+          <param>
+            <type>cereal::traits::EnableIf&lt;                                                                                                      is_bson&lt; BsonT &gt;::value||                                                                                                   std::is_same&lt; BsonT, std::chrono::system_clock::time_point &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::epilogue</definition>
+        <argsstring>(BSONOutputArchive &amp;ar, BsonT const &amp;)</argsstring>
+        <name>epilogue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>BsonT const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1015" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1015" bodyend="1017"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a26eb469f0896f7bb839402845cd92d2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class BsonT</type>
+          </param>
+          <param>
+            <type>cereal::traits::EnableIf&lt;                                                                                                      is_bson&lt; BsonT &gt;::value||                                                                                                   std::is_same&lt; BsonT, std::chrono::system_clock::time_point &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONInputArchive &amp;ar, BsonT const &amp;)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>BsonT const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1023" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1023" bodyend="1031"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1abf3c9f5f85bab461bc0cf102222899ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class BsonT</type>
+          </param>
+          <param>
+            <type>cereal::traits::EnableIf&lt;                                                                                                      is_bson&lt; BsonT &gt;::value||                                                                                                   std::is_same&lt; BsonT, std::chrono::system_clock::time_point &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::epilogue</definition>
+        <argsstring>(BSONInputArchive &amp;ar, BsonT const &amp;)</argsstring>
+        <name>epilogue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>BsonT const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1037" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1037" bodyend="1039"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1aae541e9a4149cf032c664a7af9004196" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>cereal::traits::EnableIf&lt; std::is_base_of&lt; UnderlyingBSONDataBase, T &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONOutputArchive &amp;ar, T const &amp;)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>T const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1050" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1050" bodyend="1052"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1aa356579aecebef2491c13cd284df4c77" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>cereal::traits::EnableIf&lt; std::is_base_of&lt; UnderlyingBSONDataBase, T &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONInputArchive &amp;ar, T &amp;obj)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>T &amp;</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1069" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1069" bodyend="1072"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a10d1fce3fa1c2c035800bc30c9abc87a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>cereal::traits::DisableIf&lt;                                                  std::is_arithmetic&lt; T &gt;::value||                                               cereal::traits::has_minimal_base_class_serialization&lt;                                                                  T, cereal::traits::has_minimal_input_serialization, BSONInputArchive &gt;::value||                                               cereal::traits::has_minimal_input_serialization&lt; T, BSONInputArchive &gt;::value||                                               is_bson&lt; T &gt;::value||std::is_same&lt; T, std::chrono::system_clock::time_point &gt;::value||                                               std::is_base_of&lt; UnderlyingBSONDataBase, T &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONInputArchive &amp;ar, T const &amp;)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>T const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1083" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1083" bodyend="1085"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1af9441493d339e7e95fb99b05e0280da9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>cereal::traits::DisableIf&lt;                                                  std::is_arithmetic&lt; T &gt;::value||                                               cereal::traits::has_minimal_base_class_serialization&lt;                                                                  T, cereal::traits::has_minimal_output_serialization, BSONOutputArchive &gt;::value||                                               cereal::traits::has_minimal_output_serialization&lt; T, BSONOutputArchive &gt;::value||                                               is_bson&lt; T &gt;::value||std::is_same&lt; T, std::chrono::system_clock::time_point &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::epilogue</definition>
+        <argsstring>(BSONOutputArchive &amp;ar, T const &amp;)</argsstring>
+        <name>epilogue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>T const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1101" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1101" bodyend="1103"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a0aa668362d9ef5182bccc7e2736f0eda" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>cereal::traits::DisableIf&lt;                                                  std::is_arithmetic&lt; T &gt;::value||                                               cereal::traits::has_minimal_base_class_serialization&lt;                                                                  T, cereal::traits::has_minimal_input_serialization, BSONInputArchive &gt;::value||                                               cereal::traits::has_minimal_input_serialization&lt; T, BSONInputArchive &gt;::value||                                               is_bson&lt; T &gt;::value||std::is_same&lt; T, std::chrono::system_clock::time_point &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::epilogue</definition>
+        <argsstring>(BSONInputArchive &amp;ar, T const &amp;)</argsstring>
+        <name>epilogue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>T const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1114" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1114" bodyend="1116"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a328bb815887ab7617f21d859feda5c24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class CharT</type>
+          </param>
+          <param>
+            <type>class Traits</type>
+          </param>
+          <param>
+            <type>class Alloc</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONOutputArchive &amp;ar, std::basic_string&lt; CharT, Traits, Alloc &gt; const &amp;)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>std::basic_string&lt; CharT, Traits, Alloc &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1147" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1147" bodyend="1149"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1ab0302da5691716aa750a61d145f87125" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class CharT</type>
+          </param>
+          <param>
+            <type>class Traits</type>
+          </param>
+          <param>
+            <type>class Alloc</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::prologue</definition>
+        <argsstring>(BSONInputArchive &amp;ar, std::basic_string&lt; CharT, Traits, Alloc &gt; const &amp;)</argsstring>
+        <name>prologue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>std::basic_string&lt; CharT, Traits, Alloc &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1153" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1153" bodyend="1155"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a0b02fbad909cc431b14983bdc83e3762" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class CharT</type>
+          </param>
+          <param>
+            <type>class Traits</type>
+          </param>
+          <param>
+            <type>class Alloc</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::epilogue</definition>
+        <argsstring>(BSONOutputArchive &amp;ar, std::basic_string&lt; CharT, Traits, Alloc &gt; const &amp;)</argsstring>
+        <name>epilogue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>std::basic_string&lt; CharT, Traits, Alloc &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1160" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1160" bodyend="1162"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a6d766804f650693ae5ad8cb1a482d1c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class CharT</type>
+          </param>
+          <param>
+            <type>class Traits</type>
+          </param>
+          <param>
+            <type>class Alloc</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::epilogue</definition>
+        <argsstring>(BSONInputArchive &amp;ar, std::basic_string&lt; CharT, Traits, Alloc &gt; const &amp;)</argsstring>
+        <name>epilogue</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>std::basic_string&lt; CharT, Traits, Alloc &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1166" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1166" bodyend="1168"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a14971c10883bd21a11d0f59c67bef968" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::CEREAL_SAVE_FUNCTION_NAME</definition>
+        <argsstring>(BSONOutputArchive &amp;ar, cereal::NameValuePair&lt; T &gt; const &amp;t)</argsstring>
+        <name>CEREAL_SAVE_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>cereal::NameValuePair&lt; T &gt; const &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1175" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1175" bodyend="1178"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a02e870961f0086364b1e43a2639a6e14" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::CEREAL_LOAD_FUNCTION_NAME</definition>
+        <argsstring>(BSONInputArchive &amp;ar, cereal::NameValuePair&lt; T &gt; &amp;t)</argsstring>
+        <name>CEREAL_LOAD_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>cereal::NameValuePair&lt; T &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1182" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1182" bodyend="1185"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a76c762e1505535e0aac0336e82f3b241" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::CEREAL_SAVE_FUNCTION_NAME</definition>
+        <argsstring>(BSONOutputArchive &amp;ar, stdx::optional&lt; T &gt; const &amp;t)</argsstring>
+        <name>CEREAL_SAVE_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>stdx::optional&lt; T &gt; const &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1189" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1189" bodyend="1194"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1abec17f61ea25a94b8cc73dd654c72aac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>cereal::traits::DisableIf&lt; is_bson&lt; T &gt;::value &amp;&amp;!std::is_default_constructible&lt; T &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::CEREAL_LOAD_FUNCTION_NAME</definition>
+        <argsstring>(BSONInputArchive &amp;ar, stdx::optional&lt; T &gt; &amp;t)</argsstring>
+        <name>CEREAL_LOAD_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>stdx::optional&lt; T &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1205" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1205" bodyend="1213"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a251a45d740bdc5940bde0a2367d3727b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::CEREAL_LOAD_FUNCTION_NAME</definition>
+        <argsstring>(BSONInputArchive &amp;ar, stdx::optional&lt; bsoncxx::types::b_utf8 &gt; &amp;t)</argsstring>
+        <name>CEREAL_LOAD_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>stdx::optional&lt; bsoncxx::types::b_utf8 &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1218" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1218" bodyend="1227"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a422fb022ab34e789498712644a75edf4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::CEREAL_LOAD_FUNCTION_NAME</definition>
+        <argsstring>(BSONInputArchive &amp;ar, stdx::optional&lt; bsoncxx::types::b_date &gt; &amp;t)</argsstring>
+        <name>CEREAL_LOAD_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>stdx::optional&lt; bsoncxx::types::b_date &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1228" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1228" bodyend="1237"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1ac04255f8af6da41b35f7b54dcf1fcc3a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::CEREAL_LOAD_FUNCTION_NAME</definition>
+        <argsstring>(BSONInputArchive &amp;ar, stdx::optional&lt; bsoncxx::types::b_regex &gt; &amp;t)</argsstring>
+        <name>CEREAL_LOAD_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>stdx::optional&lt; bsoncxx::types::b_regex &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1238" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1238" bodyend="1247"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a0df9cda4d757a91c371b20fe347b4502" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::CEREAL_LOAD_FUNCTION_NAME</definition>
+        <argsstring>(BSONInputArchive &amp;ar, stdx::optional&lt; bsoncxx::types::b_code &gt; &amp;t)</argsstring>
+        <name>CEREAL_LOAD_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>stdx::optional&lt; bsoncxx::types::b_code &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1248" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1248" bodyend="1257"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a125aab2989c62ba79473dbd0a8ede9f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::CEREAL_LOAD_FUNCTION_NAME</definition>
+        <argsstring>(BSONInputArchive &amp;ar, stdx::optional&lt; bsoncxx::types::b_codewscope &gt; &amp;t)</argsstring>
+        <name>CEREAL_LOAD_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>stdx::optional&lt; bsoncxx::types::b_codewscope &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1258" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1258" bodyend="1267"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a65b9be7f4570b0ea770bb604be454ea5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::CEREAL_LOAD_FUNCTION_NAME</definition>
+        <argsstring>(BSONInputArchive &amp;ar, stdx::optional&lt; bsoncxx::types::b_symbol &gt; &amp;t)</argsstring>
+        <name>CEREAL_LOAD_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>stdx::optional&lt; bsoncxx::types::b_symbol &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1268" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1268" bodyend="1277"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a9f21532079c8e3337e3a9525b08af400" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>cereal::traits::EnableIf&lt; std::is_arithmetic&lt; T &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::CEREAL_SAVE_FUNCTION_NAME</definition>
+        <argsstring>(BSONOutputArchive &amp;ar, T const &amp;t)</argsstring>
+        <name>CEREAL_SAVE_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>T const &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1281" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1281" bodyend="1283"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a5c8e4b08a350d03b4afc447e1ad21d6d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>cereal::traits::EnableIf&lt; std::is_arithmetic&lt; T &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::CEREAL_LOAD_FUNCTION_NAME</definition>
+        <argsstring>(BSONInputArchive &amp;ar, T &amp;t)</argsstring>
+        <name>CEREAL_LOAD_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>T &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1287" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1287" bodyend="1289"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1ad52c0cbab9b570c2bad6347c269e6b62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class CharT</type>
+          </param>
+          <param>
+            <type>class Traits</type>
+          </param>
+          <param>
+            <type>class Alloc</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::CEREAL_SAVE_FUNCTION_NAME</definition>
+        <argsstring>(BSONOutputArchive &amp;ar, std::basic_string&lt; CharT, Traits, Alloc &gt; const &amp;str)</argsstring>
+        <name>CEREAL_SAVE_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>std::basic_string&lt; CharT, Traits, Alloc &gt; const &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1293" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1293" bodyend="1296"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a3789521d03a004c70f6b03665e8b9579" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class CharT</type>
+          </param>
+          <param>
+            <type>class Traits</type>
+          </param>
+          <param>
+            <type>class Alloc</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::CEREAL_LOAD_FUNCTION_NAME</definition>
+        <argsstring>(BSONInputArchive &amp;ar, std::basic_string&lt; CharT, Traits, Alloc &gt; &amp;str)</argsstring>
+        <name>CEREAL_LOAD_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>std::basic_string&lt; CharT, Traits, Alloc &gt; &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1300" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1300" bodyend="1303"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a604480c587fff5b9ae0a5560f37f845b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::CEREAL_SAVE_FUNCTION_NAME</definition>
+        <argsstring>(BSONOutputArchive &amp;, cereal::SizeTag&lt; T &gt; const &amp;)</argsstring>
+        <name>CEREAL_SAVE_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+        </param>
+        <param>
+          <type>cereal::SizeTag&lt; T &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1308" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1308" bodyend="1310"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a76a5a5ab53ce17c0c763b3b274a7dbdf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::CEREAL_LOAD_FUNCTION_NAME</definition>
+        <argsstring>(BSONInputArchive &amp;ar, cereal::SizeTag&lt; T &gt; &amp;st)</argsstring>
+        <name>CEREAL_LOAD_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>cereal::SizeTag&lt; T &gt; &amp;</type>
+          <declname>st</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1314" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1314" bodyend="1316"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1ae12c8aeef74d42f739478053a26eec1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class BsonT</type>
+          </param>
+          <param>
+            <type>cereal::traits::EnableIf&lt;                                                                                                      is_bson&lt; BsonT &gt;::value||                                                                                                   std::is_same&lt; BsonT, std::chrono::system_clock::time_point &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::CEREAL_SAVE_FUNCTION_NAME</definition>
+        <argsstring>(BSONOutputArchive &amp;ar, BsonT const &amp;bsonVal)</argsstring>
+        <name>CEREAL_SAVE_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>BsonT const &amp;</type>
+          <declname>bsonVal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1324" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1324" bodyend="1326"/>
+      </memberdef>
+      <memberdef kind="function" id="bson__archiver_8hpp_1a6326b7be7ec776e7b2e71c926446f173" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class BsonT</type>
+          </param>
+          <param>
+            <type>cereal::traits::EnableIf&lt;                                                                                                      is_bson&lt; BsonT &gt;::value||                                                                                                   std::is_same&lt; BsonT, std::chrono::system_clock::time_point &gt;::value &gt;</type>
+            <defval>cereal::traits::sfinae</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::CEREAL_LOAD_FUNCTION_NAME</definition>
+        <argsstring>(BSONInputArchive &amp;ar, BsonT &amp;bsonVal)</argsstring>
+        <name>CEREAL_LOAD_FUNCTION_NAME</name>
+        <param>
+          <type><ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>BsonT &amp;</type>
+          <declname>bsonVal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="1333" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="1333" bodyend="1335"/>
+      </memberdef>
+      <memberdef kind="function" id="mapping__functions_8hpp_1a298dc3060bc052fa7e38a069ae36c1de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>BOSON_INLINE_NAMESPACE_BEGIN bsoncxx::document::value</type>
+        <definition>BOSON_INLINE_NAMESPACE_BEGIN bsoncxx::document::value boson::to_document</definition>
+        <argsstring>(const T &amp;obj)</argsstring>
+        <name>to_document</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+<para>Converts a serializable object into a BSON document value TODO This is not very clean and kind of inefficient. </para>        </briefdescription>
+        <detaileddescription>
+<para>Maybe we should be passing references into the <ref refid="classboson_1_1bson__ostream" kindref="compound">bson_ostream</ref> callback? <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A type that is serializable to BSON using a BSONArchiver. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A serializable object </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A BSON document value representing the given object. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/mapping_functions.hpp" line="39" column="1" bodyfile="src/boson/mapping_functions.hpp" bodystart="39" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="mapping__functions_8hpp_1a666e08598fa78ad552c1d603f5bbe42c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>bsoncxx::document::value</type>
+        <definition>bsoncxx::document::value boson::to_dotted_notation_document</definition>
+        <argsstring>(const T &amp;obj)</argsstring>
+        <name>to_dotted_notation_document</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+<para>Converts a serializable object into a BSON document value in dotted notation for $set. </para>        </briefdescription>
+        <detaileddescription>
+<para>TODO This is not very clean and kind of inefficient. Maybe we should be passing references into the <ref refid="classboson_1_1bson__ostream" kindref="compound">bson_ostream</ref> callback? <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A type that is serializable to BSON using a BSONArchiver. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A serializable object </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A BSON document value in dotted notation representing the given object. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/mapping_functions.hpp" line="56" column="1" bodyfile="src/boson/mapping_functions.hpp" bodystart="56" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="mapping__functions_8hpp_1a92994da015a9bb442cb9bfdf6c61956e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T boson::to_obj</definition>
+        <argsstring>(bsoncxx::document::view v)</argsstring>
+        <name>to_obj</name>
+        <param>
+          <type>bsoncxx::document::view</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Converts a bsoncxx document view to an object of the templated type through deserialization. </para>        </briefdescription>
+        <detaileddescription>
+<para>The object must be default-constructible.</para><para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A default-constructible type that is serializable using a BSONArchiver </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A BSON document view. If the BSON document does not match the schema of type T, BSONArchiver will throw a corresponding exception. TODO what does BSONArchiver throw? </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns by value an object that corresponds to the given document view. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/mapping_functions.hpp" line="75" column="1" bodyfile="src/boson/mapping_functions.hpp" bodystart="75" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="mapping__functions_8hpp_1ad4143151f62ad2bef614419541ab00a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void boson::to_obj</definition>
+        <argsstring>(bsoncxx::document::view v, T &amp;obj)</argsstring>
+        <name>to_obj</name>
+        <param>
+          <type>bsoncxx::document::view</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>T &amp;</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+<para>Fills a serializable object &apos;obj&apos; with data from a BSON document view. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a type that is serializable using a BSONArchiver </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A BSON document view. If the BSON document does not match the schema of type T, BSONArchiver will throw a corresponding exception. TODO what does BSONArchiver throw? </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a serializable object that will be filled with data from the gievn document. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/mapping_functions.hpp" line="96" column="1" bodyfile="src/boson/mapping_functions.hpp" bodystart="96" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="mapping__functions_8hpp_1a958b216a494b1348e5ddb909274ddade" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>bsoncxx::stdx::optional&lt; T &gt;</type>
+        <definition>bsoncxx::stdx::optional&lt;T&gt; boson::to_optional_obj</definition>
+        <argsstring>(const bsoncxx::stdx::optional&lt; bsoncxx::document::value &gt; &amp;opt)</argsstring>
+        <name>to_optional_obj</name>
+        <param>
+          <type>const bsoncxx::stdx::optional&lt; bsoncxx::document::value &gt; &amp;</type>
+          <declname>opt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/mapping_functions.hpp" line="111" column="1" bodyfile="src/boson/mapping_functions.hpp" bodystart="111" bodyend="119"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/boson/bson_archiver.hpp" line="61" column="1"/>
+  </compounddef>
+</doxygen>

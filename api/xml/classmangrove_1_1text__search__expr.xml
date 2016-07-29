@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmangrove_1_1text__search__expr" kind="class" language="C++" prot="public">
+    <compoundname>mangrove::text_search_expr</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmangrove_1_1text__search__expr_1a10ac15cf6b5c28e985782bf29b47c742" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* mangrove::text_search_expr::_search</definition>
+        <argsstring></argsstring>
+        <name>_search</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="432" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="432" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1text__search__expr_1aa7514f83d8cd7e39d3ce85f26bdb4c9e" prot="private" static="no" mutable="no">
+        <type>mongocxx::stdx::optional&lt; const char * &gt;</type>
+        <definition>mongocxx::stdx::optional&lt;const char *&gt; mangrove::text_search_expr::_language</definition>
+        <argsstring></argsstring>
+        <name>_language</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="433" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="433" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1text__search__expr_1a4a53b57ea6a66bbcf7d0df0e337b22ee" prot="private" static="no" mutable="no">
+        <type>bsoncxx::stdx::optional&lt; bool &gt;</type>
+        <definition>bsoncxx::stdx::optional&lt;bool&gt; mangrove::text_search_expr::_case_sensitive</definition>
+        <argsstring></argsstring>
+        <name>_case_sensitive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="434" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="434" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1text__search__expr_1aaaa7c702cfb8cb9daf5645bff6f97709" prot="private" static="no" mutable="no">
+        <type>bsoncxx::stdx::optional&lt; bool &gt;</type>
+        <definition>bsoncxx::stdx::optional&lt;bool&gt; mangrove::text_search_expr::_diacritic_sensitive</definition>
+        <argsstring></argsstring>
+        <name>_diacritic_sensitive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="435" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="435" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmangrove_1_1text__search__expr_1a217f9469c2578fe68ffd755f60b64e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::text_search_expr::text_search_expr</definition>
+        <argsstring>(const char *search, bsoncxx::stdx::optional&lt; const char * &gt; language=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional&lt; bool &gt; case_sensitive=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional&lt; bool &gt; diacritic_sensitive=bsoncxx::stdx::nullopt)</argsstring>
+        <name>text_search_expr</name>
+        <param>
+          <type>const char *</type>
+          <declname>search</declname>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; const char * &gt;</type>
+          <declname>language</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; bool &gt;</type>
+          <declname>case_sensitive</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; bool &gt;</type>
+          <declname>diacritic_sensitive</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Creates a text search expression. </para>        </briefdescription>
+        <detaileddescription>
+<para>These parameters correspond to the parameters for the $text operator in MongoDB. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>search</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string of terms use to query the text index. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>language</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The language of the text index. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>case_sensitive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean flag to specify case-sensitive search. Optional, false by default. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>diacritic_sensitive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean flag to specify case-sensitive search. Optional, false by default. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="347" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="347" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1text__search__expr_1a7bb937becab8ccebb80abad0e3a7c049" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmangrove_1_1text__search__expr" kindref="compound">text_search_expr</ref> &amp;</type>
+        <definition>text_search_expr&amp; mangrove::text_search_expr::language</definition>
+        <argsstring>()</argsstring>
+        <name>language</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="357" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="357" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1text__search__expr_1ab2df8316b6b66a3057e4de7a6488a838" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmangrove_1_1text__search__expr" kindref="compound">text_search_expr</ref> &amp;</type>
+        <definition>text_search_expr&amp; mangrove::text_search_expr::language</definition>
+        <argsstring>(const char *lang)</argsstring>
+        <name>language</name>
+        <param>
+          <type>const char *</type>
+          <declname>lang</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="362" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="362" bodyend="365"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1text__search__expr_1ad427f6b32476348b82a786ea1de4a8d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmangrove_1_1text__search__expr" kindref="compound">text_search_expr</ref> &amp;</type>
+        <definition>text_search_expr&amp; mangrove::text_search_expr::case_sensitive</definition>
+        <argsstring>()</argsstring>
+        <name>case_sensitive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="367" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="367" bodyend="370"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1text__search__expr_1a1b1f2c94bcc48725d15f5c056d08fbb6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmangrove_1_1text__search__expr" kindref="compound">text_search_expr</ref> &amp;</type>
+        <definition>text_search_expr&amp; mangrove::text_search_expr::case_sensitive</definition>
+        <argsstring>(bool case_sensitive)</argsstring>
+        <name>case_sensitive</name>
+        <param>
+          <type>bool</type>
+          <declname>case_sensitive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="372" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="372" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1text__search__expr_1aaffe90cc0cbc31970c248c9b1f9f95dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmangrove_1_1text__search__expr" kindref="compound">text_search_expr</ref> &amp;</type>
+        <definition>text_search_expr&amp; mangrove::text_search_expr::diacritic_sensitive</definition>
+        <argsstring>()</argsstring>
+        <name>diacritic_sensitive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="377" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="377" bodyend="380"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1text__search__expr_1a74f53cd6e3b1c319b7a6270e3c4cbb8c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmangrove_1_1text__search__expr" kindref="compound">text_search_expr</ref> &amp;</type>
+        <definition>text_search_expr&amp; mangrove::text_search_expr::diacritic_sensitive</definition>
+        <argsstring>(bool diacritic_sensitive)</argsstring>
+        <name>diacritic_sensitive</name>
+        <param>
+          <type>bool</type>
+          <declname>diacritic_sensitive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="382" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="382" bodyend="385"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1text__search__expr_1afa08d3a7e99bf76c7459b08f31906733" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mangrove::text_search_expr::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Appends this expression to a BSON core builder, as a key-value pair of the form &quot; key: { $mod: [ divisor, remainder ] } &quot;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a BSON core builder </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wrap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to wrap the BSON inside a document. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="393" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="393" bodyend="419"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1text__search__expr_1a7a9ed7a8cee2f356bc269bcae68ca072" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::text_search_expr::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Converts the expression to a BSON filter for a query. </para>        </briefdescription>
+        <detaileddescription>
+<para>The resulting BSON is of the form &quot;{ key: { $mod: [ divisor, remainder ] } }&quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="425" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="425" bodyend="429"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a query that performs a text search with the $text operator. </para>    </briefdescription>
+    <detaileddescription>
+<para>TODO check values of <computeroutput>language</computeroutput> against spec? </para>    </detaileddescription>
+    <location file="src/mangrove/query_builder.hpp" line="335" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="335" bodyend="436"/>
+    <listofallmembers>
+      <member refid="classmangrove_1_1text__search__expr_1a4a53b57ea6a66bbcf7d0df0e337b22ee" prot="private" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>_case_sensitive</name></member>
+      <member refid="classmangrove_1_1text__search__expr_1aaaa7c702cfb8cb9daf5645bff6f97709" prot="private" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>_diacritic_sensitive</name></member>
+      <member refid="classmangrove_1_1text__search__expr_1aa7514f83d8cd7e39d3ce85f26bdb4c9e" prot="private" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>_language</name></member>
+      <member refid="classmangrove_1_1text__search__expr_1a10ac15cf6b5c28e985782bf29b47c742" prot="private" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>_search</name></member>
+      <member refid="classmangrove_1_1text__search__expr_1afa08d3a7e99bf76c7459b08f31906733" prot="public" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmangrove_1_1text__search__expr_1ad427f6b32476348b82a786ea1de4a8d4" prot="public" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>case_sensitive</name></member>
+      <member refid="classmangrove_1_1text__search__expr_1a1b1f2c94bcc48725d15f5c056d08fbb6" prot="public" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>case_sensitive</name></member>
+      <member refid="classmangrove_1_1text__search__expr_1aaffe90cc0cbc31970c248c9b1f9f95dd" prot="public" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>diacritic_sensitive</name></member>
+      <member refid="classmangrove_1_1text__search__expr_1a74f53cd6e3b1c319b7a6270e3c4cbb8c" prot="public" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>diacritic_sensitive</name></member>
+      <member refid="classmangrove_1_1text__search__expr_1a7bb937becab8ccebb80abad0e3a7c049" prot="public" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>language</name></member>
+      <member refid="classmangrove_1_1text__search__expr_1ab2df8316b6b66a3057e4de7a6488a838" prot="public" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>language</name></member>
+      <member refid="classmangrove_1_1text__search__expr_1a7a9ed7a8cee2f356bc269bcae68ca072" prot="public" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+      <member refid="classmangrove_1_1text__search__expr_1a217f9469c2578fe68ffd755f60b64e55" prot="public" virt="non-virtual"><scope>mangrove::text_search_expr</scope><name>text_search_expr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

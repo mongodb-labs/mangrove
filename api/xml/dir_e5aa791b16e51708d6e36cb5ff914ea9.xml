@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_e5aa791b16e51708d6e36cb5ff914ea9" kind="dir">
+    <compoundname>src/boson/stdx</compoundname>
+    <innerfile refid="optional_8hpp">optional.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/boson/stdx/"/>
+  </compounddef>
+</doxygen>

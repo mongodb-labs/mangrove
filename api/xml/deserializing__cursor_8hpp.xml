@@ -2,238 +2,238 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="deserializing__cursor_8hpp" kind="file" language="C++">
     <compoundname>deserializing_cursor.hpp</compoundname>
-    <includes refid="mongo__odm_2config_2prelude_8hpp" local="no">mongo_odm/config/prelude.hpp</includes>
+    <includes refid="mangrove_2config_2prelude_8hpp" local="no">mangrove/config/prelude.hpp</includes>
     <includes local="no">iostream</includes>
     <includes local="no">bsoncxx/builder/basic/document.hpp</includes>
     <includes local="no">bsoncxx/stdx/optional.hpp</includes>
     <includes local="no">mongocxx/cursor.hpp</includes>
-    <includes refid="mapping__functions_8hpp" local="no">bson_mapper/mapping_functions.hpp</includes>
-    <includes refid="mongo__odm_2config_2postlude_8hpp" local="no">mongo_odm/config/postlude.hpp</includes>
-    <includedby refid="odm__collection_8hpp" local="no">src/mongo_odm/odm_collection.hpp</includedby>
+    <includes refid="mapping__functions_8hpp" local="no">boson/mapping_functions.hpp</includes>
+    <includes refid="mangrove_2config_2postlude_8hpp" local="no">mangrove/config/postlude.hpp</includes>
+    <includedby refid="collection__wrapper_8hpp" local="no">src/mangrove/collection_wrapper.hpp</includedby>
     <incdepgraph>
-      <node id="167">
+      <node id="184">
+        <label>mangrove/config/prelude.hpp</label>
+        <link refid="mangrove_2config_2prelude_8hpp_source"/>
+        <childnode refid="185" relation="include">
+        </childnode>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+      </node>
+      <node id="207">
         <label>bsoncxx/builder/core.hpp</label>
       </node>
-      <node id="153">
-        <label>bson_mapper/mapping_functions.hpp</label>
-        <link refid="mapping__functions_8hpp_source"/>
-        <childnode refid="154" relation="include">
-        </childnode>
-        <childnode refid="149" relation="include">
-        </childnode>
-        <childnode refid="150" relation="include">
-        </childnode>
-        <childnode refid="151" relation="include">
-        </childnode>
-        <childnode refid="159" relation="include">
-        </childnode>
-        <childnode refid="171" relation="include">
-        </childnode>
-        <childnode refid="177" relation="include">
-        </childnode>
-      </node>
-      <node id="177">
-        <label>bson_mapper/config/postlude.hpp</label>
-        <link refid="bson__mapper_2config_2postlude_8hpp_source"/>
-      </node>
-      <node id="151">
+      <node id="191">
         <label>bsoncxx/stdx/optional.hpp</label>
       </node>
-      <node id="171">
-        <label>bson_mapper/bson_streambuf.hpp</label>
-        <link refid="bson__streambuf_8hpp_source"/>
-        <childnode refid="154" relation="include">
+      <node id="183">
+        <label>src/mangrove/deserializing_cursor.hpp</label>
+        <link refid="deserializing_cursor.hpp"/>
+        <childnode refid="184" relation="include">
         </childnode>
-        <childnode refid="172" relation="include">
+        <childnode refid="189" relation="include">
         </childnode>
-        <childnode refid="173" relation="include">
+        <childnode refid="190" relation="include">
         </childnode>
-        <childnode refid="174" relation="include">
+        <childnode refid="191" relation="include">
         </childnode>
-        <childnode refid="175" relation="include">
+        <childnode refid="192" relation="include">
         </childnode>
-        <childnode refid="176" relation="include">
+        <childnode refid="193" relation="include">
         </childnode>
-        <childnode refid="177" relation="include">
+        <childnode refid="218" relation="include">
         </childnode>
       </node>
-      <node id="164">
+      <node id="197">
+        <label>boson/config/export.hpp</label>
+      </node>
+      <node id="204">
         <label>string</label>
       </node>
-      <node id="178">
-        <label>mongo_odm/config/postlude.hpp</label>
-        <link refid="mongo__odm_2config_2postlude_8hpp_source"/>
+      <node id="211">
+        <label>boson/bson_streambuf.hpp</label>
+        <link refid="bson__streambuf_8hpp_source"/>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="212" relation="include">
+        </childnode>
+        <childnode refid="213" relation="include">
+        </childnode>
+        <childnode refid="214" relation="include">
+        </childnode>
+        <childnode refid="215" relation="include">
+        </childnode>
+        <childnode refid="216" relation="include">
+        </childnode>
+        <childnode refid="217" relation="include">
+        </childnode>
       </node>
-      <node id="150">
+      <node id="194">
+        <label>boson/config/prelude.hpp</label>
+        <link refid="boson_2config_2prelude_8hpp_source"/>
+        <childnode refid="195" relation="include">
+        </childnode>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+      </node>
+      <node id="190">
         <label>bsoncxx/builder/basic/document.hpp</label>
       </node>
-      <node id="146">
-        <label>mongo_odm/config/config.hpp</label>
+      <node id="218">
+        <label>mangrove/config/postlude.hpp</label>
+        <link refid="mangrove_2config_2postlude_8hpp_source"/>
       </node>
-      <node id="143">
-        <label>src/mongo_odm/deserializing_cursor.hpp</label>
-        <link refid="deserializing_cursor.hpp"/>
-        <childnode refid="144" relation="include">
-        </childnode>
-        <childnode refid="149" relation="include">
-        </childnode>
-        <childnode refid="150" relation="include">
-        </childnode>
-        <childnode refid="151" relation="include">
-        </childnode>
-        <childnode refid="152" relation="include">
-        </childnode>
-        <childnode refid="153" relation="include">
-        </childnode>
-        <childnode refid="178" relation="include">
-        </childnode>
-      </node>
-      <node id="170">
-        <label>bson_mapper/stdx/optional.hpp</label>
-        <link refid="optional_8hpp_source"/>
-        <childnode refid="151" relation="include">
-        </childnode>
-      </node>
-      <node id="159">
-        <label>bson_mapper/bson_archiver.hpp</label>
-        <link refid="bson__archiver_8hpp_source"/>
-        <childnode refid="160" relation="include">
-        </childnode>
-        <childnode refid="161" relation="include">
-        </childnode>
-        <childnode refid="162" relation="include">
-        </childnode>
-        <childnode refid="163" relation="include">
-        </childnode>
-        <childnode refid="164" relation="include">
-        </childnode>
-        <childnode refid="165" relation="include">
-        </childnode>
-        <childnode refid="166" relation="include">
-        </childnode>
-        <childnode refid="167" relation="include">
-        </childnode>
-        <childnode refid="168" relation="include">
-        </childnode>
-        <childnode refid="169" relation="include">
-        </childnode>
-        <childnode refid="170" relation="include">
-        </childnode>
-      </node>
-      <node id="173">
+      <node id="213">
         <label>ostream</label>
       </node>
-      <node id="152">
+      <node id="199">
+        <label>boson/bson_archiver.hpp</label>
+        <link refid="bson__archiver_8hpp_source"/>
+        <childnode refid="200" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+        <childnode refid="203" relation="include">
+        </childnode>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="205" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+        <childnode refid="209" relation="include">
+        </childnode>
+        <childnode refid="210" relation="include">
+        </childnode>
+      </node>
+      <node id="192">
         <label>mongocxx/cursor.hpp</label>
       </node>
-      <node id="175">
+      <node id="198">
+        <label>boson/config/version.hpp</label>
+      </node>
+      <node id="215">
         <label>bsoncxx/builder/stream/document.hpp</label>
       </node>
-      <node id="155">
-        <label>bson_mapper/config/compiler.hpp</label>
-        <link refid="bson__mapper_2config_2compiler_8hpp_source"/>
+      <node id="210">
+        <label>boson/stdx/optional.hpp</label>
+        <link refid="optional_8hpp_source"/>
+        <childnode refid="191" relation="include">
+        </childnode>
       </node>
-      <node id="147">
-        <label>mongo_odm/config/export.hpp</label>
-      </node>
-      <node id="169">
+      <node id="209">
         <label>bsoncxx/types/value.hpp</label>
       </node>
-      <node id="156">
-        <label>bson_mapper/config/config.hpp</label>
+      <node id="187">
+        <label>mangrove/config/export.hpp</label>
       </node>
-      <node id="165">
+      <node id="193">
+        <label>boson/mapping_functions.hpp</label>
+        <link refid="mapping__functions_8hpp_source"/>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="190" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+        <childnode refid="217" relation="include">
+        </childnode>
+      </node>
+      <node id="205">
         <label>vector</label>
       </node>
-      <node id="163">
+      <node id="203">
         <label>stack</label>
       </node>
-      <node id="168">
+      <node id="208">
         <label>bsoncxx/types.hpp</label>
       </node>
-      <node id="174">
+      <node id="214">
         <label>streambuf</label>
       </node>
-      <node id="154">
-        <label>bson_mapper/config/prelude.hpp</label>
-        <link refid="bson__mapper_2config_2prelude_8hpp_source"/>
-        <childnode refid="155" relation="include">
-        </childnode>
-        <childnode refid="156" relation="include">
-        </childnode>
-        <childnode refid="157" relation="include">
-        </childnode>
-        <childnode refid="158" relation="include">
-        </childnode>
-      </node>
-      <node id="148">
-        <label>mongo_odm/config/version.hpp</label>
-      </node>
-      <node id="162">
+      <node id="202">
         <label>sstream</label>
       </node>
-      <node id="166">
+      <node id="206">
         <label>cereal/cereal.hpp</label>
       </node>
-      <node id="149">
+      <node id="195">
+        <label>boson/config/compiler.hpp</label>
+        <link refid="boson_2config_2compiler_8hpp_source"/>
+      </node>
+      <node id="189">
         <label>iostream</label>
       </node>
-      <node id="144">
-        <label>mongo_odm/config/prelude.hpp</label>
-        <link refid="mongo__odm_2config_2prelude_8hpp_source"/>
-        <childnode refid="145" relation="include">
-        </childnode>
-        <childnode refid="146" relation="include">
-        </childnode>
-        <childnode refid="147" relation="include">
-        </childnode>
-        <childnode refid="148" relation="include">
-        </childnode>
-      </node>
-      <node id="160">
+      <node id="200">
         <label>chrono</label>
       </node>
-      <node id="158">
-        <label>bson_mapper/config/version.hpp</label>
+      <node id="196">
+        <label>boson/config/config.hpp</label>
       </node>
-      <node id="176">
+      <node id="185">
+        <label>mangrove/config/compiler.hpp</label>
+        <link refid="mangrove_2config_2compiler_8hpp_source"/>
+      </node>
+      <node id="186">
+        <label>mangrove/config/config.hpp</label>
+      </node>
+      <node id="216">
         <label>bsoncxx/json.hpp</label>
       </node>
-      <node id="157">
-        <label>bson_mapper/config/export.hpp</label>
+      <node id="188">
+        <label>mangrove/config/version.hpp</label>
       </node>
-      <node id="145">
-        <label>mongo_odm/config/compiler.hpp</label>
-        <link refid="mongo__odm_2config_2compiler_8hpp_source"/>
-      </node>
-      <node id="161">
+      <node id="201">
         <label>memory</label>
       </node>
-      <node id="172">
+      <node id="212">
         <label>istream</label>
+      </node>
+      <node id="217">
+        <label>boson/config/postlude.hpp</label>
+        <link refid="boson_2config_2postlude_8hpp_source"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="180">
-        <label>src/mongo_odm/odm_collection.hpp</label>
-        <link refid="odm__collection_8hpp_source"/>
-        <childnode refid="181" relation="include">
-        </childnode>
-      </node>
-      <node id="179">
-        <label>src/mongo_odm/deserializing_cursor.hpp</label>
-        <link refid="deserializing_cursor.hpp"/>
-        <childnode refid="180" relation="include">
-        </childnode>
-      </node>
-      <node id="181">
-        <label>src/mongo_odm/model.hpp</label>
+      <node id="221">
+        <label>src/mangrove/model.hpp</label>
         <link refid="model_8hpp_source"/>
       </node>
+      <node id="219">
+        <label>src/mangrove/deserializing_cursor.hpp</label>
+        <link refid="deserializing_cursor.hpp"/>
+        <childnode refid="220" relation="include">
+        </childnode>
+      </node>
+      <node id="220">
+        <label>src/mangrove/collection_wrapper.hpp</label>
+        <link refid="collection__wrapper_8hpp_source"/>
+        <childnode refid="221" relation="include">
+        </childnode>
+      </node>
     </invincdepgraph>
-    <innerclass refid="classmongo__odm_1_1deserializing__cursor" prot="public">mongo_odm::deserializing_cursor</innerclass>
-    <innerclass refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" prot="public">mongo_odm::deserializing_cursor::iterator</innerclass>
-    <innernamespace refid="namespacemongo__odm">mongo_odm</innernamespace>
+    <innerclass refid="classmangrove_1_1deserializing__cursor" prot="public">mangrove::deserializing_cursor</innerclass>
+    <innerclass refid="classmangrove_1_1deserializing__cursor_1_1iterator" prot="public">mangrove::deserializing_cursor::iterator</innerclass>
+    <innernamespace refid="namespacemangrove">mangrove</innernamespace>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -255,7 +255,7 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/config/prelude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mangrove/config/prelude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
@@ -263,25 +263,25 @@
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;bsoncxx/stdx/optional.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongocxx/cursor.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;bson_mapper/mapping_functions.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boson/mapping_functions.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemongo__odm" kindref="compound">mongo_odm</ref><sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal">MONGO_ODM_INLINE_NAMESPACE_BEGIN</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemangrove" kindref="compound">mangrove</ref><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">MANGROVE_INLINE_NAMESPACE_BEGIN</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="37" refid="classmongo__odm_1_1deserializing__cursor" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1deserializing__cursor" kindref="compound">deserializing_cursor</ref><sp/>{</highlight></codeline>
+<codeline lineno="37" refid="classmangrove_1_1deserializing__cursor" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1deserializing__cursor" kindref="compound">deserializing_cursor</ref><sp/>{</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmongo__odm_1_1deserializing__cursor" kindref="compound">deserializing_cursor</ref>(mongocxx::cursor&amp;&amp;<sp/>c)<sp/>:<sp/>_c(std::move(c))<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmangrove_1_1deserializing__cursor" kindref="compound">deserializing_cursor</ref>(mongocxx::cursor&amp;&amp;<sp/>c)<sp/>:<sp/>_c(std::move(c))<sp/>{</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>;</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref><sp/>begin()<sp/>{</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>(_c.begin(),<sp/>_c.end());</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref><sp/>begin()<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>(_c.begin(),<sp/>_c.end());</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref><sp/>end()<sp/>{</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>(_c.end(),<sp/>_c.end());</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref><sp/>end()<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>(_c.end(),<sp/>_c.end());</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
@@ -289,18 +289,18 @@
 <codeline lineno="54"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="57" refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1deserializing__cursor" kindref="compound">deserializing_cursor</ref>&lt;T&gt;::<ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::iterator&lt;std::input_iterator_tag,<sp/>T&gt;<sp/>{</highlight></codeline>
+<codeline lineno="57" refid="classmangrove_1_1deserializing__cursor_1_1iterator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1deserializing__cursor" kindref="compound">deserializing_cursor</ref>&lt;T&gt;::<ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::iterator&lt;std::input_iterator_tag,<sp/>T&gt;<sp/>{</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>(mongocxx::cursor::iterator<sp/>ci,<sp/>mongocxx::cursor::iterator<sp/>ci_end)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>(mongocxx::cursor::iterator<sp/>ci,<sp/>mongocxx::cursor::iterator<sp/>ci_end)</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>_ci(ci),<sp/>_ci_end(ci_end)<sp/>{</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>skip_invalid_documents();</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kindref="compound">deserializing_cursor::iterator</ref>&amp;<sp/>dsi)<sp/>:<sp/>_ci(dsi._ci),<sp/>_ci_end(dsi._ci_end)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">deserializing_cursor::iterator</ref>&amp;<sp/>dsi)<sp/>:<sp/>_ci(dsi._ci),<sp/>_ci_end(dsi._ci_end)<sp/>{</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>skip_invalid_documents();</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>&amp;<sp/>operator++()<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>&amp;<sp/>operator++()<sp/>{</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++_ci;</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_opt<sp/>=<sp/>mongocxx::stdx::nullopt;</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>skip_invalid_documents();</highlight></codeline>
@@ -311,15 +311,15 @@
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>operator++();</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>&amp;<sp/>rhs)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>&amp;<sp/>rhs)<sp/>{</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_ci<sp/>==<sp/>rhs._ci;</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>&amp;<sp/>rhs)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator" kindref="compound">iterator</ref>&amp;<sp/>rhs)<sp/>{</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_ci<sp/>!=<sp/>rhs._ci;</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91" refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1ad7b8718a44ef73460ed9196c719acaf6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/><ref refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1ad7b8718a44ef73460ed9196c719acaf6" kindref="member">operator*</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="91" refid="classmangrove_1_1deserializing__cursor_1_1iterator_1ae1f29c4a14cef45e2a259e17b3297a8e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/><ref refid="classmangrove_1_1deserializing__cursor_1_1iterator_1ae1f29c4a14cef45e2a259e17b3297a8e" kindref="member">operator*</ref>()<sp/>{</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_opt.value();</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"></highlight></codeline>
@@ -335,10 +335,10 @@
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(_ci<sp/>!=<sp/>_ci_end)<sp/>{</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!_opt)<sp/>{</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_opt<sp/>=<sp/>bson_mapper::to_obj&lt;T&gt;(*_ci);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_opt<sp/>=<sp/>boson::to_obj&lt;T&gt;(*_ci);</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(<ref refid="structbson__mapper_1_1Exception" kindref="compound">bson_mapper::Exception</ref>&amp;<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(<ref refid="structboson_1_1Exception" kindref="compound">boson::Exception</ref>&amp;<sp/>e)<sp/>{</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++_ci;</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_opt<sp/>=<sp/>mongocxx::stdx::nullopt;</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -346,11 +346,11 @@
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="124"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal">MONGO_ODM_INLINE_NAMESPACE_END</highlight></codeline>
-<codeline lineno="127"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>bson_mapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal">MANGROVE_INLINE_NAMESPACE_END</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>boson</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/config/postlude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mangrove/config/postlude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="src/mongo_odm/deserializing_cursor.hpp"/>
+    <location file="src/mangrove/deserializing_cursor.hpp"/>
   </compounddef>
 </doxygen>

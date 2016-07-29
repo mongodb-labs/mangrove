@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmangrove_1_1hasField" kind="struct" language="C++" prot="public">
+    <compoundname>mangrove::hasField</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">false_type</basecompoundref>
+    <includes refid="nvp_8hpp" local="no">nvp.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Base</type>
+      </param>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>size_t</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+      <param>
+        <type>size_t</type>
+        <declname>M</declname>
+        <defname>M</defname>
+      </param>
+      <param>
+        <type>bool</type>
+        <defval>(N &lt; M)</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para><ref refid="structmangrove_1_1hasField" kindref="compound">hasField</ref> determines whether a type Base has a member of the given type T as the Nth member out of M total members which have name value pairs. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="177">
+        <label>false_type</label>
+      </node>
+      <node id="176">
+        <label>mangrove::hasField&lt; Base, T, N, M, bool &gt;</label>
+        <link refid="structmangrove_1_1hasField"/>
+        <childnode refid="177" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="179">
+        <label>false_type</label>
+      </node>
+      <node id="178">
+        <label>mangrove::hasField&lt; Base, T, N, M, bool &gt;</label>
+        <link refid="structmangrove_1_1hasField"/>
+        <childnode refid="179" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/nvp.hpp" line="803" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="803" bodyend="803"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

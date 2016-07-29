@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_f5d9689b80179a8508ad57db8b6736a7" kind="dir">
+    <compoundname>src/mangrove</compoundname>
+    <innerdir refid="dir_7640a7f74b5eb9559f404509c654fcd7">src/mangrove/config</innerdir>
+    <innerfile refid="collection__wrapper_8hpp">collection_wrapper.hpp</innerfile>
+    <innerfile refid="deserializing__cursor_8hpp">deserializing_cursor.hpp</innerfile>
+    <innerfile refid="expression__syntax_8hpp">expression_syntax.hpp</innerfile>
+    <innerfile refid="macros_8hpp">macros.hpp</innerfile>
+    <innerfile refid="mangrove__child__autogen_8hpp">mangrove_child_autogen.hpp</innerfile>
+    <innerfile refid="model_8hpp">model.hpp</innerfile>
+    <innerfile refid="nvp_8hpp">nvp.hpp</innerfile>
+    <innerfile refid="query__builder_8hpp">query_builder.hpp</innerfile>
+    <innerfile refid="util_8hpp">util.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mangrove/"/>
+  </compounddef>
+</doxygen>

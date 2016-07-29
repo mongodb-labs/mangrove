@@ -1,0 +1,89 @@
+\hypertarget{classmangrove_1_1sort__expr}{}\section{mangrove\+:\+:sort\+\_\+expr$<$ NvpT $>$ Class Template Reference}
+\label{classmangrove_1_1sort__expr}\index{mangrove\+::sort\+\_\+expr$<$ Nvp\+T $>$@{mangrove\+::sort\+\_\+expr$<$ Nvp\+T $>$}}
+
+
+An expression that represents a sorting order.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmangrove_1_1sort__expr_a532850c29fbdebcd522e27be7ad85da3}{sort\+\_\+expr} (const NvpT \&\hyperlink{classmangrove_1_1nvp}{nvp}, bool ascending)
+\begin{DoxyCompactList}\small\item\em Creates a sort expression with the given name-\/value-\/pair and sort order. \end{DoxyCompactList}\item 
+void \hyperlink{classmangrove_1_1sort__expr_a22eb8244a5400cb80ac79fb3248abfff}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this expression to a B\+S\+ON core builder, as a key-\/value pair of the form \char`\"{}key\+: +/-\/1\char`\"{}. \end{DoxyCompactList}\item 
+\hyperlink{classmangrove_1_1sort__expr_a9823eab4a819824e981b5b62f1a9e4c3}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const 
+\begin{DoxyCompactList}\small\item\em Converts the expression to a B\+S\+ON filter for a query. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename NvpT$>$\\*
+class mangrove\+::sort\+\_\+expr$<$ Nvp\+T $>$}
+
+An expression that represents a sorting order. 
+
+This consists of a name-\/value pair and a boolean specifying ascending or descending sort order. The resulting B\+S\+ON is \{field\+: +/-\/1\}, where +/-\/1 corresponds to the sort order. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mangrove\+::sort\+\_\+expr@{mangrove\+::sort\+\_\+expr}!sort\+\_\+expr@{sort\+\_\+expr}}
+\index{sort\+\_\+expr@{sort\+\_\+expr}!mangrove\+::sort\+\_\+expr@{mangrove\+::sort\+\_\+expr}}
+\subsubsection[{\texorpdfstring{sort\+\_\+expr(const Nvp\+T \&nvp, bool ascending)}{sort_expr(const NvpT &nvp, bool ascending)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT $>$ constexpr {\bf mangrove\+::sort\+\_\+expr}$<$ NvpT $>$\+::{\bf sort\+\_\+expr} (
+\begin{DoxyParamCaption}
+\item[{const NvpT \&}]{nvp, }
+\item[{bool}]{ascending}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1sort__expr_a532850c29fbdebcd522e27be7ad85da3}{}\label{classmangrove_1_1sort__expr_a532850c29fbdebcd522e27be7ad85da3}
+
+
+Creates a sort expression with the given name-\/value-\/pair and sort order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nvp} & The name-\/value pair to order against. \\
+\hline
+{\em ascending} & Whether to use ascending (true) or descending (false) order. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mangrove\+::sort\+\_\+expr@{mangrove\+::sort\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mangrove\+::sort\+\_\+expr@{mangrove\+::sort\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT $>$ void {\bf mangrove\+::sort\+\_\+expr}$<$ NvpT $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1sort__expr_a22eb8244a5400cb80ac79fb3248abfff}{}\label{classmangrove_1_1sort__expr_a22eb8244a5400cb80ac79fb3248abfff}
+
+
+Appends this expression to a B\+S\+ON core builder, as a key-\/value pair of the form \char`\"{}key\+: +/-\/1\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A B\+S\+ON core builder \\
+\hline
+{\em wrap} & Whether to wrap the B\+S\+ON inside a document. \\
+\hline
+\end{DoxyParams}
+\index{mangrove\+::sort\+\_\+expr@{mangrove\+::sort\+\_\+expr}!operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}}
+\index{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}!mangrove\+::sort\+\_\+expr@{mangrove\+::sort\+\_\+expr}}
+\subsubsection[{\texorpdfstring{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value() const }{operator bsoncxx::document::view_or_value() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT $>$ {\bf mangrove\+::sort\+\_\+expr}$<$ NvpT $>$\+::operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1sort__expr_a9823eab4a819824e981b5b62f1a9e4c3}{}\label{classmangrove_1_1sort__expr_a9823eab4a819824e981b5b62f1a9e4c3}
+
+
+Converts the expression to a B\+S\+ON filter for a query. 
+
+The resulting B\+S\+ON is of the form \char`\"{}\{key\+: +/-\/1\}\char`\"{} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/expression\+\_\+syntax.\+hpp\item 
+src/mangrove/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

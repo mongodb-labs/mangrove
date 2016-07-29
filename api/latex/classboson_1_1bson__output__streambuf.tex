@@ -1,0 +1,91 @@
+\hypertarget{classboson_1_1bson__output__streambuf}{}\section{boson\+:\+:bson\+\_\+output\+\_\+streambuf Class Reference}
+\label{classboson_1_1bson__output__streambuf}\index{boson\+::bson\+\_\+output\+\_\+streambuf@{boson\+::bson\+\_\+output\+\_\+streambuf}}
+
+
+A streambuffer that accepts one or more B\+S\+ON documents as bytes of B\+S\+ON data.  
+
+
+
+
+{\ttfamily \#include $<$bson\+\_\+streambuf.\+hpp$>$}
+
+Inheritance diagram for boson\+:\+:bson\+\_\+output\+\_\+streambuf\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classboson_1_1bson__output__streambuf}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classboson_1_1bson__output__streambuf_af2cea7a3bc88691f139eee1739b63e87}{bson\+\_\+output\+\_\+streambuf} (document\+\_\+callback cb)
+\begin{DoxyCompactList}\small\item\em Constructs a new B\+S\+ON Output Streambuffer that passes documents to the given callback function. \end{DoxyCompactList}\item 
+int \hyperlink{classboson_1_1bson__output__streambuf_a9bc80c765951f60ea01d9db6918c2b36}{overflow} (int ch) override
+\begin{DoxyCompactList}\small\item\em This function is called when writing to the stream and the buffer is full. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classboson_1_1bson__output__streambuf_ad2f35382566529544c84fe03cd831a07}{underflow} () override
+\begin{DoxyCompactList}\small\item\em This function always returns E\+OF, since one should not write from an output stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A streambuffer that accepts one or more B\+S\+ON documents as bytes of B\+S\+ON data. 
+
+When a document is complete, it is passed into the user-\/provided callback. N\+O\+TE\+: This does not perform any validation on the B\+S\+ON files, and simply uses their first four bytes to judge the document length. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{boson\+::bson\+\_\+output\+\_\+streambuf@{boson\+::bson\+\_\+output\+\_\+streambuf}!bson\+\_\+output\+\_\+streambuf@{bson\+\_\+output\+\_\+streambuf}}
+\index{bson\+\_\+output\+\_\+streambuf@{bson\+\_\+output\+\_\+streambuf}!boson\+::bson\+\_\+output\+\_\+streambuf@{boson\+::bson\+\_\+output\+\_\+streambuf}}
+\subsubsection[{\texorpdfstring{bson\+\_\+output\+\_\+streambuf(document\+\_\+callback cb)}{bson_output_streambuf(document_callback cb)}}]{\setlength{\rightskip}{0pt plus 5cm}boson\+::bson\+\_\+output\+\_\+streambuf\+::bson\+\_\+output\+\_\+streambuf (
+\begin{DoxyParamCaption}
+\item[{document\+\_\+callback}]{cb}
+\end{DoxyParamCaption}
+)}\hypertarget{classboson_1_1bson__output__streambuf_af2cea7a3bc88691f139eee1739b63e87}{}\label{classboson_1_1bson__output__streambuf_af2cea7a3bc88691f139eee1739b63e87}
+
+
+Constructs a new B\+S\+ON Output Streambuffer that passes documents to the given callback function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cb} & A function that takes a document\+::value and returns void. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{boson\+::bson\+\_\+output\+\_\+streambuf@{boson\+::bson\+\_\+output\+\_\+streambuf}!overflow@{overflow}}
+\index{overflow@{overflow}!boson\+::bson\+\_\+output\+\_\+streambuf@{boson\+::bson\+\_\+output\+\_\+streambuf}}
+\subsubsection[{\texorpdfstring{overflow(int ch) override}{overflow(int ch) override}}]{\setlength{\rightskip}{0pt plus 5cm}int boson\+::bson\+\_\+output\+\_\+streambuf\+::overflow (
+\begin{DoxyParamCaption}
+\item[{int}]{ch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}}\hypertarget{classboson_1_1bson__output__streambuf_a9bc80c765951f60ea01d9db6918c2b36}{}\label{classboson_1_1bson__output__streambuf_a9bc80c765951f60ea01d9db6918c2b36}
+
+
+This function is called when writing to the stream and the buffer is full. 
+
+Since we don\textquotesingle{}t define a buffer, this is called with every character. 
+\begin{DoxyParams}{Parameters}
+{\em ch} & The byte of B\+S\+ON to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The inserted byte, or E\+OF if something failed. 
+\end{DoxyReturn}
+\index{boson\+::bson\+\_\+output\+\_\+streambuf@{boson\+::bson\+\_\+output\+\_\+streambuf}!underflow@{underflow}}
+\index{underflow@{underflow}!boson\+::bson\+\_\+output\+\_\+streambuf@{boson\+::bson\+\_\+output\+\_\+streambuf}}
+\subsubsection[{\texorpdfstring{underflow() override}{underflow() override}}]{\setlength{\rightskip}{0pt plus 5cm}virtual int boson\+::bson\+\_\+output\+\_\+streambuf\+::underflow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{classboson_1_1bson__output__streambuf_ad2f35382566529544c84fe03cd831a07}{}\label{classboson_1_1bson__output__streambuf_ad2f35382566529544c84fe03cd831a07}
+
+
+This function always returns E\+OF, since one should not write from an output stream. 
+
+\begin{DoxyReturn}{Returns}
+E\+OF 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/boson/bson\+\_\+streambuf.\+hpp\end{DoxyCompactItemize}

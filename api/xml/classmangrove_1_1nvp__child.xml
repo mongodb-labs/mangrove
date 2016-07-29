@@ -1,0 +1,306 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmangrove_1_1nvp__child" kind="class" language="C++" prot="public">
+    <compoundname>mangrove::nvp_child</compoundname>
+    <basecompoundref refid="classmangrove_1_1nvp__base" prot="public" virt="non-virtual">mangrove::nvp_base&lt; nvp_child&lt; Base, T, Parent &gt;, T &gt;</basecompoundref>
+    <includes refid="nvp_8hpp" local="no">nvp.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Base</type>
+      </param>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename Parent</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classmangrove_1_1nvp__child_1a91ca155beb7ca65b6c7e7103e41a8925" prot="public" static="no">
+        <type>T</type>
+        <definition>using mangrove::nvp_child&lt; Base, T, Parent &gt;::type =  T</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="117" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classmangrove_1_1nvp__child_1aad4ca2ff50bb4af345c71c61377fea92" prot="public" static="no">
+        <type>remove_optional_t&lt; T &gt;</type>
+        <definition>using mangrove::nvp_child&lt; Base, T, Parent &gt;::no_opt_type =  remove_optional_t&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>no_opt_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="119" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classmangrove_1_1nvp__child_1aa8c8fb7e8fcb9ae0b518f5a82cb7fff8" prot="public" static="no" mutable="no">
+        <type>T Base::*</type>
+        <definition>T Base::* mangrove::nvp_child&lt; Base, T, Parent &gt;::t</definition>
+        <argsstring></argsstring>
+        <name>t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="170" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1nvp__child_1a1031a1bba9b35a28407688c5f2f5cfdf" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* mangrove::nvp_child&lt; Base, T, Parent &gt;::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="171" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1nvp__child_1afc0cb56f9fc4d48446d596f0814020fe" prot="public" static="no" mutable="no">
+        <type>const Parent &amp;</type>
+        <definition>const Parent&amp; mangrove::nvp_child&lt; Base, T, Parent &gt;::parent</definition>
+        <argsstring></argsstring>
+        <name>parent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="172" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmangrove_1_1nvp__child_1aabea6d569a50d046df5090648f7923f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mangrove::nvp_child&lt; Base, T, Parent &gt;::nvp_child</definition>
+        <argsstring>(T Base::*t, const char *name, const Parent &amp;parent)</argsstring>
+        <name>nvp_child</name>
+        <param>
+          <type>T Base::*</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const Parent &amp;</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="121" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="121" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__child_1aa62578360129ffc100467825e0a34cf2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classmangrove_1_1update__expr" kindref="compound">update_expr</ref>&lt; <ref refid="classmangrove_1_1nvp__child" kindref="compound">nvp_child</ref>&lt; Base, T, Parent &gt;, T &gt;</type>
+        <definition>constexpr update_expr&lt;nvp_child&lt;Base, T, Parent&gt;, T&gt; mangrove::nvp_child&lt; Base, T, Parent &gt;::operator=</definition>
+        <argsstring>(const no_opt_type &amp;val) const </argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const no_opt_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Creates an update expression that sets the field to the given value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="128" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="128" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__child_1a220d36aa2c0c436e1fd14b8ead8e2725" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr std::enable_if_t&lt; is_date_v&lt; U &gt;, <ref refid="classmangrove_1_1current__date__expr" kindref="compound">current_date_expr</ref>&lt; <ref refid="classmangrove_1_1nvp__child" kindref="compound">nvp_child</ref> &gt; &gt;</type>
+        <definition>constexpr std::enable_if_t&lt;is_date_v&lt;U&gt;, current_date_expr&lt;nvp_child&gt; &gt; mangrove::nvp_child&lt; Base, T, Parent &gt;::operator=</definition>
+        <argsstring>(const current_date_t &amp;) const </argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="structmangrove_1_1current__date__t" kindref="compound">current_date_t</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Creates an expression that sets a date value to the current date. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only enabled for std::chrono::time/duration values, as well as b_date. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="137" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="137" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__child_1ae6fccc6df51e55ae066aa2e14492c256" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr std::enable_if_t&lt; std::is_same&lt; bsoncxx::types::b_timestamp, U &gt;::value, <ref refid="classmangrove_1_1current__date__expr" kindref="compound">current_date_expr</ref>&lt; <ref refid="classmangrove_1_1nvp__child" kindref="compound">nvp_child</ref> &gt; &gt;</type>
+        <definition>constexpr std::enable_if_t&lt;std::is_same&lt;bsoncxx::types::b_timestamp, U&gt;::value, current_date_expr&lt;nvp_child&gt; &gt; mangrove::nvp_child&lt; Base, T, Parent &gt;::operator=</definition>
+        <argsstring>(const current_date_t &amp;) const </argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="structmangrove_1_1current__date__t" kindref="compound">current_date_t</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Creates an expression that sets a date value to the current date. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only enabled for std::chrono::time/duration values, as well as b_date. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="149" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="149" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__child_1a8e1a8a94e98375c642ad8afc000e9655" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string mangrove::nvp_child&lt; Base, T, Parent &gt;::get_name</definition>
+        <argsstring>() const </argsstring>
+        <name>get_name</name>
+        <briefdescription>
+<para>Returns the name of this field, in dot notation. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The fully qualified name of this field in dot notation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="157" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="157" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__child_1a762e5f23a23e6860f1259501e80c0aee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string &amp;</type>
+        <definition>std::string&amp; mangrove::nvp_child&lt; Base, T, Parent &gt;::append_name</definition>
+        <argsstring>(std::string &amp;s) const </argsstring>
+        <name>append_name</name>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Returns the qualified name of this field in dot notation, i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>&quot;parent.child&quot;. <simplesect kind="return"><para>A string containing the name of this field in dot notation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="166" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="166" bodyend="168"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class that represents a name-value pair for a field of an object that is a member of another object. </para>    </briefdescription>
+    <detaileddescription>
+<para>The name of this name-value pair will be &quot;&lt;parent-name&gt;.field_name&quot;. The parenet can be either an nvp, or another <ref refid="classmangrove_1_1nvp__child" kindref="compound">nvp_child</ref>. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the object that contains this field </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the field </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Parent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the parent name-value pair, either an nvp&lt;...&gt; or nvp_child&lt;...&gt;. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="300">
+        <label>mangrove::nvp_child&lt; Base, T, Parent &gt;</label>
+        <link refid="classmangrove_1_1nvp__child"/>
+        <childnode refid="301" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="301">
+        <label>mangrove::nvp_base&lt; nvp_child&lt; Base, T, Parent &gt;, T &gt;</label>
+        <link refid="classmangrove_1_1nvp__base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="302">
+        <label>mangrove::nvp_child&lt; Base, T, Parent &gt;</label>
+        <link refid="classmangrove_1_1nvp__child"/>
+        <childnode refid="303" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="303">
+        <label>mangrove::nvp_base&lt; nvp_child&lt; Base, T, Parent &gt;, T &gt;</label>
+        <link refid="classmangrove_1_1nvp__base"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/nvp.hpp" line="115" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="115" bodyend="173"/>
+    <listofallmembers>
+      <member refid="classmangrove_1_1nvp__base_1aa39e3654e2c9ff1adbe351da4b3374fe" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>add_to_set</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ad38a93b45375bb4f5a2a13f2d33672e3" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>add_to_set</name></member>
+      <member refid="classmangrove_1_1nvp__base_1aa27deff6976c96110fbb92e3161edf18" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>all</name></member>
+      <member refid="classmangrove_1_1nvp__child_1a762e5f23a23e6860f1259501e80c0aee" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>append_name</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a59b7d75e874fb7858c0f6ef11e76ce90" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>bits_all_clear</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a7ca9a391784ef4ff99efd8a1f688f865" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>bits_all_clear</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a4f21be175d0af1329d27137dad843d41" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>bits_all_set</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a761062eb92207fa8c42c6740e9549139" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>bits_all_set</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ad0b8db86f08260815bfcba3ff549f86d" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>bits_any_clear</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a9af3921ef1af416730aa8965cfbfff3c" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>bits_any_clear</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a59ea684f00c07cf88bae76e6fc10cfc9" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>bits_any_set</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a9108a3aed96ae225f2bb10a927581a31" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>bits_any_set</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a7b5ddb9396c7631922fb1d1e4a60bdc7" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>child_base_type</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ad98791cdabcfcc6b9465f48fa434a94c" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>elem_match</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a60622c570186d6eac26460bed416ed93" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>element</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a43fcb75163884d6d6582f53625b20226" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>exists</name></member>
+      <member refid="classmangrove_1_1nvp__base_1aa4d2b5c0930914b4a2b202b825282925" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>first_match</name></member>
+      <member refid="classmangrove_1_1nvp__child_1a8e1a8a94e98375c642ad8afc000e9655" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>get_name</name></member>
+      <member refid="classmangrove_1_1nvp__base_1afc04b79abaca69dc454c2ea6dd7271ff" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>in</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a6e02c07ddd8494336583b38612cc0090" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>max</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a749ecb4d139aea530a7ecc4075d98187" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>min</name></member>
+      <member refid="classmangrove_1_1nvp__base_1af17554cee50b9cf7146ef81276190966" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>mod</name></member>
+      <member refid="classmangrove_1_1nvp__child_1a1031a1bba9b35a28407688c5f2f5cfdf" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>name</name></member>
+      <member refid="classmangrove_1_1nvp__base_1aadebfb603c05353a812e9bc8a0530793" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>nin</name></member>
+      <member refid="classmangrove_1_1nvp__child_1aad4ca2ff50bb4af345c71c61377fea92" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>no_opt_type</name></member>
+      <member refid="classmangrove_1_1nvp__child_1aabea6d569a50d046df5090648f7923f0" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>nvp_child</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a14d7eb7640f2e3ee54e6e75c32c0ffa2" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>operator-&gt;*</name></member>
+      <member refid="classmangrove_1_1nvp__child_1aa62578360129ffc100467825e0a34cf2" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>operator=</name></member>
+      <member refid="classmangrove_1_1nvp__child_1a220d36aa2c0c436e1fd14b8ead8e2725" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>operator=</name></member>
+      <member refid="classmangrove_1_1nvp__child_1ae6fccc6df51e55ae066aa2e14492c256" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>operator=</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a5ea936ff27fb6141efe2476f75615184" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>operator[]</name></member>
+      <member refid="classmangrove_1_1nvp__child_1afc0cb56f9fc4d48446d596f0814020fe" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>parent</name></member>
+      <member refid="classmangrove_1_1nvp__base_1acc971cd488bb53dec77d298329fae501" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>pop</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ab7924255d0da3477c17a2a247417a44f" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>pull</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ad65748212e487bf4d14fbff87ccdf8d4" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>pull</name></member>
+      <member refid="classmangrove_1_1nvp__base_1abdaf0c15ead84b8de9e338a622bfdb13" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>pull_all</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ab4db721d19b52e5341c2ba737d2e0de9" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>push</name></member>
+      <member refid="classmangrove_1_1nvp__base_1aa65d320fdbb15d4cf925965fa48deba5" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>push</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a0c9da6ea8ec8cec0bcdba273cd5f1bd7" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>regex</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a025667ef42c5ebc4815a0d514cfc81bb" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>set_on_insert</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a18439f708a503f0a8b768e407dbe6ae6" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>size</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a60b8725524a2fde6f8c9540c8445adb1" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>sort</name></member>
+      <member refid="classmangrove_1_1nvp__child_1aa8c8fb7e8fcb9ae0b518f5a82cb7fff8" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>t</name></member>
+      <member refid="classmangrove_1_1nvp__child_1a91ca155beb7ca65b6c7e7103e41a8925" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>type</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a906f10008bd72b32e75f496f1a24b5d7" prot="public" virt="non-virtual"><scope>mangrove::nvp_child</scope><name>unset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

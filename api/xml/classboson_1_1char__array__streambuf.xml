@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classboson_1_1char__array__streambuf" kind="class" language="C++" prot="public">
+    <compoundname>boson::char_array_streambuf</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">streambuf</basecompoundref>
+    <derivedcompoundref refid="classboson_1_1bson__input__streambuf" prot="public" virt="non-virtual">boson::bson_input_streambuf</derivedcompoundref>
+    <includes refid="bson__streambuf_8hpp" local="no">bson_streambuf.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classboson_1_1char__array__streambuf_1aced088c984c8cc3a54b198676bd01105" prot="private" static="no" mutable="no">
+        <type>const char *const</type>
+        <definition>const char* const boson::char_array_streambuf::_begin</definition>
+        <argsstring></argsstring>
+        <name>_begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="145" column="1" bodyfile="src/boson/bson_streambuf.hpp" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1char__array__streambuf_1a1cbca90852e37d9bcc8bcea4b7a1f11d" prot="private" static="no" mutable="no">
+        <type>const char *const</type>
+        <definition>const char* const boson::char_array_streambuf::_end</definition>
+        <argsstring></argsstring>
+        <name>_end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="146" column="1" bodyfile="src/boson/bson_streambuf.hpp" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1char__array__streambuf_1a0ad76993c387ae8107c764d5e2153456" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* boson::char_array_streambuf::_current</definition>
+        <argsstring></argsstring>
+        <name>_current</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="147" column="1" bodyfile="src/boson/bson_streambuf.hpp" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classboson_1_1char__array__streambuf_1a6d1a17014adfe5daa6c9586f877c6a46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>boson::char_array_streambuf::char_array_streambuf</definition>
+        <argsstring>(const char *data, size_t len)</argsstring>
+        <name>char_array_streambuf</name>
+        <param>
+          <type>const char *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Create a streambuf around the given byte array. </para>        </briefdescription>
+        <detaileddescription>
+<para>The caller is responsible for maintaining the lifetime of the underlying data. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the data to be read </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The length of the data </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="107" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classboson_1_1char__array__streambuf_1a8dc3b3533a0db817ee370b83830a48b7" prot="private" static="no" const="no" explicit="no" inline="no" final="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int boson::char_array_streambuf::underflow</definition>
+        <argsstring>() final override</argsstring>
+        <name>underflow</name>
+        <briefdescription>
+<para>This reads and returns a character from the buffer, and increments the read pointer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>[description] </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="114" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1char__array__streambuf_1a5684379f216744dd69f63589caf47394" prot="private" static="no" const="no" explicit="no" inline="no" final="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int boson::char_array_streambuf::uflow</definition>
+        <argsstring>() final override</argsstring>
+        <name>uflow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="117" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1char__array__streambuf_1a39bba45be0a823f268dcb3f659d5a713" prot="private" static="no" const="no" explicit="no" inline="no" final="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int boson::char_array_streambuf::pbackfail</definition>
+        <argsstring>(int ch) final override</argsstring>
+        <name>pbackfail</name>
+        <param>
+          <type>int</type>
+          <declname>ch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="118" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1char__array__streambuf_1a29d54161e3dec28e8166d8ccd78bb06d" prot="private" static="no" const="no" explicit="no" inline="no" final="yes" virt="non-virtual">
+        <type>std::streamsize</type>
+        <definition>std::streamsize boson::char_array_streambuf::showmanyc</definition>
+        <argsstring>() final override</argsstring>
+        <name>showmanyc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="119" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1char__array__streambuf_1aac7a598e36d71467b6a88d3eecac6fd2" prot="private" static="no" const="no" explicit="no" inline="no" final="yes" virt="non-virtual">
+        <type>std::streampos</type>
+        <definition>std::streampos boson::char_array_streambuf::seekpos</definition>
+        <argsstring>(std::streampos sp, std::ios_base::openmode which=std::ios_base::in|std::ios_base::out) final override</argsstring>
+        <name>seekpos</name>
+        <param>
+          <type>std::streampos</type>
+          <declname>sp</declname>
+        </param>
+        <param>
+          <type>std::ios_base::openmode</type>
+          <declname>which</declname>
+          <defval>std::ios_base::in|std::ios_base::out</defval>
+        </param>
+        <briefdescription>
+<para>This function seeks to an absolute position in the buffer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The absolute position in the buffer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>which</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Which character sequence to write to. In this case, we only care about &quot;in&quot;, the input character sequence. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The absolute (relative to start) position of the current pointer. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="128" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1char__array__streambuf_1a2286bd2cd28907ae01b41a66965a4d99" prot="private" static="no" const="no" explicit="no" inline="no" final="yes" virt="non-virtual">
+        <type>std::streampos</type>
+        <definition>std::streampos boson::char_array_streambuf::seekoff</definition>
+        <argsstring>(std::streamoff off, std::ios_base::seekdir way, std::ios_base::openmode which=std::ios_base::in|std::ios_base::out) final override</argsstring>
+        <name>seekoff</name>
+        <param>
+          <type>std::streamoff</type>
+          <declname>off</declname>
+        </param>
+        <param>
+          <type>std::ios_base::seekdir</type>
+          <declname>way</declname>
+        </param>
+        <param>
+          <type>std::ios_base::openmode</type>
+          <declname>which</declname>
+          <defval>std::ios_base::in|std::ios_base::out</defval>
+        </param>
+        <briefdescription>
+<para>This function seeks to a relative position in the buffer, based on an offset. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>off</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relative offset to seek to. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>way</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the offset is relative to the beginning, current pointer, or end of the buffer. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>which</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Which character sequence to write to. In this case, we only care about &quot;in&quot;, the input character sequence. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The absolute (relative to start) position of the current pointer. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="141" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An input streambuf that uses an existing byte array as a buffer. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="46">
+        <label>boson::bson_input_streambuf</label>
+        <link refid="classboson_1_1bson__input__streambuf"/>
+        <childnode refid="44" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>streambuf</label>
+      </node>
+      <node id="44">
+        <label>boson::char_array_streambuf</label>
+        <link refid="classboson_1_1char__array__streambuf"/>
+        <childnode refid="45" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="48">
+        <label>streambuf</label>
+      </node>
+      <node id="47">
+        <label>boson::char_array_streambuf</label>
+        <link refid="classboson_1_1char__array__streambuf"/>
+        <childnode refid="48" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/boson/bson_streambuf.hpp" line="99" column="1" bodyfile="src/boson/bson_streambuf.hpp" bodystart="99" bodyend="148"/>
+    <listofallmembers>
+      <member refid="classboson_1_1char__array__streambuf_1aced088c984c8cc3a54b198676bd01105" prot="private" virt="non-virtual"><scope>boson::char_array_streambuf</scope><name>_begin</name></member>
+      <member refid="classboson_1_1char__array__streambuf_1a0ad76993c387ae8107c764d5e2153456" prot="private" virt="non-virtual"><scope>boson::char_array_streambuf</scope><name>_current</name></member>
+      <member refid="classboson_1_1char__array__streambuf_1a1cbca90852e37d9bcc8bcea4b7a1f11d" prot="private" virt="non-virtual"><scope>boson::char_array_streambuf</scope><name>_end</name></member>
+      <member refid="classboson_1_1char__array__streambuf_1a6d1a17014adfe5daa6c9586f877c6a46" prot="public" virt="non-virtual"><scope>boson::char_array_streambuf</scope><name>char_array_streambuf</name></member>
+      <member refid="classboson_1_1char__array__streambuf_1a39bba45be0a823f268dcb3f659d5a713" prot="private" virt="non-virtual"><scope>boson::char_array_streambuf</scope><name>pbackfail</name></member>
+      <member refid="classboson_1_1char__array__streambuf_1a2286bd2cd28907ae01b41a66965a4d99" prot="private" virt="non-virtual"><scope>boson::char_array_streambuf</scope><name>seekoff</name></member>
+      <member refid="classboson_1_1char__array__streambuf_1aac7a598e36d71467b6a88d3eecac6fd2" prot="private" virt="non-virtual"><scope>boson::char_array_streambuf</scope><name>seekpos</name></member>
+      <member refid="classboson_1_1char__array__streambuf_1a29d54161e3dec28e8166d8ccd78bb06d" prot="private" virt="non-virtual"><scope>boson::char_array_streambuf</scope><name>showmanyc</name></member>
+      <member refid="classboson_1_1char__array__streambuf_1a5684379f216744dd69f63589caf47394" prot="private" virt="non-virtual"><scope>boson::char_array_streambuf</scope><name>uflow</name></member>
+      <member refid="classboson_1_1char__array__streambuf_1a8dc3b3533a0db817ee370b83830a48b7" prot="private" virt="non-virtual"><scope>boson::char_array_streambuf</scope><name>underflow</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

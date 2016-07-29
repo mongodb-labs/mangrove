@@ -1,0 +1,72 @@
+\hypertarget{classmangrove_1_1update__expr}{}\section{mangrove\+:\+:update\+\_\+expr$<$ NvpT, U $>$ Class Template Reference}
+\label{classmangrove_1_1update__expr}\index{mangrove\+::update\+\_\+expr$<$ Nvp\+T, U $>$@{mangrove\+::update\+\_\+expr$<$ Nvp\+T, U $>$}}
+
+
+Represents an update operator that modifies a certain elements.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+Inheritance diagram for mangrove\+:\+:update\+\_\+expr$<$ NvpT, U $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmangrove_1_1update__expr}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmangrove_1_1update__expr_a49e2499eafc550fa1cc536821096d807}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder as a key-\/value pair \char`\"{}\$op\+: \{field\+: value\}\char`\"{}. \end{DoxyCompactList}\item 
+\hyperlink{classmangrove_1_1update__expr_ae2373cfc8120b48cf144f239b034706f}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const \hypertarget{classmangrove_1_1update__expr_ae2373cfc8120b48cf144f239b034706f}{}\label{classmangrove_1_1update__expr_ae2373cfc8120b48cf144f239b034706f}
+
+\begin{DoxyCompactList}\small\item\em Creates a B\+S\+ON value of the form \char`\"{}\$op\+: \{field\+: value\}\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename NvpT, typename U$>$\\*
+class mangrove\+::update\+\_\+expr$<$ Nvp\+T, U $>$}
+
+Represents an update operator that modifies a certain elements. 
+
+This creates B\+S\+ON expressions of the form \char`\"{}\$op\+: \{field\+: value\}\char`\"{}, where \$op can be \$set, \$inc, etc.
+
+This class stores the value to be compared by reference. To store a temporary or computed value, use Update\+Expr\+Value.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em NvpT} & The type of the name-\/value pair \\
+\hline
+{\em U} & The type of the value being compared. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\index{mangrove\+::update\+\_\+expr@{mangrove\+::update\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mangrove\+::update\+\_\+expr@{mangrove\+::update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename U$>$ void {\bf mangrove\+::update\+\_\+expr}$<$ NvpT, U $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1update__expr_a49e2499eafc550fa1cc536821096d807}{}\label{classmangrove_1_1update__expr_a49e2499eafc550fa1cc536821096d807}
+
+
+Appends this query to a B\+S\+ON core builder as a key-\/value pair \char`\"{}\$op\+: \{field\+: value\}\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em Whether} & to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/expression\+\_\+syntax.\+hpp\item 
+src/mangrove/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

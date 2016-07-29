@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmangrove_1_1details_1_1expression__type_3_01boolean__expr_3_01Expr1_00_01Expr2_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>mangrove::details::expression_type&lt; boolean_expr&lt; Expr1, Expr2 &gt; &gt;</compoundname>
+    <basecompoundref refid="structmangrove_1_1expression__category__t" prot="public" virt="non-virtual">mangrove::expression_category_t&lt; expr_type &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename Expr1</type>
+      </param>
+      <param>
+        <type>typename Expr2</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="109">
+        <label>expression_query_t</label>
+        <link refid="structmangrove_1_1expression__category__t"/>
+      </node>
+      <node id="108">
+        <label>mangrove::details::expression_type&lt; boolean_expr&lt; Expr1, Expr2 &gt; &gt;</label>
+        <link refid="structmangrove_1_1details_1_1expression__type_3_01boolean__expr_3_01Expr1_00_01Expr2_01_4_01_4"/>
+        <childnode refid="109" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="111">
+        <label>expression_query_t</label>
+        <link refid="structmangrove_1_1expression__category__t"/>
+      </node>
+      <node id="110">
+        <label>mangrove::details::expression_type&lt; boolean_expr&lt; Expr1, Expr2 &gt; &gt;</label>
+        <link refid="structmangrove_1_1details_1_1expression__type_3_01boolean__expr_3_01Expr1_00_01Expr2_01_4_01_4"/>
+        <childnode refid="111" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/expression_syntax.hpp" line="137" column="1" bodyfile="src/mangrove/expression_syntax.hpp" bodystart="137" bodyend="137"/>
+    <listofallmembers>
+      <member refid="structmangrove_1_1expression__category__t_1ae0a64300626785b556bc88d34cba92fb" prot="public" virt="non-virtual"><scope>mangrove::details::expression_type&lt; boolean_expr&lt; Expr1, Expr2 &gt; &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

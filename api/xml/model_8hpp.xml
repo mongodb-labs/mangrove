@@ -4,256 +4,293 @@
     <compoundname>model.hpp</compoundname>
     <includes local="no">cereal/cereal.hpp</includes>
     <includes local="no">bsoncxx/oid.hpp</includes>
-    <includes refid="mongo__odm_2config_2prelude_8hpp" local="no">mongo_odm/config/prelude.hpp</includes>
-    <includes refid="odm__collection_8hpp" local="no">mongo_odm/odm_collection.hpp</includes>
+    <includes refid="collection__wrapper_8hpp" local="no">mangrove/collection_wrapper.hpp</includes>
+    <includes refid="mangrove_2config_2prelude_8hpp" local="no">mangrove/config/prelude.hpp</includes>
+    <includes refid="util_8hpp" local="no">mangrove/util.hpp</includes>
     <includes local="no">mongocxx/collection.hpp</includes>
     <incdepgraph>
-      <node id="229">
+      <node id="269">
+        <label>src/mangrove/model.hpp</label>
+        <link refid="model.hpp"/>
+        <childnode refid="270" relation="include">
+        </childnode>
+        <childnode refid="271" relation="include">
+        </childnode>
+        <childnode refid="272" relation="include">
+        </childnode>
+        <childnode refid="273" relation="include">
+        </childnode>
+        <childnode refid="309" relation="include">
+        </childnode>
+        <childnode refid="281" relation="include">
+        </childnode>
+      </node>
+      <node id="281">
         <label>mongocxx/collection.hpp</label>
       </node>
-      <node id="243">
+      <node id="273">
+        <label>mangrove/config/prelude.hpp</label>
+        <link refid="mangrove_2config_2prelude_8hpp_source"/>
+        <childnode refid="274" relation="include">
+        </childnode>
+        <childnode refid="275" relation="include">
+        </childnode>
+        <childnode refid="276" relation="include">
+        </childnode>
+        <childnode refid="277" relation="include">
+        </childnode>
+      </node>
+      <node id="295">
         <label>bsoncxx/builder/core.hpp</label>
       </node>
-      <node id="225">
-        <label>mongo_odm/odm_collection.hpp</label>
-        <link refid="odm__collection_8hpp_source"/>
-        <childnode refid="220" relation="include">
-        </childnode>
-        <childnode refid="226" relation="include">
-        </childnode>
-        <childnode refid="227" relation="include">
-        </childnode>
-        <childnode refid="228" relation="include">
-        </childnode>
-        <childnode refid="229" relation="include">
-        </childnode>
-        <childnode refid="230" relation="include">
-        </childnode>
-        <childnode refid="254" relation="include">
-        </childnode>
-        <childnode refid="256" relation="include">
-        </childnode>
-      </node>
-      <node id="230">
-        <label>bson_mapper/mapping_functions.hpp</label>
-        <link refid="mapping__functions_8hpp_source"/>
-        <childnode refid="231" relation="include">
-        </childnode>
-        <childnode refid="226" relation="include">
-        </childnode>
-        <childnode refid="227" relation="include">
-        </childnode>
-        <childnode refid="228" relation="include">
-        </childnode>
-        <childnode refid="236" relation="include">
-        </childnode>
-        <childnode refid="247" relation="include">
-        </childnode>
-        <childnode refid="253" relation="include">
-        </childnode>
-      </node>
-      <node id="253">
-        <label>bson_mapper/config/postlude.hpp</label>
-        <link refid="bson__mapper_2config_2postlude_8hpp_source"/>
-      </node>
-      <node id="228">
+      <node id="280">
         <label>bsoncxx/stdx/optional.hpp</label>
       </node>
-      <node id="247">
-        <label>bson_mapper/bson_streambuf.hpp</label>
-        <link refid="bson__streambuf_8hpp_source"/>
-        <childnode refid="231" relation="include">
+      <node id="309">
+        <label>mangrove/util.hpp</label>
+        <link refid="util_8hpp_source"/>
+        <childnode refid="273" relation="include">
         </childnode>
-        <childnode refid="248" relation="include">
+        <childnode refid="289" relation="include">
         </childnode>
-        <childnode refid="249" relation="include">
+        <childnode refid="310" relation="include">
         </childnode>
-        <childnode refid="250" relation="include">
+        <childnode refid="293" relation="include">
         </childnode>
-        <childnode refid="251" relation="include">
+        <childnode refid="311" relation="include">
         </childnode>
-        <childnode refid="252" relation="include">
+        <childnode refid="312" relation="include">
         </childnode>
-        <childnode refid="253" relation="include">
+        <childnode refid="313" relation="include">
+        </childnode>
+        <childnode refid="280" relation="include">
+        </childnode>
+        <childnode refid="296" relation="include">
+        </childnode>
+        <childnode refid="308" relation="include">
         </childnode>
       </node>
-      <node id="241">
+      <node id="306">
+        <label>mangrove/deserializing_cursor.hpp</label>
+        <link refid="deserializing__cursor_8hpp_source"/>
+        <childnode refid="273" relation="include">
+        </childnode>
+        <childnode refid="278" relation="include">
+        </childnode>
+        <childnode refid="279" relation="include">
+        </childnode>
+        <childnode refid="280" relation="include">
+        </childnode>
+        <childnode refid="307" relation="include">
+        </childnode>
+        <childnode refid="282" relation="include">
+        </childnode>
+        <childnode refid="308" relation="include">
+        </childnode>
+      </node>
+      <node id="286">
+        <label>boson/config/export.hpp</label>
+      </node>
+      <node id="293">
         <label>string</label>
       </node>
-      <node id="256">
-        <label>mongo_odm/config/postlude.hpp</label>
-        <link refid="mongo__odm_2config_2postlude_8hpp_source"/>
+      <node id="299">
+        <label>boson/bson_streambuf.hpp</label>
+        <link refid="bson__streambuf_8hpp_source"/>
+        <childnode refid="283" relation="include">
+        </childnode>
+        <childnode refid="300" relation="include">
+        </childnode>
+        <childnode refid="301" relation="include">
+        </childnode>
+        <childnode refid="302" relation="include">
+        </childnode>
+        <childnode refid="303" relation="include">
+        </childnode>
+        <childnode refid="304" relation="include">
+        </childnode>
+        <childnode refid="305" relation="include">
+        </childnode>
       </node>
-      <node id="227">
+      <node id="283">
+        <label>boson/config/prelude.hpp</label>
+        <link refid="boson_2config_2prelude_8hpp_source"/>
+        <childnode refid="284" relation="include">
+        </childnode>
+        <childnode refid="285" relation="include">
+        </childnode>
+        <childnode refid="286" relation="include">
+        </childnode>
+        <childnode refid="287" relation="include">
+        </childnode>
+      </node>
+      <node id="279">
         <label>bsoncxx/builder/basic/document.hpp</label>
       </node>
-      <node id="222">
-        <label>mongo_odm/config/config.hpp</label>
+      <node id="308">
+        <label>mangrove/config/postlude.hpp</label>
+        <link refid="mangrove_2config_2postlude_8hpp_source"/>
       </node>
-      <node id="254">
-        <label>mongo_odm/deserializing_cursor.hpp</label>
-        <link refid="deserializing__cursor_8hpp_source"/>
-        <childnode refid="220" relation="include">
-        </childnode>
-        <childnode refid="226" relation="include">
-        </childnode>
-        <childnode refid="227" relation="include">
-        </childnode>
-        <childnode refid="228" relation="include">
-        </childnode>
-        <childnode refid="255" relation="include">
-        </childnode>
-        <childnode refid="230" relation="include">
-        </childnode>
-        <childnode refid="256" relation="include">
-        </childnode>
-      </node>
-      <node id="246">
-        <label>bson_mapper/stdx/optional.hpp</label>
-        <link refid="optional_8hpp_source"/>
-        <childnode refid="228" relation="include">
-        </childnode>
-      </node>
-      <node id="217">
-        <label>src/mongo_odm/model.hpp</label>
-        <link refid="model.hpp"/>
-        <childnode refid="218" relation="include">
-        </childnode>
-        <childnode refid="219" relation="include">
-        </childnode>
-        <childnode refid="220" relation="include">
-        </childnode>
-        <childnode refid="225" relation="include">
-        </childnode>
-        <childnode refid="229" relation="include">
-        </childnode>
-      </node>
-      <node id="236">
-        <label>bson_mapper/bson_archiver.hpp</label>
-        <link refid="bson__archiver_8hpp_source"/>
-        <childnode refid="237" relation="include">
-        </childnode>
-        <childnode refid="238" relation="include">
-        </childnode>
-        <childnode refid="239" relation="include">
-        </childnode>
-        <childnode refid="240" relation="include">
-        </childnode>
-        <childnode refid="241" relation="include">
-        </childnode>
-        <childnode refid="242" relation="include">
-        </childnode>
-        <childnode refid="218" relation="include">
-        </childnode>
-        <childnode refid="243" relation="include">
-        </childnode>
-        <childnode refid="244" relation="include">
-        </childnode>
-        <childnode refid="245" relation="include">
-        </childnode>
-        <childnode refid="246" relation="include">
-        </childnode>
-      </node>
-      <node id="249">
+      <node id="301">
         <label>ostream</label>
       </node>
-      <node id="255">
+      <node id="288">
+        <label>boson/bson_archiver.hpp</label>
+        <link refid="bson__archiver_8hpp_source"/>
+        <childnode refid="289" relation="include">
+        </childnode>
+        <childnode refid="290" relation="include">
+        </childnode>
+        <childnode refid="291" relation="include">
+        </childnode>
+        <childnode refid="292" relation="include">
+        </childnode>
+        <childnode refid="293" relation="include">
+        </childnode>
+        <childnode refid="294" relation="include">
+        </childnode>
+        <childnode refid="270" relation="include">
+        </childnode>
+        <childnode refid="295" relation="include">
+        </childnode>
+        <childnode refid="296" relation="include">
+        </childnode>
+        <childnode refid="297" relation="include">
+        </childnode>
+        <childnode refid="298" relation="include">
+        </childnode>
+      </node>
+      <node id="307">
         <label>mongocxx/cursor.hpp</label>
       </node>
-      <node id="251">
+      <node id="287">
+        <label>boson/config/version.hpp</label>
+      </node>
+      <node id="303">
         <label>bsoncxx/builder/stream/document.hpp</label>
       </node>
-      <node id="232">
-        <label>bson_mapper/config/compiler.hpp</label>
-        <link refid="bson__mapper_2config_2compiler_8hpp_source"/>
+      <node id="298">
+        <label>boson/stdx/optional.hpp</label>
+        <link refid="optional_8hpp_source"/>
+        <childnode refid="280" relation="include">
+        </childnode>
       </node>
-      <node id="223">
-        <label>mongo_odm/config/export.hpp</label>
-      </node>
-      <node id="245">
+      <node id="297">
         <label>bsoncxx/types/value.hpp</label>
       </node>
-      <node id="233">
-        <label>bson_mapper/config/config.hpp</label>
+      <node id="276">
+        <label>mangrove/config/export.hpp</label>
       </node>
-      <node id="242">
+      <node id="282">
+        <label>boson/mapping_functions.hpp</label>
+        <link refid="mapping__functions_8hpp_source"/>
+        <childnode refid="283" relation="include">
+        </childnode>
+        <childnode refid="278" relation="include">
+        </childnode>
+        <childnode refid="279" relation="include">
+        </childnode>
+        <childnode refid="280" relation="include">
+        </childnode>
+        <childnode refid="288" relation="include">
+        </childnode>
+        <childnode refid="299" relation="include">
+        </childnode>
+        <childnode refid="305" relation="include">
+        </childnode>
+      </node>
+      <node id="311">
+        <label>tuple</label>
+      </node>
+      <node id="310">
+        <label>ctime</label>
+      </node>
+      <node id="294">
         <label>vector</label>
       </node>
-      <node id="240">
+      <node id="292">
         <label>stack</label>
       </node>
-      <node id="244">
+      <node id="296">
         <label>bsoncxx/types.hpp</label>
       </node>
-      <node id="250">
+      <node id="302">
         <label>streambuf</label>
       </node>
-      <node id="231">
-        <label>bson_mapper/config/prelude.hpp</label>
-        <link refid="bson__mapper_2config_2prelude_8hpp_source"/>
-        <childnode refid="232" relation="include">
-        </childnode>
-        <childnode refid="233" relation="include">
-        </childnode>
-        <childnode refid="234" relation="include">
-        </childnode>
-        <childnode refid="235" relation="include">
-        </childnode>
+      <node id="313">
+        <label>utility</label>
       </node>
-      <node id="224">
-        <label>mongo_odm/config/version.hpp</label>
-      </node>
-      <node id="239">
+      <node id="291">
         <label>sstream</label>
       </node>
-      <node id="218">
+      <node id="270">
         <label>cereal/cereal.hpp</label>
       </node>
-      <node id="226">
+      <node id="272">
+        <label>mangrove/collection_wrapper.hpp</label>
+        <link refid="collection__wrapper_8hpp_source"/>
+        <childnode refid="273" relation="include">
+        </childnode>
+        <childnode refid="278" relation="include">
+        </childnode>
+        <childnode refid="279" relation="include">
+        </childnode>
+        <childnode refid="280" relation="include">
+        </childnode>
+        <childnode refid="281" relation="include">
+        </childnode>
+        <childnode refid="282" relation="include">
+        </childnode>
+        <childnode refid="306" relation="include">
+        </childnode>
+        <childnode refid="308" relation="include">
+        </childnode>
+      </node>
+      <node id="284">
+        <label>boson/config/compiler.hpp</label>
+        <link refid="boson_2config_2compiler_8hpp_source"/>
+      </node>
+      <node id="278">
         <label>iostream</label>
       </node>
-      <node id="220">
-        <label>mongo_odm/config/prelude.hpp</label>
-        <link refid="mongo__odm_2config_2prelude_8hpp_source"/>
-        <childnode refid="221" relation="include">
-        </childnode>
-        <childnode refid="222" relation="include">
-        </childnode>
-        <childnode refid="223" relation="include">
-        </childnode>
-        <childnode refid="224" relation="include">
-        </childnode>
-      </node>
-      <node id="237">
+      <node id="289">
         <label>chrono</label>
       </node>
-      <node id="235">
-        <label>bson_mapper/config/version.hpp</label>
+      <node id="285">
+        <label>boson/config/config.hpp</label>
       </node>
-      <node id="252">
+      <node id="274">
+        <label>mangrove/config/compiler.hpp</label>
+        <link refid="mangrove_2config_2compiler_8hpp_source"/>
+      </node>
+      <node id="275">
+        <label>mangrove/config/config.hpp</label>
+      </node>
+      <node id="312">
+        <label>type_traits</label>
+      </node>
+      <node id="304">
         <label>bsoncxx/json.hpp</label>
       </node>
-      <node id="219">
+      <node id="277">
+        <label>mangrove/config/version.hpp</label>
+      </node>
+      <node id="271">
         <label>bsoncxx/oid.hpp</label>
       </node>
-      <node id="234">
-        <label>bson_mapper/config/export.hpp</label>
-      </node>
-      <node id="221">
-        <label>mongo_odm/config/compiler.hpp</label>
-        <link refid="mongo__odm_2config_2compiler_8hpp_source"/>
-      </node>
-      <node id="238">
+      <node id="290">
         <label>memory</label>
       </node>
-      <node id="248">
+      <node id="300">
         <label>istream</label>
       </node>
+      <node id="305">
+        <label>boson/config/postlude.hpp</label>
+        <link refid="boson_2config_2postlude_8hpp_source"/>
+      </node>
     </incdepgraph>
-    <innerclass refid="structmongo__odm_1_1FirstTypeIsTheSame" prot="public">mongo_odm::FirstTypeIsTheSame</innerclass>
-    <innerclass refid="structmongo__odm_1_1FirstTypeIsTheSame_3_01T_00_01T2_00_01Ts_8_8_8_01_4" prot="public">mongo_odm::FirstTypeIsTheSame&lt; T, T2, Ts... &gt;</innerclass>
-    <innerclass refid="classmongo__odm_1_1model" prot="public">mongo_odm::model</innerclass>
-    <innernamespace refid="namespacemongo__odm">mongo_odm</innernamespace>
+    <innerclass refid="classmangrove_1_1model" prot="public">mangrove::model</innerclass>
+    <innernamespace refid="namespacemangrove">mangrove</innernamespace>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -278,101 +315,148 @@
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cereal/cereal.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;bsoncxx/oid.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/config/prelude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/odm_collection.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongocxx/collection.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemongo__odm" kindref="compound">mongo_odm</ref><sp/>{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal">MONGO_ODM_INLINE_NAMESPACE_BEGIN</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Ts&gt;</highlight></codeline>
-<codeline lineno="33" refid="structmongo__odm_1_1FirstTypeIsTheSame" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1FirstTypeIsTheSame" kindref="compound">FirstTypeIsTheSame</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::false_type<sp/>{};</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T2,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Ts&gt;</highlight></codeline>
-<codeline lineno="36" refid="structmongo__odm_1_1FirstTypeIsTheSame_3_01T_00_01T2_00_01Ts_8_8_8_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1FirstTypeIsTheSame" kindref="compound">FirstTypeIsTheSame</ref>&lt;T,<sp/>T2,<sp/>Ts...&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::is_same&lt;T,<sp/>std::decay_t&lt;T2&gt;&gt;<sp/>{};</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>IdType<sp/>=<sp/>bsoncxx::o</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">&gt;</highlight></codeline>
-<codeline lineno="39" refid="classmongo__odm_1_1model" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1model" kindref="compound">model</ref><sp/>{</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TODO:<sp/>When<sp/>XCode<sp/>8<sp/>is<sp/>released,<sp/>this<sp/>can<sp/>always<sp/>be<sp/>thread_local.<sp/>Until<sp/>then,<sp/>the<sp/>model<sp/>class</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>will<sp/>not<sp/>be<sp/>thread-safe<sp/>on<sp/>OS<sp/>X.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__APPLE__</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1odm__collection" kindref="compound">odm_collection&lt;T&gt;</ref><sp/>_coll;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>thread_local<sp/><ref refid="classmongo__odm_1_1odm__collection" kindref="compound">odm_collection&lt;T&gt;</ref><sp/>_coll;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Ts,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/>std::enable_if_t&lt;!<ref refid="structmongo__odm_1_1FirstTypeIsTheSame" kindref="compound">FirstTypeIsTheSame</ref>&lt;<ref refid="classmongo__odm_1_1model" kindref="compound">model</ref>,<sp/>Ts...&gt;::value&gt;&gt;</highlight></codeline>
-<codeline lineno="60" refid="classmongo__odm_1_1model_1ae00ec1da4db3b0851ccb3990a33a8f8e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmongo__odm_1_1model_1ae00ec1da4db3b0851ccb3990a33a8f8e" kindref="member">model</ref>(Ts&amp;&amp;...<sp/>ts)<sp/>:<sp/>_id(std::forward&lt;Ts&gt;(ts)...)<sp/>{</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>model()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71" refid="classmongo__odm_1_1model_1a889659470cbceaa2f9134ff383171e48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::collection<sp/><ref refid="classmongo__odm_1_1model_1a889659470cbceaa2f9134ff383171e48" kindref="member">collection</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.collection();</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82" refid="classmongo__odm_1_1model_1af47852c3aa1b8a9e5c07fa96c8530401" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1model_1af47852c3aa1b8a9e5c07fa96c8530401" kindref="member">drop</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_coll.collection().drop();</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98" refid="classmongo__odm_1_1model_1abff58cf53410faa6e0fe3ef820ca1612" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1model_1abff58cf53410faa6e0fe3ef820ca1612" kindref="member">setCollection</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::collection&amp;<sp/>coll)<sp/>{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_coll<sp/>=<sp/><ref refid="classmongo__odm_1_1odm__collection" kindref="compound">odm_collection&lt;T&gt;</ref>(coll);</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setCollection(mongocxx::collection&amp;&amp;<sp/>coll)<sp/>{</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_coll<sp/>=<sp/><ref refid="classmongo__odm_1_1odm__collection" kindref="compound">odm_collection&lt;T&gt;</ref>(std::move(coll));</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116" refid="classmongo__odm_1_1model_1a248cf30be3ee63741af5396a337b2694" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1model_1a248cf30be3ee63741af5396a337b2694" kindref="member">save</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>id_match_filter<sp/>=<sp/>bsoncxx::builder::stream::document{}</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;_id&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>this-&gt;_id<sp/>&lt;&lt;<sp/>bsoncxx::builder::stream::finalize;</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>update<sp/>=<sp/>bsoncxx::builder::stream::document{}</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;$set&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>bson_mapper::to_dotted_notation_document(*static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">))</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>bsoncxx::builder::stream::finalize;</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mongocxx::options::update<sp/>opts{};</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opts.upsert(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_coll.collection().update_one(id_match_filter.view(),<sp/>update.view(),<sp/>opts);</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139" refid="classmongo__odm_1_1model_1a63b9538d2226531814bee3b7e7d26586" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">remove</highlight><highlight class="normal">()<sp/>{</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>id_match_filter<sp/>=<sp/>bsoncxx::builder::stream::document{}</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;_id&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>this-&gt;_id<sp/>&lt;&lt;<sp/>bsoncxx::builder::stream::finalize;</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_coll.collection().delete_one(id_match_filter.view());</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="161" refid="classmongo__odm_1_1model_1a82419c85a1aa7de0de1c1202d4fafa2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classmongo__odm_1_1deserializing__cursor" kindref="compound">deserializing_cursor&lt;T&gt;</ref><sp/><ref refid="classmongo__odm_1_1model_1a82419c85a1aa7de0de1c1202d4fafa2f" kindref="member">find</ref>(</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsoncxx::document::view_or_value<sp/>filter,</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::options::find&amp;<sp/>options<sp/>=<sp/>mongocxx::options::find())<sp/>{</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.find(std::move(filter),<sp/>options);</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180" refid="classmongo__odm_1_1model_1a34b44af2a382b63b33e88dfb092e747c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>mongocxx::stdx::optional&lt;T&gt;<sp/><ref refid="classmongo__odm_1_1model_1a34b44af2a382b63b33e88dfb092e747c" kindref="member">find_one</ref>(</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsoncxx::document::view_or_value<sp/>filter,</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::options::find&amp;<sp/>options<sp/>=<sp/>mongocxx::options::find())<sp/>{</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.find_one(std::move(filter),<sp/>options);</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>IdType<sp/>_id;</highlight></codeline>
-<codeline lineno="188"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__APPLE__</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>IdType&gt;</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><ref refid="classmongo__odm_1_1odm__collection" kindref="compound">odm_collection&lt;T&gt;</ref><sp/><ref refid="classmongo__odm_1_1model" kindref="compound">model&lt;T, IdType&gt;::_coll</ref>;</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="194"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>IdType&gt;</highlight></codeline>
-<codeline lineno="195"><highlight class="normal">thread_local<sp/><ref refid="classmongo__odm_1_1odm__collection" kindref="compound">odm_collection&lt;T&gt;</ref><sp/>model&lt;T,<sp/>IdType&gt;::_coll;</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="197"><highlight class="normal"></highlight></codeline>
-<codeline lineno="198"><highlight class="normal">MONGO_ODM_INLINE_NAMESPACE_END</highlight></codeline>
-<codeline lineno="199"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mongo_odm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mangrove/collection_wrapper.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mangrove/config/prelude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mangrove/util.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongocxx/collection.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemangrove" kindref="compound">mangrove</ref><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">MANGROVE_INLINE_NAMESPACE_BEGIN</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>IdType<sp/>=<sp/>bsoncxx::o</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="29" refid="classmangrove_1_1model" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1model" kindref="compound">model</ref><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TODO:<sp/>When<sp/>XCode<sp/>8<sp/>is<sp/>released,<sp/>this<sp/>can<sp/>always<sp/>be<sp/>thread_local.<sp/>Until<sp/>then,<sp/>the<sp/>model<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>will<sp/>not<sp/>be<sp/>thread-safe<sp/>on<sp/>OS<sp/>X.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__APPLE__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classmangrove_1_1collection__wrapper" kindref="compound">collection_wrapper&lt;T&gt;</ref><sp/>_coll;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>thread_local<sp/><ref refid="classmangrove_1_1collection__wrapper" kindref="compound">collection_wrapper&lt;T&gt;</ref><sp/>_coll;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Ts,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/>std::enable_if_t&lt;!<ref refid="structmangrove_1_1first__two__types__are__same" kindref="compound">first_two_types_are_same</ref>&lt;<ref refid="classmangrove_1_1model" kindref="compound">model</ref>,<sp/>Ts...&gt;::value&gt;&gt;</highlight></codeline>
+<codeline lineno="51" refid="classmangrove_1_1model_1aad4ed1da2c483620d05c93cdc506e356" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmangrove_1_1model_1aad4ed1da2c483620d05c93cdc506e356" kindref="member">model</ref>(Ts&amp;&amp;...<sp/>ts)<sp/>:<sp/>_id(std::forward&lt;Ts&gt;(ts)...)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>model()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classmangrove_1_1model_1a4dac6424aa52c96fc184926f00570836" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::int64_t<sp/><ref refid="classmangrove_1_1model_1a4dac6424aa52c96fc184926f00570836" kindref="member">count</ref>(</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsoncxx::document::view_or_value<sp/>filter<sp/>=<sp/>bsoncxx::document::view_or_value{},</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::options::count&amp;<sp/>options<sp/>=<sp/>mongocxx::options::count())<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.collection().count(filter,<sp/>options);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classmangrove_1_1model_1a0d52a9bedf4808ef8cc98f02a9e9083b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::collection<sp/><ref refid="classmangrove_1_1model_1a0d52a9bedf4808ef8cc98f02a9e9083b" kindref="member">collection</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.collection();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classmangrove_1_1model_1ada372a128865c770d7b2334990ad6f5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>mongocxx::stdx::optional&lt;mongocxx::result::delete_result&gt;<sp/><ref refid="classmangrove_1_1model_1ada372a128865c770d7b2334990ad6f5f" kindref="member">delete_many</ref>(</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsoncxx::document::view_or_value<sp/>filter,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::options::delete_options&amp;<sp/>options<sp/>=<sp/>mongocxx::options::delete_options())<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.collection().delete_many(filter,<sp/>options);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classmangrove_1_1model_1a18e41c79c88891dcfaea88e3cc6df09c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>mongocxx::stdx::optional&lt;mongocxx::result::delete_result&gt;<sp/><ref refid="classmangrove_1_1model_1a18e41c79c88891dcfaea88e3cc6df09c" kindref="member">delete_one</ref>(</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsoncxx::document::view_or_value<sp/>filter,</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::options::delete_options&amp;<sp/>options<sp/>=<sp/>mongocxx::options::delete_options())<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.collection().delete_one(filter,<sp/>options);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="classmangrove_1_1model_1a14472adea853a46b9e76aef6cb2cd246" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmangrove_1_1model_1a14472adea853a46b9e76aef6cb2cd246" kindref="member">drop</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_coll.collection().drop();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="classmangrove_1_1model_1aa0be0e6204d17a62797f3384cbb5a6b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classmangrove_1_1deserializing__cursor" kindref="compound">deserializing_cursor&lt;T&gt;</ref><sp/><ref refid="classmangrove_1_1model_1aa0be0e6204d17a62797f3384cbb5a6b1" kindref="member">find</ref>(</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsoncxx::document::view_or_value<sp/>filter,</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::options::find&amp;<sp/>options<sp/>=<sp/>mongocxx::options::find())<sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.find(std::move(filter),<sp/>options);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="classmangrove_1_1model_1a36488dcf05af9a7426bdebb40fbbd8d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>mongocxx::stdx::optional&lt;T&gt;<sp/><ref refid="classmangrove_1_1model_1a36488dcf05af9a7426bdebb40fbbd8d4" kindref="member">find_one</ref>(</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsoncxx::document::view_or_value<sp/>filter,</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::options::find&amp;<sp/>options<sp/>=<sp/>mongocxx::options::find())<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.find_one(std::move(filter),<sp/>options);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>container_type,</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/>std::enable_if_t&lt;container_of_v&lt;container_type,<sp/>T&gt;&gt;&gt;</highlight></codeline>
+<codeline lineno="198" refid="classmangrove_1_1model_1a7250891868c6bab48f1cd741f8164b46" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>mongocxx::stdx::optional&lt;mongocxx::result::insert_many&gt;<sp/><ref refid="classmangrove_1_1model_1a7250891868c6bab48f1cd741f8164b46" kindref="member">insert_many</ref>(</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>container_type&amp;<sp/>container,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::options::insert&amp;<sp/>options<sp/>=<sp/>mongocxx::options::insert())<sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmangrove_1_1model_1a7250891868c6bab48f1cd741f8164b46" kindref="member">insert_many</ref>(container.begin(),<sp/>container.end(),<sp/>options);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>object_iterator_type,</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/>std::enable_if_t&lt;iterator_of_v&lt;object_iterator_type,<sp/>T&gt;&gt;&gt;</highlight></codeline>
+<codeline lineno="230" refid="classmangrove_1_1model_1a14db2af5bc4d46898e2a643797bff060" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>mongocxx::stdx::optional&lt;mongocxx::result::insert_many&gt;<sp/><ref refid="classmangrove_1_1model_1a14db2af5bc4d46898e2a643797bff060" kindref="member">insert_many</ref>(</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>object_iterator_type<sp/>begin,<sp/>object_iterator_type<sp/>end,</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::options::insert&amp;<sp/>options<sp/>=<sp/>mongocxx::options::insert())<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.insert_many(begin,<sp/>end,<sp/>options);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249" refid="classmangrove_1_1model_1ad9695cdffd6a1abcd62d791caa6943e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>mongocxx::stdx::optional&lt;mongocxx::result::insert_one&gt;<sp/><ref refid="classmangrove_1_1model_1ad9695cdffd6a1abcd62d791caa6943e8" kindref="member">insert_one</ref>(</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>obj,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::options::insert&amp;<sp/>options<sp/>=<sp/>mongocxx::options::insert())<sp/>{</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.insert_one(obj,<sp/>options);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="classmangrove_1_1model_1a1502c90fc3a7c9664a2578efb63e0371" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">remove</highlight><highlight class="normal">()<sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>id_match_filter<sp/>=<sp/>bsoncxx::builder::stream::document{}</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;_id&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>this-&gt;_id<sp/>&lt;&lt;<sp/>bsoncxx::builder::stream::finalize;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_coll.collection().delete_one(id_match_filter.view());</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281" refid="classmangrove_1_1model_1aa292dacb7aa8fc25c9f0fa758e5419fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmangrove_1_1model_1aa292dacb7aa8fc25c9f0fa758e5419fd" kindref="member">setCollection</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::collection&amp;<sp/>coll)<sp/>{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_coll<sp/>=<sp/><ref refid="classmangrove_1_1collection__wrapper" kindref="compound">collection_wrapper&lt;T&gt;</ref>(coll);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmangrove_1_1model_1aa292dacb7aa8fc25c9f0fa758e5419fd" kindref="member">setCollection</ref>(mongocxx::collection&amp;&amp;<sp/>coll)<sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_coll<sp/>=<sp/><ref refid="classmangrove_1_1collection__wrapper" kindref="compound">collection_wrapper&lt;T&gt;</ref>(std::move(coll));</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299" refid="classmangrove_1_1model_1a0dd3802e09d149f4bfa8661b7992c177" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmangrove_1_1model_1a0dd3802e09d149f4bfa8661b7992c177" kindref="member">save</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>id_match_filter<sp/>=<sp/>bsoncxx::builder::stream::document{}</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;_id&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>this-&gt;_id<sp/>&lt;&lt;<sp/>bsoncxx::builder::stream::finalize;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>update<sp/>=<sp/>bsoncxx::builder::stream::document{}</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;$set&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>boson::to_dotted_notation_document(*static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>bsoncxx::builder::stream::finalize;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mongocxx::options::update<sp/>opts{};</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opts.upsert(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_coll.collection().update_one(id_match_filter.view(),<sp/>update.view(),<sp/>opts);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329" refid="classmangrove_1_1model_1ab811a568d41f8721b679d5e509bf9072" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>mongocxx::stdx::optional&lt;mongocxx::result::update&gt;<sp/><ref refid="classmangrove_1_1model_1ab811a568d41f8721b679d5e509bf9072" kindref="member">update_many</ref>(</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsoncxx::document::view_or_value<sp/>filter,<sp/>bsoncxx::document::view_or_value<sp/>update,</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::options::update&amp;<sp/>options<sp/>=<sp/>mongocxx::options::update())<sp/>{</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.collection().update_many(filter,<sp/>update,<sp/>options);</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350" refid="classmangrove_1_1model_1ab0d60c7d8c2285e90456547f40b9f873" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>mongocxx::stdx::optional&lt;mongocxx::result::update&gt;<sp/><ref refid="classmangrove_1_1model_1ab0d60c7d8c2285e90456547f40b9f873" kindref="member">update_one</ref>(</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsoncxx::document::view_or_value<sp/>filter,<sp/>bsoncxx::document::view_or_value<sp/>update,</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mongocxx::options::update&amp;<sp/>options<sp/>=<sp/>mongocxx::options::update())<sp/>{</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_coll.collection().update_many(filter,<sp/>update,<sp/>options);</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>IdType<sp/>_id;</highlight></codeline>
+<codeline lineno="358"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__APPLE__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>IdType&gt;</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><ref refid="classmangrove_1_1collection__wrapper" kindref="compound">collection_wrapper&lt;T&gt;</ref><sp/><ref refid="classmangrove_1_1model" kindref="compound">model&lt;T, IdType&gt;::_coll</ref>;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>IdType&gt;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal">thread_local<sp/><ref refid="classmangrove_1_1collection__wrapper" kindref="compound">collection_wrapper&lt;T&gt;</ref><sp/>model&lt;T,<sp/>IdType&gt;::_coll;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal">MANGROVE_INLINE_NAMESPACE_END</highlight></codeline>
+<codeline lineno="369"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mangrove</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="src/mongo_odm/model.hpp"/>
+    <location file="src/mangrove/model.hpp"/>
   </compounddef>
 </doxygen>

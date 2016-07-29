@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['text_5fsearch_5fexpr',['text_search_expr',['../classmongo__odm_1_1text__search__expr.html#a85bad1931e8642099b913a7fd3118fbe',1,'mongo_odm::text_search_expr']]]
+  ['text_5fsearch_5fexpr',['text_search_expr',['../classmangrove_1_1text__search__expr.html#a217f9469c2578fe68ffd755f60b64e55',1,'mangrove::text_search_expr']]]
 ];

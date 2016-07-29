@@ -2,8 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
     <compoundname>src</compoundname>
-    <innerdir refid="dir_c65a25df07757344bd8e154c3e78b754">src/bson_mapper</innerdir>
-    <innerdir refid="dir_9813b190ffb7cc6c2345aca5c0b75257">src/mongo_odm</innerdir>
+    <innerdir refid="dir_1dbcc21505329b9b3530c9c27c4b29f0">src/boson</innerdir>
+    <innerdir refid="dir_f5d9689b80179a8508ad57db8b6736a7">src/mangrove</innerdir>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

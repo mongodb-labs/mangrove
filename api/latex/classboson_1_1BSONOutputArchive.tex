@@ -1,0 +1,46 @@
+\hypertarget{classboson_1_1BSONOutputArchive}{}\section{boson\+:\+:B\+S\+O\+N\+Output\+Archive Class Reference}
+\label{classboson_1_1BSONOutputArchive}\index{boson\+::\+B\+S\+O\+N\+Output\+Archive@{boson\+::\+B\+S\+O\+N\+Output\+Archive}}
+Inheritance diagram for boson\+:\+:B\+S\+O\+N\+Output\+Archive\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classboson_1_1BSONOutputArchive}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classboson_1_1BSONOutputArchive_a5d80167bedb53885fcad535febbb3139}{B\+S\+O\+N\+Output\+Archive} (std\+::ostream \&stream, bool dot\+Notation\+Mode=false)
+\begin{DoxyCompactList}\small\item\em Construct a \hyperlink{classboson_1_1BSONOutputArchive}{B\+S\+O\+N\+Output\+Archive} that will output serialized classes as B\+S\+ON to the provided stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{boson\+::\+B\+S\+O\+N\+Output\+Archive@{boson\+::\+B\+S\+O\+N\+Output\+Archive}!B\+S\+O\+N\+Output\+Archive@{B\+S\+O\+N\+Output\+Archive}}
+\index{B\+S\+O\+N\+Output\+Archive@{B\+S\+O\+N\+Output\+Archive}!boson\+::\+B\+S\+O\+N\+Output\+Archive@{boson\+::\+B\+S\+O\+N\+Output\+Archive}}
+\subsubsection[{\texorpdfstring{B\+S\+O\+N\+Output\+Archive(std\+::ostream \&stream, bool dot\+Notation\+Mode=false)}{BSONOutputArchive(std::ostream &stream, bool dotNotationMode=false)}}]{\setlength{\rightskip}{0pt plus 5cm}boson\+::\+B\+S\+O\+N\+Output\+Archive\+::\+B\+S\+O\+N\+Output\+Archive (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{stream, }
+\item[{bool}]{dot\+Notation\+Mode = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classboson_1_1BSONOutputArchive_a5d80167bedb53885fcad535febbb3139}{}\label{classboson_1_1BSONOutputArchive_a5d80167bedb53885fcad535febbb3139}
+
+
+Construct a \hyperlink{classboson_1_1BSONOutputArchive}{B\+S\+O\+N\+Output\+Archive} that will output serialized classes as B\+S\+ON to the provided stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & The stream to which the archiver will output B\+S\+ON data.\\
+\hline
+{\em dot\+Notation\+Mode} & If set to true, the \hyperlink{classboson_1_1BSONOutputArchive}{B\+S\+O\+N\+Output\+Archive} will output the values in embedded documents in dot notation. This is useful when specifying the arguments to a \$set field in a Mongo\+DB update command.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/core/document/#embedded-documents}{\tt https\+://docs.\+mongodb.\+com/manual/core/document/\#embedded-\/documents}
+\end{DoxySeeAlso}
+\begin{DoxyWarning}{Warning}
+Documents produced by the archiver in dot\+Notation\+Mode are not compatible with the B\+S\+O\+N\+Input\+Archiver and are only intended to be used as a way to produce the argument to \$set. 
+\end{DoxyWarning}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/boson/bson\+\_\+archiver.\+hpp\end{DoxyCompactItemize}

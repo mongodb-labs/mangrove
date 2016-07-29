@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmangrove_1_1not__expr" kind="class" language="C++" prot="public">
+    <compoundname>mangrove::not_expr</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Expr</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classmangrove_1_1not__expr_1a7d51d79a4b56ae6f6e092e717dce7405" prot="public" static="no">
+        <type>typename Expr::field_type</type>
+        <definition>using mangrove::not_expr&lt; Expr &gt;::field_type =  typename Expr::field_type</definition>
+        <argsstring></argsstring>
+        <name>field_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="446" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="446" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmangrove_1_1not__expr_1a755abe41f946dd68f2d07de15103c407" prot="private" static="no" mutable="no">
+        <type>const Expr</type>
+        <definition>const Expr mangrove::not_expr&lt; Expr &gt;::_expr</definition>
+        <argsstring></argsstring>
+        <name>_expr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="505" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="505" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmangrove_1_1not__expr_1a5c6987d2c158a495d1cf0be8b620f276" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mangrove::not_expr&lt; Expr &gt;::not_expr</definition>
+        <argsstring>(const Expr &amp;expr)</argsstring>
+        <name>not_expr</name>
+        <param>
+          <type>const Expr &amp;</type>
+          <declname>expr</declname>
+        </param>
+        <briefdescription>
+<para>Creates a $not expression that negates the given comparison expression. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>expr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A comparison expression </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="452" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="452" bodyend="453"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1not__expr_1a5f6ac8b90ae4b2ac8910f8b77827b4e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string &amp;</type>
+        <definition>std::string&amp; mangrove::not_expr&lt; Expr &gt;::append_name</definition>
+        <argsstring>(std::string &amp;s) const </argsstring>
+        <name>append_name</name>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Appends the name of the contained field to a string. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="458" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="458" bodyend="460"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1not__expr_1a63c87ef45c94b5f4262167f11cd2db85" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mangrove::not_expr&lt; Expr &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false, bool omit_name=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>omit_name</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Appends this expression to a BSON core builder, as a key-value pair of the form &quot;key: {$not: {$cmp: val}}&quot;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a BSON core builder </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wrap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to wrap the BSON inside a document. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>omit_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to skip the name of the field. This is used primarily in $elemMatch queries with scalar arrays, so one can have a query like {array: {</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="rcs"><title>elemMatch</title><para>{</para></simplesect>
+not: {$gt: 5}}}} </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="471" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="471" bodyend="492"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1not__expr_1aedc395f227164db4bb018eba28bca79f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::not_expr&lt; Expr &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Converts the expression to a BSON filter for a query. </para>        </briefdescription>
+        <detaileddescription>
+<para>The resulting BSON is of the form &quot;{key: {$cmp: val}}&quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="498" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="498" bodyend="502"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This represents an expression with the $not operator, which wraps a comparison expression and negates it. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mangrove/expression_syntax.hpp" line="63" column="1" bodyfile="src/mangrove/expression_syntax.hpp" bodystart="63" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmangrove_1_1not__expr_1a755abe41f946dd68f2d07de15103c407" prot="private" virt="non-virtual"><scope>mangrove::not_expr</scope><name>_expr</name></member>
+      <member refid="classmangrove_1_1not__expr_1a5f6ac8b90ae4b2ac8910f8b77827b4e1" prot="public" virt="non-virtual"><scope>mangrove::not_expr</scope><name>append_name</name></member>
+      <member refid="classmangrove_1_1not__expr_1a63c87ef45c94b5f4262167f11cd2db85" prot="public" virt="non-virtual"><scope>mangrove::not_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmangrove_1_1not__expr_1a7d51d79a4b56ae6f6e092e717dce7405" prot="public" virt="non-virtual"><scope>mangrove::not_expr</scope><name>field_type</name></member>
+      <member refid="classmangrove_1_1not__expr_1a5c6987d2c158a495d1cf0be8b620f276" prot="public" virt="non-virtual"><scope>mangrove::not_expr</scope><name>not_expr</name></member>
+      <member refid="classmangrove_1_1not__expr_1aedc395f227164db4bb018eba28bca79f" prot="public" virt="non-virtual"><scope>mangrove::not_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

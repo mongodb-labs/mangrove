@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>1-basics on Mangrove</title>
-    <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/</link>
+    <link>http://mongodb.github.io/mangrove/1-basics/</link>
     <description>Recent content in 1-basics on Mangrove</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://mongodb.github.io/mongo-cxx-odm/1-basics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://mongodb.github.io/mangrove/1-basics/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Basics</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/</link>
+      <link>http://mongodb.github.io/mangrove/1-basics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/1-basics/</guid>
+      <guid>http://mongodb.github.io/mangrove/1-basics/</guid>
       <description>
 
 &lt;h3 id=&#34;chapter-1&#34;&gt;Chapter 1&lt;/h3&gt;
@@ -26,10 +26,10 @@
     
     <item>
       <title>What is Mangrove?</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/</link>
+      <link>http://mongodb.github.io/mangrove/1-basics/what-is-mangrove/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/</guid>
+      <guid>http://mongodb.github.io/mangrove/1-basics/what-is-mangrove/</guid>
       <description>&lt;p&gt;Mangrove is a C++ &lt;strong&gt;object document mapper (ODM)&lt;/strong&gt; for MongoDB. An &lt;strong&gt;ODM&lt;/strong&gt; lets you map classes in an object-oriented programming language to collections in a document-oriented database like MongoDB.&lt;/p&gt;
 
 &lt;p&gt;If you&amp;rsquo;ve ever used an &lt;strong&gt;object relational mapper (ORM)&lt;/strong&gt;, an &lt;strong&gt;ODM&lt;/strong&gt; is quite similar, except that the underlying structure of the data in the database is actually very similar to the structure of your objects.&lt;/p&gt;
@@ -89,10 +89,10 @@ int main() {
     
     <item>
       <title>Installation</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/installation/</link>
+      <link>http://mongodb.github.io/mangrove/1-basics/installation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/1-basics/installation/</guid>
+      <guid>http://mongodb.github.io/mangrove/1-basics/installation/</guid>
       <description>
 
 &lt;p&gt;To get Mangrove up and running in your project, simply follow these instructions to install Mangrove on your system.&lt;/p&gt;
@@ -140,13 +140,13 @@ int main() {
 &lt;li&gt;&lt;p&gt;Clone the repository, and check out the latest stable release.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;git clone -b master https://github.com/mongodb/mongo-cxx-odm&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clone -b master https://github.com/mongodb/mangrove&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Build Mangrove. Note that if you installed the C driver and C++ driver to a path that is automatically searched by &lt;code&gt;pkg-config&lt;/code&gt;, you can omit the &lt;code&gt;PKG_CONFIG_PATH&lt;/code&gt; environment variable. If you don&amp;rsquo;t have &lt;code&gt;pkg-config&lt;/code&gt;, you can explicitly set the path to the libbson, libmongoc, libbsoncxx, and libmongocxx install prefixes with the &lt;code&gt;-DLIBBSON_DIR&lt;/code&gt;, &lt;code&gt;-DLIBMONGOC_DIR&lt;/code&gt;, -&lt;code&gt;Dlibbsoncxx_DIR&lt;/code&gt;, and &lt;code&gt;-Dlibmongocxx_DIR&lt;/code&gt; CMake arguments.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;cd mongo-cxx-odm/build&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cd mangrove/build&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;[PKG_CONFIG_PATH=CXXDRIVER_INSTALL_PATH/lib/pkgconfig] cmake -DCMAKE_BUILD_TYPE=Release [-DCMAKE_INSTALL_PREFIX=DESIRED_INSTALL_PATH] ..&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;make &amp;amp;&amp;amp; sudo make install&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -156,10 +156,10 @@ int main() {
     
     <item>
       <title>Quick Tour</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/quick-tour/</link>
+      <link>http://mongodb.github.io/mangrove/1-basics/quick-tour/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/1-basics/quick-tour/</guid>
+      <guid>http://mongodb.github.io/mangrove/1-basics/quick-tour/</guid>
       <description>
 
 &lt;p&gt;Now that you have Mangrove installed on your system, we can get started with a quick tour of Mangrove&amp;rsquo;s features. To do this, we&amp;rsquo;ll develop the data model for a very simple persistent blog application.&lt;/p&gt;
@@ -249,7 +249,7 @@ int main() {
 
 &lt;p&gt;The &lt;code&gt;BlogEntry&lt;/code&gt; model has a static function &lt;code&gt;setCollection()&lt;/code&gt; that lets you specify in which collection to save and retrieve instances of &lt;code&gt;BlogEntry&lt;/code&gt;. It accepts a &lt;code&gt;mongocxx::collection&lt;/code&gt;, which is accessible via the &lt;code&gt;mongocxx::client&lt;/code&gt;. The code above sets &lt;code&gt;BlogEntry&lt;/code&gt;&amp;rsquo;s collection to the &lt;code&gt;&amp;quot;entries&amp;quot;&lt;/code&gt; collection in the &lt;code&gt;&amp;quot;my_blog&amp;quot;&lt;/code&gt; database hosted at &lt;code&gt;&amp;quot;mongodb://localhost:27017&amp;quot;&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;If you&amp;rsquo;re planning on writing multi-threaded applications with Mangrove, be sure to carefully read the warning &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/#linking-with-the-database&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re planning on writing multi-threaded applications with Mangrove, be sure to carefully read the warning &lt;a href=&#34;http://mongodb.github.io/mangrove/2-models/introduction/#linking-with-the-database&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;saving-objects&#34;&gt;Saving Objects&lt;/h2&gt;
 
@@ -288,7 +288,7 @@ void printTitlesBy(std::string author) {
 
 &lt;p&gt;There&amp;rsquo;s a lot happening here, but it&amp;rsquo;s very simple once you understand what&amp;rsquo;s going on.&lt;/p&gt;
 
-&lt;p&gt;Inside the parameter list for &lt;code&gt;BlogEntry::find()&lt;/code&gt;, you&amp;rsquo;ll see &lt;code&gt;MANGROVE_KEY(BlogEntry::author) == author&lt;/code&gt;. In Mangrove, you can build MongoDB queries using the standard C++ comparison and logical operators. This is discussed more in &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/3-queries&#34;&gt;Chapter 3&lt;/a&gt;, but the main thing you have to remember is to wrap the value you are comparing in a &lt;code&gt;MANGROVE_KEY&lt;/code&gt; macro.&lt;/p&gt;
+&lt;p&gt;Inside the parameter list for &lt;code&gt;BlogEntry::find()&lt;/code&gt;, you&amp;rsquo;ll see &lt;code&gt;MANGROVE_KEY(BlogEntry::author) == author&lt;/code&gt;. In Mangrove, you can build MongoDB queries using the standard C++ comparison and logical operators. This is discussed more in &lt;a href=&#34;http://mongodb.github.io/mangrove/3-queries&#34;&gt;Chapter 3&lt;/a&gt;, but the main thing you have to remember is to wrap the value you are comparing in a &lt;code&gt;MANGROVE_KEY&lt;/code&gt; macro.&lt;/p&gt;
 
 &lt;p&gt;The return type of &lt;code&gt;BlogEntry::find()&lt;/code&gt; is an iterator of &lt;code&gt;BlogEntry&lt;/code&gt;s. This makes it very easy to work with the often large cursors of objects that are returned from MongoDB queries. In this case, we are interacting with the cursor via the C++11 
 &lt;a target=&#34;_blank&#34; href=&#34;http://en.cppreference.com/w/cpp/language/range-for&#34;&gt;range-based for loop &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;

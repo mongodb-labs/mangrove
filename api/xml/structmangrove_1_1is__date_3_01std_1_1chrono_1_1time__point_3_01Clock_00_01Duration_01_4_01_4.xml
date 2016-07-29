@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmangrove_1_1is__date_3_01std_1_1chrono_1_1time__point_3_01Clock_00_01Duration_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>mangrove::is_date&lt; std::chrono::time_point&lt; Clock, Duration &gt; &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">true_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename Clock</type>
+      </param>
+      <param>
+        <type>typename Duration</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="201">
+        <label>true_type</label>
+      </node>
+      <node id="200">
+        <label>mangrove::is_date&lt; std::chrono::time_point&lt; Clock, Duration &gt; &gt;</label>
+        <link refid="structmangrove_1_1is__date_3_01std_1_1chrono_1_1time__point_3_01Clock_00_01Duration_01_4_01_4"/>
+        <childnode refid="201" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="203">
+        <label>true_type</label>
+      </node>
+      <node id="202">
+        <label>mangrove::is_date&lt; std::chrono::time_point&lt; Clock, Duration &gt; &gt;</label>
+        <link refid="structmangrove_1_1is__date_3_01std_1_1chrono_1_1time__point_3_01Clock_00_01Duration_01_4_01_4"/>
+        <childnode refid="203" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/util.hpp" line="159" column="1" bodyfile="src/mangrove/util.hpp" bodystart="159" bodyend="159"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

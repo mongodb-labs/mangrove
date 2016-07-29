@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmangrove_1_1is__nvp_3_01nvp_3_01Base_00_01T_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>mangrove::is_nvp&lt; nvp&lt; Base, T &gt; &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">true_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename Base</type>
+      </param>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="231">
+        <label>true_type</label>
+      </node>
+      <node id="230">
+        <label>mangrove::is_nvp&lt; nvp&lt; Base, T &gt; &gt;</label>
+        <link refid="structmangrove_1_1is__nvp_3_01nvp_3_01Base_00_01T_01_4_01_4"/>
+        <childnode refid="231" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="233">
+        <label>true_type</label>
+      </node>
+      <node id="232">
+        <label>mangrove::is_nvp&lt; nvp&lt; Base, T &gt; &gt;</label>
+        <link refid="structmangrove_1_1is__nvp_3_01nvp_3_01Base_00_01T_01_4_01_4"/>
+        <childnode refid="233" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/nvp.hpp" line="767" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="767" bodyend="767"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

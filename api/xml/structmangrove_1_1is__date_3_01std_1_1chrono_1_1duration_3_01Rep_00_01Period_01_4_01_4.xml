@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmangrove_1_1is__date_3_01std_1_1chrono_1_1duration_3_01Rep_00_01Period_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>mangrove::is_date&lt; std::chrono::duration&lt; Rep, Period &gt; &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">true_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename Rep</type>
+      </param>
+      <param>
+        <type>typename Period</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="197">
+        <label>true_type</label>
+      </node>
+      <node id="196">
+        <label>mangrove::is_date&lt; std::chrono::duration&lt; Rep, Period &gt; &gt;</label>
+        <link refid="structmangrove_1_1is__date_3_01std_1_1chrono_1_1duration_3_01Rep_00_01Period_01_4_01_4"/>
+        <childnode refid="197" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="199">
+        <label>true_type</label>
+      </node>
+      <node id="198">
+        <label>mangrove::is_date&lt; std::chrono::duration&lt; Rep, Period &gt; &gt;</label>
+        <link refid="structmangrove_1_1is__date_3_01std_1_1chrono_1_1duration_3_01Rep_00_01Period_01_4_01_4"/>
+        <childnode refid="199" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/util.hpp" line="156" column="1" bodyfile="src/mangrove/util.hpp" bodystart="156" bodyend="156"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

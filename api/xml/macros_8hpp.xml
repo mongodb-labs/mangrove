@@ -2,91 +2,91 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="macros_8hpp" kind="file" language="C++">
     <compoundname>macros.hpp</compoundname>
-    <includes refid="mongo__odm_2config_2prelude_8hpp" local="no">mongo_odm/config/prelude.hpp</includes>
-    <includes refid="mongo__odm__child__autogen_8hpp" local="no">mongo_odm/mongo_odm_child_autogen.hpp</includes>
-    <includes refid="mongo__odm_2config_2postlude_8hpp" local="no">mongo_odm/config/postlude.hpp</includes>
-    <includedby refid="expression__syntax_8hpp" local="no">src/mongo_odm/expression_syntax.hpp</includedby>
-    <includedby refid="nvp_8hpp" local="no">src/mongo_odm/nvp.hpp</includedby>
+    <includes refid="mangrove_2config_2prelude_8hpp" local="no">mangrove/config/prelude.hpp</includes>
+    <includes refid="mangrove__child__autogen_8hpp" local="no">mangrove/mangrove_child_autogen.hpp</includes>
+    <includes refid="mangrove_2config_2postlude_8hpp" local="no">mangrove/config/postlude.hpp</includes>
+    <includedby refid="expression__syntax_8hpp" local="no">src/mangrove/expression_syntax.hpp</includedby>
+    <includedby refid="nvp_8hpp" local="no">src/mangrove/nvp.hpp</includedby>
     <incdepgraph>
-      <node id="212">
-        <label>mongo_odm/config/postlude.hpp</label>
-        <link refid="mongo__odm_2config_2postlude_8hpp_source"/>
-      </node>
-      <node id="208">
-        <label>mongo_odm/config/config.hpp</label>
-      </node>
-      <node id="211">
-        <label>mongo_odm/mongo_odm_child_autogen.hpp</label>
-        <link refid="mongo__odm__child__autogen_8hpp_source"/>
-        <childnode refid="206" relation="include">
+      <node id="246">
+        <label>mangrove/config/prelude.hpp</label>
+        <link refid="mangrove_2config_2prelude_8hpp_source"/>
+        <childnode refid="247" relation="include">
         </childnode>
-        <childnode refid="212" relation="include">
+        <childnode refid="248" relation="include">
+        </childnode>
+        <childnode refid="249" relation="include">
+        </childnode>
+        <childnode refid="250" relation="include">
         </childnode>
       </node>
-      <node id="209">
-        <label>mongo_odm/config/export.hpp</label>
+      <node id="251">
+        <label>mangrove/mangrove_child_autogen.hpp</label>
+        <link refid="mangrove__child__autogen_8hpp_source"/>
+        <childnode refid="246" relation="include">
+        </childnode>
+        <childnode refid="252" relation="include">
+        </childnode>
       </node>
-      <node id="210">
-        <label>mongo_odm/config/version.hpp</label>
+      <node id="252">
+        <label>mangrove/config/postlude.hpp</label>
+        <link refid="mangrove_2config_2postlude_8hpp_source"/>
       </node>
-      <node id="205">
-        <label>src/mongo_odm/macros.hpp</label>
+      <node id="245">
+        <label>src/mangrove/macros.hpp</label>
         <link refid="macros.hpp"/>
-        <childnode refid="206" relation="include">
+        <childnode refid="246" relation="include">
         </childnode>
-        <childnode refid="211" relation="include">
+        <childnode refid="251" relation="include">
         </childnode>
-        <childnode refid="212" relation="include">
-        </childnode>
-      </node>
-      <node id="206">
-        <label>mongo_odm/config/prelude.hpp</label>
-        <link refid="mongo__odm_2config_2prelude_8hpp_source"/>
-        <childnode refid="207" relation="include">
-        </childnode>
-        <childnode refid="208" relation="include">
-        </childnode>
-        <childnode refid="209" relation="include">
-        </childnode>
-        <childnode refid="210" relation="include">
+        <childnode refid="252" relation="include">
         </childnode>
       </node>
-      <node id="207">
-        <label>mongo_odm/config/compiler.hpp</label>
-        <link refid="mongo__odm_2config_2compiler_8hpp_source"/>
+      <node id="249">
+        <label>mangrove/config/export.hpp</label>
+      </node>
+      <node id="247">
+        <label>mangrove/config/compiler.hpp</label>
+        <link refid="mangrove_2config_2compiler_8hpp_source"/>
+      </node>
+      <node id="248">
+        <label>mangrove/config/config.hpp</label>
+      </node>
+      <node id="250">
+        <label>mangrove/config/version.hpp</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="216">
-        <label>src/mongo_odm/query_builder.hpp</label>
+      <node id="253">
+        <label>src/mangrove/macros.hpp</label>
+        <link refid="macros.hpp"/>
+        <childnode refid="254" relation="include">
+        </childnode>
+        <childnode refid="255" relation="include">
+        </childnode>
+      </node>
+      <node id="255">
+        <label>src/mangrove/nvp.hpp</label>
+        <link refid="nvp_8hpp_source"/>
+        <childnode refid="256" relation="include">
+        </childnode>
+      </node>
+      <node id="256">
+        <label>src/mangrove/query_builder.hpp</label>
         <link refid="query__builder_8hpp_source"/>
       </node>
-      <node id="215">
-        <label>src/mongo_odm/nvp.hpp</label>
-        <link refid="nvp_8hpp_source"/>
-        <childnode refid="216" relation="include">
-        </childnode>
-      </node>
-      <node id="214">
-        <label>src/mongo_odm/expression_syntax.hpp</label>
+      <node id="254">
+        <label>src/mangrove/expression_syntax.hpp</label>
         <link refid="expression__syntax_8hpp_source"/>
-        <childnode refid="215" relation="include">
+        <childnode refid="255" relation="include">
         </childnode>
-        <childnode refid="216" relation="include">
-        </childnode>
-      </node>
-      <node id="213">
-        <label>src/mongo_odm/macros.hpp</label>
-        <link refid="macros.hpp"/>
-        <childnode refid="214" relation="include">
-        </childnode>
-        <childnode refid="215" relation="include">
+        <childnode refid="256" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
-      <memberdef kind="define" id="macros_8hpp_1a6f3f990059e607b9ff2ef464adc1bb53" prot="public" static="no">
-        <name>MONGO_ODM_PASTE_IMPL</name>
+      <memberdef kind="define" id="macros_8hpp_1aa75cc33e2d278a0686ed02a98b94261b" prot="public" static="no">
+        <name>MANGROVE_PASTE_IMPL</name>
         <param><defname>s1</defname></param>
         <param><defname>s2</defname></param>
         <initializer>s1##s2</initializer>
@@ -96,64 +96,63 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/macros.hpp" line="19" column="9" bodyfile="src/mongo_odm/macros.hpp" bodystart="19" bodyend="-1"/>
+        <location file="src/mangrove/macros.hpp" line="19" column="9" bodyfile="src/mangrove/macros.hpp" bodystart="19" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="macros_8hpp_1a3c98e5708b643fe79710069b43104771" prot="public" static="no">
-        <name>MONGO_ODM_PASTE</name>
+      <memberdef kind="define" id="macros_8hpp_1abe49686f13c295ace37e81f5b45d8d12" prot="public" static="no">
+        <name>MANGROVE_PASTE</name>
         <param><defname>s1</defname></param>
         <param><defname>s2</defname></param>
-        <initializer>MONGO_ODM_PASTE_IMPL(s1, s2)</initializer>
+        <initializer>MANGROVE_PASTE_IMPL(s1, s2)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/macros.hpp" line="20" column="9" bodyfile="src/mongo_odm/macros.hpp" bodystart="20" bodyend="-1"/>
+        <location file="src/mangrove/macros.hpp" line="20" column="9" bodyfile="src/mangrove/macros.hpp" bodystart="20" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="macros_8hpp_1acb202b07b2886bb05cf9addb50bc9333" prot="public" static="no">
-        <name>MONGO_ODM_NVP</name>
+      <memberdef kind="define" id="macros_8hpp_1a4e4eeeb1aeb3559464a74465afae8826" prot="public" static="no">
+        <name>MANGROVE_NVP</name>
         <param><defname>x</defname></param>
-        <initializer>mongo_odm::make_nvp(&amp;mongo_odm_wrap_base::x, #x)</initializer>
+        <initializer>mangrove::make_nvp(&amp;mangrove_wrap_base::x, #x)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/macros.hpp" line="23" column="9" bodyfile="src/mongo_odm/macros.hpp" bodystart="23" bodyend="-1"/>
+        <location file="src/mangrove/macros.hpp" line="23" column="9" bodyfile="src/mangrove/macros.hpp" bodystart="23" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="macros_8hpp_1a85a216a7bcfcd7260a4f21a0f803899e" prot="public" static="no">
-        <name>MONGO_ODM_CUSTOM_NVP</name>
+      <memberdef kind="define" id="macros_8hpp_1a97750423d095f9b8628f54d1bf5c381d" prot="public" static="no">
+        <name>MANGROVE_CUSTOM_NVP</name>
         <param><defname>x</defname></param>
         <param><defname>name</defname></param>
-        <initializer>mongo_odm::make_nvp(&amp;mongo_odm_wrap_base::x, name)</initializer>
+        <initializer>mangrove::make_nvp(&amp;mangrove_wrap_base::x, name)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/macros.hpp" line="26" column="9" bodyfile="src/mongo_odm/macros.hpp" bodystart="26" bodyend="-1"/>
+        <location file="src/mangrove/macros.hpp" line="26" column="9" bodyfile="src/mangrove/macros.hpp" bodystart="26" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="macros_8hpp_1ad96a748cd5ba0b9df97bc31da164f9d9" prot="public" static="no">
-        <name>MONGO_ODM_SERIALIZE_KEYS</name>
-        <initializer>template &lt;class Archive&gt;                                                                    \
-    void serialize(Archive&amp; ar) {                                                               \
-        mongo_odm_serialize_recur&lt;Archive, 0,                                                   \
-                                  std::tuple_size&lt;decltype(mongo_odm_mapped_fields())&gt;::value&gt;( \
-            ar);                                                                                \
-    }                                                                                           \
-    template &lt;class Archive, size_t I, size_t N&gt;                                                \
-    std::enable_if_t&lt;(I &lt; N), void&gt; mongo_odm_serialize_recur(Archive&amp; ar) {                    \
-        auto nvp = std::get&lt;I&gt;(mongo_odm_mapped_fields());                                      \
-        ar(cereal::make_nvp(nvp.name, this-&gt;*(nvp.t)));                                         \
-        mongo_odm_serialize_recur&lt;Archive, I + 1, N&gt;(ar);                                       \
-    }                                                                                           \
-                                                                                                \
-    template &lt;class Archive, size_t I, size_t N&gt;                                                \
-    std::enable_if_t&lt;(I == N), void&gt; mongo_odm_serialize_recur(Archive&amp;) {                      \
-        ;                                                                                       \
+      <memberdef kind="define" id="macros_8hpp_1a0fd3bbaa7aed29d7c5b4d2b8e093784b" prot="public" static="no">
+        <name>MANGROVE_SERIALIZE_KEYS</name>
+        <initializer>template &lt;class Archive&gt;                                                                      \
+    void serialize(Archive&amp; ar) {                                                                 \
+        mangrove_serialize_recur&lt;Archive, 0,                                                      \
+                                 std::tuple_size&lt;decltype(mangrove_mapped_fields())&gt;::value&gt;(ar); \
+    }                                                                                             \
+    template &lt;class Archive, size_t I, size_t N&gt;                                                  \
+    std::enable_if_t&lt;(I &lt; N), void&gt; mangrove_serialize_recur(Archive&amp; ar) {                       \
+        auto nvp = std::get&lt;I&gt;(mangrove_mapped_fields());                                         \
+        ar(cereal::make_nvp(nvp.name, this-&gt;*(nvp.t)));                                           \
+        mangrove_serialize_recur&lt;Archive, I + 1, N&gt;(ar);                                          \
+    }                                                                                             \
+                                                                                                  \
+    template &lt;class Archive, size_t I, size_t N&gt;                                                  \
+    std::enable_if_t&lt;(I == N), void&gt; mangrove_serialize_recur(Archive&amp;) {                         \
+        ;                                                                                         \
     }</initializer>
         <briefdescription>
         </briefdescription>
@@ -161,98 +160,98 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/macros.hpp" line="29" column="9" bodyfile="src/mongo_odm/macros.hpp" bodystart="29" bodyend="-1"/>
+        <location file="src/mangrove/macros.hpp" line="29" column="9" bodyfile="src/mangrove/macros.hpp" bodystart="29" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="macros_8hpp_1aede6ddd0eb0787bceb13387a0cddb1dc" prot="public" static="no">
-        <name>MONGO_ODM_MAKE_KEYS</name>
+      <memberdef kind="define" id="macros_8hpp_1aae92c1f3b37fc00496cc2c6e9bb565b3" prot="public" static="no">
+        <name>MANGROVE_MAKE_KEYS</name>
         <param><defname>Base</defname></param>
         <param><defname>...</defname></param>
-        <initializer>using mongo_odm_wrap_base = Base;                 \
-    constexpr static auto mongo_odm_mapped_fields() { \
-        return std::make_tuple(__VA_ARGS__);          \
-    }                                                 \
-    MONGO_ODM_SERIALIZE_KEYS</initializer>
+        <initializer>using mangrove_wrap_base = Base;                 \
+    constexpr static auto mangrove_mapped_fields() { \
+        return std::make_tuple(__VA_ARGS__);         \
+    }                                                \
+    MANGROVE_SERIALIZE_KEYS</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/macros.hpp" line="49" column="9" bodyfile="src/mongo_odm/macros.hpp" bodystart="49" bodyend="-1"/>
+        <location file="src/mangrove/macros.hpp" line="48" column="9" bodyfile="src/mangrove/macros.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="macros_8hpp_1a98fb841a9854884333db1a577f724512" prot="public" static="no">
-        <name>MONGO_ODM_MAKE_KEYS_MODEL</name>
+      <memberdef kind="define" id="macros_8hpp_1afe61d8f059ab12ec808d97f9d34920c2" prot="public" static="no">
+        <name>MANGROVE_MAKE_KEYS_MODEL</name>
         <param><defname>Base</defname></param>
         <param><defname>...</defname></param>
-        <initializer>MONGO_ODM_MAKE_KEYS(Base, MONGO_ODM_NVP(_id), __VA_ARGS__)</initializer>
+        <initializer>MANGROVE_MAKE_KEYS(Base, MANGROVE_NVP(_id), __VA_ARGS__)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/macros.hpp" line="57" column="9" bodyfile="src/mongo_odm/macros.hpp" bodystart="57" bodyend="-1"/>
+        <location file="src/mangrove/macros.hpp" line="56" column="9" bodyfile="src/mangrove/macros.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="macros_8hpp_1a414bd8cb6b2a9d8c6a2d39849a2a3dc4" prot="public" static="no">
-        <name>MONGO_ODM_KEY</name>
+      <memberdef kind="define" id="macros_8hpp_1a29238ef06b1d3b94234ad0b6e7ff251b" prot="public" static="no">
+        <name>MANGROVE_KEY</name>
         <param><defname>value</defname></param>
-        <initializer>mongo_odm::hasCallIfFieldIsPresent&lt;decltype(&amp;value), &amp;value&gt;::call()</initializer>
+        <initializer>mangrove::hasCallIfFieldIsPresent&lt;decltype(&amp;value), &amp;value&gt;::call()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/macros.hpp" line="60" column="9" bodyfile="src/mongo_odm/macros.hpp" bodystart="60" bodyend="-1"/>
+        <location file="src/mangrove/macros.hpp" line="58" column="9" bodyfile="src/mangrove/macros.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="macros_8hpp_1ab57292a3e1bb3aee9b12274e4e783759" prot="public" static="no">
-        <name>MONGO_ODM_ELEM</name>
+      <memberdef kind="define" id="macros_8hpp_1a44a50740e2e39b0fe9c783f776eefa56" prot="public" static="no">
+        <name>MANGROVE_ELEM</name>
         <param><defname>value</defname></param>
-        <initializer>MONGO_ODM_KEY(value).element()</initializer>
+        <initializer>MANGROVE_KEY(value).element()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/macros.hpp" line="62" column="9" bodyfile="src/mongo_odm/macros.hpp" bodystart="62" bodyend="-1"/>
+        <location file="src/mangrove/macros.hpp" line="60" column="9" bodyfile="src/mangrove/macros.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="macros_8hpp_1a3e6a5455e5e7777be404feee07c5aace" prot="public" static="no">
-        <name>MONGO_ODM_KEY_BY_VALUE</name>
+      <memberdef kind="define" id="macros_8hpp_1a928fd812fd768b5641be12de060490a9" prot="public" static="no">
+        <name>MANGROVE_KEY_BY_VALUE</name>
         <param><defname>value</defname></param>
-        <initializer>mongo_odm::hasCallIfFieldIsPresent&lt;decltype(value), value&gt;::call()</initializer>
+        <initializer>mangrove::hasCallIfFieldIsPresent&lt;decltype(value), value&gt;::call()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/macros.hpp" line="64" column="9" bodyfile="src/mongo_odm/macros.hpp" bodystart="64" bodyend="-1"/>
+        <location file="src/mangrove/macros.hpp" line="62" column="9" bodyfile="src/mangrove/macros.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="macros_8hpp_1a80dce926a7e682185125fabdc7057ea4" prot="public" static="no">
-        <name>MONGO_ODM_CHILD</name>
+      <memberdef kind="define" id="macros_8hpp_1a0c2d90b658ec112e2d9ee19980abf8f4" prot="public" static="no">
+        <name>MANGROVE_CHILD</name>
         <param><defname>type</defname></param>
         <param><defname>...</defname></param>
-        <initializer>MONGO_ODM_PASTE(MONGO_ODM_CHILD, MONGO_ODM_PP_NARG(__VA_ARGS__))(type, __VA_ARGS__)</initializer>
+        <initializer>MANGROVE_PASTE(MANGROVE_CHILD, MANGROVE_PP_NARG(__VA_ARGS__))(type, __VA_ARGS__)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/macros.hpp" line="70" column="9" bodyfile="src/mongo_odm/macros.hpp" bodystart="70" bodyend="-1"/>
+        <location file="src/mangrove/macros.hpp" line="68" column="9" bodyfile="src/mangrove/macros.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="macros_8hpp_1a2f6b0139b9db54c7d9e2fa71e1826cbc" prot="public" static="no">
-        <name>MONGO_ODM_CHILD_ELEM</name>
+      <memberdef kind="define" id="macros_8hpp_1a1edbd0ad1c037a6e613f1f7c7bfd3a21" prot="public" static="no">
+        <name>MANGROVE_CHILD_ELEM</name>
         <param><defname>...</defname></param>
-        <initializer>MONGO_ODM_CHILD(__VA_ARGS__).element()</initializer>
+        <initializer>MANGROVE_CHILD(__VA_ARGS__).element()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/macros.hpp" line="73" column="9" bodyfile="src/mongo_odm/macros.hpp" bodystart="73" bodyend="-1"/>
+        <location file="src/mangrove/macros.hpp" line="71" column="9" bodyfile="src/mangrove/macros.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -276,66 +275,64 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/config/prelude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mangrove/config/prelude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MONGO_ODM_PASTE_IMPL(s1,<sp/>s2)<sp/>s1##s2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MONGO_ODM_PASTE(s1,<sp/>s2)<sp/>MONGO_ODM_PASTE_IMPL(s1,<sp/>s2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANGROVE_PASTE_IMPL(s1,<sp/>s2)<sp/>s1##s2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANGROVE_PASTE(s1,<sp/>s2)<sp/>MANGROVE_PASTE_IMPL(s1,<sp/>s2)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Wrap<sp/>a<sp/>field<sp/>name<sp/>to<sp/>create<sp/>a<sp/>corresponding<sp/>NVP</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MONGO_ODM_NVP(x)<sp/>mongo_odm::make_nvp(&amp;mongo_odm_wrap_base::x,<sp/>#x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANGROVE_NVP(x)<sp/>mangrove::make_nvp(&amp;mangrove_wrap_base::x,<sp/>#x)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Macro<sp/>for<sp/>creating<sp/>custom<sp/>field<sp/>name</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MONGO_ODM_CUSTOM_NVP(x,<sp/>name)<sp/>mongo_odm::make_nvp(&amp;mongo_odm_wrap_base::x,<sp/>name)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANGROVE_CUSTOM_NVP(x,<sp/>name)<sp/>mangrove::make_nvp(&amp;mangrove_wrap_base::x,<sp/>name)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Creates<sp/>serialize()<sp/>function</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MONGO_ODM_SERIALIZE_KEYS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="30"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;class<sp/>Archive&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="31"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>void<sp/>serialize(Archive&amp;<sp/>ar)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="32"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mongo_odm_serialize_recur&lt;Archive,<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="33"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::tuple_size&lt;decltype(mongo_odm_mapped_fields())&gt;::value&gt;(<sp/>\</highlight></codeline>
-<codeline lineno="34"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ar);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="35"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="36"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;class<sp/>Archive,<sp/>size_t<sp/>I,<sp/>size_t<sp/>N&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="37"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>std::enable_if_t&lt;(I<sp/>&lt;<sp/>N),<sp/>void&gt;<sp/>mongo_odm_serialize_recur(Archive&amp;<sp/>ar)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="38"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>auto<sp/>nvp<sp/>=<sp/>std::get&lt;I&gt;(mongo_odm_mapped_fields());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="39"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ar(cereal::make_nvp(nvp.name,<sp/>this-&gt;*(nvp.t)));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="40"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mongo_odm_serialize_recur&lt;Archive,<sp/>I<sp/>+<sp/>1,<sp/>N&gt;(ar);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="41"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="42"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;class<sp/>Archive,<sp/>size_t<sp/>I,<sp/>size_t<sp/>N&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>std::enable_if_t&lt;(I<sp/>==<sp/>N),<sp/>void&gt;<sp/>mongo_odm_serialize_recur(Archive&amp;)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Register<sp/>members<sp/>and<sp/>create<sp/>serialize()<sp/>function</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MONGO_ODM_MAKE_KEYS(Base,<sp/>...)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>using<sp/>mongo_odm_wrap_base<sp/>=<sp/>Base;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>constexpr<sp/>static<sp/>auto<sp/>mongo_odm_mapped_fields()<sp/>{<sp/>\</highlight></codeline>
-<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>std::make_tuple(__VA_ARGS__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>MONGO_ODM_SERIALIZE_KEYS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>using<sp/>the<sp/>mongo_odm::model,<sp/>then<sp/>also<sp/>register<sp/>_id<sp/>as<sp/>a<sp/>field.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MONGO_ODM_MAKE_KEYS_MODEL(Base,<sp/>...)<sp/>\</highlight></codeline>
-<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>MONGO_ODM_MAKE_KEYS(Base,<sp/>MONGO_ODM_NVP(_id),<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MONGO_ODM_KEY(value)<sp/>mongo_odm::hasCallIfFieldIsPresent&lt;decltype(&amp;value),<sp/>&amp;value&gt;::call()</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>convenience<sp/>macro<sp/>for<sp/>accessing<sp/>scalar<sp/>elements<sp/>of<sp/>array<sp/>fields<sp/>in<sp/>query<sp/>builder.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MONGO_ODM_ELEM(value)<sp/>MONGO_ODM_KEY(value).element()</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MONGO_ODM_KEY_BY_VALUE(value)<sp/>\</highlight></codeline>
-<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>mongo_odm::hasCallIfFieldIsPresent&lt;decltype(value),<sp/>value&gt;::call()</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MONGO_ODM_CHILD*<sp/>macros,<sp/>autogenerated<sp/>to<sp/>100<sp/>levels<sp/>(maximum<sp/>BSON<sp/>depth)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/mongo_odm_child_autogen.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MONGO_ODM_CHILD(type,<sp/>...)<sp/>\</highlight></codeline>
-<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>MONGO_ODM_PASTE(MONGO_ODM_CHILD,<sp/>MONGO_ODM_PP_NARG(__VA_ARGS__))(type,<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANGROVE_SERIALIZE_KEYS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;class<sp/>Archive&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>void<sp/>serialize(Archive&amp;<sp/>ar)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mangrove_serialize_recur&lt;Archive,<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::tuple_size&lt;decltype(mangrove_mapped_fields())&gt;::value&gt;(ar);<sp/>\</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;class<sp/>Archive,<sp/>size_t<sp/>I,<sp/>size_t<sp/>N&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>std::enable_if_t&lt;(I<sp/>&lt;<sp/>N),<sp/>void&gt;<sp/>mangrove_serialize_recur(Archive&amp;<sp/>ar)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>auto<sp/>nvp<sp/>=<sp/>std::get&lt;I&gt;(mangrove_mapped_fields());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ar(cereal::make_nvp(nvp.name,<sp/>this-&gt;*(nvp.t)));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mangrove_serialize_recur&lt;Archive,<sp/>I<sp/>+<sp/>1,<sp/>N&gt;(ar);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;class<sp/>Archive,<sp/>size_t<sp/>I,<sp/>size_t<sp/>N&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>std::enable_if_t&lt;(I<sp/>==<sp/>N),<sp/>void&gt;<sp/>mangrove_serialize_recur(Archive&amp;)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Register<sp/>members<sp/>and<sp/>create<sp/>serialize()<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANGROVE_MAKE_KEYS(Base,<sp/>...)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>using<sp/>mangrove_wrap_base<sp/>=<sp/>Base;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>constexpr<sp/>static<sp/>auto<sp/>mangrove_mapped_fields()<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>std::make_tuple(__VA_ARGS__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>MANGROVE_SERIALIZE_KEYS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>using<sp/>the<sp/>mangrove::model,<sp/>then<sp/>also<sp/>register<sp/>_id<sp/>as<sp/>a<sp/>field.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANGROVE_MAKE_KEYS_MODEL(Base,<sp/>...)<sp/>MANGROVE_MAKE_KEYS(Base,<sp/>MANGROVE_NVP(_id),<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANGROVE_KEY(value)<sp/>mangrove::hasCallIfFieldIsPresent&lt;decltype(&amp;value),<sp/>&amp;value&gt;::call()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>convenience<sp/>macro<sp/>for<sp/>accessing<sp/>scalar<sp/>elements<sp/>of<sp/>array<sp/>fields<sp/>in<sp/>query<sp/>builder.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANGROVE_ELEM(value)<sp/>MANGROVE_KEY(value).element()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANGROVE_KEY_BY_VALUE(value)<sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>mangrove::hasCallIfFieldIsPresent&lt;decltype(value),<sp/>value&gt;::call()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MANGROVE_CHILD*<sp/>macros,<sp/>autogenerated<sp/>to<sp/>100<sp/>levels<sp/>(maximum<sp/>BSON<sp/>depth)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mangrove/mangrove_child_autogen.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANGROVE_CHILD(type,<sp/>...)<sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>MANGROVE_PASTE(MANGROVE_CHILD,<sp/>MANGROVE_PP_NARG(__VA_ARGS__))(type,<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANGROVE_CHILD_ELEM(...)<sp/>MANGROVE_CHILD(__VA_ARGS__).element()</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MONGO_ODM_CHILD_ELEM(...)<sp/>MONGO_ODM_CHILD(__VA_ARGS__).element()</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/config/postlude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mangrove/config/postlude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="src/mongo_odm/macros.hpp"/>
+    <location file="src/mangrove/macros.hpp"/>
   </compounddef>
 </doxygen>

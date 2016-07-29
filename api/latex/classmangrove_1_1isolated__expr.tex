@@ -1,0 +1,52 @@
+\hypertarget{classmangrove_1_1isolated__expr}{}\section{mangrove\+:\+:isolated\+\_\+expr$<$ Expr $>$ Class Template Reference}
+\label{classmangrove_1_1isolated__expr}\index{mangrove\+::isolated\+\_\+expr$<$ Expr $>$@{mangrove\+::isolated\+\_\+expr$<$ Expr $>$}}
+
+
+An expression that wraps another expression and adds an \$isolated operator.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmangrove_1_1isolated__expr_aa8f02e1ef7bf86bb9794e352110dbdc1}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder, with \$isolated set as an extra field. \end{DoxyCompactList}\item 
+\hyperlink{classmangrove_1_1isolated__expr_a4ce7fed3aa8510bce0de57c0cf65853f}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const \hypertarget{classmangrove_1_1isolated__expr_a4ce7fed3aa8510bce0de57c0cf65853f}{}\label{classmangrove_1_1isolated__expr_a4ce7fed3aa8510bce0de57c0cf65853f}
+
+\begin{DoxyCompactList}\small\item\em Converts this query to B\+S\+ON, in the form \{\$isolated\+: 1, $<$underlying expression=\char`\"{}\char`\"{} bson$>$=\char`\"{}\char`\"{}$>$\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Expr$>$\\*
+class mangrove\+::isolated\+\_\+expr$<$ Expr $>$}
+
+An expression that wraps another expression and adds an \$isolated operator. 
+
+\subsection{Member Function Documentation}
+\index{mangrove\+::isolated\+\_\+expr@{mangrove\+::isolated\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mangrove\+::isolated\+\_\+expr@{mangrove\+::isolated\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expr $>$ void {\bf mangrove\+::isolated\+\_\+expr}$<$ Expr $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1isolated__expr_aa8f02e1ef7bf86bb9794e352110dbdc1}{}\label{classmangrove_1_1isolated__expr_aa8f02e1ef7bf86bb9794e352110dbdc1}
+
+
+Appends this query to a B\+S\+ON core builder, with \$isolated set as an extra field. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em Whether} & to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

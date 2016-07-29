@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmangrove_1_1is__nvp" kind="struct" language="C++" prot="public">
+    <compoundname>mangrove::is_nvp</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">false_type</basecompoundref>
+    <includes refid="nvp_8hpp" local="no">nvp.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>A type trait struct that inherits from std::true_type if the given type parameter is a name-value pair, and from std::false_type otherwise. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="219">
+        <label>false_type</label>
+      </node>
+      <node id="218">
+        <label>mangrove::is_nvp&lt; typename &gt;</label>
+        <link refid="structmangrove_1_1is__nvp"/>
+        <childnode refid="219" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="221">
+        <label>false_type</label>
+      </node>
+      <node id="220">
+        <label>mangrove::is_nvp&lt; typename &gt;</label>
+        <link refid="structmangrove_1_1is__nvp"/>
+        <childnode refid="221" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/nvp.hpp" line="764" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="764" bodyend="764"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

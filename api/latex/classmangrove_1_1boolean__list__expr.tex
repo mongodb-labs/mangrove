@@ -1,0 +1,79 @@
+\hypertarget{classmangrove_1_1boolean__list__expr}{}\section{mangrove\+:\+:boolean\+\_\+list\+\_\+expr$<$ List $>$ Class Template Reference}
+\label{classmangrove_1_1boolean__list__expr}\index{mangrove\+::boolean\+\_\+list\+\_\+expr$<$ List $>$@{mangrove\+::boolean\+\_\+list\+\_\+expr$<$ List $>$}}
+
+
+This class represents a boolean expression over an array of arguments.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmangrove_1_1boolean__list__expr_a77c13709826f8381f4b8da4ef127c45c}{boolean\+\_\+list\+\_\+expr} (const List args, const char $\ast$op)
+\begin{DoxyCompactList}\small\item\em Constructs a boolean expression from a list of sub-\/expressions, and a certain operator. \end{DoxyCompactList}\item 
+void \hyperlink{classmangrove_1_1boolean__list__expr_a75f8fbf2d2c078dd1c211e895c7949db}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder as a key-\/value pair \char`\"{}\$op\+: \mbox{[}\{lhs\}, \{rhs\}\mbox{]}\char`\"{}. \end{DoxyCompactList}\item 
+\hyperlink{classmangrove_1_1boolean__list__expr_aab12e391dd1a0bf8ae2398f9eb277399}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const \hypertarget{classmangrove_1_1boolean__list__expr_aab12e391dd1a0bf8ae2398f9eb277399}{}\label{classmangrove_1_1boolean__list__expr_aab12e391dd1a0bf8ae2398f9eb277399}
+
+\begin{DoxyCompactList}\small\item\em Converts the expression to a B\+S\+ON filter for a query, in the form \char`\"{}\{\$op\+: \mbox{[}\{arg1\}, \{arg2\}, ...\mbox{]}\}\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename List$>$\\*
+class mangrove\+::boolean\+\_\+list\+\_\+expr$<$ List $>$}
+
+This class represents a boolean expression over an array of arguments. 
+
+This is particularly useful for the \$nor operator. When converted to B\+S\+ON, this class produces an expression \{\$op\+: \mbox{[}\{arg1\}, \{arg2\}, ...\mbox{]}\} 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mangrove\+::boolean\+\_\+list\+\_\+expr@{mangrove\+::boolean\+\_\+list\+\_\+expr}!boolean\+\_\+list\+\_\+expr@{boolean\+\_\+list\+\_\+expr}}
+\index{boolean\+\_\+list\+\_\+expr@{boolean\+\_\+list\+\_\+expr}!mangrove\+::boolean\+\_\+list\+\_\+expr@{mangrove\+::boolean\+\_\+list\+\_\+expr}}
+\subsubsection[{\texorpdfstring{boolean\+\_\+list\+\_\+expr(const List args, const char $\ast$op)}{boolean_list_expr(const List args, const char *op)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename List $>$ constexpr {\bf mangrove\+::boolean\+\_\+list\+\_\+expr}$<$ List $>$\+::{\bf boolean\+\_\+list\+\_\+expr} (
+\begin{DoxyParamCaption}
+\item[{const List}]{args, }
+\item[{const char $\ast$}]{op}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1boolean__list__expr_a77c13709826f8381f4b8da4ef127c45c}{}\label{classmangrove_1_1boolean__list__expr_a77c13709826f8381f4b8da4ef127c45c}
+
+
+Constructs a boolean expression from a list of sub-\/expressions, and a certain operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & An expression list of boolean conditions. \\
+\hline
+{\em op} & The operator of the expression, e.\+g. A\+ND or OR. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mangrove\+::boolean\+\_\+list\+\_\+expr@{mangrove\+::boolean\+\_\+list\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mangrove\+::boolean\+\_\+list\+\_\+expr@{mangrove\+::boolean\+\_\+list\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename List $>$ void {\bf mangrove\+::boolean\+\_\+list\+\_\+expr}$<$ List $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1boolean__list__expr_a75f8fbf2d2c078dd1c211e895c7949db}{}\label{classmangrove_1_1boolean__list__expr_a75f8fbf2d2c078dd1c211e895c7949db}
+
+
+Appends this query to a B\+S\+ON core builder as a key-\/value pair \char`\"{}\$op\+: \mbox{[}\{lhs\}, \{rhs\}\mbox{]}\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em wrap} & Whether to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/expression\+\_\+syntax.\+hpp\item 
+src/mangrove/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

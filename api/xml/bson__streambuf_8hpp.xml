@@ -2,21 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="bson__streambuf_8hpp" kind="file" language="C++">
     <compoundname>bson_streambuf.hpp</compoundname>
-    <includes refid="bson__mapper_2config_2prelude_8hpp" local="no">bson_mapper/config/prelude.hpp</includes>
+    <includes refid="boson_2config_2prelude_8hpp" local="no">boson/config/prelude.hpp</includes>
     <includes local="no">istream</includes>
     <includes local="no">ostream</includes>
     <includes local="no">streambuf</includes>
     <includes local="no">bsoncxx/builder/stream/document.hpp</includes>
     <includes local="no">bsoncxx/json.hpp</includes>
-    <includes refid="bson__mapper_2config_2postlude_8hpp" local="no">bson_mapper/config/postlude.hpp</includes>
-    <includedby refid="mapping__functions_8hpp" local="no">src/bson_mapper/mapping_functions.hpp</includedby>
+    <includes refid="boson_2config_2postlude_8hpp" local="no">boson/config/postlude.hpp</includes>
+    <includedby refid="mapping__functions_8hpp" local="no">src/boson/mapping_functions.hpp</includedby>
     <incdepgraph>
-      <node id="33">
-        <label>bson_mapper/config/postlude.hpp</label>
-        <link refid="bson__mapper_2config_2postlude_8hpp_source"/>
+      <node id="26">
+        <label>boson/config/export.hpp</label>
       </node>
       <node id="22">
-        <label>src/bson_mapper/bson_streambuf.hpp</label>
+        <label>src/boson/bson_streambuf.hpp</label>
         <link refid="bson_streambuf.hpp"/>
         <childnode refid="23" relation="include">
         </childnode>
@@ -33,25 +32,9 @@
         <childnode refid="33" relation="include">
         </childnode>
       </node>
-      <node id="29">
-        <label>ostream</label>
-      </node>
-      <node id="31">
-        <label>bsoncxx/builder/stream/document.hpp</label>
-      </node>
-      <node id="24">
-        <label>bson_mapper/config/compiler.hpp</label>
-        <link refid="bson__mapper_2config_2compiler_8hpp_source"/>
-      </node>
-      <node id="25">
-        <label>bson_mapper/config/config.hpp</label>
-      </node>
-      <node id="30">
-        <label>streambuf</label>
-      </node>
       <node id="23">
-        <label>bson_mapper/config/prelude.hpp</label>
-        <link refid="bson__mapper_2config_2prelude_8hpp_source"/>
+        <label>boson/config/prelude.hpp</label>
+        <link refid="boson_2config_2prelude_8hpp_source"/>
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
@@ -61,57 +44,74 @@
         <childnode refid="27" relation="include">
         </childnode>
       </node>
+      <node id="29">
+        <label>ostream</label>
+      </node>
       <node id="27">
-        <label>bson_mapper/config/version.hpp</label>
+        <label>boson/config/version.hpp</label>
+      </node>
+      <node id="31">
+        <label>bsoncxx/builder/stream/document.hpp</label>
+      </node>
+      <node id="30">
+        <label>streambuf</label>
+      </node>
+      <node id="24">
+        <label>boson/config/compiler.hpp</label>
+        <link refid="boson_2config_2compiler_8hpp_source"/>
+      </node>
+      <node id="25">
+        <label>boson/config/config.hpp</label>
       </node>
       <node id="32">
         <label>bsoncxx/json.hpp</label>
       </node>
-      <node id="26">
-        <label>bson_mapper/config/export.hpp</label>
-      </node>
       <node id="28">
         <label>istream</label>
+      </node>
+      <node id="33">
+        <label>boson/config/postlude.hpp</label>
+        <link refid="boson_2config_2postlude_8hpp_source"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
       <node id="37">
-        <label>src/mongo_odm/odm_collection.hpp</label>
-        <link refid="odm__collection_8hpp_source"/>
-        <childnode refid="38" relation="include">
-        </childnode>
+        <label>src/mangrove/model.hpp</label>
+        <link refid="model_8hpp_source"/>
       </node>
-      <node id="35">
-        <label>src/bson_mapper/mapping_functions.hpp</label>
-        <link refid="mapping__functions_8hpp_source"/>
+      <node id="38">
+        <label>src/mangrove/deserializing_cursor.hpp</label>
+        <link refid="deserializing__cursor_8hpp_source"/>
         <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
         </childnode>
       </node>
       <node id="34">
-        <label>src/bson_mapper/bson_streambuf.hpp</label>
+        <label>src/boson/bson_streambuf.hpp</label>
         <link refid="bson_streambuf.hpp"/>
         <childnode refid="35" relation="include">
         </childnode>
       </node>
+      <node id="35">
+        <label>src/boson/mapping_functions.hpp</label>
+        <link refid="mapping__functions_8hpp_source"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
       <node id="36">
-        <label>src/mongo_odm/deserializing_cursor.hpp</label>
-        <link refid="deserializing__cursor_8hpp_source"/>
+        <label>src/mangrove/collection_wrapper.hpp</label>
+        <link refid="collection__wrapper_8hpp_source"/>
         <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="38">
-        <label>src/mongo_odm/model.hpp</label>
-        <link refid="model_8hpp_source"/>
-      </node>
     </invincdepgraph>
-    <innerclass refid="classbson__mapper_1_1bson__output__streambuf" prot="public">bson_mapper::bson_output_streambuf</innerclass>
-    <innerclass refid="classbson__mapper_1_1bson__ostream" prot="public">bson_mapper::bson_ostream</innerclass>
-    <innerclass refid="classbson__mapper_1_1char__array__streambuf" prot="public">bson_mapper::char_array_streambuf</innerclass>
-    <innerclass refid="classbson__mapper_1_1bson__input__streambuf" prot="public">bson_mapper::bson_input_streambuf</innerclass>
-    <innerclass refid="classbson__mapper_1_1bson__istream" prot="public">bson_mapper::bson_istream</innerclass>
-    <innernamespace refid="namespacebson__mapper">bson_mapper</innernamespace>
+    <innerclass refid="classboson_1_1bson__output__streambuf" prot="public">boson::bson_output_streambuf</innerclass>
+    <innerclass refid="classboson_1_1bson__ostream" prot="public">boson::bson_ostream</innerclass>
+    <innerclass refid="classboson_1_1char__array__streambuf" prot="public">boson::char_array_streambuf</innerclass>
+    <innerclass refid="classboson_1_1bson__input__streambuf" prot="public">boson::bson_input_streambuf</innerclass>
+    <innerclass refid="classboson_1_1bson__istream" prot="public">boson::bson_istream</innerclass>
+    <innernamespace refid="namespaceboson">boson</innernamespace>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -133,7 +133,7 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;bson_mapper/config/prelude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boson/config/prelude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;istream&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ostream&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -142,21 +142,21 @@
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;bsoncxx/builder/stream/document.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;bsoncxx/json.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacebson__mapper" kindref="compound">bson_mapper</ref><sp/>{</highlight></codeline>
-<codeline lineno="27"><highlight class="normal">BSON_MAPPER_INLINE_NAMESPACE_BEGIN</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceboson" kindref="compound">boson</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">BOSON_INLINE_NAMESPACE_BEGIN</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35" refid="classbson__mapper_1_1bson__output__streambuf" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal">BSON_MAPPER_API<sp/><ref refid="classbson__mapper_1_1bson__output__streambuf" kindref="compound">bson_output_streambuf</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::streambuf<sp/>{</highlight></codeline>
+<codeline lineno="35" refid="classboson_1_1bson__output__streambuf" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal">BOSON_API<sp/><ref refid="classboson_1_1bson__output__streambuf" kindref="compound">bson_output_streambuf</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::streambuf<sp/>{</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>document_callback<sp/>=<sp/>std::function&lt;void(bsoncxx::document::value)&gt;;</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbson__mapper_1_1bson__output__streambuf" kindref="compound">bson_output_streambuf</ref>(document_callback<sp/>cb);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classboson_1_1bson__output__streambuf" kindref="compound">bson_output_streambuf</ref>(document_callback<sp/>cb);</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>overflow(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ch)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>underflow()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>BSON_MAPPER_PRIVATE<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>insert(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ch);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>BOSON_PRIVATE<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>insert(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ch);</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>callback<sp/>that<sp/>accepts<sp/>a<sp/>document::value<sp/>and<sp/>returns<sp/>void.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>document_callback<sp/>_cb;</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;uint8_t,<sp/>void<sp/>(*)(std::uint8_t<sp/>*)&gt;<sp/>_data;</highlight></codeline>
@@ -164,20 +164,20 @@
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>_bytes_read<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="78"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85" refid="classbson__mapper_1_1bson__ostream" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal">BSON_MAPPER_API<sp/><ref refid="classbson__mapper_1_1bson__ostream" kindref="compound">bson_ostream</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::ostream<sp/>{</highlight></codeline>
+<codeline lineno="85" refid="classboson_1_1bson__ostream" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal">BOSON_API<sp/><ref refid="classboson_1_1bson__ostream" kindref="compound">bson_ostream</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::ostream<sp/>{</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbson__mapper_1_1bson__ostream" kindref="compound">bson_ostream</ref>(bson_output_streambuf::document_callback<sp/>cb)<sp/>:<sp/>std::ostream(0),<sp/>bs_buf(cb)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classboson_1_1bson__ostream" kindref="compound">bson_ostream</ref>(bson_output_streambuf::document_callback<sp/>cb)<sp/>:<sp/>std::ostream(0),<sp/>bs_buf(cb)<sp/>{</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;rdbuf(&amp;bs_buf);</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>somehow<sp/>set<sp/>rdbuf(*sb)<sp/>to<sp/>private<sp/>so<sp/>people<sp/>can&apos;t<sp/>change<sp/>the<sp/>streambuffer?</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbson__mapper_1_1bson__output__streambuf" kindref="compound">bson_output_streambuf</ref><sp/>bs_buf;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classboson_1_1bson__output__streambuf" kindref="compound">bson_output_streambuf</ref><sp/>bs_buf;</highlight></codeline>
 <codeline lineno="94"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99" refid="classbson__mapper_1_1char__array__streambuf" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal">BSON_MAPPER_API<sp/><ref refid="classbson__mapper_1_1char__array__streambuf" kindref="compound">char_array_streambuf</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::streambuf<sp/>{</highlight></codeline>
+<codeline lineno="99" refid="classboson_1_1char__array__streambuf" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal">BOSON_API<sp/><ref refid="classboson_1_1char__array__streambuf" kindref="compound">char_array_streambuf</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::streambuf<sp/>{</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbson__mapper_1_1char__array__streambuf" kindref="compound">char_array_streambuf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classboson_1_1char__array__streambuf" kindref="compound">char_array_streambuf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>underflow()<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
@@ -200,27 +200,27 @@
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*_current;</highlight></codeline>
 <codeline lineno="148"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"></highlight></codeline>
-<codeline lineno="153" refid="classbson__mapper_1_1bson__input__streambuf" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal">BSON_MAPPER_API<sp/><ref refid="classbson__mapper_1_1bson__input__streambuf" kindref="compound">bson_input_streambuf</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classbson__mapper_1_1char__array__streambuf" kindref="compound">char_array_streambuf</ref><sp/>{</highlight></codeline>
+<codeline lineno="153" refid="classboson_1_1bson__input__streambuf" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal">BOSON_API<sp/><ref refid="classboson_1_1bson__input__streambuf" kindref="compound">bson_input_streambuf</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classboson_1_1char__array__streambuf" kindref="compound">char_array_streambuf</ref><sp/>{</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbson__mapper_1_1bson__input__streambuf" kindref="compound">bson_input_streambuf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>bsoncxx::document::view<sp/>&amp;v);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classboson_1_1bson__input__streambuf" kindref="compound">bson_input_streambuf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>bsoncxx::document::view<sp/>&amp;v);</highlight></codeline>
 <codeline lineno="156"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166" refid="classbson__mapper_1_1bson__istream" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal">BSON_MAPPER_API<sp/><ref refid="classbson__mapper_1_1bson__istream" kindref="compound">bson_istream</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::istream<sp/>{</highlight></codeline>
+<codeline lineno="166" refid="classboson_1_1bson__istream" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal">BOSON_API<sp/><ref refid="classboson_1_1bson__istream" kindref="compound">bson_istream</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::istream<sp/>{</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbson__mapper_1_1bson__istream" kindref="compound">bson_istream</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>bsoncxx::document::view<sp/>&amp;v)<sp/>:<sp/>std::istream(0),<sp/>bs_buf(v)<sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classboson_1_1bson__istream" kindref="compound">bson_istream</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>bsoncxx::document::view<sp/>&amp;v)<sp/>:<sp/>std::istream(0),<sp/>bs_buf(v)<sp/>{</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;rdbuf(&amp;bs_buf);</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"></highlight></codeline>
 <codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>somehow<sp/>set<sp/>rdbuf(*sb)<sp/>to<sp/>private<sp/>so<sp/>people<sp/>can&apos;t<sp/>change<sp/>the<sp/>streambuffer?</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbson__mapper_1_1bson__input__streambuf" kindref="compound">bson_input_streambuf</ref><sp/>bs_buf;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classboson_1_1bson__input__streambuf" kindref="compound">bson_input_streambuf</ref><sp/>bs_buf;</highlight></codeline>
 <codeline lineno="175"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal">BSON_MAPPER_INLINE_NAMESPACE_END</highlight></codeline>
-<codeline lineno="178"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>bson_mapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal">BOSON_INLINE_NAMESPACE_END</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>boson</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;bson_mapper/config/postlude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boson/config/postlude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="src/bson_mapper/bson_streambuf.hpp"/>
+    <location file="src/boson/bson_streambuf.hpp"/>
   </compounddef>
 </doxygen>

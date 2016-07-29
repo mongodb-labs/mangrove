@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>3-queries on Mangrove</title>
-    <link>http://mongodb.github.io/mongo-cxx-odm/3-queries/</link>
+    <link>http://mongodb.github.io/mangrove/3-queries/</link>
     <description>Recent content in 3-queries on Mangrove</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://mongodb.github.io/mongo-cxx-odm/3-queries/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://mongodb.github.io/mangrove/3-queries/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Queries</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/3-queries/</link>
+      <link>http://mongodb.github.io/mangrove/3-queries/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/3-queries/</guid>
+      <guid>http://mongodb.github.io/mangrove/3-queries/</guid>
       <description>
 
 &lt;h3 id=&#34;chapter-3&#34;&gt;Chapter 3&lt;/h3&gt;
@@ -26,10 +26,10 @@
     
     <item>
       <title>Introduction</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/3-queries/introduction/</link>
+      <link>http://mongodb.github.io/mangrove/3-queries/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/3-queries/introduction/</guid>
+      <guid>http://mongodb.github.io/mangrove/3-queries/introduction/</guid>
       <description>
 
 &lt;p&gt;Mangrove provides a &lt;strong&gt;query builder&lt;/strong&gt; with static type-checking for constructing MongoDB queries.
@@ -199,10 +199,10 @@ This is not supported in MongoDB when combining queries with commas.&lt;/p&gt;
     
     <item>
       <title>Operators</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/3-queries/operators/</link>
+      <link>http://mongodb.github.io/mangrove/3-queries/operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/3-queries/operators/</guid>
+      <guid>http://mongodb.github.io/mangrove/3-queries/operators/</guid>
       <description>
 
 &lt;p&gt;The following is a list of the available &lt;strong&gt;query operators&lt;/strong&gt; for the Mangrove query builder.

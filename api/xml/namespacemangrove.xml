@@ -1,0 +1,1891 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespacemangrove" kind="namespace" language="C++">
+    <compoundname>mangrove</compoundname>
+    <innerclass refid="classmangrove_1_1add__to__set__update__expr" prot="public">mangrove::add_to_set_update_expr</innerclass>
+    <innerclass refid="structmangrove_1_1all__true" prot="public">mangrove::all_true</innerclass>
+    <innerclass refid="classmangrove_1_1array__element__nvp" prot="public">mangrove::array_element_nvp</innerclass>
+    <innerclass refid="classmangrove_1_1bit__update__expr" prot="public">mangrove::bit_update_expr</innerclass>
+    <innerclass refid="structmangrove_1_1bool__pack" prot="public">mangrove::bool_pack</innerclass>
+    <innerclass refid="classmangrove_1_1boolean__expr" prot="public">mangrove::boolean_expr</innerclass>
+    <innerclass refid="classmangrove_1_1boolean__list__expr" prot="public">mangrove::boolean_list_expr</innerclass>
+    <innerclass refid="classmangrove_1_1collection__wrapper" prot="public">mangrove::collection_wrapper</innerclass>
+    <innerclass refid="classmangrove_1_1comparison__expr" prot="public">mangrove::comparison_expr</innerclass>
+    <innerclass refid="classmangrove_1_1comparison__value__expr" prot="public">mangrove::comparison_value_expr</innerclass>
+    <innerclass refid="structmangrove_1_1container__of" prot="public">mangrove::container_of</innerclass>
+    <innerclass refid="classmangrove_1_1current__date__expr" prot="public">mangrove::current_date_expr</innerclass>
+    <innerclass refid="structmangrove_1_1current__date__t" prot="public">mangrove::current_date_t</innerclass>
+    <innerclass refid="classmangrove_1_1deserializing__cursor" prot="public">mangrove::deserializing_cursor</innerclass>
+    <innerclass refid="classmangrove_1_1dollar__operator__nvp" prot="public">mangrove::dollar_operator_nvp</innerclass>
+    <innerclass refid="structmangrove_1_1expression__category__t" prot="public">mangrove::expression_category_t</innerclass>
+    <innerclass refid="classmangrove_1_1expression__list" prot="public">mangrove::expression_list</innerclass>
+    <innerclass refid="structmangrove_1_1first__two__types__are__same" prot="public">mangrove::first_two_types_are_same</innerclass>
+    <innerclass refid="structmangrove_1_1first__two__types__are__same_3_01T_00_01T2_00_01Ts_8_8_8_01_4" prot="public">mangrove::first_two_types_are_same&lt; T, T2, Ts... &gt;</innerclass>
+    <innerclass refid="classmangrove_1_1free__nvp" prot="public">mangrove::free_nvp</innerclass>
+    <innerclass refid="structmangrove_1_1hasField" prot="public">mangrove::hasField</innerclass>
+    <innerclass refid="structmangrove_1_1hasField_3_01Base_00_01T_00_01N_00_01M_00_01true_01_4" prot="public">mangrove::hasField&lt; Base, T, N, M, true &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1is__date" prot="public">mangrove::is_date</innerclass>
+    <innerclass refid="structmangrove_1_1is__date_3_01bsoncxx_1_1types_1_1b__date_01_4" prot="public">mangrove::is_date&lt; bsoncxx::types::b_date &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1is__date_3_01std_1_1chrono_1_1duration_3_01Rep_00_01Period_01_4_01_4" prot="public">mangrove::is_date&lt; std::chrono::duration&lt; Rep, Period &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1is__date_3_01std_1_1chrono_1_1time__point_3_01Clock_00_01Duration_01_4_01_4" prot="public">mangrove::is_date&lt; std::chrono::time_point&lt; Clock, Duration &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1is__expression__type" prot="public">mangrove::is_expression_type</innerclass>
+    <innerclass refid="structmangrove_1_1is__free__nvp" prot="public">mangrove::is_free_nvp</innerclass>
+    <innerclass refid="structmangrove_1_1is__free__nvp_3_01free__nvp_3_01T_01_4_01_4" prot="public">mangrove::is_free_nvp&lt; free_nvp&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1is__nvp" prot="public">mangrove::is_nvp</innerclass>
+    <innerclass refid="structmangrove_1_1is__nvp_3_01array__element__nvp_3_01NvpT_01_4_01_4" prot="public">mangrove::is_nvp&lt; array_element_nvp&lt; NvpT &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1is__nvp_3_01free__nvp_3_01T_01_4_01_4" prot="public">mangrove::is_nvp&lt; free_nvp&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1is__nvp_3_01nvp_3_01Base_00_01T_01_4_01_4" prot="public">mangrove::is_nvp&lt; nvp&lt; Base, T &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1is__nvp_3_01nvp__child_3_01Base_00_01T_00_01Parent_01_4_01_4" prot="public">mangrove::is_nvp&lt; nvp_child&lt; Base, T, Parent &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1is__optional" prot="public">mangrove::is_optional</innerclass>
+    <innerclass refid="structmangrove_1_1is__optional_3_01bsoncxx_1_1stdx_1_1optional_3_01T_01_4_01_4" prot="public">mangrove::is_optional&lt; bsoncxx::stdx::optional&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1is__string" prot="public">mangrove::is_string</innerclass>
+    <innerclass refid="structmangrove_1_1is__string_3_01std_1_1basic__string_3_01Char_00_01Traits_00_01Allocator_01_4_01_4" prot="public">mangrove::is_string&lt; std::basic_string&lt; Char, Traits, Allocator &gt; &gt;</innerclass>
+    <innerclass refid="classmangrove_1_1isolated__expr" prot="public">mangrove::isolated_expr</innerclass>
+    <innerclass refid="structmangrove_1_1iterator__of" prot="public">mangrove::iterator_of</innerclass>
+    <innerclass refid="classmangrove_1_1mod__expr" prot="public">mangrove::mod_expr</innerclass>
+    <innerclass refid="classmangrove_1_1model" prot="public">mangrove::model</innerclass>
+    <innerclass refid="classmangrove_1_1not__expr" prot="public">mangrove::not_expr</innerclass>
+    <innerclass refid="classmangrove_1_1nvp" prot="public">mangrove::nvp</innerclass>
+    <innerclass refid="classmangrove_1_1nvp__base" prot="public">mangrove::nvp_base</innerclass>
+    <innerclass refid="classmangrove_1_1nvp__child" prot="public">mangrove::nvp_child</innerclass>
+    <innerclass refid="classmangrove_1_1push__update__expr" prot="public">mangrove::push_update_expr</innerclass>
+    <innerclass refid="structmangrove_1_1remove__optional" prot="public">mangrove::remove_optional</innerclass>
+    <innerclass refid="structmangrove_1_1remove__optional_3_01bsoncxx_1_1stdx_1_1optional_3_01T_01_4_01_4" prot="public">mangrove::remove_optional&lt; bsoncxx::stdx::optional&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="classmangrove_1_1sort__expr" prot="public">mangrove::sort_expr</innerclass>
+    <innerclass refid="classmangrove_1_1text__search__expr" prot="public">mangrove::text_search_expr</innerclass>
+    <innerclass refid="classmangrove_1_1unset__expr" prot="public">mangrove::unset_expr</innerclass>
+    <innerclass refid="classmangrove_1_1update__expr" prot="public">mangrove::update_expr</innerclass>
+    <innerclass refid="classmangrove_1_1update__value__expr" prot="public">mangrove::update_value_expr</innerclass>
+    <innernamespace refid="namespacemangrove_1_1details">mangrove::details</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="expression__syntax_8hpp_1a8c1b1f31e264a61e05577bb31ce2e687" prot="public" static="no">
+        <name>expression_category</name>
+        <enumvalue id="dummy_1a8c1b1f31e264a61e05577bb31ce2e687a334c4a4c42fdb79d7ebc3e73b517e6f8" prot="public">
+          <name>none</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1a8c1b1f31e264a61e05577bb31ce2e687a1b1cc7f086b3f074da452bc3129981eb" prot="public">
+          <name>query</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1a8c1b1f31e264a61e05577bb31ce2e687a3ac340832f29c11538fbe2d6f75e8bcc" prot="public">
+          <name>update</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1a8c1b1f31e264a61e05577bb31ce2e687acadc8c8db42409733582cb3e2298ef87" prot="public">
+          <name>sort</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/expression_syntax.hpp" line="33" column="1" bodyfile="src/mangrove/expression_syntax.hpp" bodystart="33" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="query__builder_8hpp_1a6725ecb0cb089b28194615ca2f01b6ce" prot="public" static="no">
+        <type>decltype(is_bson_appendable_impl&lt; T &gt;(0))</type>
+        <definition>using mangrove::is_bson_appendable = typedef decltype(is_bson_appendable_impl&lt;T&gt;(0))</definition>
+        <argsstring></argsstring>
+        <name>is_bson_appendable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="47" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="util_8hpp_1a9494d75e3cb1b6a273c00a6a7e3c7cdb" prot="public" static="no">
+        <type>decltype(is_iterable_impl&lt; T &gt;(0))</type>
+        <definition>using mangrove::is_iterable = typedef decltype(is_iterable_impl&lt;T&gt;(0))</definition>
+        <argsstring></argsstring>
+        <name>is_iterable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="81" column="1" bodyfile="src/mangrove/util.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="util_8hpp_1a2091aeade450e0bef24f6f057640ffa1" prot="public" static="no">
+        <type>std::integral_constant&lt; int, is_iterable_v&lt; T &gt; &amp;&amp;!is_string_v&lt; T &gt;&gt;</type>
+        <definition>using mangrove::is_iterable_not_string = typedef std::integral_constant&lt;int, is_iterable_v&lt;T&gt; &amp;&amp; !is_string_v&lt;T&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>is_iterable_not_string</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="88" column="1" bodyfile="src/mangrove/util.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="util_8hpp_1aa5026342387d57dc65acf9df13d6c0a5" prot="public" static="no">
+        <type>decltype(iterable_value_impl&lt; T &gt;(0))</type>
+        <definition>using mangrove::iterable_value_t = typedef decltype(iterable_value_impl&lt;T&gt;(0))</definition>
+        <argsstring></argsstring>
+        <name>iterable_value_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="105" column="1" bodyfile="src/mangrove/util.hpp" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="util_8hpp_1a9a6a70497625c4c962aba05787327825" prot="public" static="no">
+        <type>typename <ref refid="structmangrove_1_1remove__optional" kindref="compound">remove_optional</ref>&lt; T &gt;::type</type>
+        <definition>using mangrove::remove_optional_t = typedef typename remove_optional&lt;T&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>remove_optional_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="134" column="1" bodyfile="src/mangrove/util.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="nvp_8hpp_1a4a796373d320c6504f509703b52e081c" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="structmangrove_1_1current__date__t" kindref="compound">current_date_t</ref></type>
+        <definition>constexpr current_date_t mangrove::current_date</definition>
+        <argsstring></argsstring>
+        <name>current_date</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="40" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="nvp_8hpp_1a8437e9b0c419dbdba050fd7db4a6da0e" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mangrove::is_free_nvp_v</definition>
+        <argsstring></argsstring>
+        <name>is_free_nvp_v</name>
+        <initializer>= <ref refid="structmangrove_1_1is__free__nvp" kindref="compound">is_free_nvp</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="243" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="nvp_8hpp_1aacb8dcf3ffb86910abf040f78e2bac1a" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mangrove::is_nvp_v</definition>
+        <argsstring></argsstring>
+        <name>is_nvp_v</name>
+        <initializer>= <ref refid="structmangrove_1_1is__nvp" kindref="compound">is_nvp</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="779" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="779" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="query__builder_8hpp_1a6fabd94b9b01269c21790486a37ecac6" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mangrove::is_bson_appendable_v</definition>
+        <argsstring></argsstring>
+        <name>is_bson_appendable_v</name>
+        <initializer>= is_bson_appendable&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="50" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="util_8hpp_1a69edf9f17901066dbc6e5754a57b10e1" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename S</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mangrove::is_string_v</definition>
+        <argsstring></argsstring>
+        <name>is_string_v</name>
+        <initializer>= <ref refid="structmangrove_1_1is__string" kindref="compound">is_string</ref>&lt;S&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="57" column="1" bodyfile="src/mangrove/util.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="util_8hpp_1ab302d22d727d4e8c0516aded20c7076a" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mangrove::is_iterable_v</definition>
+        <argsstring></argsstring>
+        <name>is_iterable_v</name>
+        <initializer>= is_iterable&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="84" column="1" bodyfile="src/mangrove/util.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="util_8hpp_1a9645f7b54480dc4b835b1acc5fef994c" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mangrove::is_iterable_not_string_v</definition>
+        <argsstring></argsstring>
+        <name>is_iterable_not_string_v</name>
+        <initializer>= is_iterable_not_string&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="91" column="1" bodyfile="src/mangrove/util.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="util_8hpp_1aad6b2388982aad4b7e9128930611857a" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mangrove::is_optional_v</definition>
+        <argsstring></argsstring>
+        <name>is_optional_v</name>
+        <initializer>= <ref refid="structmangrove_1_1is__optional" kindref="compound">is_optional</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="117" column="1" bodyfile="src/mangrove/util.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="util_8hpp_1a42217fad89969432937b9d5ca0bc30e7" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mangrove::is_date_v</definition>
+        <argsstring></argsstring>
+        <name>is_date_v</name>
+        <initializer>= <ref refid="structmangrove_1_1is__date" kindref="compound">is_date</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="165" column="1" bodyfile="src/mangrove/util.hpp" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="util_8hpp_1a09dbba0a2e69b6328c45fdd9c9d03746" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename container_type</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mangrove::container_of_v</definition>
+        <argsstring></argsstring>
+        <name>container_of_v</name>
+        <initializer>= <ref refid="structmangrove_1_1container__of" kindref="compound">container_of</ref>&lt;container_type, T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="202" column="1" bodyfile="src/mangrove/util.hpp" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="util_8hpp_1a825f16bd654a0fffaff988c19bebb4df" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename iterator_type</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mangrove::iterator_of_v</definition>
+        <argsstring></argsstring>
+        <name>iterator_of_v</name>
+        <initializer>= <ref refid="structmangrove_1_1iterator__of" kindref="compound">iterator_of</ref>&lt;iterator_type, T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="215" column="1" bodyfile="src/mangrove/util.hpp" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="nvp_8hpp_1a12ba3c6d14ab2cfbe73e6b3b78fcf806" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classmangrove_1_1nvp" kindref="compound">nvp</ref>&lt; Base, T &gt; constexpr</type>
+        <definition>nvp&lt;Base, T&gt; constexpr mangrove::make_nvp</definition>
+        <argsstring>(T Base::*t, const char *name)</argsstring>
+        <name>make_nvp</name>
+        <param>
+          <type>T Base::*</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="783" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="783" bodyend="785"/>
+      </memberdef>
+      <memberdef kind="function" id="nvp_8hpp_1ac31ff7cc2a54d1e1fd1a0085eabaff62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Base</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename Parent</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classmangrove_1_1nvp__child" kindref="compound">nvp_child</ref>&lt; Base, T, Parent &gt; constexpr</type>
+        <definition>nvp_child&lt;Base, T, Parent&gt; constexpr mangrove::make_nvp_with_parent</definition>
+        <argsstring>(const nvp&lt; Base, T &gt; &amp;child, const Parent &amp;parent)</argsstring>
+        <name>make_nvp_with_parent</name>
+        <param>
+          <type>const <ref refid="classmangrove_1_1nvp" kindref="compound">nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>child</declname>
+        </param>
+        <param>
+          <type>const Parent &amp;</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a name-value pair that is a subfield of a <computeroutput>parent</computeroutput> object. </para>        </briefdescription>
+        <detaileddescription>
+<para>The resulting name-value pair will have the name &quot;rootfield.subfield&quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="792" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="792" bodyend="795"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1accfd6be020179d3c60d3dfdeb007b6c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>MANGROVE_INLINE_NAMESPACE_BEGIN auto</type>
+        <definition>MANGROVE_INLINE_NAMESPACE_BEGIN auto mangrove::is_bson_appendable_impl</definition>
+        <argsstring>(int) -&gt; decltype(std::declval&lt; bsoncxx::builder::core &gt;().append(std::declval&lt; T &gt;()), std::true_type</argsstring>
+        <name>is_bson_appendable_impl</name>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+<para>Type trait that contains true if a type T can be appended to a BSON builder using builder.append(T val);. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="40" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="40" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a92ed648a114cd308add85f42588d13bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::false_type</type>
+        <definition>std::false_type mangrove::is_bson_appendable_impl</definition>
+        <argsstring>(...)</argsstring>
+        <name>is_bson_appendable_impl</name>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="44" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ab0972c503ec3addd73a08d5bdf52ebdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if_t&lt; is_bson_appendable_v&lt; T &gt; &gt;</type>
+        <definition>std::enable_if_t&lt;is_bson_appendable_v&lt;T&gt; &gt; mangrove::append_value_to_bson</definition>
+        <argsstring>(T value, bsoncxx::builder::core &amp;builder)</argsstring>
+        <name>append_value_to_bson</name>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+<para>Templated function for appending a value to a BSON builder. </para>        </briefdescription>
+        <detaileddescription>
+<para>If possible, the function simply passes the value directly to the builder. If it cannot be nicely appended, it is first serialized and then added as a sub-document to the builder. If the value is a container/iterable, it is serialized into a BSON array. If the value is a query builder epxression, it is serialized using its member function .append_to_bson(builder). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="61" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ad01010020615a12f2668766c53b6885c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if_t&lt;!is_bson_appendable_v&lt; T &gt; &amp;&amp;!is_iterable_not_string_v&lt; T &gt; &amp;&amp;details::isnt_expression_v&lt; T &gt; &gt;</type>
+        <definition>std::enable_if_t&lt;!is_bson_appendable_v&lt;T&gt; &amp;&amp; !is_iterable_not_string_v&lt;T&gt; &amp;&amp; details::isnt_expression_v&lt;T&gt; &gt; mangrove::append_value_to_bson</definition>
+        <argsstring>(const T &amp;value, bsoncxx::builder::core &amp;builder)</argsstring>
+        <name>append_value_to_bson</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="70" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="70" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a54875d35490ea654da2021de4605560f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Iterable</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if_t&lt; is_iterable_not_string_v&lt; Iterable &gt; &gt;</type>
+        <definition>std::enable_if_t&lt;is_iterable_not_string_v&lt;Iterable&gt; &gt; mangrove::append_value_to_bson</definition>
+        <argsstring>(const Iterable &amp;arr, bsoncxx::builder::core &amp;builder)</argsstring>
+        <name>append_value_to_bson</name>
+        <param>
+          <type>const Iterable &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="77" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="77" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a35a5f04bee0e3bee76ef75be66bf3801" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expression</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if_t&lt;!details::isnt_expression_v&lt; Expression &gt; &gt;</type>
+        <definition>std::enable_if_t&lt;!details::isnt_expression_v&lt;Expression&gt; &gt; mangrove::append_value_to_bson</definition>
+        <argsstring>(const Expression &amp;expr, bsoncxx::builder::core &amp;builder)</argsstring>
+        <name>append_value_to_bson</name>
+        <param>
+          <type>const Expression &amp;</type>
+          <declname>expr</declname>
+        </param>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="88" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="88" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1af3fb4df590ef4dde985d2606d67d87c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Clock</type>
+          </param>
+          <param>
+            <type>typename Duration</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void mangrove::append_value_to_bson</definition>
+        <argsstring>(const std::chrono::time_point&lt; Clock, Duration &gt; &amp;tp, bsoncxx::builder::core &amp;builder)</argsstring>
+        <name>append_value_to_bson</name>
+        <param>
+          <type>const std::chrono::time_point&lt; Clock, Duration &gt; &amp;</type>
+          <declname>tp</declname>
+        </param>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="97" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="97" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ac644d437d91f09c5ce1e0fb14bfb910b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::eq</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>eq</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1137" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1137" bodyend="1140"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ac2d0d0fede5a72285a9666906e34cec8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator==</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1143" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1143" bodyend="1146"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a95a6ee1903e11d685262e084b3f73462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::gt</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>gt</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1149" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1149" bodyend="1152"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a82bdd961774c13ebc5694b8add900785" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator&gt;</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>operator&gt;</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1155" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1155" bodyend="1158"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a278cf86715b3bf51574301bb2dc658a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::gte</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>gte</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1161" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1161" bodyend="1164"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ac6db707134ded9d9d662809c567d939c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator&gt;=</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>operator&gt;=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1167" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1167" bodyend="1170"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a21594318f05668e9a1d0973aa20f4eee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::lt</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>lt</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1173" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1173" bodyend="1176"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1aebb03b554be487035c82b3cc42625614" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator&lt;</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>operator&lt;</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1179" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1179" bodyend="1182"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a7465850729447da1e535b1c5ea1763cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::lte</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>lte</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1185" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1185" bodyend="1188"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1aff7136c4e9147274d71ba68c2f26ef92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator&lt;=</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>operator&lt;=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1191" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1191" bodyend="1194"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a991dad20b16949ae6ae8783e2c27e9ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::ne</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>ne</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1197" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1197" bodyend="1200"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a4d56e9256466f3136947b4b5cffbdac9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator!=</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1203" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1203" bodyend="1206"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a5664a0c702dafe50b15ad770eb9a0504" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;details::is_query_expression_v&lt;Expr&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1not__expr" kindref="compound">not_expr</ref>&lt; Expr &gt;</type>
+        <definition>constexpr not_expr&lt;Expr&gt; mangrove::operator!</definition>
+        <argsstring>(const Expr &amp;expr)</argsstring>
+        <name>operator!</name>
+        <param>
+          <type>const Expr &amp;</type>
+          <declname>expr</declname>
+        </param>
+        <briefdescription>
+<para>Negates a comparison expression in a $not expression. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1213" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1213" bodyend="1215"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a02f0a9a586bc021458260c7b8903c786" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, bsoncxx::types::b_regex &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, bsoncxx::types::b_regex&gt; mangrove::operator!</definition>
+        <argsstring>(const comparison_value_expr&lt; NvpT, bsoncxx::types::b_regex &gt; &amp;regex_expr)</argsstring>
+        <name>operator!</name>
+        <param>
+          <type>const <ref refid="classmangrove_1_1comparison__value__expr" kindref="compound">comparison_value_expr</ref>&lt; NvpT, bsoncxx::types::b_regex &gt; &amp;</type>
+          <declname>regex_expr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1221" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1221" bodyend="1224"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a168414fa6231c46ef74d377b8e080189" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr</type>
+          </param>
+          <param>
+            <type>expression_category</type>
+            <declname>list_type</declname>
+            <defname>list_type</defname>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+          <param>
+            <type>size_t...</type>
+            <declname>idxs</declname>
+            <defname>idxs</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1expression__list" kindref="compound">expression_list</ref>&lt; list_type, Expr, Args... &gt;</type>
+        <definition>constexpr expression_list&lt;list_type, Expr, Args...&gt; mangrove::append_impl</definition>
+        <argsstring>(expression_list&lt; list_type, Args... &gt; list, Expr expr, std::index_sequence&lt; idxs... &gt;)</argsstring>
+        <name>append_impl</name>
+        <param>
+          <type><ref refid="classmangrove_1_1expression__list" kindref="compound">expression_list</ref>&lt; list_type, Args... &gt;</type>
+          <declname>list</declname>
+        </param>
+        <param>
+          <type>Expr</type>
+          <declname>expr</declname>
+        </param>
+        <param>
+          <type>std::index_sequence&lt; idxs... &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1227" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1227" bodyend="1230"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a7a4004146d8da2fac4d0bcb4703ee06e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr</type>
+          </param>
+          <param>
+            <type>expression_category</type>
+            <declname>list_type</declname>
+            <defname>list_type</defname>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;details::is_expression_type&lt;list_type, Expr&gt;::value&gt;</defval>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1expression__list" kindref="compound">expression_list</ref>&lt; list_type, Expr, Args... &gt;</type>
+        <definition>constexpr expression_list&lt;list_type, Expr, Args...&gt; mangrove::operator,</definition>
+        <argsstring>(expression_list&lt; list_type, Args... &gt; &amp;&amp;list, Expr &amp;&amp;expr)</argsstring>
+        <name>operator,</name>
+        <param>
+          <type><ref refid="classmangrove_1_1expression__list" kindref="compound">expression_list</ref>&lt; list_type, Args... &gt; &amp;&amp;</type>
+          <declname>list</declname>
+        </param>
+        <param>
+          <type>Expr &amp;&amp;</type>
+          <declname>expr</declname>
+        </param>
+        <briefdescription>
+<para>Comma operator that combines two expressions or an expression and an expression list into a new expression list. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1239" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1239" bodyend="1242"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a98aba1f7962d7064dce49123247504cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr1</type>
+          </param>
+          <param>
+            <type>typename Expr2</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;!details::isnt_expression_v&lt;Expr1&gt; &amp;&amp;                                      (details::expression_type&lt;Expr1&gt;::value ==                                       details::expression_type&lt;Expr2&gt;::value)&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1expression__list" kindref="compound">expression_list</ref>&lt; <ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">details::expression_type</ref>&lt; Expr1 &gt;::value, Expr1, Expr2 &gt;</type>
+        <definition>constexpr expression_list&lt;details::expression_type&lt;Expr1&gt;::value, Expr1, Expr2&gt; mangrove::operator,</definition>
+        <argsstring>(Expr1 &amp;&amp;expr1, Expr2 &amp;&amp;expr2)</argsstring>
+        <name>operator,</name>
+        <param>
+          <type>Expr1 &amp;&amp;</type>
+          <declname>expr1</declname>
+        </param>
+        <param>
+          <type>Expr2 &amp;&amp;</type>
+          <declname>expr2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1248" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1248" bodyend="1251"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a62649494896362ad4946fe475b97800d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr1</type>
+          </param>
+          <param>
+            <type>typename Expr2</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;details::is_query_expression_v&lt;Expr1&gt; &amp;&amp;                                      details::is_query_expression_v&lt;Expr2&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1boolean__expr" kindref="compound">boolean_expr</ref>&lt; Expr1, Expr2 &gt;</type>
+        <definition>constexpr boolean_expr&lt;Expr1, Expr2&gt; mangrove::operator&amp;&amp;</definition>
+        <argsstring>(const Expr1 &amp;lhs, const Expr2 &amp;rhs)</argsstring>
+        <name>operator&amp;&amp;</name>
+        <param>
+          <type>const Expr1 &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const Expr2 &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Boolean operator overloads for expressions. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1259" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1259" bodyend="1261"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a27b52a88b4790eb71d659bc1fdd1e33b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr1</type>
+          </param>
+          <param>
+            <type>typename Expr2</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;details::is_query_expression_v&lt;Expr1&gt; &amp;&amp;                                      details::is_query_expression_v&lt;Expr2&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1boolean__expr" kindref="compound">boolean_expr</ref>&lt; Expr1, Expr2 &gt;</type>
+        <definition>constexpr boolean_expr&lt;Expr1, Expr2&gt; mangrove::operator||</definition>
+        <argsstring>(const Expr1 &amp;lhs, const Expr2 &amp;rhs)</argsstring>
+        <name>operator||</name>
+        <param>
+          <type>const Expr1 &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const Expr2 &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1266" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1266" bodyend="1268"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1aa43a27acc0d71cafb6ad1fb51a10e2ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1boolean__list__expr" kindref="compound">boolean_list_expr</ref>&lt; <ref refid="classmangrove_1_1expression__list" kindref="compound">expression_list</ref>&lt; expression_category::query, Args... &gt; &gt;</type>
+        <definition>constexpr boolean_list_expr&lt;expression_list&lt;expression_category::query, Args...&gt; &gt; mangrove::nor</definition>
+        <argsstring>(const expression_list&lt; expression_category::query, Args... &gt; &amp;list)</argsstring>
+        <name>nor</name>
+        <param>
+          <type>const <ref refid="classmangrove_1_1expression__list" kindref="compound">expression_list</ref>&lt; expression_category::query, Args... &gt; &amp;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+<para>A function that creates a $nor operator out of an <ref refid="classmangrove_1_1expression__list" kindref="compound">expression_list</ref> containing arguments. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The list of arguments to the $nor operator, as an expression list. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A boolean_llist_expr that wraps the given list. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1282" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1282" bodyend="1285"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a6307a39bfeed5cebb533f447b913c7df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>QueryExpressions</declname>
+            <defname>QueryExpressions</defname>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename all_true&lt;details::is_query_expression_v&lt;QueryExpressions&gt;...&gt;::type</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1boolean__list__expr" kindref="compound">boolean_list_expr</ref>&lt; <ref refid="classmangrove_1_1expression__list" kindref="compound">expression_list</ref>&lt; expression_category::query, QueryExpressions... &gt; &gt;</type>
+        <definition>constexpr boolean_list_expr&lt;expression_list&lt;expression_category::query, QueryExpressions...&gt; &gt; mangrove::nor</definition>
+        <argsstring>(QueryExpressions...args)</argsstring>
+        <name>nor</name>
+        <param>
+          <type>QueryExpressions...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Function that creates a $nor operator out of a list of arguments. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1292" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1292" bodyend="1295"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a73d9f583e496f4109787b0835d4a82a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmangrove_1_1text__search__expr" kindref="compound">text_search_expr</ref></type>
+        <definition>text_search_expr mangrove::text</definition>
+        <argsstring>(const char *search, bsoncxx::stdx::optional&lt; const char * &gt; language=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional&lt; bool &gt; case_sensitive=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional&lt; bool &gt; diacritic_sensitive=bsoncxx::stdx::nullopt)</argsstring>
+        <name>text</name>
+        <param>
+          <type>const char *</type>
+          <declname>search</declname>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; const char * &gt;</type>
+          <declname>language</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; bool &gt;</type>
+          <declname>case_sensitive</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; bool &gt;</type>
+          <declname>diacritic_sensitive</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Creates a text search expression. </para>        </briefdescription>
+        <detaileddescription>
+<para>These parameters correspond to the parameters for the $text operator in MongoDB. Optional parameters can be passed as optional&lt;&gt; types here, or with &quot;fluent&quot; setters on the resulting <ref refid="classmangrove_1_1text__search__expr" kindref="compound">text_search_expr</ref> object. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>search</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string of terms use to query the text index. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>language</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The language of the text index. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>case_sensitive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean flag to specify case-sensitive search. Optional, false by default. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>diacritic_sensitive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean flag to specify case-sensitive search. Optional, false by default. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmangrove_1_1text__search__expr" kindref="compound">text_search_expr</ref> with the given parameters. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1310" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1310" bodyend="1315"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a2f9f07d2e5406f7052a8220cda7fcfd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;details::is_query_expression_v&lt;Expr&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1isolated__expr" kindref="compound">isolated_expr</ref>&lt; Expr &gt;</type>
+        <definition>constexpr isolated_expr&lt;Expr&gt; mangrove::isolated</definition>
+        <argsstring>(const Expr &amp;expr)</argsstring>
+        <name>isolated</name>
+        <param>
+          <type>const Expr &amp;</type>
+          <declname>expr</declname>
+        </param>
+        <briefdescription>
+<para>Creates a query expression with an isolation level set. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1321" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1321" bodyend="1323"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a669635d44d2fce26943e6d4cfef5844c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1update__expr" kindref="compound">update_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator+=</definition>
+        <argsstring>(const NvpT &amp;nvp, const typename NvpT::no_opt_type &amp;val)</argsstring>
+        <name>operator+=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1329" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1329" bodyend="1332"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1abe59c753655352654c2bf2d7223f241c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_value_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator-=</definition>
+        <argsstring>(const NvpT &amp;nvp, const typename NvpT::no_opt_type &amp;val)</argsstring>
+        <name>operator-=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1336" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1336" bodyend="1339"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a69cc8a62fc2f09cf08b443adb7f55c60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_value_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator++</definition>
+        <argsstring>(const NvpT &amp;nvp)</argsstring>
+        <name>operator++</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1343" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1343" bodyend="1345"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a687c9b3c2e3026d33494e8d1a4be339f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_value_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator++</definition>
+        <argsstring>(const NvpT &amp;nvp, int)</argsstring>
+        <name>operator++</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1349" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1349" bodyend="1351"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a5f64230fbcac14dc017fc999d13063c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_value_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator--</definition>
+        <argsstring>(const NvpT &amp;nvp)</argsstring>
+        <name>operator--</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1355" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1355" bodyend="1357"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a6ab2bc9cfc20610be0f06d15ef6b0991" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_value_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator--</definition>
+        <argsstring>(const NvpT &amp;nvp, int)</argsstring>
+        <name>operator--</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1361" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1361" bodyend="1363"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a2401f062b20c4bce88d400bc173c9c16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1update__expr" kindref="compound">update_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator*=</definition>
+        <argsstring>(const NvpT &amp;nvp, const typename NvpT::no_opt_type &amp;val)</argsstring>
+        <name>operator*=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1367" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1367" bodyend="1370"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a2225cf82f0daf51f36281c5c7541b75c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1bit__update__expr" kindref="compound">bit_update_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr bit_update_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator&amp;=</definition>
+        <argsstring>(const NvpT &amp;nvp, const typename NvpT::no_opt_type &amp;mask)</argsstring>
+        <name>operator&amp;=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1376" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1376" bodyend="1379"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a0c8854231b9af3c434f45ba99cc70fd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1bit__update__expr" kindref="compound">bit_update_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr bit_update_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator|=</definition>
+        <argsstring>(const NvpT &amp;nvp, const typename NvpT::no_opt_type &amp;mask)</argsstring>
+        <name>operator|=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1383" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1383" bodyend="1386"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1af58de8e23256e5bb6a0ecfdc3f9d92cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1bit__update__expr" kindref="compound">bit_update_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr bit_update_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mangrove::operator^=</definition>
+        <argsstring>(const NvpT &amp;nvp, const typename NvpT::no_opt_type &amp;mask)</argsstring>
+        <name>operator^=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1390" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1390" bodyend="1393"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1a259c6d01b838e2b3f3b28b0046d8f55f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto mangrove::is_iterable_impl</definition>
+        <argsstring>(int) -&gt; decltype(begin(std::declval&lt; T &amp; &gt;())!=                                                                           end(std::declval&lt; T &amp; &gt;()),                                                                   void(),                                                                                                                                                           ++std::declval&lt; decltype(begin(std::declval&lt; T &amp; &gt;()))&amp; &gt;(),                                                                   void(*begin(std::declval&lt; T &amp; &gt;())),                                                                                                                                                               std::true_type</argsstring>
+        <name>is_iterable_impl</name>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="69" column="1" bodyfile="src/mangrove/util.hpp" bodystart="69" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1aa9d7223e492c60d4b629d358164943b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename</type>
+          </param>
+        </templateparamlist>
+        <type>std::false_type</type>
+        <definition>std::false_type mangrove::is_iterable_impl</definition>
+        <argsstring>(...)</argsstring>
+        <name>is_iterable_impl</name>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="78" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1ac776686bc4d215d3f033bd0954e19ca9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T::iterator::value_type</type>
+        <definition>T::iterator::value_type mangrove::iterable_value_impl</definition>
+        <argsstring>(int)</argsstring>
+        <name>iterable_value_impl</name>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+<para>A templated function whose return type is the underlying value type of a given container. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the given type parameter is not a container, then the function simply returns that type unchanged. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="99" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1a7353b06347ccbbd1618b28347d51f0d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T mangrove::iterable_value_impl</definition>
+        <argsstring>(...)</argsstring>
+        <name>iterable_value_impl</name>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="102" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1a6a9b52acbf2ef07c9cdc763014cc43c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr std::int64_t</type>
+        <definition>constexpr std::int64_t mangrove::bit_positions_to_mask</definition>
+        <argsstring>()</argsstring>
+        <name>bit_positions_to_mask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="136" column="1" bodyfile="src/mangrove/util.hpp" bodystart="136" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1ab2beff94409dfdcaf8457200de36d989" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr std::int64_t</type>
+        <definition>constexpr std::int64_t mangrove::bit_positions_to_mask</definition>
+        <argsstring>(std::int64_t pos, Args...positions)</argsstring>
+        <name>bit_positions_to_mask</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>positions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="141" column="1" bodyfile="src/mangrove/util.hpp" bodystart="141" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1a895f2a6a634cba5df45d4b9cdef740d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Map</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+          <param>
+            <type>size_t...</type>
+            <declname>idxs</declname>
+            <defname>idxs</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr void</type>
+        <definition>constexpr void mangrove::tuple_for_each_impl</definition>
+        <argsstring>(const std::tuple&lt; Ts... &gt; &amp;tup, Map &amp;&amp;map, std::index_sequence&lt; idxs... &gt;)</argsstring>
+        <name>tuple_for_each_impl</name>
+        <param>
+          <type>const std::tuple&lt; Ts... &gt; &amp;</type>
+          <declname>tup</declname>
+        </param>
+        <param>
+          <type>Map &amp;&amp;</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>std::index_sequence&lt; idxs... &gt;</type>
+        </param>
+        <briefdescription>
+<para>Method for passing each element in a tuple to a callback function. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="171" column="1" bodyfile="src/mangrove/util.hpp" bodystart="171" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1a838dcf4eaa53d7e732cd39b5b0fa8aa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Map</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr void</type>
+        <definition>constexpr void mangrove::tuple_for_each</definition>
+        <argsstring>(const std::tuple&lt; Ts... &gt; &amp;tup, Map &amp;&amp;map)</argsstring>
+        <name>tuple_for_each</name>
+        <param>
+          <type>const std::tuple&lt; Ts... &gt; &amp;</type>
+          <declname>tup</declname>
+        </param>
+        <param>
+          <type>Map &amp;&amp;</type>
+          <declname>map</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/util.hpp" line="177" column="1" bodyfile="src/mangrove/util.hpp" bodystart="177" bodyend="179"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mangrove/collection_wrapper.hpp" line="28" column="1"/>
+  </compounddef>
+</doxygen>

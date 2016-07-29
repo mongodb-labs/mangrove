@@ -1,0 +1,106 @@
+\hypertarget{classmangrove_1_1nvp__child}{}\section{mangrove\+:\+:nvp\+\_\+child$<$ Base, T, Parent $>$ Class Template Reference}
+\label{classmangrove_1_1nvp__child}\index{mangrove\+::nvp\+\_\+child$<$ Base, T, Parent $>$@{mangrove\+::nvp\+\_\+child$<$ Base, T, Parent $>$}}
+
+
+Class that represents a name-\/value pair for a field of an object that is a member of another object.  
+
+
+
+
+{\ttfamily \#include $<$nvp.\+hpp$>$}
+
+Inheritance diagram for mangrove\+:\+:nvp\+\_\+child$<$ Base, T, Parent $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmangrove_1_1nvp__child}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmangrove_1_1update__expr}{update\+\_\+expr}$<$ \hyperlink{classmangrove_1_1nvp__child}{nvp\+\_\+child}$<$ Base, T, Parent $>$, T $>$ \hyperlink{classmangrove_1_1nvp__child_aa62578360129ffc100467825e0a34cf2}{operator=} (const no\+\_\+opt\+\_\+type \&val) const \hypertarget{classmangrove_1_1nvp__child_aa62578360129ffc100467825e0a34cf2}{}\label{classmangrove_1_1nvp__child_aa62578360129ffc100467825e0a34cf2}
+
+\begin{DoxyCompactList}\small\item\em Creates an update expression that sets the field to the given value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type$>$ }\\constexpr std\+::enable\+\_\+if\+\_\+t$<$ is\+\_\+date\+\_\+v$<$ U $>$, \hyperlink{classmangrove_1_1current__date__expr}{current\+\_\+date\+\_\+expr}$<$ \hyperlink{classmangrove_1_1nvp__child}{nvp\+\_\+child} $>$ $>$ \hyperlink{classmangrove_1_1nvp__child_a220d36aa2c0c436e1fd14b8ead8e2725}{operator=} (const \hyperlink{structmangrove_1_1current__date__t}{current\+\_\+date\+\_\+t} \&) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that sets a date value to the current date. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type$>$ }\\constexpr std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+same$<$ bsoncxx\+::types\+::b\+\_\+timestamp, U $>$\+::value, \hyperlink{classmangrove_1_1current__date__expr}{current\+\_\+date\+\_\+expr}$<$ \hyperlink{classmangrove_1_1nvp__child}{nvp\+\_\+child} $>$ $>$ \hyperlink{classmangrove_1_1nvp__child_ae6fccc6df51e55ae066aa2e14492c256}{operator=} (const \hyperlink{structmangrove_1_1current__date__t}{current\+\_\+date\+\_\+t} \&) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that sets a date value to the current date. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classmangrove_1_1nvp__child_a8e1a8a94e98375c642ad8afc000e9655}{get\+\_\+name} () const 
+\begin{DoxyCompactList}\small\item\em Returns the name of this field, in dot notation. \end{DoxyCompactList}\item 
+std\+::string \& \hyperlink{classmangrove_1_1nvp__child_a762e5f23a23e6860f1259501e80c0aee}{append\+\_\+name} (std\+::string \&s) const 
+\begin{DoxyCompactList}\small\item\em Returns the qualified name of this field in dot notation, i.\+e. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Base, typename T, typename Parent$>$\\*
+class mangrove\+::nvp\+\_\+child$<$ Base, T, Parent $>$}
+
+Class that represents a name-\/value pair for a field of an object that is a member of another object. 
+
+The name of this name-\/value pair will be \char`\"{}$<$parent-\/name$>$.\+field\+\_\+name\char`\"{}. The parenet can be either an nvp, or another \hyperlink{classmangrove_1_1nvp__child}{nvp\+\_\+child}. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & The type of the object that contains this field \\
+\hline
+{\em T} & The type of the field \\
+\hline
+{\em Parent} & The type of the parent name-\/value pair, either an nvp$<$...$>$ or nvp\+\_\+child$<$...$>$. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\index{mangrove\+::nvp\+\_\+child@{mangrove\+::nvp\+\_\+child}!append\+\_\+name@{append\+\_\+name}}
+\index{append\+\_\+name@{append\+\_\+name}!mangrove\+::nvp\+\_\+child@{mangrove\+::nvp\+\_\+child}}
+\subsubsection[{\texorpdfstring{append\+\_\+name(std\+::string \&s) const }{append_name(std::string &s) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base , typename T , typename Parent $>$ std\+::string\& {\bf mangrove\+::nvp\+\_\+child}$<$ Base, T, Parent $>$\+::append\+\_\+name (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{s}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1nvp__child_a762e5f23a23e6860f1259501e80c0aee}{}\label{classmangrove_1_1nvp__child_a762e5f23a23e6860f1259501e80c0aee}
+
+
+Returns the qualified name of this field in dot notation, i.\+e. 
+
+\char`\"{}parent.\+child\char`\"{}. \begin{DoxyReturn}{Returns}
+A string containing the name of this field in dot notation. 
+\end{DoxyReturn}
+\index{mangrove\+::nvp\+\_\+child@{mangrove\+::nvp\+\_\+child}!get\+\_\+name@{get\+\_\+name}}
+\index{get\+\_\+name@{get\+\_\+name}!mangrove\+::nvp\+\_\+child@{mangrove\+::nvp\+\_\+child}}
+\subsubsection[{\texorpdfstring{get\+\_\+name() const }{get_name() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base , typename T , typename Parent $>$ std\+::string {\bf mangrove\+::nvp\+\_\+child}$<$ Base, T, Parent $>$\+::get\+\_\+name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1nvp__child_a8e1a8a94e98375c642ad8afc000e9655}{}\label{classmangrove_1_1nvp__child_a8e1a8a94e98375c642ad8afc000e9655}
+
+
+Returns the name of this field, in dot notation. 
+
+\begin{DoxyReturn}{Returns}
+The fully qualified name of this field in dot notation. 
+\end{DoxyReturn}
+\index{mangrove\+::nvp\+\_\+child@{mangrove\+::nvp\+\_\+child}!operator=@{operator=}}
+\index{operator=@{operator=}!mangrove\+::nvp\+\_\+child@{mangrove\+::nvp\+\_\+child}}
+\subsubsection[{\texorpdfstring{operator=(const current\+\_\+date\+\_\+t \&) const }{operator=(const current_date_t &) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base , typename T , typename Parent $>$ template$<$typename U  = no\+\_\+opt\+\_\+type$>$ constexpr std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+date\+\_\+v$<$U$>$, {\bf current\+\_\+date\+\_\+expr}$<${\bf nvp\+\_\+child}$>$ $>$ {\bf mangrove\+::nvp\+\_\+child}$<$ Base, T, Parent $>$\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf current\+\_\+date\+\_\+t} \&}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1nvp__child_a220d36aa2c0c436e1fd14b8ead8e2725}{}\label{classmangrove_1_1nvp__child_a220d36aa2c0c436e1fd14b8ead8e2725}
+
+
+Creates an expression that sets a date value to the current date. 
+
+This is only enabled for std\+::chrono\+::time/duration values, as well as b\+\_\+date. \index{mangrove\+::nvp\+\_\+child@{mangrove\+::nvp\+\_\+child}!operator=@{operator=}}
+\index{operator=@{operator=}!mangrove\+::nvp\+\_\+child@{mangrove\+::nvp\+\_\+child}}
+\subsubsection[{\texorpdfstring{operator=(const current\+\_\+date\+\_\+t \&) const }{operator=(const current_date_t &) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base , typename T , typename Parent $>$ template$<$typename U  = no\+\_\+opt\+\_\+type$>$ constexpr std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+same$<$bsoncxx\+::types\+::b\+\_\+timestamp, U$>$\+::value, {\bf current\+\_\+date\+\_\+expr}$<${\bf nvp\+\_\+child}$>$ $>$ {\bf mangrove\+::nvp\+\_\+child}$<$ Base, T, Parent $>$\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf current\+\_\+date\+\_\+t} \&}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1nvp__child_ae6fccc6df51e55ae066aa2e14492c256}{}\label{classmangrove_1_1nvp__child_ae6fccc6df51e55ae066aa2e14492c256}
+
+
+Creates an expression that sets a date value to the current date. 
+
+This is only enabled for std\+::chrono\+::time/duration values, as well as b\+\_\+date. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/nvp.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmangrove_1_1container__of" kind="struct" language="C++" prot="public">
+    <compoundname>mangrove::container_of</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::is_same&lt; container_type::value_type, T &gt;</basecompoundref>
+    <includes refid="util_8hpp" local="no">util.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename container_type</type>
+      </param>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>Type trait that checks whether or not a type is a container that contains a particular type. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>container_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The container being checked for containing a particular type. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type that the container must hold for container_of::value to be true. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="58">
+        <label>mangrove::container_of&lt; container_type, T &gt;</label>
+        <link refid="structmangrove_1_1container__of"/>
+        <childnode refid="59" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>std::is_same&lt; container_type::value_type, T &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="60">
+        <label>mangrove::container_of&lt; container_type, T &gt;</label>
+        <link refid="structmangrove_1_1container__of"/>
+        <childnode refid="61" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>std::is_same&lt; container_type::value_type, T &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/util.hpp" line="199" column="1" bodyfile="src/mangrove/util.hpp" bodystart="199" bodyend="199"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

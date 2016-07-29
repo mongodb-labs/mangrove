@@ -1,0 +1,29 @@
+\hypertarget{classmangrove_1_1deserializing__cursor}{}\section{mangrove\+:\+:deserializing\+\_\+cursor$<$ T $>$ Class Template Reference}
+\label{classmangrove_1_1deserializing__cursor}\index{mangrove\+::deserializing\+\_\+cursor$<$ T $>$@{mangrove\+::deserializing\+\_\+cursor$<$ T $>$}}
+
+
+A class that wraps a mongocxx\+::cursor.  
+
+
+
+
+{\ttfamily \#include $<$deserializing\+\_\+cursor.\+hpp$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classmangrove_1_1deserializing__cursor_1_1iterator}{iterator}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\\*
+class mangrove\+::deserializing\+\_\+cursor$<$ T $>$}
+
+A class that wraps a mongocxx\+::cursor. 
+
+It provides an iterator that deserializes the documents yielded by the underlying mongocxx cursor. N\+O\+TE\+: This iterator will skip documents that fail to be deserialized, e.\+g. due to non-\/matching schemas. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/deserializing\+\_\+cursor.\+hpp\end{DoxyCompactItemize}

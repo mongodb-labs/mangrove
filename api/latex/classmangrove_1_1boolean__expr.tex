@@ -1,0 +1,82 @@
+\hypertarget{classmangrove_1_1boolean__expr}{}\section{mangrove\+:\+:boolean\+\_\+expr$<$ Expr1, Expr2 $>$ Class Template Reference}
+\label{classmangrove_1_1boolean__expr}\index{mangrove\+::boolean\+\_\+expr$<$ Expr1, Expr2 $>$@{mangrove\+::boolean\+\_\+expr$<$ Expr1, Expr2 $>$}}
+
+
+This represents a boolean expression with two arguments.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmangrove_1_1boolean__expr_a5157d3daeff2e3d8bd7a53a4d98bf1fe}{boolean\+\_\+expr} (const Expr1 \&lhs, const Expr2 \&rhs, const char $\ast$op)
+\begin{DoxyCompactList}\small\item\em Constructs a boolean expression from two other expressions, and a certain operator. \end{DoxyCompactList}\item 
+void \hyperlink{classmangrove_1_1boolean__expr_ab160beab1d655b6640f30b53ee149338}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder as a key-\/value pair \char`\"{}\$op\+: \mbox{[}\{lhs\}, \{rhs\}\mbox{]}\char`\"{}. \end{DoxyCompactList}\item 
+\hyperlink{classmangrove_1_1boolean__expr_a72b2e366768620bd1960fc54a4c41f8b}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const \hypertarget{classmangrove_1_1boolean__expr_a72b2e366768620bd1960fc54a4c41f8b}{}\label{classmangrove_1_1boolean__expr_a72b2e366768620bd1960fc54a4c41f8b}
+
+\begin{DoxyCompactList}\small\item\em Converts the expression to a B\+S\+ON filter for a query, in the form \char`\"{}\{ \$op\+: \mbox{[}\{lhs\}, \{rhs\}\mbox{]} \}\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Expr1, typename Expr2$>$\\*
+class mangrove\+::boolean\+\_\+expr$<$ Expr1, Expr2 $>$}
+
+This represents a boolean expression with two arguments. 
+
+The arguments can, in turn, be boolean expressions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mangrove\+::boolean\+\_\+expr@{mangrove\+::boolean\+\_\+expr}!boolean\+\_\+expr@{boolean\+\_\+expr}}
+\index{boolean\+\_\+expr@{boolean\+\_\+expr}!mangrove\+::boolean\+\_\+expr@{mangrove\+::boolean\+\_\+expr}}
+\subsubsection[{\texorpdfstring{boolean\+\_\+expr(const Expr1 \&lhs, const Expr2 \&rhs, const char $\ast$op)}{boolean_expr(const Expr1 &lhs, const Expr2 &rhs, const char *op)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expr1 , typename Expr2 $>$ constexpr {\bf mangrove\+::boolean\+\_\+expr}$<$ Expr1, Expr2 $>$\+::{\bf boolean\+\_\+expr} (
+\begin{DoxyParamCaption}
+\item[{const Expr1 \&}]{lhs, }
+\item[{const Expr2 \&}]{rhs, }
+\item[{const char $\ast$}]{op}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1boolean__expr_a5157d3daeff2e3d8bd7a53a4d98bf1fe}{}\label{classmangrove_1_1boolean__expr_a5157d3daeff2e3d8bd7a53a4d98bf1fe}
+
+
+Constructs a boolean expression from two other expressions, and a certain operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & The left-\/hand side of the expression. \\
+\hline
+{\em rhs} & The right-\/hand side of the expression. \\
+\hline
+{\em op} & The operator of the expression, e.\+g. A\+ND or OR. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mangrove\+::boolean\+\_\+expr@{mangrove\+::boolean\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mangrove\+::boolean\+\_\+expr@{mangrove\+::boolean\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expr1 , typename Expr2 $>$ void {\bf mangrove\+::boolean\+\_\+expr}$<$ Expr1, Expr2 $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1boolean__expr_ab160beab1d655b6640f30b53ee149338}{}\label{classmangrove_1_1boolean__expr_ab160beab1d655b6640f30b53ee149338}
+
+
+Appends this query to a B\+S\+ON core builder as a key-\/value pair \char`\"{}\$op\+: \mbox{[}\{lhs\}, \{rhs\}\mbox{]}\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em Whether} & to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/expression\+\_\+syntax.\+hpp\item 
+src/mangrove/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmangrove_1_1details_1_1is__sort__expression" kind="struct" language="C++" prot="public">
+    <compoundname>mangrove::details::is_sort_expression</compoundname>
+    <basecompoundref refid="structmangrove_1_1details_1_1is__expression__type" prot="public" virt="non-virtual">mangrove::details::is_expression_type&lt; expression_category::sort, T &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="253">
+        <label>mangrove::details::is_expression_type&lt; expression_category::sort, T &gt;</label>
+        <link refid="structmangrove_1_1details_1_1is__expression__type"/>
+        <childnode refid="254" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="254">
+        <label>std::integral_constant&lt; bool, type==expression_type_v&lt; T &gt; &gt;</label>
+      </node>
+      <node id="252">
+        <label>mangrove::details::is_sort_expression&lt; T &gt;</label>
+        <link refid="structmangrove_1_1details_1_1is__sort__expression"/>
+        <childnode refid="253" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="256">
+        <label>mangrove::details::is_expression_type&lt; expression_category::sort, T &gt;</label>
+        <link refid="structmangrove_1_1details_1_1is__expression__type"/>
+        <childnode refid="257" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="257">
+        <label>std::integral_constant&lt; bool, type==expression_type_v&lt; T &gt; &gt;</label>
+      </node>
+      <node id="255">
+        <label>mangrove::details::is_sort_expression&lt; T &gt;</label>
+        <link refid="structmangrove_1_1details_1_1is__sort__expression"/>
+        <childnode refid="256" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/expression_syntax.hpp" line="174" column="1" bodyfile="src/mangrove/expression_syntax.hpp" bodystart="174" bodyend="174"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['nin',['nin',['../classmongo__odm_1_1nvp__base.html#ac518ef90312a483c64436097e9f9a34e',1,'mongo_odm::nvp_base']]],
-  ['not_5fexpr',['not_expr',['../classmongo__odm_1_1not__expr.html',1,'mongo_odm']]],
-  ['not_5fexpr',['not_expr',['../classmongo__odm_1_1not__expr.html#addb4f3618f5a03fefe5be5bfed40abd9',1,'mongo_odm::not_expr']]],
-  ['nvp',['nvp',['../classmongo__odm_1_1nvp.html',1,'mongo_odm']]],
-  ['nvp',['nvp',['../classmongo__odm_1_1nvp.html#ae4c0a86c0051de39061544e11fc69aee',1,'mongo_odm::nvp']]],
-  ['nvp_5fbase',['nvp_base',['../classmongo__odm_1_1nvp__base.html',1,'mongo_odm']]],
-  ['nvp_5fbase_3c_20array_5felement_5fnvp_3c_20nvpt_20_3e_2c_20iterable_5fvalue_5ft_3c_20nvpt_3a_3ano_5fopt_5ftype_20_3e_20_3e',['nvp_base&lt; array_element_nvp&lt; NvpT &gt;, iterable_value_t&lt; NvpT::no_opt_type &gt; &gt;',['../classmongo__odm_1_1nvp__base.html',1,'mongo_odm']]],
-  ['nvp_5fbase_3c_20dollar_5foperator_5fnvp_3c_20nvpt_20_3e_2c_20nvpt_3a_3atype_20_3e',['nvp_base&lt; dollar_operator_nvp&lt; NvpT &gt;, NvpT::type &gt;',['../classmongo__odm_1_1nvp__base.html',1,'mongo_odm']]],
-  ['nvp_5fbase_3c_20free_5fnvp_3c_20t_20_3e_2c_20t_20_3e',['nvp_base&lt; free_nvp&lt; T &gt;, T &gt;',['../classmongo__odm_1_1nvp__base.html',1,'mongo_odm']]],
-  ['nvp_5fbase_3c_20nvp_3c_20base_2c_20t_20_3e_2c_20t_20_3e',['nvp_base&lt; nvp&lt; Base, T &gt;, T &gt;',['../classmongo__odm_1_1nvp__base.html',1,'mongo_odm']]],
-  ['nvp_5fbase_3c_20nvp_5fchild_3c_20base_2c_20t_2c_20parent_20_3e_2c_20t_20_3e',['nvp_base&lt; nvp_child&lt; Base, T, Parent &gt;, T &gt;',['../classmongo__odm_1_1nvp__base.html',1,'mongo_odm']]],
-  ['nvp_5fchild',['nvp_child',['../classmongo__odm_1_1nvp__child.html',1,'mongo_odm']]]
+  ['nin',['nin',['../classmangrove_1_1nvp__base.html#aadebfb603c05353a812e9bc8a0530793',1,'mangrove::nvp_base']]],
+  ['not_5fexpr',['not_expr',['../classmangrove_1_1not__expr.html',1,'mangrove']]],
+  ['not_5fexpr',['not_expr',['../classmangrove_1_1not__expr.html#a5c6987d2c158a495d1cf0be8b620f276',1,'mangrove::not_expr']]],
+  ['nvp',['nvp',['../classmangrove_1_1nvp.html',1,'mangrove']]],
+  ['nvp',['nvp',['../classmangrove_1_1nvp.html#a820f8a196b639e334059c7e80c24b05f',1,'mangrove::nvp']]],
+  ['nvp_5fbase',['nvp_base',['../classmangrove_1_1nvp__base.html',1,'mangrove']]],
+  ['nvp_5fbase_3c_20array_5felement_5fnvp_3c_20nvpt_20_3e_2c_20iterable_5fvalue_5ft_3c_20nvpt_3a_3ano_5fopt_5ftype_20_3e_20_3e',['nvp_base&lt; array_element_nvp&lt; NvpT &gt;, iterable_value_t&lt; NvpT::no_opt_type &gt; &gt;',['../classmangrove_1_1nvp__base.html',1,'mangrove']]],
+  ['nvp_5fbase_3c_20dollar_5foperator_5fnvp_3c_20nvpt_20_3e_2c_20nvpt_3a_3atype_20_3e',['nvp_base&lt; dollar_operator_nvp&lt; NvpT &gt;, NvpT::type &gt;',['../classmangrove_1_1nvp__base.html',1,'mangrove']]],
+  ['nvp_5fbase_3c_20free_5fnvp_3c_20t_20_3e_2c_20t_20_3e',['nvp_base&lt; free_nvp&lt; T &gt;, T &gt;',['../classmangrove_1_1nvp__base.html',1,'mangrove']]],
+  ['nvp_5fbase_3c_20nvp_3c_20base_2c_20t_20_3e_2c_20t_20_3e',['nvp_base&lt; nvp&lt; Base, T &gt;, T &gt;',['../classmangrove_1_1nvp__base.html',1,'mangrove']]],
+  ['nvp_5fbase_3c_20nvp_5fchild_3c_20base_2c_20t_2c_20parent_20_3e_2c_20t_20_3e',['nvp_base&lt; nvp_child&lt; Base, T, Parent &gt;, T &gt;',['../classmangrove_1_1nvp__base.html',1,'mangrove']]],
+  ['nvp_5fchild',['nvp_child',['../classmangrove_1_1nvp__child.html',1,'mangrove']]]
 ];

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmangrove_1_1all__true" kind="struct" language="C++" prot="public">
+    <compoundname>mangrove::all_true</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::is_same&lt; bool_pack&lt; bs..., true &gt;, bool_pack&lt; true, bs... &gt; &gt;</basecompoundref>
+    <includes refid="util_8hpp" local="no">util.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>bool...</type>
+        <declname>bs</declname>
+        <defname>bs</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>A templated struct for determining whether a variadic list of boolean conditions is all true. </para>    </briefdescription>
+    <detaileddescription>
+<para>i.e. a logical AND of a set of conditions. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>mangrove::all_true&lt; bs &gt;</label>
+        <link refid="structmangrove_1_1all__true"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::is_same&lt; bool_pack&lt; bs..., true &gt;, bool_pack&lt; true, bs... &gt; &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>mangrove::all_true&lt; bs &gt;</label>
+        <link refid="structmangrove_1_1all__true"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::is_same&lt; bool_pack&lt; bs..., true &gt;, bool_pack&lt; true, bs... &gt; &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/util.hpp" line="40" column="1" bodyfile="src/mangrove/util.hpp" bodystart="40" bodyend="40"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -2,203 +2,203 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="expression__syntax_8hpp" kind="file" language="C++">
     <compoundname>expression_syntax.hpp</compoundname>
-    <includes refid="mongo__odm_2config_2prelude_8hpp" local="no">mongo_odm/config/prelude.hpp</includes>
+    <includes refid="mangrove_2config_2prelude_8hpp" local="no">mangrove/config/prelude.hpp</includes>
     <includes local="no">cstddef</includes>
     <includes local="no">stdexcept</includes>
     <includes local="no">tuple</includes>
     <includes local="no">type_traits</includes>
     <includes local="no">bsoncxx/types.hpp</includes>
-    <includes refid="macros_8hpp" local="no">mongo_odm/macros.hpp</includes>
-    <includes refid="util_8hpp" local="no">mongo_odm/util.hpp</includes>
-    <includes refid="mongo__odm_2config_2postlude_8hpp" local="no">mongo_odm/config/postlude.hpp</includes>
-    <includedby refid="nvp_8hpp" local="no">src/mongo_odm/nvp.hpp</includedby>
-    <includedby refid="query__builder_8hpp" local="no">src/mongo_odm/query_builder.hpp</includedby>
+    <includes refid="macros_8hpp" local="no">mangrove/macros.hpp</includes>
+    <includes refid="util_8hpp" local="no">mangrove/util.hpp</includes>
+    <includes refid="mangrove_2config_2postlude_8hpp" local="no">mangrove/config/postlude.hpp</includes>
+    <includedby refid="nvp_8hpp" local="no">src/mangrove/nvp.hpp</includedby>
+    <includedby refid="query__builder_8hpp" local="no">src/mangrove/query_builder.hpp</includedby>
     <incdepgraph>
-      <node id="196">
-        <label>mongo_odm/util.hpp</label>
-        <link refid="util_8hpp_source"/>
-        <childnode refid="183" relation="include">
+      <node id="223">
+        <label>mangrove/config/prelude.hpp</label>
+        <link refid="mangrove_2config_2prelude_8hpp_source"/>
+        <childnode refid="224" relation="include">
         </childnode>
-        <childnode refid="197" relation="include">
+        <childnode refid="225" relation="include">
         </childnode>
-        <childnode refid="198" relation="include">
+        <childnode refid="226" relation="include">
         </childnode>
-        <childnode refid="199" relation="include">
-        </childnode>
-        <childnode refid="190" relation="include">
-        </childnode>
-        <childnode refid="191" relation="include">
-        </childnode>
-        <childnode refid="200" relation="include">
-        </childnode>
-        <childnode refid="201" relation="include">
-        </childnode>
-        <childnode refid="192" relation="include">
-        </childnode>
-        <childnode refid="195" relation="include">
+        <childnode refid="227" relation="include">
         </childnode>
       </node>
-      <node id="201">
+      <node id="241">
         <label>bsoncxx/stdx/optional.hpp</label>
       </node>
-      <node id="189">
+      <node id="236">
+        <label>mangrove/util.hpp</label>
+        <link refid="util_8hpp_source"/>
+        <childnode refid="223" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="238" relation="include">
+        </childnode>
+        <childnode refid="239" relation="include">
+        </childnode>
+        <childnode refid="230" relation="include">
+        </childnode>
+        <childnode refid="231" relation="include">
+        </childnode>
+        <childnode refid="240" relation="include">
+        </childnode>
+        <childnode refid="241" relation="include">
+        </childnode>
+        <childnode refid="232" relation="include">
+        </childnode>
+        <childnode refid="235" relation="include">
+        </childnode>
+      </node>
+      <node id="229">
         <label>stdexcept</label>
       </node>
-      <node id="199">
+      <node id="234">
+        <label>mangrove/mangrove_child_autogen.hpp</label>
+        <link refid="mangrove__child__autogen_8hpp_source"/>
+        <childnode refid="223" relation="include">
+        </childnode>
+        <childnode refid="235" relation="include">
+        </childnode>
+      </node>
+      <node id="239">
         <label>string</label>
       </node>
-      <node id="195">
-        <label>mongo_odm/config/postlude.hpp</label>
-        <link refid="mongo__odm_2config_2postlude_8hpp_source"/>
+      <node id="235">
+        <label>mangrove/config/postlude.hpp</label>
+        <link refid="mangrove_2config_2postlude_8hpp_source"/>
       </node>
-      <node id="185">
-        <label>mongo_odm/config/config.hpp</label>
-      </node>
-      <node id="194">
-        <label>mongo_odm/mongo_odm_child_autogen.hpp</label>
-        <link refid="mongo__odm__child__autogen_8hpp_source"/>
-        <childnode refid="183" relation="include">
+      <node id="233">
+        <label>mangrove/macros.hpp</label>
+        <link refid="macros_8hpp_source"/>
+        <childnode refid="223" relation="include">
         </childnode>
-        <childnode refid="195" relation="include">
+        <childnode refid="234" relation="include">
+        </childnode>
+        <childnode refid="235" relation="include">
         </childnode>
       </node>
-      <node id="186">
-        <label>mongo_odm/config/export.hpp</label>
+      <node id="226">
+        <label>mangrove/config/export.hpp</label>
       </node>
-      <node id="190">
+      <node id="230">
         <label>tuple</label>
       </node>
-      <node id="198">
+      <node id="238">
         <label>ctime</label>
       </node>
-      <node id="192">
+      <node id="232">
         <label>bsoncxx/types.hpp</label>
       </node>
-      <node id="200">
+      <node id="240">
         <label>utility</label>
       </node>
-      <node id="187">
-        <label>mongo_odm/config/version.hpp</label>
-      </node>
-      <node id="182">
-        <label>src/mongo_odm/expression_syntax.hpp</label>
+      <node id="222">
+        <label>src/mangrove/expression_syntax.hpp</label>
         <link refid="expression_syntax.hpp"/>
-        <childnode refid="183" relation="include">
+        <childnode refid="223" relation="include">
         </childnode>
-        <childnode refid="188" relation="include">
+        <childnode refid="228" relation="include">
         </childnode>
-        <childnode refid="189" relation="include">
+        <childnode refid="229" relation="include">
         </childnode>
-        <childnode refid="190" relation="include">
+        <childnode refid="230" relation="include">
         </childnode>
-        <childnode refid="191" relation="include">
+        <childnode refid="231" relation="include">
         </childnode>
-        <childnode refid="192" relation="include">
+        <childnode refid="232" relation="include">
         </childnode>
-        <childnode refid="193" relation="include">
+        <childnode refid="233" relation="include">
         </childnode>
-        <childnode refid="196" relation="include">
+        <childnode refid="236" relation="include">
         </childnode>
-        <childnode refid="195" relation="include">
-        </childnode>
-      </node>
-      <node id="193">
-        <label>mongo_odm/macros.hpp</label>
-        <link refid="macros_8hpp_source"/>
-        <childnode refid="183" relation="include">
-        </childnode>
-        <childnode refid="194" relation="include">
-        </childnode>
-        <childnode refid="195" relation="include">
+        <childnode refid="235" relation="include">
         </childnode>
       </node>
-      <node id="188">
+      <node id="228">
         <label>cstddef</label>
       </node>
-      <node id="183">
-        <label>mongo_odm/config/prelude.hpp</label>
-        <link refid="mongo__odm_2config_2prelude_8hpp_source"/>
-        <childnode refid="184" relation="include">
-        </childnode>
-        <childnode refid="185" relation="include">
-        </childnode>
-        <childnode refid="186" relation="include">
-        </childnode>
-        <childnode refid="187" relation="include">
-        </childnode>
-      </node>
-      <node id="197">
+      <node id="237">
         <label>chrono</label>
       </node>
-      <node id="191">
+      <node id="224">
+        <label>mangrove/config/compiler.hpp</label>
+        <link refid="mangrove_2config_2compiler_8hpp_source"/>
+      </node>
+      <node id="225">
+        <label>mangrove/config/config.hpp</label>
+      </node>
+      <node id="231">
         <label>type_traits</label>
       </node>
-      <node id="184">
-        <label>mongo_odm/config/compiler.hpp</label>
-        <link refid="mongo__odm_2config_2compiler_8hpp_source"/>
+      <node id="227">
+        <label>mangrove/config/version.hpp</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="204">
-        <label>src/mongo_odm/query_builder.hpp</label>
+      <node id="243">
+        <label>src/mangrove/nvp.hpp</label>
+        <link refid="nvp_8hpp_source"/>
+        <childnode refid="244" relation="include">
+        </childnode>
+      </node>
+      <node id="244">
+        <label>src/mangrove/query_builder.hpp</label>
         <link refid="query__builder_8hpp_source"/>
       </node>
-      <node id="203">
-        <label>src/mongo_odm/nvp.hpp</label>
-        <link refid="nvp_8hpp_source"/>
-        <childnode refid="204" relation="include">
-        </childnode>
-      </node>
-      <node id="202">
-        <label>src/mongo_odm/expression_syntax.hpp</label>
+      <node id="242">
+        <label>src/mangrove/expression_syntax.hpp</label>
         <link refid="expression_syntax.hpp"/>
-        <childnode refid="203" relation="include">
+        <childnode refid="243" relation="include">
         </childnode>
-        <childnode refid="204" relation="include">
+        <childnode refid="244" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
-    <innerclass refid="structmongo__odm_1_1is__expression__type" prot="public">mongo_odm::is_expression_type</innerclass>
-    <innerclass refid="structmongo__odm_1_1expression__category__t" prot="public">mongo_odm::expression_category_t</innerclass>
-    <innerclass refid="classmongo__odm_1_1sort__expr" prot="public">mongo_odm::sort_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1expression__list" prot="public">mongo_odm::expression_list</innerclass>
-    <innerclass refid="classmongo__odm_1_1comparison__expr" prot="public">mongo_odm::comparison_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1comparison__value__expr" prot="public">mongo_odm::comparison_value_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1mod__expr" prot="public">mongo_odm::mod_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1not__expr" prot="public">mongo_odm::not_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1boolean__expr" prot="public">mongo_odm::boolean_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1boolean__list__expr" prot="public">mongo_odm::boolean_list_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1update__expr" prot="public">mongo_odm::update_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1update__value__expr" prot="public">mongo_odm::update_value_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1unset__expr" prot="public">mongo_odm::unset_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1current__date__expr" prot="public">mongo_odm::current_date_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1add__to__set__update__expr" prot="public">mongo_odm::add_to_set_update_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1push__update__expr" prot="public">mongo_odm::push_update_expr</innerclass>
-    <innerclass refid="classmongo__odm_1_1bit__update__expr" prot="public">mongo_odm::bit_update_expr</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type" prot="public">mongo_odm::details::expression_type</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01sort__expr_3_01NvpT_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; sort_expr&lt; NvpT &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01expression__list_3_01list__type_00_01Args_8_8_8_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; expression_list&lt; list_type, Args... &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01comparison__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; comparison_expr&lt; NvpT, U &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01comparison__value__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; comparison_value_expr&lt; NvpT, U &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01mod__expr_3_01NvpT_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; mod_expr&lt; NvpT &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01not__expr_3_01Expr_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; not_expr&lt; Expr &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01text__search__expr_01_4" prot="public">mongo_odm::details::expression_type&lt; text_search_expr &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01boolean__expr_3_01Expr1_00_01Expr2_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; boolean_expr&lt; Expr1, Expr2 &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01boolean__list__expr_3_01List_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; boolean_list_expr&lt; List &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01update__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; update_expr&lt; NvpT, U &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01update__value__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; update_value_expr&lt; NvpT, U &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01unset__expr_3_01NvpT_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; unset_expr&lt; NvpT &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01current__date__expr_3_01NvpT_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; current_date_expr&lt; NvpT &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01add__to__set__update__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; add_to_set_update_expr&lt; NvpT, U &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01push__update__expr_3_01NvpT_00_01U_00_01Sort_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; push_update_expr&lt; NvpT, U, Sort &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01bit__update__expr_3_01NvpT_00_01Integer_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; bit_update_expr&lt; NvpT, Integer &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1is__expression__type" prot="public">mongo_odm::details::is_expression_type</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1isnt__expression" prot="public">mongo_odm::details::isnt_expression</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1is__sort__expression" prot="public">mongo_odm::details::is_sort_expression</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1is__query__expression" prot="public">mongo_odm::details::is_query_expression</innerclass>
-    <innerclass refid="structmongo__odm_1_1details_1_1is__update__expression" prot="public">mongo_odm::details::is_update_expression</innerclass>
-    <innernamespace refid="namespacemongo__odm">mongo_odm</innernamespace>
-    <innernamespace refid="namespacemongo__odm_1_1details">mongo_odm::details</innernamespace>
+    <innerclass refid="structmangrove_1_1is__expression__type" prot="public">mangrove::is_expression_type</innerclass>
+    <innerclass refid="structmangrove_1_1expression__category__t" prot="public">mangrove::expression_category_t</innerclass>
+    <innerclass refid="classmangrove_1_1sort__expr" prot="public">mangrove::sort_expr</innerclass>
+    <innerclass refid="classmangrove_1_1expression__list" prot="public">mangrove::expression_list</innerclass>
+    <innerclass refid="classmangrove_1_1comparison__expr" prot="public">mangrove::comparison_expr</innerclass>
+    <innerclass refid="classmangrove_1_1comparison__value__expr" prot="public">mangrove::comparison_value_expr</innerclass>
+    <innerclass refid="classmangrove_1_1mod__expr" prot="public">mangrove::mod_expr</innerclass>
+    <innerclass refid="classmangrove_1_1not__expr" prot="public">mangrove::not_expr</innerclass>
+    <innerclass refid="classmangrove_1_1boolean__expr" prot="public">mangrove::boolean_expr</innerclass>
+    <innerclass refid="classmangrove_1_1boolean__list__expr" prot="public">mangrove::boolean_list_expr</innerclass>
+    <innerclass refid="classmangrove_1_1update__expr" prot="public">mangrove::update_expr</innerclass>
+    <innerclass refid="classmangrove_1_1update__value__expr" prot="public">mangrove::update_value_expr</innerclass>
+    <innerclass refid="classmangrove_1_1unset__expr" prot="public">mangrove::unset_expr</innerclass>
+    <innerclass refid="classmangrove_1_1current__date__expr" prot="public">mangrove::current_date_expr</innerclass>
+    <innerclass refid="classmangrove_1_1add__to__set__update__expr" prot="public">mangrove::add_to_set_update_expr</innerclass>
+    <innerclass refid="classmangrove_1_1push__update__expr" prot="public">mangrove::push_update_expr</innerclass>
+    <innerclass refid="classmangrove_1_1bit__update__expr" prot="public">mangrove::bit_update_expr</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type" prot="public">mangrove::details::expression_type</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01sort__expr_3_01NvpT_01_4_01_4" prot="public">mangrove::details::expression_type&lt; sort_expr&lt; NvpT &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01expression__list_3_01list__type_00_01Args_8_8_8_01_4_01_4" prot="public">mangrove::details::expression_type&lt; expression_list&lt; list_type, Args... &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01comparison__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mangrove::details::expression_type&lt; comparison_expr&lt; NvpT, U &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01comparison__value__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mangrove::details::expression_type&lt; comparison_value_expr&lt; NvpT, U &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01mod__expr_3_01NvpT_01_4_01_4" prot="public">mangrove::details::expression_type&lt; mod_expr&lt; NvpT &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01not__expr_3_01Expr_01_4_01_4" prot="public">mangrove::details::expression_type&lt; not_expr&lt; Expr &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01text__search__expr_01_4" prot="public">mangrove::details::expression_type&lt; text_search_expr &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01boolean__expr_3_01Expr1_00_01Expr2_01_4_01_4" prot="public">mangrove::details::expression_type&lt; boolean_expr&lt; Expr1, Expr2 &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01boolean__list__expr_3_01List_01_4_01_4" prot="public">mangrove::details::expression_type&lt; boolean_list_expr&lt; List &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01update__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mangrove::details::expression_type&lt; update_expr&lt; NvpT, U &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01update__value__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mangrove::details::expression_type&lt; update_value_expr&lt; NvpT, U &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01unset__expr_3_01NvpT_01_4_01_4" prot="public">mangrove::details::expression_type&lt; unset_expr&lt; NvpT &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01current__date__expr_3_01NvpT_01_4_01_4" prot="public">mangrove::details::expression_type&lt; current_date_expr&lt; NvpT &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01add__to__set__update__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mangrove::details::expression_type&lt; add_to_set_update_expr&lt; NvpT, U &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01push__update__expr_3_01NvpT_00_01U_00_01Sort_01_4_01_4" prot="public">mangrove::details::expression_type&lt; push_update_expr&lt; NvpT, U, Sort &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1expression__type_3_01bit__update__expr_3_01NvpT_00_01Integer_01_4_01_4" prot="public">mangrove::details::expression_type&lt; bit_update_expr&lt; NvpT, Integer &gt; &gt;</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1is__expression__type" prot="public">mangrove::details::is_expression_type</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1isnt__expression" prot="public">mangrove::details::isnt_expression</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1is__sort__expression" prot="public">mangrove::details::is_sort_expression</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1is__query__expression" prot="public">mangrove::details::is_query_expression</innerclass>
+    <innerclass refid="structmangrove_1_1details_1_1is__update__expression" prot="public">mangrove::details::is_update_expression</innerclass>
+    <innernamespace refid="namespacemangrove">mangrove</innernamespace>
+    <innernamespace refid="namespacemangrove_1_1details">mangrove::details</innernamespace>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -220,7 +220,7 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/config/prelude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mangrove/config/prelude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -229,177 +229,177 @@
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;bsoncxx/types.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/macros.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/util.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mangrove/macros.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mangrove/util.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemongo__odm" kindref="compound">mongo_odm</ref><sp/>{</highlight></codeline>
-<codeline lineno="30"><highlight class="normal">MONGO_ODM_INLINE_NAMESPACE_BEGIN</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemangrove" kindref="compound">mangrove</ref><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">MANGROVE_INLINE_NAMESPACE_BEGIN</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Enum<sp/>of<sp/>possible<sp/>expression<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>struct</highlight><highlight class="normal"><sp/>expression_category<sp/>{<sp/>none,<sp/>query,<sp/>update,<sp/>sort<sp/>};</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forward<sp/>declarations<sp/>for<sp/>Expression<sp/>type<sp/>trait<sp/>structs</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;expression_category,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">&gt;</highlight></codeline>
-<codeline lineno="37" refid="structmongo__odm_1_1is__expression__type" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1is__expression__type" kindref="compound">is_expression_type</ref>;</highlight></codeline>
+<codeline lineno="37" refid="structmangrove_1_1is__expression__type" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1is__expression__type" kindref="compound">is_expression_type</ref>;</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Type<sp/>traits<sp/>structs<sp/>for<sp/>various<sp/>expressions<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;expression_category<sp/>expr_type&gt;</highlight></codeline>
-<codeline lineno="41" refid="structmongo__odm_1_1expression__category__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_category_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="41" refid="structmangrove_1_1expression__category__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_category_t</ref><sp/>{</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/>expression_category<sp/>value<sp/>=<sp/>expr_type;</highlight></codeline>
 <codeline lineno="43"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>forward<sp/>declarations<sp/>of<sp/>expression<sp/>classes<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT&gt;</highlight></codeline>
-<codeline lineno="48" refid="classmongo__odm_1_1sort__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1sort__expr" kindref="compound">sort_expr</ref>;</highlight></codeline>
+<codeline lineno="48" refid="classmangrove_1_1sort__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1sort__expr" kindref="compound">sort_expr</ref>;</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;expression_category<sp/>list_type,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
-<codeline lineno="51" refid="classmongo__odm_1_1expression__list" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1expression__list" kindref="compound">expression_list</ref>;</highlight></codeline>
+<codeline lineno="51" refid="classmangrove_1_1expression__list" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1expression__list" kindref="compound">expression_list</ref>;</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
-<codeline lineno="54" refid="classmongo__odm_1_1comparison__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>;</highlight></codeline>
+<codeline lineno="54" refid="classmangrove_1_1comparison__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>;</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
-<codeline lineno="57" refid="classmongo__odm_1_1comparison__value__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1comparison__value__expr" kindref="compound">comparison_value_expr</ref>;</highlight></codeline>
+<codeline lineno="57" refid="classmangrove_1_1comparison__value__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1comparison__value__expr" kindref="compound">comparison_value_expr</ref>;</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT&gt;</highlight></codeline>
-<codeline lineno="60" refid="classmongo__odm_1_1mod__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1mod__expr" kindref="compound">mod_expr</ref>;</highlight></codeline>
+<codeline lineno="60" refid="classmangrove_1_1mod__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1mod__expr" kindref="compound">mod_expr</ref>;</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr&gt;</highlight></codeline>
-<codeline lineno="63" refid="classmongo__odm_1_1not__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1not__expr" kindref="compound">not_expr</ref>;</highlight></codeline>
+<codeline lineno="63" refid="classmangrove_1_1not__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1not__expr" kindref="compound">not_expr</ref>;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1text__search__expr" kindref="compound">text_search_expr</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1text__search__expr" kindref="compound">text_search_expr</ref>;</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr1,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr2&gt;</highlight></codeline>
-<codeline lineno="68" refid="classmongo__odm_1_1boolean__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1boolean__expr" kindref="compound">boolean_expr</ref>;</highlight></codeline>
+<codeline lineno="68" refid="classmangrove_1_1boolean__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1boolean__expr" kindref="compound">boolean_expr</ref>;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>List&gt;</highlight></codeline>
-<codeline lineno="71" refid="classmongo__odm_1_1boolean__list__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1boolean__list__expr" kindref="compound">boolean_list_expr</ref>;</highlight></codeline>
+<codeline lineno="71" refid="classmangrove_1_1boolean__list__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1boolean__list__expr" kindref="compound">boolean_list_expr</ref>;</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
-<codeline lineno="74" refid="classmongo__odm_1_1update__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1update__expr" kindref="compound">update_expr</ref>;</highlight></codeline>
+<codeline lineno="74" refid="classmangrove_1_1update__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1update__expr" kindref="compound">update_expr</ref>;</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
-<codeline lineno="77" refid="classmongo__odm_1_1update__value__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1update__value__expr" kindref="compound">update_value_expr</ref>;</highlight></codeline>
+<codeline lineno="77" refid="classmangrove_1_1update__value__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1update__value__expr" kindref="compound">update_value_expr</ref>;</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT&gt;</highlight></codeline>
-<codeline lineno="80" refid="classmongo__odm_1_1unset__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1unset__expr" kindref="compound">unset_expr</ref>;</highlight></codeline>
+<codeline lineno="80" refid="classmangrove_1_1unset__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1unset__expr" kindref="compound">unset_expr</ref>;</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT&gt;</highlight></codeline>
-<codeline lineno="83" refid="classmongo__odm_1_1current__date__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1current__date__expr" kindref="compound">current_date_expr</ref>;</highlight></codeline>
+<codeline lineno="83" refid="classmangrove_1_1current__date__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1current__date__expr" kindref="compound">current_date_expr</ref>;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
-<codeline lineno="86" refid="classmongo__odm_1_1add__to__set__update__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1add__to__set__update__expr" kindref="compound">add_to_set_update_expr</ref>;</highlight></codeline>
+<codeline lineno="86" refid="classmangrove_1_1add__to__set__update__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1add__to__set__update__expr" kindref="compound">add_to_set_update_expr</ref>;</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Sort<sp/>=<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;</highlight></codeline>
-<codeline lineno="89" refid="classmongo__odm_1_1push__update__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1push__update__expr" kindref="compound">push_update_expr</ref>;</highlight></codeline>
+<codeline lineno="89" refid="classmangrove_1_1push__update__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref>;</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Integer&gt;</highlight></codeline>
-<codeline lineno="92" refid="classmongo__odm_1_1bit__update__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmongo__odm_1_1bit__update__expr" kindref="compound">bit_update_expr</ref>;</highlight></codeline>
+<codeline lineno="92" refid="classmangrove_1_1bit__update__expr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmangrove_1_1bit__update__expr" kindref="compound">bit_update_expr</ref>;</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">details<sp/>{</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>type<sp/>traits<sp/>for<sp/>classifying<sp/>expressions<sp/>by<sp/>their<sp/>category.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>expression_none_t<sp/>=<sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_category_t&lt;expression_category::none&gt;</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>expression_none_t<sp/>=<sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_category_t&lt;expression_category::none&gt;</ref>;</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>expression_sort_t<sp/>=<sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_category_t&lt;expression_category::sort&gt;</ref>;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>expression_sort_t<sp/>=<sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_category_t&lt;expression_category::sort&gt;</ref>;</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>expression_query_t<sp/>=<sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_category_t&lt;expression_category::query&gt;</ref>;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>expression_query_t<sp/>=<sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_category_t&lt;expression_category::query&gt;</ref>;</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>expression_update_t<sp/>=<sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_category_t&lt;expression_category::update&gt;</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>expression_update_t<sp/>=<sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_category_t&lt;expression_category::update&gt;</ref>;</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Type<sp/>trait<sp/>containing<sp/>the<sp/>expression<sp/>category<sp/>of<sp/>a<sp/>given<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="107"><highlight class="normal"></highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">&gt;</highlight></codeline>
-<codeline lineno="109" refid="structmongo__odm_1_1details_1_1expression__type" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_none_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="109" refid="structmangrove_1_1details_1_1expression__type" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_none_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="112"><highlight class="normal">constexpr<sp/>expression_category<sp/>expression_type_v<sp/>=<sp/><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type&lt;T&gt;::value</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">constexpr<sp/>expression_category<sp/>expression_type_v<sp/>=<sp/><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type&lt;T&gt;::value</ref>;</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT&gt;</highlight></codeline>
-<codeline lineno="115" refid="structmongo__odm_1_1details_1_1expression__type_3_01sort__expr_3_01NvpT_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1sort__expr" kindref="compound">sort_expr</ref>&lt;NvpT&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_sort_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="115" refid="structmangrove_1_1details_1_1expression__type_3_01sort__expr_3_01NvpT_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1sort__expr" kindref="compound">sort_expr</ref>&lt;NvpT&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_sort_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight></codeline>
 <codeline lineno="117"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;expression_category<sp/>list_type,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
-<codeline lineno="118" refid="structmongo__odm_1_1details_1_1expression__type_3_01expression__list_3_01list__type_00_01Args_8_8_8_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1expression__list" kindref="compound">expression_list</ref>&lt;list_type,<sp/>Args...&gt;&gt;</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_category_t</ref>&lt;list_type&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="118" refid="structmangrove_1_1details_1_1expression__type_3_01expression__list_3_01list__type_00_01Args_8_8_8_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1expression__list" kindref="compound">expression_list</ref>&lt;list_type,<sp/>Args...&gt;&gt;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_category_t</ref>&lt;list_type&gt;<sp/>{};</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"></highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
-<codeline lineno="122" refid="structmongo__odm_1_1details_1_1expression__type_3_01comparison__expr_3_01NvpT_00_01U_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt;NvpT,<sp/>U&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="122" refid="structmangrove_1_1details_1_1expression__type_3_01comparison__expr_3_01NvpT_00_01U_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt;NvpT,<sp/>U&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
-<codeline lineno="125" refid="structmongo__odm_1_1details_1_1expression__type_3_01comparison__value__expr_3_01NvpT_00_01U_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1comparison__value__expr" kindref="compound">comparison_value_expr</ref>&lt;NvpT,<sp/>U&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="125" refid="structmangrove_1_1details_1_1expression__type_3_01comparison__value__expr_3_01NvpT_00_01U_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1comparison__value__expr" kindref="compound">comparison_value_expr</ref>&lt;NvpT,<sp/>U&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT&gt;</highlight></codeline>
-<codeline lineno="128" refid="structmongo__odm_1_1details_1_1expression__type_3_01mod__expr_3_01NvpT_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1mod__expr" kindref="compound">mod_expr</ref>&lt;NvpT&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="128" refid="structmangrove_1_1details_1_1expression__type_3_01mod__expr_3_01NvpT_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1mod__expr" kindref="compound">mod_expr</ref>&lt;NvpT&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr&gt;</highlight></codeline>
-<codeline lineno="131" refid="structmongo__odm_1_1details_1_1expression__type_3_01not__expr_3_01Expr_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1not__expr" kindref="compound">not_expr</ref>&lt;Expr&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="131" refid="structmangrove_1_1details_1_1expression__type_3_01not__expr_3_01Expr_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1not__expr" kindref="compound">not_expr</ref>&lt;Expr&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"></highlight></codeline>
 <codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
-<codeline lineno="134" refid="structmongo__odm_1_1details_1_1expression__type_3_01text__search__expr_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1text__search__expr" kindref="compound">text_search_expr</ref>&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="134" refid="structmangrove_1_1details_1_1expression__type_3_01text__search__expr_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1text__search__expr" kindref="compound">text_search_expr</ref>&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"></highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr1,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Expr2&gt;</highlight></codeline>
-<codeline lineno="137" refid="structmongo__odm_1_1details_1_1expression__type_3_01boolean__expr_3_01Expr1_00_01Expr2_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1boolean__expr" kindref="compound">boolean_expr</ref>&lt;Expr1,<sp/>Expr2&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="137" refid="structmangrove_1_1details_1_1expression__type_3_01boolean__expr_3_01Expr1_00_01Expr2_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1boolean__expr" kindref="compound">boolean_expr</ref>&lt;Expr1,<sp/>Expr2&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"></highlight></codeline>
 <codeline lineno="139"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>List&gt;</highlight></codeline>
-<codeline lineno="140" refid="structmongo__odm_1_1details_1_1expression__type_3_01boolean__list__expr_3_01List_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1boolean__list__expr" kindref="compound">boolean_list_expr</ref>&lt;List&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="140" refid="structmangrove_1_1details_1_1expression__type_3_01boolean__list__expr_3_01List_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1boolean__list__expr" kindref="compound">boolean_list_expr</ref>&lt;List&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_query_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"></highlight></codeline>
 <codeline lineno="142"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
-<codeline lineno="143" refid="structmongo__odm_1_1details_1_1expression__type_3_01update__expr_3_01NvpT_00_01U_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1update__expr" kindref="compound">update_expr</ref>&lt;NvpT,<sp/>U&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="143" refid="structmangrove_1_1details_1_1expression__type_3_01update__expr_3_01NvpT_00_01U_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1update__expr" kindref="compound">update_expr</ref>&lt;NvpT,<sp/>U&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"></highlight></codeline>
 <codeline lineno="145"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
-<codeline lineno="146" refid="structmongo__odm_1_1details_1_1expression__type_3_01update__value__expr_3_01NvpT_00_01U_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt;NvpT,<sp/>U&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="146" refid="structmangrove_1_1details_1_1expression__type_3_01update__value__expr_3_01NvpT_00_01U_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt;NvpT,<sp/>U&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"></highlight></codeline>
 <codeline lineno="148"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT&gt;</highlight></codeline>
-<codeline lineno="149" refid="structmongo__odm_1_1details_1_1expression__type_3_01unset__expr_3_01NvpT_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1unset__expr" kindref="compound">unset_expr</ref>&lt;NvpT&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="149" refid="structmangrove_1_1details_1_1expression__type_3_01unset__expr_3_01NvpT_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1unset__expr" kindref="compound">unset_expr</ref>&lt;NvpT&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"></highlight></codeline>
 <codeline lineno="151"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT&gt;</highlight></codeline>
-<codeline lineno="152" refid="structmongo__odm_1_1details_1_1expression__type_3_01current__date__expr_3_01NvpT_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1current__date__expr" kindref="compound">current_date_expr</ref>&lt;NvpT&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="152" refid="structmangrove_1_1details_1_1expression__type_3_01current__date__expr_3_01NvpT_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1current__date__expr" kindref="compound">current_date_expr</ref>&lt;NvpT&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight></codeline>
 <codeline lineno="154"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
-<codeline lineno="155" refid="structmongo__odm_1_1details_1_1expression__type_3_01add__to__set__update__expr_3_01NvpT_00_01U_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1add__to__set__update__expr" kindref="compound">add_to_set_update_expr</ref>&lt;NvpT,<sp/>U&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="155" refid="structmangrove_1_1details_1_1expression__type_3_01add__to__set__update__expr_3_01NvpT_00_01U_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1add__to__set__update__expr" kindref="compound">add_to_set_update_expr</ref>&lt;NvpT,<sp/>U&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
 <codeline lineno="157"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Sort&gt;</highlight></codeline>
-<codeline lineno="158" refid="structmongo__odm_1_1details_1_1expression__type_3_01push__update__expr_3_01NvpT_00_01U_00_01Sort_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1push__update__expr" kindref="compound">push_update_expr</ref>&lt;NvpT,<sp/>U,<sp/>Sort&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="158" refid="structmangrove_1_1details_1_1expression__type_3_01push__update__expr_3_01NvpT_00_01U_00_01Sort_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref>&lt;NvpT,<sp/>U,<sp/>Sort&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"></highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>NvpT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Integer&gt;</highlight></codeline>
-<codeline lineno="161" refid="structmongo__odm_1_1details_1_1expression__type_3_01bit__update__expr_3_01NvpT_00_01Integer_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmongo__odm_1_1bit__update__expr" kindref="compound">bit_update_expr</ref>&lt;NvpT,<sp/>Integer&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
+<codeline lineno="161" refid="structmangrove_1_1details_1_1expression__type_3_01bit__update__expr_3_01NvpT_00_01Integer_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;<ref refid="classmangrove_1_1bit__update__expr" kindref="compound">bit_update_expr</ref>&lt;NvpT,<sp/>Integer&gt;&gt;<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1expression__category__t" kindref="compound">expression_update_t</ref><sp/>{};</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>
 <codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment">//<sp/>type<sp/>trait<sp/>struct<sp/>for<sp/>checking<sp/>if<sp/>a<sp/>type<sp/>has<sp/>a<sp/>certain<sp/>expression<sp/>category.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="164"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;expression_category<sp/>type,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="165" refid="structmongo__odm_1_1details_1_1is__expression__type" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1is__expression__type" kindref="compound">is_expression_type</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::integral_constant&lt;bool,<sp/>type<sp/>==<sp/>expression_type_v&lt;T&gt;&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="165" refid="structmangrove_1_1details_1_1is__expression__type" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1is__expression__type" kindref="compound">is_expression_type</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::integral_constant&lt;bool,<sp/>type<sp/>==<sp/>expression_type_v&lt;T&gt;&gt;<sp/>{};</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"></highlight></codeline>
 <codeline lineno="167"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="168" refid="structmongo__odm_1_1details_1_1isnt__expression" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1isnt__expression" kindref="compound">isnt_expression</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1details_1_1is__expression__type" kindref="compound">is_expression_type</ref>&lt;expression_category::none,<sp/>T&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="168" refid="structmangrove_1_1details_1_1isnt__expression" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1isnt__expression" kindref="compound">isnt_expression</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1details_1_1is__expression__type" kindref="compound">is_expression_type</ref>&lt;expression_category::none,<sp/>T&gt;<sp/>{};</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"></highlight></codeline>
 <codeline lineno="170"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="171"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isnt_expression_v<sp/>=<sp/><ref refid="structmongo__odm_1_1details_1_1isnt__expression" kindref="compound">isnt_expression&lt;T&gt;::value</ref>;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isnt_expression_v<sp/>=<sp/><ref refid="structmangrove_1_1details_1_1isnt__expression" kindref="compound">isnt_expression&lt;T&gt;::value</ref>;</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"></highlight></codeline>
 <codeline lineno="173"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="174" refid="structmongo__odm_1_1details_1_1is__sort__expression" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1is__sort__expression" kindref="compound">is_sort_expression</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1details_1_1is__expression__type" kindref="compound">is_expression_type</ref>&lt;expression_category::sort,<sp/>T&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="174" refid="structmangrove_1_1details_1_1is__sort__expression" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1is__sort__expression" kindref="compound">is_sort_expression</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1details_1_1is__expression__type" kindref="compound">is_expression_type</ref>&lt;expression_category::sort,<sp/>T&gt;<sp/>{};</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"></highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="177"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_sort_expression_v<sp/>=<sp/><ref refid="structmongo__odm_1_1details_1_1is__sort__expression" kindref="compound">is_sort_expression&lt;T&gt;::value</ref>;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_sort_expression_v<sp/>=<sp/><ref refid="structmangrove_1_1details_1_1is__sort__expression" kindref="compound">is_sort_expression&lt;T&gt;::value</ref>;</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"></highlight></codeline>
 <codeline lineno="179"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="180" refid="structmongo__odm_1_1details_1_1is__query__expression" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1is__query__expression" kindref="compound">is_query_expression</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1details_1_1is__expression__type" kindref="compound">is_expression_type</ref>&lt;expression_category::query,<sp/>T&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="180" refid="structmangrove_1_1details_1_1is__query__expression" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1is__query__expression" kindref="compound">is_query_expression</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1details_1_1is__expression__type" kindref="compound">is_expression_type</ref>&lt;expression_category::query,<sp/>T&gt;<sp/>{};</highlight></codeline>
 <codeline lineno="181"><highlight class="normal"></highlight></codeline>
 <codeline lineno="182"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="183"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_query_expression_v<sp/>=<sp/><ref refid="structmongo__odm_1_1details_1_1is__query__expression" kindref="compound">is_query_expression&lt;T&gt;::value</ref>;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_query_expression_v<sp/>=<sp/><ref refid="structmangrove_1_1details_1_1is__query__expression" kindref="compound">is_query_expression&lt;T&gt;::value</ref>;</highlight></codeline>
 <codeline lineno="184"><highlight class="normal"></highlight></codeline>
 <codeline lineno="185"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="186" refid="structmongo__odm_1_1details_1_1is__update__expression" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmongo__odm_1_1details_1_1is__update__expression" kindref="compound">is_update_expression</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmongo__odm_1_1details_1_1is__expression__type" kindref="compound">is_expression_type</ref>&lt;expression_category::update,<sp/>T&gt;<sp/>{};</highlight></codeline>
+<codeline lineno="186" refid="structmangrove_1_1details_1_1is__update__expression" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmangrove_1_1details_1_1is__update__expression" kindref="compound">is_update_expression</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="structmangrove_1_1details_1_1is__expression__type" kindref="compound">is_expression_type</ref>&lt;expression_category::update,<sp/>T&gt;<sp/>{};</highlight></codeline>
 <codeline lineno="187"><highlight class="normal"></highlight></codeline>
 <codeline lineno="188"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="189"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_update_expression_v<sp/>=<sp/><ref refid="structmongo__odm_1_1details_1_1is__update__expression" kindref="compound">is_update_expression&lt;T&gt;::value</ref>;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_update_expression_v<sp/>=<sp/><ref refid="structmangrove_1_1details_1_1is__update__expression" kindref="compound">is_update_expression&lt;T&gt;::value</ref>;</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"></highlight></codeline>
 <codeline lineno="191"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>details</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="192"><highlight class="normal">MONGO_ODM_INLINE_NAMESPACE_END</highlight></codeline>
-<codeline lineno="193"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>bson_mapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal">MANGROVE_INLINE_NAMESPACE_END</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mangrove</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="194"><highlight class="normal"></highlight></codeline>
-<codeline lineno="195"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mongo_odm/config/postlude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mangrove/config/postlude.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="src/mongo_odm/expression_syntax.hpp"/>
+    <location file="src/mangrove/expression_syntax.hpp"/>
   </compounddef>
 </doxygen>

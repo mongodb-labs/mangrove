@@ -1,0 +1,654 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmangrove_1_1odm__collection" kind="class" language="C++" prot="public">
+    <compoundname>mangrove::odm_collection</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmangrove_1_1odm__collection_1a30c80571009697c440588f9557568280" prot="private" static="no" mutable="no">
+        <type>mongocxx::collection</type>
+        <definition>mongocxx::collection mangrove::odm_collection&lt; T &gt;::_coll</definition>
+        <argsstring></argsstring>
+        <name>_coll</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="271" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="271" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1a4056947d8f98821ad36579129b2f8fb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::odm_collection&lt; T &gt;::odm_collection</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>odm_collection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="34" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1a929fd8004dfee14438414cd2d13fab91" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::odm_collection&lt; T &gt;::odm_collection</definition>
+        <argsstring>(const mongocxx::collection &amp;c) noexcept</argsstring>
+        <name>odm_collection</name>
+        <param>
+          <type>const mongocxx::collection &amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="36" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="36" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1a8b027c1a89b6f7273d57f7fa89de8395" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::odm_collection&lt; T &gt;::odm_collection</definition>
+        <argsstring>(mongocxx::collection &amp;&amp;c) noexcept</argsstring>
+        <name>odm_collection</name>
+        <param>
+          <type>mongocxx::collection &amp;&amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="39" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="39" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1a362b460d3c346e620f079b8deb439b07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::odm_collection&lt; T &gt;::odm_collection</definition>
+        <argsstring>(odm_collection &amp;&amp;) noexcept=default</argsstring>
+        <name>odm_collection</name>
+        <param>
+          <type><ref refid="classmangrove_1_1odm__collection" kindref="compound">odm_collection</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="42" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1a5b177920c2bdcd1bcce089107bd92cd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmangrove_1_1odm__collection" kindref="compound">odm_collection</ref> &amp;</type>
+        <definition>odm_collection&amp; mangrove::odm_collection&lt; T &gt;::operator=</definition>
+        <argsstring>(odm_collection &amp;&amp;) noexcept=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classmangrove_1_1odm__collection" kindref="compound">odm_collection</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="43" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1a4b0ad6b6568c931b4bd681ae22e1344a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::odm_collection&lt; T &gt;::~odm_collection</definition>
+        <argsstring>()=default</argsstring>
+        <name>~odm_collection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="44" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1a254205ee428e7884fd6f6cfd1265a083" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mongocxx::collection</type>
+        <definition>mongocxx::collection mangrove::odm_collection&lt; T &gt;::collection</definition>
+        <argsstring>()</argsstring>
+        <name>collection</name>
+        <briefdescription>
+<para>Returns a copy of the underlying collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The mongocxx::collection that this object wraps </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="50" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="50" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1aad9103bc25239b287fc2ca074bc60c9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Result</type>
+            <defval>T</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classmangrove_1_1deserializing__cursor" kindref="compound">deserializing_cursor</ref>&lt; Result &gt;</type>
+        <definition>deserializing_cursor&lt;Result&gt; mangrove::odm_collection&lt; T &gt;::aggregate</definition>
+        <argsstring>(const mongocxx::pipeline &amp;pipeline, const mongocxx::options::aggregate &amp;options=mongocxx::options::aggregate())</argsstring>
+        <name>aggregate</name>
+        <param>
+          <type>const mongocxx::pipeline &amp;</type>
+          <declname>pipeline</declname>
+        </param>
+        <param>
+          <type>const mongocxx::options::aggregate &amp;</type>
+          <declname>options</declname>
+          <defval>mongocxx::options::aggregate()</defval>
+        </param>
+        <briefdescription>
+<para>Runs an aggregation framework pipeline against this collection, and returns the results as de-serialized objects. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function is templated on the result&apos;s type, which is not necessarily the same as the type of the documents in the colleciton.</para><para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- The type of the aggregation result. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pipeline</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pipeline of aggregation operations to perform. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional arguments, see mongocxx::mongocxx::options::aggregate.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A deserializing_cursor&lt;Result&gt; with the results. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>If</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the operation failed, the returned cursor will throw an mongocxx::exception::query when it is iterated.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ulink url="http://docs.mongodb.org/manual/reference/command/aggregate/">http://docs.mongodb.org/manual/reference/command/aggregate/</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="74" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="74" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1aa1ed71ad6b4238f101f693c019860da7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmangrove_1_1deserializing__cursor" kindref="compound">deserializing_cursor</ref>&lt; T &gt;</type>
+        <definition>deserializing_cursor&lt;T&gt; mangrove::odm_collection&lt; T &gt;::find</definition>
+        <argsstring>(bsoncxx::document::view_or_value filter, const mongocxx::options::find &amp;options=mongocxx::options::find())</argsstring>
+        <name>find</name>
+        <param>
+          <type>bsoncxx::document::view_or_value</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>const mongocxx::options::find &amp;</type>
+          <declname>options</declname>
+          <defval>mongocxx::options::find()</defval>
+        </param>
+        <briefdescription>
+<para>Finds the documents in this collection which match the provided filter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Document view representing a document that should match the query. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional arguments, see mongocxx::options::find</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Cursor with deserialized objects from the collection. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>If</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the find failed, the returned cursor will throw mongocxx::exception::query when it is iterated.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ulink url="http://docs.mongodb.org/manual/core/read-operations-introduction/">http://docs.mongodb.org/manual/core/read-operations-introduction/</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="95" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="95" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1a4581d5fae3e1f6516948d0a4bfd872dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mongocxx::stdx::optional&lt; T &gt;</type>
+        <definition>mongocxx::stdx::optional&lt;T&gt; mangrove::odm_collection&lt; T &gt;::find_one</definition>
+        <argsstring>(bsoncxx::document::view_or_value filter, const mongocxx::options::find &amp;options=mongocxx::options::find())</argsstring>
+        <name>find_one</name>
+        <param>
+          <type>bsoncxx::document::view_or_value</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>const mongocxx::options::find &amp;</type>
+          <declname>options</declname>
+          <defval>mongocxx::options::find()</defval>
+        </param>
+        <briefdescription>
+<para>Finds a single document in this collection that match the provided filter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Document view representing a document that should match the query. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional arguments, see mongocxx::options::find</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An optional object that matched the filter. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>mongocxx::exception::query</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the operation fails.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ulink url="http://docs.mongodb.org/manual/core/read-operations-introduction/">http://docs.mongodb.org/manual/core/read-operations-introduction/</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="114" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="114" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1af9857a5d1a07f798999aebdd29019028" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mongocxx::stdx::optional&lt; T &gt;</type>
+        <definition>mongocxx::stdx::optional&lt;T&gt; mangrove::odm_collection&lt; T &gt;::find_one_and_delete</definition>
+        <argsstring>(bsoncxx::document::view_or_value filter, const mongocxx::options::find_one_and_delete &amp;options=mongocxx::options::find_one_and_delete())</argsstring>
+        <name>find_one_and_delete</name>
+        <param>
+          <type>bsoncxx::document::view_or_value</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>const mongocxx::options::find_one_and_delete &amp;</type>
+          <declname>options</declname>
+          <defval>mongocxx::options::find_one_and_delete()</defval>
+        </param>
+        <briefdescription>
+<para>Finds a single document matching the filter, deletes it, and returns the original as a deserialized object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Document view representing a document that should be deleted. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional arguments, see mongocxx::options::find_one_and_delete</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The deserialized object that was deleted from the database. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>mongocxx::exception::write</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the operation fails. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="132" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="132" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1a8d9c25867d2cef995a616378631520ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mongocxx::stdx::optional&lt; T &gt;</type>
+        <definition>mongocxx::stdx::optional&lt;T&gt; mangrove::odm_collection&lt; T &gt;::find_one_and_replace</definition>
+        <argsstring>(bsoncxx::document::view_or_value filter, const T &amp;replacement, const mongocxx::options::find_one_and_replace &amp;options=mongocxx::options::find_one_and_replace())</argsstring>
+        <name>find_one_and_replace</name>
+        <param>
+          <type>bsoncxx::document::view_or_value</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>replacement</declname>
+        </param>
+        <param>
+          <type>const mongocxx::options::find_one_and_replace &amp;</type>
+          <declname>options</declname>
+          <defval>mongocxx::options::find_one_and_replace()</defval>
+        </param>
+        <briefdescription>
+<para>Finds a single document matching the filter, replaces it, and returns either the original or the replacement document as a deserialized object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Document view representing a document that should be replaced. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>replacement</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Serializable object representing the replacement for a matching document. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional arguments, see mongocxx::options::find_one_and_replace.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The original or replaced object. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>mongocxx::exception::write</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the operation fails.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>In order to pass a write concern to this, you must use the collection level set write concern - collection::write_concern(wc). </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="158" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="158" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1af05e0e7612b486707ce68b77be6b7498" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mongocxx::stdx::optional&lt; mongocxx::result::insert_one &gt;</type>
+        <definition>mongocxx::stdx::optional&lt;mongocxx::result::insert_one&gt; mangrove::odm_collection&lt; T &gt;::insert_one</definition>
+        <argsstring>(T obj, const mongocxx::options::insert &amp;options=mongocxx::options::insert())</argsstring>
+        <name>insert_one</name>
+        <param>
+          <type>T</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>const mongocxx::options::insert &amp;</type>
+          <declname>options</declname>
+          <defval>mongocxx::options::insert()</defval>
+        </param>
+        <briefdescription>
+<para>Inserts a single serializable object into the collection. </para>        </briefdescription>
+        <detaileddescription>
+<para>// TODO how to deal w/ identifiers If the document is missing an identifier (<computeroutput>_id</computeroutput> field) one will be generated for it.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>document</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The document to insert. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional arguments, see mongocxx::options::insert.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The result of attempting to perform the insert. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>mongocxx::exception::write</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the operation fails. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="180" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="180" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1a3fa4aa4b4a4495506278b2e87d0e7a8a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename container_type</type>
+          </param>
+        </templateparamlist>
+        <type>mongocxx::stdx::optional&lt; mongocxx::result::insert_many &gt;</type>
+        <definition>mongocxx::stdx::optional&lt;mongocxx::result::insert_many&gt; mangrove::odm_collection&lt; T &gt;::insert_many</definition>
+        <argsstring>(const container_type &amp;container, const mongocxx::options::insert &amp;options=mongocxx::options::insert())</argsstring>
+        <name>insert_many</name>
+        <param>
+          <type>const container_type &amp;</type>
+          <declname>container</declname>
+        </param>
+        <param>
+          <type>const mongocxx::options::insert &amp;</type>
+          <declname>options</declname>
+          <defval>mongocxx::options::insert()</defval>
+        </param>
+        <briefdescription>
+<para>Inserts multiple serializable objects into the collection. </para>        </briefdescription>
+        <detaileddescription>
+<para>// TODO how to deal w/ identifiers If any of the are missing identifiers the driver will generate them.</para><para><simplesect kind="warning"><para>This method uses the bulk insert command to execute the insertion as opposed to the legacy OP_INSERT wire protocol message. As a result, using this method to insert many documents on MongoDB &lt; 2.6 will be slow. </para></simplesect>
+<parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>containter_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The container type. Must contain an iterator that yields serializable objects.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>container</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Container of serializable objects to insert. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional arguments, see mongocxx::options::insert.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The result of attempting to performing the insert. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>mongocxx::exception::write</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>when the operation fails. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="208" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="208" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1a2a904ebc38dddaaba9e2f02aba6b0780" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename object_iterator_type</type>
+          </param>
+        </templateparamlist>
+        <type>mongocxx::stdx::optional&lt; mongocxx::result::insert_many &gt;</type>
+        <definition>mongocxx::stdx::optional&lt;mongocxx::result::insert_many&gt; mangrove::odm_collection&lt; T &gt;::insert_many</definition>
+        <argsstring>(object_iterator_type begin, object_iterator_type end, const mongocxx::options::insert &amp;options=mongocxx::options::insert())</argsstring>
+        <name>insert_many</name>
+        <param>
+          <type>object_iterator_type</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>object_iterator_type</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>const mongocxx::options::insert &amp;</type>
+          <declname>options</declname>
+          <defval>mongocxx::options::insert()</defval>
+        </param>
+        <briefdescription>
+<para>Inserts multiple serializable objects into the collection. </para>        </briefdescription>
+        <detaileddescription>
+<para>TODO how to deal w/ identifiers If any of the documents are missing /// identifiers the driver will generate them.</para><para><simplesect kind="warning"><para>This method uses the bulk insert command to execute the insertion as opposed to the legacy OP_INSERT wire protocol message. As a result, using this method to insert many documents on MongoDB &lt; 2.6 will be slow.</para></simplesect>
+<parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>object_iterator_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The iterator type. Must meet the requirements for the input iterator concept with a value type that is a serializable object.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>begin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Iterator pointing to the first document to be inserted. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Iterator pointing to the end of the documents to be inserted. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional arguments, see mongocxx::options::insert.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The result of attempting to performing the insert. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>mongocxx::exception::write</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the operation fails.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+TODO: document DocumentViewIterator concept or static assert </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="242" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="242" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1odm__collection_1a13adcb798fa2e9b244ccc7727755059c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>mongocxx::stdx::optional&lt; mongocxx::result::replace_one &gt;</type>
+        <definition>mongocxx::stdx::optional&lt;mongocxx::result::replace_one&gt; mangrove::odm_collection&lt; T &gt;::replace_one</definition>
+        <argsstring>(bsoncxx::document::view_or_value filter, const T &amp;replacement, const mongocxx::options::update &amp;options=mongocxx::options::update())</argsstring>
+        <name>replace_one</name>
+        <param>
+          <type>bsoncxx::document::view_or_value</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>replacement</declname>
+        </param>
+        <param>
+          <type>const mongocxx::options::update &amp;</type>
+          <declname>options</declname>
+          <defval>mongocxx::options::update()</defval>
+        </param>
+        <briefdescription>
+<para>Replaces a single document matching the provided filter in this collection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Document representing the match criteria. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>replacement</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The replacement document, as a serializable object. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional arguments, see mongocxx::options::update.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The result of attempting to replace a document. </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>mongocxx::exception::write</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the operation fails.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ulink url="http://docs.mongodb.org/manual/reference/command/update/">http://docs.mongodb.org/manual/reference/command/update/</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/odm_collection.hpp" line="264" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="264" bodyend="268"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mangrove/odm_collection.hpp" line="32" column="1" bodyfile="src/mangrove/odm_collection.hpp" bodystart="32" bodyend="272"/>
+    <listofallmembers>
+      <member refid="classmangrove_1_1odm__collection_1a30c80571009697c440588f9557568280" prot="private" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>_coll</name></member>
+      <member refid="classmangrove_1_1odm__collection_1aad9103bc25239b287fc2ca074bc60c9d" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>aggregate</name></member>
+      <member refid="classmangrove_1_1odm__collection_1a254205ee428e7884fd6f6cfd1265a083" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>collection</name></member>
+      <member refid="classmangrove_1_1odm__collection_1aa1ed71ad6b4238f101f693c019860da7" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>find</name></member>
+      <member refid="classmangrove_1_1odm__collection_1a4581d5fae3e1f6516948d0a4bfd872dc" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>find_one</name></member>
+      <member refid="classmangrove_1_1odm__collection_1af9857a5d1a07f798999aebdd29019028" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>find_one_and_delete</name></member>
+      <member refid="classmangrove_1_1odm__collection_1a8d9c25867d2cef995a616378631520ce" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>find_one_and_replace</name></member>
+      <member refid="classmangrove_1_1odm__collection_1a3fa4aa4b4a4495506278b2e87d0e7a8a" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>insert_many</name></member>
+      <member refid="classmangrove_1_1odm__collection_1a2a904ebc38dddaaba9e2f02aba6b0780" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>insert_many</name></member>
+      <member refid="classmangrove_1_1odm__collection_1af05e0e7612b486707ce68b77be6b7498" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>insert_one</name></member>
+      <member refid="classmangrove_1_1odm__collection_1a4056947d8f98821ad36579129b2f8fb0" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>odm_collection</name></member>
+      <member refid="classmangrove_1_1odm__collection_1a929fd8004dfee14438414cd2d13fab91" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>odm_collection</name></member>
+      <member refid="classmangrove_1_1odm__collection_1a8b027c1a89b6f7273d57f7fa89de8395" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>odm_collection</name></member>
+      <member refid="classmangrove_1_1odm__collection_1a362b460d3c346e620f079b8deb439b07" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>odm_collection</name></member>
+      <member refid="classmangrove_1_1odm__collection_1a5b177920c2bdcd1bcce089107bd92cd1" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>operator=</name></member>
+      <member refid="classmangrove_1_1odm__collection_1a13adcb798fa2e9b244ccc7727755059c" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>replace_one</name></member>
+      <member refid="classmangrove_1_1odm__collection_1a4b0ad6b6568c931b4bd681ae22e1344a" prot="public" virt="non-virtual"><scope>mangrove::odm_collection</scope><name>~odm_collection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

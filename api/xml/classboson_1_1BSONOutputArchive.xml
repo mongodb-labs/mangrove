@@ -1,0 +1,350 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classboson_1_1BSONOutputArchive" kind="class" language="C++" prot="public">
+    <compoundname>boson::BSONOutputArchive</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">cereal::OutputArchive&lt; BSONOutputArchive &gt;</basecompoundref>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classboson_1_1BSONOutputArchive_1af65c6f8816a10f07927dd4b87c2c2b8f" prot="private" static="no">
+        <name>OutputNodeType</name>
+        <enumvalue id="classboson_1_1BSONOutputArchive_1af65c6f8816a10f07927dd4b87c2c2b8fad34204d72ef88942903d871c12f1cc50" prot="private">
+          <name>StartObject</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classboson_1_1BSONOutputArchive_1af65c6f8816a10f07927dd4b87c2c2b8fadaff60416e9ab0d467514f2ceec55d2b" prot="private">
+          <name>InObject</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classboson_1_1BSONOutputArchive_1af65c6f8816a10f07927dd4b87c2c2b8fa996340e132bfc11a3480cfd8b1e748e9" prot="private">
+          <name>StartArray</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classboson_1_1BSONOutputArchive_1af65c6f8816a10f07927dd4b87c2c2b8fa1dd434ab03234427196327564f19f2e9" prot="private">
+          <name>InArray</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The possible states for the BSON nodes being output by the archive. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="150" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="150" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classboson_1_1BSONOutputArchive_1afbaa46a79891c991848c7a4a8ad81d59" prot="private" static="no">
+        <type>bsoncxx::builder::core</type>
+        <definition>using boson::BSONOutputArchive::BSONBuilder =  bsoncxx::builder::core</definition>
+        <argsstring></argsstring>
+        <name>BSONBuilder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="152" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a77dd6049c14bd2109a0ca9e264f6e14f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>boson::BSONOutputArchive::_bsonBuilder</definition>
+        <argsstring></argsstring>
+        <name>_bsonBuilder</name>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="175" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a834a8e2a9411099a5a97e38a5b24d9ac" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>boson::BSONOutputArchive::_writeStream</definition>
+        <argsstring></argsstring>
+        <name>_writeStream</name>
+        <initializer>{stream}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="176" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a5757003b2852c26ab8eba77f3d4f2c12" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>boson::BSONOutputArchive::_nextName</definition>
+        <argsstring></argsstring>
+        <name>_nextName</name>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="177" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1aff505e107e1a4a2911cabb5dc256c4d9" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>boson::BSONOutputArchive::_objAsRootElement</definition>
+        <argsstring></argsstring>
+        <name>_objAsRootElement</name>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="178" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a6530cbec807978d3c19198d3d0cb0bb8" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>boson::BSONOutputArchive::_dotNotationMode</definition>
+        <argsstring></argsstring>
+        <name>_dotNotationMode</name>
+        <initializer>{dotNotationMode}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="179" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a857c0dc7b8b0ee2eaf989e96cf531a18" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>boson::BSONOutputArchive::_arrayNestingLevel</definition>
+        <argsstring></argsstring>
+        <name>_arrayNestingLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="180" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1af9b923709c4a98aa75d5ccc3486b7f98" prot="public" static="no" mutable="no">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; boson::BSONOutputArchive::_writeStream</definition>
+        <argsstring></argsstring>
+        <name>_writeStream</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="426" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a21ae770e3eb91de12b515d5a7f93eaeb" prot="public" static="no" mutable="no">
+        <type>char const *</type>
+        <definition>char const* boson::BSONOutputArchive::_nextName</definition>
+        <argsstring></argsstring>
+        <name>_nextName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="429" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="429" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1add855ca03ae4e72df9db2b2afe26e3ce" prot="public" static="no" mutable="no">
+        <type>char const *</type>
+        <definition>char const* boson::BSONOutputArchive::_nextPotentialNodeName</definition>
+        <argsstring></argsstring>
+        <name>_nextPotentialNodeName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="433" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="433" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1ab26b4f55878f7754928634fc90f54388" prot="public" static="no" mutable="no">
+        <type>std::stack&lt; OutputNodeType &gt;</type>
+        <definition>std::stack&lt;OutputNodeType&gt; boson::BSONOutputArchive::_nodeTypeStack</definition>
+        <argsstring></argsstring>
+        <name>_nodeTypeStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="436" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="436" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a867aaed7643083cb99ca368d73f8dd51" prot="public" static="no" mutable="no">
+        <type>std::stack&lt; bool &gt;</type>
+        <definition>std::stack&lt;bool&gt; boson::BSONOutputArchive::_curNodeInheritsUnderlyingBSONDataBase</definition>
+        <argsstring></argsstring>
+        <name>_curNodeInheritsUnderlyingBSONDataBase</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="440" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="440" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a3771bd5e4dfd7a7e8751951471dab1e1" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; boson::BSONOutputArchive::_embeddedNameStack</definition>
+        <argsstring></argsstring>
+        <name>_embeddedNameStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="444" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="444" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a825c63a16953a05cbdd5794d561dff35" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool boson::BSONOutputArchive::_objAsRootElement</definition>
+        <argsstring></argsstring>
+        <name>_objAsRootElement</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="448" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="448" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a056da0fedb30c8b847101a2622b35deb" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool boson::BSONOutputArchive::_dotNotationMode</definition>
+        <argsstring></argsstring>
+        <name>_dotNotationMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="452" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="452" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a4014899e8fe171e039d47b76f16a253f" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t boson::BSONOutputArchive::_arrayNestingLevel</definition>
+        <argsstring></argsstring>
+        <name>_arrayNestingLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="456" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="456" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classboson_1_1BSONOutputArchive_1a5d80167bedb53885fcad535febbb3139" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>boson::BSONOutputArchive::BSONOutputArchive</definition>
+        <argsstring>(std::ostream &amp;stream, bool dotNotationMode=false)</argsstring>
+        <name>BSONOutputArchive</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>dotNotationMode</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Construct a <ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> that will output serialized classes as BSON to the provided stream. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stream to which the archiver will output BSON data.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dotNotationMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to true, the <ref refid="classboson_1_1BSONOutputArchive" kindref="compound">BSONOutputArchive</ref> will output the values in embedded documents in dot notation. This is useful when specifying the arguments to a $set field in a MongoDB update command.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ulink url="https://docs.mongodb.com/manual/core/document/#embedded-documents">https://docs.mongodb.com/manual/core/document/#embedded-documents</ulink></para></simplesect>
+<simplesect kind="warning"><para>Documents produced by the archiver in dotNotationMode are not compatible with the BSONInputArchiver and are only intended to be used as a way to produce the argument to $set. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="173" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="173" bodyend="174"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="41">
+        <label>cereal::OutputArchive&lt; BSONOutputArchive &gt;</label>
+      </node>
+      <node id="40">
+        <label>boson::BSONOutputArchive</label>
+        <link refid="classboson_1_1BSONOutputArchive"/>
+        <childnode refid="41" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="43">
+        <label>cereal::OutputArchive&lt; BSONOutputArchive &gt;</label>
+      </node>
+      <node id="42">
+        <label>boson::BSONOutputArchive</label>
+        <link refid="classboson_1_1BSONOutputArchive"/>
+        <childnode refid="43" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/boson/bson_archiver.hpp" line="146" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="146" bodyend="458"/>
+    <listofallmembers>
+      <member refid="classboson_1_1BSONOutputArchive_1a857c0dc7b8b0ee2eaf989e96cf531a18" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_arrayNestingLevel</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1a4014899e8fe171e039d47b76f16a253f" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_arrayNestingLevel</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1a77dd6049c14bd2109a0ca9e264f6e14f" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_bsonBuilder</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1a867aaed7643083cb99ca368d73f8dd51" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_curNodeInheritsUnderlyingBSONDataBase</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1a6530cbec807978d3c19198d3d0cb0bb8" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_dotNotationMode</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1a056da0fedb30c8b847101a2622b35deb" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_dotNotationMode</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1a3771bd5e4dfd7a7e8751951471dab1e1" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_embeddedNameStack</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1a5757003b2852c26ab8eba77f3d4f2c12" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_nextName</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1a21ae770e3eb91de12b515d5a7f93eaeb" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_nextName</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1add855ca03ae4e72df9db2b2afe26e3ce" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_nextPotentialNodeName</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1ab26b4f55878f7754928634fc90f54388" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_nodeTypeStack</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1aff505e107e1a4a2911cabb5dc256c4d9" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_objAsRootElement</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1a825c63a16953a05cbdd5794d561dff35" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_objAsRootElement</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1a834a8e2a9411099a5a97e38a5b24d9ac" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_writeStream</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1af9b923709c4a98aa75d5ccc3486b7f98" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_writeStream</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1afbaa46a79891c991848c7a4a8ad81d59" prot="private" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>BSONBuilder</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1a5d80167bedb53885fcad535febbb3139" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>BSONOutputArchive</name></member>
+      <member refid="classboson_1_1BSONOutputArchive_1af65c6f8816a10f07927dd4b87c2c2b8f" prot="private" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>OutputNodeType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

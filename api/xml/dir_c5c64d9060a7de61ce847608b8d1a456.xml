@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_c5c64d9060a7de61ce847608b8d1a456" kind="dir">
+    <compoundname>src/boson/config</compoundname>
+    <innerfile refid="boson_2config_2compiler_8hpp">compiler.hpp</innerfile>
+    <innerfile refid="boson_2config_2postlude_8hpp">postlude.hpp</innerfile>
+    <innerfile refid="boson_2config_2prelude_8hpp">prelude.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/boson/config/"/>
+  </compounddef>
+</doxygen>

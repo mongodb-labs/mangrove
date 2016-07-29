@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmangrove_1_1boolean__expr" kind="class" language="C++" prot="public">
+    <compoundname>mangrove::boolean_expr</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Expr1</type>
+      </param>
+      <param>
+        <type>typename Expr2</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classmangrove_1_1boolean__expr_1a9172b5706f2dfe085f0b600397f63e97" prot="public" static="no" mutable="no">
+        <type>const Expr1</type>
+        <definition>const Expr1 mangrove::boolean_expr&lt; Expr1, Expr2 &gt;::_lhs</definition>
+        <argsstring></argsstring>
+        <name>_lhs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="602" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="602" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1boolean__expr_1a0d076a9602e8a5cd4fcba963e94e5554" prot="public" static="no" mutable="no">
+        <type>const Expr2</type>
+        <definition>const Expr2 mangrove::boolean_expr&lt; Expr1, Expr2 &gt;::_rhs</definition>
+        <argsstring></argsstring>
+        <name>_rhs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="603" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="603" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1boolean__expr_1ab972dcbae9b010e658c37e9b70b4a522" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* mangrove::boolean_expr&lt; Expr1, Expr2 &gt;::_op</definition>
+        <argsstring></argsstring>
+        <name>_op</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="604" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="604" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmangrove_1_1boolean__expr_1a5157d3daeff2e3d8bd7a53a4d98bf1fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mangrove::boolean_expr&lt; Expr1, Expr2 &gt;::boolean_expr</definition>
+        <argsstring>(const Expr1 &amp;lhs, const Expr2 &amp;rhs, const char *op)</argsstring>
+        <name>boolean_expr</name>
+        <param>
+          <type>const Expr1 &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const Expr2 &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a boolean expression from two other expressions, and a certain operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The left-hand side of the expression. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The right-hand side of the expression. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>op</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The operator of the expression, e.g. AND or OR. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="558" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="558" bodyend="560"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1boolean__expr_1ab160beab1d655b6640f30b53ee149338" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mangrove::boolean_expr&lt; Expr1, Expr2 &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Appends this query to a BSON core builder as a key-value pair &quot;$op: [{lhs}, {rhs}]&quot;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A basic BSON core builder. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Whether</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to wrap this expression inside a document. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="567" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="567" bodyend="590"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1boolean__expr_1a72b2e366768620bd1960fc54a4c41f8b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::boolean_expr&lt; Expr1, Expr2 &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Converts the expression to a BSON filter for a query, in the form &quot;{ $op: [{lhs}, {rhs}] }&quot;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="596" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="596" bodyend="600"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This represents a boolean expression with two arguments. </para>    </briefdescription>
+    <detaileddescription>
+<para>The arguments can, in turn, be boolean expressions. </para>    </detaileddescription>
+    <location file="src/mangrove/expression_syntax.hpp" line="68" column="1" bodyfile="src/mangrove/expression_syntax.hpp" bodystart="68" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmangrove_1_1boolean__expr_1a9172b5706f2dfe085f0b600397f63e97" prot="public" virt="non-virtual"><scope>mangrove::boolean_expr</scope><name>_lhs</name></member>
+      <member refid="classmangrove_1_1boolean__expr_1ab972dcbae9b010e658c37e9b70b4a522" prot="public" virt="non-virtual"><scope>mangrove::boolean_expr</scope><name>_op</name></member>
+      <member refid="classmangrove_1_1boolean__expr_1a0d076a9602e8a5cd4fcba963e94e5554" prot="public" virt="non-virtual"><scope>mangrove::boolean_expr</scope><name>_rhs</name></member>
+      <member refid="classmangrove_1_1boolean__expr_1ab160beab1d655b6640f30b53ee149338" prot="public" virt="non-virtual"><scope>mangrove::boolean_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmangrove_1_1boolean__expr_1a5157d3daeff2e3d8bd7a53a4d98bf1fe" prot="public" virt="non-virtual"><scope>mangrove::boolean_expr</scope><name>boolean_expr</name></member>
+      <member refid="classmangrove_1_1boolean__expr_1a72b2e366768620bd1960fc54a4c41f8b" prot="public" virt="non-virtual"><scope>mangrove::boolean_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

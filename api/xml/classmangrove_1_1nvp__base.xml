@@ -1,0 +1,1488 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmangrove_1_1nvp__base" kind="class" language="C++" prot="public">
+    <compoundname>mangrove::nvp_base</compoundname>
+    <includes refid="nvp_8hpp" local="no">nvp.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>NvpT</declname>
+        <defname>NvpT</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classmangrove_1_1nvp__base_1a68a3c88da5311addff93b6e638a448d8" prot="private" static="no">
+        <type>std::enable_if_t&lt; is_iterable_not_string_v&lt; Iterable &gt; &amp;&amp;std::is_convertible&lt; iterable_value_t&lt; Iterable &gt;, iterable_value_t&lt; remove_optional_t&lt; T &gt;&gt;&gt;::value, Default &gt;</type>
+        <definition>using mangrove::nvp_base&lt; NvpT, T &gt;::enable_if_matching_iterable_t =  std::enable_if_t&lt;is_iterable_not_string_v&lt;Iterable&gt; &amp;&amp; std::is_convertible&lt;iterable_value_t&lt;Iterable&gt;, iterable_value_t&lt;remove_optional_t&lt;T&gt;&gt;&gt;::value, Default&gt;</definition>
+        <argsstring></argsstring>
+        <name>enable_if_matching_iterable_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="301" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classmangrove_1_1nvp__base_1ab8d58d5f9660b07e1a25f2f4c704f44b" prot="public" static="no">
+        <type>T</type>
+        <definition>using mangrove::nvp_base&lt; NvpT, T &gt;::type =  T</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="308" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classmangrove_1_1nvp__base_1a8cecdc8498edb5022b8bf365725ec327" prot="public" static="no">
+        <type>remove_optional_t&lt; T &gt;</type>
+        <definition>using mangrove::nvp_base&lt; NvpT, T &gt;::no_opt_type =  remove_optional_t&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>no_opt_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="310" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classmangrove_1_1nvp__base_1a7b5ddb9396c7631922fb1d1e4a60bdc7" prot="public" static="no">
+        <type>iterable_value_t&lt; no_opt_type &gt;</type>
+        <definition>using mangrove::nvp_base&lt; NvpT, T &gt;::child_base_type =  iterable_value_t&lt;no_opt_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>child_base_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="311" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a14d7eb7640f2e3ee54e6e75c32c0ffa2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1nvp__child" kindref="compound">nvp_child</ref>&lt; iterable_value_t&lt; no_opt_type &gt;, U, NvpT &gt;</type>
+        <definition>constexpr nvp_child&lt;iterable_value_t&lt;no_opt_type&gt;, U, NvpT&gt; mangrove::nvp_base&lt; NvpT, T &gt;::operator-&gt;*</definition>
+        <argsstring>(const nvp&lt; iterable_value_t&lt; no_opt_type &gt;, U &gt; &amp;child) const </argsstring>
+        <name>operator-&gt;*</name>
+        <param>
+          <type>const <ref refid="classmangrove_1_1nvp" kindref="compound">nvp</ref>&lt; iterable_value_t&lt; no_opt_type &gt;, U &gt; &amp;</type>
+          <declname>child</declname>
+        </param>
+        <briefdescription>
+<para>Chains two name-value pairs to access a sub-field, i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>a field with the name &quot;parent.child&quot;. This also allows accessing the fields of documents that are in an array. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>U</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the child NVP </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>child</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An NVP that corresponds to a sub-field of this NVP. Its base class must be the same as this field&apos;s current type. If this field is an array of documents, then &apos;child&apos; corresponds to a subfield of the documents in this array. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An NVP with the same base class and type as the subfield, but with a link to a parent so that its name is qualified in dot notation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="324" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="324" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a5ea936ff27fb6141efe2476f75615184" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1array__element__nvp" kindref="compound">array_element_nvp</ref>&lt; NvpT &gt;</type>
+        <definition>constexpr array_element_nvp&lt;NvpT&gt; mangrove::nvp_base&lt; NvpT, T &gt;::operator[]</definition>
+        <argsstring>(std::size_t i) const </argsstring>
+        <name>operator[]</name>
+        <param>
+          <type>std::size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="330" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="330" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a60b8725524a2fde6f8c9540c8445adb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classmangrove_1_1sort__expr" kindref="compound">sort_expr</ref>&lt; NvpT &gt;</type>
+        <definition>constexpr sort_expr&lt;NvpT&gt; mangrove::nvp_base&lt; NvpT, T &gt;::sort</definition>
+        <argsstring>(bool ascending) const </argsstring>
+        <name>sort</name>
+        <param>
+          <type>bool</type>
+          <declname>ascending</declname>
+        </param>
+        <briefdescription>
+<para>Creates a sort expression that sorts documents by this field. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ascending</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to sort by ascending order (+1 in MongoDB syntax). If false, sorts by descending order (-1 in MongoDB syntax). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a <ref refid="classmangrove_1_1sort__expr" kindref="compound">sort_expr</ref> that reprsents the sort expression {field: +/-1}. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="340" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="340" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1afc04b79abaca69dc454c2ea6dd7271ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Iterable</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>enable_if_matching_iterable_t&lt;Iterable&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, Iterable &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, Iterable&gt; mangrove::nvp_base&lt; NvpT, T &gt;::in</definition>
+        <argsstring>(const Iterable &amp;iter) const </argsstring>
+        <name>in</name>
+        <param>
+          <type>const Iterable &amp;</type>
+          <declname>iter</declname>
+        </param>
+        <briefdescription>
+<para>Creates an expression that checks whether the value of this field matches any value in the given iterable. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Iterable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A type that works in range-based for loops, and yields objects convertible to the type of this name-value pair. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="351" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="351" bodyend="353"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1aadebfb603c05353a812e9bc8a0530793" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Iterable</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>enable_if_matching_iterable_t&lt;Iterable&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, Iterable &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, Iterable&gt; mangrove::nvp_base&lt; NvpT, T &gt;::nin</definition>
+        <argsstring>(const Iterable &amp;iter) const </argsstring>
+        <name>nin</name>
+        <param>
+          <type>const Iterable &amp;</type>
+          <declname>iter</declname>
+        </param>
+        <briefdescription>
+<para>Creates an expression that checks whether the value of this field matches none of the values in the given iterable. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Iterable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A type that works in range-based for loops, and yields objects convertible to the type of this name-value pair. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="362" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="362" bodyend="364"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a43fcb75163884d6d6582f53625b20226" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>T</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_optional_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, bool &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, bool&gt; mangrove::nvp_base&lt; NvpT, T &gt;::exists</definition>
+        <argsstring>(const bool &amp;exists) const </argsstring>
+        <name>exists</name>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>exists</declname>
+        </param>
+        <briefdescription>
+<para>Creates an expression that checks the existence of a certain field. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only enabled for fields that are optional types. {field: {$exists: &lt;bool&gt;}} <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>exists</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If false, checks that the given field does <emphasis>not</emphasis> exist in a document. True by default. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="374" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="374" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1af17554cee50b9cf7146ef81276190966" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;U&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1mod__expr" kindref="compound">mod_expr</ref>&lt; NvpT &gt;</type>
+        <definition>constexpr mod_expr&lt;NvpT&gt; mangrove::nvp_base&lt; NvpT, T &gt;::mod</definition>
+        <argsstring>(const int &amp;divisor, const int &amp;remainder) const </argsstring>
+        <name>mod</name>
+        <param>
+          <type>const int &amp;</type>
+          <declname>divisor</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>remainder</declname>
+        </param>
+        <briefdescription>
+<para>Creates a <ref refid="classmangrove_1_1mod__expr" kindref="compound">mod_expr</ref> that represents a query with the $mod operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Such a query essentially checks that &quot;nvp_value % divisor == remainder&quot; <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>divisor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The divisor for the modulus operation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>remainder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The remainder after dividing a value by <computeroutput>divisor</computeroutput> </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmangrove_1_1mod__expr" kindref="compound">mod_expr</ref> representing this query. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="386" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="386" bodyend="388"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a0c9da6ea8ec8cec0bcdba273cd5f1bd7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_string_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__value__expr" kindref="compound">comparison_value_expr</ref>&lt; NvpT, bsoncxx::types::b_regex &gt;</type>
+        <definition>constexpr comparison_value_expr&lt;NvpT, bsoncxx::types::b_regex&gt; mangrove::nvp_base&lt; NvpT, T &gt;::regex</definition>
+        <argsstring>(const char *regex, const char *options) const </argsstring>
+        <name>regex</name>
+        <param>
+          <type>const char *</type>
+          <declname>regex</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>options</declname>
+        </param>
+        <briefdescription>
+<para>Creates a comparison expression that represents a query with a $regex operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Such a query only works for string fields. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>regex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The regex to check against. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Options to pass to the regex. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="397" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="397" bodyend="400"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1aa27deff6976c96110fbb92e3161edf18" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Iterable</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>enable_if_matching_iterable_t&lt;Iterable&gt;</defval>
+          </param>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, Iterable &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, Iterable&gt; mangrove::nvp_base&lt; NvpT, T &gt;::all</definition>
+        <argsstring>(const Iterable &amp;iter) const </argsstring>
+        <name>all</name>
+        <param>
+          <type>const Iterable &amp;</type>
+          <declname>iter</declname>
+        </param>
+        <briefdescription>
+<para>Creates a query with the $all operator that compares values in this field&apos;s array to values in another array. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only enabled if the current field is an iterable itself. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An iterable containing elements of the same type as this field&apos;s elements. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A comparison expression with the $all oeprator. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="413" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="413" bodyend="415"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1ad98791cdabcfcc6b9465f48fa434a94c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;details::is_query_expression_v&lt;Expr&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, Expr &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, Expr&gt; mangrove::nvp_base&lt; NvpT, T &gt;::elem_match</definition>
+        <argsstring>(const Expr &amp;queries) const </argsstring>
+        <name>elem_match</name>
+        <param>
+          <type>const Expr &amp;</type>
+          <declname>queries</declname>
+        </param>
+        <briefdescription>
+<para>Creates a query with the $elemMatch operator that finds elements in this field that match the given queries. </para>        </briefdescription>
+        <detaileddescription>
+<para>This can include &quot;free&quot; expressions, that don&apos;t contain a field name, in the case of a scalar array. e.g. &quot;arr: {$elemMatch: {$gt: 4, .....}}&quot; This is only enabled if the current field is an iterable itself.</para><para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Expr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A query expression object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>queries</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Queries to comapre values against. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A comparison expression with the $elemMatch operator. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="429" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="429" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a60622c570186d6eac26460bed416ed93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1free__nvp" kindref="compound">free_nvp</ref>&lt; iterable_value_t&lt; no_opt_type &gt; &gt;</type>
+        <definition>constexpr free_nvp&lt;iterable_value_t&lt;no_opt_type&gt; &gt; mangrove::nvp_base&lt; NvpT, T &gt;::element</definition>
+        <argsstring>() const </argsstring>
+        <name>element</name>
+        <briefdescription>
+<para>Constructs a nameless name-value-pair that corresponds to an element in a scalar array, if this field is an array. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is used to create expressions with $elemMatch. This is only enabled if this current field is an array. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="439" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="439" bodyend="441"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a18439f708a503f0a8b768e407dbe6ae6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, std::int64_t &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, std::int64_t&gt; mangrove::nvp_base&lt; NvpT, T &gt;::size</definition>
+        <argsstring>(const std::int64_t &amp;n) const </argsstring>
+        <name>size</name>
+        <param>
+          <type>const std::int64_t &amp;</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+<para>Creates an array query expression with the $size operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only enabled if this current field is an array. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size the array should be. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="449" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="449" bodyend="451"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a4f21be175d0af1329d27137dad843d41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;U&gt;::value ||                                          std::is_same&lt;U, bsoncxx::types::b_binary&gt;::value&gt;</defval>
+          </param>
+          <param>
+            <type>typename Mask</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;Mask&gt;::value ||                                          std::is_same&lt;Mask, bsoncxx::types::b_binary&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, Mask &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, Mask&gt; mangrove::nvp_base&lt; NvpT, T &gt;::bits_all_set</definition>
+        <argsstring>(const Mask &amp;bitmask) const </argsstring>
+        <name>bits_all_set</name>
+        <param>
+          <type>const Mask &amp;</type>
+          <declname>bitmask</declname>
+        </param>
+        <briefdescription>
+<para>Creates a query that uses the $bitsAllSet operator to check a numerical field with a bitmask. </para>        </briefdescription>
+        <detaileddescription>
+<para>$bitsAllSet checks that every bit in the bitmask is set in the field&apos;s value. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bitmask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- A bitmask to pass to the $bitsAllSet operator </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref> representing this query </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="467" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="467" bodyend="469"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a761062eb92207fa8c42c6740e9549139" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;U&gt;::value ||                                          std::is_same&lt;U, bsoncxx::types::b_binary&gt;::value&gt;</defval>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__value__expr" kindref="compound">comparison_value_expr</ref>&lt; NvpT, std::int64_t &gt;</type>
+        <definition>constexpr comparison_value_expr&lt;NvpT, std::int64_t&gt; mangrove::nvp_base&lt; NvpT, T &gt;::bits_all_set</definition>
+        <argsstring>(std::int64_t pos1, std::int64_t pos2, Args...positions) const </argsstring>
+        <name>bits_all_set</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>pos1</declname>
+        </param>
+        <param>
+          <type>std::int64_t</type>
+          <declname>pos2</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>positions</declname>
+        </param>
+        <briefdescription>
+<para>Creates a query that uses the $bitsAllSet operator to check a series of bits, given as bit positions. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function has two positional arguments to distinguish from the signature that takes a bit mask (see above) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pos1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first bit position to check </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pos2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second bit position to check </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>positions...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variadic argument containing further bit positions. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref> representing this query </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="484" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="484" bodyend="489"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a59ea684f00c07cf88bae76e6fc10cfc9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;U&gt;::value ||                                          std::is_same&lt;U, bsoncxx::types::b_binary&gt;::value&gt;</defval>
+          </param>
+          <param>
+            <type>typename Mask</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;Mask&gt;::value ||                                          std::is_same&lt;Mask, bsoncxx::types::b_binary&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, Mask &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, Mask&gt; mangrove::nvp_base&lt; NvpT, T &gt;::bits_any_set</definition>
+        <argsstring>(const Mask &amp;bitmask) const </argsstring>
+        <name>bits_any_set</name>
+        <param>
+          <type>const Mask &amp;</type>
+          <declname>bitmask</declname>
+        </param>
+        <briefdescription>
+<para>Creates a query that uses the $bitsAnySet operator to check a numerical field with a bitmask. </para>        </briefdescription>
+        <detaileddescription>
+<para>$bitsAnySet checks that a least one bit in the bitmask is set in the field&apos;s value. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bitmask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- A bitmask to pass to the $bitsAnySet operator </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref> representing this query </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="503" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="503" bodyend="505"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a9108a3aed96ae225f2bb10a927581a31" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;U&gt;::value ||                                          std::is_same&lt;U, bsoncxx::types::b_binary&gt;::value&gt;</defval>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__value__expr" kindref="compound">comparison_value_expr</ref>&lt; NvpT, std::int64_t &gt;</type>
+        <definition>constexpr comparison_value_expr&lt;NvpT, std::int64_t&gt; mangrove::nvp_base&lt; NvpT, T &gt;::bits_any_set</definition>
+        <argsstring>(std::int64_t pos1, std::int64_t pos2, Args...positions) const </argsstring>
+        <name>bits_any_set</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>pos1</declname>
+        </param>
+        <param>
+          <type>std::int64_t</type>
+          <declname>pos2</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>positions</declname>
+        </param>
+        <briefdescription>
+<para>Creates a query that uses the $bitsAnySet operator to check a series of bits, given as bit positions. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function has two positional arguments to distinguish from the signature that takes a bit mask (see above) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pos1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first bit position to check </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pos2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second bit position to check </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>positions...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variadic argument containing further bit positions. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref> representing this query </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="520" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="520" bodyend="525"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a59b7d75e874fb7858c0f6ef11e76ce90" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;U&gt;::value ||                                          std::is_same&lt;U, bsoncxx::types::b_binary&gt;::value&gt;</defval>
+          </param>
+          <param>
+            <type>typename Mask</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;Mask&gt;::value ||                                          std::is_same&lt;Mask, bsoncxx::types::b_binary&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__value__expr" kindref="compound">comparison_value_expr</ref>&lt; NvpT, Mask &gt;</type>
+        <definition>constexpr comparison_value_expr&lt;NvpT, Mask&gt; mangrove::nvp_base&lt; NvpT, T &gt;::bits_all_clear</definition>
+        <argsstring>(const Mask &amp;bitmask) const </argsstring>
+        <name>bits_all_clear</name>
+        <param>
+          <type>const Mask &amp;</type>
+          <declname>bitmask</declname>
+        </param>
+        <briefdescription>
+<para>Creates a query that uses the $bitsAllClear operator to check a numerical field with a bitmask. </para>        </briefdescription>
+        <detaileddescription>
+<para>$bitsAllClear checks that every bit in the bitmask is cleared in the field&apos;s value. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bitmask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- A bitmask to pass to the $bitsAllClear operator </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref> representing this query </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="540" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="540" bodyend="542"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a7ca9a391784ef4ff99efd8a1f688f865" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;U&gt;::value ||                                          std::is_same&lt;U, bsoncxx::types::b_binary&gt;::value&gt;</defval>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__value__expr" kindref="compound">comparison_value_expr</ref>&lt; NvpT, std::int64_t &gt;</type>
+        <definition>constexpr comparison_value_expr&lt;NvpT, std::int64_t&gt; mangrove::nvp_base&lt; NvpT, T &gt;::bits_all_clear</definition>
+        <argsstring>(std::int64_t pos1, std::int64_t pos2, Args...positions) const </argsstring>
+        <name>bits_all_clear</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>pos1</declname>
+        </param>
+        <param>
+          <type>std::int64_t</type>
+          <declname>pos2</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>positions</declname>
+        </param>
+        <briefdescription>
+<para>Creates a query that uses the $bitsAllClear operator to check a series of bits, given as bit positions. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function has two positional arguments to distinguish from the signature that takes a bit mask (see above) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pos1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first bit position to check </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pos2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second bit position to check </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>positions...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variadic argument containing further bit positions. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref> representing this query </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="557" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="557" bodyend="562"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1ad0b8db86f08260815bfcba3ff549f86d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;U&gt;::value ||                                          std::is_same&lt;U, bsoncxx::types::b_binary&gt;::value&gt;</defval>
+          </param>
+          <param>
+            <type>typename Mask</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;Mask&gt;::value ||                                          std::is_same&lt;Mask, bsoncxx::types::b_binary&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, Mask &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, Mask&gt; mangrove::nvp_base&lt; NvpT, T &gt;::bits_any_clear</definition>
+        <argsstring>(const Mask &amp;bitmask) const </argsstring>
+        <name>bits_any_clear</name>
+        <param>
+          <type>const Mask &amp;</type>
+          <declname>bitmask</declname>
+        </param>
+        <briefdescription>
+<para>Creates a query that uses the $bitsAnyClear operator to check a numerical field with a bitmask. </para>        </briefdescription>
+        <detaileddescription>
+<para>$bitsAnyClear checks that a least one bit in the bitmask is cleared in the field&apos;s value. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bitmask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- A bitmask to pass to the $bitsAnyClear operator </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref> representing this query </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="577" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="577" bodyend="579"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a9af3921ef1af416730aa8965cfbfff3c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;U&gt;::value ||                                          std::is_same&lt;U, bsoncxx::types::b_binary&gt;::value&gt;</defval>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1comparison__value__expr" kindref="compound">comparison_value_expr</ref>&lt; NvpT, std::int64_t &gt;</type>
+        <definition>constexpr comparison_value_expr&lt;NvpT, std::int64_t&gt; mangrove::nvp_base&lt; NvpT, T &gt;::bits_any_clear</definition>
+        <argsstring>(std::int64_t pos1, std::int64_t pos2, Args...positions) const </argsstring>
+        <name>bits_any_clear</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>pos1</declname>
+        </param>
+        <param>
+          <type>std::int64_t</type>
+          <declname>pos2</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>positions</declname>
+        </param>
+        <briefdescription>
+<para>Creates a query that uses the $bitsAnyClear operator to check a series of bits, given as bit positions. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function has two positional arguments to distinguish from the signature that takes a bit mask (see above) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pos1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first bit position to check </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pos2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second bit position to check </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>positions...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variadic argument containing further bit positions. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref> representing this query </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="594" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="594" bodyend="599"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a025667ef42c5ebc4815a0d514cfc81bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classmangrove_1_1update__expr" kindref="compound">update_expr</ref>&lt; NvpT, no_opt_type &gt;</type>
+        <definition>constexpr update_expr&lt;NvpT, no_opt_type&gt; mangrove::nvp_base&lt; NvpT, T &gt;::set_on_insert</definition>
+        <argsstring>(const no_opt_type &amp;val) const </argsstring>
+        <name>set_on_insert</name>
+        <param>
+          <type>const no_opt_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="601" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="601" bodyend="603"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a906f10008bd72b32e75f496f1a24b5d7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>T</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_optional_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1unset__expr" kindref="compound">unset_expr</ref>&lt; NvpT &gt;</type>
+        <definition>constexpr unset_expr&lt;NvpT&gt; mangrove::nvp_base&lt; NvpT, T &gt;::unset</definition>
+        <argsstring>() const </argsstring>
+        <name>unset</name>
+        <briefdescription>
+<para>Creates an expression that unsets the current field. </para>        </briefdescription>
+        <detaileddescription>
+<para>The field must be of optional type. <simplesect kind="return"><para>An <ref refid="classmangrove_1_1unset__expr" kindref="compound">unset_expr</ref> that unsets the current field. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="612" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="612" bodyend="614"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a749ecb4d139aea530a7ecc4075d98187" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classmangrove_1_1update__expr" kindref="compound">update_expr</ref>&lt; NvpT, no_opt_type &gt;</type>
+        <definition>constexpr update_expr&lt;NvpT, no_opt_type&gt; mangrove::nvp_base&lt; NvpT, T &gt;::min</definition>
+        <argsstring>(const no_opt_type &amp;val) const </argsstring>
+        <name>min</name>
+        <param>
+          <type>const no_opt_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Creates an expression that uses the $min operator to only update a field if the new value is lower than the current value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The (tentative) new value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An UpdateExpression with the $min operator. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="622" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="622" bodyend="624"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1a6e02c07ddd8494336583b38612cc0090" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classmangrove_1_1update__expr" kindref="compound">update_expr</ref>&lt; NvpT, no_opt_type &gt;</type>
+        <definition>constexpr update_expr&lt;NvpT, no_opt_type&gt; mangrove::nvp_base&lt; NvpT, T &gt;::max</definition>
+        <argsstring>(const no_opt_type &amp;val) const </argsstring>
+        <name>max</name>
+        <param>
+          <type>const no_opt_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Creates an expression that uses the $max operator to only update a field if the new value is greater than the current value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The (tentative) new value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An UpdateExpression with the $max operator. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="632" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="632" bodyend="634"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1aa4d2b5c0930914b4a2b202b825282925" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1dollar__operator__nvp" kindref="compound">dollar_operator_nvp</ref>&lt; NvpT &gt;</type>
+        <definition>constexpr dollar_operator_nvp&lt;NvpT&gt; mangrove::nvp_base&lt; NvpT, T &gt;::first_match</definition>
+        <argsstring>() const </argsstring>
+        <name>first_match</name>
+        <briefdescription>
+<para>Returns a name-value pair with the $ operator appended to it. </para>        </briefdescription>
+        <detaileddescription>
+<para>When used in an update expression, this modifies the first array element that satisfies a query. <simplesect kind="return"><para>a <ref refid="classmangrove_1_1dollar__operator__nvp" kindref="compound">dollar_operator_nvp</ref> that corresponds to &quot;&lt;field_name&gt;.$&quot; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="644" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="644" bodyend="646"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1acc971cd488bb53dec77d298329fae501" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt; NvpT, int &gt;</type>
+        <definition>constexpr update_value_expr&lt;NvpT, int&gt; mangrove::nvp_base&lt; NvpT, T &gt;::pop</definition>
+        <argsstring>(bool last) const </argsstring>
+        <name>pop</name>
+        <param>
+          <type>bool</type>
+          <declname>last</declname>
+        </param>
+        <briefdescription>
+<para>Creates an update expression with the $pop operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only enabled if the current field is an array type. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>last</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, removes the element from the end of the array. If false, from the start. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="655" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="655" bodyend="657"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1ab7924255d0da3477c17a2a247417a44f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1update__expr" kindref="compound">update_expr</ref>&lt; NvpT, iterable_value_t&lt; no_opt_type &gt; &gt;</type>
+        <definition>constexpr update_expr&lt;NvpT, iterable_value_t&lt;no_opt_type&gt; &gt; mangrove::nvp_base&lt; NvpT, T &gt;::pull</definition>
+        <argsstring>(const iterable_value_t&lt; no_opt_type &gt; &amp;val) const </argsstring>
+        <name>pull</name>
+        <param>
+          <type>const iterable_value_t&lt; no_opt_type &gt; &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Creates an update expression with the $pull operator, that removes an element if it matches the given value exactly. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only enabled if the current field is an array type. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to remove. This must match the type <emphasis>contained</emphasis> by this array field. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="666" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="666" bodyend="669"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1ad65748212e487bf4d14fbff87ccdf8d4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename Expr</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr std::enable_if_t&lt; details::is_query_expression_v&lt; Expr &gt;, <ref refid="classmangrove_1_1update__expr" kindref="compound">update_expr</ref>&lt; NvpT, Expr &gt; &gt;</type>
+        <definition>constexpr std::enable_if_t&lt;details::is_query_expression_v&lt;Expr&gt;, update_expr&lt;NvpT, Expr&gt; &gt; mangrove::nvp_base&lt; NvpT, T &gt;::pull</definition>
+        <argsstring>(const Expr &amp;expr) const </argsstring>
+        <name>pull</name>
+        <param>
+          <type>const Expr &amp;</type>
+          <declname>expr</declname>
+        </param>
+        <briefdescription>
+<para>Creates an update expression with the $pull operator, that removes an element if it matches the given query. </para>        </briefdescription>
+        <detaileddescription>
+<para>This query can contain free expressions, similarly to the $elemMatch operator. This is only enabled if the current field is an array type. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Expr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the given query, must be a query expression. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>expr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A query expression against which to compare </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="680" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="680" bodyend="683"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1abdaf0c15ead84b8de9e338a622bfdb13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename Iterable</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>enable_if_matching_iterable_t&lt;Iterable&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1update__expr" kindref="compound">update_expr</ref>&lt; NvpT, Iterable &gt;</type>
+        <definition>constexpr update_expr&lt;NvpT, Iterable&gt; mangrove::nvp_base&lt; NvpT, T &gt;::pull_all</definition>
+        <argsstring>(const Iterable &amp;iter) const </argsstring>
+        <name>pull_all</name>
+        <param>
+          <type>const Iterable &amp;</type>
+          <declname>iter</declname>
+        </param>
+        <briefdescription>
+<para>Creates an update expression with the $pull operator, that removes an element if it matches the given value exactly. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only enabled if the current field is an array type. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An iterable containing the values to remove. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="693" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="693" bodyend="695"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1aa39e3654e2c9ff1adbe351da4b3374fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1add__to__set__update__expr" kindref="compound">add_to_set_update_expr</ref>&lt; NvpT, iterable_value_t&lt; no_opt_type &gt; &gt;</type>
+        <definition>constexpr add_to_set_update_expr&lt;NvpT, iterable_value_t&lt;no_opt_type&gt; &gt; mangrove::nvp_base&lt; NvpT, T &gt;::add_to_set</definition>
+        <argsstring>(const iterable_value_t&lt; no_opt_type &gt; &amp;val) const </argsstring>
+        <name>add_to_set</name>
+        <param>
+          <type>const iterable_value_t&lt; no_opt_type &gt; &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Creates an update expression with the $addToSet operator, that adds a single value to an array, if it is unique. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only enabled if the current field is an array type. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to add. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="704" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="704" bodyend="707"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1ad38a93b45375bb4f5a2a13f2d33672e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename Iterable</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>enable_if_matching_iterable_t&lt;Iterable&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1add__to__set__update__expr" kindref="compound">add_to_set_update_expr</ref>&lt; NvpT, Iterable &gt;</type>
+        <definition>constexpr add_to_set_update_expr&lt;NvpT, Iterable&gt; mangrove::nvp_base&lt; NvpT, T &gt;::add_to_set</definition>
+        <argsstring>(const Iterable &amp;iter) const </argsstring>
+        <name>add_to_set</name>
+        <param>
+          <type>const Iterable &amp;</type>
+          <declname>iter</declname>
+        </param>
+        <briefdescription>
+<para>Creates an update expression with the $addToSet operator and the $each modifier, that adds a list of value to an array, only keeping the unique values. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only enabled if the current field is an array. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The list of values to add. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="717" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="717" bodyend="719"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1ab4db721d19b52e5341c2ba737d2e0de9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref>&lt; NvpT, iterable_value_t&lt; no_opt_type &gt; &gt;</type>
+        <definition>constexpr push_update_expr&lt;NvpT, iterable_value_t&lt;no_opt_type&gt; &gt; mangrove::nvp_base&lt; NvpT, T &gt;::push</definition>
+        <argsstring>(const iterable_value_t&lt; no_opt_type &gt; &amp;val) const </argsstring>
+        <name>push</name>
+        <param>
+          <type>const iterable_value_t&lt; no_opt_type &gt; &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Creates an update epxression with the $push operator, that adds a single value to an array. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only enabled if the current field is an array. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to add. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="727" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="727" bodyend="730"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1nvp__base_1aa65d320fdbb15d4cf925965fa48deba5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval>no_opt_type</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_iterable_not_string_v&lt;U&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename Iterable</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>enable_if_matching_iterable_t&lt;Iterable&gt;</defval>
+          </param>
+          <param>
+            <type>typename Sort</type>
+            <defval>int</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;details::is_sort_expression_v&lt;Sort&gt; ||                                          std::is_same&lt;int, Sort&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref>&lt; NvpT, Iterable, Sort &gt;</type>
+        <definition>constexpr push_update_expr&lt;NvpT, Iterable, Sort&gt; mangrove::nvp_base&lt; NvpT, T &gt;::push</definition>
+        <argsstring>(const Iterable &amp;iter, bsoncxx::stdx::optional&lt; std::int32_t &gt; slice=bsoncxx::stdx::nullopt, const bsoncxx::stdx::optional&lt; Sort &gt; &amp;sort=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional&lt; std::uint32_t &gt; position=bsoncxx::stdx::nullopt) const </argsstring>
+        <name>push</name>
+        <param>
+          <type>const Iterable &amp;</type>
+          <declname>iter</declname>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; std::int32_t &gt;</type>
+          <declname>slice</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <param>
+          <type>const bsoncxx::stdx::optional&lt; Sort &gt; &amp;</type>
+          <declname>sort</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; std::uint32_t &gt;</type>
+          <declname>position</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Creates an update epxression with the $push operator and the $each modifier, that adds a list of value to an array. </para>        </briefdescription>
+        <detaileddescription>
+<para>Further modifiers can be given as arguments to this function, or by modifying the resulting <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref> object. This is only enabled if the current field is an array.</para><para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Iterable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An iterable that contains the same value type as this field&apos;s array. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Sort</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the given sort expression, if one is given. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The iterable containing values to add. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>slice</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An optional argument containing the value of the $slice modifier. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sort</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An optional argument containing an expression for the $sort modifier. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An optional argument containing the value of the $position modifier. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/nvp.hpp" line="750" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="750" bodyend="755"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A CRTP base class that contains member functions for name-value pairs. </para>    </briefdescription>
+    <detaileddescription>
+<para>These functions are identical between nvp&lt;...&gt; and nvp_child&lt;...&gt;, but their return types are templated on the nvp&apos;s types, so they are defined here using CRTP. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>NvpT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the name-value pair </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the field referred to by the name-value pair. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <location file="src/mangrove/nvp.hpp" line="34" column="1" bodyfile="src/mangrove/nvp.hpp" bodystart="34" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmangrove_1_1nvp__base_1aa39e3654e2c9ff1adbe351da4b3374fe" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>add_to_set</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ad38a93b45375bb4f5a2a13f2d33672e3" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>add_to_set</name></member>
+      <member refid="classmangrove_1_1nvp__base_1aa27deff6976c96110fbb92e3161edf18" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>all</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a59b7d75e874fb7858c0f6ef11e76ce90" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>bits_all_clear</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a7ca9a391784ef4ff99efd8a1f688f865" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>bits_all_clear</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a4f21be175d0af1329d27137dad843d41" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>bits_all_set</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a761062eb92207fa8c42c6740e9549139" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>bits_all_set</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ad0b8db86f08260815bfcba3ff549f86d" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>bits_any_clear</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a9af3921ef1af416730aa8965cfbfff3c" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>bits_any_clear</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a59ea684f00c07cf88bae76e6fc10cfc9" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>bits_any_set</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a9108a3aed96ae225f2bb10a927581a31" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>bits_any_set</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a7b5ddb9396c7631922fb1d1e4a60bdc7" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>child_base_type</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ad98791cdabcfcc6b9465f48fa434a94c" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>elem_match</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a60622c570186d6eac26460bed416ed93" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>element</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a68a3c88da5311addff93b6e638a448d8" prot="private" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>enable_if_matching_iterable_t</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a43fcb75163884d6d6582f53625b20226" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>exists</name></member>
+      <member refid="classmangrove_1_1nvp__base_1aa4d2b5c0930914b4a2b202b825282925" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>first_match</name></member>
+      <member refid="classmangrove_1_1nvp__base_1afc04b79abaca69dc454c2ea6dd7271ff" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>in</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a6e02c07ddd8494336583b38612cc0090" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>max</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a749ecb4d139aea530a7ecc4075d98187" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>min</name></member>
+      <member refid="classmangrove_1_1nvp__base_1af17554cee50b9cf7146ef81276190966" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>mod</name></member>
+      <member refid="classmangrove_1_1nvp__base_1aadebfb603c05353a812e9bc8a0530793" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>nin</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a8cecdc8498edb5022b8bf365725ec327" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>no_opt_type</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a14d7eb7640f2e3ee54e6e75c32c0ffa2" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>operator-&gt;*</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a5ea936ff27fb6141efe2476f75615184" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>operator[]</name></member>
+      <member refid="classmangrove_1_1nvp__base_1acc971cd488bb53dec77d298329fae501" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>pop</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ab7924255d0da3477c17a2a247417a44f" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>pull</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ad65748212e487bf4d14fbff87ccdf8d4" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>pull</name></member>
+      <member refid="classmangrove_1_1nvp__base_1abdaf0c15ead84b8de9e338a622bfdb13" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>pull_all</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ab4db721d19b52e5341c2ba737d2e0de9" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>push</name></member>
+      <member refid="classmangrove_1_1nvp__base_1aa65d320fdbb15d4cf925965fa48deba5" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>push</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a0c9da6ea8ec8cec0bcdba273cd5f1bd7" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>regex</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a025667ef42c5ebc4815a0d514cfc81bb" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>set_on_insert</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a18439f708a503f0a8b768e407dbe6ae6" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>size</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a60b8725524a2fde6f8c9540c8445adb1" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>sort</name></member>
+      <member refid="classmangrove_1_1nvp__base_1ab8d58d5f9660b07e1a25f2f4c704f44b" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>type</name></member>
+      <member refid="classmangrove_1_1nvp__base_1a906f10008bd72b32e75f496f1a24b5d7" prot="public" virt="non-virtual"><scope>mangrove::nvp_base</scope><name>unset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

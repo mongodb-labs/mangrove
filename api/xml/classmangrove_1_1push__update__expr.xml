@@ -1,0 +1,454 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmangrove_1_1push__update__expr" kind="class" language="C++" prot="public">
+    <compoundname>mangrove::push_update_expr</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename NvpT</type>
+      </param>
+      <param>
+        <type>typename U</type>
+      </param>
+      <param>
+        <type>typename Sort</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classmangrove_1_1push__update__expr_1ad609d54158e8f840c9fc129ea121212c" prot="public" static="no">
+        <type>NvpT</type>
+        <definition>using mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::field_type =  NvpT</definition>
+        <argsstring></argsstring>
+        <name>field_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="929" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="929" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmangrove_1_1push__update__expr_1ad43cf29e175929f4079734f24eae2de5" prot="private" static="no" mutable="no">
+        <type>const NvpT</type>
+        <definition>const NvpT mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::_nvp</definition>
+        <argsstring></argsstring>
+        <name>_nvp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1074" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1074" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1push__update__expr_1a244c60bc0d039980b90eee69d4e3d971" prot="private" static="no" mutable="no">
+        <type>const U &amp;</type>
+        <definition>const U&amp; mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::_val</definition>
+        <argsstring></argsstring>
+        <name>_val</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1075" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1075" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1push__update__expr_1ab6c3442fc07cbd7cd5c3b6f3881b1357" prot="private" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::_each</definition>
+        <argsstring></argsstring>
+        <name>_each</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1076" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1076" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1push__update__expr_1a8af7030f041bfa891ae0120559c1d341" prot="private" static="no" mutable="no">
+        <type>const bsoncxx::stdx::optional&lt; std::int32_t &gt;</type>
+        <definition>const bsoncxx::stdx::optional&lt;std::int32_t&gt; mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::_slice</definition>
+        <argsstring></argsstring>
+        <name>_slice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1077" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1077" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1push__update__expr_1ad888797551e2a6ea9562d499e4ace54c" prot="private" static="no" mutable="no">
+        <type>const bsoncxx::stdx::optional&lt; Sort &gt;</type>
+        <definition>const bsoncxx::stdx::optional&lt;Sort&gt; mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::_sort</definition>
+        <argsstring></argsstring>
+        <name>_sort</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1078" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1078" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1push__update__expr_1a994603580c586e0b05fee378b420514f" prot="private" static="no" mutable="no">
+        <type>const bsoncxx::stdx::optional&lt; std::uint32_t &gt;</type>
+        <definition>const bsoncxx::stdx::optional&lt;std::uint32_t&gt; mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::_position</definition>
+        <argsstring></argsstring>
+        <name>_position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1079" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1079" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmangrove_1_1push__update__expr_1aa1a622b1363907707cd17a30ab5a6a01" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::push_update_expr</definition>
+        <argsstring>(const NvpT &amp;nvp, const U &amp;val, bool each, bsoncxx::stdx::optional&lt; std::int32_t &gt; slice=bsoncxx::stdx::nullopt, const bsoncxx::stdx::optional&lt; Sort &gt; &amp;sort=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional&lt; std::uint32_t &gt; position=bsoncxx::stdx::nullopt)</argsstring>
+        <name>push_update_expr</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const U &amp;</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>each</declname>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; std::int32_t &gt;</type>
+          <declname>slice</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <param>
+          <type>const bsoncxx::stdx::optional&lt; Sort &gt; &amp;</type>
+          <declname>sort</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; std::uint32_t &gt;</type>
+          <declname>position</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Constructs a $push expression, with the given optional modifiers. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nvp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The field to modify </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to append to the field </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>each</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to append a single value, or a bunch of values in an array. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>slice</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An optional value to give the $slice modifier. This only takes effect with each=true. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sort</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An optional value to give the $sort modifier. This only takes effect with each=true. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An optional value to give the $position modifier. This only takes effect with each=true. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="943" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="943" bodyend="949"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1push__update__expr_1a2980ff871acc817f16c1745c8c826ada" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref>&lt; NvpT, U, Sort &gt;</type>
+        <definition>constexpr push_update_expr&lt;NvpT, U, Sort&gt; mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::slice</definition>
+        <argsstring>(std::int32_t slice)</argsstring>
+        <name>slice</name>
+        <param>
+          <type>std::int32_t</type>
+          <declname>slice</declname>
+        </param>
+        <briefdescription>
+<para>Create a copy of this expression with a different $slice modifier value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>slice</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The integer value of the $slice modifier. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A new <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref> with the same properties as this one, except a different $slice modifier. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="960" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="960" bodyend="962"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1push__update__expr_1a33446894ef0a2a5fbfe298d1bb09ef7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref>&lt; NvpT, U, Sort &gt;</type>
+        <definition>constexpr push_update_expr&lt;NvpT, U, Sort&gt; mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::slice</definition>
+        <argsstring>()</argsstring>
+        <name>slice</name>
+        <briefdescription>
+<para>Create a copy of this expression without a $slice modifier. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A new <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref> with the same properties as this one, except a different $slice modifier. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="969" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="969" bodyend="971"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1push__update__expr_1a170e82be0de4d0d4996ea3f7db6f8766" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename OtherNvpT</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref>&lt; NvpT, U, <ref refid="classmangrove_1_1sort__expr" kindref="compound">sort_expr</ref>&lt; OtherNvpT &gt; &gt;</type>
+        <definition>constexpr push_update_expr&lt;NvpT, U, sort_expr&lt;OtherNvpT&gt; &gt; mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::sort</definition>
+        <argsstring>(const sort_expr&lt; OtherNvpT &gt; &amp;sort)</argsstring>
+        <name>sort</name>
+        <param>
+          <type>const <ref refid="classmangrove_1_1sort__expr" kindref="compound">sort_expr</ref>&lt; OtherNvpT &gt; &amp;</type>
+          <declname>sort</declname>
+        </param>
+        <briefdescription>
+<para>Create a copy of this expression with a different $sort modifier value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>OtherNvpT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name-value-pair used by the given Sort Expression. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sort</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sort expression to use. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A new <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref> with the same properties as this one, except a different $sort modifier. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="981" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="981" bodyend="984"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1push__update__expr_1a04ec8ecfa3bc35b00aa9763befa6b41e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref>&lt; NvpT, U, int &gt;</type>
+        <definition>constexpr push_update_expr&lt;NvpT, U, int&gt; mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::sort</definition>
+        <argsstring>(int sort)</argsstring>
+        <name>sort</name>
+        <param>
+          <type>int</type>
+          <declname>sort</declname>
+        </param>
+        <briefdescription>
+<para>Create a copy of this expression with a different $slice modifier value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sort</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The integer value of the $sort modifier, +/-1. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A new <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref> with the same properties as this one, except a different $sort modifier. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="992" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="992" bodyend="994"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1push__update__expr_1aa82b7e360956010ebb0b30182a488840" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref>&lt; NvpT, U, Sort &gt;</type>
+        <definition>constexpr push_update_expr&lt;NvpT, U, Sort&gt; mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::sort</definition>
+        <argsstring>()</argsstring>
+        <name>sort</name>
+        <briefdescription>
+<para>Create a copy of this expression without a $sort modifier. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A new <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref> with the same properties as this one, except a different $sort modifier. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1001" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1001" bodyend="1003"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1push__update__expr_1ae4ee751327e25ba7063174305907db41" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref>&lt; NvpT, U, Sort &gt;</type>
+        <definition>constexpr push_update_expr&lt;NvpT, U, Sort&gt; mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::position</definition>
+        <argsstring>(std::uint32_t position)</argsstring>
+        <name>position</name>
+        <param>
+          <type>std::uint32_t</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Create a copy of this expression with a different $position modifier value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The integer value of the $position modifier. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A new <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref> with the same properties as this one, except a different $position modifier. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1011" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1011" bodyend="1013"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1push__update__expr_1aed6d97c431d4c123f9e3cfa2889a8b20" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref>&lt; NvpT, U, Sort &gt;</type>
+        <definition>constexpr push_update_expr&lt;NvpT, U, Sort&gt; mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::position</definition>
+        <argsstring>()</argsstring>
+        <name>position</name>
+        <briefdescription>
+<para>Create a copy of this expression without $position modifier. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A new <ref refid="classmangrove_1_1push__update__expr" kindref="compound">push_update_expr</ref> with the same properties as this one, except a different $position modifier. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1020" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1020" bodyend="1022"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1push__update__expr_1ab812da4ac605cf10b90ef5c1e7c429a3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Appends this query to a BSON core builder as an expression &apos;. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="rcs"><title>push</title><para>{field: value | {</para></simplesect>
+each: value, $modifiers: params...}}&apos; <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A basic BSON core builder. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Whether</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to wrap this expression inside a document. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1030" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1030" bodyend="1065"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1push__update__expr_1a6c0bd76f78102c5a0855d6d7ebc110ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::push_update_expr&lt; NvpT, U, Sort &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="1067" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="1067" bodyend="1071"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents an array update epression that uses the $push operator. </para>    </briefdescription>
+    <detaileddescription>
+<para>Modifiers can be set either in the constructor, or by calling the corresponding member functions. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>NvpT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name-value-pair type of the corresponding field. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>U</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value being $push&apos;ed to the array </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Sort</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the sort expression used in the $sort modifier. This can be either an integer, +/- 1, or a <ref refid="classmangrove_1_1sort__expr" kindref="compound">sort_expr</ref>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <location file="src/mangrove/expression_syntax.hpp" line="89" column="1" bodyfile="src/mangrove/expression_syntax.hpp" bodystart="89" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmangrove_1_1push__update__expr_1ab6c3442fc07cbd7cd5c3b6f3881b1357" prot="private" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>_each</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1ad43cf29e175929f4079734f24eae2de5" prot="private" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>_nvp</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1a994603580c586e0b05fee378b420514f" prot="private" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>_position</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1a8af7030f041bfa891ae0120559c1d341" prot="private" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>_slice</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1ad888797551e2a6ea9562d499e4ace54c" prot="private" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>_sort</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1a244c60bc0d039980b90eee69d4e3d971" prot="private" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>_val</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1ab812da4ac605cf10b90ef5c1e7c429a3" prot="public" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1ad609d54158e8f840c9fc129ea121212c" prot="public" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>field_type</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1a6c0bd76f78102c5a0855d6d7ebc110ec" prot="public" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1ae4ee751327e25ba7063174305907db41" prot="public" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>position</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1aed6d97c431d4c123f9e3cfa2889a8b20" prot="public" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>position</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1aa1a622b1363907707cd17a30ab5a6a01" prot="public" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>push_update_expr</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1a2980ff871acc817f16c1745c8c826ada" prot="public" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>slice</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1a33446894ef0a2a5fbfe298d1bb09ef7a" prot="public" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>slice</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1a170e82be0de4d0d4996ea3f7db6f8766" prot="public" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>sort</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1a04ec8ecfa3bc35b00aa9763befa6b41e" prot="public" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>sort</name></member>
+      <member refid="classmangrove_1_1push__update__expr_1aa82b7e360956010ebb0b30182a488840" prot="public" virt="non-virtual"><scope>mangrove::push_update_expr</scope><name>sort</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structboson_1_1Exception" kind="struct" language="C++" prot="public">
+    <compoundname>boson::Exception</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">runtime_error</basecompoundref>
+    <includes refid="bson__archiver_8hpp" local="no">bson_archiver.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structboson_1_1Exception_1a154723efc9a1b235f6f846bceddf3a66" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>boson::Exception::Exception</definition>
+        <argsstring>(const std::string &amp;desc)</argsstring>
+        <name>Exception</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>desc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="67" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="67" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="structboson_1_1Exception_1ade9926a2ea6ae34e9460263bdf3c322d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>boson::Exception::Exception</definition>
+        <argsstring>(const char *desc)</argsstring>
+        <name>Exception</name>
+        <param>
+          <type>const char *</type>
+          <declname>desc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="69" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="69" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An exception class thrown when things go wrong at runtime. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="72">
+        <label>boson::Exception</label>
+        <link refid="structboson_1_1Exception"/>
+        <childnode refid="73" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>std::runtime_error</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="74">
+        <label>boson::Exception</label>
+        <link refid="structboson_1_1Exception"/>
+        <childnode refid="75" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>std::runtime_error</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/boson/bson_archiver.hpp" line="66" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="66" bodyend="71"/>
+    <listofallmembers>
+      <member refid="structboson_1_1Exception_1a154723efc9a1b235f6f846bceddf3a66" prot="public" virt="non-virtual"><scope>boson::Exception</scope><name>Exception</name></member>
+      <member refid="structboson_1_1Exception_1ade9926a2ea6ae34e9460263bdf3c322d" prot="public" virt="non-virtual"><scope>boson::Exception</scope><name>Exception</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

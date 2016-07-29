@@ -2,71 +2,71 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/</loc>
+    <loc>http://mongodb.github.io/mangrove/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/1-basics/</loc>
+    <loc>http://mongodb.github.io/mangrove/1-basics/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/2-models/</loc>
+    <loc>http://mongodb.github.io/mangrove/2-models/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/3-queries/</loc>
+    <loc>http://mongodb.github.io/mangrove/3-queries/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/5-the-bson-mapper/</loc>
+    <loc>http://mongodb.github.io/mangrove/5-the-bson-mapper/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/4-updates/</loc>
+    <loc>http://mongodb.github.io/mangrove/4-updates/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/</loc>
+    <loc>http://mongodb.github.io/mangrove/2-models/introduction/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/3-queries/introduction/</loc>
+    <loc>http://mongodb.github.io/mangrove/3-queries/introduction/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/4-updates/introduction/</loc>
+    <loc>http://mongodb.github.io/mangrove/4-updates/introduction/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/3-queries/operators/</loc>
+    <loc>http://mongodb.github.io/mangrove/3-queries/operators/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/4-updates/operators/</loc>
+    <loc>http://mongodb.github.io/mangrove/4-updates/operators/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/</loc>
+    <loc>http://mongodb.github.io/mangrove/1-basics/what-is-mangrove/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/</loc>
+    <loc>http://mongodb.github.io/mangrove/2-models/allowed-types/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/1-basics/installation/</loc>
+    <loc>http://mongodb.github.io/mangrove/1-basics/installation/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id/</loc>
+    <loc>http://mongodb.github.io/mangrove/2-models/custom_id/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/1-basics/quick-tour/</loc>
+    <loc>http://mongodb.github.io/mangrove/1-basics/quick-tour/</loc>
   </url>
   
   <url>
-    <loc>http://mongodb.github.io/mongo-cxx-odm/2-models/dynamic-schemas/</loc>
+    <loc>http://mongodb.github.io/mangrove/2-models/dynamic-schemas/</loc>
   </url>
   
 </urlset>

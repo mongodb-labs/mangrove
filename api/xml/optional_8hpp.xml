@@ -3,13 +3,13 @@
   <compounddef id="optional_8hpp" kind="file" language="C++">
     <compoundname>optional.hpp</compoundname>
     <includes local="no">bsoncxx/stdx/optional.hpp</includes>
-    <includedby refid="bson__archiver_8hpp" local="no">src/bson_mapper/bson_archiver.hpp</includedby>
+    <includedby refid="bson__archiver_8hpp" local="no">src/boson/bson_archiver.hpp</includedby>
     <incdepgraph>
       <node id="136">
         <label>bsoncxx/stdx/optional.hpp</label>
       </node>
       <node id="135">
-        <label>src/bson_mapper/stdx/optional.hpp</label>
+        <label>src/boson/stdx/optional.hpp</label>
         <link refid="optional.hpp"/>
         <childnode refid="136" relation="include">
         </childnode>
@@ -17,44 +17,44 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="141">
-        <label>src/mongo_odm/odm_collection.hpp</label>
-        <link refid="odm__collection_8hpp_source"/>
-        <childnode refid="142" relation="include">
-        </childnode>
-      </node>
-      <node id="139">
-        <label>src/bson_mapper/mapping_functions.hpp</label>
-        <link refid="mapping__functions_8hpp_source"/>
-        <childnode refid="140" relation="include">
-        </childnode>
-        <childnode refid="141" relation="include">
-        </childnode>
-      </node>
-      <node id="140">
-        <label>src/mongo_odm/deserializing_cursor.hpp</label>
-        <link refid="deserializing__cursor_8hpp_source"/>
-        <childnode refid="141" relation="include">
-        </childnode>
-      </node>
-      <node id="142">
-        <label>src/mongo_odm/model.hpp</label>
+        <label>src/mangrove/model.hpp</label>
         <link refid="model_8hpp_source"/>
       </node>
-      <node id="137">
-        <label>src/bson_mapper/stdx/optional.hpp</label>
-        <link refid="optional.hpp"/>
-        <childnode refid="138" relation="include">
+      <node id="142">
+        <label>src/mangrove/deserializing_cursor.hpp</label>
+        <link refid="deserializing__cursor_8hpp_source"/>
+        <childnode refid="140" relation="include">
         </childnode>
       </node>
       <node id="138">
-        <label>src/bson_mapper/bson_archiver.hpp</label>
+        <label>src/boson/bson_archiver.hpp</label>
         <link refid="bson__archiver_8hpp_source"/>
         <childnode refid="139" relation="include">
         </childnode>
       </node>
+      <node id="137">
+        <label>src/boson/stdx/optional.hpp</label>
+        <link refid="optional.hpp"/>
+        <childnode refid="138" relation="include">
+        </childnode>
+      </node>
+      <node id="139">
+        <label>src/boson/mapping_functions.hpp</label>
+        <link refid="mapping__functions_8hpp_source"/>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+      </node>
+      <node id="140">
+        <label>src/mangrove/collection_wrapper.hpp</label>
+        <link refid="collection__wrapper_8hpp_source"/>
+        <childnode refid="141" relation="include">
+        </childnode>
+      </node>
     </invincdepgraph>
-    <innernamespace refid="namespacebson__mapper">bson_mapper</innernamespace>
-    <innernamespace refid="namespacebson__mapper_1_1stdx">bson_mapper::stdx</innernamespace>
+    <innernamespace refid="namespaceboson">boson</innernamespace>
+    <innernamespace refid="namespaceboson_1_1stdx">boson::stdx</innernamespace>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -78,15 +78,15 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;bsoncxx/stdx/optional.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacebson__mapper" kindref="compound">bson_mapper</ref><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceboson" kindref="compound">boson</ref><sp/>{</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">stdx<sp/>{</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>bsoncxx::stdx::optional;</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>bsoncxx::stdx::nullopt;</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>bsoncxx::stdx::make_optional;</highlight></codeline>
 <codeline lineno="25"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>stdx</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>stdx</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>boson</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="src/bson_mapper/stdx/optional.hpp"/>
+    <location file="src/boson/stdx/optional.hpp"/>
   </compounddef>
 </doxygen>

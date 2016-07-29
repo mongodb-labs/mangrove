@@ -1,0 +1,89 @@
+\hypertarget{classmangrove_1_1add__to__set__update__expr}{}\section{mangrove\+:\+:add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr$<$ NvpT, U $>$ Class Template Reference}
+\label{classmangrove_1_1add__to__set__update__expr}\index{mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr$<$ Nvp\+T, U $>$@{mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr$<$ Nvp\+T, U $>$}}
+
+
+An expression that uses the \$add\+To\+Set operator to add unique elements to an array.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmangrove_1_1add__to__set__update__expr_a17141f1c7a5875e69f93f39e701a8c36}{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr} (const NvpT \&\hyperlink{classmangrove_1_1nvp}{nvp}, const U \&val, bool each)
+\begin{DoxyCompactList}\small\item\em Constructs an \hyperlink{classmangrove_1_1add__to__set__update__expr}{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr} with the given parameters. \end{DoxyCompactList}\item 
+void \hyperlink{classmangrove_1_1add__to__set__update__expr_ad29e382108f904ef765c5ad7cb12d44a}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder as an expression \textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename NvpT, typename U$>$\\*
+class mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr$<$ Nvp\+T, U $>$}
+
+An expression that uses the \$add\+To\+Set operator to add unique elements to an array. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em NvpT} & The name-\/value pair to use \\
+\hline
+{\em U} & The type of the value to pass to \$add\+To\+Set \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr@{mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}!add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr@{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}}
+\index{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr@{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}!mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr@{mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr(const Nvp\+T \&nvp, const U \&val, bool each)}{add_to_set_update_expr(const NvpT &nvp, const U &val, bool each)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U $>$ constexpr {\bf mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}$<$ NvpT, U $>$\+::{\bf add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr} (
+\begin{DoxyParamCaption}
+\item[{const NvpT \&}]{nvp, }
+\item[{const U \&}]{val, }
+\item[{bool}]{each}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1add__to__set__update__expr_a17141f1c7a5875e69f93f39e701a8c36}{}\label{classmangrove_1_1add__to__set__update__expr_a17141f1c7a5875e69f93f39e701a8c36}
+
+
+Constructs an \hyperlink{classmangrove_1_1add__to__set__update__expr}{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr} with the given parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nvp} & The given field. \\
+\hline
+{\em val} & The value to add to the field. \\
+\hline
+{\em each} & Whether to use the \$each modifier. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr@{mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr@{mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U $>$ void {\bf mangrove\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}$<$ NvpT, U $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1add__to__set__update__expr_ad29e382108f904ef765c5ad7cb12d44a}{}\label{classmangrove_1_1add__to__set__update__expr_ad29e382108f904ef765c5ad7cb12d44a}
+
+
+Appends this query to a B\+S\+ON core builder as an expression \textquotesingle{}. 
+
+\begin{DoxyParagraph}{add\+To\+Set}
+\{field\+: value $\vert$ \{
+\end{DoxyParagraph}
+each\+: value\}\}\textquotesingle{} 
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em wrap} & Whether to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/expression\+\_\+syntax.\+hpp\item 
+src/mangrove/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

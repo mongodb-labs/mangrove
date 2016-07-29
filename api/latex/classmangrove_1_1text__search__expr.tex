@@ -1,0 +1,91 @@
+\hypertarget{classmangrove_1_1text__search__expr}{}\section{mangrove\+:\+:text\+\_\+search\+\_\+expr Class Reference}
+\label{classmangrove_1_1text__search__expr}\index{mangrove\+::text\+\_\+search\+\_\+expr@{mangrove\+::text\+\_\+search\+\_\+expr}}
+
+
+Represents a query that performs a text search with the \$text operator.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmangrove_1_1text__search__expr_a217f9469c2578fe68ffd755f60b64e55}{text\+\_\+search\+\_\+expr} (const char $\ast$search, bsoncxx\+::stdx\+::optional$<$ const char $\ast$ $>$ language=bsoncxx\+::stdx\+::nullopt, bsoncxx\+::stdx\+::optional$<$ bool $>$ case\+\_\+sensitive=bsoncxx\+::stdx\+::nullopt, bsoncxx\+::stdx\+::optional$<$ bool $>$ diacritic\+\_\+sensitive=bsoncxx\+::stdx\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Creates a text search expression. \end{DoxyCompactList}\item 
+void \hyperlink{classmangrove_1_1text__search__expr_afa08d3a7e99bf76c7459b08f31906733}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this expression to a B\+S\+ON core builder, as a key-\/value pair of the form \char`\"{} key\+: \{ \$mod\+: \mbox{[} divisor, remainder \mbox{]} \} \char`\"{}. \end{DoxyCompactList}\item 
+\hyperlink{classmangrove_1_1text__search__expr_a7a9ed7a8cee2f356bc269bcae68ca072}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const 
+\begin{DoxyCompactList}\small\item\em Converts the expression to a B\+S\+ON filter for a query. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a query that performs a text search with the \$text operator. 
+
+T\+O\+DO check values of {\ttfamily language} against spec? 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mangrove\+::text\+\_\+search\+\_\+expr@{mangrove\+::text\+\_\+search\+\_\+expr}!text\+\_\+search\+\_\+expr@{text\+\_\+search\+\_\+expr}}
+\index{text\+\_\+search\+\_\+expr@{text\+\_\+search\+\_\+expr}!mangrove\+::text\+\_\+search\+\_\+expr@{mangrove\+::text\+\_\+search\+\_\+expr}}
+\subsubsection[{\texorpdfstring{text\+\_\+search\+\_\+expr(const char $\ast$search, bsoncxx\+::stdx\+::optional$<$ const char $\ast$ $>$ language=bsoncxx\+::stdx\+::nullopt, bsoncxx\+::stdx\+::optional$<$ bool $>$ case\+\_\+sensitive=bsoncxx\+::stdx\+::nullopt, bsoncxx\+::stdx\+::optional$<$ bool $>$ diacritic\+\_\+sensitive=bsoncxx\+::stdx\+::nullopt)}{text_search_expr(const char *search, bsoncxx::stdx::optional< const char * > language=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional< bool > case_sensitive=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional< bool > diacritic_sensitive=bsoncxx::stdx::nullopt)}}]{\setlength{\rightskip}{0pt plus 5cm}mangrove\+::text\+\_\+search\+\_\+expr\+::text\+\_\+search\+\_\+expr (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{search, }
+\item[{bsoncxx\+::stdx\+::optional$<$ const char $\ast$ $>$}]{language = {\ttfamily bsoncxx\+:\+:stdx\+:\+:nullopt}, }
+\item[{bsoncxx\+::stdx\+::optional$<$ bool $>$}]{case\+\_\+sensitive = {\ttfamily bsoncxx\+:\+:stdx\+:\+:nullopt}, }
+\item[{bsoncxx\+::stdx\+::optional$<$ bool $>$}]{diacritic\+\_\+sensitive = {\ttfamily bsoncxx\+:\+:stdx\+:\+:nullopt}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1text__search__expr_a217f9469c2578fe68ffd755f60b64e55}{}\label{classmangrove_1_1text__search__expr_a217f9469c2578fe68ffd755f60b64e55}
+
+
+Creates a text search expression. 
+
+These parameters correspond to the parameters for the \$text operator in Mongo\+DB. 
+\begin{DoxyParams}{Parameters}
+{\em search} & A string of terms use to query the text index. \\
+\hline
+{\em language} & The language of the text index. \\
+\hline
+{\em case\+\_\+sensitive} & A boolean flag to specify case-\/sensitive search. Optional, false by default. \\
+\hline
+{\em diacritic\+\_\+sensitive} & A boolean flag to specify case-\/sensitive search. Optional, false by default. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mangrove\+::text\+\_\+search\+\_\+expr@{mangrove\+::text\+\_\+search\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mangrove\+::text\+\_\+search\+\_\+expr@{mangrove\+::text\+\_\+search\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}void mangrove\+::text\+\_\+search\+\_\+expr\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1text__search__expr_afa08d3a7e99bf76c7459b08f31906733}{}\label{classmangrove_1_1text__search__expr_afa08d3a7e99bf76c7459b08f31906733}
+
+
+Appends this expression to a B\+S\+ON core builder, as a key-\/value pair of the form \char`\"{} key\+: \{ \$mod\+: \mbox{[} divisor, remainder \mbox{]} \} \char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & a B\+S\+ON core builder \\
+\hline
+{\em wrap} & Whether to wrap the B\+S\+ON inside a document. \\
+\hline
+\end{DoxyParams}
+\index{mangrove\+::text\+\_\+search\+\_\+expr@{mangrove\+::text\+\_\+search\+\_\+expr}!operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}}
+\index{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}!mangrove\+::text\+\_\+search\+\_\+expr@{mangrove\+::text\+\_\+search\+\_\+expr}}
+\subsubsection[{\texorpdfstring{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value() const }{operator bsoncxx::document::view_or_value() const }}]{\setlength{\rightskip}{0pt plus 5cm}mangrove\+::text\+\_\+search\+\_\+expr\+::operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1text__search__expr_a7a9ed7a8cee2f356bc269bcae68ca072}{}\label{classmangrove_1_1text__search__expr_a7a9ed7a8cee2f356bc269bcae68ca072}
+
+
+Converts the expression to a B\+S\+ON filter for a query. 
+
+The resulting B\+S\+ON is of the form \char`\"{}\{ key\+: \{ \$mod\+: \mbox{[} divisor, remainder \mbox{]} \} \}\char`\"{}. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

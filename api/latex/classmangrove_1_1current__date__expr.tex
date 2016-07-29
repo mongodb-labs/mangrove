@@ -1,0 +1,77 @@
+\hypertarget{classmangrove_1_1current__date__expr}{}\section{mangrove\+:\+:current\+\_\+date\+\_\+expr$<$ NvpT $>$ Class Template Reference}
+\label{classmangrove_1_1current__date__expr}\index{mangrove\+::current\+\_\+date\+\_\+expr$<$ Nvp\+T $>$@{mangrove\+::current\+\_\+date\+\_\+expr$<$ Nvp\+T $>$}}
+
+
+Creates an expression that uses the \$current\+Date operator.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmangrove_1_1current__date__expr_a663fe4960f123c49753658fdc259ac6c}{current\+\_\+date\+\_\+expr} (const NvpT \&\hyperlink{classmangrove_1_1nvp}{nvp}, bool \hyperlink{structmangrove_1_1is__date}{is\+\_\+date})
+\begin{DoxyCompactList}\small\item\em Creates an expression that uses the \$current\+Date operator with a given field and type. \end{DoxyCompactList}\item 
+void \hyperlink{classmangrove_1_1current__date__expr_a105bbfe2eaacdd823188abc40f95b08c}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder as an expression \textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename NvpT$>$\\*
+class mangrove\+::current\+\_\+date\+\_\+expr$<$ Nvp\+T $>$}
+
+Creates an expression that uses the \$current\+Date operator. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mangrove\+::current\+\_\+date\+\_\+expr@{mangrove\+::current\+\_\+date\+\_\+expr}!current\+\_\+date\+\_\+expr@{current\+\_\+date\+\_\+expr}}
+\index{current\+\_\+date\+\_\+expr@{current\+\_\+date\+\_\+expr}!mangrove\+::current\+\_\+date\+\_\+expr@{mangrove\+::current\+\_\+date\+\_\+expr}}
+\subsubsection[{\texorpdfstring{current\+\_\+date\+\_\+expr(const Nvp\+T \&nvp, bool is\+\_\+date)}{current_date_expr(const NvpT &nvp, bool is_date)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT $>$ constexpr {\bf mangrove\+::current\+\_\+date\+\_\+expr}$<$ NvpT $>$\+::{\bf current\+\_\+date\+\_\+expr} (
+\begin{DoxyParamCaption}
+\item[{const NvpT \&}]{nvp, }
+\item[{bool}]{is\+\_\+date}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1current__date__expr_a663fe4960f123c49753658fdc259ac6c}{}\label{classmangrove_1_1current__date__expr_a663fe4960f123c49753658fdc259ac6c}
+
+
+Creates an expression that uses the \$current\+Date operator with a given field and type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nvp} & The given field \\
+\hline
+{\em \hyperlink{structmangrove_1_1is__date}{is\+\_\+date}} & Whether the field\textquotesingle{}s type is a date (true) or a timestmap (false) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mangrove\+::current\+\_\+date\+\_\+expr@{mangrove\+::current\+\_\+date\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mangrove\+::current\+\_\+date\+\_\+expr@{mangrove\+::current\+\_\+date\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT $>$ void {\bf mangrove\+::current\+\_\+date\+\_\+expr}$<$ NvpT $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1current__date__expr_a105bbfe2eaacdd823188abc40f95b08c}{}\label{classmangrove_1_1current__date__expr_a105bbfe2eaacdd823188abc40f95b08c}
+
+
+Appends this query to a B\+S\+ON core builder as an expression \textquotesingle{}. 
+
+\begin{DoxyParagraph}{current\+Date}
+\{field\+: \{
+\end{DoxyParagraph}
+type\+: \char`\"{}timestamp$\vert$date\char`\"{}\}\}\textquotesingle{} 
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em Whether} & to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/expression\+\_\+syntax.\+hpp\item 
+src/mangrove/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

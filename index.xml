@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mangrove</title>
-    <link>http://mongodb.github.io/mongo-cxx-odm/</link>
+    <link>http://mongodb.github.io/mangrove/</link>
     <description>Recent content on Mangrove</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://mongodb.github.io/mongo-cxx-odm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://mongodb.github.io/mangrove/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Basics</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/</link>
+      <link>http://mongodb.github.io/mangrove/1-basics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/1-basics/</guid>
+      <guid>http://mongodb.github.io/mangrove/1-basics/</guid>
       <description>
 
 &lt;h3 id=&#34;chapter-1&#34;&gt;Chapter 1&lt;/h3&gt;
@@ -26,10 +26,10 @@
     
     <item>
       <title>Models</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/2-models/</link>
+      <link>http://mongodb.github.io/mangrove/2-models/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/2-models/</guid>
+      <guid>http://mongodb.github.io/mangrove/2-models/</guid>
       <description>
 
 &lt;h3 id=&#34;chapter-2&#34;&gt;Chapter 2&lt;/h3&gt;
@@ -42,10 +42,10 @@
     
     <item>
       <title>Queries</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/3-queries/</link>
+      <link>http://mongodb.github.io/mangrove/3-queries/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/3-queries/</guid>
+      <guid>http://mongodb.github.io/mangrove/3-queries/</guid>
       <description>
 
 &lt;h3 id=&#34;chapter-3&#34;&gt;Chapter 3&lt;/h3&gt;
@@ -58,17 +58,17 @@
     
     <item>
       <title>The BSON Mapper</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/5-the-bson-mapper/</link>
+      <link>http://mongodb.github.io/mangrove/5-the-bson-mapper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/5-the-bson-mapper/</guid>
+      <guid>http://mongodb.github.io/mangrove/5-the-bson-mapper/</guid>
       <description>
 
 &lt;h3 id=&#34;chapter-5&#34;&gt;Chapter 5&lt;/h3&gt;
 
 &lt;h1 id=&#34;the-bson-mapper&#34;&gt;The BSON Mapper&lt;/h1&gt;
 
-&lt;p&gt;Learn about the 
+&lt;p&gt;Learn about &lt;strong&gt;Boson&lt;/strong&gt;, the 
 &lt;a target=&#34;_blank&#34; href=&#34;http://uscilab.github.io/cereal/&#34;&gt;Cereal &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
 -powered &lt;strong&gt;BSON serializer&lt;/strong&gt; that makes Mangrove work, and how you can use it in your own applications.&lt;/p&gt;
 </description>
@@ -76,10 +76,10 @@
     
     <item>
       <title>Updates</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/4-updates/</link>
+      <link>http://mongodb.github.io/mangrove/4-updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/4-updates/</guid>
+      <guid>http://mongodb.github.io/mangrove/4-updates/</guid>
       <description>
 
 &lt;h3 id=&#34;chapter-4&#34;&gt;Chapter 4&lt;/h3&gt;
@@ -92,14 +92,14 @@
     
     <item>
       <title>Introduction</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/</link>
+      <link>http://mongodb.github.io/mangrove/2-models/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/</guid>
+      <guid>http://mongodb.github.io/mangrove/2-models/introduction/</guid>
       <description>
 
 &lt;p&gt;A &lt;strong&gt;model&lt;/strong&gt; is the fundamental way you access data in MongoDB with Mangrove. Models lets you treat C++ classes as objects you can store in the database. When you make a class a model, it is given the semantics of a MongoDB collection, and has access to all of 
-&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-odm/api/html/classmongo__odm_1_1model.html&#34;&gt;these static methods &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classmongo__odm_1_1model.html&#34;&gt;these static methods &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
 .&lt;/p&gt;
 
 &lt;h2 id=&#34;creating-a-model&#34;&gt;Creating a Model&lt;/h2&gt;
@@ -115,10 +115,10 @@ class Message : mangrove::model&amp;lt;Message&amp;gt; {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;This inheritance gives the inheriting class access to the interface specified 
-&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-odm/api/html/classmongo__odm_1_1model.html&#34;&gt;here &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classmongo__odm_1_1model.html&#34;&gt;here &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
 . The inheritance also gives you access to the &lt;code&gt;_id&lt;/code&gt; variable. Since every document stored in a MongoDB database contains an &lt;code&gt;_id&lt;/code&gt;, the model stores one automatically for you. By default this of type 
 &lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-driver/classbsoncxx_1_1oid.html&#34;&gt;&lt;code&gt;bsoncxx::oid&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
-, but you can customize it. We&amp;rsquo;ll discuss how to do this in a &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id&#34;&gt;later section&lt;/a&gt;.&lt;/p&gt;
+, but you can customize it. We&amp;rsquo;ll discuss how to do this in a &lt;a href=&#34;http://mongodb.github.io/mangrove/2-models/custom_id&#34;&gt;later section&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;specifying-fields-to-serialize&#34;&gt;Specifying Fields to Serialize&lt;/h2&gt;
 
@@ -150,7 +150,7 @@ class Message : mangrove::model&amp;lt;Message&amp;gt; {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;div class=&#34;notices info&#34; &gt;&lt;p&gt;While there is no limitation to the complexity of the classes you can turn into a model, there are limitations regarding which types are serializable and can be included in the &lt;code&gt;MANGROVE_MAKE_KEYS_MODEL&lt;/code&gt; macro. These limitations are discussed in the &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types&#34;&gt;next section&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;notices info&#34; &gt;&lt;p&gt;While there is no limitation to the complexity of the classes you can turn into a model, there are limitations regarding which types are serializable and can be included in the &lt;code&gt;MANGROVE_MAKE_KEYS_MODEL&lt;/code&gt; macro. These limitations are discussed in the &lt;a href=&#34;http://mongodb.github.io/mangrove/2-models/allowed-types&#34;&gt;next section&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 
 
@@ -186,7 +186,7 @@ class Message : mangrove::model&amp;lt;Message&amp;gt; {
 
 &lt;h3 id=&#34;public-vs-private-members&#34;&gt;Public vs. Private Members&lt;/h3&gt;
 
-&lt;p&gt;In Mangrove, you can serialize both public and private class members. The only caveat with this is that you won&amp;rsquo;t be able to access private members in &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/3-queries&#34;&gt;queries&lt;/a&gt; or &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/4-updates&#34;&gt;updates&lt;/a&gt; that you build outside of the class. If you want to keep your models encapsulated, build all of the queries and updates you&amp;rsquo;ll be using inside your model&amp;rsquo;s member functions.&lt;/p&gt;
+&lt;p&gt;In Mangrove, you can serialize both public and private class members. The only caveat with this is that you won&amp;rsquo;t be able to access private members in &lt;a href=&#34;http://mongodb.github.io/mangrove/3-queries&#34;&gt;queries&lt;/a&gt; or &lt;a href=&#34;http://mongodb.github.io/mangrove/4-updates&#34;&gt;updates&lt;/a&gt; that you build outside of the class. If you want to keep your models encapsulated, build all of the queries and updates you&amp;rsquo;ll be using inside your model&amp;rsquo;s member functions.&lt;/p&gt;
 
 &lt;h2 id=&#34;linking-with-the-database&#34;&gt;Linking With the Database&lt;/h2&gt;
 
@@ -248,7 +248,7 @@ int main() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This might not seem very interesting since we&amp;rsquo;ve only used the active record model on objects have been created within the program. However, the &lt;code&gt;save()&lt;/code&gt; and &lt;code&gt;remove()&lt;/code&gt; methods are also available with model objects that get returned from queries. We&amp;rsquo;ll go more in depth about queries in Mangrove in the &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/3-queries&#34;&gt;next chapter&lt;/a&gt;, but the following example demonstrates how we can use the active record model to delete every message from a particular user:&lt;/p&gt;
+&lt;p&gt;This might not seem very interesting since we&amp;rsquo;ve only used the active record model on objects have been created within the program. However, the &lt;code&gt;save()&lt;/code&gt; and &lt;code&gt;remove()&lt;/code&gt; methods are also available with model objects that get returned from queries. We&amp;rsquo;ll go more in depth about queries in Mangrove in the &lt;a href=&#34;http://mongodb.github.io/mangrove/3-queries&#34;&gt;next chapter&lt;/a&gt;, but the following example demonstrates how we can use the active record model to delete every message from a particular user:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;for(auto msg : Message::find(MANGROVE_KEY(Message::author_id) == bsoncxx::oid(&amp;quot;576d5145e2493917691144f1&amp;quot;))) {
     msg.remove();
@@ -263,10 +263,10 @@ int main() {
     
     <item>
       <title>Introduction</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/3-queries/introduction/</link>
+      <link>http://mongodb.github.io/mangrove/3-queries/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/3-queries/introduction/</guid>
+      <guid>http://mongodb.github.io/mangrove/3-queries/introduction/</guid>
       <description>
 
 &lt;p&gt;Mangrove provides a &lt;strong&gt;query builder&lt;/strong&gt; with static type-checking for constructing MongoDB queries.
@@ -436,10 +436,10 @@ This is not supported in MongoDB when combining queries with commas.&lt;/p&gt;
     
     <item>
       <title>Introduction</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/4-updates/introduction/</link>
+      <link>http://mongodb.github.io/mangrove/4-updates/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/4-updates/introduction/</guid>
+      <guid>http://mongodb.github.io/mangrove/4-updates/introduction/</guid>
       <description>&lt;p&gt;Mangrove&amp;rsquo;s expression builder also provides the ability to construct &lt;strong&gt;update&lt;/strong&gt; expressions.
 The syntax is pretty much the same as for query expressions &amp;mdash; you refer to fields
 using &lt;code&gt;MANGROVE_KEY&lt;/code&gt; and the other macros, and update them using
@@ -455,7 +455,7 @@ auto res = User::update_many(MANGROVE_CHILD(User, addr, state) == &amp;quot;NY&a
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Note that a query, as seen in 
-&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-odm/3-queries/&#34;&gt;chapter 3 &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/3-queries/&#34;&gt;chapter 3 &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
 ,
 is given as the first argument, and an update is given as the second.&lt;/p&gt;
 
@@ -465,10 +465,10 @@ is given as the first argument, and an update is given as the second.&lt;/p&gt;
     
     <item>
       <title>Operators</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/3-queries/operators/</link>
+      <link>http://mongodb.github.io/mangrove/3-queries/operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/3-queries/operators/</guid>
+      <guid>http://mongodb.github.io/mangrove/3-queries/operators/</guid>
       <description>
 
 &lt;p&gt;The following is a list of the available &lt;strong&gt;query operators&lt;/strong&gt; for the Mangrove query builder.
@@ -852,10 +852,10 @@ auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAnyClear(0, 2, 4));
     
     <item>
       <title>Operators</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/4-updates/operators/</link>
+      <link>http://mongodb.github.io/mangrove/4-updates/operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/4-updates/operators/</guid>
+      <guid>http://mongodb.github.io/mangrove/4-updates/operators/</guid>
       <description>
 
 &lt;p&gt;The following is a list of the available &lt;strong&gt;update operators&lt;/strong&gt; for the Mangrove expression builder.
@@ -1250,10 +1250,10 @@ auto res = User::update_many(mangrove::isolated(MANGROVE_KEY(User::age) &amp;gt;
     
     <item>
       <title>What is Mangrove?</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/</link>
+      <link>http://mongodb.github.io/mangrove/1-basics/what-is-mangrove/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/</guid>
+      <guid>http://mongodb.github.io/mangrove/1-basics/what-is-mangrove/</guid>
       <description>&lt;p&gt;Mangrove is a C++ &lt;strong&gt;object document mapper (ODM)&lt;/strong&gt; for MongoDB. An &lt;strong&gt;ODM&lt;/strong&gt; lets you map classes in an object-oriented programming language to collections in a document-oriented database like MongoDB.&lt;/p&gt;
 
 &lt;p&gt;If you&amp;rsquo;ve ever used an &lt;strong&gt;object relational mapper (ORM)&lt;/strong&gt;, an &lt;strong&gt;ODM&lt;/strong&gt; is quite similar, except that the underlying structure of the data in the database is actually very similar to the structure of your objects.&lt;/p&gt;
@@ -1313,10 +1313,10 @@ int main() {
     
     <item>
       <title>Allowed Types</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/</link>
+      <link>http://mongodb.github.io/mangrove/2-models/allowed-types/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/</guid>
+      <guid>http://mongodb.github.io/mangrove/2-models/allowed-types/</guid>
       <description>
 
 &lt;p&gt;As we discussed in the previous section, there are a limited number of types that you can save and load, or &lt;strong&gt;serialize&lt;/strong&gt; in the database within your models. Here we&amp;rsquo;ll enumerate every type that you can include in the &lt;code&gt;MANGROVE_MAKE_KEYS_MODEL&lt;/code&gt; macro.&lt;/p&gt;
@@ -1338,7 +1338,7 @@ int main() {
 
 &lt;h2 id=&#34;strings&#34;&gt;Strings&lt;/h2&gt;
 
-&lt;p&gt;Mangrove supports the serialization of &lt;code&gt;std::string&lt;/code&gt;. If you prefer to use string &amp;ldquo;views&amp;rdquo; that minimize the number of copies your program makes, check out the &lt;code&gt;bsoncxx::types::b_utf8&lt;/code&gt; type discussed in &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/#bson-view-types&#34;&gt;BSON &amp;ldquo;View&amp;rdquo; Types&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Mangrove supports the serialization of &lt;code&gt;std::string&lt;/code&gt;. If you prefer to use string &amp;ldquo;views&amp;rdquo; that minimize the number of copies your program makes, check out the &lt;code&gt;bsoncxx::types::b_utf8&lt;/code&gt; type discussed in &lt;a href=&#34;http://mongodb.github.io/mangrove/2-models/allowed-types/#bson-view-types&#34;&gt;BSON &amp;ldquo;View&amp;rdquo; Types&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;time-points&#34;&gt;Time Points&lt;/h2&gt;
 
@@ -1435,9 +1435,9 @@ int main() {
 
 &lt;p&gt;Although 
 &lt;a target=&#34;_blank&#34; href=&#34;http://en.cppreference.com/w/cpp/utility/optional/optional&#34;&gt;&lt;code&gt;std::optional&amp;lt;T&amp;gt;&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
- won&amp;rsquo;t be available until C++17, Mangrove offers it as a serializable type in the form of &lt;code&gt;bson_mapper::stdx::optional&amp;lt;T&amp;gt;&lt;/code&gt;. &lt;code&gt;optional&lt;/code&gt; is a powerful new C++ type that specifies a value that may or may not exist.&lt;/p&gt;
+ won&amp;rsquo;t be available until C++17, Mangrove offers it as a serializable type in the form of &lt;code&gt;boson::stdx::optional&amp;lt;T&amp;gt;&lt;/code&gt;. &lt;code&gt;optional&lt;/code&gt; is a powerful new C++ type that specifies a value that may or may not exist.&lt;/p&gt;
 
-&lt;p&gt;Mangrove offers support for optional types where &lt;code&gt;T&lt;/code&gt; is a type discussed on this page. This gives Mangrove support for dynamic, flexible schemas, which will be discussed in a &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/dynamic-schemas&#34;&gt;later section&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Mangrove offers support for optional types where &lt;code&gt;T&lt;/code&gt; is a type discussed on this page. This gives Mangrove support for dynamic, flexible schemas, which will be discussed in a &lt;a href=&#34;http://mongodb.github.io/mangrove/2-models/dynamic-schemas&#34;&gt;later section&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;objectids&#34;&gt;ObjectIDs&lt;/h2&gt;
 
@@ -1499,18 +1499,18 @@ int main() {
 &lt;li&gt;&lt;code&gt;b_symbol&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Mangrove only supports these types if, in the class containing them, you inherit from &lt;code&gt;bson_mapper::UnderlyingBSONDataBase&lt;/code&gt;. When data is loaded from the database and deserialized into this class, 
-&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-odm/api/html/classbson__mapper_1_1UnderlyingBSONDataBase.html&#34;&gt;&lt;code&gt;UnderlyingBSONDataBase&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;p&gt;Mangrove only supports these types if, in the class containing them, you inherit from &lt;code&gt;boson::UnderlyingBSONDataBase&lt;/code&gt;. When data is loaded from the database and deserialized into this class, 
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classbson__mapper_1_1UnderlyingBSONDataBase.html&#34;&gt;&lt;code&gt;UnderlyingBSONDataBase&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
  holds a &lt;code&gt;std::shared_ptr&lt;/code&gt; to the original BSON data from which it was deserialized. This ensures that any BSON view types in the class will never point to deallocated memory after being read from the database.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Installation</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/installation/</link>
+      <link>http://mongodb.github.io/mangrove/1-basics/installation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/1-basics/installation/</guid>
+      <guid>http://mongodb.github.io/mangrove/1-basics/installation/</guid>
       <description>
 
 &lt;p&gt;To get Mangrove up and running in your project, simply follow these instructions to install Mangrove on your system.&lt;/p&gt;
@@ -1558,13 +1558,13 @@ int main() {
 &lt;li&gt;&lt;p&gt;Clone the repository, and check out the latest stable release.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;git clone -b master https://github.com/mongodb/mongo-cxx-odm&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clone -b master https://github.com/mongodb/mangrove&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Build Mangrove. Note that if you installed the C driver and C++ driver to a path that is automatically searched by &lt;code&gt;pkg-config&lt;/code&gt;, you can omit the &lt;code&gt;PKG_CONFIG_PATH&lt;/code&gt; environment variable. If you don&amp;rsquo;t have &lt;code&gt;pkg-config&lt;/code&gt;, you can explicitly set the path to the libbson, libmongoc, libbsoncxx, and libmongocxx install prefixes with the &lt;code&gt;-DLIBBSON_DIR&lt;/code&gt;, &lt;code&gt;-DLIBMONGOC_DIR&lt;/code&gt;, -&lt;code&gt;Dlibbsoncxx_DIR&lt;/code&gt;, and &lt;code&gt;-Dlibmongocxx_DIR&lt;/code&gt; CMake arguments.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;cd mongo-cxx-odm/build&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cd mangrove/build&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;[PKG_CONFIG_PATH=CXXDRIVER_INSTALL_PATH/lib/pkgconfig] cmake -DCMAKE_BUILD_TYPE=Release [-DCMAKE_INSTALL_PREFIX=DESIRED_INSTALL_PATH] ..&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;make &amp;amp;&amp;amp; sudo make install&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -1574,13 +1574,13 @@ int main() {
     
     <item>
       <title>Custom _id Type</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id/</link>
+      <link>http://mongodb.github.io/mangrove/2-models/custom_id/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id/</guid>
+      <guid>http://mongodb.github.io/mangrove/2-models/custom_id/</guid>
       <description>
 
-&lt;p&gt;As we mentioned in the chapter&amp;rsquo;s &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/introduction&#34;&gt;Introduction&lt;/a&gt;, Mangrove &lt;strong&gt;models&lt;/strong&gt; automatically include an &lt;code&gt;_id&lt;/code&gt; field that is automatically an ObjectID of type &lt;code&gt;bsoncxx::oid&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;As we mentioned in the chapter&amp;rsquo;s &lt;a href=&#34;http://mongodb.github.io/mangrove/2-models/introduction&#34;&gt;Introduction&lt;/a&gt;, Mangrove &lt;strong&gt;models&lt;/strong&gt; automatically include an &lt;code&gt;_id&lt;/code&gt; field that is automatically an ObjectID of type &lt;code&gt;bsoncxx::oid&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;There are various reasons that you might not want to use an ObjectId for the &lt;code&gt;_id&lt;/code&gt; field. Therefore, Mangrove supports the customization of the &lt;code&gt;_id&lt;/code&gt; type via a second template parameter to &lt;code&gt;mangrove::model&lt;/code&gt;.&lt;/p&gt;
 
@@ -1604,7 +1604,7 @@ int main() {
 
 &lt;h2 id=&#34;supported-types&#34;&gt;Supported Types&lt;/h2&gt;
 
-&lt;p&gt;Mangrove supports any type discussed in &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types&#34;&gt;Allowed Types&lt;/a&gt; as &lt;code&gt;_id&lt;/code&gt;&amp;rsquo;s type, except for container types, &lt;code&gt;b_regex&lt;/code&gt;, and &lt;code&gt;b_array&lt;/code&gt;. This means that you can even use an embedded document as your &lt;code&gt;_id&lt;/code&gt; type!&lt;/p&gt;
+&lt;p&gt;Mangrove supports any type discussed in &lt;a href=&#34;http://mongodb.github.io/mangrove/2-models/allowed-types&#34;&gt;Allowed Types&lt;/a&gt; as &lt;code&gt;_id&lt;/code&gt;&amp;rsquo;s type, except for container types, &lt;code&gt;b_regex&lt;/code&gt;, and &lt;code&gt;b_array&lt;/code&gt;. This means that you can even use an embedded document as your &lt;code&gt;_id&lt;/code&gt; type!&lt;/p&gt;
 
 &lt;p&gt;You can read 
 &lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/core/document/#document-id-field&#34;&gt;this article &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
@@ -1614,10 +1614,10 @@ int main() {
     
     <item>
       <title>Quick Tour</title>
-      <link>http://mongodb.github.io/mongo-cxx-odm/1-basics/quick-tour/</link>
+      <link>http://mongodb.github.io/mangrove/1-basics/quick-tour/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mongo-cxx-odm/1-basics/quick-tour/</guid>
+      <guid>http://mongodb.github.io/mangrove/1-basics/quick-tour/</guid>
       <description>
 
 &lt;p&gt;Now that you have Mangrove installed on your system, we can get started with a quick tour of Mangrove&amp;rsquo;s features. To do this, we&amp;rsquo;ll develop the data model for a very simple persistent blog application.&lt;/p&gt;
@@ -1707,7 +1707,7 @@ int main() {
 
 &lt;p&gt;The &lt;code&gt;BlogEntry&lt;/code&gt; model has a static function &lt;code&gt;setCollection()&lt;/code&gt; that lets you specify in which collection to save and retrieve instances of &lt;code&gt;BlogEntry&lt;/code&gt;. It accepts a &lt;code&gt;mongocxx::collection&lt;/code&gt;, which is accessible via the &lt;code&gt;mongocxx::client&lt;/code&gt;. The code above sets &lt;code&gt;BlogEntry&lt;/code&gt;&amp;rsquo;s collection to the &lt;code&gt;&amp;quot;entries&amp;quot;&lt;/code&gt; collection in the &lt;code&gt;&amp;quot;my_blog&amp;quot;&lt;/code&gt; database hosted at &lt;code&gt;&amp;quot;mongodb://localhost:27017&amp;quot;&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;If you&amp;rsquo;re planning on writing multi-threaded applications with Mangrove, be sure to carefully read the warning &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/#linking-with-the-database&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re planning on writing multi-threaded applications with Mangrove, be sure to carefully read the warning &lt;a href=&#34;http://mongodb.github.io/mangrove/2-models/introduction/#linking-with-the-database&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;saving-objects&#34;&gt;Saving Objects&lt;/h2&gt;
 
@@ -1746,7 +1746,7 @@ void printTitlesBy(std::string author) {
 
 &lt;p&gt;There&amp;rsquo;s a lot happening here, but it&amp;rsquo;s very simple once you understand what&amp;rsquo;s going on.&lt;/p&gt;
 
-&lt;p&gt;Inside the parameter list for &lt;code&gt;BlogEntry::find()&lt;/code&gt;, you&amp;rsquo;ll see &lt;code&gt;MANGROVE_KEY(BlogEntry::author) == author&lt;/code&gt;. In Mangrove, you can build MongoDB queries using the standard C++ comparison and logical operators. This is discussed more in &lt;a href=&#34;http://mongodb.github.io/mongo-cxx-odm/3-queries&#34;&gt;Chapter 3&lt;/a&gt;, but the main thing you have to remember is to wrap the value you are comparing in a &lt;code&gt;MANGROVE_KEY&lt;/code&gt; macro.&lt;/p&gt;
+&lt;p&gt;Inside the parameter list for &lt;code&gt;BlogEntry::find()&lt;/code&gt;, you&amp;rsquo;ll see &lt;code&gt;MANGROVE_KEY(BlogEntry::author) == author&lt;/code&gt;. In Mangrove, you can build MongoDB queries using the standard C++ comparison and logical operators. This is discussed more in &lt;a href=&#34;http://mongodb.github.io/mangrove/3-queries&#34;&gt;Chapter 3&lt;/a&gt;, but the main thing you have to remember is to wrap the value you are comparing in a &lt;code&gt;MANGROVE_KEY&lt;/code&gt; macro.&lt;/p&gt;
 
 &lt;p&gt;The return type of &lt;code&gt;BlogEntry::find()&lt;/code&gt; is an iterator of &lt;code&gt;BlogEntry&lt;/code&gt;s. This makes it very easy to work with the often large cursors of objects that are returned from MongoDB queries. In this case, we are interacting with the cursor via the C++11 
 &lt;a target=&#34;_blank&#34; href=&#34;http://en.cppreference.com/w/cpp/language/range-for&#34;&gt;range-based for loop &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;

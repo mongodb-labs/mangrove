@@ -1,0 +1,52 @@
+\hypertarget{classboson_1_1char__array__streambuf}{}\section{boson\+:\+:char\+\_\+array\+\_\+streambuf Class Reference}
+\label{classboson_1_1char__array__streambuf}\index{boson\+::char\+\_\+array\+\_\+streambuf@{boson\+::char\+\_\+array\+\_\+streambuf}}
+
+
+An input streambuf that uses an existing byte array as a buffer.  
+
+
+
+
+{\ttfamily \#include $<$bson\+\_\+streambuf.\+hpp$>$}
+
+Inheritance diagram for boson\+:\+:char\+\_\+array\+\_\+streambuf\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classboson_1_1char__array__streambuf}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classboson_1_1char__array__streambuf_a6d1a17014adfe5daa6c9586f877c6a46}{char\+\_\+array\+\_\+streambuf} (const char $\ast$data, size\+\_\+t len)
+\begin{DoxyCompactList}\small\item\em Create a streambuf around the given byte array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An input streambuf that uses an existing byte array as a buffer. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{boson\+::char\+\_\+array\+\_\+streambuf@{boson\+::char\+\_\+array\+\_\+streambuf}!char\+\_\+array\+\_\+streambuf@{char\+\_\+array\+\_\+streambuf}}
+\index{char\+\_\+array\+\_\+streambuf@{char\+\_\+array\+\_\+streambuf}!boson\+::char\+\_\+array\+\_\+streambuf@{boson\+::char\+\_\+array\+\_\+streambuf}}
+\subsubsection[{\texorpdfstring{char\+\_\+array\+\_\+streambuf(const char $\ast$data, size\+\_\+t len)}{char_array_streambuf(const char *data, size_t len)}}]{\setlength{\rightskip}{0pt plus 5cm}boson\+::char\+\_\+array\+\_\+streambuf\+::char\+\_\+array\+\_\+streambuf (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{data, }
+\item[{size\+\_\+t}]{len}
+\end{DoxyParamCaption}
+)}\hypertarget{classboson_1_1char__array__streambuf_a6d1a17014adfe5daa6c9586f877c6a46}{}\label{classboson_1_1char__array__streambuf_a6d1a17014adfe5daa6c9586f877c6a46}
+
+
+Create a streambuf around the given byte array. 
+
+The caller is responsible for maintaining the lifetime of the underlying data. 
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the data to be read \\
+\hline
+{\em len} & The length of the data \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/boson/bson\+\_\+streambuf.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,23 @@
+\hypertarget{classboson_1_1UnderlyingBSONDataBase}{}\section{boson\+:\+:Underlying\+B\+S\+O\+N\+Data\+Base Class Reference}
+\label{classboson_1_1UnderlyingBSONDataBase}\index{boson\+::\+Underlying\+B\+S\+O\+N\+Data\+Base@{boson\+::\+Underlying\+B\+S\+O\+N\+Data\+Base}}
+
+
+A base class that holds a shared\+\_\+ptr to the binary data for a B\+S\+ON document.  
+
+
+
+
+{\ttfamily \#include $<$bson\+\_\+archiver.\+hpp$>$}
+
+
+
+\subsection{Detailed Description}
+A base class that holds a shared\+\_\+ptr to the binary data for a B\+S\+ON document. 
+
+If a class you are serializing contains any of the bsoncxx view types (b\+\_\+utf8, b\+\_\+document, b\+\_\+array, b\+\_\+binary), you must have that class inherit this base so that the views don\textquotesingle{}t point to deallocated memory.
+
+When using the \hyperlink{classboson_1_1BSONInputArchive}{B\+S\+O\+N\+Input\+Archive} to deserialize a class that inherits from this base, the data will be automatically loaded into this class using set\+Underlying\+B\+S\+O\+N\+Data(). 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/boson/bson\+\_\+archiver.\+hpp\end{DoxyCompactItemize}

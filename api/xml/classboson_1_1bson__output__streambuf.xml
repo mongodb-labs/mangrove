@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classboson_1_1bson__output__streambuf" kind="class" language="C++" prot="public">
+    <compoundname>boson::bson_output_streambuf</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">streambuf</basecompoundref>
+    <includes refid="bson__streambuf_8hpp" local="no">bson_streambuf.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classboson_1_1bson__output__streambuf_1a186866cbf03d48e18f1b1c6da600d10e" prot="public" static="no">
+        <type>std::function&lt; void(bsoncxx::document::value)&gt;</type>
+        <definition>using boson::bson_output_streambuf::document_callback =  std::function&lt;void(bsoncxx::document::value)&gt;</definition>
+        <argsstring></argsstring>
+        <name>document_callback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="37" column="1" bodyfile="src/boson/bson_streambuf.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classboson_1_1bson__output__streambuf_1ad4eefeefcc78cb7186f3018ad7b4a02f" prot="private" static="no" mutable="no">
+        <type>document_callback</type>
+        <definition>document_callback boson::bson_output_streambuf::_cb</definition>
+        <argsstring></argsstring>
+        <name>_cb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="74" column="1" bodyfile="src/boson/bson_streambuf.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1bson__output__streambuf_1a4b31ece0c3ddc47905f5fb43b9ca55d0" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; uint8_t, void(*)(std::uint8_t *)&gt;</type>
+        <definition>std::unique_ptr&lt;uint8_t, void (*)(std::uint8_t *)&gt; boson::bson_output_streambuf::_data</definition>
+        <argsstring></argsstring>
+        <name>_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="75" column="1" bodyfile="src/boson/bson_streambuf.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1bson__output__streambuf_1a926acc131eb44737b3e86d10c5676a53" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t boson::bson_output_streambuf::_len</definition>
+        <argsstring></argsstring>
+        <name>_len</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="76" column="1" bodyfile="src/boson/bson_streambuf.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1bson__output__streambuf_1ad3949ac3670fa5701c77ae70c7cdd43a" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t boson::bson_output_streambuf::_bytes_read</definition>
+        <argsstring></argsstring>
+        <name>_bytes_read</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="77" column="1" bodyfile="src/boson/bson_streambuf.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classboson_1_1bson__output__streambuf_1af2cea7a3bc88691f139eee1739b63e87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>boson::bson_output_streambuf::bson_output_streambuf</definition>
+        <argsstring>(document_callback cb)</argsstring>
+        <name>bson_output_streambuf</name>
+        <param>
+          <type>document_callback</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a new BSON Output Streambuffer that passes documents to the given callback function. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A function that takes a document::value and returns void. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="44" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1bson__output__streambuf_1a9bc80c765951f60ea01d9db6918c2b36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int boson::bson_output_streambuf::overflow</definition>
+        <argsstring>(int ch) override</argsstring>
+        <name>overflow</name>
+        <param>
+          <type>int</type>
+          <declname>ch</declname>
+        </param>
+        <briefdescription>
+<para>This function is called when writing to the stream and the buffer is full. </para>        </briefdescription>
+        <detaileddescription>
+<para>Since we don&apos;t define a buffer, this is called with every character. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The byte of BSON to insert. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The inserted byte, or EOF if something failed. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="52" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1bson__output__streambuf_1ad2f35382566529544c84fe03cd831a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>virtual int boson::bson_output_streambuf::underflow</definition>
+        <argsstring>() override</argsstring>
+        <name>underflow</name>
+        <briefdescription>
+<para>This function always returns EOF, since one should not write from an output stream. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>EOF </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="59" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classboson_1_1bson__output__streambuf_1a86d1293de1632e54aef76e8fad2879ff" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOSON_PRIVATE int</type>
+        <definition>BOSON_PRIVATE int boson::bson_output_streambuf::insert</definition>
+        <argsstring>(int ch)</argsstring>
+        <name>insert</name>
+        <param>
+          <type>int</type>
+          <declname>ch</declname>
+        </param>
+        <briefdescription>
+<para>This function inserts a byte of BSON data into the buffer. </para>        </briefdescription>
+        <detaileddescription>
+<para>The first four bytes are stored in an int, and determine the document size. Then, that number of bytes (minus the first 4) are stored in the buffer. When the data is complete a BSON document value is created, and passed to the user-provided callback.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The byte to insert. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The byte inserted, or EOF if something failed. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="72" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A streambuffer that accepts one or more BSON documents as bytes of BSON data. </para>    </briefdescription>
+    <detaileddescription>
+<para>When a document is complete, it is passed into the user-provided callback. NOTE: This does not perform any validation on the BSON files, and simply uses their first four bytes to judge the document length. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="33">
+        <label>std::streambuf</label>
+      </node>
+      <node id="32">
+        <label>boson::bson_output_streambuf</label>
+        <link refid="classboson_1_1bson__output__streambuf"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="35">
+        <label>std::streambuf</label>
+      </node>
+      <node id="34">
+        <label>boson::bson_output_streambuf</label>
+        <link refid="classboson_1_1bson__output__streambuf"/>
+        <childnode refid="35" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/boson/bson_streambuf.hpp" line="35" column="1" bodyfile="src/boson/bson_streambuf.hpp" bodystart="35" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classboson_1_1bson__output__streambuf_1ad3949ac3670fa5701c77ae70c7cdd43a" prot="private" virt="non-virtual"><scope>boson::bson_output_streambuf</scope><name>_bytes_read</name></member>
+      <member refid="classboson_1_1bson__output__streambuf_1ad4eefeefcc78cb7186f3018ad7b4a02f" prot="private" virt="non-virtual"><scope>boson::bson_output_streambuf</scope><name>_cb</name></member>
+      <member refid="classboson_1_1bson__output__streambuf_1a4b31ece0c3ddc47905f5fb43b9ca55d0" prot="private" virt="non-virtual"><scope>boson::bson_output_streambuf</scope><name>_data</name></member>
+      <member refid="classboson_1_1bson__output__streambuf_1a926acc131eb44737b3e86d10c5676a53" prot="private" virt="non-virtual"><scope>boson::bson_output_streambuf</scope><name>_len</name></member>
+      <member refid="classboson_1_1bson__output__streambuf_1af2cea7a3bc88691f139eee1739b63e87" prot="public" virt="non-virtual"><scope>boson::bson_output_streambuf</scope><name>bson_output_streambuf</name></member>
+      <member refid="classboson_1_1bson__output__streambuf_1a186866cbf03d48e18f1b1c6da600d10e" prot="public" virt="non-virtual"><scope>boson::bson_output_streambuf</scope><name>document_callback</name></member>
+      <member refid="classboson_1_1bson__output__streambuf_1a86d1293de1632e54aef76e8fad2879ff" prot="private" virt="non-virtual"><scope>boson::bson_output_streambuf</scope><name>insert</name></member>
+      <member refid="classboson_1_1bson__output__streambuf_1a9bc80c765951f60ea01d9db6918c2b36" prot="public" virt="non-virtual"><scope>boson::bson_output_streambuf</scope><name>overflow</name></member>
+      <member refid="classboson_1_1bson__output__streambuf_1ad2f35382566529544c84fe03cd831a07" prot="public" virt="virtual"><scope>boson::bson_output_streambuf</scope><name>underflow</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

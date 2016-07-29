@@ -1,0 +1,105 @@
+\hypertarget{classmangrove_1_1nvp}{}\section{mangrove\+:\+:nvp$<$ Base, T $>$ Class Template Reference}
+\label{classmangrove_1_1nvp}\index{mangrove\+::nvp$<$ Base, T $>$@{mangrove\+::nvp$<$ Base, T $>$}}
+
+
+An object that represents a name-\/value pair of a member in an object.  
+
+
+
+
+{\ttfamily \#include $<$nvp.\+hpp$>$}
+
+Inheritance diagram for mangrove\+:\+:nvp$<$ Base, T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmangrove_1_1nvp}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmangrove_1_1nvp_a820f8a196b639e334059c7e80c24b05f}{nvp} (T Base\+::$\ast$t, const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Create a name-\/value pair from a member pointer and a name. \end{DoxyCompactList}\item 
+constexpr \hyperlink{classmangrove_1_1update__expr}{update\+\_\+expr}$<$ \hyperlink{classmangrove_1_1nvp}{nvp}$<$ Base, T $>$, no\+\_\+opt\+\_\+type $>$ \hyperlink{classmangrove_1_1nvp_a5544c2e72bbee89d258f60327a86bf9b}{operator=} (const no\+\_\+opt\+\_\+type \&val) const \hypertarget{classmangrove_1_1nvp_a5544c2e72bbee89d258f60327a86bf9b}{}\label{classmangrove_1_1nvp_a5544c2e72bbee89d258f60327a86bf9b}
+
+\begin{DoxyCompactList}\small\item\em Creates an update expression that sets the field to the given value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type$>$ }\\constexpr std\+::enable\+\_\+if\+\_\+t$<$ is\+\_\+date\+\_\+v$<$ U $>$, \hyperlink{classmangrove_1_1current__date__expr}{current\+\_\+date\+\_\+expr}$<$ \hyperlink{classmangrove_1_1nvp}{nvp} $>$ $>$ \hyperlink{classmangrove_1_1nvp_a26d1d81df8457fb4f6be626c54146543}{operator=} (const \hyperlink{structmangrove_1_1current__date__t}{current\+\_\+date\+\_\+t} \&) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that sets a date value to the current date. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type$>$ }\\constexpr std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+same$<$ bsoncxx\+::types\+::b\+\_\+timestamp, U $>$\+::value, \hyperlink{classmangrove_1_1current__date__expr}{current\+\_\+date\+\_\+expr}$<$ \hyperlink{classmangrove_1_1nvp}{nvp} $>$ $>$ \hyperlink{classmangrove_1_1nvp_a20bf9b9e5279bfbbd3f706a113d724c4}{operator=} (const \hyperlink{structmangrove_1_1current__date__t}{current\+\_\+date\+\_\+t} \&) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that sets a date value to the current date. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classmangrove_1_1nvp_afd600a7d354d1d5e611df1cdfdac3593}{get\+\_\+name} () const 
+\begin{DoxyCompactList}\small\item\em Returns the name of this field. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Base, typename T$>$\\*
+class mangrove\+::nvp$<$ Base, T $>$}
+
+An object that represents a name-\/value pair of a member in an object. 
+
+It is templated on the class of the member and its type. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mangrove\+::nvp@{mangrove\+::nvp}!nvp@{nvp}}
+\index{nvp@{nvp}!mangrove\+::nvp@{mangrove\+::nvp}}
+\subsubsection[{\texorpdfstring{nvp(\+T Base\+::$\ast$t, const char $\ast$name)}{nvp(T Base::*t, const char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base, typename T$>$ constexpr {\bf mangrove\+::nvp}$<$ Base, T $>$\+::{\bf nvp} (
+\begin{DoxyParamCaption}
+\item[{T Base\+::$\ast$}]{t, }
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1nvp_a820f8a196b639e334059c7e80c24b05f}{}\label{classmangrove_1_1nvp_a820f8a196b639e334059c7e80c24b05f}
+
+
+Create a name-\/value pair from a member pointer and a name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & A pointer to the member \\
+\hline
+{\em name} & The name of the member \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mangrove\+::nvp@{mangrove\+::nvp}!get\+\_\+name@{get\+\_\+name}}
+\index{get\+\_\+name@{get\+\_\+name}!mangrove\+::nvp@{mangrove\+::nvp}}
+\subsubsection[{\texorpdfstring{get\+\_\+name() const }{get_name() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base, typename T$>$ std\+::string {\bf mangrove\+::nvp}$<$ Base, T $>$\+::get\+\_\+name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1nvp_afd600a7d354d1d5e611df1cdfdac3593}{}\label{classmangrove_1_1nvp_afd600a7d354d1d5e611df1cdfdac3593}
+
+
+Returns the name of this field. 
+
+\begin{DoxyReturn}{Returns}
+The field name as a string. 
+\end{DoxyReturn}
+\index{mangrove\+::nvp@{mangrove\+::nvp}!operator=@{operator=}}
+\index{operator=@{operator=}!mangrove\+::nvp@{mangrove\+::nvp}}
+\subsubsection[{\texorpdfstring{operator=(const current\+\_\+date\+\_\+t \&) const }{operator=(const current_date_t &) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type$>$ constexpr std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+date\+\_\+v$<$U$>$, {\bf current\+\_\+date\+\_\+expr}$<${\bf nvp}$>$ $>$ {\bf mangrove\+::nvp}$<$ Base, T $>$\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf current\+\_\+date\+\_\+t} \&}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1nvp_a26d1d81df8457fb4f6be626c54146543}{}\label{classmangrove_1_1nvp_a26d1d81df8457fb4f6be626c54146543}
+
+
+Creates an expression that sets a date value to the current date. 
+
+This is only enabled for std\+::chrono\+::time/duration values, as well as b\+\_\+date. \index{mangrove\+::nvp@{mangrove\+::nvp}!operator=@{operator=}}
+\index{operator=@{operator=}!mangrove\+::nvp@{mangrove\+::nvp}}
+\subsubsection[{\texorpdfstring{operator=(const current\+\_\+date\+\_\+t \&) const }{operator=(const current_date_t &) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type$>$ constexpr std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+same$<$bsoncxx\+::types\+::b\+\_\+timestamp, U$>$\+::value, {\bf current\+\_\+date\+\_\+expr}$<${\bf nvp}$>$ $>$ {\bf mangrove\+::nvp}$<$ Base, T $>$\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf current\+\_\+date\+\_\+t} \&}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1nvp_a20bf9b9e5279bfbbd3f706a113d724c4}{}\label{classmangrove_1_1nvp_a20bf9b9e5279bfbbd3f706a113d724c4}
+
+
+Creates an expression that sets a date value to the current date. 
+
+This is only enabled for std\+::chrono\+::time/duration values, as well as b\+\_\+date. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/nvp.\+hpp\end{DoxyCompactItemize}

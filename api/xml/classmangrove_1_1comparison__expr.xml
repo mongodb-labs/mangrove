@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmangrove_1_1comparison__expr" kind="class" language="C++" prot="public">
+    <compoundname>mangrove::comparison_expr</compoundname>
+    <derivedcompoundref refid="classmangrove_1_1comparison__value__expr" prot="public" virt="non-virtual">mangrove::comparison_value_expr&lt; NvpT, U &gt;</derivedcompoundref>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>NvpT</declname>
+        <defname>NvpT</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>U</declname>
+        <defname>U</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classmangrove_1_1comparison__expr_1a348eb5ab8445abab8894d43e786c736b" prot="public" static="no">
+        <type>NvpT</type>
+        <definition>using mangrove::comparison_expr&lt; NvpT, U &gt;::field_type =  NvpT</definition>
+        <argsstring></argsstring>
+        <name>field_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="168" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmangrove_1_1comparison__expr_1a863b538d5d517db79d363d799443bf69" prot="private" static="no" mutable="no">
+        <type>const NvpT</type>
+        <definition>const NvpT mangrove::comparison_expr&lt; NvpT, U &gt;::_nvp</definition>
+        <argsstring></argsstring>
+        <name>_nvp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="239" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1comparison__expr_1a23388d49383aa91c33853ae726571a4e" prot="private" static="no" mutable="no">
+        <type>const U &amp;</type>
+        <definition>const U&amp; mangrove::comparison_expr&lt; NvpT, U &gt;::_field</definition>
+        <argsstring></argsstring>
+        <name>_field</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="240" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmangrove_1_1comparison__expr_1a3661ab2ed5698d4651d681483decab02" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* mangrove::comparison_expr&lt; NvpT, U &gt;::_operator</definition>
+        <argsstring></argsstring>
+        <name>_operator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="241" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmangrove_1_1comparison__expr_1a097fc0cca91f1746c11a78f08a5d4952" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mangrove::comparison_expr&lt; NvpT, U &gt;::comparison_expr</definition>
+        <argsstring>(const NvpT &amp;nvp, const U &amp;field, const char *op)</argsstring>
+        <name>comparison_expr</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const U &amp;</type>
+          <declname>field</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a query expression for the given key, value, and comparison type. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nvp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A name-value pair corresponding to a key in a document </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>field</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value that the key is being compared to. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>op</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of comparison operator, such at gt (&gt;) or ne (!=). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="175" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="175" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1comparison__expr_1a0e69c2e073819f3dd6f736e2368385ff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mangrove::comparison_expr&lt; NvpT, U &gt;::comparison_expr</definition>
+        <argsstring>(const comparison_expr &amp;expr, const char *op)</argsstring>
+        <name>comparison_expr</name>
+        <param>
+          <type>const <ref refid="classmangrove_1_1comparison__expr" kindref="compound">comparison_expr</ref> &amp;</type>
+          <declname>expr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+<para>Takes a comparison expression, and creates a new one with a different operator, but the same value and field. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is primarily used to wrap $regex operators in $not, since $not cannot contains a $regex operator, it must directly contain the regex itself. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>expr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A comparison expresison with a similar field type and value type. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>op</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new operator to use. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="187" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="187" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1comparison__expr_1a24cd33bfa502e97ff0fd16d059192332" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string &amp;</type>
+        <definition>std::string&amp; mangrove::comparison_expr&lt; NvpT, U &gt;::append_name</definition>
+        <argsstring>(std::string &amp;s) const </argsstring>
+        <name>append_name</name>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Appends the name of the contained field to a string. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="194" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="194" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1comparison__expr_1a2d534897e90161d1c0a71f9073c640e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mangrove::comparison_expr&lt; NvpT, U &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false, bool omit_name=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>omit_name</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Appends this expression to a BSON core builder, as a key-value pair of the form &quot;key: {$cmp: val}&quot;, where $cmp is some comparison operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A BSON core builder </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wrap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to wrap the BSON inside a document. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>omit_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to skip the name of the field. This is used primarily in <ref refid="classmangrove_1_1not__expr" kindref="compound">not_expr</ref> and free_expr to append just the value of the expression. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="206" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="206" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="classmangrove_1_1comparison__expr_1ae6101d0a1095f11ded179dd30f4268a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mangrove::comparison_expr&lt; NvpT, U &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Converts the expression to a BSON filter for a query. </para>        </briefdescription>
+        <detaileddescription>
+<para>The format of the BSON is &quot;{key: {$not: {$cmp: val}}}&quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mangrove/query_builder.hpp" line="232" column="1" bodyfile="src/mangrove/query_builder.hpp" bodystart="232" bodyend="236"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a query expression with the syntax &quot;key: {$op: value}&quot;. </para>    </briefdescription>
+    <detaileddescription>
+<para>This usually means queries that are comparisons, such as (User.age &gt; 21). However, this also covers operators such as $exists, or any operator that has the above syntax. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>NvpT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the name-value pair this expression uses. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>U</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value to compare against. This could be the same as the value type of NvpT, or the type of some other parameter, or even a query builder expression. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="51">
+        <label>mangrove::comparison_expr&lt; NvpT, U &gt;</label>
+        <link refid="classmangrove_1_1comparison__expr"/>
+      </node>
+      <node id="52">
+        <label>mangrove::comparison_value_expr&lt; NvpT, U &gt;</label>
+        <link refid="classmangrove_1_1comparison__value__expr"/>
+        <childnode refid="51" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/mangrove/expression_syntax.hpp" line="54" column="1" bodyfile="src/mangrove/expression_syntax.hpp" bodystart="54" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmangrove_1_1comparison__expr_1a23388d49383aa91c33853ae726571a4e" prot="private" virt="non-virtual"><scope>mangrove::comparison_expr</scope><name>_field</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1a863b538d5d517db79d363d799443bf69" prot="private" virt="non-virtual"><scope>mangrove::comparison_expr</scope><name>_nvp</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1a3661ab2ed5698d4651d681483decab02" prot="private" virt="non-virtual"><scope>mangrove::comparison_expr</scope><name>_operator</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1a24cd33bfa502e97ff0fd16d059192332" prot="public" virt="non-virtual"><scope>mangrove::comparison_expr</scope><name>append_name</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1a2d534897e90161d1c0a71f9073c640e3" prot="public" virt="non-virtual"><scope>mangrove::comparison_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1a097fc0cca91f1746c11a78f08a5d4952" prot="public" virt="non-virtual"><scope>mangrove::comparison_expr</scope><name>comparison_expr</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1a0e69c2e073819f3dd6f736e2368385ff" prot="public" virt="non-virtual"><scope>mangrove::comparison_expr</scope><name>comparison_expr</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1a348eb5ab8445abab8894d43e786c736b" prot="public" virt="non-virtual"><scope>mangrove::comparison_expr</scope><name>field_type</name></member>
+      <member refid="classmangrove_1_1comparison__expr_1ae6101d0a1095f11ded179dd30f4268a6" prot="public" virt="non-virtual"><scope>mangrove::comparison_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

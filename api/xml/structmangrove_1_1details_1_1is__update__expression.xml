@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmangrove_1_1details_1_1is__update__expression" kind="struct" language="C++" prot="public">
+    <compoundname>mangrove::details::is_update_expression</compoundname>
+    <basecompoundref refid="structmangrove_1_1details_1_1is__expression__type" prot="public" virt="non-virtual">mangrove::details::is_expression_type&lt; expression_category::update, T &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="266">
+        <label>mangrove::details::is_update_expression&lt; T &gt;</label>
+        <link refid="structmangrove_1_1details_1_1is__update__expression"/>
+        <childnode refid="267" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="267">
+        <label>mangrove::details::is_expression_type&lt; expression_category::update, T &gt;</label>
+        <link refid="structmangrove_1_1details_1_1is__expression__type"/>
+        <childnode refid="268" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="268">
+        <label>std::integral_constant&lt; bool, type==expression_type_v&lt; T &gt; &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="269">
+        <label>mangrove::details::is_update_expression&lt; T &gt;</label>
+        <link refid="structmangrove_1_1details_1_1is__update__expression"/>
+        <childnode refid="270" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="270">
+        <label>mangrove::details::is_expression_type&lt; expression_category::update, T &gt;</label>
+        <link refid="structmangrove_1_1details_1_1is__expression__type"/>
+        <childnode refid="271" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="271">
+        <label>std::integral_constant&lt; bool, type==expression_type_v&lt; T &gt; &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/expression_syntax.hpp" line="186" column="1" bodyfile="src/mangrove/expression_syntax.hpp" bodystart="186" bodyend="186"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

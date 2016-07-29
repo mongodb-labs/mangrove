@@ -1,0 +1,480 @@
+\hypertarget{classmangrove_1_1model}{}\section{mangrove\+:\+:model$<$ T, Id\+Type $>$ Class Template Reference}
+\label{classmangrove_1_1model}\index{mangrove\+::model$<$ T, Id\+Type $>$@{mangrove\+::model$<$ T, Id\+Type $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Ts, typename  = std\+::enable\+\_\+if\+\_\+t$<$!first\+\_\+two\+\_\+types\+\_\+are\+\_\+same$<$model, Ts...$>$\+::value$>$$>$ }\\\hyperlink{classmangrove_1_1model_aad4ed1da2c483620d05c93cdc506e356}{model} (Ts \&\&...ts)
+\begin{DoxyCompactList}\small\item\em Forward the arguments to the constructor of Id\+Type. \end{DoxyCompactList}\item 
+void \hyperlink{classmangrove_1_1model_a1502c90fc3a7c9664a2578efb63e0371}{remove} ()
+\begin{DoxyCompactList}\small\item\em Deletes this object from the underlying collection. \end{DoxyCompactList}\item 
+void \hyperlink{classmangrove_1_1model_a0dd3802e09d149f4bfa8661b7992c177}{save} ()
+\begin{DoxyCompactList}\small\item\em Performs an update in the database that saves the current T object instance to the collection mapped to this class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::int64\+\_\+t \hyperlink{classmangrove_1_1model_a4dac6424aa52c96fc184926f00570836}{count} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter=bsoncxx\+::document\+::view\+\_\+or\+\_\+value\{\}, const mongocxx\+::options\+::count \&options=mongocxx\+::options\+::count())
+\begin{DoxyCompactList}\small\item\em Counts the number of documents matching the provided filter. \end{DoxyCompactList}\item 
+static const mongocxx\+::collection \hyperlink{classmangrove_1_1model_a0d52a9bedf4808ef8cc98f02a9e9083b}{collection} ()
+\begin{DoxyCompactList}\small\item\em Returns a copy of the underlying collection. \end{DoxyCompactList}\item 
+static mongocxx\+::stdx\+::optional$<$ mongocxx\+::result\+::delete\+\_\+result $>$ \hyperlink{classmangrove_1_1model_ada372a128865c770d7b2334990ad6f5f}{delete\+\_\+many} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::delete\+\_\+options \&options=mongocxx\+::options\+::delete\+\_\+options())
+\begin{DoxyCompactList}\small\item\em Deletes all matching documents from the collection. \end{DoxyCompactList}\item 
+static mongocxx\+::stdx\+::optional$<$ mongocxx\+::result\+::delete\+\_\+result $>$ \hyperlink{classmangrove_1_1model_a18e41c79c88891dcfaea88e3cc6df09c}{delete\+\_\+one} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::delete\+\_\+options \&options=mongocxx\+::options\+::delete\+\_\+options())
+\begin{DoxyCompactList}\small\item\em Deletes a single matching document from the collection. \end{DoxyCompactList}\item 
+static void \hyperlink{classmangrove_1_1model_a14472adea853a46b9e76aef6cb2cd246}{drop} ()
+\begin{DoxyCompactList}\small\item\em Drops the underlying collection and all its contained documents from the database. \end{DoxyCompactList}\item 
+static \hyperlink{classmangrove_1_1deserializing__cursor}{deserializing\+\_\+cursor}$<$ T $>$ \hyperlink{classmangrove_1_1model_aa0be0e6204d17a62797f3384cbb5a6b1}{find} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find \&options=mongocxx\+::options\+::find())
+\begin{DoxyCompactList}\small\item\em Finds the documents in this collection which match the provided filter. \end{DoxyCompactList}\item 
+static mongocxx\+::stdx\+::optional$<$ T $>$ \hyperlink{classmangrove_1_1model_a36488dcf05af9a7426bdebb40fbbd8d4}{find\+\_\+one} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find \&options=mongocxx\+::options\+::find())
+\begin{DoxyCompactList}\small\item\em Finds a single document in this collection that matches the provided filter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename container\+\_\+type , typename  = std\+::enable\+\_\+if\+\_\+t$<$container\+\_\+of\+\_\+v$<$container\+\_\+type, T$>$$>$$>$ }\\static mongocxx\+::stdx\+::optional$<$ mongocxx\+::result\+::insert\+\_\+many $>$ \hyperlink{classmangrove_1_1model_a7250891868c6bab48f1cd741f8164b46}{insert\+\_\+many} (const container\+\_\+type \&container, const mongocxx\+::options\+::insert \&options=mongocxx\+::options\+::insert())
+\begin{DoxyCompactList}\small\item\em Inserts multiple object of the model into the collection. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename object\+\_\+iterator\+\_\+type , typename  = std\+::enable\+\_\+if\+\_\+t$<$iterator\+\_\+of\+\_\+v$<$object\+\_\+iterator\+\_\+type, T$>$$>$$>$ }\\static mongocxx\+::stdx\+::optional$<$ mongocxx\+::result\+::insert\+\_\+many $>$ \hyperlink{classmangrove_1_1model_a14db2af5bc4d46898e2a643797bff060}{insert\+\_\+many} (object\+\_\+iterator\+\_\+type begin, object\+\_\+iterator\+\_\+type end, const mongocxx\+::options\+::insert \&options=mongocxx\+::options\+::insert())
+\begin{DoxyCompactList}\small\item\em Inserts multiple objects of the model into the collection. \end{DoxyCompactList}\item 
+static mongocxx\+::stdx\+::optional$<$ mongocxx\+::result\+::insert\+\_\+one $>$ \hyperlink{classmangrove_1_1model_ad9695cdffd6a1abcd62d791caa6943e8}{insert\+\_\+one} (T obj, const mongocxx\+::options\+::insert \&options=mongocxx\+::options\+::insert())
+\begin{DoxyCompactList}\small\item\em Inserts a single object of the model into the collection. \end{DoxyCompactList}\item 
+static void \hyperlink{classmangrove_1_1model_aa292dacb7aa8fc25c9f0fa758e5419fd}{set\+Collection} (const mongocxx\+::collection \&coll)
+\begin{DoxyCompactList}\small\item\em Sets the underlying mongocxx\+::collection used to store and load instances of T. \end{DoxyCompactList}\item 
+static mongocxx\+::stdx\+::optional$<$ mongocxx\+::result\+::update $>$ \hyperlink{classmangrove_1_1model_ab811a568d41f8721b679d5e509bf9072}{update\+\_\+many} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, bsoncxx\+::document\+::view\+\_\+or\+\_\+value update, const mongocxx\+::options\+::update \&options=mongocxx\+::options\+::update())
+\begin{DoxyCompactList}\small\item\em Updates multiple documents matching the provided filter in this collection. \end{DoxyCompactList}\item 
+static mongocxx\+::stdx\+::optional$<$ mongocxx\+::result\+::update $>$ \hyperlink{classmangrove_1_1model_ab0d60c7d8c2285e90456547f40b9f873}{update\+\_\+one} (bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, bsoncxx\+::document\+::view\+\_\+or\+\_\+value update, const mongocxx\+::options\+::update \&options=mongocxx\+::options\+::update())
+\begin{DoxyCompactList}\small\item\em Updates a single document matching the provided filter in this collection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mangrove\+::model@{mangrove\+::model}!model@{model}}
+\index{model@{model}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{model(\+Ts \&\&...\+ts)}{model(Ts &&...ts)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ template$<$typename... Ts, typename  = std\+::enable\+\_\+if\+\_\+t$<$!first\+\_\+two\+\_\+types\+\_\+are\+\_\+same$<$model, Ts...$>$\+::value$>$$>$ {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::{\bf model} (
+\begin{DoxyParamCaption}
+\item[{Ts \&\&...}]{ts}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1model_aad4ed1da2c483620d05c93cdc506e356}{}\label{classmangrove_1_1model_aad4ed1da2c483620d05c93cdc506e356}
+
+
+Forward the arguments to the constructor of Id\+Type. 
+
+A std\+::enable\+\_\+if is included to disable the template for the copy constructor case so the default is used.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ts} & The variadic pack of arguments to be forwarded to the constructor of Id\+Type. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mangrove\+::model@{mangrove\+::model}!collection@{collection}}
+\index{collection@{collection}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{collection()}{collection()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static const mongocxx\+::collection {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::collection (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_a0d52a9bedf4808ef8cc98f02a9e9083b}{}\label{classmangrove_1_1model_a0d52a9bedf4808ef8cc98f02a9e9083b}
+
+
+Returns a copy of the underlying collection. 
+
+\begin{DoxyReturn}{Returns}
+A copy of the underlying mongocxx\+::collection that this class uses to store and load instances of T. 
+\end{DoxyReturn}
+\index{mangrove\+::model@{mangrove\+::model}!count@{count}}
+\index{count@{count}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{count(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter=bsoncxx\+::document\+::view\+\_\+or\+\_\+value\lcurly{}\rcurly{}, const mongocxx\+::options\+::count \&options=mongocxx\+::options\+::count())}{count(bsoncxx::document::view_or_value filter=bsoncxx::document::view_or_value\{\}, const mongocxx::options::count &options=mongocxx::options::count())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static std\+::int64\+\_\+t {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::count (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter = {\ttfamily bsoncxx\+:\+:document\+:\+:view\+\_\+or\+\_\+value\{\}}, }
+\item[{const mongocxx\+::options\+::count \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:count()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_a4dac6424aa52c96fc184926f00570836}{}\label{classmangrove_1_1model_a4dac6424aa52c96fc184926f00570836}
+
+
+Counts the number of documents matching the provided filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & The filter that documents must match in order to be counted. If a filter is not provided, \hyperlink{classmangrove_1_1model_a4dac6424aa52c96fc184926f00570836}{count()} will count the number of documents in the entire collection. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::count.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The count of the documents that matched the filter. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::query} & if the count operation fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/reference/command/count/}{\tt https\+://docs.\+mongodb.\+com/manual/reference/command/count/} 
+\end{DoxySeeAlso}
+\index{mangrove\+::model@{mangrove\+::model}!delete\+\_\+many@{delete\+\_\+many}}
+\index{delete\+\_\+many@{delete\+\_\+many}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{delete\+\_\+many(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::delete\+\_\+options \&options=mongocxx\+::options\+::delete\+\_\+options())}{delete_many(bsoncxx::document::view_or_value filter, const mongocxx::options::delete_options &options=mongocxx::options::delete_options())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static mongocxx\+::stdx\+::optional$<$mongocxx\+::result\+::delete\+\_\+result$>$ {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::delete\+\_\+many (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{const mongocxx\+::options\+::delete\+\_\+options \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:delete\+\_\+options()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_ada372a128865c770d7b2334990ad6f5f}{}\label{classmangrove_1_1model_ada372a128865c770d7b2334990ad6f5f}
+
+
+Deletes all matching documents from the collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document view representing the data to be deleted. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::delete\+\_\+options.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The optional result of performing the deletion, a mongocxx\+::result\+::delete\+\_\+result. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::write} & if the delete fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.mongodb.com/manual/reference/command/delete/}{\tt http\+://docs.\+mongodb.\+com/manual/reference/command/delete/} 
+\end{DoxySeeAlso}
+\index{mangrove\+::model@{mangrove\+::model}!delete\+\_\+one@{delete\+\_\+one}}
+\index{delete\+\_\+one@{delete\+\_\+one}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{delete\+\_\+one(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::delete\+\_\+options \&options=mongocxx\+::options\+::delete\+\_\+options())}{delete_one(bsoncxx::document::view_or_value filter, const mongocxx::options::delete_options &options=mongocxx::options::delete_options())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static mongocxx\+::stdx\+::optional$<$mongocxx\+::result\+::delete\+\_\+result$>$ {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::delete\+\_\+one (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{const mongocxx\+::options\+::delete\+\_\+options \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:delete\+\_\+options()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_a18e41c79c88891dcfaea88e3cc6df09c}{}\label{classmangrove_1_1model_a18e41c79c88891dcfaea88e3cc6df09c}
+
+
+Deletes a single matching document from the collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document view representing the data to be deleted. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::delete\+\_\+options.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The optional result of performing the deletion, a mongocxx\+::result\+::delete\+\_\+result. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::write} & if the delete fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.mongodb.com/manual/reference/command/delete/}{\tt http\+://docs.\+mongodb.\+com/manual/reference/command/delete/} 
+\end{DoxySeeAlso}
+\index{mangrove\+::model@{mangrove\+::model}!drop@{drop}}
+\index{drop@{drop}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{drop()}{drop()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static void {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::drop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_a14472adea853a46b9e76aef6cb2cd246}{}\label{classmangrove_1_1model_a14472adea853a46b9e76aef6cb2cd246}
+
+
+Drops the underlying collection and all its contained documents from the database. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em exception\+::operation} & if the operation fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/reference/method/db.collection.drop/}{\tt https\+://docs.\+mongodb.\+com/manual/reference/method/db.\+collection.\+drop/} 
+\end{DoxySeeAlso}
+\index{mangrove\+::model@{mangrove\+::model}!find@{find}}
+\index{find@{find}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{find(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find \&options=mongocxx\+::options\+::find())}{find(bsoncxx::document::view_or_value filter, const mongocxx::options::find &options=mongocxx::options::find())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static {\bf deserializing\+\_\+cursor}$<$T$>$ {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::find (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{const mongocxx\+::options\+::find \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:find()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_aa0be0e6204d17a62797f3384cbb5a6b1}{}\label{classmangrove_1_1model_aa0be0e6204d17a62797f3384cbb5a6b1}
+
+
+Finds the documents in this collection which match the provided filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document view representing a document that should match the query. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::find\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Cursor with deserialized objects from the collection. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em If} & the find failed, the returned cursor will throw mongocxx\+::exception\+::query when it is iterated.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/tutorial/query-documents/}{\tt https\+://docs.\+mongodb.\+com/manual/tutorial/query-\/documents/} 
+\end{DoxySeeAlso}
+\index{mangrove\+::model@{mangrove\+::model}!find\+\_\+one@{find\+\_\+one}}
+\index{find\+\_\+one@{find\+\_\+one}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{find\+\_\+one(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, const mongocxx\+::options\+::find \&options=mongocxx\+::options\+::find())}{find_one(bsoncxx::document::view_or_value filter, const mongocxx::options::find &options=mongocxx::options::find())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static mongocxx\+::stdx\+::optional$<$T$>$ {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::find\+\_\+one (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{const mongocxx\+::options\+::find \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:find()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_a36488dcf05af9a7426bdebb40fbbd8d4}{}\label{classmangrove_1_1model_a36488dcf05af9a7426bdebb40fbbd8d4}
+
+
+Finds a single document in this collection that matches the provided filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document view representing a document that should match the query. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::find\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An optional object that matched the filter. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::query} & if the operation fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/tutorial/query-documents/}{\tt https\+://docs.\+mongodb.\+com/manual/tutorial/query-\/documents/} 
+\end{DoxySeeAlso}
+\index{mangrove\+::model@{mangrove\+::model}!insert\+\_\+many@{insert\+\_\+many}}
+\index{insert\+\_\+many@{insert\+\_\+many}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{insert\+\_\+many(const container\+\_\+type \&container, const mongocxx\+::options\+::insert \&options=mongocxx\+::options\+::insert())}{insert_many(const container_type &container, const mongocxx::options::insert &options=mongocxx::options::insert())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ template$<$typename container\+\_\+type , typename  = std\+::enable\+\_\+if\+\_\+t$<$container\+\_\+of\+\_\+v$<$container\+\_\+type, T$>$$>$$>$ static mongocxx\+::stdx\+::optional$<$mongocxx\+::result\+::insert\+\_\+many$>$ {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::insert\+\_\+many (
+\begin{DoxyParamCaption}
+\item[{const container\+\_\+type \&}]{container, }
+\item[{const mongocxx\+::options\+::insert \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:insert()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_a7250891868c6bab48f1cd741f8164b46}{}\label{classmangrove_1_1model_a7250891868c6bab48f1cd741f8164b46}
+
+
+Inserts multiple object of the model into the collection. 
+
+\begin{DoxyWarning}{Warning}
+This method uses the bulk insert command to execute the insertion as opposed to the legacy O\+P\+\_\+\+I\+N\+S\+E\+RT wire protocol message. As a result, using this method to insert many documents on Mongo\+DB $<$ 2.\+6 will be slow.
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em containter\+\_\+type} & The container type. Must contain an iterator that yields objects of this model.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em container} & Container of model objects to insert. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::insert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/tutorial/insert-documents/}{\tt https\+://docs.\+mongodb.\+com/manual/tutorial/insert-\/documents/}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+The result of attempting to performing the insert. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::write} & when the operation fails. \\
+\hline
+\end{DoxyExceptions}
+\index{mangrove\+::model@{mangrove\+::model}!insert\+\_\+many@{insert\+\_\+many}}
+\index{insert\+\_\+many@{insert\+\_\+many}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{insert\+\_\+many(object\+\_\+iterator\+\_\+type begin, object\+\_\+iterator\+\_\+type end, const mongocxx\+::options\+::insert \&options=mongocxx\+::options\+::insert())}{insert_many(object_iterator_type begin, object_iterator_type end, const mongocxx::options::insert &options=mongocxx::options::insert())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ template$<$typename object\+\_\+iterator\+\_\+type , typename  = std\+::enable\+\_\+if\+\_\+t$<$iterator\+\_\+of\+\_\+v$<$object\+\_\+iterator\+\_\+type, T$>$$>$$>$ static mongocxx\+::stdx\+::optional$<$mongocxx\+::result\+::insert\+\_\+many$>$ {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::insert\+\_\+many (
+\begin{DoxyParamCaption}
+\item[{object\+\_\+iterator\+\_\+type}]{begin, }
+\item[{object\+\_\+iterator\+\_\+type}]{end, }
+\item[{const mongocxx\+::options\+::insert \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:insert()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_a14db2af5bc4d46898e2a643797bff060}{}\label{classmangrove_1_1model_a14db2af5bc4d46898e2a643797bff060}
+
+
+Inserts multiple objects of the model into the collection. 
+
+\begin{DoxyWarning}{Warning}
+This method uses the bulk insert command to execute the insertion as opposed to the legacy O\+P\+\_\+\+I\+N\+S\+E\+RT wire protocol message. As a result, using this method to insert many documents on Mongo\+DB $<$ 2.\+6 will be slow.
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em object\+\_\+iterator\+\_\+type} & The iterator type. Must meet the requirements for the input iterator concept with the model class as the value type.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em begin} & Iterator pointing to the first document to be inserted. \\
+\hline
+{\em end} & Iterator pointing to the end of the documents to be inserted. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::insert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/tutorial/insert-documents/}{\tt https\+://docs.\+mongodb.\+com/manual/tutorial/insert-\/documents/}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+The result of attempting to performing the insert. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::write} & if the operation fails. \\
+\hline
+\end{DoxyExceptions}
+\index{mangrove\+::model@{mangrove\+::model}!insert\+\_\+one@{insert\+\_\+one}}
+\index{insert\+\_\+one@{insert\+\_\+one}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{insert\+\_\+one(\+T obj, const mongocxx\+::options\+::insert \&options=mongocxx\+::options\+::insert())}{insert_one(T obj, const mongocxx::options::insert &options=mongocxx::options::insert())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static mongocxx\+::stdx\+::optional$<$mongocxx\+::result\+::insert\+\_\+one$>$ {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::insert\+\_\+one (
+\begin{DoxyParamCaption}
+\item[{T}]{obj, }
+\item[{const mongocxx\+::options\+::insert \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:insert()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_ad9695cdffd6a1abcd62d791caa6943e8}{}\label{classmangrove_1_1model_ad9695cdffd6a1abcd62d791caa6943e8}
+
+
+Inserts a single object of the model into the collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object of the model to insert. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::insert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/tutorial/insert-documents/}{\tt https\+://docs.\+mongodb.\+com/manual/tutorial/insert-\/documents/}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+The result of attempting to perform the insert. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::write} & if the operation fails. \\
+\hline
+\end{DoxyExceptions}
+\index{mangrove\+::model@{mangrove\+::model}!remove@{remove}}
+\index{remove@{remove}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{remove()}{remove()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ void {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::remove (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1model_a1502c90fc3a7c9664a2578efb63e0371}{}\label{classmangrove_1_1model_a1502c90fc3a7c9664a2578efb63e0371}
+
+
+Deletes this object from the underlying collection. 
+
+In the terms of the C\+R\+UD specification, this uses delete\+One with the \+\_\+id as the sole argument to the query filter.
+
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/}{\tt https\+://docs.\+mongodb.\+com/manual/reference/method/db.\+collection.\+delete\+One/} 
+\end{DoxySeeAlso}
+\index{mangrove\+::model@{mangrove\+::model}!save@{save}}
+\index{save@{save}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{save()}{save()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ void {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1model_a0dd3802e09d149f4bfa8661b7992c177}{}\label{classmangrove_1_1model_a0dd3802e09d149f4bfa8661b7992c177}
+
+
+Performs an update in the database that saves the current T object instance to the collection mapped to this class. 
+
+In the terms of the C\+R\+UD specification, this uses update\+One with the \+\_\+id as the sole argument to the query filter, the T object serialized to dotted notation B\+S\+ON as the \$set operand, and upsert=true so that objects that aren\textquotesingle{}t already in the collection are automatically inserted.
+
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/}{\tt https\+://docs.\+mongodb.\+com/manual/reference/method/db.\+collection.\+update\+One/} 
+\end{DoxySeeAlso}
+\index{mangrove\+::model@{mangrove\+::model}!set\+Collection@{set\+Collection}}
+\index{set\+Collection@{set\+Collection}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{set\+Collection(const mongocxx\+::collection \&coll)}{setCollection(const mongocxx::collection &coll)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static void {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::set\+Collection (
+\begin{DoxyParamCaption}
+\item[{const mongocxx\+::collection \&}]{coll}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_aa292dacb7aa8fc25c9f0fa758e5419fd}{}\label{classmangrove_1_1model_aa292dacb7aa8fc25c9f0fa758e5419fd}
+
+
+Sets the underlying mongocxx\+::collection used to store and load instances of T. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coll} & The mongocxx\+::collection object to be mapped to this class.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This must be called with a new mongocxx\+::collection instance for every thread for the model to be thread-\/safe.
+
+The parent mongocxx\+::client from which the mongocxx\+::collection argument was created must outlive any of this model\textquotesingle{}s C\+R\+UD methods. If the client object goes out of scope, a new collection must be passed to this method before using any C\+R\+UD methods. 
+\end{DoxyWarning}
+\index{mangrove\+::model@{mangrove\+::model}!update\+\_\+many@{update\+\_\+many}}
+\index{update\+\_\+many@{update\+\_\+many}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{update\+\_\+many(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, bsoncxx\+::document\+::view\+\_\+or\+\_\+value update, const mongocxx\+::options\+::update \&options=mongocxx\+::options\+::update())}{update_many(bsoncxx::document::view_or_value filter, bsoncxx::document::view_or_value update, const mongocxx::options::update &options=mongocxx::options::update())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static mongocxx\+::stdx\+::optional$<$mongocxx\+::result\+::update$>$ {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::update\+\_\+many (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{update, }
+\item[{const mongocxx\+::options\+::update \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:update()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_ab811a568d41f8721b679d5e509bf9072}{}\label{classmangrove_1_1model_ab811a568d41f8721b679d5e509bf9072}
+
+
+Updates multiple documents matching the provided filter in this collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document representing the match criteria. \\
+\hline
+{\em update} & Document representing the update to be applied to matching documents. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::update.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of attempting to update multiple documents. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em exception\+::write} & if the update operation fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.mongodb.com/manual/reference/command/update/}{\tt http\+://docs.\+mongodb.\+com/manual/reference/command/update/} 
+\end{DoxySeeAlso}
+\index{mangrove\+::model@{mangrove\+::model}!update\+\_\+one@{update\+\_\+one}}
+\index{update\+\_\+one@{update\+\_\+one}!mangrove\+::model@{mangrove\+::model}}
+\subsubsection[{\texorpdfstring{update\+\_\+one(bsoncxx\+::document\+::view\+\_\+or\+\_\+value filter, bsoncxx\+::document\+::view\+\_\+or\+\_\+value update, const mongocxx\+::options\+::update \&options=mongocxx\+::options\+::update())}{update_one(bsoncxx::document::view_or_value filter, bsoncxx::document::view_or_value update, const mongocxx::options::update &options=mongocxx::options::update())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Id\+Type  = bsoncxx\+::oid$>$ static mongocxx\+::stdx\+::optional$<$mongocxx\+::result\+::update$>$ {\bf mangrove\+::model}$<$ T, Id\+Type $>$\+::update\+\_\+one (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{filter, }
+\item[{bsoncxx\+::document\+::view\+\_\+or\+\_\+value}]{update, }
+\item[{const mongocxx\+::options\+::update \&}]{options = {\ttfamily mongocxx\+:\+:options\+:\+:update()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classmangrove_1_1model_ab0d60c7d8c2285e90456547f40b9f873}{}\label{classmangrove_1_1model_ab0d60c7d8c2285e90456547f40b9f873}
+
+
+Updates a single document matching the provided filter in this collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Document representing the match criteria. \\
+\hline
+{\em update} & Document representing the update to be applied to a matching document. \\
+\hline
+{\em options} & Optional arguments, see mongocxx\+::options\+::update.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of attempting to update a document. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em mongocxx\+::exception\+::write} & if the update operation fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.mongodb.com/manual/reference/command/update/}{\tt http\+://docs.\+mongodb.\+com/manual/reference/command/update/} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/model.\+hpp\end{DoxyCompactItemize}

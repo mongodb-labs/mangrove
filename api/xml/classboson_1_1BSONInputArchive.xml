@@ -1,0 +1,508 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classboson_1_1BSONInputArchive" kind="class" language="C++" prot="public">
+    <compoundname>boson::BSONInputArchive</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">cereal::InputArchive&lt; BSONInputArchive &gt;</basecompoundref>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classboson_1_1BSONInputArchive_1a4a4e96e9b925dc0c305cc7a75948c481" prot="private" static="no">
+        <name>InputNodeType</name>
+        <enumvalue id="classboson_1_1BSONInputArchive_1a4a4e96e9b925dc0c305cc7a75948c481adaff60416e9ab0d467514f2ceec55d2b" prot="private">
+          <name>InObject</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classboson_1_1BSONInputArchive_1a4a4e96e9b925dc0c305cc7a75948c481a53c55f2d410e0ecdc77028764957eb05" prot="private">
+          <name>InEmbeddedObject</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classboson_1_1BSONInputArchive_1a4a4e96e9b925dc0c305cc7a75948c481aec605dceae057b8afe96012584061e42" prot="private">
+          <name>InEmbeddedArray</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classboson_1_1BSONInputArchive_1a4a4e96e9b925dc0c305cc7a75948c481ac681db7d5f639e112892d2ce9a67a536" prot="private">
+          <name>InRootElement</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="461" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="461" bodyend="461"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classboson_1_1BSONInputArchive_1a949cafedfabe1cea81a37d519320144d" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* boson::BSONInputArchive::_nextName</definition>
+        <argsstring></argsstring>
+        <name>_nextName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="890" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="890" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONInputArchive_1a37900c246e684d3b41ee239fd3c6f178" prot="private" static="no" mutable="no">
+        <type>std::istream &amp;</type>
+        <definition>std::istream&amp; boson::BSONInputArchive::_readStream</definition>
+        <argsstring></argsstring>
+        <name>_readStream</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="893" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="893" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONInputArchive_1a50f1c67291428bb76ac00177a07d829d" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool boson::BSONInputArchive::_readFirstDoc</definition>
+        <argsstring></argsstring>
+        <name>_readFirstDoc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="896" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="896" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONInputArchive_1a97e44d3d9746414218ee6c569c8e9f51" prot="private" static="no" mutable="no">
+        <type>stdx::optional&lt; bsoncxx::types::value &gt;</type>
+        <definition>stdx::optional&lt;bsoncxx::types::value&gt; boson::BSONInputArchive::_cachedSearchResult</definition>
+        <argsstring></argsstring>
+        <name>_cachedSearchResult</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="899" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="899" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONInputArchive_1abeff314a144efd770dd01d462c7f9cf7" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; uint8_t &gt;</type>
+        <definition>std::shared_ptr&lt;uint8_t&gt; boson::BSONInputArchive::_curBsonData</definition>
+        <argsstring></argsstring>
+        <name>_curBsonData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="902" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="902" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONInputArchive_1af347ad3bd634e756da3bdf067d81b0a4" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t boson::BSONInputArchive::_curBsonDataSize</definition>
+        <argsstring></argsstring>
+        <name>_curBsonDataSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="903" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="903" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONInputArchive_1a04a2f9460f5aa69e737cad7aed0ba024" prot="private" static="no" mutable="no">
+        <type>bsoncxx::document::view</type>
+        <definition>bsoncxx::document::view boson::BSONInputArchive::_curBsonDoc</definition>
+        <argsstring></argsstring>
+        <name>_curBsonDoc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="904" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="904" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONInputArchive_1a0ab6c96d5c5635ff1a53ab1360d25b05" prot="private" static="no" mutable="no">
+        <type>std::stack&lt; bsoncxx::document::view &gt;</type>
+        <definition>std::stack&lt;bsoncxx::document::view&gt; boson::BSONInputArchive::_embeddedBsonDocStack</definition>
+        <argsstring></argsstring>
+        <name>_embeddedBsonDocStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="907" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="907" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONInputArchive_1a1f9ed36b442353641b6581710b147ef6" prot="private" static="no" mutable="no">
+        <type>std::stack&lt; bsoncxx::array::view &gt;</type>
+        <definition>std::stack&lt;bsoncxx::array::view&gt; boson::BSONInputArchive::_embeddedBsonArrayStack</definition>
+        <argsstring></argsstring>
+        <name>_embeddedBsonArrayStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="911" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="911" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONInputArchive_1adf55d2afd8b581fd8dc5ac100087220f" prot="private" static="no" mutable="no">
+        <type>std::stack&lt; bsoncxx::array::view::iterator &gt;</type>
+        <definition>std::stack&lt;bsoncxx::array::view::iterator&gt; boson::BSONInputArchive::_embeddedBsonArrayIteratorStack</definition>
+        <argsstring></argsstring>
+        <name>_embeddedBsonArrayIteratorStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="912" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="912" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classboson_1_1BSONInputArchive_1ae59fc2ce40d4c2b51ed25b8335bc2bde" prot="private" static="no" mutable="no">
+        <type>std::stack&lt; InputNodeType &gt;</type>
+        <definition>std::stack&lt;InputNodeType&gt; boson::BSONInputArchive::_nodeTypeStack</definition>
+        <argsstring></argsstring>
+        <name>_nodeTypeStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="915" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="915" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1aa3f7a7e7c4b99945e67b80b982afa377" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>boson::BSONInputArchive::BSONInputArchive</definition>
+        <argsstring>(std::istream &amp;stream)</argsstring>
+        <name>BSONInputArchive</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+<para>Construct a <ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> from an input stream of BSON data. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The stream from which to read BSON data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="470" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="470" bodyend="475"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1aad5d865ad41f3f27f3225e145ad2de82" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool boson::BSONInputArchive::willSearchYieldValue</definition>
+        <argsstring>()</argsstring>
+        <name>willSearchYieldValue</name>
+        <briefdescription>
+<para>Checks if the next invocation of search() will yield a value. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used to check if a particular optional element, embedded document, or embedded array exists.</para><para>If search() would indeed return a value, it is cached here so that the logic in search() will not need to be repeated.</para><para><simplesect kind="return"><para>true if the next invocation of search with the current _nextName yields a value, false otherwise. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="599" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="599" bodyend="637"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1abc3cee7831d0e59dcd436c38b1e8b38d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool boson::BSONInputArchive::startRootElementIfRoot</definition>
+        <argsstring>()</argsstring>
+        <name>startRootElementIfRoot</name>
+        <briefdescription>
+<para>Pushes a root element on the node stack if we&apos;re in root. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if a root element was created, false otherwise. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="644" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="644" bodyend="651"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1a1cd61c2cd2ef61545b8016beacd0ae16" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::BSONInputArchive::finishRootElementIfRootElement</definition>
+        <argsstring>()</argsstring>
+        <name>finishRootElementIfRootElement</name>
+        <briefdescription>
+<para>Pops the node stack and iterates to the next BSON view if the top of the stack specifies that we are in a root element. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="657" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="657" bodyend="661"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1acbf9509753c091e7352de7ee8aa3f8ff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::BSONInputArchive::startNode</definition>
+        <argsstring>()</argsstring>
+        <name>startNode</name>
+        <briefdescription>
+<para>Starts a new node, and update the stacks so that we fetch the correct data when calling search(). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="667" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="667" bodyend="710"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1ad8c8d5686977ae6030407334078321ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::BSONInputArchive::finishNode</definition>
+        <argsstring>()</argsstring>
+        <name>finishNode</name>
+        <briefdescription>
+<para>Finishes the most recently started node by popping relevant stacks and, if necessary, iterating to the next root BSON document. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="716" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="716" bodyend="732"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1a44b7425ce3516845419979d6ebb8d937" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::BSONInputArchive::setNextName</definition>
+        <argsstring>(const char *name)</argsstring>
+        <name>setNextName</name>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Sets the name for the next node created with startNode. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the next node </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="740" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="740" bodyend="742"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1accadfb4603da988aabd74fe722925049" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::BSONInputArchive::loadValue</definition>
+        <argsstring>(std::chrono::system_clock::time_point &amp;val)</argsstring>
+        <name>loadValue</name>
+        <param>
+          <type>std::chrono::system_clock::time_point &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Loads a BSON datetime from the current node and puts it into a std::chrono::system_clock::time_point. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The time_point variable into which the datetime will be loaded. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="821" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="821" bodyend="826"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1ad5006693c84badc5db0a32e24f2fbfa5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::BSONInputArchive::loadValue</definition>
+        <argsstring>(std::string &amp;val)</argsstring>
+        <name>loadValue</name>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Loads a BSON UTF-8 value from the current node and puts it into a std::string. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The std::string variable into which the UTF-8 will be loaded. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="834" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="834" bodyend="838"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1aea6822f9991c6d61cd98af62180e231d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::BSONInputArchive::loadSize</definition>
+        <argsstring>(cereal::size_type &amp;size)</argsstring>
+        <name>loadSize</name>
+        <param>
+          <type>cereal::size_type &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Loads the size for a SizeTag, which is used by Cereal to determine how many elements to put into a container such as a std::vector. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to the size value that will be set to the size of the array at the top of the stack. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="848" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="848" bodyend="854"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1a3721f67c5f16330743940516d00217ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::BSONInputArchive::loadUnderlyingDataForCurrentNode</definition>
+        <argsstring>(UnderlyingBSONDataBase &amp;underlyingData)</argsstring>
+        <name>loadUnderlyingDataForCurrentNode</name>
+        <param>
+          <type><ref refid="classboson_1_1UnderlyingBSONDataBase" kindref="compound">UnderlyingBSONDataBase</ref> &amp;</type>
+          <declname>underlyingData</declname>
+        </param>
+        <briefdescription>
+<para>Returns a shared pointer to the underlying data of the current node, loading the size in bytes in a size_t reference argument. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="860" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="860" bodyend="886"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1a375f7ff0680f9bf5ed994706f5bf206c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::BSONInputArchive::readNextDoc</definition>
+        <argsstring>()</argsstring>
+        <name>readNextDoc</name>
+        <briefdescription>
+<para>Reads the next BSON document from the istream. </para>        </briefdescription>
+        <detaileddescription>
+<para>This should be called whenever we are starting to load in a root element or root node. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="482" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="482" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1a0e8521cd24e524fae4860842d8b4f919" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bsoncxx::types::value</type>
+        <definition>bsoncxx::types::value boson::BSONInputArchive::search</definition>
+        <argsstring>()</argsstring>
+        <name>search</name>
+        <briefdescription>
+<para>Searches for the next BSON element to be retrieved and loaded. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The element with _nextName as a key, or if the current node is an array, the next element in that array. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="523" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="523" bodyend="586"/>
+      </memberdef>
+      <memberdef kind="function" id="classboson_1_1BSONInputArchive_1a1a4e53f3d91e94541aa56bbf7d7b312f" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void boson::BSONInputArchive::assert_type</definition>
+        <argsstring>(const bsoncxx::types::value &amp;v, bsoncxx::type t)</argsstring>
+        <name>assert_type</name>
+        <param>
+          <type>const bsoncxx::types::value &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>bsoncxx::type</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>Throws an exception if the type of v is not the specified type t. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_archiver.hpp" line="748" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="748" bodyend="752"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="37">
+        <label>cereal::InputArchive&lt; BSONInputArchive &gt;</label>
+      </node>
+      <node id="36">
+        <label>boson::BSONInputArchive</label>
+        <link refid="classboson_1_1BSONInputArchive"/>
+        <childnode refid="37" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="39">
+        <label>cereal::InputArchive&lt; BSONInputArchive &gt;</label>
+      </node>
+      <node id="38">
+        <label>boson::BSONInputArchive</label>
+        <link refid="classboson_1_1BSONInputArchive"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/boson/bson_archiver.hpp" line="460" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="460" bodyend="917"/>
+    <listofallmembers>
+      <member refid="classboson_1_1BSONInputArchive_1a97e44d3d9746414218ee6c569c8e9f51" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>_cachedSearchResult</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1abeff314a144efd770dd01d462c7f9cf7" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>_curBsonData</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1af347ad3bd634e756da3bdf067d81b0a4" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>_curBsonDataSize</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a04a2f9460f5aa69e737cad7aed0ba024" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>_curBsonDoc</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1adf55d2afd8b581fd8dc5ac100087220f" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>_embeddedBsonArrayIteratorStack</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a1f9ed36b442353641b6581710b147ef6" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>_embeddedBsonArrayStack</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a0ab6c96d5c5635ff1a53ab1360d25b05" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>_embeddedBsonDocStack</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a949cafedfabe1cea81a37d519320144d" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>_nextName</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1ae59fc2ce40d4c2b51ed25b8335bc2bde" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>_nodeTypeStack</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a50f1c67291428bb76ac00177a07d829d" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>_readFirstDoc</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a37900c246e684d3b41ee239fd3c6f178" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>_readStream</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a1a4e53f3d91e94541aa56bbf7d7b312f" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>assert_type</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1aa3f7a7e7c4b99945e67b80b982afa377" prot="public" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>BSONInputArchive</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1ad8c8d5686977ae6030407334078321ec" prot="public" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>finishNode</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a1cd61c2cd2ef61545b8016beacd0ae16" prot="public" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>finishRootElementIfRootElement</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a4a4e96e9b925dc0c305cc7a75948c481" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>InputNodeType</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1aea6822f9991c6d61cd98af62180e231d" prot="public" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>loadSize</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a3721f67c5f16330743940516d00217ee" prot="public" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>loadUnderlyingDataForCurrentNode</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1accadfb4603da988aabd74fe722925049" prot="public" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>loadValue</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1ad5006693c84badc5db0a32e24f2fbfa5" prot="public" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>loadValue</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a375f7ff0680f9bf5ed994706f5bf206c" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>readNextDoc</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a0e8521cd24e524fae4860842d8b4f919" prot="private" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>search</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1a44b7425ce3516845419979d6ebb8d937" prot="public" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>setNextName</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1acbf9509753c091e7352de7ee8aa3f8ff" prot="public" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>startNode</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1abc3cee7831d0e59dcd436c38b1e8b38d" prot="public" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>startRootElementIfRoot</name></member>
+      <member refid="classboson_1_1BSONInputArchive_1aad5d865ad41f3f27f3225e145ad2de82" prot="public" virt="non-virtual"><scope>boson::BSONInputArchive</scope><name>willSearchYieldValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

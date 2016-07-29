@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classboson_1_1bson__input__streambuf" kind="class" language="C++" prot="public">
+    <compoundname>boson::bson_input_streambuf</compoundname>
+    <basecompoundref refid="classboson_1_1char__array__streambuf" prot="public" virt="non-virtual">boson::char_array_streambuf</basecompoundref>
+    <includes refid="bson__streambuf_8hpp" local="no">bson_streambuf.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classboson_1_1bson__input__streambuf_1acd8019b7bd9d9ab162ebeb5d6697d8b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>boson::bson_input_streambuf::bson_input_streambuf</definition>
+        <argsstring>(const bsoncxx::document::view &amp;v)</argsstring>
+        <name>bson_input_streambuf</name>
+        <param>
+          <type>const bsoncxx::document::view &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/boson/bson_streambuf.hpp" line="155" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A wrapper from <ref refid="classboson_1_1char__array__streambuf" kindref="compound">char_array_streambuf</ref>, that uses the data from a BSON document view as a buffer. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="18">
+        <label>boson::bson_input_streambuf</label>
+        <link refid="classboson_1_1bson__input__streambuf"/>
+        <childnode refid="19" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>streambuf</label>
+      </node>
+      <node id="19">
+        <label>boson::char_array_streambuf</label>
+        <link refid="classboson_1_1char__array__streambuf"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="21">
+        <label>boson::bson_input_streambuf</label>
+        <link refid="classboson_1_1bson__input__streambuf"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>streambuf</label>
+      </node>
+      <node id="22">
+        <label>boson::char_array_streambuf</label>
+        <link refid="classboson_1_1char__array__streambuf"/>
+        <childnode refid="23" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/boson/bson_streambuf.hpp" line="153" column="1" bodyfile="src/boson/bson_streambuf.hpp" bodystart="153" bodyend="156"/>
+    <listofallmembers>
+      <member refid="classboson_1_1bson__input__streambuf_1acd8019b7bd9d9ab162ebeb5d6697d8b9" prot="public" virt="non-virtual"><scope>boson::bson_input_streambuf</scope><name>bson_input_streambuf</name></member>
+      <member refid="classboson_1_1char__array__streambuf_1a6d1a17014adfe5daa6c9586f877c6a46" prot="public" virt="non-virtual"><scope>boson::bson_input_streambuf</scope><name>char_array_streambuf</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

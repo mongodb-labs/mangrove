@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmangrove_1_1details_1_1expression__type" kind="struct" language="C++" prot="public">
+    <compoundname>mangrove::details::expression_type</compoundname>
+    <basecompoundref refid="structmangrove_1_1expression__category__t" prot="public" virt="non-virtual">mangrove::expression_category_t&lt; expr_type &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="97">
+        <label>expression_none_t</label>
+        <link refid="structmangrove_1_1expression__category__t"/>
+      </node>
+      <node id="96">
+        <label>mangrove::details::expression_type&lt; typename &gt;</label>
+        <link refid="structmangrove_1_1details_1_1expression__type"/>
+        <childnode refid="97" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="99">
+        <label>expression_none_t</label>
+        <link refid="structmangrove_1_1expression__category__t"/>
+      </node>
+      <node id="98">
+        <label>mangrove::details::expression_type&lt; typename &gt;</label>
+        <link refid="structmangrove_1_1details_1_1expression__type"/>
+        <childnode refid="99" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mangrove/expression_syntax.hpp" line="109" column="1" bodyfile="src/mangrove/expression_syntax.hpp" bodystart="109" bodyend="109"/>
+    <listofallmembers>
+      <member refid="structmangrove_1_1expression__category__t_1ae0a64300626785b556bc88d34cba92fb" prot="public" virt="non-virtual"><scope>mangrove::details::expression_type</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

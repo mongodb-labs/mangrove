@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['underflow',['underflow',['../classbson__mapper_1_1bson__output__streambuf.html#abf1753938d33b31f2408967589ca64ee',1,'bson_mapper::bson_output_streambuf']]],
-  ['unset',['unset',['../classmongo__odm_1_1nvp__base.html#aaef09e56ce567ddf207489771c0c30ae',1,'mongo_odm::nvp_base']]]
+  ['underflow',['underflow',['../classboson_1_1bson__output__streambuf.html#ad2f35382566529544c84fe03cd831a07',1,'boson::bson_output_streambuf']]],
+  ['unset',['unset',['../classmangrove_1_1nvp__base.html#a906f10008bd72b32e75f496f1a24b5d7',1,'mangrove::nvp_base']]],
+  ['update_5fmany',['update_many',['../classmangrove_1_1model.html#ab811a568d41f8721b679d5e509bf9072',1,'mangrove::model']]],
+  ['update_5fone',['update_one',['../classmangrove_1_1model.html#ab0d60c7d8c2285e90456547f40b9f873',1,'mangrove::model']]]
 ];

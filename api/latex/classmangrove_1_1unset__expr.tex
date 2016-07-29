@@ -1,0 +1,50 @@
+\hypertarget{classmangrove_1_1unset__expr}{}\section{mangrove\+:\+:unset\+\_\+expr$<$ NvpT $>$ Class Template Reference}
+\label{classmangrove_1_1unset__expr}\index{mangrove\+::unset\+\_\+expr$<$ Nvp\+T $>$@{mangrove\+::unset\+\_\+expr$<$ Nvp\+T $>$}}
+
+
+Represents an expresion that uses the \$unset operator.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmangrove_1_1unset__expr_ad304b725e0905bf7e32d5651a2bb9045}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder as a key-\/value pair \char`\"{}\$unset\+: \{field\+: \textquotesingle{}\textquotesingle{}\}\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename NvpT$>$\\*
+class mangrove\+::unset\+\_\+expr$<$ Nvp\+T $>$}
+
+Represents an expresion that uses the \$unset operator. 
+
+\subsection{Member Function Documentation}
+\index{mangrove\+::unset\+\_\+expr@{mangrove\+::unset\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mangrove\+::unset\+\_\+expr@{mangrove\+::unset\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT $>$ void {\bf mangrove\+::unset\+\_\+expr}$<$ NvpT $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmangrove_1_1unset__expr_ad304b725e0905bf7e32d5651a2bb9045}{}\label{classmangrove_1_1unset__expr_ad304b725e0905bf7e32d5651a2bb9045}
+
+
+Appends this query to a B\+S\+ON core builder as a key-\/value pair \char`\"{}\$unset\+: \{field\+: \textquotesingle{}\textquotesingle{}\}\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em Whether} & to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mangrove/expression\+\_\+syntax.\+hpp\item 
+src/mangrove/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

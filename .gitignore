@@ -2,7 +2,7 @@
 /docs
 /hugo/public
 /tags
-
+/src/mangrove/mangrove_child_autogen.hpp
 
 # Filetypes
 *~
