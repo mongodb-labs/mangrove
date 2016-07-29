@@ -24,5 +24,432 @@
 </description>
     </item>
     
+    <item>
+      <title>Introduction</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/4-updates/introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/4-updates/introduction/</guid>
+      <description>&lt;p&gt;Mangrove&amp;rsquo;s expression builder also provides the ability to construct &lt;strong&gt;update&lt;/strong&gt; expressions.
+The syntax is pretty much the same as for query expressions &amp;mdash; you refer to fields
+using &lt;code&gt;MANGROVE_KEY&lt;/code&gt; and the other macros, and update them using
+C++ operators such as &lt;code&gt;=&lt;/code&gt; and &lt;code&gt;+=&lt;/code&gt;. Member functions are provided for operators which don&amp;rsquo;t have
+a built-in C++ operator analog, such as the &lt;code&gt;$addToSet&lt;/code&gt; operator.&lt;/p&gt;
+
+&lt;p&gt;The following is an example of a bulk update which would edit sales tax info for users who live in
+New York:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// In the Mongo shell, this would be:
+// db.collection.updateMany({&amp;quot;addr.state&amp;quot;: &amp;quot;NY&amp;quot;}, {$set: {sales_tax: 0.10}});
+auto res = User::update_many(MANGROVE_CHILD(User, addr, state) == &amp;quot;NY&amp;quot;, MANGROVE_KEY(User::sales_tax) = 0.10);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that a query, as seen in 
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-odm/3-queries/&#34;&gt;chapter 3 &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+,
+is given as the first argument, and an update is given as the second.&lt;/p&gt;
+
+&lt;p&gt;The next section contains a reference of the available update operators.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Operators</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/4-updates/operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/4-updates/operators/</guid>
+      <description>
+
+&lt;p&gt;The following is a list of the available &lt;strong&gt;update operators&lt;/strong&gt; for the Mangrove expression builder.
+This page follows the structure of the
+
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/&#34;&gt;MongoDB update operator documentation &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+.&lt;/p&gt;
+
+&lt;h3 id=&#34;field-update-operators&#34;&gt;Field Update Operators&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/inc/&#34;&gt;$inc &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;$inc&lt;/code&gt; operator is provided as the C++ &lt;code&gt;+=&lt;/code&gt; and &lt;code&gt;-=&lt;/code&gt; operators.
+The unary &lt;code&gt;++&lt;/code&gt; and &lt;code&gt;--&lt;/code&gt; can also be used.
+It is only enabled for fields with a numeric type.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Increment the age of users in the database.
+// The following three statements are the same, and produce the BSON:
+// { $inc: {age: 1}}
+auto res = User::update_many({}, MANGROVE_KEY(User::age) += 1);
+res = User::update_many({}, MANGROVE_KEY(User::age)++);
+res = User::update_many({}, ++MANGROVE_KEY(User::age));
+
+// Decrement the time left in the free trial of some product.
+// The following three statements are the same, and produce the BSON:
+// { $inc: {trial_days_left: -1}}
+auto res = User::update_many({}, MANGROVE_KEY(User::trial_days_left) -= 1);
+res = User::update_many({}, MANGROVE_KEY(User::trial_days_left)--);
+res = User::update_many({}, --MANGROVE_KEY(User::trial_days_left));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/mul/&#34;&gt;$mul &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;$mul&lt;/code&gt; operator is provided as the C++ &lt;code&gt;*=&lt;/code&gt; operator.
+It is only enabled for fields with a numeric type.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Double the scores of users in a game.
+// { $mul: {score: 2}}
+auto res = User::update_many({}, MANGROVE_KEY(User::score) *= 2);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/rename/&#34;&gt;$rename &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Mangrove does not provide the &lt;code&gt;$rename&lt;/code&gt; operator, since changing the name of fields created during serialization is not possible.&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/setOnInsert/&#34;&gt;$setOnInsert &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator is provided as a member function on the fields.
+The given value must be the same type as the field (or implicitly cast to it).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Reset the score of a user, or create a new one.
+// Note the use of the &amp;quot;upsert&amp;quot; option, to enable insertion of a new document if necessary.
+// { $set: {score: 0}, $setOnInsert: {hours_played: 0} }
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                 (MANGROVE_KEY(User::score) = 0,
+                                  MANGROVE_KEY(User::hours_played).set_on_insert(0)),
+                                 mongocxx::options::update{}.upsert(true));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/set/&#34;&gt;$set &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;$set&lt;/code&gt; operator is provided as the C++ assignment operator &lt;code&gt;=&lt;/code&gt;.
+The given value must be the same type as the field (or implicitly cast to it).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Edit the username of a user
+// { $set: {username: &amp;quot;brohemian_raphsody&amp;quot;}}
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                MANGROVE_KEY(User::username) = &amp;quot;brohemian_raphsody&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/unset/&#34;&gt;$unset &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator is provided as a member function on fields that takes no arguments.
+The field it is used on must be an &lt;code&gt;optional&lt;/code&gt; field.
+Otherwise, an error is raised at compile time.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Remove the &amp;quot;current_school&amp;quot; field from a user who has graduated:
+// {$unset: {current_school: &amp;quot;&amp;quot;}}
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                 MANGROVE_KEY(User::current_school).unset());
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/min/&#34;&gt;$min &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator is provided as a member function on fields.
+The given value must be the same type as the field (or implicitly cast to it).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Update a user&#39;s lowest score in a game.
+// {$min: {lowest_score: 45}}
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                 MANGROVE_KEY(User::lowest_score).min(45));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/max/&#34;&gt;$max &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator is provided as a member function on fields.
+The given value must be the same type as the field (or implicitly cast to it).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Update a user&#39;s high score in a game.
+// {$max: {lowest_score: 1000}}
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                 MANGROVE_KEY(User::high_score).max(1000));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/currentDate/&#34;&gt;$currentDate &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To set a field to the current date using the &lt;code&gt;$currentDate&lt;/code&gt; operator, one can use assign the reserved value &lt;code&gt;mangrove::current_date&lt;/code&gt; to a field using &lt;code&gt;=&lt;/code&gt;. This is only enabled for date or timestamp fields.
+The &lt;code&gt;$type&lt;/code&gt; argument to the &lt;code&gt;$currentDate&lt;/code&gt; operator is determined by the type of the field itself.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Update a user&#39;s &amp;quot;last played&amp;quot; date.
+// { $currentDate: {last_played: {$type: &amp;quot;date&amp;quot;}} }
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                 MANGROVE_KEY(User::last_played) = mangrove::current_date);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;array-update-operators&#34;&gt;Array Update Operators&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/positional/&#34;&gt;$ &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;$&lt;/code&gt; operator is used to update the first element in an array that matches the given query.
+This is done in Mangrove by using the &lt;code&gt;.first_match()&lt;/code&gt; member function on name-value-pairs.
+The result is then used in an update expression as if it were a regular name-value pair.&lt;/p&gt;
+
+&lt;p&gt;This operator is only enabled for fields that are arrays.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Double a players&#39; first score over 1000.
+// { $mul: {&amp;quot;scores.$&amp;quot;: 2}}
+auto res = User::update_many(MANGROVE_KEY(User::scores).elem_match(MANGROVE_ELEM(User::scores) &amp;gt; 1000),
+                                  MANGROVE_KEY(User::scores).first_match() *= 2);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/addToSet/&#34;&gt;$addToSet &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator is available as a member function on the fields objects.
+It is only enabled for fields that are arrays.
+There are two versions: one that takes a single value to be added to the array,
+and another that takes an iterable containing multiple values to be added.
+The second one is equivalent to using the &lt;code&gt;$each&lt;/code&gt; modifier with &lt;code&gt;$addToSet&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Add a movie to a user&#39;s set of purchased movies.
+// { $addToSet: {purchased_movies: &amp;quot;The Matrix&amp;quot;} }
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                  MANGROVE_KEY(User::purchased_movies).add_to_set(&amp;quot;The Matrix&amp;quot;));
+// Add several movies at once:
+// { $addToSet: {purchased_movies:
+//                  {$each: [&amp;quot;The Matrix&amp;quot;, &amp;quot;The Matrix: Reloaded&amp;quot;, &amp;quot;The Matrix: Revolutions&amp;quot;]}
+//              } }
+auto movies = std::vector&amp;lt;std::string&amp;gt;{&amp;quot;The Matrix&amp;quot;, &amp;quot;The Matrix: Reloaded&amp;quot;, &amp;quot;The Matrix: Revolutions&amp;quot;};
+res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                             MANGROVE_KEY(User::purchased_movies).add_to_set(movies));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/pop/&#34;&gt;$pop &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator is provided as a member function on the name-value-pairs.
+It accepts a single parameter, a boolean &lt;code&gt;last&lt;/code&gt; that determines whether an element should be removed
+from the end (if &lt;code&gt;last == true&lt;/code&gt;) of the list, or the start (if &lt;code&gt;last == false&lt;/code&gt;).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Remove the earliest score of some user.
+// { $pop: {scores: -1} }
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                            MANGROVE_KEY(User::scores).pop(false));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/pull/&#34;&gt;$pull &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator is provided as a member function on the name-value-pairs.
+There are two options: one which takes a value to be removed from the list,
+and another which takes a query and removes values that match the given query.&lt;/p&gt;
+
+&lt;p&gt;In the second one, the syntax for queries is similar to that of the &lt;code&gt;$elemMatch&lt;/code&gt; operators.
+One can use find queries as they would at the top level (i.e. when passing to &lt;code&gt;find(...)&lt;/code&gt;),
+except that scalar arrays need to use the &lt;code&gt;MANGROVE_ELEM&lt;/code&gt; macro to refer to elements.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$pull&lt;/code&gt; is only enabled for fields that are arrays.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Remove the first matrix movie from a user&#39;s purchased movies.
+// { $pull: {purchased_movies: &amp;quot;The Matrix&amp;quot;} }
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                  MANGROVE_KEY(User::purchased_movies).pull(&amp;quot;The Matrix&amp;quot;));
+
+// Remove any and all matrix movies from a user&#39;s purchased movies.
+// { $pull: {purchased_movies: {$regex: &amp;quot;matrix&amp;quot;, $options: &amp;quot;i&amp;quot;}} }
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                 MANGROVE_KEY(User::purchased_movies).pull(MANGROVE_ELEM(User::purchased_movies)).regex(&amp;quot;matrix&amp;quot;, &amp;quot;i&amp;quot;));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/pullAll/&#34;&gt;$pullAll &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator is provided as a member function on the fields.
+It accepts an iterable argument, that contains a list of values to remove from the field&amp;rsquo;s array.
+This operator is only enabled for fields that are arrays.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Remove the three matrix movies from a user&#39;s purchased movies.
+// { $pullAll: {purchased_movies: [&amp;quot;The Matrix&amp;quot;, &amp;quot;The Matrix: Reloaded&amp;quot;, &amp;quot;The Matrix: Revolutions&amp;quot;]} }
+auto movies = std::vector&amp;lt;std::string&amp;gt;{&amp;quot;The Matrix&amp;quot;, &amp;quot;The Matrix: Reloaded&amp;quot;, &amp;quot;The Matrix: Revolutions&amp;quot;};
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                 MANGROVE_KEY(User::purchased_movies).pullAll(movies));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/pushAll/&#34;&gt;$pushAll &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;code&gt;$pushAll&lt;/code&gt; is deprecated, one should use &lt;code&gt;$push&lt;/code&gt; instead.&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/push/&#34;&gt;$push &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;$push&lt;/code&gt; operator is provided as a member function on the fields.
+There are two versions: one which takes a single value to push onto the array,
+and another which takes an iterable, and pushes all the values onto the array
+using the &lt;code&gt;$each&lt;/code&gt; modifier.&lt;/p&gt;
+
+&lt;p&gt;This operator is only enabled for fields that are arrays.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Push a single movie to a user&#39;s watched_movies field:
+// {$push: {watched_movies: &amp;quot;The Matrix&amp;quot;}}
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                 MANGROVE_KEY(User::watched_movies).push(&amp;quot;The Matrix&amp;quot;));
+
+// This user watched every Matrix movie in one sitting:
+// {$push: {watched_movies: {$each: [&amp;quot;The Matrix&amp;quot;, &amp;quot;The Matrix: Reloaded&amp;quot;, &amp;quot;The Matrix: Revolutions&amp;quot;]}}}
+auto movies = std::vector&amp;lt;std::string&amp;gt;{&amp;quot;The Matrix&amp;quot;, &amp;quot;The Matrix: Reloaded&amp;quot;, &amp;quot;The Matrix: Revolutions&amp;quot;};
+res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                            MANGROVE_KEY(User::watched_movies).push(movies));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As per the MongoDB documentation, &lt;code&gt;$push&lt;/code&gt; can accept several optional modifiers.
+Modifiers to this operator can either be specified
+as &lt;code&gt;optional&lt;/code&gt; arguments to the function, or using a &amp;ldquo;fluent&amp;rdquo; API.
+This means that parameters are given as &lt;code&gt;.push(values).slice(...).sort(...).position(...)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/slice/&#34;&gt;$slice &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;
+&amp;mdash; this modifier takes a 32-bit integer that limits the number of array elements.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Add movies to this user&#39;s history, but limit its length to 10.
+// {
+//  $push: {
+//      watched_movies: {$each: [&amp;quot;The Matrix&amp;quot;, &amp;quot;The Matrix: Reloaded&amp;quot;, &amp;quot;The Matrix: Revolutions&amp;quot;],
+//                       $slice: 10}
+//      }
+// }
+auto movies = std::vector&amp;lt;std::string&amp;gt;{&amp;quot;The Matrix&amp;quot;, &amp;quot;The Matrix: Reloaded&amp;quot;, &amp;quot;The Matrix: Revolutions&amp;quot;};
+res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                            MANGROVE_KEY(User::watched_movies).push(movies).slice(10));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/sort/&#34;&gt;$sort &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;
+&amp;mdash; this modifier takes either an integer that is &amp;plusmn;1, or a &lt;em&gt;sort expression&lt;/em&gt;.
+An integer argument will sort values by their natural ordering, either in ascending (&lt;code&gt;+1&lt;/code&gt;)
+or descending (&lt;code&gt;-1&lt;/code&gt;) order.
+A &lt;em&gt;sort expression&lt;/em&gt; represents an ordering based on a specific field.
+It can be specified by calling the &lt;code&gt;.sort(bool ascending)&lt;/code&gt; function on a name-value pair.
+The boolean argument &lt;code&gt;ascending&lt;/code&gt; orders elements in ascending order if &lt;code&gt;true&lt;/code&gt;,
+or descending if &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Add movies to this user&#39;s history, then sort movies in ascending order by their title.
+// {
+//  $push: {
+//      watched_movies: {$each: [&amp;quot;The Matrix&amp;quot;, &amp;quot;The Matrix: Reloaded&amp;quot;, &amp;quot;The Matrix: Revolutions&amp;quot;],
+//                       $sort: 1}
+//      }
+// }
+auto movies = std::vector&amp;lt;std::string&amp;gt;{&amp;quot;The Matrix&amp;quot;, &amp;quot;The Matrix: Reloaded&amp;quot;, &amp;quot;The Matrix: Revolutions&amp;quot;};
+res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                            MANGROVE_KEY(User::watched_movies).push(movies).sort(1));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If, in the above example, movies were not strings but documents, with a &lt;code&gt;title&lt;/code&gt; and &lt;code&gt;rating&lt;/code&gt;
+field, one would be able to choose how to sort them as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Add movies to this user&#39;s history, then sort movies by rating in descending order.
+// {
+//  $push: {
+//      watched_movies: {$each: [ {title: &amp;quot;The Matrix&amp;quot;, rating: 9},
+//                                {title: &amp;quot;The Matrix: Reloaded&amp;quot;, rating: 7},
+//                                {title: &amp;quot;The Matrix: Revolutions&amp;quot;, rating: 3} ],
+//                       $sort: {rating: -1}}
+//      }
+// }
+
+// brace-initialize &amp;quot;Movie&amp;quot; objects.
+auto movies = std::vector&amp;lt;Movie&amp;gt;{{&amp;quot;The Matrix&amp;quot;, 9}, {&amp;quot;The Matrix: Reloaded&amp;quot;, 7},
+                                       {&amp;quot;The Matrix: Revolutions&amp;quot;, 3}};
+res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                            MANGROVE_KEY(User::watched_movies).push(movies).sort(MANGROVE_KEY(Movie::rating).sort(false)));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/position/&#34;&gt;$position &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;
+&amp;mdash; this modifier takes an unsigned integer that represents a position in the array.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Add movies to this user&#39;s history, but add them at the start (i.e. 0th position)
+// of the array.
+// {
+//  $push: {
+//      watched_movies: {$each: [&amp;quot;The Matrix&amp;quot;, &amp;quot;The Matrix: Reloaded&amp;quot;, &amp;quot;The Matrix: Revolutions&amp;quot;],
+//                       $position: 0}
+//      }
+// }
+auto movies = std::vector&amp;lt;std::string&amp;gt;{&amp;quot;The Matrix&amp;quot;, &amp;quot;The Matrix: Reloaded&amp;quot;, &amp;quot;The Matrix: Revolutions&amp;quot;};
+res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                            MANGROVE_KEY(User::watched_movies).push(movies).position(0));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;bitwise-operators&#34;&gt;Bitwise Operators&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/bit/&#34;&gt;$bit &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Bitwise updates on fields can be performed using C++&amp;rsquo;s built-in &lt;code&gt;&amp;amp;=&lt;/code&gt;, &lt;code&gt;|=&lt;/code&gt;, and &lt;code&gt;^=&lt;/code&gt; operators.
+These are only enabled for integer fields.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Perform bitwise operations on a user&#39;s age, because, hey, why not?!
+// { $bit: {age: {and: 7}} }
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                 MANGROVE_KEY(User::age) &amp;amp;= 7);
+
+// { $bit: {age: {or: 7}} }
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                  MANGROVE_KEY(User::age) |= 7);
+
+// { $bit: {age: {xor: 7}} }
+auto res = User::update_one(MANGROVE_KEY(User::username) == &amp;quot;raphofkhan&amp;quot;,
+                                   MANGROVE_KEY(User::age) ^= 7);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;isolation-operators&#34;&gt;Isolation Operators&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/update/isolated/&#34;&gt;$isolated &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;An update expression can be marked as isolated using the &lt;code&gt;$isolated&lt;/code&gt; operator.
+In Mangrove, is this done by passing the query expression used to match documents to the &lt;code&gt;mangrove::isolated&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Set the &#39;can_buy_alcohol&#39; flag for all users over the age of 21, but isolate the updates
+// to avoid concurrency issues. This is equivalent to the mongo shell command:
+// db.testcollection.updateMany({age: {$gt: 21}, $isolated: 1},
+//                          {$set: {can_buy_alcohol: true}})
+auto res = User::update_many(mangrove::isolated(MANGROVE_KEY(User::age) &amp;gt;= 21),
+                                 MANGROVE_KEY(User::can_buy_alcohol) = true);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

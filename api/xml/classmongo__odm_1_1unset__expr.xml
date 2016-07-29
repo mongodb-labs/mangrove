@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1unset__expr" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::unset_expr</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename NvpT</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classmongo__odm_1_1unset__expr_1ac76207e06fa3f3ad7a168ada8ef788c5" prot="public" static="no">
+        <type>NvpT</type>
+        <definition>using mongo_odm::unset_expr&lt; NvpT &gt;::field_type =  NvpT</definition>
+        <argsstring></argsstring>
+        <name>field_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="776" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="776" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1unset__expr_1a5c62a53cbd73d053207fcc35bdd2973b" prot="private" static="no" mutable="no">
+        <type>const NvpT</type>
+        <definition>const NvpT mongo_odm::unset_expr&lt; NvpT &gt;::_nvp</definition>
+        <argsstring></argsstring>
+        <name>_nvp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="807" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="807" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1unset__expr_1afa239b532fc27d25f648e5d74b9fa1d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mongo_odm::unset_expr&lt; NvpT &gt;::unset_expr</definition>
+        <argsstring>(const NvpT &amp;nvp)</argsstring>
+        <name>unset_expr</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="777" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="777" bodyend="778"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1unset__expr_1a5d775357c94e0477351fb49d71378694" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::unset_expr&lt; NvpT &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Appends this query to a BSON core builder as a key-value pair &quot;$unset: {field: &apos;&apos;}&quot;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A basic BSON core builder. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Whether</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to wrap this expression inside a document. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="785" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="785" bodyend="798"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1unset__expr_1aa93a785b977418ddbba8119f5a5ba9ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::unset_expr&lt; NvpT &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="800" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="800" bodyend="804"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents an expresion that uses the $unset operator. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mongo_odm/expression_syntax.hpp" line="80" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="80" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1unset__expr_1a5c62a53cbd73d053207fcc35bdd2973b" prot="private" virt="non-virtual"><scope>mongo_odm::unset_expr</scope><name>_nvp</name></member>
+      <member refid="classmongo__odm_1_1unset__expr_1a5d775357c94e0477351fb49d71378694" prot="public" virt="non-virtual"><scope>mongo_odm::unset_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmongo__odm_1_1unset__expr_1ac76207e06fa3f3ad7a168ada8ef788c5" prot="public" virt="non-virtual"><scope>mongo_odm::unset_expr</scope><name>field_type</name></member>
+      <member refid="classmongo__odm_1_1unset__expr_1aa93a785b977418ddbba8119f5a5ba9ec" prot="public" virt="non-virtual"><scope>mongo_odm::unset_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+      <member refid="classmongo__odm_1_1unset__expr_1afa239b532fc27d25f648e5d74b9fa1d1" prot="public" virt="non-virtual"><scope>mongo_odm::unset_expr</scope><name>unset_expr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

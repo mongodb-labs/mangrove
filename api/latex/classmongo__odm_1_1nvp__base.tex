@@ -1,0 +1,696 @@
+\hypertarget{classmongo__odm_1_1nvp__base}{}\section{mongo\+\_\+odm\+:\+:nvp\+\_\+base$<$ NvpT, T $>$ Class Template Reference}
+\label{classmongo__odm_1_1nvp__base}\index{mongo\+\_\+odm\+::nvp\+\_\+base$<$ Nvp\+T, T $>$@{mongo\+\_\+odm\+::nvp\+\_\+base$<$ Nvp\+T, T $>$}}
+
+
+A C\+R\+TP base class that contains member functions for name-\/value pairs.  
+
+
+
+
+{\ttfamily \#include $<$nvp.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename U $>$ }\\constexpr \hyperlink{classmongo__odm_1_1nvp__child}{nvp\+\_\+child}$<$ T, U, NvpT $>$ \hyperlink{classmongo__odm_1_1nvp__base_af99c8f015456c41a778361e44a22a41c}{operator-\/$>$$\ast$} (const \hyperlink{classmongo__odm_1_1nvp}{nvp}$<$ T, U $>$ \&child) const 
+\begin{DoxyCompactList}\small\item\em Chains two name-\/value pairs to access a sub-\/field, i.\+e. \end{DoxyCompactList}\item 
+constexpr \hyperlink{classmongo__odm_1_1sort__expr}{sort\+\_\+expr}$<$ NvpT $>$ \hyperlink{classmongo__odm_1_1nvp__base_a6a8d165cfc00d3bcd70d16a2c704ae0e}{sort} (bool ascending) const 
+\begin{DoxyCompactList}\small\item\em Creates a sort expression that sorts documents by this field. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Iterable , typename  = enable\+\_\+if\+\_\+matching\+\_\+iterable\+\_\+t$<$\+Iterable$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr}$<$ NvpT, Iterable $>$ \hyperlink{classmongo__odm_1_1nvp__base_ab96c904c4c587d9adb62f372d763eb89}{in} (const Iterable \&iter) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that checks whether the value of this field matches any value in the given iterable. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Iterable , typename  = enable\+\_\+if\+\_\+matching\+\_\+iterable\+\_\+t$<$\+Iterable$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr}$<$ NvpT, Iterable $>$ \hyperlink{classmongo__odm_1_1nvp__base_ac518ef90312a483c64436097e9f9a34e}{nin} (const Iterable \&iter) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that checks whether the value of this field matches none of the values in the given iterable. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = T, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+optional\+\_\+v$<$\+U$>$$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr}$<$ NvpT, bool $>$ \hyperlink{classmongo__odm_1_1nvp__base_ab323224f300d9fb9681d975f2ce98544}{exists} (const bool \&exists) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that checks the existence of a certain field. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+arithmetic$<$\+U$>$\+::value$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1mod__expr}{mod\+\_\+expr}$<$ NvpT $>$ \hyperlink{classmongo__odm_1_1nvp__base_ab87edbd61b20c1fe0dcbd834d41d58cb}{mod} (const int \&divisor, const int \&remainder) const 
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{classmongo__odm_1_1mod__expr}{mod\+\_\+expr} that represents a query with the \$mod operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__value__expr}{comparison\+\_\+value\+\_\+expr}$<$ NvpT, bsoncxx\+::types\+::b\+\_\+regex $>$ \hyperlink{classmongo__odm_1_1nvp__base_a4437128b0fafda2f178172197a539499}{regex} (const char $\ast$regex, const char $\ast$options) const 
+\begin{DoxyCompactList}\small\item\em Creates a comparison expression that represents a query with a \$regex operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Iterable , typename  = enable\+\_\+if\+\_\+matching\+\_\+iterable\+\_\+t$<$\+Iterable$>$, typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr}$<$ NvpT, Iterable $>$ \hyperlink{classmongo__odm_1_1nvp__base_a5e45eef873ecf7fe668ed35f85f5962c}{all} (const Iterable \&iter) const 
+\begin{DoxyCompactList}\small\item\em Creates a query with the \$all operator that compares values in this field\textquotesingle{}s array to values in another array. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Expr , typename  = std\+::enable\+\_\+if\+\_\+t$<$details\+::is\+\_\+query\+\_\+expression\+\_\+v$<$\+Expr$>$$>$, typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+v$<$\+U$>$$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr}$<$ NvpT, Expr $>$ \hyperlink{classmongo__odm_1_1nvp__base_a619149367087ce41ec95b52be06ed50e}{elem\+\_\+match} (const Expr \&queries) const 
+\begin{DoxyCompactList}\small\item\em Creates a query with the \$elem\+Match operator that finds elements in this field that match the given queries. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1free__nvp}{free\+\_\+nvp}$<$ iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ $>$ \hyperlink{classmongo__odm_1_1nvp__base_ae279f5bc8267faedd12d9c1f79f6e831}{element} () const 
+\begin{DoxyCompactList}\small\item\em Constructs a nameless name-\/value-\/pair that corresponds to an element in a scalar array, if this field is an array. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr}$<$ NvpT, std\+::int64\+\_\+t $>$ \hyperlink{classmongo__odm_1_1nvp__base_a44853122530eb589515d13397ed47dd3}{size} (const std\+::int64\+\_\+t \&n) const 
+\begin{DoxyCompactList}\small\item\em Creates an array query expression with the \$size operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename Mask , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+Mask$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+Mask, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr}$<$ NvpT, Mask $>$ \hyperlink{classmongo__odm_1_1nvp__base_af30fc7c976645ced1383bb3fd60a829e}{bits\+\_\+all\+\_\+set} (const Mask \&bitmask) const 
+\begin{DoxyCompactList}\small\item\em Creates a query that uses the \$bits\+All\+Set operator to check a numerical field with a bitmask. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename... Args$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__value__expr}{comparison\+\_\+value\+\_\+expr}$<$ NvpT, std\+::int64\+\_\+t $>$ \hyperlink{classmongo__odm_1_1nvp__base_ac616fd563bc76e3b5484cc00deed6d7f}{bits\+\_\+all\+\_\+set} (std\+::int64\+\_\+t pos1, std\+::int64\+\_\+t pos2, Args...\+positions) const 
+\begin{DoxyCompactList}\small\item\em Creates a query that uses the \$bits\+All\+Set operator to check a series of bits, given as bit positions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename Mask , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+Mask$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+Mask, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr}$<$ NvpT, Mask $>$ \hyperlink{classmongo__odm_1_1nvp__base_af278639723e00543799e4ede530ab77e}{bits\+\_\+any\+\_\+set} (const Mask \&bitmask) const 
+\begin{DoxyCompactList}\small\item\em Creates a query that uses the \$bits\+Any\+Set operator to check a numerical field with a bitmask. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename... Args$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__value__expr}{comparison\+\_\+value\+\_\+expr}$<$ NvpT, std\+::int64\+\_\+t $>$ \hyperlink{classmongo__odm_1_1nvp__base_aa4a880120be6571a65431dd1a949615b}{bits\+\_\+any\+\_\+set} (std\+::int64\+\_\+t pos1, std\+::int64\+\_\+t pos2, Args...\+positions) const 
+\begin{DoxyCompactList}\small\item\em Creates a query that uses the \$bits\+Any\+Set operator to check a series of bits, given as bit positions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename Mask , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+Mask$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+Mask, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__value__expr}{comparison\+\_\+value\+\_\+expr}$<$ NvpT, Mask $>$ \hyperlink{classmongo__odm_1_1nvp__base_a6627ef66f30320d09ba1800a01de47e6}{bits\+\_\+all\+\_\+clear} (const Mask \&bitmask) const 
+\begin{DoxyCompactList}\small\item\em Creates a query that uses the \$bits\+All\+Clear operator to check a numerical field with a bitmask. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename... Args$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__value__expr}{comparison\+\_\+value\+\_\+expr}$<$ NvpT, std\+::int64\+\_\+t $>$ \hyperlink{classmongo__odm_1_1nvp__base_a876a9ea43bedf0d20178ad2bdcf22e1d}{bits\+\_\+all\+\_\+clear} (std\+::int64\+\_\+t pos1, std\+::int64\+\_\+t pos2, Args...\+positions) const 
+\begin{DoxyCompactList}\small\item\em Creates a query that uses the \$bits\+All\+Clear operator to check a series of bits, given as bit positions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename Mask , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+Mask$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+Mask, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr}$<$ NvpT, Mask $>$ \hyperlink{classmongo__odm_1_1nvp__base_a8bab15db45adb8a32e690373e18ad01f}{bits\+\_\+any\+\_\+clear} (const Mask \&bitmask) const 
+\begin{DoxyCompactList}\small\item\em Creates a query that uses the \$bits\+Any\+Clear operator to check a numerical field with a bitmask. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename... Args$>$ }\\constexpr \hyperlink{classmongo__odm_1_1comparison__value__expr}{comparison\+\_\+value\+\_\+expr}$<$ NvpT, std\+::int64\+\_\+t $>$ \hyperlink{classmongo__odm_1_1nvp__base_a68e02181f3393fd3d0ac0b6bb35cc1de}{bits\+\_\+any\+\_\+clear} (std\+::int64\+\_\+t pos1, std\+::int64\+\_\+t pos2, Args...\+positions) const 
+\begin{DoxyCompactList}\small\item\em Creates a query that uses the \$bits\+Any\+Clear operator to check a series of bits, given as bit positions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = T, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+optional\+\_\+v$<$\+U$>$$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1unset__expr}{unset\+\_\+expr}$<$ NvpT $>$ \hyperlink{classmongo__odm_1_1nvp__base_aaef09e56ce567ddf207489771c0c30ae}{unset} () const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that unsets the current field. \end{DoxyCompactList}\item 
+constexpr \hyperlink{classmongo__odm_1_1update__expr}{update\+\_\+expr}$<$ NvpT, no\+\_\+opt\+\_\+type $>$ \hyperlink{classmongo__odm_1_1nvp__base_a93c7d2948059425ffb7122504bb39379}{min} (const no\+\_\+opt\+\_\+type \&val) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that uses the \$min operator to only update a field if the new value is lower than the current value. \end{DoxyCompactList}\item 
+constexpr \hyperlink{classmongo__odm_1_1update__expr}{update\+\_\+expr}$<$ NvpT, no\+\_\+opt\+\_\+type $>$ \hyperlink{classmongo__odm_1_1nvp__base_a9b66983c69573197417350034f94eebc}{max} (const no\+\_\+opt\+\_\+type \&val) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that uses the \$max operator to only update a field if the new value is greater than the current value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1dollar__operator__nvp}{dollar\+\_\+operator\+\_\+nvp}$<$ NvpT $>$ \hyperlink{classmongo__odm_1_1nvp__base_a9d1b3cff13f56eed1e8e08f011668f7d}{first\+\_\+match} () const 
+\begin{DoxyCompactList}\small\item\em Returns a name-\/value pair with the \$ operator appended to it. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1update__value__expr}{update\+\_\+value\+\_\+expr}$<$ NvpT, int $>$ \hyperlink{classmongo__odm_1_1nvp__base_afe7ac6d378952499bc9c9ee6e584059f}{pop} (bool last) const 
+\begin{DoxyCompactList}\small\item\em Creates an update expression with the \$pop operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1update__expr}{update\+\_\+expr}$<$ NvpT, iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ $>$ \hyperlink{classmongo__odm_1_1nvp__base_ad690746344a15b44adaf8cfdf27fad8b}{pull} (const iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ \&val) const 
+\begin{DoxyCompactList}\small\item\em Creates an update expression with the \$pull operator, that removes an element if it matches the given value exactly. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$, typename Expr $>$ }\\constexpr std\+::enable\+\_\+if\+\_\+t$<$ details\+::is\+\_\+query\+\_\+expression\+\_\+v$<$ Expr $>$, \hyperlink{classmongo__odm_1_1update__expr}{update\+\_\+expr}$<$ NvpT, Expr $>$ $>$ \hyperlink{classmongo__odm_1_1nvp__base_ac9ce98f9dd1c2bd7bf9b5d1f9f100c18}{pull} (const Expr \&expr) const 
+\begin{DoxyCompactList}\small\item\em Creates an update expression with the \$pull operator, that removes an element if it matches the given query. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$, typename Iterable , typename  = enable\+\_\+if\+\_\+matching\+\_\+iterable\+\_\+t$<$\+Iterable$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1update__expr}{update\+\_\+expr}$<$ NvpT, Iterable $>$ \hyperlink{classmongo__odm_1_1nvp__base_ab4b8cc435ea878f25cbd61a3946da316}{pull\+\_\+all} (const Iterable \&iter) const 
+\begin{DoxyCompactList}\small\item\em Creates an update expression with the \$pull operator, that removes an element if it matches the given value exactly. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1add__to__set__update__expr}{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}$<$ NvpT, iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ $>$ \hyperlink{classmongo__odm_1_1nvp__base_ab41d90f7d23d25f3e7973171c2ee0ddf}{add\+\_\+to\+\_\+set} (const iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ \&val) const 
+\begin{DoxyCompactList}\small\item\em Creates an update expression with the \$add\+To\+Set operator, that adds a single value to an array, if it is unique. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$, typename Iterable , typename  = enable\+\_\+if\+\_\+matching\+\_\+iterable\+\_\+t$<$\+Iterable$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1add__to__set__update__expr}{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}$<$ NvpT, Iterable $>$ \hyperlink{classmongo__odm_1_1nvp__base_a9250b3abba132ae279fa55d94e52a91b}{add\+\_\+to\+\_\+set} (const Iterable \&iter) const 
+\begin{DoxyCompactList}\small\item\em Creates an update expression with the \$add\+To\+Set operator and the \$each modifier, that adds a list of value to an array, only keeping the unique values. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr}$<$ NvpT, iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ $>$ \hyperlink{classmongo__odm_1_1nvp__base_a9627421e5a3cb1f86a2eed7809a0eff4}{push} (const iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ \&val) const 
+\begin{DoxyCompactList}\small\item\em Creates an update epxression with the \$push operator, that adds a single value to an array. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$, typename Iterable , typename  = enable\+\_\+if\+\_\+matching\+\_\+iterable\+\_\+t$<$\+Iterable$>$, typename Sort  = int, typename  = std\+::enable\+\_\+if\+\_\+t$<$details\+::is\+\_\+sort\+\_\+expression\+\_\+v$<$\+Sort$>$ $\vert$$\vert$                                          std\+::is\+\_\+same$<$int, Sort$>$\+::value$>$$>$ }\\constexpr \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr}$<$ NvpT, Iterable, Sort $>$ \hyperlink{classmongo__odm_1_1nvp__base_a72ab9b7adaf6737ca8c5c9b3eb59953d}{push} (const Iterable \&iter, bsoncxx\+::stdx\+::optional$<$ std\+::int32\+\_\+t $>$ slice=bsoncxx\+::stdx\+::nullopt, const bsoncxx\+::stdx\+::optional$<$ Sort $>$ \&\hyperlink{classmongo__odm_1_1nvp__base_a6a8d165cfc00d3bcd70d16a2c704ae0e}{sort}=bsoncxx\+::stdx\+::nullopt, bsoncxx\+::stdx\+::optional$<$ std\+::uint32\+\_\+t $>$ position=bsoncxx\+::stdx\+::nullopt) const 
+\begin{DoxyCompactList}\small\item\em Creates an update epxression with the \$push operator and the \$each modifier, that adds a list of value to an array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename NvpT, typename T$>$\\*
+class mongo\+\_\+odm\+::nvp\+\_\+base$<$ Nvp\+T, T $>$}
+
+A C\+R\+TP base class that contains member functions for name-\/value pairs. 
+
+These functions are identical between nvp$<$...$>$ and nvp\+\_\+child$<$...$>$, but their return types are templated on the nvp\textquotesingle{}s types, so they are defined here using C\+R\+TP. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em NvpT} & The type of the name-\/value pair \\
+\hline
+{\em T} & The type of the field referred to by the name-\/value pair. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!add\+\_\+to\+\_\+set@{add\+\_\+to\+\_\+set}}
+\index{add\+\_\+to\+\_\+set@{add\+\_\+to\+\_\+set}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{add\+\_\+to\+\_\+set(const iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ \&val) const }{add_to_set(const iterable_value_t< no_opt_type > &val) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ constexpr {\bf add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}$<$NvpT, iterable\+\_\+value\+\_\+t$<$no\+\_\+opt\+\_\+type$>$ $>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::add\+\_\+to\+\_\+set (
+\begin{DoxyParamCaption}
+\item[{const iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ \&}]{val}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_ab41d90f7d23d25f3e7973171c2ee0ddf}{}\label{classmongo__odm_1_1nvp__base_ab41d90f7d23d25f3e7973171c2ee0ddf}
+
+
+Creates an update expression with the \$add\+To\+Set operator, that adds a single value to an array, if it is unique. 
+
+This is only enabled if the current field is an array type. 
+\begin{DoxyParams}{Parameters}
+{\em val} & The value to add. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!add\+\_\+to\+\_\+set@{add\+\_\+to\+\_\+set}}
+\index{add\+\_\+to\+\_\+set@{add\+\_\+to\+\_\+set}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{add\+\_\+to\+\_\+set(const Iterable \&iter) const }{add_to_set(const Iterable &iter) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$, typename Iterable , typename  = enable\+\_\+if\+\_\+matching\+\_\+iterable\+\_\+t$<$\+Iterable$>$$>$ constexpr {\bf add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}$<$NvpT, Iterable$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::add\+\_\+to\+\_\+set (
+\begin{DoxyParamCaption}
+\item[{const Iterable \&}]{iter}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a9250b3abba132ae279fa55d94e52a91b}{}\label{classmongo__odm_1_1nvp__base_a9250b3abba132ae279fa55d94e52a91b}
+
+
+Creates an update expression with the \$add\+To\+Set operator and the \$each modifier, that adds a list of value to an array, only keeping the unique values. 
+
+This is only enabled if the current field is an array. 
+\begin{DoxyParams}{Parameters}
+{\em iter} & The list of values to add. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!all@{all}}
+\index{all@{all}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{all(const Iterable \&iter) const }{all(const Iterable &iter) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename Iterable , typename  = enable\+\_\+if\+\_\+matching\+\_\+iterable\+\_\+t$<$\+Iterable$>$, typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ constexpr {\bf comparison\+\_\+expr}$<$NvpT, Iterable$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::all (
+\begin{DoxyParamCaption}
+\item[{const Iterable \&}]{iter}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a5e45eef873ecf7fe668ed35f85f5962c}{}\label{classmongo__odm_1_1nvp__base_a5e45eef873ecf7fe668ed35f85f5962c}
+
+
+Creates a query with the \$all operator that compares values in this field\textquotesingle{}s array to values in another array. 
+
+This is only enabled if the current field is an iterable itself. 
+\begin{DoxyParams}{Parameters}
+{\em iter} & An iterable containing elements of the same type as this field\textquotesingle{}s elements. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A comparison expression with the \$all oeprator. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!bits\+\_\+all\+\_\+clear@{bits\+\_\+all\+\_\+clear}}
+\index{bits\+\_\+all\+\_\+clear@{bits\+\_\+all\+\_\+clear}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{bits\+\_\+all\+\_\+clear(const Mask \&bitmask) const }{bits_all_clear(const Mask &bitmask) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename Mask , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+Mask$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+Mask, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$$>$ constexpr {\bf comparison\+\_\+value\+\_\+expr}$<$NvpT, Mask$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::bits\+\_\+all\+\_\+clear (
+\begin{DoxyParamCaption}
+\item[{const Mask \&}]{bitmask}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a6627ef66f30320d09ba1800a01de47e6}{}\label{classmongo__odm_1_1nvp__base_a6627ef66f30320d09ba1800a01de47e6}
+
+
+Creates a query that uses the \$bits\+All\+Clear operator to check a numerical field with a bitmask. 
+
+\$bits\+All\+Clear checks that every bit in the bitmask is cleared in the field\textquotesingle{}s value. 
+\begin{DoxyParams}{Parameters}
+{\em bitmask} & -\/ A bitmask to pass to the \$bits\+All\+Clear operator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr} representing this query 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!bits\+\_\+all\+\_\+clear@{bits\+\_\+all\+\_\+clear}}
+\index{bits\+\_\+all\+\_\+clear@{bits\+\_\+all\+\_\+clear}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{bits\+\_\+all\+\_\+clear(std\+::int64\+\_\+t pos1, std\+::int64\+\_\+t pos2, Args...\+positions) const }{bits_all_clear(std::int64_t pos1, std::int64_t pos2, Args...positions) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename... Args$>$ constexpr {\bf comparison\+\_\+value\+\_\+expr}$<$NvpT, std\+::int64\+\_\+t$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::bits\+\_\+all\+\_\+clear (
+\begin{DoxyParamCaption}
+\item[{std\+::int64\+\_\+t}]{pos1, }
+\item[{std\+::int64\+\_\+t}]{pos2, }
+\item[{Args...}]{positions}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a876a9ea43bedf0d20178ad2bdcf22e1d}{}\label{classmongo__odm_1_1nvp__base_a876a9ea43bedf0d20178ad2bdcf22e1d}
+
+
+Creates a query that uses the \$bits\+All\+Clear operator to check a series of bits, given as bit positions. 
+
+This function has two positional arguments to distinguish from the signature that takes a bit mask (see above) 
+\begin{DoxyParams}{Parameters}
+{\em pos1} & The first bit position to check \\
+\hline
+{\em pos2} & The second bit position to check \\
+\hline
+{\em positions...} & Variadic argument containing further bit positions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr} representing this query 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!bits\+\_\+all\+\_\+set@{bits\+\_\+all\+\_\+set}}
+\index{bits\+\_\+all\+\_\+set@{bits\+\_\+all\+\_\+set}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{bits\+\_\+all\+\_\+set(const Mask \&bitmask) const }{bits_all_set(const Mask &bitmask) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename Mask , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+Mask$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+Mask, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$$>$ constexpr {\bf comparison\+\_\+expr}$<$NvpT, Mask$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::bits\+\_\+all\+\_\+set (
+\begin{DoxyParamCaption}
+\item[{const Mask \&}]{bitmask}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_af30fc7c976645ced1383bb3fd60a829e}{}\label{classmongo__odm_1_1nvp__base_af30fc7c976645ced1383bb3fd60a829e}
+
+
+Creates a query that uses the \$bits\+All\+Set operator to check a numerical field with a bitmask. 
+
+\$bits\+All\+Set checks that every bit in the bitmask is set in the field\textquotesingle{}s value. 
+\begin{DoxyParams}{Parameters}
+{\em bitmask} & -\/ A bitmask to pass to the \$bits\+All\+Set operator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr} representing this query 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!bits\+\_\+all\+\_\+set@{bits\+\_\+all\+\_\+set}}
+\index{bits\+\_\+all\+\_\+set@{bits\+\_\+all\+\_\+set}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{bits\+\_\+all\+\_\+set(std\+::int64\+\_\+t pos1, std\+::int64\+\_\+t pos2, Args...\+positions) const }{bits_all_set(std::int64_t pos1, std::int64_t pos2, Args...positions) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename... Args$>$ constexpr {\bf comparison\+\_\+value\+\_\+expr}$<$NvpT, std\+::int64\+\_\+t$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::bits\+\_\+all\+\_\+set (
+\begin{DoxyParamCaption}
+\item[{std\+::int64\+\_\+t}]{pos1, }
+\item[{std\+::int64\+\_\+t}]{pos2, }
+\item[{Args...}]{positions}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_ac616fd563bc76e3b5484cc00deed6d7f}{}\label{classmongo__odm_1_1nvp__base_ac616fd563bc76e3b5484cc00deed6d7f}
+
+
+Creates a query that uses the \$bits\+All\+Set operator to check a series of bits, given as bit positions. 
+
+This function has two positional arguments to distinguish from the signature that takes a bit mask (see above) 
+\begin{DoxyParams}{Parameters}
+{\em pos1} & The first bit position to check \\
+\hline
+{\em pos2} & The second bit position to check \\
+\hline
+{\em positions...} & Variadic argument containing further bit positions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr} representing this query 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!bits\+\_\+any\+\_\+clear@{bits\+\_\+any\+\_\+clear}}
+\index{bits\+\_\+any\+\_\+clear@{bits\+\_\+any\+\_\+clear}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{bits\+\_\+any\+\_\+clear(const Mask \&bitmask) const }{bits_any_clear(const Mask &bitmask) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename Mask , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+Mask$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+Mask, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$$>$ constexpr {\bf comparison\+\_\+expr}$<$NvpT, Mask$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::bits\+\_\+any\+\_\+clear (
+\begin{DoxyParamCaption}
+\item[{const Mask \&}]{bitmask}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a8bab15db45adb8a32e690373e18ad01f}{}\label{classmongo__odm_1_1nvp__base_a8bab15db45adb8a32e690373e18ad01f}
+
+
+Creates a query that uses the \$bits\+Any\+Clear operator to check a numerical field with a bitmask. 
+
+\$bits\+Any\+Clear checks that a least one bit in the bitmask is cleared in the field\textquotesingle{}s value. 
+\begin{DoxyParams}{Parameters}
+{\em bitmask} & -\/ A bitmask to pass to the \$bits\+Any\+Clear operator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr} representing this query 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!bits\+\_\+any\+\_\+clear@{bits\+\_\+any\+\_\+clear}}
+\index{bits\+\_\+any\+\_\+clear@{bits\+\_\+any\+\_\+clear}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{bits\+\_\+any\+\_\+clear(std\+::int64\+\_\+t pos1, std\+::int64\+\_\+t pos2, Args...\+positions) const }{bits_any_clear(std::int64_t pos1, std::int64_t pos2, Args...positions) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename... Args$>$ constexpr {\bf comparison\+\_\+value\+\_\+expr}$<$NvpT, std\+::int64\+\_\+t$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::bits\+\_\+any\+\_\+clear (
+\begin{DoxyParamCaption}
+\item[{std\+::int64\+\_\+t}]{pos1, }
+\item[{std\+::int64\+\_\+t}]{pos2, }
+\item[{Args...}]{positions}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a68e02181f3393fd3d0ac0b6bb35cc1de}{}\label{classmongo__odm_1_1nvp__base_a68e02181f3393fd3d0ac0b6bb35cc1de}
+
+
+Creates a query that uses the \$bits\+Any\+Clear operator to check a series of bits, given as bit positions. 
+
+This function has two positional arguments to distinguish from the signature that takes a bit mask (see above) 
+\begin{DoxyParams}{Parameters}
+{\em pos1} & The first bit position to check \\
+\hline
+{\em pos2} & The second bit position to check \\
+\hline
+{\em positions...} & Variadic argument containing further bit positions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr} representing this query 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!bits\+\_\+any\+\_\+set@{bits\+\_\+any\+\_\+set}}
+\index{bits\+\_\+any\+\_\+set@{bits\+\_\+any\+\_\+set}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{bits\+\_\+any\+\_\+set(const Mask \&bitmask) const }{bits_any_set(const Mask &bitmask) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename Mask , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+Mask$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+Mask, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$$>$ constexpr {\bf comparison\+\_\+expr}$<$NvpT, Mask$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::bits\+\_\+any\+\_\+set (
+\begin{DoxyParamCaption}
+\item[{const Mask \&}]{bitmask}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_af278639723e00543799e4ede530ab77e}{}\label{classmongo__odm_1_1nvp__base_af278639723e00543799e4ede530ab77e}
+
+
+Creates a query that uses the \$bits\+Any\+Set operator to check a numerical field with a bitmask. 
+
+\$bits\+Any\+Set checks that a least one bit in the bitmask is set in the field\textquotesingle{}s value. 
+\begin{DoxyParams}{Parameters}
+{\em bitmask} & -\/ A bitmask to pass to the \$bits\+Any\+Set operator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr} representing this query 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!bits\+\_\+any\+\_\+set@{bits\+\_\+any\+\_\+set}}
+\index{bits\+\_\+any\+\_\+set@{bits\+\_\+any\+\_\+set}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{bits\+\_\+any\+\_\+set(std\+::int64\+\_\+t pos1, std\+::int64\+\_\+t pos2, Args...\+positions) const }{bits_any_set(std::int64_t pos1, std::int64_t pos2, Args...positions) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral$<$\+U$>$\+::value $\vert$$\vert$                                          std\+::is\+\_\+same$<$\+U, bsoncxx\+::types\+::b\+\_\+binary$>$\+::value$>$, typename... Args$>$ constexpr {\bf comparison\+\_\+value\+\_\+expr}$<$NvpT, std\+::int64\+\_\+t$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::bits\+\_\+any\+\_\+set (
+\begin{DoxyParamCaption}
+\item[{std\+::int64\+\_\+t}]{pos1, }
+\item[{std\+::int64\+\_\+t}]{pos2, }
+\item[{Args...}]{positions}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_aa4a880120be6571a65431dd1a949615b}{}\label{classmongo__odm_1_1nvp__base_aa4a880120be6571a65431dd1a949615b}
+
+
+Creates a query that uses the \$bits\+Any\+Set operator to check a series of bits, given as bit positions. 
+
+This function has two positional arguments to distinguish from the signature that takes a bit mask (see above) 
+\begin{DoxyParams}{Parameters}
+{\em pos1} & The first bit position to check \\
+\hline
+{\em pos2} & The second bit position to check \\
+\hline
+{\em positions...} & Variadic argument containing further bit positions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr} representing this query 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!elem\+\_\+match@{elem\+\_\+match}}
+\index{elem\+\_\+match@{elem\+\_\+match}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{elem\+\_\+match(const Expr \&queries) const }{elem_match(const Expr &queries) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename Expr , typename  = std\+::enable\+\_\+if\+\_\+t$<$details\+::is\+\_\+query\+\_\+expression\+\_\+v$<$\+Expr$>$$>$, typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+v$<$\+U$>$$>$$>$ constexpr {\bf comparison\+\_\+expr}$<$NvpT, Expr$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::elem\+\_\+match (
+\begin{DoxyParamCaption}
+\item[{const Expr \&}]{queries}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a619149367087ce41ec95b52be06ed50e}{}\label{classmongo__odm_1_1nvp__base_a619149367087ce41ec95b52be06ed50e}
+
+
+Creates a query with the \$elem\+Match operator that finds elements in this field that match the given queries. 
+
+This can include \char`\"{}free\char`\"{} expressions, that don\textquotesingle{}t contain a field name, in the case of a scalar array. e.\+g. \char`\"{}arr\+: \{\$elem\+Match\+: \{\$gt\+: 4, .....\}\}\char`\"{} This is only enabled if the current field is an iterable itself.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Expr} & A query expression object. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em queries} & Queries to comapre values against. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A comparison expression with the \$elem\+Match operator. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!element@{element}}
+\index{element@{element}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{element() const }{element() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ constexpr {\bf free\+\_\+nvp}$<$iterable\+\_\+value\+\_\+t$<$no\+\_\+opt\+\_\+type$>$ $>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::element (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_ae279f5bc8267faedd12d9c1f79f6e831}{}\label{classmongo__odm_1_1nvp__base_ae279f5bc8267faedd12d9c1f79f6e831}
+
+
+Constructs a nameless name-\/value-\/pair that corresponds to an element in a scalar array, if this field is an array. 
+
+This is used to create expressions with \$elem\+Match. This is only enabled if this current field is an array. \index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!exists@{exists}}
+\index{exists@{exists}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{exists(const bool \&exists) const }{exists(const bool &exists) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = T, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+optional\+\_\+v$<$\+U$>$$>$$>$ constexpr {\bf comparison\+\_\+expr}$<$NvpT, bool$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::exists (
+\begin{DoxyParamCaption}
+\item[{const bool \&}]{exists}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_ab323224f300d9fb9681d975f2ce98544}{}\label{classmongo__odm_1_1nvp__base_ab323224f300d9fb9681d975f2ce98544}
+
+
+Creates an expression that checks the existence of a certain field. 
+
+This is only enabled for fields that are optional types. \{field\+: \{\$exists\+: $<$bool$>$\}\} 
+\begin{DoxyParams}{Parameters}
+{\em exists} & If false, checks that the given field does {\itshape not} exist in a document. True by default. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!first\+\_\+match@{first\+\_\+match}}
+\index{first\+\_\+match@{first\+\_\+match}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{first\+\_\+match() const }{first_match() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ constexpr {\bf dollar\+\_\+operator\+\_\+nvp}$<$NvpT$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::first\+\_\+match (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a9d1b3cff13f56eed1e8e08f011668f7d}{}\label{classmongo__odm_1_1nvp__base_a9d1b3cff13f56eed1e8e08f011668f7d}
+
+
+Returns a name-\/value pair with the \$ operator appended to it. 
+
+When used in an update expression, this modifies the first array element that satisfies a query. \begin{DoxyReturn}{Returns}
+a \hyperlink{classmongo__odm_1_1dollar__operator__nvp}{dollar\+\_\+operator\+\_\+nvp} that corresponds to \char`\"{}$<$field\+\_\+name$>$.\$\char`\"{} 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!in@{in}}
+\index{in@{in}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{in(const Iterable \&iter) const }{in(const Iterable &iter) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename Iterable , typename  = enable\+\_\+if\+\_\+matching\+\_\+iterable\+\_\+t$<$\+Iterable$>$$>$ constexpr {\bf comparison\+\_\+expr}$<$NvpT, Iterable$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::in (
+\begin{DoxyParamCaption}
+\item[{const Iterable \&}]{iter}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_ab96c904c4c587d9adb62f372d763eb89}{}\label{classmongo__odm_1_1nvp__base_ab96c904c4c587d9adb62f372d763eb89}
+
+
+Creates an expression that checks whether the value of this field matches any value in the given iterable. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterable} & A type that works in range-\/based for loops, and yields objects convertible to the type of this name-\/value pair. \\
+\hline
+\end{DoxyTemplParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!max@{max}}
+\index{max@{max}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{max(const no\+\_\+opt\+\_\+type \&val) const }{max(const no_opt_type &val) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ constexpr {\bf update\+\_\+expr}$<$NvpT, no\+\_\+opt\+\_\+type$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::max (
+\begin{DoxyParamCaption}
+\item[{const no\+\_\+opt\+\_\+type \&}]{val}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a9b66983c69573197417350034f94eebc}{}\label{classmongo__odm_1_1nvp__base_a9b66983c69573197417350034f94eebc}
+
+
+Creates an expression that uses the \$max operator to only update a field if the new value is greater than the current value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & The (tentative) new value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An Update\+Expression with the \$max operator. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!min@{min}}
+\index{min@{min}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{min(const no\+\_\+opt\+\_\+type \&val) const }{min(const no_opt_type &val) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ constexpr {\bf update\+\_\+expr}$<$NvpT, no\+\_\+opt\+\_\+type$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::min (
+\begin{DoxyParamCaption}
+\item[{const no\+\_\+opt\+\_\+type \&}]{val}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a93c7d2948059425ffb7122504bb39379}{}\label{classmongo__odm_1_1nvp__base_a93c7d2948059425ffb7122504bb39379}
+
+
+Creates an expression that uses the \$min operator to only update a field if the new value is lower than the current value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & The (tentative) new value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An Update\+Expression with the \$min operator. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!mod@{mod}}
+\index{mod@{mod}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{mod(const int \&divisor, const int \&remainder) const }{mod(const int &divisor, const int &remainder) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+arithmetic$<$\+U$>$\+::value$>$$>$ constexpr {\bf mod\+\_\+expr}$<$NvpT$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::mod (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{divisor, }
+\item[{const int \&}]{remainder}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_ab87edbd61b20c1fe0dcbd834d41d58cb}{}\label{classmongo__odm_1_1nvp__base_ab87edbd61b20c1fe0dcbd834d41d58cb}
+
+
+Creates a \hyperlink{classmongo__odm_1_1mod__expr}{mod\+\_\+expr} that represents a query with the \$mod operator. 
+
+Such a query essentially checks that \char`\"{}nvp\+\_\+value \% divisor == remainder\char`\"{} 
+\begin{DoxyParams}{Parameters}
+{\em divisor} & The divisor for the modulus operation \\
+\hline
+{\em remainder} & The remainder after dividing a value by {\ttfamily divisor} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classmongo__odm_1_1mod__expr}{mod\+\_\+expr} representing this query. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!nin@{nin}}
+\index{nin@{nin}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{nin(const Iterable \&iter) const }{nin(const Iterable &iter) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename Iterable , typename  = enable\+\_\+if\+\_\+matching\+\_\+iterable\+\_\+t$<$\+Iterable$>$$>$ constexpr {\bf comparison\+\_\+expr}$<$NvpT, Iterable$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::nin (
+\begin{DoxyParamCaption}
+\item[{const Iterable \&}]{iter}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_ac518ef90312a483c64436097e9f9a34e}{}\label{classmongo__odm_1_1nvp__base_ac518ef90312a483c64436097e9f9a34e}
+
+
+Creates an expression that checks whether the value of this field matches none of the values in the given iterable. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterable} & A type that works in range-\/based for loops, and yields objects convertible to the type of this name-\/value pair. \\
+\hline
+\end{DoxyTemplParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!operator-\/$>$$\ast$@{operator-\/$>$$\ast$}}
+\index{operator-\/$>$$\ast$@{operator-\/$>$$\ast$}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{operator-\/$>$$\ast$(const nvp$<$ T, U $>$ \&child) const }{operator->*(const nvp< T, U > &child) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U $>$ constexpr {\bf nvp\+\_\+child}$<$T, U, NvpT$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::operator-\/$>$$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf nvp}$<$ T, U $>$ \&}]{child}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_af99c8f015456c41a778361e44a22a41c}{}\label{classmongo__odm_1_1nvp__base_af99c8f015456c41a778361e44a22a41c}
+
+
+Chains two name-\/value pairs to access a sub-\/field, i.\+e. 
+
+a field with the name \char`\"{}parent.\+child\char`\"{}. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em U} & The type of the child N\+VP \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em child} & An N\+VP that corresponds to a sub-\/field of this N\+VP. Its base class must be the same as this field\textquotesingle{}s current type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An N\+VP with the same base class and type as the subfield, but with a link to a parent so that its name is qualified in dot notation. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!pop@{pop}}
+\index{pop@{pop}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{pop(bool last) const }{pop(bool last) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ constexpr {\bf update\+\_\+value\+\_\+expr}$<$NvpT, int$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::pop (
+\begin{DoxyParamCaption}
+\item[{bool}]{last}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_afe7ac6d378952499bc9c9ee6e584059f}{}\label{classmongo__odm_1_1nvp__base_afe7ac6d378952499bc9c9ee6e584059f}
+
+
+Creates an update expression with the \$pop operator. 
+
+This is only enabled if the current field is an array type. 
+\begin{DoxyParams}{Parameters}
+{\em last} & If true, removes the element from the end of the array. If false, from the start. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!pull@{pull}}
+\index{pull@{pull}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{pull(const iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ \&val) const }{pull(const iterable_value_t< no_opt_type > &val) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ constexpr {\bf update\+\_\+expr}$<$NvpT, iterable\+\_\+value\+\_\+t$<$no\+\_\+opt\+\_\+type$>$ $>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::pull (
+\begin{DoxyParamCaption}
+\item[{const iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ \&}]{val}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_ad690746344a15b44adaf8cfdf27fad8b}{}\label{classmongo__odm_1_1nvp__base_ad690746344a15b44adaf8cfdf27fad8b}
+
+
+Creates an update expression with the \$pull operator, that removes an element if it matches the given value exactly. 
+
+This is only enabled if the current field is an array type. 
+\begin{DoxyParams}{Parameters}
+{\em val} & The value to remove. This must match the type {\itshape contained} by this array field. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!pull@{pull}}
+\index{pull@{pull}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{pull(const Expr \&expr) const }{pull(const Expr &expr) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$, typename Expr $>$ constexpr std\+::enable\+\_\+if\+\_\+t$<$details\+::is\+\_\+query\+\_\+expression\+\_\+v$<$Expr$>$, {\bf update\+\_\+expr}$<$NvpT, Expr$>$ $>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::pull (
+\begin{DoxyParamCaption}
+\item[{const Expr \&}]{expr}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_ac9ce98f9dd1c2bd7bf9b5d1f9f100c18}{}\label{classmongo__odm_1_1nvp__base_ac9ce98f9dd1c2bd7bf9b5d1f9f100c18}
+
+
+Creates an update expression with the \$pull operator, that removes an element if it matches the given query. 
+
+This query can contain free expressions, similarly to the \$elem\+Match operator. This is only enabled if the current field is an array type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Expr} & The type of the given query, must be a query expression. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em expr} & A query expression against which to compare \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!pull\+\_\+all@{pull\+\_\+all}}
+\index{pull\+\_\+all@{pull\+\_\+all}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{pull\+\_\+all(const Iterable \&iter) const }{pull_all(const Iterable &iter) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$, typename Iterable , typename  = enable\+\_\+if\+\_\+matching\+\_\+iterable\+\_\+t$<$\+Iterable$>$$>$ constexpr {\bf update\+\_\+expr}$<$NvpT, Iterable$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::pull\+\_\+all (
+\begin{DoxyParamCaption}
+\item[{const Iterable \&}]{iter}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_ab4b8cc435ea878f25cbd61a3946da316}{}\label{classmongo__odm_1_1nvp__base_ab4b8cc435ea878f25cbd61a3946da316}
+
+
+Creates an update expression with the \$pull operator, that removes an element if it matches the given value exactly. 
+
+This is only enabled if the current field is an array type. 
+\begin{DoxyParams}{Parameters}
+{\em iter} & An iterable containing the values to remove. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!push@{push}}
+\index{push@{push}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{push(const iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ \&val) const }{push(const iterable_value_t< no_opt_type > &val) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ constexpr {\bf push\+\_\+update\+\_\+expr}$<$NvpT, iterable\+\_\+value\+\_\+t$<$no\+\_\+opt\+\_\+type$>$ $>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::push (
+\begin{DoxyParamCaption}
+\item[{const iterable\+\_\+value\+\_\+t$<$ no\+\_\+opt\+\_\+type $>$ \&}]{val}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a9627421e5a3cb1f86a2eed7809a0eff4}{}\label{classmongo__odm_1_1nvp__base_a9627421e5a3cb1f86a2eed7809a0eff4}
+
+
+Creates an update epxression with the \$push operator, that adds a single value to an array. 
+
+This is only enabled if the current field is an array. 
+\begin{DoxyParams}{Parameters}
+{\em val} & The value to add. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!push@{push}}
+\index{push@{push}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{push(const Iterable \&iter, bsoncxx\+::stdx\+::optional$<$ std\+::int32\+\_\+t $>$ slice=bsoncxx\+::stdx\+::nullopt, const bsoncxx\+::stdx\+::optional$<$ Sort $>$ \&sort=bsoncxx\+::stdx\+::nullopt, bsoncxx\+::stdx\+::optional$<$ std\+::uint32\+\_\+t $>$ position=bsoncxx\+::stdx\+::nullopt) const }{push(const Iterable &iter, bsoncxx::stdx::optional< std::int32_t > slice=bsoncxx::stdx::nullopt, const bsoncxx::stdx::optional< Sort > &sort=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional< std::uint32_t > position=bsoncxx::stdx::nullopt) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$, typename Iterable , typename  = enable\+\_\+if\+\_\+matching\+\_\+iterable\+\_\+t$<$\+Iterable$>$, typename Sort  = int, typename  = std\+::enable\+\_\+if\+\_\+t$<$details\+::is\+\_\+sort\+\_\+expression\+\_\+v$<$\+Sort$>$ $\vert$$\vert$                                          std\+::is\+\_\+same$<$int, Sort$>$\+::value$>$$>$ constexpr {\bf push\+\_\+update\+\_\+expr}$<$NvpT, Iterable, Sort$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::push (
+\begin{DoxyParamCaption}
+\item[{const Iterable \&}]{iter, }
+\item[{bsoncxx\+::stdx\+::optional$<$ std\+::int32\+\_\+t $>$}]{slice = {\ttfamily bsoncxx\+:\+:stdx\+:\+:nullopt}, }
+\item[{const bsoncxx\+::stdx\+::optional$<$ Sort $>$ \&}]{sort = {\ttfamily bsoncxx\+:\+:stdx\+:\+:nullopt}, }
+\item[{bsoncxx\+::stdx\+::optional$<$ std\+::uint32\+\_\+t $>$}]{position = {\ttfamily bsoncxx\+:\+:stdx\+:\+:nullopt}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a72ab9b7adaf6737ca8c5c9b3eb59953d}{}\label{classmongo__odm_1_1nvp__base_a72ab9b7adaf6737ca8c5c9b3eb59953d}
+
+
+Creates an update epxression with the \$push operator and the \$each modifier, that adds a list of value to an array. 
+
+Further modifiers can be given as arguments to this function, or by modifying the resulting \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr} object. This is only enabled if the current field is an array.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterable} & An iterable that contains the same value type as this field\textquotesingle{}s array. \\
+\hline
+{\em Sort} & The type of the given sort expression, if one is given. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em iter} & The iterable containing values to add. \\
+\hline
+{\em slice} & An optional argument containing the value of the \$slice modifier. \\
+\hline
+{\em sort} & An optional argument containing an expression for the \$sort modifier. \\
+\hline
+{\em position} & An optional argument containing the value of the \$position modifier. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!regex@{regex}}
+\index{regex@{regex}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{regex(const char $\ast$regex, const char $\ast$options) const }{regex(const char *regex, const char *options) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ constexpr {\bf comparison\+\_\+value\+\_\+expr}$<$NvpT, bsoncxx\+::types\+::b\+\_\+regex$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::regex (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{regex, }
+\item[{const char $\ast$}]{options}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a4437128b0fafda2f178172197a539499}{}\label{classmongo__odm_1_1nvp__base_a4437128b0fafda2f178172197a539499}
+
+
+Creates a comparison expression that represents a query with a \$regex operator. 
+
+Such a query only works for string fields. 
+\begin{DoxyParams}{Parameters}
+{\em regex} & The regex to check against. \\
+\hline
+{\em options} & Options to pass to the regex. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!size@{size}}
+\index{size@{size}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{size(const std\+::int64\+\_\+t \&n) const }{size(const std::int64_t &n) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+iterable\+\_\+not\+\_\+string\+\_\+v$<$\+U$>$$>$$>$ constexpr {\bf comparison\+\_\+expr}$<$NvpT, std\+::int64\+\_\+t$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::size (
+\begin{DoxyParamCaption}
+\item[{const std\+::int64\+\_\+t \&}]{n}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a44853122530eb589515d13397ed47dd3}{}\label{classmongo__odm_1_1nvp__base_a44853122530eb589515d13397ed47dd3}
+
+
+Creates an array query expression with the \$size operator. 
+
+This is only enabled if this current field is an array. 
+\begin{DoxyParams}{Parameters}
+{\em n} & The size the array should be. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!sort@{sort}}
+\index{sort@{sort}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{sort(bool ascending) const }{sort(bool ascending) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ constexpr {\bf sort\+\_\+expr}$<$NvpT$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::sort (
+\begin{DoxyParamCaption}
+\item[{bool}]{ascending}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_a6a8d165cfc00d3bcd70d16a2c704ae0e}{}\label{classmongo__odm_1_1nvp__base_a6a8d165cfc00d3bcd70d16a2c704ae0e}
+
+
+Creates a sort expression that sorts documents by this field. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ascending} & Whether to sort by ascending order (+1 in Mongo\+DB syntax). If false, sorts by descending order (-\/1 in Mongo\+DB syntax). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a \hyperlink{classmongo__odm_1_1sort__expr}{sort\+\_\+expr} that reprsents the sort expression \{field\+: +/-\/1\}. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}!unset@{unset}}
+\index{unset@{unset}!mongo\+\_\+odm\+::nvp\+\_\+base@{mongo\+\_\+odm\+::nvp\+\_\+base}}
+\subsubsection[{\texorpdfstring{unset() const }{unset() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename T$>$ template$<$typename U  = T, typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+optional\+\_\+v$<$\+U$>$$>$$>$ constexpr {\bf unset\+\_\+expr}$<$NvpT$>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+base}$<$ NvpT, T $>$\+::unset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__base_aaef09e56ce567ddf207489771c0c30ae}{}\label{classmongo__odm_1_1nvp__base_aaef09e56ce567ddf207489771c0c30ae}
+
+
+Creates an expression that unsets the current field. 
+
+The field must be of optional type. \begin{DoxyReturn}{Returns}
+An \hyperlink{classmongo__odm_1_1unset__expr}{unset\+\_\+expr} that unsets the current field. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/nvp.\+hpp\end{DoxyCompactItemize}

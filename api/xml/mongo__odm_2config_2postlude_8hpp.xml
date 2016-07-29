@@ -3,46 +3,90 @@
   <compounddef id="mongo__odm_2config_2postlude_8hpp" kind="file" language="C++">
     <compoundname>postlude.hpp</compoundname>
     <includedby refid="deserializing__cursor_8hpp" local="no">src/mongo_odm/deserializing_cursor.hpp</includedby>
+    <includedby refid="expression__syntax_8hpp" local="no">src/mongo_odm/expression_syntax.hpp</includedby>
+    <includedby refid="macros_8hpp" local="no">src/mongo_odm/macros.hpp</includedby>
+    <includedby refid="mongo__odm__child__autogen_8hpp" local="no">src/mongo_odm/mongo_odm_child_autogen.hpp</includedby>
     <includedby refid="nvp_8hpp" local="no">src/mongo_odm/nvp.hpp</includedby>
     <includedby refid="odm__collection_8hpp" local="no">src/mongo_odm/odm_collection.hpp</includedby>
     <includedby refid="query__builder_8hpp" local="no">src/mongo_odm/query_builder.hpp</includedby>
+    <includedby refid="util_8hpp" local="no">src/mongo_odm/util.hpp</includedby>
     <invincdepgraph>
-      <node id="65">
+      <node id="76">
+        <label>src/mongo_odm/util.hpp</label>
+        <link refid="util_8hpp_source"/>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
         <label>src/mongo_odm/odm_collection.hpp</label>
         <link refid="odm__collection_8hpp_source"/>
-        <childnode refid="66" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
       </node>
-      <node id="63">
+      <node id="67">
         <label>src/mongo_odm/config/postlude.hpp</label>
         <link refid="mongo_odm/config/postlude.hpp"/>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="65" relation="include">
-        </childnode>
         <childnode refid="68" relation="include">
         </childnode>
-      </node>
-      <node id="64">
-        <label>src/mongo_odm/deserializing_cursor.hpp</label>
-        <link refid="deserializing__cursor_8hpp_source"/>
-        <childnode refid="65" relation="include">
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
         </childnode>
       </node>
-      <node id="66">
+      <node id="68">
+        <label>src/mongo_odm/deserializing_cursor.hpp</label>
+        <link refid="deserializing__cursor_8hpp_source"/>
+        <childnode refid="69" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
         <label>src/mongo_odm/model.hpp</label>
         <link refid="model_8hpp_source"/>
       </node>
-      <node id="68">
+      <node id="73">
         <label>src/mongo_odm/query_builder.hpp</label>
         <link refid="query__builder_8hpp_source"/>
       </node>
-      <node id="67">
+      <node id="75">
+        <label>src/mongo_odm/mongo_odm_child_autogen.hpp</label>
+        <link refid="mongo__odm__child__autogen_8hpp_source"/>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
         <label>src/mongo_odm/nvp.hpp</label>
         <link refid="nvp_8hpp_source"/>
-        <childnode refid="68" relation="include">
+        <childnode refid="73" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>src/mongo_odm/expression_syntax.hpp</label>
+        <link refid="expression__syntax_8hpp_source"/>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>src/mongo_odm/macros.hpp</label>
+        <link refid="macros_8hpp_source"/>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

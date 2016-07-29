@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespacemongo__odm_1_1details" kind="namespace" language="C++">
+    <compoundname>mongo_odm::details</compoundname>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type" prot="public">mongo_odm::details::expression_type</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01add__to__set__update__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; add_to_set_update_expr&lt; NvpT, U &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01bit__update__expr_3_01NvpT_00_01Integer_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; bit_update_expr&lt; NvpT, Integer &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01boolean__expr_3_01Expr1_00_01Expr2_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; boolean_expr&lt; Expr1, Expr2 &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01boolean__list__expr_3_01List_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; boolean_list_expr&lt; List &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01comparison__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; comparison_expr&lt; NvpT, U &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01comparison__value__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; comparison_value_expr&lt; NvpT, U &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01current__date__expr_3_01NvpT_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; current_date_expr&lt; NvpT &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01expression__list_3_01list__type_00_01Args_8_8_8_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; expression_list&lt; list_type, Args... &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01mod__expr_3_01NvpT_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; mod_expr&lt; NvpT &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01not__expr_3_01Expr_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; not_expr&lt; Expr &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01push__update__expr_3_01NvpT_00_01U_00_01Sort_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; push_update_expr&lt; NvpT, U, Sort &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01sort__expr_3_01NvpT_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; sort_expr&lt; NvpT &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01text__search__expr_01_4" prot="public">mongo_odm::details::expression_type&lt; text_search_expr &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01unset__expr_3_01NvpT_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; unset_expr&lt; NvpT &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01update__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; update_expr&lt; NvpT, U &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1expression__type_3_01update__value__expr_3_01NvpT_00_01U_01_4_01_4" prot="public">mongo_odm::details::expression_type&lt; update_value_expr&lt; NvpT, U &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1is__expression__type" prot="public">mongo_odm::details::is_expression_type</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1is__query__expression" prot="public">mongo_odm::details::is_query_expression</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1is__sort__expression" prot="public">mongo_odm::details::is_sort_expression</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1is__update__expression" prot="public">mongo_odm::details::is_update_expression</innerclass>
+    <innerclass refid="structmongo__odm_1_1details_1_1isnt__expression" prot="public">mongo_odm::details::isnt_expression</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="expression__syntax_8hpp_1a74a184280b50d9dbbc63a78574bcb4e1" prot="public" static="no">
+        <type><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_category_t</ref>&lt; expression_category::none &gt;</type>
+        <definition>using mongo_odm::details::expression_none_t = typedef expression_category_t&lt;expression_category::none&gt;</definition>
+        <argsstring></argsstring>
+        <name>expression_none_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/expression_syntax.hpp" line="98" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="expression__syntax_8hpp_1adcff9633b4fa78b25edb4fdc4acae0a1" prot="public" static="no">
+        <type><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_category_t</ref>&lt; expression_category::sort &gt;</type>
+        <definition>using mongo_odm::details::expression_sort_t = typedef expression_category_t&lt;expression_category::sort&gt;</definition>
+        <argsstring></argsstring>
+        <name>expression_sort_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/expression_syntax.hpp" line="100" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="expression__syntax_8hpp_1a4f0cd5ce9a248c9350363d38ec33cc84" prot="public" static="no">
+        <type><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_category_t</ref>&lt; expression_category::query &gt;</type>
+        <definition>using mongo_odm::details::expression_query_t = typedef expression_category_t&lt;expression_category::query&gt;</definition>
+        <argsstring></argsstring>
+        <name>expression_query_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/expression_syntax.hpp" line="102" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="expression__syntax_8hpp_1ab68c79e47438f5c1168ab12c3b8c99ee" prot="public" static="no">
+        <type><ref refid="structmongo__odm_1_1expression__category__t" kindref="compound">expression_category_t</ref>&lt; expression_category::update &gt;</type>
+        <definition>using mongo_odm::details::expression_update_t = typedef expression_category_t&lt;expression_category::update&gt;</definition>
+        <argsstring></argsstring>
+        <name>expression_update_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/expression_syntax.hpp" line="104" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="expression__syntax_8hpp_1ac390ee174f94bc91113cf4cb08e958ec" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr expression_category</type>
+        <definition>constexpr expression_category mongo_odm::details::expression_type_v</definition>
+        <argsstring></argsstring>
+        <name>expression_type_v</name>
+        <initializer>= <ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">expression_type</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/expression_syntax.hpp" line="112" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="expression__syntax_8hpp_1a26e8ba310de1c9ccec89c893f66223a0" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mongo_odm::details::isnt_expression_v</definition>
+        <argsstring></argsstring>
+        <name>isnt_expression_v</name>
+        <initializer>= <ref refid="structmongo__odm_1_1details_1_1isnt__expression" kindref="compound">isnt_expression</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/expression_syntax.hpp" line="171" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="expression__syntax_8hpp_1a162378485340f582a46ff9dc8f439baa" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mongo_odm::details::is_sort_expression_v</definition>
+        <argsstring></argsstring>
+        <name>is_sort_expression_v</name>
+        <initializer>= <ref refid="structmongo__odm_1_1details_1_1is__sort__expression" kindref="compound">is_sort_expression</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/expression_syntax.hpp" line="177" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="expression__syntax_8hpp_1a44e4cbc20b8b5f837a2deb5e8787dd73" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mongo_odm::details::is_query_expression_v</definition>
+        <argsstring></argsstring>
+        <name>is_query_expression_v</name>
+        <initializer>= <ref refid="structmongo__odm_1_1details_1_1is__query__expression" kindref="compound">is_query_expression</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/expression_syntax.hpp" line="183" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="expression__syntax_8hpp_1ae6f11e7fc2b29052c3f3db43c2fdffb0" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mongo_odm::details::is_update_expression_v</definition>
+        <argsstring></argsstring>
+        <name>is_update_expression_v</name>
+        <initializer>= <ref refid="structmongo__odm_1_1details_1_1is__update__expression" kindref="compound">is_update_expression</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/expression_syntax.hpp" line="189" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mongo_odm/expression_syntax.hpp" line="94" column="1"/>
+  </compounddef>
+</doxygen>

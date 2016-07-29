@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1current__date__t" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::current_date_t</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structmongo__odm_1_1current__date__t_1a7d173dd134808b0d0eee4f5e96aa0d47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mongo_odm::current_date_t::current_date_t</definition>
+        <argsstring>()</argsstring>
+        <name>current_date_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="37" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="37" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mongo_odm/nvp.hpp" line="36" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="36" bodyend="39"/>
+    <listofallmembers>
+      <member refid="structmongo__odm_1_1current__date__t_1a7d173dd134808b0d0eee4f5e96aa0d47" prot="public" virt="non-virtual"><scope>mongo_odm::current_date_t</scope><name>current_date_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

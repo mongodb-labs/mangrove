@@ -43,24 +43,24 @@
     <detaileddescription>
 <para>The stream owns its own <ref refid="classbson__mapper_1_1bson__output__streambuf" kindref="compound">bson_output_streambuf</ref> object, making creation and management of such streams easier. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="12">
+      <node id="28">
         <label>bson_mapper::bson_ostream</label>
         <link refid="classbson__mapper_1_1bson__ostream"/>
-        <childnode refid="13" relation="public-inheritance">
+        <childnode refid="29" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="13">
+      <node id="29">
         <label>std::ostream</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="14">
+      <node id="30">
         <label>bson_mapper::bson_ostream</label>
         <link refid="classbson__mapper_1_1bson__ostream"/>
-        <childnode refid="15" relation="public-inheritance">
+        <childnode refid="31" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="15">
+      <node id="31">
         <label>std::ostream</label>
       </node>
     </collaborationgraph>

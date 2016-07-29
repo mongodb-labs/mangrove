@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1details_1_1expression__type_3_01not__expr_3_01Expr_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::details::expression_type&lt; not_expr&lt; Expr &gt; &gt;</compoundname>
+    <basecompoundref refid="structmongo__odm_1_1expression__category__t" prot="public" virt="non-virtual">mongo_odm::expression_category_t&lt; expr_type &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename Expr</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="131">
+        <label>expression_query_t</label>
+        <link refid="structmongo__odm_1_1expression__category__t"/>
+      </node>
+      <node id="130">
+        <label>mongo_odm::details::expression_type&lt; not_expr&lt; Expr &gt; &gt;</label>
+        <link refid="structmongo__odm_1_1details_1_1expression__type_3_01not__expr_3_01Expr_01_4_01_4"/>
+        <childnode refid="131" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="133">
+        <label>expression_query_t</label>
+        <link refid="structmongo__odm_1_1expression__category__t"/>
+      </node>
+      <node id="132">
+        <label>mongo_odm::details::expression_type&lt; not_expr&lt; Expr &gt; &gt;</label>
+        <link refid="structmongo__odm_1_1details_1_1expression__type_3_01not__expr_3_01Expr_01_4_01_4"/>
+        <childnode refid="133" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/expression_syntax.hpp" line="131" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="131" bodyend="131"/>
+    <listofallmembers>
+      <member refid="structmongo__odm_1_1expression__category__t_1a4da4c78c58d17daf4045f3e0aa12e6fe" prot="public" virt="non-virtual"><scope>mongo_odm::details::expression_type&lt; not_expr&lt; Expr &gt; &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

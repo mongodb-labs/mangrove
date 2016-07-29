@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1iterator__of" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::iterator_of</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::is_same&lt; std::iterator_traits&lt; iterator_type &gt;::value_type, T &gt;</basecompoundref>
+    <includes refid="util_8hpp" local="no">util.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename iterator_type</type>
+      </param>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>Type trait that checks whether or not an iterator iterates a particular type. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>iterator_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The iterator being checked for iterating a particular type. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type that the iterator must iterate for iterator_of::value to be true. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="283">
+        <label>std::is_same&lt; std::iterator_traits&lt; iterator_type &gt;::value_type, T &gt;</label>
+      </node>
+      <node id="282">
+        <label>mongo_odm::iterator_of&lt; iterator_type, T &gt;</label>
+        <link refid="structmongo__odm_1_1iterator__of"/>
+        <childnode refid="283" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="285">
+        <label>std::is_same&lt; std::iterator_traits&lt; iterator_type &gt;::value_type, T &gt;</label>
+      </node>
+      <node id="284">
+        <label>mongo_odm::iterator_of&lt; iterator_type, T &gt;</label>
+        <link refid="structmongo__odm_1_1iterator__of"/>
+        <childnode refid="285" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/util.hpp" line="212" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="211" bodyend="212"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

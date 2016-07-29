@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1text__search__expr" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::text_search_expr</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1text__search__expr_1ae16ce2d13709fdee066d7fe6d6de4980" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* mongo_odm::text_search_expr::_search</definition>
+        <argsstring></argsstring>
+        <name>_search</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="439" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="439" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1text__search__expr_1a6c341a1877e03a2ff84cdaedfd223005" prot="private" static="no" mutable="no">
+        <type>mongocxx::stdx::optional&lt; const char * &gt;</type>
+        <definition>mongocxx::stdx::optional&lt;const char *&gt; mongo_odm::text_search_expr::_language</definition>
+        <argsstring></argsstring>
+        <name>_language</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="440" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="440" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1text__search__expr_1a77f5989b9f970f8d4a91db94b2178b56" prot="private" static="no" mutable="no">
+        <type>bsoncxx::stdx::optional&lt; bool &gt;</type>
+        <definition>bsoncxx::stdx::optional&lt;bool&gt; mongo_odm::text_search_expr::_case_sensitive</definition>
+        <argsstring></argsstring>
+        <name>_case_sensitive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="441" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="441" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1text__search__expr_1ae7346cf34a08bb702c43283c1f15f631" prot="private" static="no" mutable="no">
+        <type>bsoncxx::stdx::optional&lt; bool &gt;</type>
+        <definition>bsoncxx::stdx::optional&lt;bool&gt; mongo_odm::text_search_expr::_diacritic_sensitive</definition>
+        <argsstring></argsstring>
+        <name>_diacritic_sensitive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="442" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="442" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1text__search__expr_1a85bad1931e8642099b913a7fd3118fbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::text_search_expr::text_search_expr</definition>
+        <argsstring>(const char *search, bsoncxx::stdx::optional&lt; const char * &gt; language=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional&lt; bool &gt; case_sensitive=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional&lt; bool &gt; diacritic_sensitive=bsoncxx::stdx::nullopt)</argsstring>
+        <name>text_search_expr</name>
+        <param>
+          <type>const char *</type>
+          <declname>search</declname>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; const char * &gt;</type>
+          <declname>language</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; bool &gt;</type>
+          <declname>case_sensitive</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; bool &gt;</type>
+          <declname>diacritic_sensitive</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Creates a text search expression. </para>        </briefdescription>
+        <detaileddescription>
+<para>These parameters correspond to the parameters for the $text operator in MongoDB. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>search</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string of terms use to query the text index. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>language</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The language of the text index. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>case_sensitive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean flag to specify case-sensitive search. Optional, false by default. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>diacritic_sensitive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean flag to specify case-sensitive search. Optional, false by default. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="354" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="354" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1text__search__expr_1ab1cbac66d1ca60d4a4168beddb727f19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmongo__odm_1_1text__search__expr" kindref="compound">text_search_expr</ref> &amp;</type>
+        <definition>text_search_expr&amp; mongo_odm::text_search_expr::language</definition>
+        <argsstring>()</argsstring>
+        <name>language</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="364" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="364" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1text__search__expr_1a8388c926f373610850dcc1fde14269f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmongo__odm_1_1text__search__expr" kindref="compound">text_search_expr</ref> &amp;</type>
+        <definition>text_search_expr&amp; mongo_odm::text_search_expr::language</definition>
+        <argsstring>(const char *lang)</argsstring>
+        <name>language</name>
+        <param>
+          <type>const char *</type>
+          <declname>lang</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="369" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="369" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1text__search__expr_1a033a0056cbee253dffa336c1f491da5e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmongo__odm_1_1text__search__expr" kindref="compound">text_search_expr</ref> &amp;</type>
+        <definition>text_search_expr&amp; mongo_odm::text_search_expr::case_sensitive</definition>
+        <argsstring>()</argsstring>
+        <name>case_sensitive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="374" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="374" bodyend="377"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1text__search__expr_1ad63f58c2838934414289693088a1a8a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmongo__odm_1_1text__search__expr" kindref="compound">text_search_expr</ref> &amp;</type>
+        <definition>text_search_expr&amp; mongo_odm::text_search_expr::case_sensitive</definition>
+        <argsstring>(bool case_sensitive)</argsstring>
+        <name>case_sensitive</name>
+        <param>
+          <type>bool</type>
+          <declname>case_sensitive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="379" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="379" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1text__search__expr_1a74b34ce23b4e1963fc7dd9f14abaa07c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmongo__odm_1_1text__search__expr" kindref="compound">text_search_expr</ref> &amp;</type>
+        <definition>text_search_expr&amp; mongo_odm::text_search_expr::diacritic_sensitive</definition>
+        <argsstring>()</argsstring>
+        <name>diacritic_sensitive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="384" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="384" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1text__search__expr_1ad9abfff20d8b3ed177803f77d0b23283" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classmongo__odm_1_1text__search__expr" kindref="compound">text_search_expr</ref> &amp;</type>
+        <definition>text_search_expr&amp; mongo_odm::text_search_expr::diacritic_sensitive</definition>
+        <argsstring>(bool diacritic_sensitive)</argsstring>
+        <name>diacritic_sensitive</name>
+        <param>
+          <type>bool</type>
+          <declname>diacritic_sensitive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="389" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="389" bodyend="392"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1text__search__expr_1a6e73a334472e7319e34829d4f4014af6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::text_search_expr::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Appends this expression to a BSON core builder, as a key-value pair of the form &quot; key: { $mod: [ divisor, remainder ] } &quot;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a BSON core builder </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wrap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to wrap the BSON inside a document. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="400" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="400" bodyend="426"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1text__search__expr_1a3e95a5dc94a5c60bd41f94ed6e1dac0a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::text_search_expr::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Converts the expression to a BSON filter for a query. </para>        </briefdescription>
+        <detaileddescription>
+<para>The resulting BSON is of the form &quot;{ key: { $mod: [ divisor, remainder ] } }&quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="432" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="432" bodyend="436"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a query that performs a text search with the $text operator. </para>    </briefdescription>
+    <detaileddescription>
+<para>TODO check values of <computeroutput>language</computeroutput> against spec? </para>    </detaileddescription>
+    <location file="src/mongo_odm/query_builder.hpp" line="340" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="340" bodyend="443"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1text__search__expr_1a77f5989b9f970f8d4a91db94b2178b56" prot="private" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>_case_sensitive</name></member>
+      <member refid="classmongo__odm_1_1text__search__expr_1ae7346cf34a08bb702c43283c1f15f631" prot="private" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>_diacritic_sensitive</name></member>
+      <member refid="classmongo__odm_1_1text__search__expr_1a6c341a1877e03a2ff84cdaedfd223005" prot="private" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>_language</name></member>
+      <member refid="classmongo__odm_1_1text__search__expr_1ae16ce2d13709fdee066d7fe6d6de4980" prot="private" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>_search</name></member>
+      <member refid="classmongo__odm_1_1text__search__expr_1a6e73a334472e7319e34829d4f4014af6" prot="public" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmongo__odm_1_1text__search__expr_1a033a0056cbee253dffa336c1f491da5e" prot="public" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>case_sensitive</name></member>
+      <member refid="classmongo__odm_1_1text__search__expr_1ad63f58c2838934414289693088a1a8a4" prot="public" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>case_sensitive</name></member>
+      <member refid="classmongo__odm_1_1text__search__expr_1a74b34ce23b4e1963fc7dd9f14abaa07c" prot="public" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>diacritic_sensitive</name></member>
+      <member refid="classmongo__odm_1_1text__search__expr_1ad9abfff20d8b3ed177803f77d0b23283" prot="public" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>diacritic_sensitive</name></member>
+      <member refid="classmongo__odm_1_1text__search__expr_1ab1cbac66d1ca60d4a4168beddb727f19" prot="public" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>language</name></member>
+      <member refid="classmongo__odm_1_1text__search__expr_1a8388c926f373610850dcc1fde14269f3" prot="public" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>language</name></member>
+      <member refid="classmongo__odm_1_1text__search__expr_1a3e95a5dc94a5c60bd41f94ed6e1dac0a" prot="public" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+      <member refid="classmongo__odm_1_1text__search__expr_1a85bad1931e8642099b913a7fd3118fbe" prot="public" virt="non-virtual"><scope>mongo_odm::text_search_expr</scope><name>text_search_expr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

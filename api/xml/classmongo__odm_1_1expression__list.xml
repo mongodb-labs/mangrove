@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1expression__list" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::expression_list</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>expression_category</type>
+        <declname>list_type</declname>
+        <defname>list_type</defname>
+      </param>
+      <param>
+        <type>typename...</type>
+        <declname>Args</declname>
+        <defname>Args</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1expression__list_1aac1e6676df3f398eba89fe97b757f15b" prot="public" static="no" mutable="no">
+        <type>std::tuple&lt; Args... &gt;</type>
+        <definition>std::tuple&lt;Args...&gt; mongo_odm::expression_list&lt; list_type, Args &gt;::storage</definition>
+        <argsstring></argsstring>
+        <name>storage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="550" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="550" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1expression__list_1a005746d6c92dc87c719a0e8029493590" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::expression_list&lt; list_type, Args &gt;::expression_list</definition>
+        <argsstring>(const Args &amp;...args)</argsstring>
+        <name>expression_list</name>
+        <param>
+          <type>const Args &amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Constructs an expression list of the given arguments. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The individual elements of the list. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="528" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="528" bodyend="529"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1expression__list_1a85ac4de221b14cf6adf52945fd9f7507" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::expression_list&lt; list_type, Args &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Appends each element to a BSON code builder. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A code BSON builder </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wrap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to wrap individual elements inside a BSON document, e.g. &quot;{elt1...}, {elt2, ...}, ...&quot; </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="537" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="537" bodyend="539"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1expression__list_1a210238378d08926cab580c63dec1a31c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::expression_list&lt; list_type, Args &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Casts the expression list to a BSON query of the form { expr1, expr2, .... </para>        </briefdescription>
+        <detaileddescription>
+<para>} </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="544" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="544" bodyend="548"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This represents a list of expressions. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>list_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The category of the expressions, such as &quot;update&quot; or &quot;query&quot;. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The types of the various expressions that make up the list. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <location file="src/mongo_odm/expression_syntax.hpp" line="51" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="51" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1expression__list_1a85ac4de221b14cf6adf52945fd9f7507" prot="public" virt="non-virtual"><scope>mongo_odm::expression_list</scope><name>append_to_bson</name></member>
+      <member refid="classmongo__odm_1_1expression__list_1a005746d6c92dc87c719a0e8029493590" prot="public" virt="non-virtual"><scope>mongo_odm::expression_list</scope><name>expression_list</name></member>
+      <member refid="classmongo__odm_1_1expression__list_1a210238378d08926cab580c63dec1a31c" prot="public" virt="non-virtual"><scope>mongo_odm::expression_list</scope><name>operator bsoncxx::document::view_or_value</name></member>
+      <member refid="classmongo__odm_1_1expression__list_1aac1e6676df3f398eba89fe97b757f15b" prot="public" virt="non-virtual"><scope>mongo_odm::expression_list</scope><name>storage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

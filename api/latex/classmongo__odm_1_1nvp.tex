@@ -1,0 +1,105 @@
+\hypertarget{classmongo__odm_1_1nvp}{}\section{mongo\+\_\+odm\+:\+:nvp$<$ Base, T $>$ Class Template Reference}
+\label{classmongo__odm_1_1nvp}\index{mongo\+\_\+odm\+::nvp$<$ Base, T $>$@{mongo\+\_\+odm\+::nvp$<$ Base, T $>$}}
+
+
+An object that represents a name-\/value pair of a member in an object.  
+
+
+
+
+{\ttfamily \#include $<$nvp.\+hpp$>$}
+
+Inheritance diagram for mongo\+\_\+odm\+:\+:nvp$<$ Base, T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmongo__odm_1_1nvp}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmongo__odm_1_1nvp_ae4c0a86c0051de39061544e11fc69aee}{nvp} (T Base\+::$\ast$t, const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Create a name-\/value pair from a member pointer and a name. \end{DoxyCompactList}\item 
+constexpr \hyperlink{classmongo__odm_1_1update__expr}{update\+\_\+expr}$<$ \hyperlink{classmongo__odm_1_1nvp}{nvp}$<$ Base, T $>$, no\+\_\+opt\+\_\+type $>$ \hyperlink{classmongo__odm_1_1nvp_a6411d5ea34de1d719cac50b976cb9394}{operator=} (const no\+\_\+opt\+\_\+type \&val) const \hypertarget{classmongo__odm_1_1nvp_a6411d5ea34de1d719cac50b976cb9394}{}\label{classmongo__odm_1_1nvp_a6411d5ea34de1d719cac50b976cb9394}
+
+\begin{DoxyCompactList}\small\item\em Creates an update expression that sets the field to the given value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type$>$ }\\constexpr std\+::enable\+\_\+if\+\_\+t$<$ is\+\_\+date\+\_\+v$<$ U $>$, \hyperlink{classmongo__odm_1_1current__date__expr}{current\+\_\+date\+\_\+expr}$<$ \hyperlink{classmongo__odm_1_1nvp}{nvp} $>$ $>$ \hyperlink{classmongo__odm_1_1nvp_a539845d88858839cca195bc9242c955a}{operator=} (const \hyperlink{structmongo__odm_1_1current__date__t}{current\+\_\+date\+\_\+t} \&) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that sets a date value to the current date. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type$>$ }\\constexpr std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+same$<$ bsoncxx\+::types\+::b\+\_\+timestamp, U $>$\+::value, \hyperlink{classmongo__odm_1_1current__date__expr}{current\+\_\+date\+\_\+expr}$<$ \hyperlink{classmongo__odm_1_1nvp}{nvp} $>$ $>$ \hyperlink{classmongo__odm_1_1nvp_a736412364cab3e84b4a2e68788a79125}{operator=} (const \hyperlink{structmongo__odm_1_1current__date__t}{current\+\_\+date\+\_\+t} \&) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that sets a date value to the current date. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classmongo__odm_1_1nvp_a36c3a03b263756a1d5e74da5a8c4401d}{get\+\_\+name} () const 
+\begin{DoxyCompactList}\small\item\em Returns the name of this field. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Base, typename T$>$\\*
+class mongo\+\_\+odm\+::nvp$<$ Base, T $>$}
+
+An object that represents a name-\/value pair of a member in an object. 
+
+It is templated on the class of the member and its type. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mongo\+\_\+odm\+::nvp@{mongo\+\_\+odm\+::nvp}!nvp@{nvp}}
+\index{nvp@{nvp}!mongo\+\_\+odm\+::nvp@{mongo\+\_\+odm\+::nvp}}
+\subsubsection[{\texorpdfstring{nvp(\+T Base\+::$\ast$t, const char $\ast$name)}{nvp(T Base::*t, const char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base, typename T$>$ constexpr {\bf mongo\+\_\+odm\+::nvp}$<$ Base, T $>$\+::{\bf nvp} (
+\begin{DoxyParamCaption}
+\item[{T Base\+::$\ast$}]{t, }
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp_ae4c0a86c0051de39061544e11fc69aee}{}\label{classmongo__odm_1_1nvp_ae4c0a86c0051de39061544e11fc69aee}
+
+
+Create a name-\/value pair from a member pointer and a name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & A pointer to the member \\
+\hline
+{\em name} & The name of the member \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::nvp@{mongo\+\_\+odm\+::nvp}!get\+\_\+name@{get\+\_\+name}}
+\index{get\+\_\+name@{get\+\_\+name}!mongo\+\_\+odm\+::nvp@{mongo\+\_\+odm\+::nvp}}
+\subsubsection[{\texorpdfstring{get\+\_\+name() const }{get_name() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base, typename T$>$ std\+::string {\bf mongo\+\_\+odm\+::nvp}$<$ Base, T $>$\+::get\+\_\+name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp_a36c3a03b263756a1d5e74da5a8c4401d}{}\label{classmongo__odm_1_1nvp_a36c3a03b263756a1d5e74da5a8c4401d}
+
+
+Returns the name of this field. 
+
+\begin{DoxyReturn}{Returns}
+The field name as a string. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp@{mongo\+\_\+odm\+::nvp}!operator=@{operator=}}
+\index{operator=@{operator=}!mongo\+\_\+odm\+::nvp@{mongo\+\_\+odm\+::nvp}}
+\subsubsection[{\texorpdfstring{operator=(const current\+\_\+date\+\_\+t \&) const }{operator=(const current_date_t &) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type$>$ constexpr std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+date\+\_\+v$<$U$>$, {\bf current\+\_\+date\+\_\+expr}$<${\bf nvp}$>$ $>$ {\bf mongo\+\_\+odm\+::nvp}$<$ Base, T $>$\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf current\+\_\+date\+\_\+t} \&}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp_a539845d88858839cca195bc9242c955a}{}\label{classmongo__odm_1_1nvp_a539845d88858839cca195bc9242c955a}
+
+
+Creates an expression that sets a date value to the current date. 
+
+This is only enabled for std\+::chrono\+::time/duration values, as well as b\+\_\+date. \index{mongo\+\_\+odm\+::nvp@{mongo\+\_\+odm\+::nvp}!operator=@{operator=}}
+\index{operator=@{operator=}!mongo\+\_\+odm\+::nvp@{mongo\+\_\+odm\+::nvp}}
+\subsubsection[{\texorpdfstring{operator=(const current\+\_\+date\+\_\+t \&) const }{operator=(const current_date_t &) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base, typename T$>$ template$<$typename U  = no\+\_\+opt\+\_\+type$>$ constexpr std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+same$<$bsoncxx\+::types\+::b\+\_\+timestamp, U$>$\+::value, {\bf current\+\_\+date\+\_\+expr}$<${\bf nvp}$>$ $>$ {\bf mongo\+\_\+odm\+::nvp}$<$ Base, T $>$\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf current\+\_\+date\+\_\+t} \&}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp_a736412364cab3e84b4a2e68788a79125}{}\label{classmongo__odm_1_1nvp_a736412364cab3e84b4a2e68788a79125}
+
+
+Creates an expression that sets a date value to the current date. 
+
+This is only enabled for std\+::chrono\+::time/duration values, as well as b\+\_\+date. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/nvp.\+hpp\end{DoxyCompactItemize}

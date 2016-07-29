@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1mod__expr" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::mod_expr</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename NvpT</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classmongo__odm_1_1mod__expr_1aab77a2d851662a705ad48b672712f23a" prot="public" static="no">
+        <type>NvpT</type>
+        <definition>using mongo_odm::mod_expr&lt; NvpT &gt;::field_type =  NvpT</definition>
+        <argsstring></argsstring>
+        <name>field_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="272" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1mod__expr_1aec82722cd3188a24674b65abc2505868" prot="private" static="no" mutable="no">
+        <type>const NvpT</type>
+        <definition>const NvpT mongo_odm::mod_expr&lt; NvpT &gt;::_nvp</definition>
+        <argsstring></argsstring>
+        <name>_nvp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="331" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="331" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1mod__expr_1a6d1628f2c0ba0337b318ca0823d64a7f" prot="private" static="no" mutable="no">
+        <type>const int &amp;</type>
+        <definition>const int&amp; mongo_odm::mod_expr&lt; NvpT &gt;::_divisor</definition>
+        <argsstring></argsstring>
+        <name>_divisor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="332" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="332" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1mod__expr_1a3f38aa50d1ddf8ffbf4981f4bd6f1539" prot="private" static="no" mutable="no">
+        <type>const int &amp;</type>
+        <definition>const int&amp; mongo_odm::mod_expr&lt; NvpT &gt;::_remainder</definition>
+        <argsstring></argsstring>
+        <name>_remainder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="333" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="333" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1mod__expr_1a4f89b19163b165b884999fb7129d6cbb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mongo_odm::mod_expr&lt; NvpT &gt;::mod_expr</definition>
+        <argsstring>(NvpT nvp, const int &amp;divisor, const int &amp;remainder)</argsstring>
+        <name>mod_expr</name>
+        <param>
+          <type>NvpT</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>divisor</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>remainder</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classmongo__odm_1_1mod__expr" kindref="compound">mod_expr</ref> that represents a query with the $mod operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nvp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name-value pair to compare against. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>divisor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The divisor used in the modulus operation. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>remainder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The remainder produced when dividing the field by the divisor. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="279" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="279" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1mod__expr_1a972c9dd595c5e4527f4da9c201a7202e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string &amp;</type>
+        <definition>std::string&amp; mongo_odm::mod_expr&lt; NvpT &gt;::append_name</definition>
+        <argsstring>(std::string &amp;s) const </argsstring>
+        <name>append_name</name>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Appends the name of the contained field to a string. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="286" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="286" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1mod__expr_1a52ce6de2ac9eee27d2088f1bfa4f07b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::mod_expr&lt; NvpT &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false, bool omit_name=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>omit_name</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para><verbatim>   Appends this expression to a BSON core builder,
+   as a key-value pair of the form &quot; key: { $mod: [ divisor, remainder ] } &quot;
+</verbatim></para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a BSON core builder </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wrap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to wrap the BSON inside a document. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="297" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="297" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1mod__expr_1a7366a9879d7285d968f6e8ea10918f83" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::mod_expr&lt; NvpT &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Converts the expression to a BSON filter for a query. </para>        </briefdescription>
+        <detaileddescription>
+<para>The resulting BSON is of the form &quot;{ key: { $mod: [ divisor, remainder ] } }&quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="324" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="324" bodyend="328"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This class represents a query expression using the $mod operator, that checks the modulus of a certain numerical field. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mongo_odm/expression_syntax.hpp" line="60" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="60" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1mod__expr_1a6d1628f2c0ba0337b318ca0823d64a7f" prot="private" virt="non-virtual"><scope>mongo_odm::mod_expr</scope><name>_divisor</name></member>
+      <member refid="classmongo__odm_1_1mod__expr_1aec82722cd3188a24674b65abc2505868" prot="private" virt="non-virtual"><scope>mongo_odm::mod_expr</scope><name>_nvp</name></member>
+      <member refid="classmongo__odm_1_1mod__expr_1a3f38aa50d1ddf8ffbf4981f4bd6f1539" prot="private" virt="non-virtual"><scope>mongo_odm::mod_expr</scope><name>_remainder</name></member>
+      <member refid="classmongo__odm_1_1mod__expr_1a972c9dd595c5e4527f4da9c201a7202e" prot="public" virt="non-virtual"><scope>mongo_odm::mod_expr</scope><name>append_name</name></member>
+      <member refid="classmongo__odm_1_1mod__expr_1a52ce6de2ac9eee27d2088f1bfa4f07b7" prot="public" virt="non-virtual"><scope>mongo_odm::mod_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmongo__odm_1_1mod__expr_1aab77a2d851662a705ad48b672712f23a" prot="public" virt="non-virtual"><scope>mongo_odm::mod_expr</scope><name>field_type</name></member>
+      <member refid="classmongo__odm_1_1mod__expr_1a4f89b19163b165b884999fb7129d6cbb" prot="public" virt="non-virtual"><scope>mongo_odm::mod_expr</scope><name>mod_expr</name></member>
+      <member refid="classmongo__odm_1_1mod__expr_1a7366a9879d7285d968f6e8ea10918f83" prot="public" virt="non-virtual"><scope>mongo_odm::mod_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

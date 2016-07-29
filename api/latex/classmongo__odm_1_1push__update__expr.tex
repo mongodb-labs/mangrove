@@ -1,0 +1,237 @@
+\hypertarget{classmongo__odm_1_1push__update__expr}{}\section{mongo\+\_\+odm\+:\+:push\+\_\+update\+\_\+expr$<$ NvpT, U, Sort $>$ Class Template Reference}
+\label{classmongo__odm_1_1push__update__expr}\index{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr$<$ Nvp\+T, U, Sort $>$@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr$<$ Nvp\+T, U, Sort $>$}}
+
+
+Represents an array update epression that uses the \$push operator.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmongo__odm_1_1push__update__expr_a8268dfd7d8a1e682ae950d7399d26f54}{push\+\_\+update\+\_\+expr} (const NvpT \&\hyperlink{classmongo__odm_1_1nvp}{nvp}, const U \&val, bool each, bsoncxx\+::stdx\+::optional$<$ std\+::int32\+\_\+t $>$ \hyperlink{classmongo__odm_1_1push__update__expr_a55d76eef6ebc8a1ba154a6e3a4245932}{slice}=bsoncxx\+::stdx\+::nullopt, const bsoncxx\+::stdx\+::optional$<$ Sort $>$ \&\hyperlink{classmongo__odm_1_1push__update__expr_a563708e3931d6f428e0ec6f9efa58b54}{sort}=bsoncxx\+::stdx\+::nullopt, bsoncxx\+::stdx\+::optional$<$ std\+::uint32\+\_\+t $>$ \hyperlink{classmongo__odm_1_1push__update__expr_adb225c5e9549be9c7d790aff4bdcf856}{position}=bsoncxx\+::stdx\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Constructs a \$push expression, with the given optional modifiers. \end{DoxyCompactList}\item 
+constexpr \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$ \hyperlink{classmongo__odm_1_1push__update__expr_a55d76eef6ebc8a1ba154a6e3a4245932}{slice} (std\+::int32\+\_\+t slice)
+\begin{DoxyCompactList}\small\item\em Create a copy of this expression with a different \$slice modifier value. \end{DoxyCompactList}\item 
+constexpr \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$ \hyperlink{classmongo__odm_1_1push__update__expr_a3ca32e674928879d958c81f162f43c73}{slice} ()
+\begin{DoxyCompactList}\small\item\em Create a copy of this expression without a \$slice modifier. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\+NvpT $>$ }\\constexpr \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr}$<$ NvpT, U, \hyperlink{classmongo__odm_1_1sort__expr}{sort\+\_\+expr}$<$ Other\+NvpT $>$ $>$ \hyperlink{classmongo__odm_1_1push__update__expr_a563708e3931d6f428e0ec6f9efa58b54}{sort} (const \hyperlink{classmongo__odm_1_1sort__expr}{sort\+\_\+expr}$<$ Other\+NvpT $>$ \&sort)
+\begin{DoxyCompactList}\small\item\em Create a copy of this expression with a different \$sort modifier value. \end{DoxyCompactList}\item 
+constexpr \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr}$<$ NvpT, U, int $>$ \hyperlink{classmongo__odm_1_1push__update__expr_a690edf21a68ce63bd576cc94e9a34f0f}{sort} (int sort)
+\begin{DoxyCompactList}\small\item\em Create a copy of this expression with a different \$slice modifier value. \end{DoxyCompactList}\item 
+constexpr \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$ \hyperlink{classmongo__odm_1_1push__update__expr_a95965b5ab76f0e6da15de477fad2e829}{sort} ()
+\begin{DoxyCompactList}\small\item\em Create a copy of this expression without a \$sort modifier. \end{DoxyCompactList}\item 
+constexpr \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$ \hyperlink{classmongo__odm_1_1push__update__expr_adb225c5e9549be9c7d790aff4bdcf856}{position} (std\+::uint32\+\_\+t position)
+\begin{DoxyCompactList}\small\item\em Create a copy of this expression with a different \$position modifier value. \end{DoxyCompactList}\item 
+constexpr \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$ \hyperlink{classmongo__odm_1_1push__update__expr_a3875e3422e3c659c1bcc71a3632058b7}{position} ()
+\begin{DoxyCompactList}\small\item\em Create a copy of this expression without \$position modifier. \end{DoxyCompactList}\item 
+void \hyperlink{classmongo__odm_1_1push__update__expr_afa0ecdb64932eff8dd929b7f108a1441}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder as an expression \textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename NvpT, typename U, typename Sort$>$\\*
+class mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr$<$ Nvp\+T, U, Sort $>$}
+
+Represents an array update epression that uses the \$push operator. 
+
+Modifiers can be set either in the constructor, or by calling the corresponding member functions. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em NvpT} & The name-\/value-\/pair type of the corresponding field. \\
+\hline
+{\em U} & The value being \$push\textquotesingle{}ed to the array \\
+\hline
+{\em Sort} & The type of the sort expression used in the \$sort modifier. This can be either an integer, +/-\/ 1, or a \hyperlink{classmongo__odm_1_1sort__expr}{sort\+\_\+expr}. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}!push\+\_\+update\+\_\+expr@{push\+\_\+update\+\_\+expr}}
+\index{push\+\_\+update\+\_\+expr@{push\+\_\+update\+\_\+expr}!mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{push\+\_\+update\+\_\+expr(const Nvp\+T \&nvp, const U \&val, bool each, bsoncxx\+::stdx\+::optional$<$ std\+::int32\+\_\+t $>$ slice=bsoncxx\+::stdx\+::nullopt, const bsoncxx\+::stdx\+::optional$<$ Sort $>$ \&sort=bsoncxx\+::stdx\+::nullopt, bsoncxx\+::stdx\+::optional$<$ std\+::uint32\+\_\+t $>$ position=bsoncxx\+::stdx\+::nullopt)}{push_update_expr(const NvpT &nvp, const U &val, bool each, bsoncxx::stdx::optional< std::int32_t > slice=bsoncxx::stdx::nullopt, const bsoncxx::stdx::optional< Sort > &sort=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional< std::uint32_t > position=bsoncxx::stdx::nullopt)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U , typename Sort $>$ constexpr {\bf mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$\+::{\bf push\+\_\+update\+\_\+expr} (
+\begin{DoxyParamCaption}
+\item[{const NvpT \&}]{nvp, }
+\item[{const U \&}]{val, }
+\item[{bool}]{each, }
+\item[{bsoncxx\+::stdx\+::optional$<$ std\+::int32\+\_\+t $>$}]{slice = {\ttfamily bsoncxx\+:\+:stdx\+:\+:nullopt}, }
+\item[{const bsoncxx\+::stdx\+::optional$<$ Sort $>$ \&}]{sort = {\ttfamily bsoncxx\+:\+:stdx\+:\+:nullopt}, }
+\item[{bsoncxx\+::stdx\+::optional$<$ std\+::uint32\+\_\+t $>$}]{position = {\ttfamily bsoncxx\+:\+:stdx\+:\+:nullopt}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1push__update__expr_a8268dfd7d8a1e682ae950d7399d26f54}{}\label{classmongo__odm_1_1push__update__expr_a8268dfd7d8a1e682ae950d7399d26f54}
+
+
+Constructs a \$push expression, with the given optional modifiers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nvp} & The field to modify \\
+\hline
+{\em val} & The value to append to the field \\
+\hline
+{\em each} & Whether to append a single value, or a bunch of values in an array. \\
+\hline
+{\em slice} & An optional value to give the \$slice modifier. This only takes effect with each=true. \\
+\hline
+{\em sort} & An optional value to give the \$sort modifier. This only takes effect with each=true. \\
+\hline
+{\em position} & An optional value to give the \$position modifier. This only takes effect with each=true. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U , typename Sort $>$ void {\bf mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1push__update__expr_afa0ecdb64932eff8dd929b7f108a1441}{}\label{classmongo__odm_1_1push__update__expr_afa0ecdb64932eff8dd929b7f108a1441}
+
+
+Appends this query to a B\+S\+ON core builder as an expression \textquotesingle{}. 
+
+\begin{DoxyParagraph}{push}
+\{field\+: value $\vert$ \{
+\end{DoxyParagraph}
+each\+: value, \$modifiers\+: params...\}\}\textquotesingle{} 
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em Whether} & to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}!position@{position}}
+\index{position@{position}!mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{position(std\+::uint32\+\_\+t position)}{position(std::uint32_t position)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U , typename Sort $>$ constexpr {\bf push\+\_\+update\+\_\+expr}$<$NvpT, U, Sort$>$ {\bf mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$\+::position (
+\begin{DoxyParamCaption}
+\item[{std\+::uint32\+\_\+t}]{position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1push__update__expr_adb225c5e9549be9c7d790aff4bdcf856}{}\label{classmongo__odm_1_1push__update__expr_adb225c5e9549be9c7d790aff4bdcf856}
+
+
+Create a copy of this expression with a different \$position modifier value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The integer value of the \$position modifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr} with the same properties as this one, except a different \$position modifier. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}!position@{position}}
+\index{position@{position}!mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{position()}{position()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U , typename Sort $>$ constexpr {\bf push\+\_\+update\+\_\+expr}$<$NvpT, U, Sort$>$ {\bf mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$\+::position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1push__update__expr_a3875e3422e3c659c1bcc71a3632058b7}{}\label{classmongo__odm_1_1push__update__expr_a3875e3422e3c659c1bcc71a3632058b7}
+
+
+Create a copy of this expression without \$position modifier. 
+
+\begin{DoxyReturn}{Returns}
+A new \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr} with the same properties as this one, except a different \$position modifier. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}!slice@{slice}}
+\index{slice@{slice}!mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{slice(std\+::int32\+\_\+t slice)}{slice(std::int32_t slice)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U , typename Sort $>$ constexpr {\bf push\+\_\+update\+\_\+expr}$<$NvpT, U, Sort$>$ {\bf mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$\+::slice (
+\begin{DoxyParamCaption}
+\item[{std\+::int32\+\_\+t}]{slice}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1push__update__expr_a55d76eef6ebc8a1ba154a6e3a4245932}{}\label{classmongo__odm_1_1push__update__expr_a55d76eef6ebc8a1ba154a6e3a4245932}
+
+
+Create a copy of this expression with a different \$slice modifier value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em slice} & The integer value of the \$slice modifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr} with the same properties as this one, except a different \$slice modifier. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}!slice@{slice}}
+\index{slice@{slice}!mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{slice()}{slice()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U , typename Sort $>$ constexpr {\bf push\+\_\+update\+\_\+expr}$<$NvpT, U, Sort$>$ {\bf mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$\+::slice (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1push__update__expr_a3ca32e674928879d958c81f162f43c73}{}\label{classmongo__odm_1_1push__update__expr_a3ca32e674928879d958c81f162f43c73}
+
+
+Create a copy of this expression without a \$slice modifier. 
+
+\begin{DoxyReturn}{Returns}
+A new \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr} with the same properties as this one, except a different \$slice modifier. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}!sort@{sort}}
+\index{sort@{sort}!mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{sort(const sort\+\_\+expr$<$ Other\+Nvp\+T $>$ \&sort)}{sort(const sort_expr< OtherNvpT > &sort)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U , typename Sort $>$ template$<$typename Other\+NvpT $>$ constexpr {\bf push\+\_\+update\+\_\+expr}$<$NvpT, U, {\bf sort\+\_\+expr}$<$Other\+NvpT$>$ $>$ {\bf mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$\+::sort (
+\begin{DoxyParamCaption}
+\item[{const {\bf sort\+\_\+expr}$<$ Other\+NvpT $>$ \&}]{sort}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1push__update__expr_a563708e3931d6f428e0ec6f9efa58b54}{}\label{classmongo__odm_1_1push__update__expr_a563708e3931d6f428e0ec6f9efa58b54}
+
+
+Create a copy of this expression with a different \$sort modifier value. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\+NvpT} & The name-\/value-\/pair used by the given Sort Expression. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sort} & The sort expression to use. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr} with the same properties as this one, except a different \$sort modifier. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}!sort@{sort}}
+\index{sort@{sort}!mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{sort(int sort)}{sort(int sort)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U , typename Sort $>$ constexpr {\bf push\+\_\+update\+\_\+expr}$<$NvpT, U, int$>$ {\bf mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$\+::sort (
+\begin{DoxyParamCaption}
+\item[{int}]{sort}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1push__update__expr_a690edf21a68ce63bd576cc94e9a34f0f}{}\label{classmongo__odm_1_1push__update__expr_a690edf21a68ce63bd576cc94e9a34f0f}
+
+
+Create a copy of this expression with a different \$slice modifier value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sort} & The integer value of the \$sort modifier, +/-\/1. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr} with the same properties as this one, except a different \$sort modifier. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}!sort@{sort}}
+\index{sort@{sort}!mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{sort()}{sort()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U , typename Sort $>$ constexpr {\bf push\+\_\+update\+\_\+expr}$<$NvpT, U, Sort$>$ {\bf mongo\+\_\+odm\+::push\+\_\+update\+\_\+expr}$<$ NvpT, U, Sort $>$\+::sort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1push__update__expr_a95965b5ab76f0e6da15de477fad2e829}{}\label{classmongo__odm_1_1push__update__expr_a95965b5ab76f0e6da15de477fad2e829}
+
+
+Create a copy of this expression without a \$sort modifier. 
+
+\begin{DoxyReturn}{Returns}
+A new \hyperlink{classmongo__odm_1_1push__update__expr}{push\+\_\+update\+\_\+expr} with the same properties as this one, except a different \$sort modifier. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/expression\+\_\+syntax.\+hpp\item 
+src/mongo\+\_\+odm/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

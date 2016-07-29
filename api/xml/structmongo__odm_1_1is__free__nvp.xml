@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1is__free__nvp" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::is_free_nvp</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">false_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename NvpT</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="205">
+        <label>false_type</label>
+      </node>
+      <node id="204">
+        <label>mongo_odm::is_free_nvp&lt; NvpT &gt;</label>
+        <link refid="structmongo__odm_1_1is__free__nvp"/>
+        <childnode refid="205" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="207">
+        <label>false_type</label>
+      </node>
+      <node id="206">
+        <label>mongo_odm::is_free_nvp&lt; NvpT &gt;</label>
+        <link refid="structmongo__odm_1_1is__free__nvp"/>
+        <childnode refid="207" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/nvp.hpp" line="237" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="237" bodyend="237"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

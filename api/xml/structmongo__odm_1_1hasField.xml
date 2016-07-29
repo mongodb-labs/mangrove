@@ -31,28 +31,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="52">
+      <node id="171">
         <label>false_type</label>
       </node>
-      <node id="51">
+      <node id="170">
         <label>mongo_odm::hasField&lt; Base, T, N, M, bool &gt;</label>
         <link refid="structmongo__odm_1_1hasField"/>
-        <childnode refid="52" relation="public-inheritance">
+        <childnode refid="171" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="54">
+      <node id="173">
         <label>false_type</label>
       </node>
-      <node id="53">
+      <node id="172">
         <label>mongo_odm::hasField&lt; Base, T, N, M, bool &gt;</label>
         <link refid="structmongo__odm_1_1hasField"/>
-        <childnode refid="54" relation="public-inheritance">
+        <childnode refid="173" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/mongo_odm/nvp.hpp" line="93" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="93" bodyend="93"/>
+    <location file="src/mongo_odm/nvp.hpp" line="799" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="799" bodyend="799"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

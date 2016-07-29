@@ -16,24 +16,24 @@
     <detaileddescription>
 <para>FirstTypeIsTheSame&lt;T1, T2, ...&gt;::value will be true when T1 and T2 are of the same type, and false otherwise. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="44">
-        <label>std::false_type</label>
+      <node id="159">
+        <label>false_type</label>
       </node>
-      <node id="43">
+      <node id="158">
         <label>mongo_odm::FirstTypeIsTheSame&lt; Ts &gt;</label>
         <link refid="structmongo__odm_1_1FirstTypeIsTheSame"/>
-        <childnode refid="44" relation="public-inheritance">
+        <childnode refid="159" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="46">
-        <label>std::false_type</label>
+      <node id="161">
+        <label>false_type</label>
       </node>
-      <node id="45">
+      <node id="160">
         <label>mongo_odm::FirstTypeIsTheSame&lt; Ts &gt;</label>
         <link refid="structmongo__odm_1_1FirstTypeIsTheSame"/>
-        <childnode refid="46" relation="public-inheritance">
+        <childnode refid="161" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

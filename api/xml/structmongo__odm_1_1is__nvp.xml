@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1is__nvp" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::is_nvp</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">false_type</basecompoundref>
+    <includes refid="nvp_8hpp" local="no">nvp.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>A type trait struct that inherits from std::true_type if the given type parameter is a name-value pair, and from std::false_type otherwise. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="213">
+        <label>false_type</label>
+      </node>
+      <node id="212">
+        <label>mongo_odm::is_nvp&lt; typename &gt;</label>
+        <link refid="structmongo__odm_1_1is__nvp"/>
+        <childnode refid="213" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="215">
+        <label>false_type</label>
+      </node>
+      <node id="214">
+        <label>mongo_odm::is_nvp&lt; typename &gt;</label>
+        <link refid="structmongo__odm_1_1is__nvp"/>
+        <childnode refid="215" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/nvp.hpp" line="760" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="760" bodyend="760"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

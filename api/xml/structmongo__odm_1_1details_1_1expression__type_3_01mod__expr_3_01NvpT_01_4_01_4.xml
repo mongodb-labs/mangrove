@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1details_1_1expression__type_3_01mod__expr_3_01NvpT_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::details::expression_type&lt; mod_expr&lt; NvpT &gt; &gt;</compoundname>
+    <basecompoundref refid="structmongo__odm_1_1expression__category__t" prot="public" virt="non-virtual">mongo_odm::expression_category_t&lt; expr_type &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename NvpT</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="127">
+        <label>expression_query_t</label>
+        <link refid="structmongo__odm_1_1expression__category__t"/>
+      </node>
+      <node id="126">
+        <label>mongo_odm::details::expression_type&lt; mod_expr&lt; NvpT &gt; &gt;</label>
+        <link refid="structmongo__odm_1_1details_1_1expression__type_3_01mod__expr_3_01NvpT_01_4_01_4"/>
+        <childnode refid="127" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="129">
+        <label>expression_query_t</label>
+        <link refid="structmongo__odm_1_1expression__category__t"/>
+      </node>
+      <node id="128">
+        <label>mongo_odm::details::expression_type&lt; mod_expr&lt; NvpT &gt; &gt;</label>
+        <link refid="structmongo__odm_1_1details_1_1expression__type_3_01mod__expr_3_01NvpT_01_4_01_4"/>
+        <childnode refid="129" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/expression_syntax.hpp" line="128" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="128" bodyend="128"/>
+    <listofallmembers>
+      <member refid="structmongo__odm_1_1expression__category__t_1a4da4c78c58d17daf4045f3e0aa12e6fe" prot="public" virt="non-virtual"><scope>mongo_odm::details::expression_type&lt; mod_expr&lt; NvpT &gt; &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

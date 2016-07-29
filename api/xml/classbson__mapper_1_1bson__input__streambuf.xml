@@ -28,36 +28,36 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3">
+      <node id="19">
         <label>bson_mapper::char_array_streambuf</label>
         <link refid="classbson__mapper_1_1char__array__streambuf"/>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="20" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="20">
         <label>std::streambuf</label>
       </node>
-      <node id="2">
+      <node id="18">
         <label>bson_mapper::bson_input_streambuf</label>
         <link refid="classbson__mapper_1_1bson__input__streambuf"/>
-        <childnode refid="3" relation="public-inheritance">
+        <childnode refid="19" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="6">
+      <node id="22">
         <label>bson_mapper::char_array_streambuf</label>
         <link refid="classbson__mapper_1_1char__array__streambuf"/>
-        <childnode refid="7" relation="public-inheritance">
+        <childnode refid="23" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="23">
         <label>std::streambuf</label>
       </node>
-      <node id="5">
+      <node id="21">
         <label>bson_mapper::bson_input_streambuf</label>
         <link refid="classbson__mapper_1_1bson__input__streambuf"/>
-        <childnode refid="6" relation="public-inheritance">
+        <childnode refid="22" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

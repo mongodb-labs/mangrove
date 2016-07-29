@@ -24,5 +24,565 @@
 </description>
     </item>
     
+    <item>
+      <title>Introduction</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/3-queries/introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/3-queries/introduction/</guid>
+      <description>
+
+&lt;p&gt;Mangrove provides a &lt;strong&gt;query builder&lt;/strong&gt; with static type-checking for constructing MongoDB queries.
+This allows you to compare documents using familiar C++ syntax using operators such as &lt;code&gt;&amp;gt;&lt;/code&gt; and &lt;code&gt;!=&lt;/code&gt;.
+These query objects are automatically converted to BSON, and can be passed either to the Mangrove Model&amp;rsquo;s &lt;code&gt;find&lt;/code&gt; and &lt;code&gt;find_one&lt;/code&gt; methods, to the Mangrove collection wrapper, or to the query methods in the Mongo C++ Driver.&lt;/p&gt;
+
+&lt;p&gt;The query builder helps you avoid JSON syntax errors, such as forgetting a closing curly brace, and will catch other errors at compile time &amp;mdash; so you don&amp;rsquo;t have to wait until your queries return errors in production (or silently return incorrect results!) to catch mistakes.&lt;/p&gt;
+
+&lt;p&gt;Mangrove currently supports all the 
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/v3.2/reference/operator/query/&#34;&gt;query operators &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ as of MongoDB 3.2,
+except for &lt;code&gt;$type&lt;/code&gt;, &lt;code&gt;$where&lt;/code&gt;, and geospatial queries. If you need to use these operators, create the BSON for the query as you 
+&lt;a target=&#34;_blank&#34; href=&#34;https://github.com/mongodb/mongo-cxx-driver/wiki/Handling-BSON-in-the-new-driver&#34;&gt;normally would &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ using the MongoDB C++ driver.&lt;/p&gt;
+
+&lt;p&gt;Consider the following class that represents a user of some website:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class User : public mangrove::model&amp;lt;User&amp;gt; {
+public:
+    std::string username;
+    std::int32_t age;
+
+    MANGROVE_MAKE_KEYS_MODEL(User, MANGROVE_NVP(username), MANGROVE_NVP(age));
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To retrieve the users in the database that are over 21 years of age, one would use the following query:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$gte: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) &amp;gt;= 21);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Where &lt;code&gt;collection&lt;/code&gt; is a &lt;code&gt;mongocxx::collection&lt;/code&gt; object from the C++ Driver.
+The different parts of this code will be explained in more detail below,
+but note the &lt;code&gt;MANGROVE_KEY&lt;/code&gt; macro that is used to refer to individual fields in the document.
+Then, Mangrove uses 
+&lt;a target=&#34;_blank&#34; href=&#34;http://en.cppreference.com/w/cpp/language/operators&#34;&gt;operator overloading &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ to allow the field to be compared to &lt;code&gt;21&lt;/code&gt; with the &lt;code&gt;&amp;gt;=&lt;/code&gt; operator.
+This constructs a query object, which is implicitly cast to a BSON value when passed into &lt;code&gt;mongocxx::collection::find()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&#34;notices warning&#34; &gt;&lt;p&gt;The query objects should only be used as &lt;em&gt;temporary objects&lt;/em&gt; &amp;mdash; that is, constructed and passed directly into another function, such as &lt;code&gt;find()&lt;/code&gt;.
+Attempting to store these queries in a variable and use them later may produce undefined results.
+This is because the query expressions store their arguments by reference to avoid putting too much data on the stack.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;specifying-fields&#34;&gt;Specifying fields&lt;/h2&gt;
+
+&lt;p&gt;You&amp;rsquo;ve already seen one way of referring to fields, the &lt;code&gt;MANGROVE_KEY&lt;/code&gt; macro.
+This macro takes a class member specified as &lt;code&gt;Base::member&lt;/code&gt;, and creates a &amp;ldquo;field object&amp;rdquo; that can be used in queries.&lt;/p&gt;
+
+&lt;h4 id=&#34;referring-to-embedded-fields&#34;&gt;Referring to embedded fields&lt;/h4&gt;
+
+&lt;p&gt;Referring to fields in embedded objects is a bit different.
+Let&amp;rsquo;s say we wanted to add an Address class to our User:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class Address {
+public:
+    std::string street;
+    std::string city;
+    std::string state;
+    std::string zip;  
+
+    MANGROVE_MAKE_KEYS(Address, MANGROVE_NVP(street), MANGROVE_NVP(city),
+                                MANGROVE_NVP(state), MANGROVE_NVP(zip));
+};
+
+class User : public mangrove::model&amp;lt;User&amp;gt; {
+public:
+    std::string username;
+    std::int32_t age;
+    Address addr;
+
+    MANGROVE_MAKE_KEYS_MODEL(User, MANGROVE_NVP(username), MANGROVE_NVP(age), MANGROVE_NVP(addr));
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, we can query for users using their address using the &lt;code&gt;MANGROVE_CHILD&lt;/code&gt; macro:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { &amp;quot;addr.zip&amp;quot;: &amp;quot;21211&amp;quot; }
+auto results = User::find(MANGROVE_CHILD(User, addr, zip) == &amp;quot;21211&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;MANGROVE_CHILD&lt;/code&gt; takes a base class, and then the names of each successive nested field.&lt;/p&gt;
+
+&lt;div class=&#34;notices info&#34; &gt;&lt;p&gt;Mangrove can support as many levels of nesting as is allowed in the
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/limits/#Nested-Depth-for-BSON-Documents&#34;&gt;BSON specification &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Another way to refer to children is to link field objects using the &lt;code&gt;-&amp;gt;*&lt;/code&gt; operator:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { &amp;quot;addr.zip&amp;quot;: &amp;quot;21211&amp;quot; }
+auto results = User::find(MANGROVE_KEY(User::addr) -&amp;gt;* MANGROVE_KEY(Address::zip) == &amp;quot;21211&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;referring-to-array-elements&#34;&gt;Referring to array elements&lt;/h4&gt;
+
+&lt;p&gt;Referring to specific array elements in queries is the same as in any C++ expression &amp;mdash;
+one can simply user the square brackets &lt;code&gt;[]&lt;/code&gt; to specify a certain index.
+For instance, the following query finds users whose 10th score in some game is higher than 1000:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { &amp;quot;scores.9&amp;quot;: {$gt: 1000} }
+// (note that arrays are 0-indexed)
+auto results = User::find(MANGROVE_KEY(User::scores)[9] &amp;gt; 1000);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;type-checking&#34;&gt;Type checking&lt;/h2&gt;
+
+&lt;p&gt;Mangrove provides type checking on queries, so that comparing fields and values with mismatched types,
+or using array operators on non-array fields, results in compile-time errors.&lt;/p&gt;
+
+&lt;p&gt;For instance, the following query will fail at compile time:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$gte: &amp;quot;21&amp;quot;} }
+auto results = User::find(MANGROVE_KEY(User::age) &amp;gt;= &amp;quot;21&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the mongo shell, for instance, such a query would be just fine,
+but would have done a lexicographic comparison between the &lt;code&gt;age&lt;/code&gt; field and the string &lt;code&gt;&amp;quot;21&amp;quot;&lt;/code&gt;.
+This is definitely not what we want, and may only have been discovered later, in production.&lt;/p&gt;
+
+&lt;p&gt;Similarly, the query&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$all: [15, 17, 19]} }
+auto results = User::find(MANGROVE_KEY(User::age).all(std::vector&amp;lt;int&amp;gt;{15, 17, 19}));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;does not make sense because &lt;code&gt;User::age&lt;/code&gt; is not an array, and will cause a syntax error accordingly.&lt;/p&gt;
+
+&lt;h2 id=&#34;combining-queries&#34;&gt;Combining queries&lt;/h2&gt;
+
+&lt;p&gt;There are several ways to combine different conditions into one query in Mangrove.
+The simplest one is the comma operator &amp;mdash; conditions can be appended one after the other, separated by a comma.
+This is the same as having comma-separated fields in a BSON query; it has the effect of a logical AND
+on the various conditions.&lt;/p&gt;
+
+&lt;p&gt;The following query filters by users&amp;rsquo; age as well as address:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$gt: 65}, &amp;quot;addr.state&amp;quot;: &amp;quot;NY&amp;quot; }
+auto results = User::find((MANGROVE_KEY(User::age) &amp;gt; 65, MANGROVE_CHILD(User, addr, state) == &amp;quot;NY&amp;quot;));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;notices note&#34; &gt;&lt;p&gt;Note that the query expression is inside another set of parentheses.
+This is to ensure that the different conditions are combined as one query,
+instead of passed to &lt;code&gt;find()&lt;/code&gt; as different arguments.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Queries can also be combined using boolean operators:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { $and: [
+//          {$or: [{age: {$gt: 65}}, {age: {$lt: 5}}]},
+//          {&amp;quot;addr.state&amp;quot;: &amp;quot;NY&amp;quot;}
+//        ] }
+auto results = User::find((MANGROVE_KEY(User::age) &amp;gt; 65 || MANGROVE_KEY(User::age) &amp;lt; 5) &amp;amp;&amp;amp; MANGROVE_CHILD(User, addr, state) == &amp;quot;NY&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;notices tip&#34; &gt;&lt;p&gt;Using boolean operators also allows you to use the same field in several conditions.
+Above, &lt;code&gt;User::age&lt;/code&gt; was compared twice.
+This is not supported in MongoDB when combining queries with commas.&lt;/p&gt;
+&lt;/div&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Operators</title>
+      <link>http://mongodb.github.io/mongo-cxx-odm/3-queries/operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mongodb.github.io/mongo-cxx-odm/3-queries/operators/</guid>
+      <description>
+
+&lt;p&gt;The following is a list of the available &lt;strong&gt;query operators&lt;/strong&gt; for the Mangrove query builder.
+This page follows the structure of the
+
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/&#34;&gt;MongoDB query operator documentation &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+.&lt;/p&gt;
+
+&lt;h3 id=&#34;comparison-operators&#34;&gt;Comparison Operators&lt;/h3&gt;
+
+&lt;p&gt;The following operators can be expressed using built-in C++ operators such as &lt;code&gt;&amp;lt;&lt;/code&gt; and &lt;code&gt;!=&lt;/code&gt;.
+They work on any field type, and the right-hand value must be the same type as the field.
+Free functions are also provided in the &lt;code&gt;mangrove&lt;/code&gt; namespace that can be used in lieu of the overloaded
+operators.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/eq/&#34;&gt;$eq &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$eq: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) == 21);
+auto results = User::find(mangrove::eq(MANGROVE_KEY(User::age), 21));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/gt/&#34;&gt;$gt &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$gt: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) &amp;gt; 21);
+auto results = User::find(mangrove::gt(MANGROVE_KEY(User::age), 21));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/gte/&#34;&gt;$gte &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$gte: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) &amp;gt;= 21);
+auto results = User::find(mangrove::gte(MANGROVE_KEY(User::age), 21));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/lt/&#34;&gt;$lt &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$lt: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) &amp;lt; 21);
+auto results = User::find(mangrove::lt(MANGROVE_KEY(User::age), 21));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/lte/&#34;&gt;$lte &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$lte: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) &amp;lt;= 21);
+auto results = User::find(mangrove::lte(MANGROVE_KEY(User::age), 21));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/ne/&#34;&gt;$ne &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$ne: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) != 21);
+auto results = User::find(mangrove::ne(MANGROVE_KEY(User::age), 21));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The following operators are provided as member functions of the fields which are returned from the
+&lt;code&gt;MANGROVE_KEY&lt;/code&gt; and other macros.
+If the field is a scalar, then the given right hand side must be an array containing the same type.
+If the field is an array, then the given right hand side must be a similar array, containing the same type.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/in/&#34;&gt;$in &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$in: [16, 18, 21]} }
+int ages = std::vector&amp;lt;int&amp;gt;{16, 18, 21}
+auto results = User::find(MANGROVE_KEY(User::age).in(ages));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/nin/&#34;&gt;$nin &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$nin: [16, 18, 21]} }
+int ages = std::vector&amp;lt;int&amp;gt;{16, 18, 21}
+auto results = User::find(MANGROVE_KEY(User::age).nin(ages));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;logical-operators&#34;&gt;Logical Operators&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;$or&lt;/code&gt; and &lt;code&gt;$and&lt;/code&gt; operators can be used to chain different sub-queries together.
+When using both at once, the &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; and &lt;code&gt;||&lt;/code&gt; follow their usual C++ precedence rules.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/or/&#34;&gt;$or &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { $or: [ {age: {$gt: 65}}, {age: {$lt: 5}} ] }
+auto results = User::find((MANGROVE_KEY(User::age) &amp;gt; 65 || MANGROVE_KEY(User::age) &amp;lt; 5));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/and/&#34;&gt;$and &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { $and: [ {age: {$gt: 65}}, {age: {$lt: 5}} ] }
+auto results = User::find((MANGROVE_KEY(User::age) &amp;gt; 65 &amp;amp;&amp;amp; MANGROVE_KEY(User::age) &amp;lt; 5));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/not/&#34;&gt;$not &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;$not&lt;/code&gt; operator is applied to individual comparisons
+(as opposed to boolean expressions using the above operators).
+The C++ &lt;code&gt;!&lt;/code&gt; operator is used for this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt; // { age: {$not: {$lt: 21}} }
+ auto results = User::find(!(MANGROVE_KEY(User::age) &amp;lt; 21));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/nor/&#34;&gt;$nor &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;$nor&lt;/code&gt; operator behaves similarly to the &lt;code&gt;$and&lt;/code&gt; and &lt;code&gt;$or&lt;/code&gt; operators,
+except that there is no built-in C++ &lt;code&gt;NOR&lt;/code&gt; operator. As such, it is provided as a free function that takes
+a list of query expressions.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt; // { $nor: [ {age: {$gt: 65}}, {age: {$lt: 5}} ] }
+ auto results = User::find(mangrove::nor(MANGROVE_KEY(User::age) &amp;gt; 65, MANGROVE_KEY(User::age) &amp;lt; 5));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;element-operators&#34;&gt;Element Operators&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/exists/&#34;&gt;$exists &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;$exists&lt;/code&gt; operator is provided as a member function on fields that takes a boolean
+argument. It is only enabled for &lt;strong&gt;optional&lt;/strong&gt; fields.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$exists: true} }
+auto results = User::find(MANGROVE_KEY(User::age).exists(true));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/type/&#34;&gt;$type &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;
+operator is not currently available in the Mangrove query builder,
+since to work with serialization,
+the types of fields must correspond to the type defined in the C++ class.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;evaluation-operators&#34;&gt;Evaluation Operators&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/mod/&#34;&gt;$mod &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator is provided as a member function on fields,
+and accepts two parameters: a divisor and a remainder.
+It is only enabled for fields with numeric types.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { age: {$mod: {$divisor: 10, $remainder: 3}} }
+auto results = User::find(MANGROVE_KEY(User::age).mod(10, 3));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/regex/&#34;&gt;$regex &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator is provided as a member function on fields,
+and accepts two parameters: a regex string and an options string.
+It is only enabled for string fields.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Match users who live on a numbered street, like &amp;quot;14th st.&amp;quot;:
+// { &amp;quot;addr.street&amp;quot;: {$regex: &amp;quot;\d+th st\.?&amp;quot;, $options: &amp;quot;i&amp;quot;} }
+auto results = User::find(MANGROVE_CHILD(User, addr, street).regex(&amp;quot;\\d+th st\\.?&amp;quot;, &amp;quot;i&amp;quot;));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/text/&#34;&gt;$text &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator performs a search on a text index in the database.
+It is provided as a free function that accepts a text query as a string,
+as well as the optional &lt;code&gt;language&lt;/code&gt;, &lt;code&gt;case_sensitive&lt;/code&gt;, and &lt;code&gt;diacritic_sensitive&lt;/code&gt; parameters
+as per the MongoDB documentation.
+These parameters can be passed in as &lt;code&gt;optional&lt;/code&gt; values,
+or specified using &amp;ldquo;fluent&amp;rdquo; setter functions:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// {
+//   $text:
+//     {
+//       $search: &amp;quot;boulevard&amp;quot;,
+//       $language: &amp;quot;en&amp;quot;,
+//       $caseSensitive: false,
+//       $diacriticSensitive: false
+//     }
+// }
+auto results = User::find(mangrove::text(&amp;quot;boulevard&amp;quot;).language(&amp;quot;en&amp;quot;)
+                                                     .case_sensitive(false)
+                                                     .diacritic_sensitive(false));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;notices warning&#34; &gt;&lt;p&gt;There are
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/text/#restrictions&#34;&gt;restrictions &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+ on the syntax of the &lt;code&gt;$text&lt;/code&gt; operator that Mangrove does not check.
+Refer to the MongoDB documentation to make sure that the &lt;code&gt;$text&lt;/code&gt; operator is being used correctly.
+Also, fields &lt;strong&gt;must&lt;/strong&gt; be text-indexed for the &lt;code&gt;$text&lt;/code&gt; operator to work on them.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/where/&#34;&gt;$where &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Mangrove does not provide a &lt;code&gt;$where&lt;/code&gt; operator.&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;geospational-operators&#34;&gt;Geospational Operators&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Mangrove does not currently support geospatial operators, although support is planned in the future, along with a dedicated GeoJSON C++ data type.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;array-operators&#34;&gt;Array Operators&lt;/h3&gt;
+
+&lt;p&gt;For the following code samples, assume that a User has a field &lt;code&gt;scores&lt;/code&gt;, which contains an array of integers.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/all/&#34;&gt;$all &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator is provided as a member function on fields.
+It accepts an array of values that are the same type as the elements of the field&amp;rsquo;s array.
+This is only enabled for fields which are iterable (i.e. arrays).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { scores: {$all: [100, 500, 1000]} }
+auto results = User::find(MANGROVE_KEY(User::scores).all(std::vector&amp;lt;int&amp;gt;{100, 500, 1000}));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/elemMatch/&#34;&gt;$elemMatch &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator accepts a query, and returns documents if the elements inside a field&amp;rsquo;s array match
+the given queries. The queries can be constructed in Mangrove using the same syntax as top-level queries.&lt;/p&gt;
+
+&lt;p&gt;For instance, if a User document contains a field &lt;code&gt;past_homes&lt;/code&gt;, which is an array of addresses,
+one could query it like so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Find users that have lived, at some point, in Maryland.
+// { past_homes: {$elemMatch: {state: &amp;quot;MD&amp;quot;}} }
+auto results = User::find(MANGROVE_KEY(User::past_homes).elem_match(MANGROVE_KEY(Address::state) == &amp;quot;MD&amp;quot;));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Using &lt;code&gt;$elemMatch&lt;/code&gt; on scalar arrays is a bit tricky, since the scalars don&amp;rsquo;t have field names to refer to.
+Instead, one uses the &lt;code&gt;MANGROVE_KEY_ELEM(...)&lt;/code&gt; macro to create a field object that refers to
+the &lt;em&gt;elements&lt;/em&gt; of an array. (The equivalent for &lt;code&gt;MANGROVE_CHILD&lt;/code&gt; is &lt;code&gt;MANGROVE_CHILD_ELEM&lt;/code&gt;.)
+One can also use &lt;code&gt;MANGROVE_KEY(...).element()&lt;/code&gt; and &lt;code&gt;MANGROVE_CHILD(...).element()&lt;/code&gt;, respectively.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Find users with a score greater than 9000.
+// { scores: {$elemMatch: {$gt: 9000}} }
+
+// The following are equivalent:
+auto results = User::find(MANGROVE_KEY(User::scores).elem_match(MANGROVE_KEY_ELEM(User::score) &amp;gt; 9000));
+results = User::find(MANGROVE_KEY(User::scores).elem_match(MANGROVE_KEY(User::score).element() &amp;gt; 9000));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;notices note&#34; &gt;&lt;p&gt;When specifying conditions on the fields of documents in an array in the &lt;code&gt;$elemMatch&lt;/code&gt; operator,
+the fields are referred to as top-level fields.
+In the example above, the &lt;code&gt;state&lt;/code&gt; field is used as &lt;code&gt;MANGROVE_KEY(Adress::state)&lt;/code&gt;,
+as opposed to &lt;code&gt;MANGROVE_CHILD(User, past_homes, state)&lt;/code&gt;.
+This mirrors the syntax of MongoDB queries themselves.
+The equivalent BSON would refer to the &lt;code&gt;state&lt;/code&gt; field simply as &lt;code&gt;state&lt;/code&gt;, not &lt;code&gt;&amp;quot;past_homes.state&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&#34;notices warning&#34; &gt;&lt;p&gt;Mangrove does not check if you use &lt;code&gt;.element()&lt;/code&gt; or &lt;code&gt;MANGROVE_KEY_ELEM&lt;/code&gt; outside of &lt;code&gt;elem_match(...)&lt;/code&gt;.
+This will cause a runtime error when the MongoDB server receives an invalid query.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/size/&#34;&gt;$size &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This operator is provided as a member function on fields.
+It accepts a single argument, which is the array size to check.
+The operator is only enabled for fields which are iterable (i.e. arrays).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// { scores: {$size: 10} }
+auto results = User::find(MANGROVE_KEY(User::scores).size(10));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;bitwise-operators&#34;&gt;Bitwise Operators&lt;/h3&gt;
+
+&lt;p&gt;The following operators query for documents using bit operations on fields.
+Each operator has two versions: one that accepts a single &lt;em&gt;mask&lt;/em&gt;,
+either as an integer or a BSON &lt;code&gt;b_binary&lt;/code&gt; type, and another that takes a variadic number of
+bit &lt;em&gt;positions&lt;/em&gt; as unsigned integers.&lt;/p&gt;
+
+&lt;p&gt;These operators are only enabled for integral or &lt;code&gt;b_binary&lt;/code&gt; types.&lt;/p&gt;
+
+&lt;p&gt;For the following examples, assume that the User class has an integer field &lt;code&gt;bitvector&lt;/code&gt; that
+represents a set of bits that we want to do bitwise operations on.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/bitsAllSet/&#34;&gt;$bitsAllSet &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// We want to compare the `bitvector` field with the value 0b00010101.
+// The following two queries are equivalent:
+
+// { scores: {$bitsAllSet: 21} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAllSet(21));
+// { scores: {$bitsAllSet: [0, 2, 4]} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAllSet(0, 2, 4));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/bitsAnySet/&#34;&gt;$bitsAnySet &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// We want to compare the `bitvector` field with the value 0b00010101.
+// The following two queries are equivalent:
+
+// { scores: {$bitsAnySet: 21} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAnySet(21));
+// { scores: {$bitsAnySet: [0, 2, 4]} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAnySet(0, 2, 4));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/bitsAllClear/&#34;&gt;$bitsAllClear &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// We want to compare the `bitvector` field with the value 0b00010101.
+// The following two queries are equivalent:
+
+// { scores: {$bitsAllClear: 21} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAllClear(21));
+// { scores: {$bitsAllClear: [0, 2, 4]} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAllClear(0, 2, 4));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://docs.mongodb.com/manual/reference/operator/query/bitsAnyClear/&#34;&gt;$bitsAnyClear &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// We want to compare the `bitvector` field with the value 0b00010101.
+// The following two queries are equivalent:
+
+// { scores: {$bitsAnyClear: 21} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAnyClear(21));
+// { scores: {$bitsAnyClear: [0, 2, 4]} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAnyClear(0, 2, 4));
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

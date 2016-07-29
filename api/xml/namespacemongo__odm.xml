@@ -2,25 +2,335 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="namespacemongo__odm" kind="namespace" language="C++">
     <compoundname>mongo_odm</compoundname>
-    <innerclass refid="classmongo__odm_1_1BooleanExpr" prot="public">mongo_odm::BooleanExpr</innerclass>
-    <innerclass refid="classmongo__odm_1_1ComparisonExpr" prot="public">mongo_odm::ComparisonExpr</innerclass>
+    <innerclass refid="classmongo__odm_1_1add__to__set__update__expr" prot="public">mongo_odm::add_to_set_update_expr</innerclass>
+    <innerclass refid="structmongo__odm_1_1all__true" prot="public">mongo_odm::all_true</innerclass>
+    <innerclass refid="classmongo__odm_1_1array__element__nvp" prot="public">mongo_odm::array_element_nvp</innerclass>
+    <innerclass refid="classmongo__odm_1_1bit__update__expr" prot="public">mongo_odm::bit_update_expr</innerclass>
+    <innerclass refid="structmongo__odm_1_1bool__pack" prot="public">mongo_odm::bool_pack</innerclass>
+    <innerclass refid="classmongo__odm_1_1boolean__expr" prot="public">mongo_odm::boolean_expr</innerclass>
+    <innerclass refid="classmongo__odm_1_1boolean__list__expr" prot="public">mongo_odm::boolean_list_expr</innerclass>
+    <innerclass refid="classmongo__odm_1_1comparison__expr" prot="public">mongo_odm::comparison_expr</innerclass>
+    <innerclass refid="classmongo__odm_1_1comparison__value__expr" prot="public">mongo_odm::comparison_value_expr</innerclass>
+    <innerclass refid="classmongo__odm_1_1current__date__expr" prot="public">mongo_odm::current_date_expr</innerclass>
+    <innerclass refid="structmongo__odm_1_1current__date__t" prot="public">mongo_odm::current_date_t</innerclass>
     <innerclass refid="classmongo__odm_1_1deserializing__cursor" prot="public">mongo_odm::deserializing_cursor</innerclass>
-    <innerclass refid="classmongo__odm_1_1ExpressionList" prot="public">mongo_odm::ExpressionList</innerclass>
+    <innerclass refid="classmongo__odm_1_1dollar__operator__nvp" prot="public">mongo_odm::dollar_operator_nvp</innerclass>
+    <innerclass refid="structmongo__odm_1_1expression__category__t" prot="public">mongo_odm::expression_category_t</innerclass>
+    <innerclass refid="classmongo__odm_1_1expression__list" prot="public">mongo_odm::expression_list</innerclass>
     <innerclass refid="structmongo__odm_1_1FirstTypeIsTheSame" prot="public">mongo_odm::FirstTypeIsTheSame</innerclass>
     <innerclass refid="structmongo__odm_1_1FirstTypeIsTheSame_3_01T_00_01T2_00_01Ts_8_8_8_01_4" prot="public">mongo_odm::FirstTypeIsTheSame&lt; T, T2, Ts... &gt;</innerclass>
+    <innerclass refid="classmongo__odm_1_1free__nvp" prot="public">mongo_odm::free_nvp</innerclass>
     <innerclass refid="structmongo__odm_1_1hasField" prot="public">mongo_odm::hasField</innerclass>
     <innerclass refid="structmongo__odm_1_1hasField_3_01Base_00_01T_00_01N_00_01M_00_01true_01_4" prot="public">mongo_odm::hasField&lt; Base, T, N, M, true &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1is__expression" prot="public">mongo_odm::is_expression</innerclass>
-    <innerclass refid="structmongo__odm_1_1is__expression_3_01BooleanExpr_3_01Expr1_00_01Expr2_01_4_01_4" prot="public">mongo_odm::is_expression&lt; BooleanExpr&lt; Expr1, Expr2 &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1is__expression_3_01ComparisonExpr_3_01Base_00_01T_01_4_01_4" prot="public">mongo_odm::is_expression&lt; ComparisonExpr&lt; Base, T &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1is__expression_3_01ExpressionList_3_01Head_00_01Tail_01_4_01_4" prot="public">mongo_odm::is_expression&lt; ExpressionList&lt; Head, Tail &gt; &gt;</innerclass>
-    <innerclass refid="structmongo__odm_1_1is__expression_3_01NotExpr_3_01Base_00_01T_01_4_01_4" prot="public">mongo_odm::is_expression&lt; NotExpr&lt; Base, T &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__date" prot="public">mongo_odm::is_date</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__date_3_01bsoncxx_1_1types_1_1b__date_01_4" prot="public">mongo_odm::is_date&lt; bsoncxx::types::b_date &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__date_3_01std_1_1chrono_1_1duration_3_01Rep_00_01Period_01_4_01_4" prot="public">mongo_odm::is_date&lt; std::chrono::duration&lt; Rep, Period &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__date_3_01std_1_1chrono_1_1time__point_3_01Clock_00_01Duration_01_4_01_4" prot="public">mongo_odm::is_date&lt; std::chrono::time_point&lt; Clock, Duration &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__expression__type" prot="public">mongo_odm::is_expression_type</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__free__nvp" prot="public">mongo_odm::is_free_nvp</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__free__nvp_3_01free__nvp_3_01T_01_4_01_4" prot="public">mongo_odm::is_free_nvp&lt; free_nvp&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__nvp" prot="public">mongo_odm::is_nvp</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__nvp_3_01array__element__nvp_3_01NvpT_01_4_01_4" prot="public">mongo_odm::is_nvp&lt; array_element_nvp&lt; NvpT &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__nvp_3_01free__nvp_3_01T_01_4_01_4" prot="public">mongo_odm::is_nvp&lt; free_nvp&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__nvp_3_01nvp_3_01Base_00_01T_01_4_01_4" prot="public">mongo_odm::is_nvp&lt; nvp&lt; Base, T &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__nvp_3_01nvp__child_3_01Base_00_01T_00_01Parent_01_4_01_4" prot="public">mongo_odm::is_nvp&lt; nvp_child&lt; Base, T, Parent &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__optional" prot="public">mongo_odm::is_optional</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__optional_3_01bsoncxx_1_1stdx_1_1optional_3_01T_01_4_01_4" prot="public">mongo_odm::is_optional&lt; bsoncxx::stdx::optional&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__string" prot="public">mongo_odm::is_string</innerclass>
+    <innerclass refid="structmongo__odm_1_1is__string_3_01std_1_1basic__string_3_01Char_00_01Traits_00_01Allocator_01_4_01_4" prot="public">mongo_odm::is_string&lt; std::basic_string&lt; Char, Traits, Allocator &gt; &gt;</innerclass>
+    <innerclass refid="classmongo__odm_1_1isolated__expr" prot="public">mongo_odm::isolated_expr</innerclass>
+    <innerclass refid="classmongo__odm_1_1mod__expr" prot="public">mongo_odm::mod_expr</innerclass>
     <innerclass refid="classmongo__odm_1_1model" prot="public">mongo_odm::model</innerclass>
-    <innerclass refid="classmongo__odm_1_1NotExpr" prot="public">mongo_odm::NotExpr</innerclass>
-    <innerclass refid="structmongo__odm_1_1Nvp" prot="public">mongo_odm::Nvp</innerclass>
+    <innerclass refid="classmongo__odm_1_1not__expr" prot="public">mongo_odm::not_expr</innerclass>
+    <innerclass refid="classmongo__odm_1_1nvp" prot="public">mongo_odm::nvp</innerclass>
+    <innerclass refid="classmongo__odm_1_1nvp__base" prot="public">mongo_odm::nvp_base</innerclass>
+    <innerclass refid="classmongo__odm_1_1nvp__child" prot="public">mongo_odm::nvp_child</innerclass>
     <innerclass refid="classmongo__odm_1_1odm__collection" prot="public">mongo_odm::odm_collection</innerclass>
+    <innerclass refid="classmongo__odm_1_1push__update__expr" prot="public">mongo_odm::push_update_expr</innerclass>
+    <innerclass refid="structmongo__odm_1_1remove__optional" prot="public">mongo_odm::remove_optional</innerclass>
+    <innerclass refid="structmongo__odm_1_1remove__optional_3_01bsoncxx_1_1stdx_1_1optional_3_01T_01_4_01_4" prot="public">mongo_odm::remove_optional&lt; bsoncxx::stdx::optional&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="classmongo__odm_1_1sort__expr" prot="public">mongo_odm::sort_expr</innerclass>
+    <innerclass refid="classmongo__odm_1_1text__search__expr" prot="public">mongo_odm::text_search_expr</innerclass>
+    <innerclass refid="classmongo__odm_1_1unset__expr" prot="public">mongo_odm::unset_expr</innerclass>
+    <innerclass refid="classmongo__odm_1_1update__expr" prot="public">mongo_odm::update_expr</innerclass>
+    <innerclass refid="classmongo__odm_1_1update__value__expr" prot="public">mongo_odm::update_value_expr</innerclass>
+    <innernamespace refid="namespacemongo__odm_1_1details">mongo_odm::details</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="expression__syntax_8hpp_1a67bb1ad10a516e9fad57867fe470503e" prot="public" static="no">
+        <name>expression_category</name>
+        <enumvalue id="dummy_1a67bb1ad10a516e9fad57867fe470503ea334c4a4c42fdb79d7ebc3e73b517e6f8" prot="public">
+          <name>none</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1a67bb1ad10a516e9fad57867fe470503ea1b1cc7f086b3f074da452bc3129981eb" prot="public">
+          <name>query</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1a67bb1ad10a516e9fad57867fe470503ea3ac340832f29c11538fbe2d6f75e8bcc" prot="public">
+          <name>update</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1a67bb1ad10a516e9fad57867fe470503eacadc8c8db42409733582cb3e2298ef87" prot="public">
+          <name>sort</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/expression_syntax.hpp" line="33" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="33" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="query__builder_8hpp_1a548f655b22a9a91585f55216d33770eb" prot="public" static="no">
+        <type>decltype(is_bson_appendable_impl&lt; T &gt;(0))</type>
+        <definition>using mongo_odm::is_bson_appendable = typedef decltype(is_bson_appendable_impl&lt;T&gt;(0))</definition>
+        <argsstring></argsstring>
+        <name>is_bson_appendable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="47" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="util_8hpp_1af9272bd32a2151af20282fcab91d75b7" prot="public" static="no">
+        <type>decltype(is_iterable_impl&lt; T &gt;(0))</type>
+        <definition>using mongo_odm::is_iterable = typedef decltype(is_iterable_impl&lt;T&gt;(0))</definition>
+        <argsstring></argsstring>
+        <name>is_iterable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="81" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="util_8hpp_1a312918e0d108ee7f3bc25b0e9a617a54" prot="public" static="no">
+        <type>std::integral_constant&lt; int, is_iterable_v&lt; T &gt; &amp;&amp;!is_string_v&lt; T &gt;&gt;</type>
+        <definition>using mongo_odm::is_iterable_not_string = typedef std::integral_constant&lt;int, is_iterable_v&lt;T&gt; &amp;&amp; !is_string_v&lt;T&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>is_iterable_not_string</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="88" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="util_8hpp_1acb16566b3687ef595cf290beced88307" prot="public" static="no">
+        <type>decltype(iterable_value_impl&lt; T &gt;(0))</type>
+        <definition>using mongo_odm::iterable_value_t = typedef decltype(iterable_value_impl&lt;T&gt;(0))</definition>
+        <argsstring></argsstring>
+        <name>iterable_value_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="105" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="util_8hpp_1afae27423aa9243f9420f7373ec6839e2" prot="public" static="no">
+        <type>typename <ref refid="structmongo__odm_1_1remove__optional" kindref="compound">remove_optional</ref>&lt; T &gt;::type</type>
+        <definition>using mongo_odm::remove_optional_t = typedef typename remove_optional&lt;T&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>remove_optional_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="134" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="nvp_8hpp_1af2e06d8c8f285f3f0293fab664337ee8" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="structmongo__odm_1_1current__date__t" kindref="compound">current_date_t</ref></type>
+        <definition>constexpr current_date_t mongo_odm::current_date</definition>
+        <argsstring></argsstring>
+        <name>current_date</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="40" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="nvp_8hpp_1a46e567ffdd0594ff405714225a63f7c2" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mongo_odm::is_free_nvp_v</definition>
+        <argsstring></argsstring>
+        <name>is_free_nvp_v</name>
+        <initializer>= <ref refid="structmongo__odm_1_1is__free__nvp" kindref="compound">is_free_nvp</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="243" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="nvp_8hpp_1a05c1bd2596eee80b9bad5b6a303dd1a1" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mongo_odm::is_nvp_v</definition>
+        <argsstring></argsstring>
+        <name>is_nvp_v</name>
+        <initializer>= <ref refid="structmongo__odm_1_1is__nvp" kindref="compound">is_nvp</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="775" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="775" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="query__builder_8hpp_1ab992416b810196fb633489445add7952" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mongo_odm::is_bson_appendable_v</definition>
+        <argsstring></argsstring>
+        <name>is_bson_appendable_v</name>
+        <initializer>= is_bson_appendable&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="50" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="util_8hpp_1add1f3783105fff2f4871028fdc53f578" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename S</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mongo_odm::is_string_v</definition>
+        <argsstring></argsstring>
+        <name>is_string_v</name>
+        <initializer>= <ref refid="structmongo__odm_1_1is__string" kindref="compound">is_string</ref>&lt;S&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="57" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="util_8hpp_1a01e3936359ec42a9a11268ca0d958d55" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mongo_odm::is_iterable_v</definition>
+        <argsstring></argsstring>
+        <name>is_iterable_v</name>
+        <initializer>= is_iterable&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="84" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="util_8hpp_1a4eadc8627fbdddbf249f04b842b80bff" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mongo_odm::is_iterable_not_string_v</definition>
+        <argsstring></argsstring>
+        <name>is_iterable_not_string_v</name>
+        <initializer>= is_iterable_not_string&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="91" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="util_8hpp_1a9e4f69613857bcc6d76986a6215b1c87" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mongo_odm::is_optional_v</definition>
+        <argsstring></argsstring>
+        <name>is_optional_v</name>
+        <initializer>= <ref refid="structmongo__odm_1_1is__optional" kindref="compound">is_optional</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="117" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="util_8hpp_1a0250c286e3a911d2a49652780534cb47" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr bool</type>
+        <definition>constexpr bool mongo_odm::is_date_v</definition>
+        <argsstring></argsstring>
+        <name>is_date_v</name>
+        <initializer>= <ref refid="structmongo__odm_1_1is__date" kindref="compound">is_date</ref>&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="165" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="nvp_8hpp_1a4bcde0a19f13329eff299eea6ce6fa74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="nvp_8hpp_1a214cd4a488510a9c4a177f4176226515" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename Base</type>
@@ -29,10 +339,10 @@
             <type>typename T</type>
           </param>
         </templateparamlist>
-        <type><ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; constexpr</type>
-        <definition>Nvp&lt;Base, T&gt; constexpr mongo_odm::makeNvp</definition>
+        <type><ref refid="classmongo__odm_1_1nvp" kindref="compound">nvp</ref>&lt; Base, T &gt; constexpr</type>
+        <definition>nvp&lt;Base, T&gt; constexpr mongo_odm::make_nvp</definition>
         <argsstring>(T Base::*t, const char *name)</argsstring>
-        <name>makeNvp</name>
+        <name>make_nvp</name>
         <param>
           <type>T Base::*</type>
           <declname>t</declname>
@@ -47,9 +357,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/nvp.hpp" line="83" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="83" bodyend="85"/>
+        <location file="src/mongo_odm/nvp.hpp" line="779" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="779" bodyend="781"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1a9c9c9d64aa9388c6ad98b9a104f177b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="nvp_8hpp_1a0a81d536c7fbf824c4a9a401ebf194d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename Base</type>
@@ -58,23 +368,254 @@
             <type>typename T</type>
           </param>
           <param>
-            <type>typename U</type>
+            <type>typename Parent</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classmongo__odm_1_1nvp__child" kindref="compound">nvp_child</ref>&lt; Base, T, Parent &gt; constexpr</type>
+        <definition>nvp_child&lt;Base, T, Parent&gt; constexpr mongo_odm::make_nvp_with_parent</definition>
+        <argsstring>(const nvp&lt; Base, T &gt; &amp;child, const Parent &amp;parent)</argsstring>
+        <name>make_nvp_with_parent</name>
+        <param>
+          <type>const <ref refid="classmongo__odm_1_1nvp" kindref="compound">nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <declname>child</declname>
+        </param>
+        <param>
+          <type>const Parent &amp;</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a name-value pair that is a subfield of a <computeroutput>parent</computeroutput> object. </para>        </briefdescription>
+        <detaileddescription>
+<para>The resulting name-value pair will have the name &quot;rootfield.subfield&quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="788" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="788" bodyend="791"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ac4fa17d99a4a923013c7b860e7374aad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>MONGO_ODM_INLINE_NAMESPACE_BEGIN auto</type>
+        <definition>MONGO_ODM_INLINE_NAMESPACE_BEGIN auto mongo_odm::is_bson_appendable_impl</definition>
+        <argsstring>(int) -&gt; decltype(std::declval&lt; bsoncxx::builder::core &gt;().append(std::declval&lt; T &gt;()), std::true_type</argsstring>
+        <name>is_bson_appendable_impl</name>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+<para>Type trait that contains true if a type T can be appended to a BSON builder using builder.append(T val);. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="40" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="40" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a387782fd57af7a72c828d7276b3d4028" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::false_type</type>
+        <definition>std::false_type mongo_odm::is_bson_appendable_impl</definition>
+        <argsstring>(...)</argsstring>
+        <name>is_bson_appendable_impl</name>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="44" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1afdbdc8a4ef68033e6deb9389263fd4f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if_t&lt; is_bson_appendable_v&lt; T &gt; &gt;</type>
+        <definition>std::enable_if_t&lt;is_bson_appendable_v&lt;T&gt; &gt; mongo_odm::append_value_to_bson</definition>
+        <argsstring>(T value, bsoncxx::builder::core &amp;builder)</argsstring>
+        <name>append_value_to_bson</name>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+<para>Templated function for appending a value to a BSON builder. </para>        </briefdescription>
+        <detaileddescription>
+<para>If possible, the function simply passes the value directly to the builder. If it cannot be nicely appended, it is first serialized and then added as a sub-document to the builder. If the value is a container/iterable, it is serialized into a BSON array. If the value is a query builder epxression, it is serialized using its member function .append_to_bson(builder). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="63" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a811b1361f9aae1a9c174e218fa8db589" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if_t&lt;!is_bson_appendable_v&lt; T &gt; &amp;&amp;!is_iterable_not_string_v&lt; T &gt; &amp;&amp;details::isnt_expression_v&lt; T &gt; &gt;</type>
+        <definition>std::enable_if_t&lt;!is_bson_appendable_v&lt;T&gt; &amp;&amp; !is_iterable_not_string_v&lt;T&gt; &amp;&amp; details::isnt_expression_v&lt;T&gt; &gt; mongo_odm::append_value_to_bson</definition>
+        <argsstring>(const T &amp;value, bsoncxx::builder::core &amp;builder)</argsstring>
+        <name>append_value_to_bson</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="72" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="72" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a5863dbdb1a9228f700659fc5351b1214" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Iterable</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if_t&lt; is_iterable_not_string_v&lt; Iterable &gt; &gt;</type>
+        <definition>std::enable_if_t&lt;is_iterable_not_string_v&lt;Iterable&gt; &gt; mongo_odm::append_value_to_bson</definition>
+        <argsstring>(const Iterable &amp;arr, bsoncxx::builder::core &amp;builder)</argsstring>
+        <name>append_value_to_bson</name>
+        <param>
+          <type>const Iterable &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="79" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="79" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1af1dcb3d359dd5c57699bdf927554827a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expression</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if_t&lt;!details::isnt_expression_v&lt; Expression &gt; &gt;</type>
+        <definition>std::enable_if_t&lt;!details::isnt_expression_v&lt;Expression&gt; &gt; mongo_odm::append_value_to_bson</definition>
+        <argsstring>(const Expression &amp;expr, bsoncxx::builder::core &amp;builder)</argsstring>
+        <name>append_value_to_bson</name>
+        <param>
+          <type>const Expression &amp;</type>
+          <declname>expr</declname>
+        </param>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="90" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="90" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a8b50a506960fae9604ddbca93a1061db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Clock</type>
+          </param>
+          <param>
+            <type>typename Duration</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void mongo_odm::append_value_to_bson</definition>
+        <argsstring>(const std::chrono::time_point&lt; Clock, Duration &gt; &amp;tp, bsoncxx::builder::core &amp;builder)</argsstring>
+        <name>append_value_to_bson</name>
+        <param>
+          <type>const std::chrono::time_point&lt; Clock, Duration &gt; &amp;</type>
+          <declname>tp</declname>
+        </param>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="99" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="99" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a1e50cc8437fd1539579e1fac1195dc3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if_t&lt;!std::is_same&lt;T, bool&gt;::value&gt;</defval>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator==</definition>
-        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const U &amp;rhs)</argsstring>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::eq</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>eq</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1153" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1153" bodyend="1156"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a778f6512b14fa520714b2ab5a3d50bd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator==</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
         <name>operator==</name>
         <param>
-          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <type>const NvpT &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type>const U &amp;</type>
+          <type>const typename NvpT::no_opt_type &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -83,31 +624,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="237" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="237" bodyend="239"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1159" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1159" bodyend="1162"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1a51c00ea3a069e984d1bc868282e09a23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1a360239841d188c4b61304f9c8c2c1011" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename Base</type>
-          </param>
-          <param>
-            <type>typename T</type>
+            <type>typename NvpT</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if_t&lt;std::is_same&lt;T, bool&gt;::value&gt;</defval>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator==</definition>
-        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const T &amp;rhs)</argsstring>
-        <name>operator==</name>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::gt</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>gt</name>
         <param>
-          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <type>const NvpT &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type>const T &amp;</type>
+          <type>const typename NvpT::no_opt_type &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -116,34 +654,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="243" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="243" bodyend="245"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1165" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1165" bodyend="1168"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1a11fda3f6bc5d81153422149fbf1637e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1a516ba1d95b8bc8b43451fe52e6487eb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename Base</type>
-          </param>
-          <param>
-            <type>typename T</type>
-          </param>
-          <param>
-            <type>typename U</type>
+            <type>typename NvpT</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if_t&lt;!std::is_same&lt;T, bool&gt;::value&gt;</defval>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&gt;</definition>
-        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const U &amp;rhs)</argsstring>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator&gt;</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
         <name>operator&gt;</name>
         <param>
-          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <type>const NvpT &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type>const U &amp;</type>
+          <type>const typename NvpT::no_opt_type &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -152,31 +684,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="249" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="249" bodyend="251"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1171" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1171" bodyend="1174"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1ad9b9f03a100ac8813dd1b38948999060" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1a2a3ff40e3b72afd91c44db2546c9978f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename Base</type>
-          </param>
-          <param>
-            <type>typename T</type>
+            <type>typename NvpT</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if_t&lt;std::is_same&lt;T, bool&gt;::value&gt;</defval>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&gt;</definition>
-        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const T &amp;rhs)</argsstring>
-        <name>operator&gt;</name>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::gte</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>gte</name>
         <param>
-          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <type>const NvpT &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type>const T &amp;</type>
+          <type>const typename NvpT::no_opt_type &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -185,34 +714,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="255" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="255" bodyend="257"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1177" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1177" bodyend="1180"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1adfa348f70a4a6e94250abb533a7927b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1ae11741014a299b836d1e79f5383188e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename Base</type>
-          </param>
-          <param>
-            <type>typename T</type>
-          </param>
-          <param>
-            <type>typename U</type>
+            <type>typename NvpT</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if_t&lt;!std::is_same&lt;T, bool&gt;::value&gt;</defval>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&gt;=</definition>
-        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const U &amp;rhs)</argsstring>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator&gt;=</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
         <name>operator&gt;=</name>
         <param>
-          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <type>const NvpT &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type>const U &amp;</type>
+          <type>const typename NvpT::no_opt_type &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -221,31 +744,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="261" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="261" bodyend="263"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1183" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1183" bodyend="1186"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1ae6357cd27791779713539df04cd97f45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1afeb2337c92960084a1a751a270deaef1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename Base</type>
-          </param>
-          <param>
-            <type>typename T</type>
+            <type>typename NvpT</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if_t&lt;std::is_same&lt;T, bool&gt;::value&gt;</defval>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&gt;=</definition>
-        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const T &amp;rhs)</argsstring>
-        <name>operator&gt;=</name>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::lt</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>lt</name>
         <param>
-          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <type>const NvpT &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type>const T &amp;</type>
+          <type>const typename NvpT::no_opt_type &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -254,34 +774,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="267" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="267" bodyend="269"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1189" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1189" bodyend="1192"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1ae7fe3be8b9fff14981d078de356c557f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1af0bab408f977db1dbaab938aae8af8d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename Base</type>
-          </param>
-          <param>
-            <type>typename T</type>
-          </param>
-          <param>
-            <type>typename U</type>
+            <type>typename NvpT</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if_t&lt;!std::is_same&lt;T, bool&gt;::value&gt;</defval>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&lt;</definition>
-        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const U &amp;rhs)</argsstring>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator&lt;</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
         <name>operator&lt;</name>
         <param>
-          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <type>const NvpT &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type>const U &amp;</type>
+          <type>const typename NvpT::no_opt_type &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -290,31 +804,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="273" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="273" bodyend="275"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1195" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1195" bodyend="1198"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1abbd6e2aef205a48868935b5a4004af77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1a7f24399db7ee87d4054f349fad959f7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename Base</type>
-          </param>
-          <param>
-            <type>typename T</type>
+            <type>typename NvpT</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if_t&lt;std::is_same&lt;T, bool&gt;::value&gt;</defval>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&lt;</definition>
-        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const T &amp;rhs)</argsstring>
-        <name>operator&lt;</name>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::lte</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>lte</name>
         <param>
-          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <type>const NvpT &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type>const T &amp;</type>
+          <type>const typename NvpT::no_opt_type &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -323,34 +834,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="279" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="279" bodyend="281"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1201" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1201" bodyend="1204"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1ab9d4721762bf6cf0d661488835503828" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1af4553bc1c8903d41c7f88c4abf01af31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename Base</type>
-          </param>
-          <param>
-            <type>typename T</type>
-          </param>
-          <param>
-            <type>typename U</type>
+            <type>typename NvpT</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if_t&lt;!std::is_same&lt;T, bool&gt;::value&gt;</defval>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&lt;=</definition>
-        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const U &amp;rhs)</argsstring>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator&lt;=</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
         <name>operator&lt;=</name>
         <param>
-          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <type>const NvpT &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type>const U &amp;</type>
+          <type>const typename NvpT::no_opt_type &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -359,31 +864,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="285" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="285" bodyend="287"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1207" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1207" bodyend="1210"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1a75f5db9502140243c02f911fcfddf89c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1a7ec21447ea017eb82828af65aca0c7c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename Base</type>
-          </param>
-          <param>
-            <type>typename T</type>
+            <type>typename NvpT</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if_t&lt;std::is_same&lt;T, bool&gt;::value&gt;</defval>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator&lt;=</definition>
-        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const T &amp;rhs)</argsstring>
-        <name>operator&lt;=</name>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::ne</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
+        <name>ne</name>
         <param>
-          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <type>const NvpT &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type>const T &amp;</type>
+          <type>const typename NvpT::no_opt_type &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -392,34 +894,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="291" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="291" bodyend="293"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1213" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1213" bodyend="1216"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1a3b363c532be9639b3a6f737ee7e89cb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1aaabcecb3c8583faa0039c69390ddb949" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename Base</type>
-          </param>
-          <param>
-            <type>typename T</type>
-          </param>
-          <param>
-            <type>typename U</type>
+            <type>typename NvpT</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if_t&lt;!std::is_same&lt;T, bool&gt;::value&gt;</defval>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator!=</definition>
-        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const U &amp;rhs)</argsstring>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator!=</definition>
+        <argsstring>(const NvpT &amp;lhs, const typename NvpT::no_opt_type &amp;rhs)</argsstring>
         <name>operator!=</name>
         <param>
-          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
+          <type>const NvpT &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type>const U &amp;</type>
+          <type>const typename NvpT::no_opt_type &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -428,56 +924,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="297" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="297" bodyend="299"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1219" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1219" bodyend="1222"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1adda975f2de7cb87e6bc2616175a7ca13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1ae9eb4180744793e0b01b28d28d4d5de8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename Base</type>
-          </param>
-          <param>
-            <type>typename T</type>
+            <type>typename Expr</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if_t&lt;std::is_same&lt;T, bool&gt;::value&gt;</defval>
+            <defval>std::enable_if_t&lt;details::is_query_expression_v&lt;Expr&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr ComparisonExpr&lt;Base, T&gt; mongo_odm::operator!=</definition>
-        <argsstring>(const Nvp&lt; Base, T &gt; &amp;lhs, const T &amp;rhs)</argsstring>
-        <name>operator!=</name>
-        <param>
-          <type>const <ref refid="structmongo__odm_1_1Nvp" kindref="compound">Nvp</ref>&lt; Base, T &gt; &amp;</type>
-          <declname>lhs</declname>
-        </param>
-        <param>
-          <type>const T &amp;</type>
-          <declname>rhs</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="303" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="303" bodyend="305"/>
-      </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1a9f0469fd613155372d7228b178107bce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename Base</type>
-          </param>
-          <param>
-            <type>typename T</type>
-          </param>
-        </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1NotExpr" kindref="compound">NotExpr</ref>&lt; Base, T &gt;</type>
-        <definition>constexpr NotExpr&lt;Base, T&gt; mongo_odm::operator!</definition>
-        <argsstring>(const ComparisonExpr&lt; Base, T &gt; &amp;expr)</argsstring>
+        <type>constexpr <ref refid="classmongo__odm_1_1not__expr" kindref="compound">not_expr</ref>&lt; Expr &gt;</type>
+        <definition>constexpr not_expr&lt;Expr&gt; mongo_odm::operator!</definition>
+        <argsstring>(const Expr &amp;expr)</argsstring>
         <name>operator!</name>
         <param>
-          <type>const <ref refid="classmongo__odm_1_1ComparisonExpr" kindref="compound">ComparisonExpr</ref>&lt; Base, T &gt; &amp;</type>
+          <type>const Expr &amp;</type>
           <declname>expr</declname>
         </param>
         <briefdescription>
@@ -486,32 +950,109 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="311" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="311" bodyend="313"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1229" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1229" bodyend="1231"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1aa683880e2126866b9edb9d9a7b7bb7b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1ab9330fcbdee2eb76189d972a46df8485" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename Head</type>
-          </param>
-          <param>
-            <type>typename Tail</type>
+            <type>typename NvpT</type>
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if&lt;is_expression&lt;Head&gt;::value &amp;&amp;                                             is_expression&lt;Tail&gt;::value&gt;::type</defval>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1ExpressionList" kindref="compound">ExpressionList</ref>&lt; Head, Tail &gt;</type>
-        <definition>constexpr ExpressionList&lt;Head, Tail&gt; mongo_odm::operator,</definition>
-        <argsstring>(Tail &amp;&amp;tail, Head &amp;&amp;head)</argsstring>
-        <name>operator,</name>
+        <type>constexpr <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref>&lt; NvpT, bsoncxx::types::b_regex &gt;</type>
+        <definition>constexpr comparison_expr&lt;NvpT, bsoncxx::types::b_regex&gt; mongo_odm::operator!</definition>
+        <argsstring>(const comparison_value_expr&lt; NvpT, bsoncxx::types::b_regex &gt; &amp;regex_expr)</argsstring>
+        <name>operator!</name>
         <param>
-          <type>Tail &amp;&amp;</type>
-          <declname>tail</declname>
+          <type>const <ref refid="classmongo__odm_1_1comparison__value__expr" kindref="compound">comparison_value_expr</ref>&lt; NvpT, bsoncxx::types::b_regex &gt; &amp;</type>
+          <declname>regex_expr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1238" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1238" bodyend="1241"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a7aeabb120f56ba486317b22f742e298e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr</type>
+          </param>
+          <param>
+            <type>expression_category</type>
+            <declname>list_type</declname>
+            <defname>list_type</defname>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+          <param>
+            <type>size_t...</type>
+            <declname>idxs</declname>
+            <defname>idxs</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1expression__list" kindref="compound">expression_list</ref>&lt; list_type, Expr, Args... &gt;</type>
+        <definition>constexpr expression_list&lt;list_type, Expr, Args...&gt; mongo_odm::append_impl</definition>
+        <argsstring>(expression_list&lt; list_type, Args... &gt; list, Expr expr, std::index_sequence&lt; idxs... &gt;)</argsstring>
+        <name>append_impl</name>
+        <param>
+          <type><ref refid="classmongo__odm_1_1expression__list" kindref="compound">expression_list</ref>&lt; list_type, Args... &gt;</type>
+          <declname>list</declname>
         </param>
         <param>
-          <type>Head &amp;&amp;</type>
-          <declname>head</declname>
+          <type>Expr</type>
+          <declname>expr</declname>
+        </param>
+        <param>
+          <type>std::index_sequence&lt; idxs... &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1244" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1244" bodyend="1247"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ab1481cbcd2912d48506feb1fecd1496c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr</type>
+          </param>
+          <param>
+            <type>expression_category</type>
+            <declname>list_type</declname>
+            <defname>list_type</defname>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;details::is_expression_type&lt;list_type, Expr&gt;::value&gt;</defval>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1expression__list" kindref="compound">expression_list</ref>&lt; list_type, Expr, Args... &gt;</type>
+        <definition>constexpr expression_list&lt;list_type, Expr, Args...&gt; mongo_odm::operator,</definition>
+        <argsstring>(expression_list&lt; list_type, Args... &gt; &amp;&amp;list, Expr &amp;&amp;expr)</argsstring>
+        <name>operator,</name>
+        <param>
+          <type><ref refid="classmongo__odm_1_1expression__list" kindref="compound">expression_list</ref>&lt; list_type, Args... &gt; &amp;&amp;</type>
+          <declname>list</declname>
+        </param>
+        <param>
+          <type>Expr &amp;&amp;</type>
+          <declname>expr</declname>
         </param>
         <briefdescription>
 <para>Comma operator that combines two expressions or an expression and an expression list into a new expression list. </para>        </briefdescription>
@@ -519,9 +1060,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="322" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="322" bodyend="324"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1256" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1256" bodyend="1259"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1a3570a42d1e178135c80e97f9cac00e7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1a7bb38a961511ff9d481c17b24257c49c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename Expr1</type>
@@ -531,11 +1072,44 @@
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if&lt;is_expression&lt;Expr1&gt;::value &amp;&amp;                                             is_expression&lt;Expr2&gt;::value&gt;::type</defval>
+            <defval>std::enable_if_t&lt;!details::isnt_expression_v&lt;Expr1&gt; &amp;&amp;                                      (details::expression_type&lt;Expr1&gt;::value ==                                       details::expression_type&lt;Expr2&gt;::value)&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1BooleanExpr" kindref="compound">BooleanExpr</ref>&lt; Expr1, Expr2 &gt;</type>
-        <definition>constexpr BooleanExpr&lt;Expr1, Expr2&gt; mongo_odm::operator&amp;&amp;</definition>
+        <type>constexpr <ref refid="classmongo__odm_1_1expression__list" kindref="compound">expression_list</ref>&lt; <ref refid="structmongo__odm_1_1details_1_1expression__type" kindref="compound">details::expression_type</ref>&lt; Expr1 &gt;::value, Expr1, Expr2 &gt;</type>
+        <definition>constexpr expression_list&lt;details::expression_type&lt;Expr1&gt;::value, Expr1, Expr2&gt; mongo_odm::operator,</definition>
+        <argsstring>(Expr1 &amp;&amp;expr1, Expr2 &amp;&amp;expr2)</argsstring>
+        <name>operator,</name>
+        <param>
+          <type>Expr1 &amp;&amp;</type>
+          <declname>expr1</declname>
+        </param>
+        <param>
+          <type>Expr2 &amp;&amp;</type>
+          <declname>expr2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1265" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1265" bodyend="1268"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a29c3ce23dd8b0e948489e3999a395cc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr1</type>
+          </param>
+          <param>
+            <type>typename Expr2</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;details::is_query_expression_v&lt;Expr1&gt; &amp;&amp;                                      details::is_query_expression_v&lt;Expr2&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1boolean__expr" kindref="compound">boolean_expr</ref>&lt; Expr1, Expr2 &gt;</type>
+        <definition>constexpr boolean_expr&lt;Expr1, Expr2&gt; mongo_odm::operator&amp;&amp;</definition>
         <argsstring>(const Expr1 &amp;lhs, const Expr2 &amp;rhs)</argsstring>
         <name>operator&amp;&amp;</name>
         <param>
@@ -552,9 +1126,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="332" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="332" bodyend="334"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1276" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1276" bodyend="1278"/>
       </memberdef>
-      <memberdef kind="function" id="query__builder_8hpp_1a7dc445a8fef0bc28175f75ba710e9eac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="query__builder_8hpp_1a257f065b50642d4d2140609f2c9910bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename Expr1</type>
@@ -564,11 +1138,11 @@
           </param>
           <param>
             <type>typename</type>
-            <defval>typename std::enable_if&lt;is_expression&lt;Expr1&gt;::value &amp;&amp;                                             is_expression&lt;Expr2&gt;::value&gt;::type</defval>
+            <defval>std::enable_if_t&lt;details::is_query_expression_v&lt;Expr1&gt; &amp;&amp;                                      details::is_query_expression_v&lt;Expr2&gt;&gt;</defval>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classmongo__odm_1_1BooleanExpr" kindref="compound">BooleanExpr</ref>&lt; Expr1, Expr2 &gt;</type>
-        <definition>constexpr BooleanExpr&lt;Expr1, Expr2&gt; mongo_odm::operator||</definition>
+        <type>constexpr <ref refid="classmongo__odm_1_1boolean__expr" kindref="compound">boolean_expr</ref>&lt; Expr1, Expr2 &gt;</type>
+        <definition>constexpr boolean_expr&lt;Expr1, Expr2&gt; mongo_odm::operator||</definition>
         <argsstring>(const Expr1 &amp;lhs, const Expr2 &amp;rhs)</argsstring>
         <name>operator||</name>
         <param>
@@ -585,7 +1159,681 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/mongo_odm/query_builder.hpp" line="339" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="339" bodyend="341"/>
+        <location file="src/mongo_odm/query_builder.hpp" line="1283" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1283" bodyend="1285"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1aaae51519ee31abd48638e64073fd7069" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1boolean__list__expr" kindref="compound">boolean_list_expr</ref>&lt; <ref refid="classmongo__odm_1_1expression__list" kindref="compound">expression_list</ref>&lt; expression_category::query, Args... &gt; &gt;</type>
+        <definition>constexpr boolean_list_expr&lt;expression_list&lt;expression_category::query, Args...&gt; &gt; mongo_odm::nor</definition>
+        <argsstring>(const expression_list&lt; expression_category::query, Args... &gt; &amp;list)</argsstring>
+        <name>nor</name>
+        <param>
+          <type>const <ref refid="classmongo__odm_1_1expression__list" kindref="compound">expression_list</ref>&lt; expression_category::query, Args... &gt; &amp;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+<para>A function that creates a $nor operator out of an <ref refid="classmongo__odm_1_1expression__list" kindref="compound">expression_list</ref> containing arguments. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The list of arguments to the $nor operator, as an expression list. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A boolean_llist_expr that wraps the given list. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1299" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1299" bodyend="1302"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ac06b225efdeb143d5d99e0702158db39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>QueryExpressions</declname>
+            <defname>QueryExpressions</defname>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>typename all_true&lt;details::is_query_expression_v&lt;QueryExpressions&gt;...&gt;::type</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1boolean__list__expr" kindref="compound">boolean_list_expr</ref>&lt; <ref refid="classmongo__odm_1_1expression__list" kindref="compound">expression_list</ref>&lt; expression_category::query, QueryExpressions... &gt; &gt;</type>
+        <definition>constexpr boolean_list_expr&lt;expression_list&lt;expression_category::query, QueryExpressions...&gt; &gt; mongo_odm::nor</definition>
+        <argsstring>(QueryExpressions...args)</argsstring>
+        <name>nor</name>
+        <param>
+          <type>QueryExpressions...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Function that creates a $nor operator out of a list of arguments. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1309" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1309" bodyend="1312"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1aa0501a5a417bd98a48813e0ffaa0fa17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmongo__odm_1_1text__search__expr" kindref="compound">text_search_expr</ref></type>
+        <definition>text_search_expr mongo_odm::text</definition>
+        <argsstring>(const char *search, bsoncxx::stdx::optional&lt; const char * &gt; language=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional&lt; bool &gt; case_sensitive=bsoncxx::stdx::nullopt, bsoncxx::stdx::optional&lt; bool &gt; diacritic_sensitive=bsoncxx::stdx::nullopt)</argsstring>
+        <name>text</name>
+        <param>
+          <type>const char *</type>
+          <declname>search</declname>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; const char * &gt;</type>
+          <declname>language</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; bool &gt;</type>
+          <declname>case_sensitive</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <param>
+          <type>bsoncxx::stdx::optional&lt; bool &gt;</type>
+          <declname>diacritic_sensitive</declname>
+          <defval>bsoncxx::stdx::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Creates a text search expression. </para>        </briefdescription>
+        <detaileddescription>
+<para>These parameters correspond to the parameters for the $text operator in MongoDB. Optional parameters can be passed as optional&lt;&gt; types here, or with &quot;fluent&quot; setters on the resulting <ref refid="classmongo__odm_1_1text__search__expr" kindref="compound">text_search_expr</ref> object. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>search</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string of terms use to query the text index. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>language</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The language of the text index. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>case_sensitive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean flag to specify case-sensitive search. Optional, false by default. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>diacritic_sensitive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean flag to specify case-sensitive search. Optional, false by default. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmongo__odm_1_1text__search__expr" kindref="compound">text_search_expr</ref> with the given parameters. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1327" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1327" bodyend="1332"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a29af308cc5dde4814af6539f0e30d656" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Expr</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;details::is_query_expression_v&lt;Expr&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1isolated__expr" kindref="compound">isolated_expr</ref>&lt; Expr &gt;</type>
+        <definition>constexpr isolated_expr&lt;Expr&gt; mongo_odm::isolated</definition>
+        <argsstring>(const Expr &amp;expr)</argsstring>
+        <name>isolated</name>
+        <param>
+          <type>const Expr &amp;</type>
+          <declname>expr</declname>
+        </param>
+        <briefdescription>
+<para>Creates a query expression with an isolation level set. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1338" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1338" bodyend="1340"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ac21c0ab7b79b2d8d7ae2d3ac7983dc39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1update__expr" kindref="compound">update_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator+=</definition>
+        <argsstring>(const NvpT &amp;nvp, const typename NvpT::no_opt_type &amp;val)</argsstring>
+        <name>operator+=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1346" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1346" bodyend="1349"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a56c000f900ca2d4da9cba133468aebbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_value_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator-=</definition>
+        <argsstring>(const NvpT &amp;nvp, const typename NvpT::no_opt_type &amp;val)</argsstring>
+        <name>operator-=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1353" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1353" bodyend="1356"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a7cb6d14dc4932e794853c36602bccff0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_value_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator++</definition>
+        <argsstring>(const NvpT &amp;nvp)</argsstring>
+        <name>operator++</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1360" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1360" bodyend="1362"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1afd08b500e0ddf1f37df7275e2d5ba2d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_value_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator++</definition>
+        <argsstring>(const NvpT &amp;nvp, int)</argsstring>
+        <name>operator++</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1366" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1366" bodyend="1368"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a0458933290c474066ddfd40d650ab1f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_value_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator--</definition>
+        <argsstring>(const NvpT &amp;nvp)</argsstring>
+        <name>operator--</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1372" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1372" bodyend="1374"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a748f805d0bc17ab4b8b05ba4913e2e71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1update__value__expr" kindref="compound">update_value_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_value_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator--</definition>
+        <argsstring>(const NvpT &amp;nvp, int)</argsstring>
+        <name>operator--</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1378" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1378" bodyend="1380"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ab780734278c71228a24e00f89e435775" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_arithmetic&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1update__expr" kindref="compound">update_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr update_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator*=</definition>
+        <argsstring>(const NvpT &amp;nvp, const typename NvpT::no_opt_type &amp;val)</argsstring>
+        <name>operator*=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1384" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1384" bodyend="1387"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a0dbba5ec714496d0fc28d92d5d247d8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1bit__update__expr" kindref="compound">bit_update_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr bit_update_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator&amp;=</definition>
+        <argsstring>(const NvpT &amp;nvp, const typename NvpT::no_opt_type &amp;mask)</argsstring>
+        <name>operator&amp;=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1393" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1393" bodyend="1396"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1a8ff51424464ce0e8c63778a297eac9d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1bit__update__expr" kindref="compound">bit_update_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr bit_update_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator|=</definition>
+        <argsstring>(const NvpT &amp;nvp, const typename NvpT::no_opt_type &amp;mask)</argsstring>
+        <name>operator|=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1400" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1400" bodyend="1403"/>
+      </memberdef>
+      <memberdef kind="function" id="query__builder_8hpp_1ad41d07de67150bdbeb29c3dd23b5990e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename NvpT</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;is_nvp_v&lt;NvpT&gt;&gt;</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;typename NvpT::no_opt_type&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classmongo__odm_1_1bit__update__expr" kindref="compound">bit_update_expr</ref>&lt; NvpT, typename NvpT::no_opt_type &gt;</type>
+        <definition>constexpr bit_update_expr&lt;NvpT, typename NvpT::no_opt_type&gt; mongo_odm::operator^=</definition>
+        <argsstring>(const NvpT &amp;nvp, const typename NvpT::no_opt_type &amp;mask)</argsstring>
+        <name>operator^=</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const typename NvpT::no_opt_type &amp;</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1407" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1407" bodyend="1410"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1a4f3c771293ee68afb8757d250711e4d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto mongo_odm::is_iterable_impl</definition>
+        <argsstring>(int) -&gt; decltype(begin(std::declval&lt; T &amp; &gt;())!=                                                                           end(std::declval&lt; T &amp; &gt;()),                                                                   void(),                                                                                                                                                           ++std::declval&lt; decltype(begin(std::declval&lt; T &amp; &gt;()))&amp; &gt;(),                                                                   void(*begin(std::declval&lt; T &amp; &gt;())),                                                                                                                                                               std::true_type</argsstring>
+        <name>is_iterable_impl</name>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="69" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="69" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1ace3b38109b44e28a88cb4872158b8e9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename</type>
+          </param>
+        </templateparamlist>
+        <type>std::false_type</type>
+        <definition>std::false_type mongo_odm::is_iterable_impl</definition>
+        <argsstring>(...)</argsstring>
+        <name>is_iterable_impl</name>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="78" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1af464e08088c952317a201f3a27ae09de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T::iterator::value_type</type>
+        <definition>T::iterator::value_type mongo_odm::iterable_value_impl</definition>
+        <argsstring>(int)</argsstring>
+        <name>iterable_value_impl</name>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+<para>A templated function whose return type is the underlying value type of a given container. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the given type parameter is not a container, then the function simply returns that type unchanged. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="99" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1ab6605bae6c267ebe08f86de6d7638249" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T mongo_odm::iterable_value_impl</definition>
+        <argsstring>(...)</argsstring>
+        <name>iterable_value_impl</name>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="102" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1a1709361698e009fd04d0e2235c7bcac5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr std::int64_t</type>
+        <definition>constexpr std::int64_t mongo_odm::bit_positions_to_mask</definition>
+        <argsstring>()</argsstring>
+        <name>bit_positions_to_mask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="136" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="136" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1ad43cb7c6e6f8b525d401f9147289cdb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr std::int64_t</type>
+        <definition>constexpr std::int64_t mongo_odm::bit_positions_to_mask</definition>
+        <argsstring>(std::int64_t pos, Args...positions)</argsstring>
+        <name>bit_positions_to_mask</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>positions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="141" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="141" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1a194571e0b830995ad9f1c57dfa19b71a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Map</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+          <param>
+            <type>size_t...</type>
+            <declname>idxs</declname>
+            <defname>idxs</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr void</type>
+        <definition>constexpr void mongo_odm::tuple_for_each_impl</definition>
+        <argsstring>(const std::tuple&lt; Ts... &gt; &amp;tup, Map &amp;&amp;map, std::index_sequence&lt; idxs... &gt;)</argsstring>
+        <name>tuple_for_each_impl</name>
+        <param>
+          <type>const std::tuple&lt; Ts... &gt; &amp;</type>
+          <declname>tup</declname>
+        </param>
+        <param>
+          <type>Map &amp;&amp;</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>std::index_sequence&lt; idxs... &gt;</type>
+        </param>
+        <briefdescription>
+<para>Method for passing each element in a tuple to a callback function. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="171" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="171" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1ad20d062d86d3194b031bb2e1fe022baa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Map</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr void</type>
+        <definition>constexpr void mongo_odm::tuple_for_each</definition>
+        <argsstring>(const std::tuple&lt; Ts... &gt; &amp;tup, Map &amp;&amp;map)</argsstring>
+        <name>tuple_for_each</name>
+        <param>
+          <type>const std::tuple&lt; Ts... &gt; &amp;</type>
+          <declname>tup</declname>
+        </param>
+        <param>
+          <type>Map &amp;&amp;</type>
+          <declname>map</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="177" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="177" bodyend="179"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

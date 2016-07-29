@@ -1,0 +1,52 @@
+\hypertarget{classmongo__odm_1_1isolated__expr}{}\section{mongo\+\_\+odm\+:\+:isolated\+\_\+expr$<$ Expr $>$ Class Template Reference}
+\label{classmongo__odm_1_1isolated__expr}\index{mongo\+\_\+odm\+::isolated\+\_\+expr$<$ Expr $>$@{mongo\+\_\+odm\+::isolated\+\_\+expr$<$ Expr $>$}}
+
+
+An expression that wraps another expression and adds an \$isolated operator.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmongo__odm_1_1isolated__expr_abb41dc8fb33aa4e7d83ac7a9579baba6}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder, with \$isolated set as an extra field. \end{DoxyCompactList}\item 
+\hyperlink{classmongo__odm_1_1isolated__expr_a81fb5f0e8711bfcbea0ee3cc9f2e1b03}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const \hypertarget{classmongo__odm_1_1isolated__expr_a81fb5f0e8711bfcbea0ee3cc9f2e1b03}{}\label{classmongo__odm_1_1isolated__expr_a81fb5f0e8711bfcbea0ee3cc9f2e1b03}
+
+\begin{DoxyCompactList}\small\item\em Converts this query to B\+S\+ON, in the form \{\$isolated\+: 1, $<$underlying expression=\char`\"{}\char`\"{} bson$>$=\char`\"{}\char`\"{}$>$\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Expr$>$\\*
+class mongo\+\_\+odm\+::isolated\+\_\+expr$<$ Expr $>$}
+
+An expression that wraps another expression and adds an \$isolated operator. 
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::isolated\+\_\+expr@{mongo\+\_\+odm\+::isolated\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mongo\+\_\+odm\+::isolated\+\_\+expr@{mongo\+\_\+odm\+::isolated\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expr $>$ void {\bf mongo\+\_\+odm\+::isolated\+\_\+expr}$<$ Expr $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1isolated__expr_abb41dc8fb33aa4e7d83ac7a9579baba6}{}\label{classmongo__odm_1_1isolated__expr_abb41dc8fb33aa4e7d83ac7a9579baba6}
+
+
+Appends this query to a B\+S\+ON core builder, with \$isolated set as an extra field. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em Whether} & to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

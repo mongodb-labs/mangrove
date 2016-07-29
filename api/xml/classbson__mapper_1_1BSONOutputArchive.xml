@@ -304,24 +304,24 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="25">
+      <node id="41">
         <label>cereal::OutputArchive&lt; BSONOutputArchive &gt;</label>
       </node>
-      <node id="24">
+      <node id="40">
         <label>bson_mapper::BSONOutputArchive</label>
         <link refid="classbson__mapper_1_1BSONOutputArchive"/>
-        <childnode refid="25" relation="public-inheritance">
+        <childnode refid="41" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="27">
+      <node id="43">
         <label>cereal::OutputArchive&lt; BSONOutputArchive &gt;</label>
       </node>
-      <node id="26">
+      <node id="42">
         <label>bson_mapper::BSONOutputArchive</label>
         <link refid="classbson__mapper_1_1BSONOutputArchive"/>
-        <childnode refid="27" relation="public-inheritance">
+        <childnode refid="43" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

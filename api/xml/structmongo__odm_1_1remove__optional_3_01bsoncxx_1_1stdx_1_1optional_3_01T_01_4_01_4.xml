@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1remove__optional_3_01bsoncxx_1_1stdx_1_1optional_3_01T_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::remove_optional&lt; bsoncxx::stdx::optional&lt; T &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmongo__odm_1_1remove__optional_3_01bsoncxx_1_1stdx_1_1optional_3_01T_01_4_01_4_1af57401e64cf3410cc4249440d3523617" prot="public" static="no">
+        <type>T</type>
+        <definition>using mongo_odm::remove_optional&lt; bsoncxx::stdx::optional&lt; T &gt; &gt;::type =  T</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="130" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mongo_odm/util.hpp" line="129" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="129" bodyend="131"/>
+    <listofallmembers>
+      <member refid="structmongo__odm_1_1remove__optional_3_01bsoncxx_1_1stdx_1_1optional_3_01T_01_4_01_4_1af57401e64cf3410cc4249440d3523617" prot="public" virt="non-virtual"><scope>mongo_odm::remove_optional&lt; bsoncxx::stdx::optional&lt; T &gt; &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

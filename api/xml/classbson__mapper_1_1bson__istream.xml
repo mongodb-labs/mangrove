@@ -43,24 +43,24 @@
     <detaileddescription>
 <para>While objects of this class do not own the underlying buffer, they do own the streambuf object associated with it.</para><para>By default, istream objects do not delete their streambuffers when they are destroyed, so this class allows one to create a stream without dealing with the underlying streambuf object. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="9">
+      <node id="25">
         <label>std::istream</label>
       </node>
-      <node id="8">
+      <node id="24">
         <label>bson_mapper::bson_istream</label>
         <link refid="classbson__mapper_1_1bson__istream"/>
-        <childnode refid="9" relation="public-inheritance">
+        <childnode refid="25" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="11">
+      <node id="27">
         <label>std::istream</label>
       </node>
-      <node id="10">
+      <node id="26">
         <label>bson_mapper::bson_istream</label>
         <link refid="classbson__mapper_1_1bson__istream"/>
-        <childnode refid="11" relation="public-inheritance">
+        <childnode refid="27" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

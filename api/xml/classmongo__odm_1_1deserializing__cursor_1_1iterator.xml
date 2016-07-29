@@ -180,24 +180,24 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="84">
+      <node id="275">
         <label>std::iterator&lt; std::input_iterator_tag, T &gt;</label>
       </node>
-      <node id="83">
+      <node id="274">
         <label>mongo_odm::deserializing_cursor&lt; T &gt;::iterator</label>
         <link refid="classmongo__odm_1_1deserializing__cursor_1_1iterator"/>
-        <childnode refid="84" relation="public-inheritance">
+        <childnode refid="275" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="86">
+      <node id="277">
         <label>std::iterator&lt; std::input_iterator_tag, T &gt;</label>
       </node>
-      <node id="85">
+      <node id="276">
         <label>mongo_odm::deserializing_cursor&lt; T &gt;::iterator</label>
         <link refid="classmongo__odm_1_1deserializing__cursor_1_1iterator"/>
-        <childnode refid="86" relation="public-inheritance">
+        <childnode refid="277" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

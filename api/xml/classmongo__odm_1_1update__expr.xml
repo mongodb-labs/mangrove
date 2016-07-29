@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1update__expr" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::update_expr</compoundname>
+    <derivedcompoundref refid="classmongo__odm_1_1update__value__expr" prot="public" virt="non-virtual">mongo_odm::update_value_expr&lt; NvpT, U &gt;</derivedcompoundref>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>NvpT</declname>
+        <defname>NvpT</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>U</declname>
+        <defname>U</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classmongo__odm_1_1update__expr_1a82b4b29b7c7d5bfb187e5ac8727198a7" prot="public" static="no">
+        <type>NvpT</type>
+        <definition>using mongo_odm::update_expr&lt; NvpT, U &gt;::field_type =  NvpT</definition>
+        <argsstring></argsstring>
+        <name>field_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="719" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="719" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1update__expr_1a8d3da303ca3b86755797a305fb872997" prot="private" static="no" mutable="no">
+        <type>const NvpT</type>
+        <definition>const NvpT mongo_odm::update_expr&lt; NvpT, U &gt;::_nvp</definition>
+        <argsstring></argsstring>
+        <name>_nvp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="754" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="754" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1update__expr_1a91dcb0890ced9e4b20f70c557a4916af" prot="private" static="no" mutable="no">
+        <type>const U &amp;</type>
+        <definition>const U&amp; mongo_odm::update_expr&lt; NvpT, U &gt;::_val</definition>
+        <argsstring></argsstring>
+        <name>_val</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="755" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="755" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1update__expr_1a92a993a1814284e7c0ce17132009757e" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* mongo_odm::update_expr&lt; NvpT, U &gt;::_op</definition>
+        <argsstring></argsstring>
+        <name>_op</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="756" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="756" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1update__expr_1a4b4818eeb57042a10fcf301a7b75e808" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mongo_odm::update_expr&lt; NvpT, U &gt;::update_expr</definition>
+        <argsstring>(const NvpT &amp;nvp, const U &amp;val, const char *op)</argsstring>
+        <name>update_expr</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const U &amp;</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="720" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="720" bodyend="722"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1update__expr_1a3b1e28aca88052a9862ed528afe3d434" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::update_expr&lt; NvpT, U &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Appends this query to a BSON core builder as a key-value pair &quot;$op: {field: value}&quot;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A basic BSON core builder. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Whether</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to wrap this expression inside a document. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="729" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="729" bodyend="742"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1update__expr_1abb04ef8b7c4212749d35b4c0ba98b34f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::update_expr&lt; NvpT, U &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Creates a BSON value of the form &quot;$op: {field: value}&quot;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="747" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="747" bodyend="751"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents an update operator that modifies a certain elements. </para>    </briefdescription>
+    <detaileddescription>
+<para>This creates BSON expressions of the form &quot;$op: {field: value}&quot;, where $op can be $set, $inc, etc.</para><para>This class stores the value to be compared by reference. To store a temporary or computed value, use UpdateExprValue.</para><para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>NvpT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the name-value pair </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>U</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the value being compared. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="314">
+        <label>mongo_odm::update_expr&lt; NvpT, U &gt;</label>
+        <link refid="classmongo__odm_1_1update__expr"/>
+      </node>
+      <node id="315">
+        <label>mongo_odm::update_value_expr&lt; NvpT, U &gt;</label>
+        <link refid="classmongo__odm_1_1update__value__expr"/>
+        <childnode refid="314" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/mongo_odm/expression_syntax.hpp" line="74" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="74" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1update__expr_1a8d3da303ca3b86755797a305fb872997" prot="private" virt="non-virtual"><scope>mongo_odm::update_expr</scope><name>_nvp</name></member>
+      <member refid="classmongo__odm_1_1update__expr_1a92a993a1814284e7c0ce17132009757e" prot="private" virt="non-virtual"><scope>mongo_odm::update_expr</scope><name>_op</name></member>
+      <member refid="classmongo__odm_1_1update__expr_1a91dcb0890ced9e4b20f70c557a4916af" prot="private" virt="non-virtual"><scope>mongo_odm::update_expr</scope><name>_val</name></member>
+      <member refid="classmongo__odm_1_1update__expr_1a3b1e28aca88052a9862ed528afe3d434" prot="public" virt="non-virtual"><scope>mongo_odm::update_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmongo__odm_1_1update__expr_1a82b4b29b7c7d5bfb187e5ac8727198a7" prot="public" virt="non-virtual"><scope>mongo_odm::update_expr</scope><name>field_type</name></member>
+      <member refid="classmongo__odm_1_1update__expr_1abb04ef8b7c4212749d35b4c0ba98b34f" prot="public" virt="non-virtual"><scope>mongo_odm::update_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+      <member refid="classmongo__odm_1_1update__expr_1a4b4818eeb57042a10fcf301a7b75e808" prot="public" virt="non-virtual"><scope>mongo_odm::update_expr</scope><name>update_expr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

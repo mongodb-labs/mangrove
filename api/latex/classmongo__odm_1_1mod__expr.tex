@@ -1,0 +1,100 @@
+\hypertarget{classmongo__odm_1_1mod__expr}{}\section{mongo\+\_\+odm\+:\+:mod\+\_\+expr$<$ NvpT $>$ Class Template Reference}
+\label{classmongo__odm_1_1mod__expr}\index{mongo\+\_\+odm\+::mod\+\_\+expr$<$ Nvp\+T $>$@{mongo\+\_\+odm\+::mod\+\_\+expr$<$ Nvp\+T $>$}}
+
+
+This class represents a query expression using the \$mod operator, that checks the modulus of a certain numerical field.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmongo__odm_1_1mod__expr_a4f89b19163b165b884999fb7129d6cbb}{mod\+\_\+expr} (NvpT \hyperlink{classmongo__odm_1_1nvp}{nvp}, const int \&divisor, const int \&remainder)
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{classmongo__odm_1_1mod__expr}{mod\+\_\+expr} that represents a query with the \$mod operator. \end{DoxyCompactList}\item 
+std\+::string \& \hyperlink{classmongo__odm_1_1mod__expr_a972c9dd595c5e4527f4da9c201a7202e}{append\+\_\+name} (std\+::string \&s) const \hypertarget{classmongo__odm_1_1mod__expr_a972c9dd595c5e4527f4da9c201a7202e}{}\label{classmongo__odm_1_1mod__expr_a972c9dd595c5e4527f4da9c201a7202e}
+
+\begin{DoxyCompactList}\small\item\em Appends the name of the contained field to a string. \end{DoxyCompactList}\item 
+void \hyperlink{classmongo__odm_1_1mod__expr_a52ce6de2ac9eee27d2088f1bfa4f07b7}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false, bool omit\+\_\+name=false) const 
+\begin{DoxyCompactList}\small\item\em \begin{DoxyVerb}   Appends this expression to a BSON core builder,
+   as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } "
+\end{DoxyVerb}
+\end{DoxyCompactList}\item 
+\hyperlink{classmongo__odm_1_1mod__expr_a7366a9879d7285d968f6e8ea10918f83}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const 
+\begin{DoxyCompactList}\small\item\em Converts the expression to a B\+S\+ON filter for a query. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename NvpT$>$\\*
+class mongo\+\_\+odm\+::mod\+\_\+expr$<$ Nvp\+T $>$}
+
+This class represents a query expression using the \$mod operator, that checks the modulus of a certain numerical field. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mongo\+\_\+odm\+::mod\+\_\+expr@{mongo\+\_\+odm\+::mod\+\_\+expr}!mod\+\_\+expr@{mod\+\_\+expr}}
+\index{mod\+\_\+expr@{mod\+\_\+expr}!mongo\+\_\+odm\+::mod\+\_\+expr@{mongo\+\_\+odm\+::mod\+\_\+expr}}
+\subsubsection[{\texorpdfstring{mod\+\_\+expr(\+Nvp\+T nvp, const int \&divisor, const int \&remainder)}{mod_expr(NvpT nvp, const int &divisor, const int &remainder)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT $>$ constexpr {\bf mongo\+\_\+odm\+::mod\+\_\+expr}$<$ NvpT $>$\+::{\bf mod\+\_\+expr} (
+\begin{DoxyParamCaption}
+\item[{NvpT}]{nvp, }
+\item[{const int \&}]{divisor, }
+\item[{const int \&}]{remainder}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1mod__expr_a4f89b19163b165b884999fb7129d6cbb}{}\label{classmongo__odm_1_1mod__expr_a4f89b19163b165b884999fb7129d6cbb}
+
+
+Constructs a \hyperlink{classmongo__odm_1_1mod__expr}{mod\+\_\+expr} that represents a query with the \$mod operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nvp} & The name-\/value pair to compare against. \\
+\hline
+{\em divisor} & The divisor used in the modulus operation. \\
+\hline
+{\em remainder} & The remainder produced when dividing the field by the divisor. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::mod\+\_\+expr@{mongo\+\_\+odm\+::mod\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mongo\+\_\+odm\+::mod\+\_\+expr@{mongo\+\_\+odm\+::mod\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false, bool omit\+\_\+name=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false, bool omit_name=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT $>$ void {\bf mongo\+\_\+odm\+::mod\+\_\+expr}$<$ NvpT $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}, }
+\item[{bool}]{omit\+\_\+name = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1mod__expr_a52ce6de2ac9eee27d2088f1bfa4f07b7}{}\label{classmongo__odm_1_1mod__expr_a52ce6de2ac9eee27d2088f1bfa4f07b7}
+
+
+\begin{DoxyVerb}   Appends this expression to a BSON core builder,
+   as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } "
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & a B\+S\+ON core builder \\
+\hline
+{\em wrap} & Whether to wrap the B\+S\+ON inside a document. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::mod\+\_\+expr@{mongo\+\_\+odm\+::mod\+\_\+expr}!operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}}
+\index{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}!mongo\+\_\+odm\+::mod\+\_\+expr@{mongo\+\_\+odm\+::mod\+\_\+expr}}
+\subsubsection[{\texorpdfstring{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value() const }{operator bsoncxx::document::view_or_value() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT $>$ {\bf mongo\+\_\+odm\+::mod\+\_\+expr}$<$ NvpT $>$\+::operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1mod__expr_a7366a9879d7285d968f6e8ea10918f83}{}\label{classmongo__odm_1_1mod__expr_a7366a9879d7285d968f6e8ea10918f83}
+
+
+Converts the expression to a B\+S\+ON filter for a query. 
+
+The resulting B\+S\+ON is of the form \char`\"{}\{ key\+: \{ \$mod\+: \mbox{[} divisor, remainder \mbox{]} \} \}\char`\"{}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/expression\+\_\+syntax.\+hpp\item 
+src/mongo\+\_\+odm/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

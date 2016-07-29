@@ -141,24 +141,24 @@
     <detaileddescription>
 <para>TODO what to do if serialization fails? </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="95">
+      <node id="302">
         <label>bson_mapper::serializing_iterator&lt; Iter &gt;</label>
         <link refid="classbson__mapper_1_1serializing__iterator"/>
-        <childnode refid="96" relation="public-inheritance">
+        <childnode refid="303" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="96">
+      <node id="303">
         <label>std::iterator&lt; std::input_iterator_tag, bsoncxx::document::value &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="97">
+      <node id="304">
         <label>bson_mapper::serializing_iterator&lt; Iter &gt;</label>
         <link refid="classbson__mapper_1_1serializing__iterator"/>
-        <childnode refid="98" relation="public-inheritance">
+        <childnode refid="305" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="98">
+      <node id="305">
         <label>std::iterator&lt; std::input_iterator_tag, bsoncxx::document::value &gt;</label>
       </node>
     </collaborationgraph>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['serializing_5fiterator',['serializing_iterator',['../classbson__mapper_1_1serializing__iterator.html',1,'bson_mapper']]]
+  ['odm_5fcollection',['odm_collection',['../classmongo__odm_1_1odm__collection.html',1,'mongo_odm']]]
 ];

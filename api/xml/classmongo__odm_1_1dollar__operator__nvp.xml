@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1dollar__operator__nvp" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::dollar_operator_nvp</compoundname>
+    <basecompoundref refid="classmongo__odm_1_1nvp__base" prot="public" virt="non-virtual">mongo_odm::nvp_base&lt; dollar_operator_nvp&lt; NvpT &gt;, NvpT::type &gt;</basecompoundref>
+    <includes refid="nvp_8hpp" local="no">nvp.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename NvpT</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classmongo__odm_1_1dollar__operator__nvp_1afb3ef8b527cb48645795c65b33b42183" prot="public" static="no">
+        <type>iterable_value_t&lt; typename NvpT::no_opt_type &gt;</type>
+        <definition>using mongo_odm::dollar_operator_nvp&lt; NvpT &gt;::type =  iterable_value_t&lt;typename NvpT::no_opt_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="251" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="251" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classmongo__odm_1_1dollar__operator__nvp_1a1f40001be6c9ea405f242c919076ea21" prot="public" static="no">
+        <type>remove_optional_t&lt; type &gt;</type>
+        <definition>using mongo_odm::dollar_operator_nvp&lt; NvpT &gt;::no_opt_type =  remove_optional_t&lt;type&gt;</definition>
+        <argsstring></argsstring>
+        <name>no_opt_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="253" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1dollar__operator__nvp_1ab845f0dbef0f541bfd38450a107dd51c" prot="private" static="no" mutable="no">
+        <type>const NvpT &amp;</type>
+        <definition>const NvpT&amp; mongo_odm::dollar_operator_nvp&lt; NvpT &gt;::_nvp</definition>
+        <argsstring></argsstring>
+        <name>_nvp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="284" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1dollar__operator__nvp_1ae51a8b9ed813d1ae74a8f29255fc16c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mongo_odm::dollar_operator_nvp&lt; NvpT &gt;::dollar_operator_nvp</definition>
+        <argsstring>(const NvpT &amp;nvp)</argsstring>
+        <name>dollar_operator_nvp</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="255" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="255" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1dollar__operator__nvp_1a09553e7ffa1350ae96b53b0050c83d45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classmongo__odm_1_1update__expr" kindref="compound">update_expr</ref>&lt; <ref refid="classmongo__odm_1_1dollar__operator__nvp" kindref="compound">dollar_operator_nvp</ref>&lt; NvpT &gt;, no_opt_type &gt;</type>
+        <definition>constexpr update_expr&lt;dollar_operator_nvp&lt;NvpT&gt;, no_opt_type&gt; mongo_odm::dollar_operator_nvp&lt; NvpT &gt;::operator=</definition>
+        <argsstring>(const no_opt_type &amp;val) const </argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const no_opt_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Creates an update expression that sets the field to the given value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="261" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="261" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1dollar__operator__nvp_1a4ccad25d5b45c435cf3600826eed9315" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string mongo_odm::dollar_operator_nvp&lt; NvpT &gt;::get_name</definition>
+        <argsstring>() const </argsstring>
+        <name>get_name</name>
+        <briefdescription>
+<para>Returns the qualified name of this field in dot notation, i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>&quot;array.i&quot;. <simplesect kind="return"><para>A string containing the name of this field in dot notation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="270" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="270" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1dollar__operator__nvp_1af61ffed690dde76d535d3bda787711ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string &amp;</type>
+        <definition>std::string&amp; mongo_odm::dollar_operator_nvp&lt; NvpT &gt;::append_name</definition>
+        <argsstring>(std::string &amp;s) const </argsstring>
+        <name>append_name</name>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Returns the name of this field with the $ operator, i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>&quot;field.$&quot; <simplesect kind="return"><para>A string containing the name of this field in dot notation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="279" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="279" bodyend="281"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents the $ operator applied to a field. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="62">
+        <label>mongo_odm::dollar_operator_nvp&lt; NvpT &gt;</label>
+        <link refid="classmongo__odm_1_1dollar__operator__nvp"/>
+        <childnode refid="63" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>mongo_odm::nvp_base&lt; dollar_operator_nvp&lt; NvpT &gt;, NvpT::type &gt;</label>
+        <link refid="classmongo__odm_1_1nvp__base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="64">
+        <label>mongo_odm::dollar_operator_nvp&lt; NvpT &gt;</label>
+        <link refid="classmongo__odm_1_1dollar__operator__nvp"/>
+        <childnode refid="65" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>mongo_odm::nvp_base&lt; dollar_operator_nvp&lt; NvpT &gt;, NvpT::type &gt;</label>
+        <link refid="classmongo__odm_1_1nvp__base"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/nvp.hpp" line="249" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="249" bodyend="285"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1dollar__operator__nvp_1ab845f0dbef0f541bfd38450a107dd51c" prot="private" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>_nvp</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ab41d90f7d23d25f3e7973171c2ee0ddf" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>add_to_set</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a9250b3abba132ae279fa55d94e52a91b" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>add_to_set</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a5e45eef873ecf7fe668ed35f85f5962c" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>all</name></member>
+      <member refid="classmongo__odm_1_1dollar__operator__nvp_1af61ffed690dde76d535d3bda787711ad" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>append_name</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a6627ef66f30320d09ba1800a01de47e6" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>bits_all_clear</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a876a9ea43bedf0d20178ad2bdcf22e1d" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>bits_all_clear</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1af30fc7c976645ced1383bb3fd60a829e" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>bits_all_set</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ac616fd563bc76e3b5484cc00deed6d7f" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>bits_all_set</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a8bab15db45adb8a32e690373e18ad01f" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>bits_any_clear</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a68e02181f3393fd3d0ac0b6bb35cc1de" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>bits_any_clear</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1af278639723e00543799e4ede530ab77e" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>bits_any_set</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1aa4a880120be6571a65431dd1a949615b" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>bits_any_set</name></member>
+      <member refid="classmongo__odm_1_1dollar__operator__nvp_1ae51a8b9ed813d1ae74a8f29255fc16c0" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>dollar_operator_nvp</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a619149367087ce41ec95b52be06ed50e" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>elem_match</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ae279f5bc8267faedd12d9c1f79f6e831" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>element</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ab323224f300d9fb9681d975f2ce98544" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>exists</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a9d1b3cff13f56eed1e8e08f011668f7d" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>first_match</name></member>
+      <member refid="classmongo__odm_1_1dollar__operator__nvp_1a4ccad25d5b45c435cf3600826eed9315" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>get_name</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ab96c904c4c587d9adb62f372d763eb89" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>in</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a9b66983c69573197417350034f94eebc" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>max</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a93c7d2948059425ffb7122504bb39379" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>min</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ab87edbd61b20c1fe0dcbd834d41d58cb" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>mod</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ac518ef90312a483c64436097e9f9a34e" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>nin</name></member>
+      <member refid="classmongo__odm_1_1dollar__operator__nvp_1a1f40001be6c9ea405f242c919076ea21" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>no_opt_type</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1af99c8f015456c41a778361e44a22a41c" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>operator-&gt;*</name></member>
+      <member refid="classmongo__odm_1_1dollar__operator__nvp_1a09553e7ffa1350ae96b53b0050c83d45" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>operator=</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a5e5864ea189e9d501f6fa5b918bb97b2" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>operator[]</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1afe7ac6d378952499bc9c9ee6e584059f" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>pop</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ad690746344a15b44adaf8cfdf27fad8b" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>pull</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ac9ce98f9dd1c2bd7bf9b5d1f9f100c18" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>pull</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ab4b8cc435ea878f25cbd61a3946da316" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>pull_all</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a9627421e5a3cb1f86a2eed7809a0eff4" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>push</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a72ab9b7adaf6737ca8c5c9b3eb59953d" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>push</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a4437128b0fafda2f178172197a539499" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>regex</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a369ac4a143f549d62c2307489893e61c" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>set_on_insert</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a44853122530eb589515d13397ed47dd3" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>size</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a6a8d165cfc00d3bcd70d16a2c704ae0e" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>sort</name></member>
+      <member refid="classmongo__odm_1_1dollar__operator__nvp_1afb3ef8b527cb48645795c65b33b42183" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>type</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1aaef09e56ce567ddf207489771c0c30ae" prot="public" virt="non-virtual"><scope>mongo_odm::dollar_operator_nvp</scope><name>unset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

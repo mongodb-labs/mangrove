@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1is__string" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::is_string</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::integral_constant&lt; bool, std::is_same&lt; char *, std::decay&lt; S &gt;::type &gt;::value||std::is_same&lt; const char *, std::decay&lt; S &gt;::type &gt;::value||std::is_same&lt; wchar_t *, std::decay&lt; S &gt;::type &gt;::value||std::is_same&lt; const wchar_t *, std::decay&lt; S &gt;::type &gt;::value &gt;</basecompoundref>
+    <includes refid="util_8hpp" local="no">util.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename S</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>A type trait struct for determining whether a type is a string or C string. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="253">
+        <label>std::integral_constant&lt; bool, std::is_same&lt; char *, std::decay&lt; S &gt;::type &gt;::value||std::is_same&lt; const char *, std::decay&lt; S &gt;::type &gt;::value||std::is_same&lt; wchar_t *, std::decay&lt; S &gt;::type &gt;::value||std::is_same&lt; const wchar_t *, std::decay&lt; S &gt;::type &gt;::value &gt;</label>
+      </node>
+      <node id="252">
+        <label>mongo_odm::is_string&lt; S &gt;</label>
+        <link refid="structmongo__odm_1_1is__string"/>
+        <childnode refid="253" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="255">
+        <label>std::integral_constant&lt; bool, std::is_same&lt; char *, std::decay&lt; S &gt;::type &gt;::value||std::is_same&lt; const char *, std::decay&lt; S &gt;::type &gt;::value||std::is_same&lt; wchar_t *, std::decay&lt; S &gt;::type &gt;::value||std::is_same&lt; const wchar_t *, std::decay&lt; S &gt;::type &gt;::value &gt;</label>
+      </node>
+      <node id="254">
+        <label>mongo_odm::is_string&lt; S &gt;</label>
+        <link refid="structmongo__odm_1_1is__string"/>
+        <childnode refid="255" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/util.hpp" line="51" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="46" bodyend="51"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

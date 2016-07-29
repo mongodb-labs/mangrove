@@ -1,12 +1,51 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.11">
-  <compound refid="classmongo__odm_1_1BooleanExpr" kind="class"><name>mongo_odm::BooleanExpr</name>
-    <member refid="classmongo__odm_1_1BooleanExpr_1a45d0fcaecaa93284296d25a3723eb8e0" kind="variable"><name>_lhs</name></member>
-    <member refid="classmongo__odm_1_1BooleanExpr_1a18e2772b2d92ed450b9fea3927347ca6" kind="variable"><name>_rhs</name></member>
-    <member refid="classmongo__odm_1_1BooleanExpr_1acc4f674d65ef3bb5a6a500e41de79c05" kind="variable"><name>_op</name></member>
-    <member refid="classmongo__odm_1_1BooleanExpr_1a47afd7061d2494c8baf629667f0a7a25" kind="function"><name>BooleanExpr</name></member>
-    <member refid="classmongo__odm_1_1BooleanExpr_1a7e4a898b2a56dd7d07595c0f3195be94" kind="function"><name>append_to_bson</name></member>
-    <member refid="classmongo__odm_1_1BooleanExpr_1a8c86b1be15ed3d9a22c81dc0bdb4e7a9" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  <compound refid="classmongo__odm_1_1add__to__set__update__expr" kind="class"><name>mongo_odm::add_to_set_update_expr</name>
+    <member refid="classmongo__odm_1_1add__to__set__update__expr_1adcfee2389ececac3cab69718aca4cf58" kind="typedef"><name>field_type</name></member>
+    <member refid="classmongo__odm_1_1add__to__set__update__expr_1ae50321d2563ce6d6c72820a349305728" kind="variable"><name>_nvp</name></member>
+    <member refid="classmongo__odm_1_1add__to__set__update__expr_1a1cddce4d6e8f1440191379fc517ffa61" kind="variable"><name>_val</name></member>
+    <member refid="classmongo__odm_1_1add__to__set__update__expr_1a57958e8a6f462c08f4e0083b7903d69e" kind="variable"><name>_each</name></member>
+    <member refid="classmongo__odm_1_1add__to__set__update__expr_1a869ef885d8234508564f29cb798c4470" kind="function"><name>add_to_set_update_expr</name></member>
+    <member refid="classmongo__odm_1_1add__to__set__update__expr_1a73537eb34459dc928b718076293c7e8a" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1add__to__set__update__expr_1ae67a198463d43231c021d8d9379761f0" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="structmongo__odm_1_1all__true" kind="struct"><name>mongo_odm::all_true</name>
+  </compound>
+  <compound refid="classmongo__odm_1_1array__element__nvp" kind="class"><name>mongo_odm::array_element_nvp</name>
+    <member refid="classmongo__odm_1_1array__element__nvp_1ac45526eb54a635ea2a75a19594492b1a" kind="typedef"><name>type</name></member>
+    <member refid="classmongo__odm_1_1array__element__nvp_1a10b19c48a512ae0e82b9ebaf45993028" kind="typedef"><name>no_opt_type</name></member>
+    <member refid="classmongo__odm_1_1array__element__nvp_1a5d5d69c065b7e68607cec60516a30ab0" kind="variable"><name>_nvp</name></member>
+    <member refid="classmongo__odm_1_1array__element__nvp_1a916a1fa2a4ee26c12cce4a16f515c7c6" kind="variable"><name>_i</name></member>
+    <member refid="classmongo__odm_1_1array__element__nvp_1a8c1921d7edadfa6d4354cb07c9dfa06c" kind="function"><name>array_element_nvp</name></member>
+    <member refid="classmongo__odm_1_1array__element__nvp_1a92f296a58c7eeeda4aa847c7e98308a8" kind="function"><name>operator=</name></member>
+    <member refid="classmongo__odm_1_1array__element__nvp_1a910b3a4d344ad4bcecfb83bd4105f7e3" kind="function"><name>get_name</name></member>
+    <member refid="classmongo__odm_1_1array__element__nvp_1ac3c14d806529b80826f97d4df17ff9b3" kind="function"><name>append_name</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1bit__update__expr" kind="class"><name>mongo_odm::bit_update_expr</name>
+    <member refid="classmongo__odm_1_1bit__update__expr_1a960233eb91034322567a975ab1758eaf" kind="typedef"><name>field_type</name></member>
+    <member refid="classmongo__odm_1_1bit__update__expr_1a0d844b9da455204f435dae1a1d490453" kind="variable"><name>_nvp</name></member>
+    <member refid="classmongo__odm_1_1bit__update__expr_1a71ecfe9d6d9381ae744e12e71fd7b150" kind="variable"><name>_mask</name></member>
+    <member refid="classmongo__odm_1_1bit__update__expr_1ae54c33476b0aa16e8b00c11f4d046757" kind="variable"><name>_operation</name></member>
+    <member refid="classmongo__odm_1_1bit__update__expr_1a18b120fdb218988ea0aaea148df44e0e" kind="function"><name>bit_update_expr</name></member>
+    <member refid="classmongo__odm_1_1bit__update__expr_1a3376a71ac3c15a2ea7ac0e297e5bd59d" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1bit__update__expr_1a3505dbcce506d99161e0436b84153d2c" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="structmongo__odm_1_1bool__pack" kind="struct"><name>mongo_odm::bool_pack</name>
+  </compound>
+  <compound refid="classmongo__odm_1_1boolean__expr" kind="class"><name>mongo_odm::boolean_expr</name>
+    <member refid="classmongo__odm_1_1boolean__expr_1ac7b2a2bed1d4f5063d658bc2f79066d9" kind="variable"><name>_lhs</name></member>
+    <member refid="classmongo__odm_1_1boolean__expr_1afcfb25e5853006a1cb48e0fb3b6753d3" kind="variable"><name>_rhs</name></member>
+    <member refid="classmongo__odm_1_1boolean__expr_1af87986a67c31595d1f6185a7c3b573d1" kind="variable"><name>_op</name></member>
+    <member refid="classmongo__odm_1_1boolean__expr_1a78c7a59f9f857fe8d5609493f155d96a" kind="function"><name>boolean_expr</name></member>
+    <member refid="classmongo__odm_1_1boolean__expr_1ad74cd57820615fe960f4489af2091bbd" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1boolean__expr_1af5fb062846c5f8fb95a8333ad9723006" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1boolean__list__expr" kind="class"><name>mongo_odm::boolean_list_expr</name>
+    <member refid="classmongo__odm_1_1boolean__list__expr_1ab818015c7f3f02468f43dcad03825c5d" kind="variable"><name>_args</name></member>
+    <member refid="classmongo__odm_1_1boolean__list__expr_1a6dab411b45a8139d13ee2b0135a935cb" kind="variable"><name>_op</name></member>
+    <member refid="classmongo__odm_1_1boolean__list__expr_1a71f9da341b80a5bd5062c8ec627a9241" kind="function"><name>boolean_list_expr</name></member>
+    <member refid="classmongo__odm_1_1boolean__list__expr_1a5aa985b42f30ceb49fa6a5481693aa8a" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1boolean__list__expr_1aec500b9de32ab2dbe8550aeccc1115ca" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
   </compound>
   <compound refid="classbson__mapper_1_1bson__input__streambuf" kind="class"><name>bson_mapper::bson_input_streambuf</name>
     <member refid="classbson__mapper_1_1bson__input__streambuf_1a589736aaa0c2edd9399b6d921442dac3" kind="function"><name>bson_input_streambuf</name></member>
@@ -98,14 +137,31 @@
     <member refid="classbson__mapper_1_1char__array__streambuf_1a2e45ebf927032cf0853b945b8cde33b1" kind="function"><name>seekpos</name></member>
     <member refid="classbson__mapper_1_1char__array__streambuf_1a432e5e2f9e9e0ee430f2516eb454a1a8" kind="function"><name>seekoff</name></member>
   </compound>
-  <compound refid="classmongo__odm_1_1ComparisonExpr" kind="class"><name>mongo_odm::ComparisonExpr</name>
-    <member refid="classmongo__odm_1_1ComparisonExpr_1aa7a215ad54573c3bfb3deffd391abe0b" kind="variable"><name>NotExpr&lt; Base, T &gt;</name></member>
-    <member refid="classmongo__odm_1_1ComparisonExpr_1a4004e8422f37afa0092758e96c036123" kind="variable"><name>_nvp</name></member>
-    <member refid="classmongo__odm_1_1ComparisonExpr_1afee50e98ebbcf4ee066f04c0c445674b" kind="variable"><name>_field</name></member>
-    <member refid="classmongo__odm_1_1ComparisonExpr_1ad6a4e8dec854fadfe23448fa7584ac6e" kind="variable"><name>_selector_type</name></member>
-    <member refid="classmongo__odm_1_1ComparisonExpr_1a00cedfa66e6c8622149739dffde2e23e" kind="function"><name>ComparisonExpr</name></member>
-    <member refid="classmongo__odm_1_1ComparisonExpr_1afcfc49aa8b1a0d024fe8a8c0d2441e40" kind="function"><name>append_to_bson</name></member>
-    <member refid="classmongo__odm_1_1ComparisonExpr_1a8174f54d033e934b141b3a9ef4480a84" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  <compound refid="classmongo__odm_1_1comparison__expr" kind="class"><name>mongo_odm::comparison_expr</name>
+    <member refid="classmongo__odm_1_1comparison__expr_1aa6a1bf35d1addc7d7d6ff5af050d8523" kind="typedef"><name>field_type</name></member>
+    <member refid="classmongo__odm_1_1comparison__expr_1a8a525f74c22d01b215040452e2f29a55" kind="variable"><name>_nvp</name></member>
+    <member refid="classmongo__odm_1_1comparison__expr_1a02901decef011a4bb363377cce01deaa" kind="variable"><name>_field</name></member>
+    <member refid="classmongo__odm_1_1comparison__expr_1a65516cc3fcaee3e0c3e10c49accb118b" kind="variable"><name>_operator</name></member>
+    <member refid="classmongo__odm_1_1comparison__expr_1a8cb08d386b0b1cbb88780d12c29c385e" kind="function"><name>comparison_expr</name></member>
+    <member refid="classmongo__odm_1_1comparison__expr_1aa60e06beaf4e99b7b73a445b4fc5ffe7" kind="function"><name>comparison_expr</name></member>
+    <member refid="classmongo__odm_1_1comparison__expr_1a3adf1fd565c8a6c1bb01ca9d4ee42ce5" kind="function"><name>append_name</name></member>
+    <member refid="classmongo__odm_1_1comparison__expr_1a2ed6e4e5fd013703369938911b4c367e" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1comparison__expr_1a5c3c4afa7894a5268e6c9ab76c4d83e3" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1comparison__value__expr" kind="class"><name>mongo_odm::comparison_value_expr</name>
+    <member refid="classmongo__odm_1_1comparison__value__expr_1a649781e917a3ed62f441b07f4d8d66bd" kind="variable"><name>_value</name></member>
+    <member refid="classmongo__odm_1_1comparison__value__expr_1ad84ce480c428f9f4afa11e57205e816e" kind="function"><name>comparison_value_expr</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1current__date__expr" kind="class"><name>mongo_odm::current_date_expr</name>
+    <member refid="classmongo__odm_1_1current__date__expr_1a36ab182b235a5daa75f1eedc2d5f46f6" kind="typedef"><name>field_type</name></member>
+    <member refid="classmongo__odm_1_1current__date__expr_1a0f84cd6992c4a8bc9e37fff49dc8cd1b" kind="variable"><name>_nvp</name></member>
+    <member refid="classmongo__odm_1_1current__date__expr_1a2532294fe962c58f3f2045201d602770" kind="variable"><name>_is_date</name></member>
+    <member refid="classmongo__odm_1_1current__date__expr_1a1d4c6659a44bc917bbf908a2011ff3d4" kind="function"><name>current_date_expr</name></member>
+    <member refid="classmongo__odm_1_1current__date__expr_1aa53602f8d005cd22150b0482c4f2070d" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1current__date__expr_1a1ff3d3073959ccd953cadfe204fddddc" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="structmongo__odm_1_1current__date__t" kind="struct"><name>mongo_odm::current_date_t</name>
+    <member refid="structmongo__odm_1_1current__date__t_1a7d173dd134808b0d0eee4f5e96aa0d47" kind="function"><name>current_date_t</name></member>
   </compound>
   <compound refid="classmongo__odm_1_1deserializing__cursor" kind="class"><name>mongo_odm::deserializing_cursor</name>
     <member refid="classmongo__odm_1_1deserializing__cursor_1a4f4399516301748c2354b2b9605f2da9" kind="variable"><name>_c</name></member>
@@ -113,20 +169,70 @@
     <member refid="classmongo__odm_1_1deserializing__cursor_1a6935d6068f68a856a33f9566156d0a89" kind="function"><name>begin</name></member>
     <member refid="classmongo__odm_1_1deserializing__cursor_1a68215d5abbe2b5cf9da32e189b9b7aef" kind="function"><name>end</name></member>
   </compound>
+  <compound refid="classmongo__odm_1_1dollar__operator__nvp" kind="class"><name>mongo_odm::dollar_operator_nvp</name>
+    <member refid="classmongo__odm_1_1dollar__operator__nvp_1afb3ef8b527cb48645795c65b33b42183" kind="typedef"><name>type</name></member>
+    <member refid="classmongo__odm_1_1dollar__operator__nvp_1a1f40001be6c9ea405f242c919076ea21" kind="typedef"><name>no_opt_type</name></member>
+    <member refid="classmongo__odm_1_1dollar__operator__nvp_1ab845f0dbef0f541bfd38450a107dd51c" kind="variable"><name>_nvp</name></member>
+    <member refid="classmongo__odm_1_1dollar__operator__nvp_1ae51a8b9ed813d1ae74a8f29255fc16c0" kind="function"><name>dollar_operator_nvp</name></member>
+    <member refid="classmongo__odm_1_1dollar__operator__nvp_1a09553e7ffa1350ae96b53b0050c83d45" kind="function"><name>operator=</name></member>
+    <member refid="classmongo__odm_1_1dollar__operator__nvp_1a4ccad25d5b45c435cf3600826eed9315" kind="function"><name>get_name</name></member>
+    <member refid="classmongo__odm_1_1dollar__operator__nvp_1af61ffed690dde76d535d3bda787711ad" kind="function"><name>append_name</name></member>
+  </compound>
   <compound refid="structbson__mapper_1_1Exception" kind="struct"><name>bson_mapper::Exception</name>
     <member refid="structbson__mapper_1_1Exception_1a0c9b4a59130d7fa3e83b40a729bf9227" kind="function"><name>Exception</name></member>
     <member refid="structbson__mapper_1_1Exception_1a0b06448d1250bd8b4f87caf5d03a06b2" kind="function"><name>Exception</name></member>
   </compound>
-  <compound refid="classmongo__odm_1_1ExpressionList" kind="class"><name>mongo_odm::ExpressionList</name>
-    <member refid="classmongo__odm_1_1ExpressionList_1aecc3c6879314bdb995fc87b9fb17e0c6" kind="variable"><name>_head</name></member>
-    <member refid="classmongo__odm_1_1ExpressionList_1a5c139e82d077e3f05b5ba51a1cf46736" kind="variable"><name>_tail</name></member>
-    <member refid="classmongo__odm_1_1ExpressionList_1a77d2708484097a9aafa068cc7f1a9ebe" kind="function"><name>ExpressionList</name></member>
-    <member refid="classmongo__odm_1_1ExpressionList_1acce8b8732ff446bb9a36c64ec055f23f" kind="function"><name>append_to_bson</name></member>
-    <member refid="classmongo__odm_1_1ExpressionList_1a09d23e240065afc839e4b791a7916163" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  <compound refid="structmongo__odm_1_1expression__category__t" kind="struct"><name>mongo_odm::expression_category_t</name>
+    <member refid="structmongo__odm_1_1expression__category__t_1a4da4c78c58d17daf4045f3e0aa12e6fe" kind="variable"><name>value</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1expression__list" kind="class"><name>mongo_odm::expression_list</name>
+    <member refid="classmongo__odm_1_1expression__list_1aac1e6676df3f398eba89fe97b757f15b" kind="variable"><name>storage</name></member>
+    <member refid="classmongo__odm_1_1expression__list_1a005746d6c92dc87c719a0e8029493590" kind="function"><name>expression_list</name></member>
+    <member refid="classmongo__odm_1_1expression__list_1a85ac4de221b14cf6adf52945fd9f7507" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1expression__list_1a210238378d08926cab580c63dec1a31c" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type" kind="struct"><name>mongo_odm::details::expression_type</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01add__to__set__update__expr_3_01NvpT_00_01U_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; add_to_set_update_expr&lt; NvpT, U &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01bit__update__expr_3_01NvpT_00_01Integer_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; bit_update_expr&lt; NvpT, Integer &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01boolean__expr_3_01Expr1_00_01Expr2_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; boolean_expr&lt; Expr1, Expr2 &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01boolean__list__expr_3_01List_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; boolean_list_expr&lt; List &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01comparison__expr_3_01NvpT_00_01U_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; comparison_expr&lt; NvpT, U &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01comparison__value__expr_3_01NvpT_00_01U_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; comparison_value_expr&lt; NvpT, U &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01current__date__expr_3_01NvpT_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; current_date_expr&lt; NvpT &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01expression__list_3_01list__type_00_01Args_8_8_8_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; expression_list&lt; list_type, Args... &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01mod__expr_3_01NvpT_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; mod_expr&lt; NvpT &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01not__expr_3_01Expr_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; not_expr&lt; Expr &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01push__update__expr_3_01NvpT_00_01U_00_01Sort_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; push_update_expr&lt; NvpT, U, Sort &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01sort__expr_3_01NvpT_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; sort_expr&lt; NvpT &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01text__search__expr_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; text_search_expr &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01unset__expr_3_01NvpT_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; unset_expr&lt; NvpT &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01update__expr_3_01NvpT_00_01U_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; update_expr&lt; NvpT, U &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1expression__type_3_01update__value__expr_3_01NvpT_00_01U_01_4_01_4" kind="struct"><name>mongo_odm::details::expression_type&lt; update_value_expr&lt; NvpT, U &gt; &gt;</name>
   </compound>
   <compound refid="structmongo__odm_1_1FirstTypeIsTheSame" kind="struct"><name>mongo_odm::FirstTypeIsTheSame</name>
   </compound>
   <compound refid="structmongo__odm_1_1FirstTypeIsTheSame_3_01T_00_01T2_00_01Ts_8_8_8_01_4" kind="struct"><name>mongo_odm::FirstTypeIsTheSame&lt; T, T2, Ts... &gt;</name>
+  </compound>
+  <compound refid="classmongo__odm_1_1free__nvp" kind="class"><name>mongo_odm::free_nvp</name>
+    <member refid="classmongo__odm_1_1free__nvp_1a7bbaddc3b72eb6cc1e7f10ce60da71de" kind="typedef"><name>no_opt_type</name></member>
+    <member refid="classmongo__odm_1_1free__nvp_1aa58a09eb93b6108d8e565c404816aa75" kind="typedef"><name>type</name></member>
+    <member refid="classmongo__odm_1_1free__nvp_1adc0db5218e1db78312dee7d2fa937ba1" kind="function"><name>append_name</name></member>
   </compound>
   <compound refid="structmongo__odm_1_1hasField" kind="struct"><name>mongo_odm::hasField</name>
   </compound>
@@ -138,15 +244,53 @@
   <compound refid="structbson__mapper_1_1is__bson__view" kind="struct"><name>bson_mapper::is_bson_view</name>
     <member refid="structbson__mapper_1_1is__bson__view_1aca07d7b17481c21be0087eb3ca754f5f" kind="variable"><name>value</name></member>
   </compound>
-  <compound refid="structmongo__odm_1_1is__expression" kind="struct"><name>mongo_odm::is_expression</name>
+  <compound refid="structmongo__odm_1_1is__date" kind="struct"><name>mongo_odm::is_date</name>
   </compound>
-  <compound refid="structmongo__odm_1_1is__expression_3_01BooleanExpr_3_01Expr1_00_01Expr2_01_4_01_4" kind="struct"><name>mongo_odm::is_expression&lt; BooleanExpr&lt; Expr1, Expr2 &gt; &gt;</name>
+  <compound refid="structmongo__odm_1_1is__date_3_01bsoncxx_1_1types_1_1b__date_01_4" kind="struct"><name>mongo_odm::is_date&lt; bsoncxx::types::b_date &gt;</name>
   </compound>
-  <compound refid="structmongo__odm_1_1is__expression_3_01ComparisonExpr_3_01Base_00_01T_01_4_01_4" kind="struct"><name>mongo_odm::is_expression&lt; ComparisonExpr&lt; Base, T &gt; &gt;</name>
+  <compound refid="structmongo__odm_1_1is__date_3_01std_1_1chrono_1_1duration_3_01Rep_00_01Period_01_4_01_4" kind="struct"><name>mongo_odm::is_date&lt; std::chrono::duration&lt; Rep, Period &gt; &gt;</name>
   </compound>
-  <compound refid="structmongo__odm_1_1is__expression_3_01ExpressionList_3_01Head_00_01Tail_01_4_01_4" kind="struct"><name>mongo_odm::is_expression&lt; ExpressionList&lt; Head, Tail &gt; &gt;</name>
+  <compound refid="structmongo__odm_1_1is__date_3_01std_1_1chrono_1_1time__point_3_01Clock_00_01Duration_01_4_01_4" kind="struct"><name>mongo_odm::is_date&lt; std::chrono::time_point&lt; Clock, Duration &gt; &gt;</name>
   </compound>
-  <compound refid="structmongo__odm_1_1is__expression_3_01NotExpr_3_01Base_00_01T_01_4_01_4" kind="struct"><name>mongo_odm::is_expression&lt; NotExpr&lt; Base, T &gt; &gt;</name>
+  <compound refid="structmongo__odm_1_1details_1_1is__expression__type" kind="struct"><name>mongo_odm::details::is_expression_type</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__expression__type" kind="struct"><name>mongo_odm::is_expression_type</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__free__nvp" kind="struct"><name>mongo_odm::is_free_nvp</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__free__nvp_3_01free__nvp_3_01T_01_4_01_4" kind="struct"><name>mongo_odm::is_free_nvp&lt; free_nvp&lt; T &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__nvp" kind="struct"><name>mongo_odm::is_nvp</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__nvp_3_01array__element__nvp_3_01NvpT_01_4_01_4" kind="struct"><name>mongo_odm::is_nvp&lt; array_element_nvp&lt; NvpT &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__nvp_3_01free__nvp_3_01T_01_4_01_4" kind="struct"><name>mongo_odm::is_nvp&lt; free_nvp&lt; T &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__nvp_3_01nvp_3_01Base_00_01T_01_4_01_4" kind="struct"><name>mongo_odm::is_nvp&lt; nvp&lt; Base, T &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__nvp_3_01nvp__child_3_01Base_00_01T_00_01Parent_01_4_01_4" kind="struct"><name>mongo_odm::is_nvp&lt; nvp_child&lt; Base, T, Parent &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__optional" kind="struct"><name>mongo_odm::is_optional</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__optional_3_01bsoncxx_1_1stdx_1_1optional_3_01T_01_4_01_4" kind="struct"><name>mongo_odm::is_optional&lt; bsoncxx::stdx::optional&lt; T &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1is__query__expression" kind="struct"><name>mongo_odm::details::is_query_expression</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1is__sort__expression" kind="struct"><name>mongo_odm::details::is_sort_expression</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__string" kind="struct"><name>mongo_odm::is_string</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1is__string_3_01std_1_1basic__string_3_01Char_00_01Traits_00_01Allocator_01_4_01_4" kind="struct"><name>mongo_odm::is_string&lt; std::basic_string&lt; Char, Traits, Allocator &gt; &gt;</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1is__update__expression" kind="struct"><name>mongo_odm::details::is_update_expression</name>
+  </compound>
+  <compound refid="structmongo__odm_1_1details_1_1isnt__expression" kind="struct"><name>mongo_odm::details::isnt_expression</name>
+  </compound>
+  <compound refid="classmongo__odm_1_1isolated__expr" kind="class"><name>mongo_odm::isolated_expr</name>
+    <member refid="classmongo__odm_1_1isolated__expr_1ad472efed087b54fb6731a2e999b640e5" kind="variable"><name>_expr</name></member>
+    <member refid="classmongo__odm_1_1isolated__expr_1a771fd1c595bd458ffeecc271862126c7" kind="function"><name>isolated_expr</name></member>
+    <member refid="classmongo__odm_1_1isolated__expr_1abb41dc8fb33aa4e7d83ac7a9579baba6" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1isolated__expr_1a81fb5f0e8711bfcbea0ee3cc9f2e1b03" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
   </compound>
   <compound refid="classmongo__odm_1_1deserializing__cursor_1_1iterator" kind="class"><name>mongo_odm::deserializing_cursor::iterator</name>
     <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1af61aceb2bac404154b474b9044ec0c37" kind="variable"><name>_ci</name></member>
@@ -160,6 +304,16 @@
     <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1a2b894f7a62d36e6634cef41657363332" kind="function"><name>operator!=</name></member>
     <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1ad7b8718a44ef73460ed9196c719acaf6" kind="function"><name>operator*</name></member>
     <member refid="classmongo__odm_1_1deserializing__cursor_1_1iterator_1a2a8e0052c04541bc5469348c09bcad6f" kind="function"><name>skip_invalid_documents</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1mod__expr" kind="class"><name>mongo_odm::mod_expr</name>
+    <member refid="classmongo__odm_1_1mod__expr_1aab77a2d851662a705ad48b672712f23a" kind="typedef"><name>field_type</name></member>
+    <member refid="classmongo__odm_1_1mod__expr_1aec82722cd3188a24674b65abc2505868" kind="variable"><name>_nvp</name></member>
+    <member refid="classmongo__odm_1_1mod__expr_1a6d1628f2c0ba0337b318ca0823d64a7f" kind="variable"><name>_divisor</name></member>
+    <member refid="classmongo__odm_1_1mod__expr_1a3f38aa50d1ddf8ffbf4981f4bd6f1539" kind="variable"><name>_remainder</name></member>
+    <member refid="classmongo__odm_1_1mod__expr_1a4f89b19163b165b884999fb7129d6cbb" kind="function"><name>mod_expr</name></member>
+    <member refid="classmongo__odm_1_1mod__expr_1a972c9dd595c5e4527f4da9c201a7202e" kind="function"><name>append_name</name></member>
+    <member refid="classmongo__odm_1_1mod__expr_1a52ce6de2ac9eee27d2088f1bfa4f07b7" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1mod__expr_1a7366a9879d7285d968f6e8ea10918f83" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
   </compound>
   <compound refid="classmongo__odm_1_1model" kind="class"><name>mongo_odm::model</name>
     <member refid="classmongo__odm_1_1model_1a12b395f088eb02c12b694b9eec6b4191" kind="variable"><name>_coll</name></member>
@@ -175,16 +329,76 @@
     <member refid="classmongo__odm_1_1model_1a82419c85a1aa7de0de1c1202d4fafa2f" kind="function"><name>find</name></member>
     <member refid="classmongo__odm_1_1model_1a34b44af2a382b63b33e88dfb092e747c" kind="function"><name>find_one</name></member>
   </compound>
-  <compound refid="classmongo__odm_1_1NotExpr" kind="class"><name>mongo_odm::NotExpr</name>
-    <member refid="classmongo__odm_1_1NotExpr_1a3fb83d9ef53245bfe4ad1218ed92e2f7" kind="variable"><name>_expr</name></member>
-    <member refid="classmongo__odm_1_1NotExpr_1a817dba48751e400a44e83c79ac57872f" kind="function"><name>NotExpr</name></member>
-    <member refid="classmongo__odm_1_1NotExpr_1aee3b9cef41a1fa5f4e60e141cefd1357" kind="function"><name>append_to_bson</name></member>
-    <member refid="classmongo__odm_1_1NotExpr_1a6f2e9d9b79c21dafbf30f05d231ee52c" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  <compound refid="classmongo__odm_1_1not__expr" kind="class"><name>mongo_odm::not_expr</name>
+    <member refid="classmongo__odm_1_1not__expr_1a81b9dec69590f7f834d27b86f98eed23" kind="typedef"><name>field_type</name></member>
+    <member refid="classmongo__odm_1_1not__expr_1a2cc3465ffa76d86614e354857e1dab81" kind="variable"><name>_expr</name></member>
+    <member refid="classmongo__odm_1_1not__expr_1addb4f3618f5a03fefe5be5bfed40abd9" kind="function"><name>not_expr</name></member>
+    <member refid="classmongo__odm_1_1not__expr_1a6ebabf0dd6a38619d9fd8cae17b2894e" kind="function"><name>append_name</name></member>
+    <member refid="classmongo__odm_1_1not__expr_1a8bcedeb398b0c4e09156735c4e355f4b" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1not__expr_1ae25409383877731aaa45ed28c31b91c8" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
   </compound>
-  <compound refid="structmongo__odm_1_1Nvp" kind="struct"><name>mongo_odm::Nvp</name>
-    <member refid="structmongo__odm_1_1Nvp_1afdc65cec4247bceeed2d5968faeb2ec1" kind="variable"><name>t</name></member>
-    <member refid="structmongo__odm_1_1Nvp_1a3efbb3978077573d3a6676209a85247d" kind="variable"><name>name</name></member>
-    <member refid="structmongo__odm_1_1Nvp_1a0892863bcb5093550a0f3bfad3a16580" kind="function"><name>Nvp</name></member>
+  <compound refid="classmongo__odm_1_1nvp" kind="class"><name>mongo_odm::nvp</name>
+    <member refid="classmongo__odm_1_1nvp_1ad62577d2740a80cea0e57577980815d5" kind="typedef"><name>type</name></member>
+    <member refid="classmongo__odm_1_1nvp_1af7eb45c602baf4f194667e78815182f9" kind="typedef"><name>no_opt_type</name></member>
+    <member refid="classmongo__odm_1_1nvp_1a6fd86484c47e9fce931c60df1c24888c" kind="variable"><name>t</name></member>
+    <member refid="classmongo__odm_1_1nvp_1af8fea0a6fd896ab8a2aaf8b002c5a48e" kind="variable"><name>name</name></member>
+    <member refid="classmongo__odm_1_1nvp_1ae4c0a86c0051de39061544e11fc69aee" kind="function"><name>nvp</name></member>
+    <member refid="classmongo__odm_1_1nvp_1a6411d5ea34de1d719cac50b976cb9394" kind="function"><name>operator=</name></member>
+    <member refid="classmongo__odm_1_1nvp_1a539845d88858839cca195bc9242c955a" kind="function"><name>operator=</name></member>
+    <member refid="classmongo__odm_1_1nvp_1a736412364cab3e84b4a2e68788a79125" kind="function"><name>operator=</name></member>
+    <member refid="classmongo__odm_1_1nvp_1a36c3a03b263756a1d5e74da5a8c4401d" kind="function"><name>get_name</name></member>
+    <member refid="classmongo__odm_1_1nvp_1ab59da7f82d2c9f43e801ba37e63b2e89" kind="function"><name>append_name</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1nvp__base" kind="class"><name>mongo_odm::nvp_base</name>
+    <member refid="classmongo__odm_1_1nvp__base_1a0d722d224d173d1016b69a4c27879e65" kind="typedef"><name>enable_if_matching_iterable_t</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1ac717e0cd62c4170a422699c91efb6f5e" kind="typedef"><name>type</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a9d2f217a4d8e994d6f6cd864dfeafc57" kind="typedef"><name>no_opt_type</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1af99c8f015456c41a778361e44a22a41c" kind="function"><name>operator-&gt;*</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a5e5864ea189e9d501f6fa5b918bb97b2" kind="function"><name>operator[]</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a6a8d165cfc00d3bcd70d16a2c704ae0e" kind="function"><name>sort</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1ab96c904c4c587d9adb62f372d763eb89" kind="function"><name>in</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1ac518ef90312a483c64436097e9f9a34e" kind="function"><name>nin</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1ab323224f300d9fb9681d975f2ce98544" kind="function"><name>exists</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1ab87edbd61b20c1fe0dcbd834d41d58cb" kind="function"><name>mod</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a4437128b0fafda2f178172197a539499" kind="function"><name>regex</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a5e45eef873ecf7fe668ed35f85f5962c" kind="function"><name>all</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a619149367087ce41ec95b52be06ed50e" kind="function"><name>elem_match</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1ae279f5bc8267faedd12d9c1f79f6e831" kind="function"><name>element</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a44853122530eb589515d13397ed47dd3" kind="function"><name>size</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1af30fc7c976645ced1383bb3fd60a829e" kind="function"><name>bits_all_set</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1ac616fd563bc76e3b5484cc00deed6d7f" kind="function"><name>bits_all_set</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1af278639723e00543799e4ede530ab77e" kind="function"><name>bits_any_set</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1aa4a880120be6571a65431dd1a949615b" kind="function"><name>bits_any_set</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a6627ef66f30320d09ba1800a01de47e6" kind="function"><name>bits_all_clear</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a876a9ea43bedf0d20178ad2bdcf22e1d" kind="function"><name>bits_all_clear</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a8bab15db45adb8a32e690373e18ad01f" kind="function"><name>bits_any_clear</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a68e02181f3393fd3d0ac0b6bb35cc1de" kind="function"><name>bits_any_clear</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a369ac4a143f549d62c2307489893e61c" kind="function"><name>set_on_insert</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1aaef09e56ce567ddf207489771c0c30ae" kind="function"><name>unset</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a93c7d2948059425ffb7122504bb39379" kind="function"><name>min</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a9b66983c69573197417350034f94eebc" kind="function"><name>max</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a9d1b3cff13f56eed1e8e08f011668f7d" kind="function"><name>first_match</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1afe7ac6d378952499bc9c9ee6e584059f" kind="function"><name>pop</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1ad690746344a15b44adaf8cfdf27fad8b" kind="function"><name>pull</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1ac9ce98f9dd1c2bd7bf9b5d1f9f100c18" kind="function"><name>pull</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1ab4b8cc435ea878f25cbd61a3946da316" kind="function"><name>pull_all</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1ab41d90f7d23d25f3e7973171c2ee0ddf" kind="function"><name>add_to_set</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a9250b3abba132ae279fa55d94e52a91b" kind="function"><name>add_to_set</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a9627421e5a3cb1f86a2eed7809a0eff4" kind="function"><name>push</name></member>
+    <member refid="classmongo__odm_1_1nvp__base_1a72ab9b7adaf6737ca8c5c9b3eb59953d" kind="function"><name>push</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1nvp__child" kind="class"><name>mongo_odm::nvp_child</name>
+    <member refid="classmongo__odm_1_1nvp__child_1a05b0aa0707b9f2346379dd1eb563f3da" kind="typedef"><name>no_opt_type</name></member>
+    <member refid="classmongo__odm_1_1nvp__child_1a8a96634bbc5f26e6f819dd6cc835c441" kind="typedef"><name>type</name></member>
+    <member refid="classmongo__odm_1_1nvp__child_1a4c90eefa98900e1ab3cd86991c6d15f3" kind="variable"><name>t</name></member>
+    <member refid="classmongo__odm_1_1nvp__child_1ae88418726cf0fd364b7dec266673522f" kind="variable"><name>name</name></member>
+    <member refid="classmongo__odm_1_1nvp__child_1ae8a1c17a89a62a1237970c74d127557a" kind="variable"><name>parent</name></member>
+    <member refid="classmongo__odm_1_1nvp__child_1ae4dc64c037ad3285f161f8176205b64b" kind="function"><name>nvp_child</name></member>
+    <member refid="classmongo__odm_1_1nvp__child_1abc2a07e7d92692f3c4f8710f4c264ba6" kind="function"><name>operator=</name></member>
+    <member refid="classmongo__odm_1_1nvp__child_1afa70a98ddfe7c9d3d7a066e9227b53ab" kind="function"><name>operator=</name></member>
+    <member refid="classmongo__odm_1_1nvp__child_1a78930ea7b294a162cba2900a4f1ebf93" kind="function"><name>operator=</name></member>
+    <member refid="classmongo__odm_1_1nvp__child_1a826c7a25afba46a514cca886ade9d684" kind="function"><name>get_name</name></member>
+    <member refid="classmongo__odm_1_1nvp__child_1a17cb684c6f0793862f1a44ef616c0b0f" kind="function"><name>append_name</name></member>
   </compound>
   <compound refid="classmongo__odm_1_1odm__collection" kind="class"><name>mongo_odm::odm_collection</name>
     <member refid="classmongo__odm_1_1odm__collection_1a95f798d1ddb22d9b2c554f3908d95aad" kind="variable"><name>_coll</name></member>
@@ -205,6 +419,31 @@
     <member refid="classmongo__odm_1_1odm__collection_1a411c5e06bd3dab97a15ee478f6dae540" kind="function"><name>insert_many</name></member>
     <member refid="classmongo__odm_1_1odm__collection_1adf1ed50140b16bde3bef54a6f701e1a6" kind="function"><name>replace_one</name></member>
   </compound>
+  <compound refid="classmongo__odm_1_1push__update__expr" kind="class"><name>mongo_odm::push_update_expr</name>
+    <member refid="classmongo__odm_1_1push__update__expr_1a03b0aacab2f83a917248add153006324" kind="typedef"><name>field_type</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1a410fd6ba84a7483b90259ca2a20ce68d" kind="variable"><name>_nvp</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1af2b7742f4b65107bc17f9ee86b6f3357" kind="variable"><name>_val</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1a09ea2799cca1ead8dfdb755344d69d1f" kind="variable"><name>_each</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1a96e460a9021bff0040a65ec2768519e3" kind="variable"><name>_slice</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1a12560aada179b6dbac86b342c3410a8d" kind="variable"><name>_sort</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1ad18b18ac826794190e730780f662141d" kind="variable"><name>_position</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1a8268dfd7d8a1e682ae950d7399d26f54" kind="function"><name>push_update_expr</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1a55d76eef6ebc8a1ba154a6e3a4245932" kind="function"><name>slice</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1a3ca32e674928879d958c81f162f43c73" kind="function"><name>slice</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1a563708e3931d6f428e0ec6f9efa58b54" kind="function"><name>sort</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1a690edf21a68ce63bd576cc94e9a34f0f" kind="function"><name>sort</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1a95965b5ab76f0e6da15de477fad2e829" kind="function"><name>sort</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1adb225c5e9549be9c7d790aff4bdcf856" kind="function"><name>position</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1a3875e3422e3c659c1bcc71a3632058b7" kind="function"><name>position</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1afa0ecdb64932eff8dd929b7f108a1441" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1push__update__expr_1a1fada157bb94b50250a38554afe89074" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="structmongo__odm_1_1remove__optional" kind="struct"><name>mongo_odm::remove_optional</name>
+    <member refid="structmongo__odm_1_1remove__optional_1a385a594cd6d5f6b3141eacd8c4bd4d56" kind="typedef"><name>type</name></member>
+  </compound>
+  <compound refid="structmongo__odm_1_1remove__optional_3_01bsoncxx_1_1stdx_1_1optional_3_01T_01_4_01_4" kind="struct"><name>mongo_odm::remove_optional&lt; bsoncxx::stdx::optional&lt; T &gt; &gt;</name>
+    <member refid="structmongo__odm_1_1remove__optional_3_01bsoncxx_1_1stdx_1_1optional_3_01T_01_4_01_4_1af57401e64cf3410cc4249440d3523617" kind="typedef"><name>type</name></member>
+  </compound>
   <compound refid="classbson__mapper_1_1serializing__iterator" kind="class"><name>bson_mapper::serializing_iterator</name>
     <member refid="classbson__mapper_1_1serializing__iterator_1a33d80e23be61966d8794db505b45d044" kind="variable"><name>_ci</name></member>
     <member refid="classbson__mapper_1_1serializing__iterator_1a03e7ef2686dad0250b6d9606caf1a03e" kind="function"><name>serializing_iterator</name></member>
@@ -215,11 +454,54 @@
     <member refid="classbson__mapper_1_1serializing__iterator_1a3b08c6844b32797fba51dd211af26673" kind="function"><name>operator!=</name></member>
     <member refid="classbson__mapper_1_1serializing__iterator_1adaccf5c18cab21ddce0d6d8d6771170b" kind="function"><name>operator*</name></member>
   </compound>
+  <compound refid="classmongo__odm_1_1sort__expr" kind="class"><name>mongo_odm::sort_expr</name>
+    <member refid="classmongo__odm_1_1sort__expr_1a4120160f0f9925de677134422ce17817" kind="typedef"><name>field_type</name></member>
+    <member refid="classmongo__odm_1_1sort__expr_1a41f10ccbdc98cbcd2b4e0752dac5cf8d" kind="variable"><name>_nvp</name></member>
+    <member refid="classmongo__odm_1_1sort__expr_1a01fb4635d90884a42e5e49b5b0723759" kind="variable"><name>_ascending</name></member>
+    <member refid="classmongo__odm_1_1sort__expr_1ac3e032a5c08cb386b68bca201ee3a50d" kind="function"><name>sort_expr</name></member>
+    <member refid="classmongo__odm_1_1sort__expr_1a304f862be95da026075eb76e007391be" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1sort__expr_1ad66e7dd012b0be9916b3295646058841" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1text__search__expr" kind="class"><name>mongo_odm::text_search_expr</name>
+    <member refid="classmongo__odm_1_1text__search__expr_1ae16ce2d13709fdee066d7fe6d6de4980" kind="variable"><name>_search</name></member>
+    <member refid="classmongo__odm_1_1text__search__expr_1a6c341a1877e03a2ff84cdaedfd223005" kind="variable"><name>_language</name></member>
+    <member refid="classmongo__odm_1_1text__search__expr_1a77f5989b9f970f8d4a91db94b2178b56" kind="variable"><name>_case_sensitive</name></member>
+    <member refid="classmongo__odm_1_1text__search__expr_1ae7346cf34a08bb702c43283c1f15f631" kind="variable"><name>_diacritic_sensitive</name></member>
+    <member refid="classmongo__odm_1_1text__search__expr_1a85bad1931e8642099b913a7fd3118fbe" kind="function"><name>text_search_expr</name></member>
+    <member refid="classmongo__odm_1_1text__search__expr_1ab1cbac66d1ca60d4a4168beddb727f19" kind="function"><name>language</name></member>
+    <member refid="classmongo__odm_1_1text__search__expr_1a8388c926f373610850dcc1fde14269f3" kind="function"><name>language</name></member>
+    <member refid="classmongo__odm_1_1text__search__expr_1a033a0056cbee253dffa336c1f491da5e" kind="function"><name>case_sensitive</name></member>
+    <member refid="classmongo__odm_1_1text__search__expr_1ad63f58c2838934414289693088a1a8a4" kind="function"><name>case_sensitive</name></member>
+    <member refid="classmongo__odm_1_1text__search__expr_1a74b34ce23b4e1963fc7dd9f14abaa07c" kind="function"><name>diacritic_sensitive</name></member>
+    <member refid="classmongo__odm_1_1text__search__expr_1ad9abfff20d8b3ed177803f77d0b23283" kind="function"><name>diacritic_sensitive</name></member>
+    <member refid="classmongo__odm_1_1text__search__expr_1a6e73a334472e7319e34829d4f4014af6" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1text__search__expr_1a3e95a5dc94a5c60bd41f94ed6e1dac0a" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
   <compound refid="classbson__mapper_1_1UnderlyingBSONDataBase" kind="class"><name>bson_mapper::UnderlyingBSONDataBase</name>
     <member refid="classbson__mapper_1_1UnderlyingBSONDataBase_1a6a91619d3c3b86ff3ebc0a6fb59884ca" kind="variable"><name>_underlyingBSONData</name></member>
     <member refid="classbson__mapper_1_1UnderlyingBSONDataBase_1a5af0b1977ed0c701d25e301eb74d51ab" kind="variable"><name>_underlyingBSONDataSize</name></member>
     <member refid="classbson__mapper_1_1UnderlyingBSONDataBase_1a458b72e49e74fcaef97c9fd3db540bc1" kind="function"><name>setUnderlyingBSONData</name></member>
     <member refid="classbson__mapper_1_1UnderlyingBSONDataBase_1a635e3c7c2a8c0627f58424b623f639b5" kind="function"><name>getUnderlyingBSONData</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1unset__expr" kind="class"><name>mongo_odm::unset_expr</name>
+    <member refid="classmongo__odm_1_1unset__expr_1ac76207e06fa3f3ad7a168ada8ef788c5" kind="typedef"><name>field_type</name></member>
+    <member refid="classmongo__odm_1_1unset__expr_1a5c62a53cbd73d053207fcc35bdd2973b" kind="variable"><name>_nvp</name></member>
+    <member refid="classmongo__odm_1_1unset__expr_1afa239b532fc27d25f648e5d74b9fa1d1" kind="function"><name>unset_expr</name></member>
+    <member refid="classmongo__odm_1_1unset__expr_1a5d775357c94e0477351fb49d71378694" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1unset__expr_1aa93a785b977418ddbba8119f5a5ba9ec" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1update__expr" kind="class"><name>mongo_odm::update_expr</name>
+    <member refid="classmongo__odm_1_1update__expr_1a82b4b29b7c7d5bfb187e5ac8727198a7" kind="typedef"><name>field_type</name></member>
+    <member refid="classmongo__odm_1_1update__expr_1a8d3da303ca3b86755797a305fb872997" kind="variable"><name>_nvp</name></member>
+    <member refid="classmongo__odm_1_1update__expr_1a91dcb0890ced9e4b20f70c557a4916af" kind="variable"><name>_val</name></member>
+    <member refid="classmongo__odm_1_1update__expr_1a92a993a1814284e7c0ce17132009757e" kind="variable"><name>_op</name></member>
+    <member refid="classmongo__odm_1_1update__expr_1a4b4818eeb57042a10fcf301a7b75e808" kind="function"><name>update_expr</name></member>
+    <member refid="classmongo__odm_1_1update__expr_1a3b1e28aca88052a9862ed528afe3d434" kind="function"><name>append_to_bson</name></member>
+    <member refid="classmongo__odm_1_1update__expr_1abb04ef8b7c4212749d35b4c0ba98b34f" kind="function"><name>operator bsoncxx::document::view_or_value</name></member>
+  </compound>
+  <compound refid="classmongo__odm_1_1update__value__expr" kind="class"><name>mongo_odm::update_value_expr</name>
+    <member refid="classmongo__odm_1_1update__value__expr_1a8a515c318e4e4d7e60d5d448747e7942" kind="variable"><name>_val</name></member>
+    <member refid="classmongo__odm_1_1update__value__expr_1a689cc15014e6ffda436ee4b66e8241da" kind="function"><name>update_value_expr</name></member>
   </compound>
   <compound refid="namespacebson__mapper" kind="namespace"><name>bson_mapper</name>
     <member refid="bson__archiver_8hpp_1a9e2d82ad85a76da8a8b8fc21a2e17c9f" kind="function"><name>prologue</name></member>
@@ -274,23 +556,86 @@
   <compound refid="namespacebson__mapper_1_1stdx" kind="namespace"><name>bson_mapper::stdx</name>
   </compound>
   <compound refid="namespacemongo__odm" kind="namespace"><name>mongo_odm</name>
-    <member refid="nvp_8hpp_1a4bcde0a19f13329eff299eea6ce6fa74" kind="function"><name>makeNvp</name></member>
-    <member refid="query__builder_8hpp_1a9c9c9d64aa9388c6ad98b9a104f177b9" kind="function"><name>operator==</name></member>
-    <member refid="query__builder_8hpp_1a51c00ea3a069e984d1bc868282e09a23" kind="function"><name>operator==</name></member>
-    <member refid="query__builder_8hpp_1a11fda3f6bc5d81153422149fbf1637e0" kind="function"><name>operator&gt;</name></member>
-    <member refid="query__builder_8hpp_1ad9b9f03a100ac8813dd1b38948999060" kind="function"><name>operator&gt;</name></member>
-    <member refid="query__builder_8hpp_1adfa348f70a4a6e94250abb533a7927b9" kind="function"><name>operator&gt;=</name></member>
-    <member refid="query__builder_8hpp_1ae6357cd27791779713539df04cd97f45" kind="function"><name>operator&gt;=</name></member>
-    <member refid="query__builder_8hpp_1ae7fe3be8b9fff14981d078de356c557f" kind="function"><name>operator&lt;</name></member>
-    <member refid="query__builder_8hpp_1abbd6e2aef205a48868935b5a4004af77" kind="function"><name>operator&lt;</name></member>
-    <member refid="query__builder_8hpp_1ab9d4721762bf6cf0d661488835503828" kind="function"><name>operator&lt;=</name></member>
-    <member refid="query__builder_8hpp_1a75f5db9502140243c02f911fcfddf89c" kind="function"><name>operator&lt;=</name></member>
-    <member refid="query__builder_8hpp_1a3b363c532be9639b3a6f737ee7e89cb0" kind="function"><name>operator!=</name></member>
-    <member refid="query__builder_8hpp_1adda975f2de7cb87e6bc2616175a7ca13" kind="function"><name>operator!=</name></member>
-    <member refid="query__builder_8hpp_1a9f0469fd613155372d7228b178107bce" kind="function"><name>operator!</name></member>
-    <member refid="query__builder_8hpp_1aa683880e2126866b9edb9d9a7b7bb7b7" kind="function"><name>operator,</name></member>
-    <member refid="query__builder_8hpp_1a3570a42d1e178135c80e97f9cac00e7f" kind="function"><name>operator&amp;&amp;</name></member>
-    <member refid="query__builder_8hpp_1a7dc445a8fef0bc28175f75ba710e9eac" kind="function"><name>operator||</name></member>
+    <member refid="expression__syntax_8hpp_1a67bb1ad10a516e9fad57867fe470503e" kind="enum"><name>expression_category</name></member>
+    <member refid="dummy_1a67bb1ad10a516e9fad57867fe470503ea334c4a4c42fdb79d7ebc3e73b517e6f8" kind="enumvalue"><name>none</name></member>
+    <member refid="dummy_1a67bb1ad10a516e9fad57867fe470503ea1b1cc7f086b3f074da452bc3129981eb" kind="enumvalue"><name>query</name></member>
+    <member refid="dummy_1a67bb1ad10a516e9fad57867fe470503ea3ac340832f29c11538fbe2d6f75e8bcc" kind="enumvalue"><name>update</name></member>
+    <member refid="dummy_1a67bb1ad10a516e9fad57867fe470503eacadc8c8db42409733582cb3e2298ef87" kind="enumvalue"><name>sort</name></member>
+    <member refid="query__builder_8hpp_1a548f655b22a9a91585f55216d33770eb" kind="typedef"><name>is_bson_appendable</name></member>
+    <member refid="util_8hpp_1af9272bd32a2151af20282fcab91d75b7" kind="typedef"><name>is_iterable</name></member>
+    <member refid="util_8hpp_1a312918e0d108ee7f3bc25b0e9a617a54" kind="typedef"><name>is_iterable_not_string</name></member>
+    <member refid="util_8hpp_1acb16566b3687ef595cf290beced88307" kind="typedef"><name>iterable_value_t</name></member>
+    <member refid="util_8hpp_1afae27423aa9243f9420f7373ec6839e2" kind="typedef"><name>remove_optional_t</name></member>
+    <member refid="nvp_8hpp_1af2e06d8c8f285f3f0293fab664337ee8" kind="variable"><name>current_date</name></member>
+    <member refid="nvp_8hpp_1a46e567ffdd0594ff405714225a63f7c2" kind="variable"><name>is_free_nvp_v</name></member>
+    <member refid="nvp_8hpp_1a05c1bd2596eee80b9bad5b6a303dd1a1" kind="variable"><name>is_nvp_v</name></member>
+    <member refid="query__builder_8hpp_1ab992416b810196fb633489445add7952" kind="variable"><name>is_bson_appendable_v</name></member>
+    <member refid="util_8hpp_1add1f3783105fff2f4871028fdc53f578" kind="variable"><name>is_string_v</name></member>
+    <member refid="util_8hpp_1a01e3936359ec42a9a11268ca0d958d55" kind="variable"><name>is_iterable_v</name></member>
+    <member refid="util_8hpp_1a4eadc8627fbdddbf249f04b842b80bff" kind="variable"><name>is_iterable_not_string_v</name></member>
+    <member refid="util_8hpp_1a9e4f69613857bcc6d76986a6215b1c87" kind="variable"><name>is_optional_v</name></member>
+    <member refid="util_8hpp_1a0250c286e3a911d2a49652780534cb47" kind="variable"><name>is_date_v</name></member>
+    <member refid="nvp_8hpp_1a214cd4a488510a9c4a177f4176226515" kind="function"><name>make_nvp</name></member>
+    <member refid="nvp_8hpp_1a0a81d536c7fbf824c4a9a401ebf194d9" kind="function"><name>make_nvp_with_parent</name></member>
+    <member refid="query__builder_8hpp_1ac4fa17d99a4a923013c7b860e7374aad" kind="function"><name>is_bson_appendable_impl</name></member>
+    <member refid="query__builder_8hpp_1a387782fd57af7a72c828d7276b3d4028" kind="function"><name>is_bson_appendable_impl</name></member>
+    <member refid="query__builder_8hpp_1afdbdc8a4ef68033e6deb9389263fd4f2" kind="function"><name>append_value_to_bson</name></member>
+    <member refid="query__builder_8hpp_1a811b1361f9aae1a9c174e218fa8db589" kind="function"><name>append_value_to_bson</name></member>
+    <member refid="query__builder_8hpp_1a5863dbdb1a9228f700659fc5351b1214" kind="function"><name>append_value_to_bson</name></member>
+    <member refid="query__builder_8hpp_1af1dcb3d359dd5c57699bdf927554827a" kind="function"><name>append_value_to_bson</name></member>
+    <member refid="query__builder_8hpp_1a8b50a506960fae9604ddbca93a1061db" kind="function"><name>append_value_to_bson</name></member>
+    <member refid="query__builder_8hpp_1a1e50cc8437fd1539579e1fac1195dc3b" kind="function"><name>eq</name></member>
+    <member refid="query__builder_8hpp_1a778f6512b14fa520714b2ab5a3d50bd5" kind="function"><name>operator==</name></member>
+    <member refid="query__builder_8hpp_1a360239841d188c4b61304f9c8c2c1011" kind="function"><name>gt</name></member>
+    <member refid="query__builder_8hpp_1a516ba1d95b8bc8b43451fe52e6487eb2" kind="function"><name>operator&gt;</name></member>
+    <member refid="query__builder_8hpp_1a2a3ff40e3b72afd91c44db2546c9978f" kind="function"><name>gte</name></member>
+    <member refid="query__builder_8hpp_1ae11741014a299b836d1e79f5383188e6" kind="function"><name>operator&gt;=</name></member>
+    <member refid="query__builder_8hpp_1afeb2337c92960084a1a751a270deaef1" kind="function"><name>lt</name></member>
+    <member refid="query__builder_8hpp_1af0bab408f977db1dbaab938aae8af8d4" kind="function"><name>operator&lt;</name></member>
+    <member refid="query__builder_8hpp_1a7f24399db7ee87d4054f349fad959f7d" kind="function"><name>lte</name></member>
+    <member refid="query__builder_8hpp_1af4553bc1c8903d41c7f88c4abf01af31" kind="function"><name>operator&lt;=</name></member>
+    <member refid="query__builder_8hpp_1a7ec21447ea017eb82828af65aca0c7c7" kind="function"><name>ne</name></member>
+    <member refid="query__builder_8hpp_1aaabcecb3c8583faa0039c69390ddb949" kind="function"><name>operator!=</name></member>
+    <member refid="query__builder_8hpp_1ae9eb4180744793e0b01b28d28d4d5de8" kind="function"><name>operator!</name></member>
+    <member refid="query__builder_8hpp_1ab9330fcbdee2eb76189d972a46df8485" kind="function"><name>operator!</name></member>
+    <member refid="query__builder_8hpp_1a7aeabb120f56ba486317b22f742e298e" kind="function"><name>append_impl</name></member>
+    <member refid="query__builder_8hpp_1ab1481cbcd2912d48506feb1fecd1496c" kind="function"><name>operator,</name></member>
+    <member refid="query__builder_8hpp_1a7bb38a961511ff9d481c17b24257c49c" kind="function"><name>operator,</name></member>
+    <member refid="query__builder_8hpp_1a29c3ce23dd8b0e948489e3999a395cc1" kind="function"><name>operator&amp;&amp;</name></member>
+    <member refid="query__builder_8hpp_1a257f065b50642d4d2140609f2c9910bc" kind="function"><name>operator||</name></member>
+    <member refid="query__builder_8hpp_1aaae51519ee31abd48638e64073fd7069" kind="function"><name>nor</name></member>
+    <member refid="query__builder_8hpp_1ac06b225efdeb143d5d99e0702158db39" kind="function"><name>nor</name></member>
+    <member refid="query__builder_8hpp_1aa0501a5a417bd98a48813e0ffaa0fa17" kind="function"><name>text</name></member>
+    <member refid="query__builder_8hpp_1a29af308cc5dde4814af6539f0e30d656" kind="function"><name>isolated</name></member>
+    <member refid="query__builder_8hpp_1ac21c0ab7b79b2d8d7ae2d3ac7983dc39" kind="function"><name>operator+=</name></member>
+    <member refid="query__builder_8hpp_1a56c000f900ca2d4da9cba133468aebbc" kind="function"><name>operator-=</name></member>
+    <member refid="query__builder_8hpp_1a7cb6d14dc4932e794853c36602bccff0" kind="function"><name>operator++</name></member>
+    <member refid="query__builder_8hpp_1afd08b500e0ddf1f37df7275e2d5ba2d0" kind="function"><name>operator++</name></member>
+    <member refid="query__builder_8hpp_1a0458933290c474066ddfd40d650ab1f0" kind="function"><name>operator--</name></member>
+    <member refid="query__builder_8hpp_1a748f805d0bc17ab4b8b05ba4913e2e71" kind="function"><name>operator--</name></member>
+    <member refid="query__builder_8hpp_1ab780734278c71228a24e00f89e435775" kind="function"><name>operator*=</name></member>
+    <member refid="query__builder_8hpp_1a0dbba5ec714496d0fc28d92d5d247d8e" kind="function"><name>operator&amp;=</name></member>
+    <member refid="query__builder_8hpp_1a8ff51424464ce0e8c63778a297eac9d2" kind="function"><name>operator|=</name></member>
+    <member refid="query__builder_8hpp_1ad41d07de67150bdbeb29c3dd23b5990e" kind="function"><name>operator^=</name></member>
+    <member refid="util_8hpp_1a4f3c771293ee68afb8757d250711e4d1" kind="function"><name>is_iterable_impl</name></member>
+    <member refid="util_8hpp_1ace3b38109b44e28a88cb4872158b8e9a" kind="function"><name>is_iterable_impl</name></member>
+    <member refid="util_8hpp_1af464e08088c952317a201f3a27ae09de" kind="function"><name>iterable_value_impl</name></member>
+    <member refid="util_8hpp_1ab6605bae6c267ebe08f86de6d7638249" kind="function"><name>iterable_value_impl</name></member>
+    <member refid="util_8hpp_1a1709361698e009fd04d0e2235c7bcac5" kind="function"><name>bit_positions_to_mask</name></member>
+    <member refid="util_8hpp_1ad43cb7c6e6f8b525d401f9147289cdb8" kind="function"><name>bit_positions_to_mask</name></member>
+    <member refid="util_8hpp_1a194571e0b830995ad9f1c57dfa19b71a" kind="function"><name>tuple_for_each_impl</name></member>
+    <member refid="util_8hpp_1ad20d062d86d3194b031bb2e1fe022baa" kind="function"><name>tuple_for_each</name></member>
+  </compound>
+  <compound refid="namespacemongo__odm_1_1details" kind="namespace"><name>mongo_odm::details</name>
+    <member refid="expression__syntax_8hpp_1a74a184280b50d9dbbc63a78574bcb4e1" kind="typedef"><name>expression_none_t</name></member>
+    <member refid="expression__syntax_8hpp_1adcff9633b4fa78b25edb4fdc4acae0a1" kind="typedef"><name>expression_sort_t</name></member>
+    <member refid="expression__syntax_8hpp_1a4f0cd5ce9a248c9350363d38ec33cc84" kind="typedef"><name>expression_query_t</name></member>
+    <member refid="expression__syntax_8hpp_1ab68c79e47438f5c1168ab12c3b8c99ee" kind="typedef"><name>expression_update_t</name></member>
+    <member refid="expression__syntax_8hpp_1ac390ee174f94bc91113cf4cb08e958ec" kind="variable"><name>expression_type_v</name></member>
+    <member refid="expression__syntax_8hpp_1a26e8ba310de1c9ccec89c893f66223a0" kind="variable"><name>isnt_expression_v</name></member>
+    <member refid="expression__syntax_8hpp_1a162378485340f582a46ff9dc8f439baa" kind="variable"><name>is_sort_expression_v</name></member>
+    <member refid="expression__syntax_8hpp_1a44e4cbc20b8b5f837a2deb5e8787dd73" kind="variable"><name>is_query_expression_v</name></member>
+    <member refid="expression__syntax_8hpp_1ae6f11e7fc2b29052c3f3db43c2fdffb0" kind="variable"><name>is_update_expression_v</name></member>
   </compound>
   <compound refid="CONTRIBUTING_8md" kind="file"><name>CONTRIBUTING.md</name>
   </compound>
@@ -326,18 +671,137 @@
   </compound>
   <compound refid="deserializing__cursor_8hpp" kind="file"><name>deserializing_cursor.hpp</name>
   </compound>
+  <compound refid="expression__syntax_8hpp" kind="file"><name>expression_syntax.hpp</name>
+  </compound>
+  <compound refid="macros_8hpp" kind="file"><name>macros.hpp</name>
+    <member refid="macros_8hpp_1a6f3f990059e607b9ff2ef464adc1bb53" kind="define"><name>MONGO_ODM_PASTE_IMPL</name></member>
+    <member refid="macros_8hpp_1a3c98e5708b643fe79710069b43104771" kind="define"><name>MONGO_ODM_PASTE</name></member>
+    <member refid="macros_8hpp_1acb202b07b2886bb05cf9addb50bc9333" kind="define"><name>MONGO_ODM_NVP</name></member>
+    <member refid="macros_8hpp_1a85a216a7bcfcd7260a4f21a0f803899e" kind="define"><name>MONGO_ODM_CUSTOM_NVP</name></member>
+    <member refid="macros_8hpp_1ad96a748cd5ba0b9df97bc31da164f9d9" kind="define"><name>MONGO_ODM_SERIALIZE_KEYS</name></member>
+    <member refid="macros_8hpp_1aede6ddd0eb0787bceb13387a0cddb1dc" kind="define"><name>MONGO_ODM_MAKE_KEYS</name></member>
+    <member refid="macros_8hpp_1a98fb841a9854884333db1a577f724512" kind="define"><name>MONGO_ODM_MAKE_KEYS_MODEL</name></member>
+    <member refid="macros_8hpp_1a414bd8cb6b2a9d8c6a2d39849a2a3dc4" kind="define"><name>MONGO_ODM_KEY</name></member>
+    <member refid="macros_8hpp_1ab57292a3e1bb3aee9b12274e4e783759" kind="define"><name>MONGO_ODM_ELEM</name></member>
+    <member refid="macros_8hpp_1a3e6a5455e5e7777be404feee07c5aace" kind="define"><name>MONGO_ODM_KEY_BY_VALUE</name></member>
+    <member refid="macros_8hpp_1a80dce926a7e682185125fabdc7057ea4" kind="define"><name>MONGO_ODM_CHILD</name></member>
+    <member refid="macros_8hpp_1a2f6b0139b9db54c7d9e2fa71e1826cbc" kind="define"><name>MONGO_ODM_CHILD_ELEM</name></member>
+  </compound>
   <compound refid="model_8hpp" kind="file"><name>model.hpp</name>
   </compound>
+  <compound refid="mongo__odm__child__autogen_8hpp" kind="file"><name>mongo_odm_child_autogen.hpp</name>
+    <member refid="mongo__odm__child__autogen_8hpp_1aa68b472739af95de1036dfc96e568d55" kind="define"><name>MONGO_ODM_PP_NARG</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ac86920d41aaed92734d811fc366cb60e" kind="define"><name>MONGO_ODM_PP_NARG_</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1abc4b2b2358328eb31f2678b3ea535e0a" kind="define"><name>MONGO_ODM_PP_ARG_N</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a60b032806f87cd55f8ae0fda8c3192af" kind="define"><name>MONGO_ODM_PP_RSEQ_N</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1afdd7c7437d580c6b57c9f133efb9f5ad" kind="define"><name>MONGO_ODM_CHILD1</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1aaaf2b6215d166bd1af0aedd33ef49da8" kind="define"><name>MONGO_ODM_CHILD2</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a78f1df7de1fb4d6435c9ad2116b9f75c" kind="define"><name>MONGO_ODM_CHILD3</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1abf704f4a5bd6ea4fdd7e45ac7ea24c73" kind="define"><name>MONGO_ODM_CHILD4</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a2d38fd3d23d6ee07ddd6a7c473c1b104" kind="define"><name>MONGO_ODM_CHILD5</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a1c11ab021a1bdd99dfc81e77c47984c1" kind="define"><name>MONGO_ODM_CHILD6</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a8c6cccc0376a06e33293c019ed961ac7" kind="define"><name>MONGO_ODM_CHILD7</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1aba1c2de94ebe25dbb6dc09f546ea94dd" kind="define"><name>MONGO_ODM_CHILD8</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a6ae44e9713d040d9d6b0201b8e895069" kind="define"><name>MONGO_ODM_CHILD9</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ab76d02a98daf1a52666048600eac3a5e" kind="define"><name>MONGO_ODM_CHILD10</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a95a0f237e9c1d59300a5c552a60eabd2" kind="define"><name>MONGO_ODM_CHILD11</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a6472948dfbc34a411efca8ff3cc1f6c6" kind="define"><name>MONGO_ODM_CHILD12</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1abe20142decea57ca174350a63b294085" kind="define"><name>MONGO_ODM_CHILD13</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a9a7bb2b21627dbe4ed1f7e6eb2558c47" kind="define"><name>MONGO_ODM_CHILD14</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a7ae9ffdf767922fbade50980b8bc6128" kind="define"><name>MONGO_ODM_CHILD15</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a6ffb382d46f3dfe6c9db60d5129b1929" kind="define"><name>MONGO_ODM_CHILD16</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a7a98145de60f1190a9a82f2ecc7b55b3" kind="define"><name>MONGO_ODM_CHILD17</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a6ac61b878c0969f7dac9fe3de578f9d4" kind="define"><name>MONGO_ODM_CHILD18</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a4ab26468f6fc083c615f594a6a995866" kind="define"><name>MONGO_ODM_CHILD19</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1aa0db9a0d6178be70800da8d77c6063d9" kind="define"><name>MONGO_ODM_CHILD20</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a55b1bd34eb9b44f08c4a76ca1345f937" kind="define"><name>MONGO_ODM_CHILD21</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1adfc190abce4850b78b5c4ca594c779f4" kind="define"><name>MONGO_ODM_CHILD22</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1af89d28c4a7f453ef88e0de4fb3d7b957" kind="define"><name>MONGO_ODM_CHILD23</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a0e141c2ce58cb3f0702d2c5642076fc2" kind="define"><name>MONGO_ODM_CHILD24</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a77604a68aa8a346c46fce125197b7c80" kind="define"><name>MONGO_ODM_CHILD25</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a475b34138feea6ab2264a39e49bd2a01" kind="define"><name>MONGO_ODM_CHILD26</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a813fcd2da702891523fa648649fdeff7" kind="define"><name>MONGO_ODM_CHILD27</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ac22c82e74998d0fa8b3e182826083a63" kind="define"><name>MONGO_ODM_CHILD28</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a24b67bb6bc61c22fa0390da71bd299d1" kind="define"><name>MONGO_ODM_CHILD29</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a438095c3d2f973eab7d119f0a96c58a1" kind="define"><name>MONGO_ODM_CHILD30</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a43ea2fdda1cb2814d331069778d1baa4" kind="define"><name>MONGO_ODM_CHILD31</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ae20f111aa5f4379852d37aab9efbd088" kind="define"><name>MONGO_ODM_CHILD32</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ad2f9a279ab90c12e9f62ae75bdb16851" kind="define"><name>MONGO_ODM_CHILD33</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a2bc22552032e52b2d572d9da5228fa94" kind="define"><name>MONGO_ODM_CHILD34</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a2dd812790727ebf9cabc55104aaa61f9" kind="define"><name>MONGO_ODM_CHILD35</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a2c3ca3856cc5cb67a72f094f27a0300b" kind="define"><name>MONGO_ODM_CHILD36</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ac652101cd40298cc0ee9eb9c440845a0" kind="define"><name>MONGO_ODM_CHILD37</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ae6c89ffb26ab5c879a6185176764ba1d" kind="define"><name>MONGO_ODM_CHILD38</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a559ce14afd7731aedda0f3adecfede9c" kind="define"><name>MONGO_ODM_CHILD39</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a2e1a645fe072891146f62c1db90f55a2" kind="define"><name>MONGO_ODM_CHILD40</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a7fe3d40ee6b189a32454e823e04122a5" kind="define"><name>MONGO_ODM_CHILD41</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a2f644f9ce3069414c14d934e315ce77e" kind="define"><name>MONGO_ODM_CHILD42</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a067816cd8bee2b613d1b692325e735b1" kind="define"><name>MONGO_ODM_CHILD43</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a35db16e8fcb94332b1e09c8688dbede9" kind="define"><name>MONGO_ODM_CHILD44</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a0391663cb3646c196f6cb1495b1b0b30" kind="define"><name>MONGO_ODM_CHILD45</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a697e88299890ba597dea87222b6c0412" kind="define"><name>MONGO_ODM_CHILD46</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a797bb7748636efc12d14c18e53ccae33" kind="define"><name>MONGO_ODM_CHILD47</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a417dce1250c3bf1635ddbf72b26a16eb" kind="define"><name>MONGO_ODM_CHILD48</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a47fd3640bbc29ba4d5ca947b158493b8" kind="define"><name>MONGO_ODM_CHILD49</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a6051beae33f882143dfdc6fcf17f30b5" kind="define"><name>MONGO_ODM_CHILD50</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a04d62239e1ffeb6077788102966ab9a4" kind="define"><name>MONGO_ODM_CHILD51</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a895c30e3f28b08cf63ade16551eb4293" kind="define"><name>MONGO_ODM_CHILD52</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a74676f4b4d565224fd9d28acd618dde3" kind="define"><name>MONGO_ODM_CHILD53</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a9d26bbad7c3a6667309b5f2fd8c089cf" kind="define"><name>MONGO_ODM_CHILD54</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1af83fc7e23f2340234b5f05a9f4d1841f" kind="define"><name>MONGO_ODM_CHILD55</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a136f175559817b40b04602167beeb773" kind="define"><name>MONGO_ODM_CHILD56</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ab40987b087eb5727a4a57f88d9dfd5f9" kind="define"><name>MONGO_ODM_CHILD57</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1aff90d7d4280c701f2297812e53e48c7f" kind="define"><name>MONGO_ODM_CHILD58</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a3120be22b9d34ed76d12b3f5dee7b51c" kind="define"><name>MONGO_ODM_CHILD59</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a049a64fdc22e6cf44497fdff827ca0d5" kind="define"><name>MONGO_ODM_CHILD60</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a28cfb954b7bf1e047d6feb0d40f6fbfc" kind="define"><name>MONGO_ODM_CHILD61</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1aa3f2605446b436cbd2dd16bd1f93d123" kind="define"><name>MONGO_ODM_CHILD62</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ae4c86d46aaf6022b8da1d6cb45f5e88d" kind="define"><name>MONGO_ODM_CHILD63</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ad0a3f630458f1a3bd20cd043936965e9" kind="define"><name>MONGO_ODM_CHILD64</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1aeba94f2ae8fbe5a4cbfd0c94086e00c1" kind="define"><name>MONGO_ODM_CHILD65</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a1df37c613b4f963120582aca6120f22b" kind="define"><name>MONGO_ODM_CHILD66</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a7fd968a71a754a48710c216fad6144d8" kind="define"><name>MONGO_ODM_CHILD67</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ac016c1625b581543d1c4966dff565ee5" kind="define"><name>MONGO_ODM_CHILD68</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a3b738e260c7642f78c102fd610336bd0" kind="define"><name>MONGO_ODM_CHILD69</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a7188d9dc098e2a5998a8d79d81f0555d" kind="define"><name>MONGO_ODM_CHILD70</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a94fb18494ee360817729ba4471cfe6d7" kind="define"><name>MONGO_ODM_CHILD71</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a649cd6ef72d488e1db1b07bda0600979" kind="define"><name>MONGO_ODM_CHILD72</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ab38b75953dfb6f8c5c81372310380d3a" kind="define"><name>MONGO_ODM_CHILD73</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ad8bd30337847c2273a5bcabf648508f0" kind="define"><name>MONGO_ODM_CHILD74</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a72802fe71a6d8157b367d9ee0fb14e14" kind="define"><name>MONGO_ODM_CHILD75</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a28ba3b7ca55aabb4d9a2e87839775853" kind="define"><name>MONGO_ODM_CHILD76</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1aceffb9c3ecd3cae8c441e4e0ddceac40" kind="define"><name>MONGO_ODM_CHILD77</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a412e478f785c8685e80f4ca41a83dbb6" kind="define"><name>MONGO_ODM_CHILD78</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1aa9cea3bb77b9e41d6daa2ed3147226d1" kind="define"><name>MONGO_ODM_CHILD79</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a5c96fa55ec9078c4a7164543a142e34a" kind="define"><name>MONGO_ODM_CHILD80</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a73a3cf304459c75cb2a13eb18fecf17d" kind="define"><name>MONGO_ODM_CHILD81</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ac1e3a25b3ef9847c4b001626dfd26f0f" kind="define"><name>MONGO_ODM_CHILD82</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a0234375ab7ceeefaedbaa5af8cbb7fce" kind="define"><name>MONGO_ODM_CHILD83</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a757f39f6b327e1755c6cfab89460dd62" kind="define"><name>MONGO_ODM_CHILD84</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a0504c49556468928c966be24080ac4a4" kind="define"><name>MONGO_ODM_CHILD85</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ab29ea56c9e1d8cdc093cf9a81d62562d" kind="define"><name>MONGO_ODM_CHILD86</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a91ba5d062da4786b91ee70b4249a73ac" kind="define"><name>MONGO_ODM_CHILD87</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a5840c9abb23b4770bd0245b67b2581d2" kind="define"><name>MONGO_ODM_CHILD88</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ad72c33c9e7e295dadca85167490e0b3b" kind="define"><name>MONGO_ODM_CHILD89</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ad2c0087dc8866e1bade05bd0c0d58c32" kind="define"><name>MONGO_ODM_CHILD90</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ab295ea1e6bb638541b8ae49604a31dbb" kind="define"><name>MONGO_ODM_CHILD91</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1aa0d87d4814dcc89a674e76f9ce2887a2" kind="define"><name>MONGO_ODM_CHILD92</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a1345ec50d2f7ea6429e92d12724fe7ed" kind="define"><name>MONGO_ODM_CHILD93</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a36066f0b00387246bce431e80d9fe013" kind="define"><name>MONGO_ODM_CHILD94</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a1d1006283812fda5dc1a1f6160c7977a" kind="define"><name>MONGO_ODM_CHILD95</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1abe7f40aa979da9aa4ad1e93ce508ff95" kind="define"><name>MONGO_ODM_CHILD96</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a54355199f3b1f8a8129190bd48dd1f6f" kind="define"><name>MONGO_ODM_CHILD97</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ad8c55d100a0244c31067834e77f07e89" kind="define"><name>MONGO_ODM_CHILD98</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1a04b2a9c5898fc650b7272982a56dd8b6" kind="define"><name>MONGO_ODM_CHILD99</name></member>
+    <member refid="mongo__odm__child__autogen_8hpp_1ac3953ea3622951bdcdb1673057615e9a" kind="define"><name>MONGO_ODM_CHILD100</name></member>
+  </compound>
   <compound refid="nvp_8hpp" kind="file"><name>nvp.hpp</name>
-    <member refid="nvp_8hpp_1acb202b07b2886bb05cf9addb50bc9333" kind="define"><name>MONGO_ODM_NVP</name></member>
-    <member refid="nvp_8hpp_1ad96a748cd5ba0b9df97bc31da164f9d9" kind="define"><name>MONGO_ODM_SERIALIZE_KEYS</name></member>
-    <member refid="nvp_8hpp_1aede6ddd0eb0787bceb13387a0cddb1dc" kind="define"><name>MONGO_ODM_MAKE_KEYS</name></member>
-    <member refid="nvp_8hpp_1a98fb841a9854884333db1a577f724512" kind="define"><name>MONGO_ODM_MAKE_KEYS_MODEL</name></member>
-    <member refid="nvp_8hpp_1a414bd8cb6b2a9d8c6a2d39849a2a3dc4" kind="define"><name>MONGO_ODM_KEY</name></member>
   </compound>
   <compound refid="odm__collection_8hpp" kind="file"><name>odm_collection.hpp</name>
   </compound>
   <compound refid="query__builder_8hpp" kind="file"><name>query_builder.hpp</name>
+  </compound>
+  <compound refid="util_8hpp" kind="file"><name>util.hpp</name>
   </compound>
   <compound refid="md_CONTRIBUTING" kind="page"><name>md_CONTRIBUTING</name>
   </compound>

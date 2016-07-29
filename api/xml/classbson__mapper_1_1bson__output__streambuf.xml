@@ -175,24 +175,24 @@
     <detaileddescription>
 <para>When a document is complete, it is passed into the user-provided callback. NOTE: This does not perform any validation on the BSON files, and simply uses their first four bytes to judge the document length. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="17">
+      <node id="33">
         <label>streambuf</label>
       </node>
-      <node id="16">
+      <node id="32">
         <label>bson_mapper::bson_output_streambuf</label>
         <link refid="classbson__mapper_1_1bson__output__streambuf"/>
-        <childnode refid="17" relation="public-inheritance">
+        <childnode refid="33" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="19">
+      <node id="35">
         <label>streambuf</label>
       </node>
-      <node id="18">
+      <node id="34">
         <label>bson_mapper::bson_output_streambuf</label>
         <link refid="classbson__mapper_1_1bson__output__streambuf"/>
-        <childnode refid="19" relation="public-inheritance">
+        <childnode refid="35" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

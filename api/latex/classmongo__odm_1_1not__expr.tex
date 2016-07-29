@@ -1,0 +1,93 @@
+\hypertarget{classmongo__odm_1_1not__expr}{}\section{mongo\+\_\+odm\+:\+:not\+\_\+expr$<$ Expr $>$ Class Template Reference}
+\label{classmongo__odm_1_1not__expr}\index{mongo\+\_\+odm\+::not\+\_\+expr$<$ Expr $>$@{mongo\+\_\+odm\+::not\+\_\+expr$<$ Expr $>$}}
+
+
+This represents an expression with the \$not operator, which wraps a comparison expression and negates it.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmongo__odm_1_1not__expr_addb4f3618f5a03fefe5be5bfed40abd9}{not\+\_\+expr} (const Expr \&expr)
+\begin{DoxyCompactList}\small\item\em Creates a \$not expression that negates the given comparison expression. \end{DoxyCompactList}\item 
+std\+::string \& \hyperlink{classmongo__odm_1_1not__expr_a6ebabf0dd6a38619d9fd8cae17b2894e}{append\+\_\+name} (std\+::string \&s) const \hypertarget{classmongo__odm_1_1not__expr_a6ebabf0dd6a38619d9fd8cae17b2894e}{}\label{classmongo__odm_1_1not__expr_a6ebabf0dd6a38619d9fd8cae17b2894e}
+
+\begin{DoxyCompactList}\small\item\em Appends the name of the contained field to a string. \end{DoxyCompactList}\item 
+void \hyperlink{classmongo__odm_1_1not__expr_a8bcedeb398b0c4e09156735c4e355f4b}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false, bool omit\+\_\+name=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this expression to a B\+S\+ON core builder, as a key-\/value pair of the form \char`\"{}key\+: \{\$not\+: \{\$cmp\+: val\}\}\char`\"{}. \end{DoxyCompactList}\item 
+\hyperlink{classmongo__odm_1_1not__expr_ae25409383877731aaa45ed28c31b91c8}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const 
+\begin{DoxyCompactList}\small\item\em Converts the expression to a B\+S\+ON filter for a query. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Expr$>$\\*
+class mongo\+\_\+odm\+::not\+\_\+expr$<$ Expr $>$}
+
+This represents an expression with the \$not operator, which wraps a comparison expression and negates it. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mongo\+\_\+odm\+::not\+\_\+expr@{mongo\+\_\+odm\+::not\+\_\+expr}!not\+\_\+expr@{not\+\_\+expr}}
+\index{not\+\_\+expr@{not\+\_\+expr}!mongo\+\_\+odm\+::not\+\_\+expr@{mongo\+\_\+odm\+::not\+\_\+expr}}
+\subsubsection[{\texorpdfstring{not\+\_\+expr(const Expr \&expr)}{not_expr(const Expr &expr)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expr $>$ constexpr {\bf mongo\+\_\+odm\+::not\+\_\+expr}$<$ Expr $>$\+::{\bf not\+\_\+expr} (
+\begin{DoxyParamCaption}
+\item[{const Expr \&}]{expr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1not__expr_addb4f3618f5a03fefe5be5bfed40abd9}{}\label{classmongo__odm_1_1not__expr_addb4f3618f5a03fefe5be5bfed40abd9}
+
+
+Creates a \$not expression that negates the given comparison expression. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em expr} & A comparison expression \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::not\+\_\+expr@{mongo\+\_\+odm\+::not\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mongo\+\_\+odm\+::not\+\_\+expr@{mongo\+\_\+odm\+::not\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false, bool omit\+\_\+name=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false, bool omit_name=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expr $>$ void {\bf mongo\+\_\+odm\+::not\+\_\+expr}$<$ Expr $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}, }
+\item[{bool}]{omit\+\_\+name = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1not__expr_a8bcedeb398b0c4e09156735c4e355f4b}{}\label{classmongo__odm_1_1not__expr_a8bcedeb398b0c4e09156735c4e355f4b}
+
+
+Appends this expression to a B\+S\+ON core builder, as a key-\/value pair of the form \char`\"{}key\+: \{\$not\+: \{\$cmp\+: val\}\}\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & a B\+S\+ON core builder \\
+\hline
+{\em wrap} & Whether to wrap the B\+S\+ON inside a document. \\
+\hline
+{\em omit\+\_\+name} & Whether to skip the name of the field. This is used primarily in \$elem\+Match queries with scalar arrays, so one can have a query like \{array\+: \{\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{elem\+Match}
+\{
+\end{DoxyParagraph}
+not\+: \{\$gt\+: 5\}\}\}\} \index{mongo\+\_\+odm\+::not\+\_\+expr@{mongo\+\_\+odm\+::not\+\_\+expr}!operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}}
+\index{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}!mongo\+\_\+odm\+::not\+\_\+expr@{mongo\+\_\+odm\+::not\+\_\+expr}}
+\subsubsection[{\texorpdfstring{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value() const }{operator bsoncxx::document::view_or_value() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expr $>$ {\bf mongo\+\_\+odm\+::not\+\_\+expr}$<$ Expr $>$\+::operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1not__expr_ae25409383877731aaa45ed28c31b91c8}{}\label{classmongo__odm_1_1not__expr_ae25409383877731aaa45ed28c31b91c8}
+
+
+Converts the expression to a B\+S\+ON filter for a query. 
+
+The resulting B\+S\+ON is of the form \char`\"{}\{key\+: \{\$cmp\+: val\}\}\char`\"{}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/expression\+\_\+syntax.\+hpp\item 
+src/mongo\+\_\+odm/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

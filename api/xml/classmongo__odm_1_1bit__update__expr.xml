@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1bit__update__expr" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::bit_update_expr</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename NvpT</type>
+      </param>
+      <param>
+        <type>typename Integer</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classmongo__odm_1_1bit__update__expr_1a960233eb91034322567a975ab1758eaf" prot="public" static="no">
+        <type>NvpT</type>
+        <definition>using mongo_odm::bit_update_expr&lt; NvpT, Integer &gt;::field_type =  NvpT</definition>
+        <argsstring></argsstring>
+        <name>field_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1107" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1bit__update__expr_1a0d844b9da455204f435dae1a1d490453" prot="private" static="no" mutable="no">
+        <type>const NvpT</type>
+        <definition>const NvpT mongo_odm::bit_update_expr&lt; NvpT, Integer &gt;::_nvp</definition>
+        <argsstring></argsstring>
+        <name>_nvp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1145" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1bit__update__expr_1a71ecfe9d6d9381ae744e12e71fd7b150" prot="private" static="no" mutable="no">
+        <type>const Integer</type>
+        <definition>const Integer mongo_odm::bit_update_expr&lt; NvpT, Integer &gt;::_mask</definition>
+        <argsstring></argsstring>
+        <name>_mask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1146" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmongo__odm_1_1bit__update__expr_1ae54c33476b0aa16e8b00c11f4d046757" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* mongo_odm::bit_update_expr&lt; NvpT, Integer &gt;::_operation</definition>
+        <argsstring></argsstring>
+        <name>_operation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1147" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1147" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1bit__update__expr_1a18b120fdb218988ea0aaea148df44e0e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mongo_odm::bit_update_expr&lt; NvpT, Integer &gt;::bit_update_expr</definition>
+        <argsstring>(const NvpT &amp;nvp, Integer mask, const char *op)</argsstring>
+        <name>bit_update_expr</name>
+        <param>
+          <type>const NvpT &amp;</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>Integer</type>
+          <declname>mask</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1108" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1108" bodyend="1109"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1bit__update__expr_1a3376a71ac3c15a2ea7ac0e297e5bd59d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::bit_update_expr&lt; NvpT, Integer &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Appends this query to a BSON core builder as an expression &apos;$bit: { &lt;field&gt;: { &lt;and|or|xor&gt;: &lt;int&gt; } }&apos;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A basic BSON core builder. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Whether</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to wrap this expression inside a document. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1117" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1117" bodyend="1136"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1bit__update__expr_1a3505dbcce506d99161e0436b84153d2c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::bit_update_expr&lt; NvpT, Integer &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="1138" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="1138" bodyend="1142"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Expression that updates field using the $bit operator, which does bitwise operations using a mask. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>NvpT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name-value-pair type corresponding to a field </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Integer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The integral type used as a bit mask </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <location file="src/mongo_odm/expression_syntax.hpp" line="92" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="92" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1bit__update__expr_1a71ecfe9d6d9381ae744e12e71fd7b150" prot="private" virt="non-virtual"><scope>mongo_odm::bit_update_expr</scope><name>_mask</name></member>
+      <member refid="classmongo__odm_1_1bit__update__expr_1a0d844b9da455204f435dae1a1d490453" prot="private" virt="non-virtual"><scope>mongo_odm::bit_update_expr</scope><name>_nvp</name></member>
+      <member refid="classmongo__odm_1_1bit__update__expr_1ae54c33476b0aa16e8b00c11f4d046757" prot="private" virt="non-virtual"><scope>mongo_odm::bit_update_expr</scope><name>_operation</name></member>
+      <member refid="classmongo__odm_1_1bit__update__expr_1a3376a71ac3c15a2ea7ac0e297e5bd59d" prot="public" virt="non-virtual"><scope>mongo_odm::bit_update_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmongo__odm_1_1bit__update__expr_1a18b120fdb218988ea0aaea148df44e0e" prot="public" virt="non-virtual"><scope>mongo_odm::bit_update_expr</scope><name>bit_update_expr</name></member>
+      <member refid="classmongo__odm_1_1bit__update__expr_1a960233eb91034322567a975ab1758eaf" prot="public" virt="non-virtual"><scope>mongo_odm::bit_update_expr</scope><name>field_type</name></member>
+      <member refid="classmongo__odm_1_1bit__update__expr_1a3505dbcce506d99161e0436b84153d2c" prot="public" virt="non-virtual"><scope>mongo_odm::bit_update_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,59 @@
+\hypertarget{classmongo__odm_1_1bit__update__expr}{}\section{mongo\+\_\+odm\+:\+:bit\+\_\+update\+\_\+expr$<$ NvpT, Integer $>$ Class Template Reference}
+\label{classmongo__odm_1_1bit__update__expr}\index{mongo\+\_\+odm\+::bit\+\_\+update\+\_\+expr$<$ Nvp\+T, Integer $>$@{mongo\+\_\+odm\+::bit\+\_\+update\+\_\+expr$<$ Nvp\+T, Integer $>$}}
+
+
+Expression that updates field using the \$bit operator, which does bitwise operations using a mask.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmongo__odm_1_1bit__update__expr_a3376a71ac3c15a2ea7ac0e297e5bd59d}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder as an expression \textquotesingle{}\$bit\+: \{ $<$field$>$\+: \{ $<$and$\vert$or$\vert$xor$>$\+: $<$int$>$ \} \}\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename NvpT, typename Integer$>$\\*
+class mongo\+\_\+odm\+::bit\+\_\+update\+\_\+expr$<$ Nvp\+T, Integer $>$}
+
+Expression that updates field using the \$bit operator, which does bitwise operations using a mask. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em NvpT} & The name-\/value-\/pair type corresponding to a field \\
+\hline
+{\em Integer} & The integral type used as a bit mask \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::bit\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::bit\+\_\+update\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mongo\+\_\+odm\+::bit\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::bit\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename Integer $>$ void {\bf mongo\+\_\+odm\+::bit\+\_\+update\+\_\+expr}$<$ NvpT, Integer $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1bit__update__expr_a3376a71ac3c15a2ea7ac0e297e5bd59d}{}\label{classmongo__odm_1_1bit__update__expr_a3376a71ac3c15a2ea7ac0e297e5bd59d}
+
+
+Appends this query to a B\+S\+ON core builder as an expression \textquotesingle{}\$bit\+: \{ $<$field$>$\+: \{ $<$and$\vert$or$\vert$xor$>$\+: $<$int$>$ \} \}\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em Whether} & to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/expression\+\_\+syntax.\+hpp\item 
+src/mongo\+\_\+odm/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

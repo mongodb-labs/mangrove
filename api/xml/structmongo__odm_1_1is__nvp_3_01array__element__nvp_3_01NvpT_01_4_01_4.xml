@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1is__nvp_3_01array__element__nvp_3_01NvpT_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::is_nvp&lt; array_element_nvp&lt; NvpT &gt; &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">true_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename NvpT</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="217">
+        <label>true_type</label>
+      </node>
+      <node id="216">
+        <label>mongo_odm::is_nvp&lt; array_element_nvp&lt; NvpT &gt; &gt;</label>
+        <link refid="structmongo__odm_1_1is__nvp_3_01array__element__nvp_3_01NvpT_01_4_01_4"/>
+        <childnode refid="217" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="219">
+        <label>true_type</label>
+      </node>
+      <node id="218">
+        <label>mongo_odm::is_nvp&lt; array_element_nvp&lt; NvpT &gt; &gt;</label>
+        <link refid="structmongo__odm_1_1is__nvp_3_01array__element__nvp_3_01NvpT_01_4_01_4"/>
+        <childnode refid="219" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/nvp.hpp" line="772" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="772" bodyend="772"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

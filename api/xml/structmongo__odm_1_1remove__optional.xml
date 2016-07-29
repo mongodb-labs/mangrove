@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1remove__optional" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::remove_optional</compoundname>
+    <includes refid="util_8hpp" local="no">util.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmongo__odm_1_1remove__optional_1a385a594cd6d5f6b3141eacd8c4bd4d56" prot="public" static="no">
+        <type>T</type>
+        <definition>using mongo_odm::remove_optional&lt; T &gt;::type =  T</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/util.hpp" line="125" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A templated struct that contains its templated type, but with optionals unwrapped. </para>    </briefdescription>
+    <detaileddescription>
+<para>So <computeroutput><ref refid="structmongo__odm_1_1remove__optional" kindref="compound">remove_optional</ref>&lt;optional&lt;int&gt;&gt;::type</computeroutput> is defined as <computeroutput>int</computeroutput>. </para>    </detaileddescription>
+    <location file="src/mongo_odm/util.hpp" line="124" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="124" bodyend="126"/>
+    <listofallmembers>
+      <member refid="structmongo__odm_1_1remove__optional_1a385a594cd6d5f6b3141eacd8c4bd4d56" prot="public" virt="non-virtual"><scope>mongo_odm::remove_optional</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

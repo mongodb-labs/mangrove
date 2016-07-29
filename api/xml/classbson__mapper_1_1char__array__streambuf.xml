@@ -235,30 +235,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="28">
+      <node id="44">
         <label>bson_mapper::char_array_streambuf</label>
         <link refid="classbson__mapper_1_1char__array__streambuf"/>
-        <childnode refid="29" relation="public-inheritance">
+        <childnode refid="45" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="29">
+      <node id="45">
         <label>std::streambuf</label>
       </node>
-      <node id="30">
+      <node id="46">
         <label>bson_mapper::bson_input_streambuf</label>
         <link refid="classbson__mapper_1_1bson__input__streambuf"/>
-        <childnode refid="28" relation="public-inheritance">
+        <childnode refid="44" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="31">
+      <node id="47">
         <label>bson_mapper::char_array_streambuf</label>
         <link refid="classbson__mapper_1_1char__array__streambuf"/>
-        <childnode refid="32" relation="public-inheritance">
+        <childnode refid="48" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="32">
+      <node id="48">
         <label>std::streambuf</label>
       </node>
     </collaborationgraph>

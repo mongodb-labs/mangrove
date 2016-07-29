@@ -6,6 +6,8 @@ var searchData=
   ['find_5fone_5fand_5freplace',['find_one_and_replace',['../classmongo__odm_1_1odm__collection.html#adbcbf110fd4b3d14f70206020eee24d3',1,'mongo_odm::odm_collection']]],
   ['finishnode',['finishNode',['../classbson__mapper_1_1BSONInputArchive.html#a9360961eba7c7c430329eed30667a2de',1,'bson_mapper::BSONInputArchive']]],
   ['finishrootelementifrootelement',['finishRootElementIfRootElement',['../classbson__mapper_1_1BSONInputArchive.html#a1100f99901973ebefab2198d2381e953',1,'bson_mapper::BSONInputArchive']]],
+  ['first_5fmatch',['first_match',['../classmongo__odm_1_1nvp__base.html#a9d1b3cff13f56eed1e8e08f011668f7d',1,'mongo_odm::nvp_base']]],
   ['firsttypeisthesame',['FirstTypeIsTheSame',['../structmongo__odm_1_1FirstTypeIsTheSame.html',1,'mongo_odm']]],
-  ['firsttypeisthesame_3c_20t_2c_20t2_2c_20ts_2e_2e_2e_20_3e',['FirstTypeIsTheSame&lt; T, T2, Ts... &gt;',['../structmongo__odm_1_1FirstTypeIsTheSame_3_01T_00_01T2_00_01Ts_8_8_8_01_4.html',1,'mongo_odm']]]
+  ['firsttypeisthesame_3c_20t_2c_20t2_2c_20ts_2e_2e_2e_20_3e',['FirstTypeIsTheSame&lt; T, T2, Ts... &gt;',['../structmongo__odm_1_1FirstTypeIsTheSame_3_01T_00_01T2_00_01Ts_8_8_8_01_4.html',1,'mongo_odm']]],
+  ['free_5fnvp',['free_nvp',['../classmongo__odm_1_1free__nvp.html',1,'mongo_odm']]]
 ];

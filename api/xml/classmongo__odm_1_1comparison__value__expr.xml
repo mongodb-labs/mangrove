@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1comparison__value__expr" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::comparison_value_expr</compoundname>
+    <basecompoundref refid="classmongo__odm_1_1comparison__expr" prot="public" virt="non-virtual">mongo_odm::comparison_expr&lt; NvpT, U &gt;</basecompoundref>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>NvpT</declname>
+        <defname>NvpT</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>U</declname>
+        <defname>U</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1comparison__value__expr_1a649781e917a3ed62f441b07f4d8d66bd" prot="private" static="no" mutable="no">
+        <type>const U</type>
+        <definition>const U mongo_odm::comparison_value_expr&lt; NvpT, U &gt;::_value</definition>
+        <argsstring></argsstring>
+        <name>_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="261" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1comparison__value__expr_1ad84ce480c428f9f4afa11e57205e816e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mongo_odm::comparison_value_expr&lt; NvpT, U &gt;::comparison_value_expr</definition>
+        <argsstring>(NvpT nvp, const U &amp;value, const char *op)</argsstring>
+        <name>comparison_value_expr</name>
+        <param>
+          <type>NvpT</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>const U &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="256" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="256" bodyend="258"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a comparison expression as above, but stores a value instead of a reference. </para>    </briefdescription>
+    <detaileddescription>
+<para>This is useful for storing temporary or computed values. Internally, it uses a <ref refid="classmongo__odm_1_1comparison__expr" kindref="compound">comparison_expr</ref> whose value is a b_regex. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="52">
+        <label>mongo_odm::comparison_value_expr&lt; NvpT, U &gt;</label>
+        <link refid="classmongo__odm_1_1comparison__value__expr"/>
+        <childnode refid="53" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>mongo_odm::comparison_expr&lt; NvpT, U &gt;</label>
+        <link refid="classmongo__odm_1_1comparison__expr"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="54">
+        <label>mongo_odm::comparison_value_expr&lt; NvpT, U &gt;</label>
+        <link refid="classmongo__odm_1_1comparison__value__expr"/>
+        <childnode refid="55" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>mongo_odm::comparison_expr&lt; NvpT, U &gt;</label>
+        <link refid="classmongo__odm_1_1comparison__expr"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/expression_syntax.hpp" line="57" column="1" bodyfile="src/mongo_odm/expression_syntax.hpp" bodystart="57" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1comparison__value__expr_1a649781e917a3ed62f441b07f4d8d66bd" prot="private" virt="non-virtual"><scope>mongo_odm::comparison_value_expr</scope><name>_value</name></member>
+      <member refid="classmongo__odm_1_1comparison__expr_1a3adf1fd565c8a6c1bb01ca9d4ee42ce5" prot="public" virt="non-virtual"><scope>mongo_odm::comparison_value_expr</scope><name>append_name</name></member>
+      <member refid="classmongo__odm_1_1comparison__expr_1a2ed6e4e5fd013703369938911b4c367e" prot="public" virt="non-virtual"><scope>mongo_odm::comparison_value_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmongo__odm_1_1comparison__expr_1a8cb08d386b0b1cbb88780d12c29c385e" prot="public" virt="non-virtual"><scope>mongo_odm::comparison_value_expr</scope><name>comparison_expr</name></member>
+      <member refid="classmongo__odm_1_1comparison__expr_1aa60e06beaf4e99b7b73a445b4fc5ffe7" prot="public" virt="non-virtual"><scope>mongo_odm::comparison_value_expr</scope><name>comparison_expr</name></member>
+      <member refid="classmongo__odm_1_1comparison__value__expr_1ad84ce480c428f9f4afa11e57205e816e" prot="public" virt="non-virtual"><scope>mongo_odm::comparison_value_expr</scope><name>comparison_value_expr</name></member>
+      <member refid="classmongo__odm_1_1comparison__expr_1aa6a1bf35d1addc7d7d6ff5af050d8523" prot="public" virt="non-virtual"><scope>mongo_odm::comparison_value_expr</scope><name>field_type</name></member>
+      <member refid="classmongo__odm_1_1comparison__expr_1a5c3c4afa7894a5268e6c9ab76c4d83e3" prot="public" virt="non-virtual"><scope>mongo_odm::comparison_value_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

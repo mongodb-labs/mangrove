@@ -1,0 +1,106 @@
+\hypertarget{classmongo__odm_1_1nvp__child}{}\section{mongo\+\_\+odm\+:\+:nvp\+\_\+child$<$ Base, T, Parent $>$ Class Template Reference}
+\label{classmongo__odm_1_1nvp__child}\index{mongo\+\_\+odm\+::nvp\+\_\+child$<$ Base, T, Parent $>$@{mongo\+\_\+odm\+::nvp\+\_\+child$<$ Base, T, Parent $>$}}
+
+
+Class that represents a name-\/value pair for a field of an object that is a member of another object.  
+
+
+
+
+{\ttfamily \#include $<$nvp.\+hpp$>$}
+
+Inheritance diagram for mongo\+\_\+odm\+:\+:nvp\+\_\+child$<$ Base, T, Parent $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmongo__odm_1_1nvp__child}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmongo__odm_1_1update__expr}{update\+\_\+expr}$<$ \hyperlink{classmongo__odm_1_1nvp__child}{nvp\+\_\+child}$<$ Base, T, Parent $>$, T $>$ \hyperlink{classmongo__odm_1_1nvp__child_abc2a07e7d92692f3c4f8710f4c264ba6}{operator=} (const no\+\_\+opt\+\_\+type \&val) const \hypertarget{classmongo__odm_1_1nvp__child_abc2a07e7d92692f3c4f8710f4c264ba6}{}\label{classmongo__odm_1_1nvp__child_abc2a07e7d92692f3c4f8710f4c264ba6}
+
+\begin{DoxyCompactList}\small\item\em Creates an update expression that sets the field to the given value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type$>$ }\\constexpr std\+::enable\+\_\+if\+\_\+t$<$ is\+\_\+date\+\_\+v$<$ U $>$, \hyperlink{classmongo__odm_1_1current__date__expr}{current\+\_\+date\+\_\+expr}$<$ \hyperlink{classmongo__odm_1_1nvp__child}{nvp\+\_\+child} $>$ $>$ \hyperlink{classmongo__odm_1_1nvp__child_afa70a98ddfe7c9d3d7a066e9227b53ab}{operator=} (const \hyperlink{structmongo__odm_1_1current__date__t}{current\+\_\+date\+\_\+t} \&) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that sets a date value to the current date. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U  = no\+\_\+opt\+\_\+type$>$ }\\constexpr std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+same$<$ bsoncxx\+::types\+::b\+\_\+timestamp, U $>$\+::value, \hyperlink{classmongo__odm_1_1current__date__expr}{current\+\_\+date\+\_\+expr}$<$ \hyperlink{classmongo__odm_1_1nvp__child}{nvp\+\_\+child} $>$ $>$ \hyperlink{classmongo__odm_1_1nvp__child_a78930ea7b294a162cba2900a4f1ebf93}{operator=} (const \hyperlink{structmongo__odm_1_1current__date__t}{current\+\_\+date\+\_\+t} \&) const 
+\begin{DoxyCompactList}\small\item\em Creates an expression that sets a date value to the current date. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classmongo__odm_1_1nvp__child_a826c7a25afba46a514cca886ade9d684}{get\+\_\+name} () const 
+\begin{DoxyCompactList}\small\item\em Returns the name of this field, in dot notation. \end{DoxyCompactList}\item 
+std\+::string \& \hyperlink{classmongo__odm_1_1nvp__child_a17cb684c6f0793862f1a44ef616c0b0f}{append\+\_\+name} (std\+::string \&s) const 
+\begin{DoxyCompactList}\small\item\em Returns the qualified name of this field in dot notation, i.\+e. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Base, typename T, typename Parent$>$\\*
+class mongo\+\_\+odm\+::nvp\+\_\+child$<$ Base, T, Parent $>$}
+
+Class that represents a name-\/value pair for a field of an object that is a member of another object. 
+
+The name of this name-\/value pair will be \char`\"{}$<$parent-\/name$>$.\+field\+\_\+name\char`\"{}. The parenet can be either an nvp, or another \hyperlink{classmongo__odm_1_1nvp__child}{nvp\+\_\+child}. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & The type of the object that contains this field \\
+\hline
+{\em T} & The type of the field \\
+\hline
+{\em Parent} & The type of the parent name-\/value pair, either an nvp$<$...$>$ or nvp\+\_\+child$<$...$>$. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::nvp\+\_\+child@{mongo\+\_\+odm\+::nvp\+\_\+child}!append\+\_\+name@{append\+\_\+name}}
+\index{append\+\_\+name@{append\+\_\+name}!mongo\+\_\+odm\+::nvp\+\_\+child@{mongo\+\_\+odm\+::nvp\+\_\+child}}
+\subsubsection[{\texorpdfstring{append\+\_\+name(std\+::string \&s) const }{append_name(std::string &s) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base , typename T , typename Parent $>$ std\+::string\& {\bf mongo\+\_\+odm\+::nvp\+\_\+child}$<$ Base, T, Parent $>$\+::append\+\_\+name (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{s}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__child_a17cb684c6f0793862f1a44ef616c0b0f}{}\label{classmongo__odm_1_1nvp__child_a17cb684c6f0793862f1a44ef616c0b0f}
+
+
+Returns the qualified name of this field in dot notation, i.\+e. 
+
+\char`\"{}parent.\+child\char`\"{}. \begin{DoxyReturn}{Returns}
+A string containing the name of this field in dot notation. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+child@{mongo\+\_\+odm\+::nvp\+\_\+child}!get\+\_\+name@{get\+\_\+name}}
+\index{get\+\_\+name@{get\+\_\+name}!mongo\+\_\+odm\+::nvp\+\_\+child@{mongo\+\_\+odm\+::nvp\+\_\+child}}
+\subsubsection[{\texorpdfstring{get\+\_\+name() const }{get_name() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base , typename T , typename Parent $>$ std\+::string {\bf mongo\+\_\+odm\+::nvp\+\_\+child}$<$ Base, T, Parent $>$\+::get\+\_\+name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__child_a826c7a25afba46a514cca886ade9d684}{}\label{classmongo__odm_1_1nvp__child_a826c7a25afba46a514cca886ade9d684}
+
+
+Returns the name of this field, in dot notation. 
+
+\begin{DoxyReturn}{Returns}
+The fully qualified name of this field in dot notation. 
+\end{DoxyReturn}
+\index{mongo\+\_\+odm\+::nvp\+\_\+child@{mongo\+\_\+odm\+::nvp\+\_\+child}!operator=@{operator=}}
+\index{operator=@{operator=}!mongo\+\_\+odm\+::nvp\+\_\+child@{mongo\+\_\+odm\+::nvp\+\_\+child}}
+\subsubsection[{\texorpdfstring{operator=(const current\+\_\+date\+\_\+t \&) const }{operator=(const current_date_t &) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base , typename T , typename Parent $>$ template$<$typename U  = no\+\_\+opt\+\_\+type$>$ constexpr std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+date\+\_\+v$<$U$>$, {\bf current\+\_\+date\+\_\+expr}$<${\bf nvp\+\_\+child}$>$ $>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+child}$<$ Base, T, Parent $>$\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf current\+\_\+date\+\_\+t} \&}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__child_afa70a98ddfe7c9d3d7a066e9227b53ab}{}\label{classmongo__odm_1_1nvp__child_afa70a98ddfe7c9d3d7a066e9227b53ab}
+
+
+Creates an expression that sets a date value to the current date. 
+
+This is only enabled for std\+::chrono\+::time/duration values, as well as b\+\_\+date. \index{mongo\+\_\+odm\+::nvp\+\_\+child@{mongo\+\_\+odm\+::nvp\+\_\+child}!operator=@{operator=}}
+\index{operator=@{operator=}!mongo\+\_\+odm\+::nvp\+\_\+child@{mongo\+\_\+odm\+::nvp\+\_\+child}}
+\subsubsection[{\texorpdfstring{operator=(const current\+\_\+date\+\_\+t \&) const }{operator=(const current_date_t &) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Base , typename T , typename Parent $>$ template$<$typename U  = no\+\_\+opt\+\_\+type$>$ constexpr std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+same$<$bsoncxx\+::types\+::b\+\_\+timestamp, U$>$\+::value, {\bf current\+\_\+date\+\_\+expr}$<${\bf nvp\+\_\+child}$>$ $>$ {\bf mongo\+\_\+odm\+::nvp\+\_\+child}$<$ Base, T, Parent $>$\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf current\+\_\+date\+\_\+t} \&}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1nvp__child_a78930ea7b294a162cba2900a4f1ebf93}{}\label{classmongo__odm_1_1nvp__child_a78930ea7b294a162cba2900a4f1ebf93}
+
+
+Creates an expression that sets a date value to the current date. 
+
+This is only enabled for std\+::chrono\+::time/duration values, as well as b\+\_\+date. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/nvp.\+hpp\end{DoxyCompactItemize}

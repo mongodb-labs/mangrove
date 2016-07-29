@@ -30,6 +30,22 @@
   </url>
   
   <url>
+    <loc>http://mongodb.github.io/mongo-cxx-odm/3-queries/introduction/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mongodb.github.io/mongo-cxx-odm/4-updates/introduction/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mongodb.github.io/mongo-cxx-odm/3-queries/operators/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mongodb.github.io/mongo-cxx-odm/4-updates/operators/</loc>
+  </url>
+  
+  <url>
     <loc>http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/</loc>
   </url>
   

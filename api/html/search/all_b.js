@@ -1,7 +1,15 @@
 var searchData=
 [
-  ['odm_5fcollection',['odm_collection',['../classmongo__odm_1_1odm__collection.html',1,'mongo_odm']]],
-  ['operator_2a',['operator*',['../classmongo__odm_1_1deserializing__cursor_1_1iterator.html#ad7b8718a44ef73460ed9196c719acaf6',1,'mongo_odm::deserializing_cursor::iterator']]],
-  ['overflow',['overflow',['../classbson__mapper_1_1bson__output__streambuf.html#aebf518d6dd7cad563dced7299b05456e',1,'bson_mapper::bson_output_streambuf']]],
-  ['view_5for_5fvalue',['view_or_value',['../classmongo__odm_1_1ComparisonExpr.html#a8174f54d033e934b141b3a9ef4480a84',1,'mongo_odm::ComparisonExpr::view_or_value()'],['../classmongo__odm_1_1NotExpr.html#a6f2e9d9b79c21dafbf30f05d231ee52c',1,'mongo_odm::NotExpr::view_or_value()'],['../classmongo__odm_1_1ExpressionList.html#a09d23e240065afc839e4b791a7916163',1,'mongo_odm::ExpressionList::view_or_value()'],['../classmongo__odm_1_1BooleanExpr.html#a8c86b1be15ed3d9a22c81dc0bdb4e7a9',1,'mongo_odm::BooleanExpr::view_or_value()']]]
+  ['nin',['nin',['../classmongo__odm_1_1nvp__base.html#ac518ef90312a483c64436097e9f9a34e',1,'mongo_odm::nvp_base']]],
+  ['not_5fexpr',['not_expr',['../classmongo__odm_1_1not__expr.html',1,'mongo_odm']]],
+  ['not_5fexpr',['not_expr',['../classmongo__odm_1_1not__expr.html#addb4f3618f5a03fefe5be5bfed40abd9',1,'mongo_odm::not_expr']]],
+  ['nvp',['nvp',['../classmongo__odm_1_1nvp.html',1,'mongo_odm']]],
+  ['nvp',['nvp',['../classmongo__odm_1_1nvp.html#ae4c0a86c0051de39061544e11fc69aee',1,'mongo_odm::nvp']]],
+  ['nvp_5fbase',['nvp_base',['../classmongo__odm_1_1nvp__base.html',1,'mongo_odm']]],
+  ['nvp_5fbase_3c_20array_5felement_5fnvp_3c_20nvpt_20_3e_2c_20iterable_5fvalue_5ft_3c_20nvpt_3a_3ano_5fopt_5ftype_20_3e_20_3e',['nvp_base&lt; array_element_nvp&lt; NvpT &gt;, iterable_value_t&lt; NvpT::no_opt_type &gt; &gt;',['../classmongo__odm_1_1nvp__base.html',1,'mongo_odm']]],
+  ['nvp_5fbase_3c_20dollar_5foperator_5fnvp_3c_20nvpt_20_3e_2c_20nvpt_3a_3atype_20_3e',['nvp_base&lt; dollar_operator_nvp&lt; NvpT &gt;, NvpT::type &gt;',['../classmongo__odm_1_1nvp__base.html',1,'mongo_odm']]],
+  ['nvp_5fbase_3c_20free_5fnvp_3c_20t_20_3e_2c_20t_20_3e',['nvp_base&lt; free_nvp&lt; T &gt;, T &gt;',['../classmongo__odm_1_1nvp__base.html',1,'mongo_odm']]],
+  ['nvp_5fbase_3c_20nvp_3c_20base_2c_20t_20_3e_2c_20t_20_3e',['nvp_base&lt; nvp&lt; Base, T &gt;, T &gt;',['../classmongo__odm_1_1nvp__base.html',1,'mongo_odm']]],
+  ['nvp_5fbase_3c_20nvp_5fchild_3c_20base_2c_20t_2c_20parent_20_3e_2c_20t_20_3e',['nvp_base&lt; nvp_child&lt; Base, T, Parent &gt;, T &gt;',['../classmongo__odm_1_1nvp__base.html',1,'mongo_odm']]],
+  ['nvp_5fchild',['nvp_child',['../classmongo__odm_1_1nvp__child.html',1,'mongo_odm']]]
 ];

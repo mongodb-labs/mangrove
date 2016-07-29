@@ -4,10 +4,14 @@
     <compoundname>src/mongo_odm</compoundname>
     <innerdir refid="dir_ecac7df9db3903293080f8b1c816dbd7">src/mongo_odm/config</innerdir>
     <innerfile refid="deserializing__cursor_8hpp">deserializing_cursor.hpp</innerfile>
+    <innerfile refid="expression__syntax_8hpp">expression_syntax.hpp</innerfile>
+    <innerfile refid="macros_8hpp">macros.hpp</innerfile>
     <innerfile refid="model_8hpp">model.hpp</innerfile>
+    <innerfile refid="mongo__odm__child__autogen_8hpp">mongo_odm_child_autogen.hpp</innerfile>
     <innerfile refid="nvp_8hpp">nvp.hpp</innerfile>
     <innerfile refid="odm__collection_8hpp">odm_collection.hpp</innerfile>
     <innerfile refid="query__builder_8hpp">query_builder.hpp</innerfile>
+    <innerfile refid="util_8hpp">util.hpp</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

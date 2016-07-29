@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1first__two__types__are__same_3_01T_00_01T2_00_01Ts_8_8_8_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::first_two_types_are_same&lt; T, T2, Ts... &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::is_same&lt; T, std::decay_t&lt; T2 &gt; &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename T2</type>
+      </param>
+      <param>
+        <type>typename...</type>
+        <declname>Ts</declname>
+        <defname>Ts</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="167">
+        <label>std::is_same&lt; T, std::decay_t&lt; T2 &gt; &gt;</label>
+      </node>
+      <node id="166">
+        <label>mongo_odm::first_two_types_are_same&lt; T, T2, Ts... &gt;</label>
+        <link refid="structmongo__odm_1_1first__two__types__are__same_3_01T_00_01T2_00_01Ts_8_8_8_01_4"/>
+        <childnode refid="167" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="169">
+        <label>std::is_same&lt; T, std::decay_t&lt; T2 &gt; &gt;</label>
+      </node>
+      <node id="168">
+        <label>mongo_odm::first_two_types_are_same&lt; T, T2, Ts... &gt;</label>
+        <link refid="structmongo__odm_1_1first__two__types__are__same_3_01T_00_01T2_00_01Ts_8_8_8_01_4"/>
+        <childnode refid="169" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/util.hpp" line="190" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="190" bodyend="190"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

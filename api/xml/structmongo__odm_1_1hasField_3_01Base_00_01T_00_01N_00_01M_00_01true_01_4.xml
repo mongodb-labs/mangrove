@@ -26,28 +26,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="56">
+      <node id="175">
         <label>std::is_same&lt; T Base::*, decltype(std::get&lt; N &gt;(Base::mongo_odm_mapped_fields()).t)&gt;</label>
       </node>
-      <node id="55">
+      <node id="174">
         <label>mongo_odm::hasField&lt; Base, T, N, M, true &gt;</label>
         <link refid="structmongo__odm_1_1hasField_3_01Base_00_01T_00_01N_00_01M_00_01true_01_4"/>
-        <childnode refid="56" relation="public-inheritance">
+        <childnode refid="175" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="58">
+      <node id="177">
         <label>std::is_same&lt; T Base::*, decltype(std::get&lt; N &gt;(Base::mongo_odm_mapped_fields()).t)&gt;</label>
       </node>
-      <node id="57">
+      <node id="176">
         <label>mongo_odm::hasField&lt; Base, T, N, M, true &gt;</label>
         <link refid="structmongo__odm_1_1hasField_3_01Base_00_01T_00_01N_00_01M_00_01true_01_4"/>
-        <childnode refid="58" relation="public-inheritance">
+        <childnode refid="177" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/mongo_odm/nvp.hpp" line="100" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="99" bodyend="100"/>
+    <location file="src/mongo_odm/nvp.hpp" line="806" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="805" bodyend="806"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

@@ -4,6 +4,16 @@
     <compoundname>compiler.hpp</compoundname>
     <includedby refid="mongo__odm_2config_2prelude_8hpp" local="no">src/mongo_odm/config/prelude.hpp</includedby>
     <invincdepgraph>
+      <node id="58">
+        <label>src/mongo_odm/util.hpp</label>
+        <link refid="util_8hpp_source"/>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
       <node id="51">
         <label>src/mongo_odm/odm_collection.hpp</label>
         <link refid="odm__collection_8hpp_source"/>
@@ -20,13 +30,35 @@
         <label>src/mongo_odm/model.hpp</label>
         <link refid="model_8hpp_source"/>
       </node>
-      <node id="54">
+      <node id="55">
         <label>src/mongo_odm/query_builder.hpp</label>
         <link refid="query__builder_8hpp_source"/>
       </node>
-      <node id="53">
+      <node id="57">
+        <label>src/mongo_odm/mongo_odm_child_autogen.hpp</label>
+        <link refid="mongo__odm__child__autogen_8hpp_source"/>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
         <label>src/mongo_odm/nvp.hpp</label>
         <link refid="nvp_8hpp_source"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>src/mongo_odm/expression_syntax.hpp</label>
+        <link refid="expression__syntax_8hpp_source"/>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>src/mongo_odm/macros.hpp</label>
+        <link refid="macros_8hpp_source"/>
+        <childnode refid="53" relation="include">
+        </childnode>
         <childnode refid="54" relation="include">
         </childnode>
       </node>
@@ -35,13 +67,21 @@
         <link refid="mongo__odm_2config_2prelude_8hpp_source"/>
         <childnode refid="50" relation="include">
         </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
         </childnode>
       </node>
       <node id="48">

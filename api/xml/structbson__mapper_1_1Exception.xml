@@ -45,24 +45,24 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="38">
+      <node id="67">
         <label>std::runtime_error</label>
       </node>
-      <node id="37">
+      <node id="66">
         <label>bson_mapper::Exception</label>
         <link refid="structbson__mapper_1_1Exception"/>
-        <childnode refid="38" relation="public-inheritance">
+        <childnode refid="67" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="40">
+      <node id="69">
         <label>std::runtime_error</label>
       </node>
-      <node id="39">
+      <node id="68">
         <label>bson_mapper::Exception</label>
         <link refid="structbson__mapper_1_1Exception"/>
-        <childnode refid="40" relation="public-inheritance">
+        <childnode refid="69" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

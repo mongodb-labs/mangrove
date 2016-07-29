@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1first__two__types__are__same" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::first_two_types_are_same</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">false_type</basecompoundref>
+    <includes refid="util_8hpp" local="no">util.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename...</type>
+        <declname>Ts</declname>
+        <defname>Ts</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>Helper type trait widget that helps properly forward arguments to _id constructor in <ref refid="classmongo__odm_1_1model" kindref="compound">mongo_odm::model</ref>. </para>    </briefdescription>
+    <detaileddescription>
+<para>first_two_types_are_same&lt;T1, T2, ...&gt;::value will be true when T1 and T2 are of the same type, and false otherwise. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="163">
+        <label>false_type</label>
+      </node>
+      <node id="162">
+        <label>mongo_odm::first_two_types_are_same&lt; Ts &gt;</label>
+        <link refid="structmongo__odm_1_1first__two__types__are__same"/>
+        <childnode refid="163" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="165">
+        <label>false_type</label>
+      </node>
+      <node id="164">
+        <label>mongo_odm::first_two_types_are_same&lt; Ts &gt;</label>
+        <link refid="structmongo__odm_1_1first__two__types__are__same"/>
+        <childnode refid="165" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/util.hpp" line="187" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="187" bodyend="187"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -454,24 +454,24 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="21">
+      <node id="37">
         <label>cereal::InputArchive&lt; BSONInputArchive &gt;</label>
       </node>
-      <node id="20">
+      <node id="36">
         <label>bson_mapper::BSONInputArchive</label>
         <link refid="classbson__mapper_1_1BSONInputArchive"/>
-        <childnode refid="21" relation="public-inheritance">
+        <childnode refid="37" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="23">
+      <node id="39">
         <label>cereal::InputArchive&lt; BSONInputArchive &gt;</label>
       </node>
-      <node id="22">
+      <node id="38">
         <label>bson_mapper::BSONInputArchive</label>
         <link refid="classbson__mapper_1_1BSONInputArchive"/>
-        <childnode refid="23" relation="public-inheritance">
+        <childnode refid="39" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

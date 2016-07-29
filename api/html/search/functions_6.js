@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['insert_5fmany',['insert_many',['../classmongo__odm_1_1odm__collection.html#a9503db6dacc66f8af5466bd22479a90e',1,'mongo_odm::odm_collection::insert_many(const container_type &amp;container, const mongocxx::options::insert &amp;options=mongocxx::options::insert())'],['../classmongo__odm_1_1odm__collection.html#a411c5e06bd3dab97a15ee478f6dae540',1,'mongo_odm::odm_collection::insert_many(object_iterator_type begin, object_iterator_type end, const mongocxx::options::insert &amp;options=mongocxx::options::insert())']]],
-  ['insert_5fone',['insert_one',['../classmongo__odm_1_1odm__collection.html#af11f78449ec0938caa49346da8eed19d',1,'mongo_odm::odm_collection']]]
+  ['get_5fname',['get_name',['../classmongo__odm_1_1nvp.html#a36c3a03b263756a1d5e74da5a8c4401d',1,'mongo_odm::nvp::get_name()'],['../classmongo__odm_1_1nvp__child.html#a826c7a25afba46a514cca886ade9d684',1,'mongo_odm::nvp_child::get_name()'],['../classmongo__odm_1_1array__element__nvp.html#a910b3a4d344ad4bcecfb83bd4105f7e3',1,'mongo_odm::array_element_nvp::get_name()'],['../classmongo__odm_1_1dollar__operator__nvp.html#a4ccad25d5b45c435cf3600826eed9315',1,'mongo_odm::dollar_operator_nvp::get_name()']]]
 ];

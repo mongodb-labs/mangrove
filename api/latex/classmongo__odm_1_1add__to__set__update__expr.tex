@@ -1,0 +1,89 @@
+\hypertarget{classmongo__odm_1_1add__to__set__update__expr}{}\section{mongo\+\_\+odm\+:\+:add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr$<$ NvpT, U $>$ Class Template Reference}
+\label{classmongo__odm_1_1add__to__set__update__expr}\index{mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr$<$ Nvp\+T, U $>$@{mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr$<$ Nvp\+T, U $>$}}
+
+
+An expression that uses the \$add\+To\+Set operator to add unique elements to an array.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmongo__odm_1_1add__to__set__update__expr_a869ef885d8234508564f29cb798c4470}{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr} (const NvpT \&\hyperlink{classmongo__odm_1_1nvp}{nvp}, const U \&val, bool each)
+\begin{DoxyCompactList}\small\item\em Constructs an \hyperlink{classmongo__odm_1_1add__to__set__update__expr}{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr} with the given parameters. \end{DoxyCompactList}\item 
+void \hyperlink{classmongo__odm_1_1add__to__set__update__expr_a73537eb34459dc928b718076293c7e8a}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder as an expression \textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename NvpT, typename U$>$\\*
+class mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr$<$ Nvp\+T, U $>$}
+
+An expression that uses the \$add\+To\+Set operator to add unique elements to an array. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em NvpT} & The name-\/value pair to use \\
+\hline
+{\em U} & The type of the value to pass to \$add\+To\+Set \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}!add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr@{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}}
+\index{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr@{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}!mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr(const Nvp\+T \&nvp, const U \&val, bool each)}{add_to_set_update_expr(const NvpT &nvp, const U &val, bool each)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U $>$ constexpr {\bf mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}$<$ NvpT, U $>$\+::{\bf add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr} (
+\begin{DoxyParamCaption}
+\item[{const NvpT \&}]{nvp, }
+\item[{const U \&}]{val, }
+\item[{bool}]{each}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1add__to__set__update__expr_a869ef885d8234508564f29cb798c4470}{}\label{classmongo__odm_1_1add__to__set__update__expr_a869ef885d8234508564f29cb798c4470}
+
+
+Constructs an \hyperlink{classmongo__odm_1_1add__to__set__update__expr}{add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr} with the given parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nvp} & The given field. \\
+\hline
+{\em val} & The value to add to the field. \\
+\hline
+{\em each} & Whether to use the \$each modifier. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr@{mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT , typename U $>$ void {\bf mongo\+\_\+odm\+::add\+\_\+to\+\_\+set\+\_\+update\+\_\+expr}$<$ NvpT, U $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1add__to__set__update__expr_a73537eb34459dc928b718076293c7e8a}{}\label{classmongo__odm_1_1add__to__set__update__expr_a73537eb34459dc928b718076293c7e8a}
+
+
+Appends this query to a B\+S\+ON core builder as an expression \textquotesingle{}. 
+
+\begin{DoxyParagraph}{add\+To\+Set}
+\{field\+: value $\vert$ \{
+\end{DoxyParagraph}
+each\+: value\}\}\textquotesingle{} 
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em Whether} & to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/expression\+\_\+syntax.\+hpp\item 
+src/mongo\+\_\+odm/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

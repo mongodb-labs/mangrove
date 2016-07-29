@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1is__date_3_01bsoncxx_1_1types_1_1b__date_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::is_date&lt; bsoncxx::types::b_date &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">true_type</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="187">
+        <label>true_type</label>
+      </node>
+      <node id="186">
+        <label>mongo_odm::is_date&lt; bsoncxx::types::b_date &gt;</label>
+        <link refid="structmongo__odm_1_1is__date_3_01bsoncxx_1_1types_1_1b__date_01_4"/>
+        <childnode refid="187" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="189">
+        <label>true_type</label>
+      </node>
+      <node id="188">
+        <label>mongo_odm::is_date&lt; bsoncxx::types::b_date &gt;</label>
+        <link refid="structmongo__odm_1_1is__date_3_01bsoncxx_1_1types_1_1b__date_01_4"/>
+        <childnode refid="189" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/util.hpp" line="162" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="162" bodyend="162"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,79 @@
+\hypertarget{classmongo__odm_1_1boolean__list__expr}{}\section{mongo\+\_\+odm\+:\+:boolean\+\_\+list\+\_\+expr$<$ List $>$ Class Template Reference}
+\label{classmongo__odm_1_1boolean__list__expr}\index{mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr$<$ List $>$@{mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr$<$ List $>$}}
+
+
+This class represents a boolean expression over an array of arguments.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmongo__odm_1_1boolean__list__expr_a71f9da341b80a5bd5062c8ec627a9241}{boolean\+\_\+list\+\_\+expr} (const List args, const char $\ast$op)
+\begin{DoxyCompactList}\small\item\em Constructs a boolean expression from a list of sub-\/expressions, and a certain operator. \end{DoxyCompactList}\item 
+void \hyperlink{classmongo__odm_1_1boolean__list__expr_a5aa985b42f30ceb49fa6a5481693aa8a}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder as a key-\/value pair \char`\"{}\$op\+: \mbox{[}\{lhs\}, \{rhs\}\mbox{]}\char`\"{}. \end{DoxyCompactList}\item 
+\hyperlink{classmongo__odm_1_1boolean__list__expr_aec500b9de32ab2dbe8550aeccc1115ca}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const \hypertarget{classmongo__odm_1_1boolean__list__expr_aec500b9de32ab2dbe8550aeccc1115ca}{}\label{classmongo__odm_1_1boolean__list__expr_aec500b9de32ab2dbe8550aeccc1115ca}
+
+\begin{DoxyCompactList}\small\item\em Converts the expression to a B\+S\+ON filter for a query, in the form \char`\"{}\{\$op\+: \mbox{[}\{arg1\}, \{arg2\}, ...\mbox{]}\}\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename List$>$\\*
+class mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr$<$ List $>$}
+
+This class represents a boolean expression over an array of arguments. 
+
+This is particularly useful for the \$nor operator. When converted to B\+S\+ON, this class produces an expression \{\$op\+: \mbox{[}\{arg1\}, \{arg2\}, ...\mbox{]}\} 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr@{mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr}!boolean\+\_\+list\+\_\+expr@{boolean\+\_\+list\+\_\+expr}}
+\index{boolean\+\_\+list\+\_\+expr@{boolean\+\_\+list\+\_\+expr}!mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr@{mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr}}
+\subsubsection[{\texorpdfstring{boolean\+\_\+list\+\_\+expr(const List args, const char $\ast$op)}{boolean_list_expr(const List args, const char *op)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename List $>$ constexpr {\bf mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr}$<$ List $>$\+::{\bf boolean\+\_\+list\+\_\+expr} (
+\begin{DoxyParamCaption}
+\item[{const List}]{args, }
+\item[{const char $\ast$}]{op}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1boolean__list__expr_a71f9da341b80a5bd5062c8ec627a9241}{}\label{classmongo__odm_1_1boolean__list__expr_a71f9da341b80a5bd5062c8ec627a9241}
+
+
+Constructs a boolean expression from a list of sub-\/expressions, and a certain operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & An expression list of boolean conditions. \\
+\hline
+{\em op} & The operator of the expression, e.\+g. A\+ND or OR. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr@{mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr@{mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename List $>$ void {\bf mongo\+\_\+odm\+::boolean\+\_\+list\+\_\+expr}$<$ List $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1boolean__list__expr_a5aa985b42f30ceb49fa6a5481693aa8a}{}\label{classmongo__odm_1_1boolean__list__expr_a5aa985b42f30ceb49fa6a5481693aa8a}
+
+
+Appends this query to a B\+S\+ON core builder as a key-\/value pair \char`\"{}\$op\+: \mbox{[}\{lhs\}, \{rhs\}\mbox{]}\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em wrap} & Whether to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/expression\+\_\+syntax.\+hpp\item 
+src/mongo\+\_\+odm/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

@@ -21,24 +21,24 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="48">
+      <node id="163">
         <label>std::is_same&lt; T, std::decay_t&lt; T2 &gt; &gt;</label>
       </node>
-      <node id="47">
+      <node id="162">
         <label>mongo_odm::FirstTypeIsTheSame&lt; T, T2, Ts... &gt;</label>
         <link refid="structmongo__odm_1_1FirstTypeIsTheSame_3_01T_00_01T2_00_01Ts_8_8_8_01_4"/>
-        <childnode refid="48" relation="public-inheritance">
+        <childnode refid="163" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="50">
+      <node id="165">
         <label>std::is_same&lt; T, std::decay_t&lt; T2 &gt; &gt;</label>
       </node>
-      <node id="49">
+      <node id="164">
         <label>mongo_odm::FirstTypeIsTheSame&lt; T, T2, Ts... &gt;</label>
         <link refid="structmongo__odm_1_1FirstTypeIsTheSame_3_01T_00_01T2_00_01Ts_8_8_8_01_4"/>
-        <childnode refid="50" relation="public-inheritance">
+        <childnode refid="165" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

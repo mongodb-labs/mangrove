@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structmongo__odm_1_1is__date" kind="struct" language="C++" prot="public">
+    <compoundname>mongo_odm::is_date</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">false_type</basecompoundref>
+    <includes refid="util_8hpp" local="no">util.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>A type traits struct that determines whether a certain type stores a date. </para>    </briefdescription>
+    <detaileddescription>
+<para>This includes &lt;chrono&gt; time types, and the BSON b_date type. time_t is not included due to potential problems with conversion to BSON. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="182">
+        <label>mongo_odm::is_date&lt; T &gt;</label>
+        <link refid="structmongo__odm_1_1is__date"/>
+        <childnode refid="183" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="183">
+        <label>false_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="184">
+        <label>mongo_odm::is_date&lt; T &gt;</label>
+        <link refid="structmongo__odm_1_1is__date"/>
+        <childnode refid="185" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="185">
+        <label>false_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/util.hpp" line="153" column="1" bodyfile="src/mongo_odm/util.hpp" bodystart="153" bodyend="153"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,132 @@
+\hypertarget{classmongo__odm_1_1comparison__expr}{}\section{mongo\+\_\+odm\+:\+:comparison\+\_\+expr$<$ NvpT, U $>$ Class Template Reference}
+\label{classmongo__odm_1_1comparison__expr}\index{mongo\+\_\+odm\+::comparison\+\_\+expr$<$ Nvp\+T, U $>$@{mongo\+\_\+odm\+::comparison\+\_\+expr$<$ Nvp\+T, U $>$}}
+
+
+Represents a query expression with the syntax \char`\"{}key\+: \{\$op\+: value\}\char`\"{}.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+Inheritance diagram for mongo\+\_\+odm\+:\+:comparison\+\_\+expr$<$ NvpT, U $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmongo__odm_1_1comparison__expr}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classmongo__odm_1_1comparison__expr_a8cb08d386b0b1cbb88780d12c29c385e}{comparison\+\_\+expr} (const NvpT \&\hyperlink{classmongo__odm_1_1nvp}{nvp}, const U \&field, const char $\ast$op)
+\begin{DoxyCompactList}\small\item\em Constructs a query expression for the given key, value, and comparison type. \end{DoxyCompactList}\item 
+constexpr \hyperlink{classmongo__odm_1_1comparison__expr_aa60e06beaf4e99b7b73a445b4fc5ffe7}{comparison\+\_\+expr} (const \hyperlink{classmongo__odm_1_1comparison__expr}{comparison\+\_\+expr} \&expr, const char $\ast$op)
+\begin{DoxyCompactList}\small\item\em Takes a comparison expression, and creates a new one with a different operator, but the same value and field. \end{DoxyCompactList}\item 
+std\+::string \& \hyperlink{classmongo__odm_1_1comparison__expr_a3adf1fd565c8a6c1bb01ca9d4ee42ce5}{append\+\_\+name} (std\+::string \&s) const \hypertarget{classmongo__odm_1_1comparison__expr_a3adf1fd565c8a6c1bb01ca9d4ee42ce5}{}\label{classmongo__odm_1_1comparison__expr_a3adf1fd565c8a6c1bb01ca9d4ee42ce5}
+
+\begin{DoxyCompactList}\small\item\em Appends the name of the contained field to a string. \end{DoxyCompactList}\item 
+void \hyperlink{classmongo__odm_1_1comparison__expr_a2ed6e4e5fd013703369938911b4c367e}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false, bool omit\+\_\+name=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this expression to a B\+S\+ON core builder, as a key-\/value pair of the form \char`\"{}key\+: \{\$cmp\+: val\}\char`\"{}, where \$cmp is some comparison operator. \end{DoxyCompactList}\item 
+\hyperlink{classmongo__odm_1_1comparison__expr_a5c3c4afa7894a5268e6c9ab76c4d83e3}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const 
+\begin{DoxyCompactList}\small\item\em Converts the expression to a B\+S\+ON filter for a query. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename NvpT, typename U$>$\\*
+class mongo\+\_\+odm\+::comparison\+\_\+expr$<$ Nvp\+T, U $>$}
+
+Represents a query expression with the syntax \char`\"{}key\+: \{\$op\+: value\}\char`\"{}. 
+
+This usually means queries that are comparisons, such as (User.\+age $>$ 21). However, this also covers operators such as \$exists, or any operator that has the above syntax. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em NvpT} & The type of the name-\/value pair this expression uses. \\
+\hline
+{\em U} & The type of the value to compare against. This could be the same as the value type of NvpT, or the type of some other parameter, or even a query builder expression. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mongo\+\_\+odm\+::comparison\+\_\+expr@{mongo\+\_\+odm\+::comparison\+\_\+expr}!comparison\+\_\+expr@{comparison\+\_\+expr}}
+\index{comparison\+\_\+expr@{comparison\+\_\+expr}!mongo\+\_\+odm\+::comparison\+\_\+expr@{mongo\+\_\+odm\+::comparison\+\_\+expr}}
+\subsubsection[{\texorpdfstring{comparison\+\_\+expr(const Nvp\+T \&nvp, const U \&field, const char $\ast$op)}{comparison_expr(const NvpT &nvp, const U &field, const char *op)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename U$>$ constexpr {\bf mongo\+\_\+odm\+::comparison\+\_\+expr}$<$ NvpT, U $>$\+::{\bf comparison\+\_\+expr} (
+\begin{DoxyParamCaption}
+\item[{const NvpT \&}]{nvp, }
+\item[{const U \&}]{field, }
+\item[{const char $\ast$}]{op}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1comparison__expr_a8cb08d386b0b1cbb88780d12c29c385e}{}\label{classmongo__odm_1_1comparison__expr_a8cb08d386b0b1cbb88780d12c29c385e}
+
+
+Constructs a query expression for the given key, value, and comparison type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nvp} & A name-\/value pair corresponding to a key in a document \\
+\hline
+{\em field} & The value that the key is being compared to. \\
+\hline
+{\em op} & The type of comparison operator, such at gt ($>$) or ne (!=). \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::comparison\+\_\+expr@{mongo\+\_\+odm\+::comparison\+\_\+expr}!comparison\+\_\+expr@{comparison\+\_\+expr}}
+\index{comparison\+\_\+expr@{comparison\+\_\+expr}!mongo\+\_\+odm\+::comparison\+\_\+expr@{mongo\+\_\+odm\+::comparison\+\_\+expr}}
+\subsubsection[{\texorpdfstring{comparison\+\_\+expr(const comparison\+\_\+expr \&expr, const char $\ast$op)}{comparison_expr(const comparison_expr &expr, const char *op)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename U$>$ constexpr {\bf mongo\+\_\+odm\+::comparison\+\_\+expr}$<$ NvpT, U $>$\+::{\bf comparison\+\_\+expr} (
+\begin{DoxyParamCaption}
+\item[{const {\bf comparison\+\_\+expr}$<$ NvpT, U $>$ \&}]{expr, }
+\item[{const char $\ast$}]{op}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1comparison__expr_aa60e06beaf4e99b7b73a445b4fc5ffe7}{}\label{classmongo__odm_1_1comparison__expr_aa60e06beaf4e99b7b73a445b4fc5ffe7}
+
+
+Takes a comparison expression, and creates a new one with a different operator, but the same value and field. 
+
+This is primarily used to wrap \$regex operators in \$not, since \$not cannot contains a \$regex operator, it must directly contain the regex itself. 
+\begin{DoxyParams}{Parameters}
+{\em expr} & A comparison expresison with a similar field type and value type. \\
+\hline
+{\em op} & The new operator to use. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::comparison\+\_\+expr@{mongo\+\_\+odm\+::comparison\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mongo\+\_\+odm\+::comparison\+\_\+expr@{mongo\+\_\+odm\+::comparison\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false, bool omit\+\_\+name=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false, bool omit_name=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename U$>$ void {\bf mongo\+\_\+odm\+::comparison\+\_\+expr}$<$ NvpT, U $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}, }
+\item[{bool}]{omit\+\_\+name = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1comparison__expr_a2ed6e4e5fd013703369938911b4c367e}{}\label{classmongo__odm_1_1comparison__expr_a2ed6e4e5fd013703369938911b4c367e}
+
+
+Appends this expression to a B\+S\+ON core builder, as a key-\/value pair of the form \char`\"{}key\+: \{\$cmp\+: val\}\char`\"{}, where \$cmp is some comparison operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A B\+S\+ON core builder \\
+\hline
+{\em wrap} & Whether to wrap the B\+S\+ON inside a document. \\
+\hline
+{\em omit\+\_\+name} & Whether to skip the name of the field. This is used primarily in \hyperlink{classmongo__odm_1_1not__expr}{not\+\_\+expr} and free\+\_\+expr to append just the value of the expression. \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::comparison\+\_\+expr@{mongo\+\_\+odm\+::comparison\+\_\+expr}!operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}}
+\index{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}!mongo\+\_\+odm\+::comparison\+\_\+expr@{mongo\+\_\+odm\+::comparison\+\_\+expr}}
+\subsubsection[{\texorpdfstring{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value() const }{operator bsoncxx::document::view_or_value() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT, typename U$>$ {\bf mongo\+\_\+odm\+::comparison\+\_\+expr}$<$ NvpT, U $>$\+::operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1comparison__expr_a5c3c4afa7894a5268e6c9ab76c4d83e3}{}\label{classmongo__odm_1_1comparison__expr_a5c3c4afa7894a5268e6c9ab76c4d83e3}
+
+
+Converts the expression to a B\+S\+ON filter for a query. 
+
+The format of the B\+S\+ON is \char`\"{}\{key\+: \{\$not\+: \{\$cmp\+: val\}\}\}\char`\"{}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/expression\+\_\+syntax.\+hpp\item 
+src/mongo\+\_\+odm/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

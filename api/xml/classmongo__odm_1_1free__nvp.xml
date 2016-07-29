@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1free__nvp" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::free_nvp</compoundname>
+    <basecompoundref refid="classmongo__odm_1_1nvp__base" prot="public" virt="non-virtual">mongo_odm::nvp_base&lt; free_nvp&lt; T &gt;, T &gt;</basecompoundref>
+    <includes refid="nvp_8hpp" local="no">nvp.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classmongo__odm_1_1free__nvp_1a7bbaddc3b72eb6cc1e7f10ce60da71de" prot="public" static="no">
+        <type>remove_optional_t&lt; T &gt;</type>
+        <definition>using mongo_odm::free_nvp&lt; T &gt;::no_opt_type =  remove_optional_t&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>no_opt_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="227" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classmongo__odm_1_1free__nvp_1aa58a09eb93b6108d8e565c404816aa75" prot="public" static="no">
+        <type>T</type>
+        <definition>using mongo_odm::free_nvp&lt; T &gt;::type =  T</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="228" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1free__nvp_1adc0db5218e1db78312dee7d2fa937ba1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string &amp;</type>
+        <definition>std::string&amp; mongo_odm::free_nvp&lt; T &gt;::append_name</definition>
+        <argsstring>(std::string &amp;s) const </argsstring>
+        <name>append_name</name>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/nvp.hpp" line="231" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="231" bodyend="233"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a field that does not have a name, i.e. </para>    </briefdescription>
+    <detaileddescription>
+<para>an array element. This is used in $elemMatch expressions on scalar arrays, where the elements can be compared but don&apos;t have fields of their own. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the field. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="166">
+        <label>mongo_odm::free_nvp&lt; T &gt;</label>
+        <link refid="classmongo__odm_1_1free__nvp"/>
+        <childnode refid="167" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="167">
+        <label>mongo_odm::nvp_base&lt; free_nvp&lt; T &gt;, T &gt;</label>
+        <link refid="classmongo__odm_1_1nvp__base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="168">
+        <label>mongo_odm::free_nvp&lt; T &gt;</label>
+        <link refid="classmongo__odm_1_1free__nvp"/>
+        <childnode refid="169" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="169">
+        <label>mongo_odm::nvp_base&lt; free_nvp&lt; T &gt;, T &gt;</label>
+        <link refid="classmongo__odm_1_1nvp__base"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/mongo_odm/nvp.hpp" line="224" column="1" bodyfile="src/mongo_odm/nvp.hpp" bodystart="224" bodyend="234"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1nvp__base_1ab41d90f7d23d25f3e7973171c2ee0ddf" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>add_to_set</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a9250b3abba132ae279fa55d94e52a91b" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>add_to_set</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a5e45eef873ecf7fe668ed35f85f5962c" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>all</name></member>
+      <member refid="classmongo__odm_1_1free__nvp_1adc0db5218e1db78312dee7d2fa937ba1" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>append_name</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a6627ef66f30320d09ba1800a01de47e6" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>bits_all_clear</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a876a9ea43bedf0d20178ad2bdcf22e1d" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>bits_all_clear</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1af30fc7c976645ced1383bb3fd60a829e" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>bits_all_set</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ac616fd563bc76e3b5484cc00deed6d7f" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>bits_all_set</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a8bab15db45adb8a32e690373e18ad01f" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>bits_any_clear</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a68e02181f3393fd3d0ac0b6bb35cc1de" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>bits_any_clear</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1af278639723e00543799e4ede530ab77e" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>bits_any_set</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1aa4a880120be6571a65431dd1a949615b" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>bits_any_set</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a619149367087ce41ec95b52be06ed50e" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>elem_match</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ae279f5bc8267faedd12d9c1f79f6e831" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>element</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ab323224f300d9fb9681d975f2ce98544" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>exists</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a9d1b3cff13f56eed1e8e08f011668f7d" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>first_match</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ab96c904c4c587d9adb62f372d763eb89" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>in</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a9b66983c69573197417350034f94eebc" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>max</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a93c7d2948059425ffb7122504bb39379" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>min</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ab87edbd61b20c1fe0dcbd834d41d58cb" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>mod</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ac518ef90312a483c64436097e9f9a34e" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>nin</name></member>
+      <member refid="classmongo__odm_1_1free__nvp_1a7bbaddc3b72eb6cc1e7f10ce60da71de" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>no_opt_type</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1af99c8f015456c41a778361e44a22a41c" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>operator-&gt;*</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a5e5864ea189e9d501f6fa5b918bb97b2" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>operator[]</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1afe7ac6d378952499bc9c9ee6e584059f" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>pop</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ad690746344a15b44adaf8cfdf27fad8b" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>pull</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ac9ce98f9dd1c2bd7bf9b5d1f9f100c18" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>pull</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1ab4b8cc435ea878f25cbd61a3946da316" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>pull_all</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a9627421e5a3cb1f86a2eed7809a0eff4" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>push</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a72ab9b7adaf6737ca8c5c9b3eb59953d" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>push</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a4437128b0fafda2f178172197a539499" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>regex</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a369ac4a143f549d62c2307489893e61c" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>set_on_insert</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a44853122530eb589515d13397ed47dd3" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>size</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1a6a8d165cfc00d3bcd70d16a2c704ae0e" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>sort</name></member>
+      <member refid="classmongo__odm_1_1free__nvp_1aa58a09eb93b6108d8e565c404816aa75" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>type</name></member>
+      <member refid="classmongo__odm_1_1nvp__base_1aaef09e56ce567ddf207489771c0c30ae" prot="public" virt="non-virtual"><scope>mongo_odm::free_nvp</scope><name>unset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

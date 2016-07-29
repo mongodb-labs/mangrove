@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.16" />
+    <meta name="description" content="">
+
+
+    <link rel="shortcut icon" href="http://mongodb.github.io/mongo-cxx-odm/images/favicon.png" type="image/x-icon" />
+
+    
+    <title>Operators</title>
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/nucleus.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/hybrid.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/featherlight.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/theme.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/hugo-theme.css" rel="stylesheet">
+    <style type="text/css">:root #header + #content > #left > #rlblock_left
+    {display:none !important;}</style>
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/docs.css" rel="stylesheet">
+
+  </head>
+  <body class="" data-url="/3-queries/operators/">
+    <nav id="sidebar">
+  <div id="header-wrapper">
+    <div id="header">
+      <html>
+<body>
+	<img src="http://mongodb.github.io/mongo-cxx-odm/images/logo.png"/>
+</body>
+</html>
+
+      
+    </div>
+</div>
+
+
+  <div class="highlightable">
+    <ul class="topics">
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/1-basics/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/">
+          <span>
+            
+              <b>1. </b>
+            
+             Basics
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/what-is-mangrove/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/">
+                <span>What is Mangrove?     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/installation/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/installation/">
+                <span>Installation     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/quick-tour/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/quick-tour/">
+                <span>Quick Tour     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/2-models/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/">
+          <span>
+            
+              <b>2. </b>
+            
+             Models
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/introduction/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/">
+                <span>Introduction     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/allowed-types/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/">
+                <span>Allowed Types     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/custom_id/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id/">
+                <span>Custom _id Type     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/dynamic-schemas/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/dynamic-schemas/">
+                <span>Dynamic Schemas     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  parent" data-nav-id="/3-queries/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/3-queries/">
+          <span>
+            
+              <b>3. </b>
+            
+             Queries
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/3-queries/introduction/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/3-queries/introduction/">
+                <span>Introduction     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item active" data-nav-id="/3-queries/operators/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/3-queries/operators/">
+                <span>Operators     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/4-updates/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/4-updates/">
+          <span>
+            
+              <b>4. </b>
+            
+             Updates
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/4-updates/introduction/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/4-updates/introduction/">
+                <span>Introduction     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/4-updates/operators/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/4-updates/operators/">
+                <span>Operators     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/5-the-bson-mapper/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/5-the-bson-mapper/">
+          <span>
+            
+              <b>5. </b>
+            
+             The BSON Mapper
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+      <li class="dd-item">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/api/html">
+          <span> 
+            <b> 6. </b> API Docs
+          </span>
+        </a>
+      </li>
+      <li class="dd-item">
+        <a href="https://github.com/mongodb/mongo-cxx-odm">
+          <span> 
+            <b> 7. </b> Source Code
+          </span>
+        </a>
+      </li>
+    </ul>
+    <hr>
+      
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+    </section>
+  </div>
+</nav>
+
+        <section id="body">
+        <div id="overlay"></div>
+
+        <div class="padding highlightable">
+
+            <div id="top-bar">
+              
+              <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                  <span id="sidebar-toggle-span">
+                      <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                        <i class="fa fa-bars"></i>
+                      </a>
+                  </span>
+                
+                <span id="toc-menu"><a href=""><i class="fa fa-list-alt"></i></a></span>
+                
+                
+                
+                
+                  
+                
+                  
+                
+                  
+                    
+                    
+                <a href="http://mongodb.github.io/mongo-cxx-odm/3-queries/" itemprop="url"><span itemprop="title">Queries</span></a> <i class="fa fa-angle-right"></i>
+                    
+                  
+                
+                  
+                
+                  
+                
+                <span itemprop="title"> Operators</span>
+              </div>
+              
+                  <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#comparison-operators">Comparison Operators</a></li>
+<li><a href="#logical-operators">Logical Operators</a></li>
+<li><a href="#element-operators">Element Operators</a></li>
+<li><a href="#evaluation-operators">Evaluation Operators</a></li>
+<li><a href="#geospational-operators">Geospational Operators</a></li>
+<li><a href="#array-operators">Array Operators</a></li>
+<li><a href="#bitwise-operators">Bitwise Operators</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+              
+
+            </div>
+            
+    	        <div id="body-inner">
+                
+                <h1>Operators</h1>
+                
+
+
+
+<p>The following is a list of the available <strong>query operators</strong> for the Mangrove query builder.
+This page follows the structure of the
+
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/">MongoDB query operator documentation <i class="fa fa-external-link"></i></a>
+.</p>
+
+<h3 id="comparison-operators">Comparison Operators</h3>
+
+<p>The following operators can be expressed using built-in C++ operators such as <code>&lt;</code> and <code>!=</code>.
+They work on any field type, and the right-hand value must be the same type as the field.
+Free functions are also provided in the <code>mangrove</code> namespace that can be used in lieu of the overloaded
+operators.</p>
+
+<ul>
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/eq/">$eq <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// { age: {$eq: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) == 21);
+auto results = User::find(mangrove::eq(MANGROVE_KEY(User::age), 21));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/gt/">$gt <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// { age: {$gt: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) &gt; 21);
+auto results = User::find(mangrove::gt(MANGROVE_KEY(User::age), 21));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/gte/">$gte <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// { age: {$gte: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) &gt;= 21);
+auto results = User::find(mangrove::gte(MANGROVE_KEY(User::age), 21));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/lt/">$lt <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// { age: {$lt: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) &lt; 21);
+auto results = User::find(mangrove::lt(MANGROVE_KEY(User::age), 21));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/lte/">$lte <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// { age: {$lte: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) &lt;= 21);
+auto results = User::find(mangrove::lte(MANGROVE_KEY(User::age), 21));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/ne/">$ne <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// { age: {$ne: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) != 21);
+auto results = User::find(mangrove::ne(MANGROVE_KEY(User::age), 21));
+</code></pre></li>
+</ul>
+
+<p>The following operators are provided as member functions of the fields which are returned from the
+<code>MANGROVE_KEY</code> and other macros.
+If the field is a scalar, then the given right hand side must be an array containing the same type.
+If the field is an array, then the given right hand side must be a similar array, containing the same type.</p>
+
+<ul>
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/in/">$in <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// { age: {$in: [16, 18, 21]} }
+int ages = std::vector&lt;int&gt;{16, 18, 21}
+auto results = User::find(MANGROVE_KEY(User::age).in(ages));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/nin/">$nin <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// { age: {$nin: [16, 18, 21]} }
+int ages = std::vector&lt;int&gt;{16, 18, 21}
+auto results = User::find(MANGROVE_KEY(User::age).nin(ages));
+</code></pre></li>
+</ul>
+
+<h3 id="logical-operators">Logical Operators</h3>
+
+<p>The <code>$or</code> and <code>$and</code> operators can be used to chain different sub-queries together.
+When using both at once, the <code>&amp;&amp;</code> and <code>||</code> follow their usual C++ precedence rules.</p>
+
+<ul>
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/or/">$or <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// { $or: [ {age: {$gt: 65}}, {age: {$lt: 5}} ] }
+auto results = User::find((MANGROVE_KEY(User::age) &gt; 65 || MANGROVE_KEY(User::age) &lt; 5));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/and/">$and <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// { $and: [ {age: {$gt: 65}}, {age: {$lt: 5}} ] }
+auto results = User::find((MANGROVE_KEY(User::age) &gt; 65 &amp;&amp; MANGROVE_KEY(User::age) &lt; 5));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/not/">$not <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<p>The <code>$not</code> operator is applied to individual comparisons
+(as opposed to boolean expressions using the above operators).
+The C++ <code>!</code> operator is used for this.</p>
+
+<pre><code class="language-cpp"> // { age: {$not: {$lt: 21}} }
+ auto results = User::find(!(MANGROVE_KEY(User::age) &lt; 21));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/nor/">$nor <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<p>The <code>$nor</code> operator behaves similarly to the <code>$and</code> and <code>$or</code> operators,
+except that there is no built-in C++ <code>NOR</code> operator. As such, it is provided as a free function that takes
+a list of query expressions.</p>
+
+<pre><code class="language-cpp"> // { $nor: [ {age: {$gt: 65}}, {age: {$lt: 5}} ] }
+ auto results = User::find(mangrove::nor(MANGROVE_KEY(User::age) &gt; 65, MANGROVE_KEY(User::age) &lt; 5));
+</code></pre></li>
+</ul>
+
+<h3 id="element-operators">Element Operators</h3>
+
+<ul>
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/exists/">$exists <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<p>The <code>$exists</code> operator is provided as a member function on fields that takes a boolean
+argument. It is only enabled for <strong>optional</strong> fields.</p>
+
+<pre><code class="language-cpp">// { age: {$exists: true} }
+auto results = User::find(MANGROVE_KEY(User::age).exists(true));
+</code></pre></li>
+
+<li><p>The <code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/type/">$type <i class="fa fa-external-link"></i></a>
+</code>
+operator is not currently available in the Mangrove query builder,
+since to work with serialization,
+the types of fields must correspond to the type defined in the C++ class.</p></li>
+</ul>
+
+<h3 id="evaluation-operators">Evaluation Operators</h3>
+
+<ul>
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/mod/">$mod <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<p>This operator is provided as a member function on fields,
+and accepts two parameters: a divisor and a remainder.
+It is only enabled for fields with numeric types.</p>
+
+<pre><code class="language-cpp">// { age: {$mod: {$divisor: 10, $remainder: 3}} }
+auto results = User::find(MANGROVE_KEY(User::age).mod(10, 3));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/regex/">$regex <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<p>This operator is provided as a member function on fields,
+and accepts two parameters: a regex string and an options string.
+It is only enabled for string fields.</p>
+
+<pre><code class="language-cpp">// Match users who live on a numbered street, like &quot;14th st.&quot;:
+// { &quot;addr.street&quot;: {$regex: &quot;\d+th st\.?&quot;, $options: &quot;i&quot;} }
+auto results = User::find(MANGROVE_CHILD(User, addr, street).regex(&quot;\\d+th st\\.?&quot;, &quot;i&quot;));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/text/">$text <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<p>This operator performs a search on a text index in the database.
+It is provided as a free function that accepts a text query as a string,
+as well as the optional <code>language</code>, <code>case_sensitive</code>, and <code>diacritic_sensitive</code> parameters
+as per the MongoDB documentation.
+These parameters can be passed in as <code>optional</code> values,
+or specified using &ldquo;fluent&rdquo; setter functions:</p>
+
+<pre><code class="language-cpp">// {
+//   $text:
+//     {
+//       $search: &quot;boulevard&quot;,
+//       $language: &quot;en&quot;,
+//       $caseSensitive: false,
+//       $diacriticSensitive: false
+//     }
+// }
+auto results = User::find(mangrove::text(&quot;boulevard&quot;).language(&quot;en&quot;)
+                                                     .case_sensitive(false)
+                                                     .diacritic_sensitive(false));
+</code></pre></li>
+</ul>
+
+<div class="notices warning" ><p>There are
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/text/#restrictions">restrictions <i class="fa fa-external-link"></i></a>
+ on the syntax of the <code>$text</code> operator that Mangrove does not check.
+Refer to the MongoDB documentation to make sure that the <code>$text</code> operator is being used correctly.
+Also, fields <strong>must</strong> be text-indexed for the <code>$text</code> operator to work on them.</p>
+</div>
+
+
+<ul>
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/where/">$where <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<p><em>Mangrove does not provide a <code>$where</code> operator.</em></p></li>
+</ul>
+
+<h3 id="geospational-operators">Geospational Operators</h3>
+
+<p><em>Mangrove does not currently support geospatial operators, although support is planned in the future, along with a dedicated GeoJSON C++ data type.</em></p>
+
+<h3 id="array-operators">Array Operators</h3>
+
+<p>For the following code samples, assume that a User has a field <code>scores</code>, which contains an array of integers.</p>
+
+<ul>
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/all/">$all <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<p>This operator is provided as a member function on fields.
+It accepts an array of values that are the same type as the elements of the field&rsquo;s array.
+This is only enabled for fields which are iterable (i.e. arrays).</p>
+
+<pre><code class="language-cpp">// { scores: {$all: [100, 500, 1000]} }
+auto results = User::find(MANGROVE_KEY(User::scores).all(std::vector&lt;int&gt;{100, 500, 1000}));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/elemMatch/">$elemMatch <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<p>This operator accepts a query, and returns documents if the elements inside a field&rsquo;s array match
+the given queries. The queries can be constructed in Mangrove using the same syntax as top-level queries.</p>
+
+<p>For instance, if a User document contains a field <code>past_homes</code>, which is an array of addresses,
+one could query it like so:</p>
+
+<pre><code class="language-cpp">// Find users that have lived, at some point, in Maryland.
+// { past_homes: {$elemMatch: {state: &quot;MD&quot;}} }
+auto results = User::find(MANGROVE_KEY(User::past_homes).elem_match(MANGROVE_KEY(Address::state) == &quot;MD&quot;));
+</code></pre>
+
+<p>Using <code>$elemMatch</code> on scalar arrays is a bit tricky, since the scalars don&rsquo;t have field names to refer to.
+Instead, one uses the <code>MANGROVE_KEY_ELEM(...)</code> macro to create a field object that refers to
+the <em>elements</em> of an array. (The equivalent for <code>MANGROVE_CHILD</code> is <code>MANGROVE_CHILD_ELEM</code>.)
+One can also use <code>MANGROVE_KEY(...).element()</code> and <code>MANGROVE_CHILD(...).element()</code>, respectively.</p>
+
+<pre><code class="language-cpp">// Find users with a score greater than 9000.
+// { scores: {$elemMatch: {$gt: 9000}} }
+
+// The following are equivalent:
+auto results = User::find(MANGROVE_KEY(User::scores).elem_match(MANGROVE_KEY_ELEM(User::score) &gt; 9000));
+results = User::find(MANGROVE_KEY(User::scores).elem_match(MANGROVE_KEY(User::score).element() &gt; 9000));
+</code></pre></li>
+</ul>
+
+<div class="notices note" ><p>When specifying conditions on the fields of documents in an array in the <code>$elemMatch</code> operator,
+the fields are referred to as top-level fields.
+In the example above, the <code>state</code> field is used as <code>MANGROVE_KEY(Adress::state)</code>,
+as opposed to <code>MANGROVE_CHILD(User, past_homes, state)</code>.
+This mirrors the syntax of MongoDB queries themselves.
+The equivalent BSON would refer to the <code>state</code> field simply as <code>state</code>, not <code>&quot;past_homes.state&quot;</code>.</p>
+</div>
+
+
+<div class="notices warning" ><p>Mangrove does not check if you use <code>.element()</code> or <code>MANGROVE_KEY_ELEM</code> outside of <code>elem_match(...)</code>.
+This will cause a runtime error when the MongoDB server receives an invalid query.</p>
+</div>
+
+
+<ul>
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/size/">$size <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<p>This operator is provided as a member function on fields.
+It accepts a single argument, which is the array size to check.
+The operator is only enabled for fields which are iterable (i.e. arrays).</p>
+
+<pre><code class="language-cpp">// { scores: {$size: 10} }
+auto results = User::find(MANGROVE_KEY(User::scores).size(10));
+</code></pre></li>
+</ul>
+
+<h3 id="bitwise-operators">Bitwise Operators</h3>
+
+<p>The following operators query for documents using bit operations on fields.
+Each operator has two versions: one that accepts a single <em>mask</em>,
+either as an integer or a BSON <code>b_binary</code> type, and another that takes a variadic number of
+bit <em>positions</em> as unsigned integers.</p>
+
+<p>These operators are only enabled for integral or <code>b_binary</code> types.</p>
+
+<p>For the following examples, assume that the User class has an integer field <code>bitvector</code> that
+represents a set of bits that we want to do bitwise operations on.</p>
+
+<ul>
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/bitsAllSet/">$bitsAllSet <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// We want to compare the `bitvector` field with the value 0b00010101.
+// The following two queries are equivalent:
+
+// { scores: {$bitsAllSet: 21} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAllSet(21));
+// { scores: {$bitsAllSet: [0, 2, 4]} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAllSet(0, 2, 4));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/bitsAnySet/">$bitsAnySet <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// We want to compare the `bitvector` field with the value 0b00010101.
+// The following two queries are equivalent:
+
+// { scores: {$bitsAnySet: 21} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAnySet(21));
+// { scores: {$bitsAnySet: [0, 2, 4]} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAnySet(0, 2, 4));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/bitsAllClear/">$bitsAllClear <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// We want to compare the `bitvector` field with the value 0b00010101.
+// The following two queries are equivalent:
+
+// { scores: {$bitsAllClear: 21} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAllClear(21));
+// { scores: {$bitsAllClear: [0, 2, 4]} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAllClear(0, 2, 4));
+</code></pre></li>
+
+<li><p><code>
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/operator/query/bitsAnyClear/">$bitsAnyClear <i class="fa fa-external-link"></i></a>
+</code></p>
+
+<pre><code class="language-cpp">// We want to compare the `bitvector` field with the value 0b00010101.
+// The following two queries are equivalent:
+
+// { scores: {$bitsAnyClear: 21} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAnyClear(21));
+// { scores: {$bitsAnyClear: [0, 2, 4]} }
+auto results = User::find(MANGROVE_KEY(User::bitvector).bitsAnyClear(0, 2, 4));
+</code></pre></li>
+</ul>
+
+
+      
+      </div>
+    </div>
+
+    <div id="navigation">
+        <a class="nav nav-prev" href="http://mongodb.github.io/mongo-cxx-odm/3-queries/introduction"> <i class="fa fa-chevron-left"></i></a>
+        <a class="nav nav-next" href="http://mongodb.github.io/mongo-cxx-odm/4-updates/" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+    </div>
+
+    </section>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/jquery-2.x.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/clipboard.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/perfect-scrollbar.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/jquery.sticky-kit.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/featherlight.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/html5shiv-printshiv.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/modernizr.custom.71422.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/learn.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/hugo-learn.js"></script>
+    
+
+  </body>
+</html>
+

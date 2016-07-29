@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classmongo__odm_1_1isolated__expr" kind="class" language="C++" prot="public">
+    <compoundname>mongo_odm::isolated_expr</compoundname>
+    <includes refid="query__builder_8hpp" local="no">query_builder.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Expr</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmongo__odm_1_1isolated__expr_1ad472efed087b54fb6731a2e999b640e5" prot="private" static="no" mutable="no">
+        <type>const Expr</type>
+        <definition>const Expr mongo_odm::isolated_expr&lt; Expr &gt;::_expr</definition>
+        <argsstring></argsstring>
+        <name>_expr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="702" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="702" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmongo__odm_1_1isolated__expr_1a771fd1c595bd458ffeecc271862126c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr mongo_odm::isolated_expr&lt; Expr &gt;::isolated_expr</definition>
+        <argsstring>(const Expr &amp;expr)</argsstring>
+        <name>isolated_expr</name>
+        <param>
+          <type>const Expr &amp;</type>
+          <declname>expr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="669" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="669" bodyend="670"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1isolated__expr_1abb41dc8fb33aa4e7d83ac7a9579baba6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mongo_odm::isolated_expr&lt; Expr &gt;::append_to_bson</definition>
+        <argsstring>(bsoncxx::builder::core &amp;builder, bool wrap=false) const </argsstring>
+        <name>append_to_bson</name>
+        <param>
+          <type>bsoncxx::builder::core &amp;</type>
+          <declname>builder</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wrap</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Appends this query to a BSON core builder, with $isolated set as an extra field. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>builder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A basic BSON core builder. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Whether</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to wrap this expression inside a document. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="678" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="678" bodyend="690"/>
+      </memberdef>
+      <memberdef kind="function" id="classmongo__odm_1_1isolated__expr_1a81fb5f0e8711bfcbea0ee3cc9f2e1b03" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mongo_odm::isolated_expr&lt; Expr &gt;::operator bsoncxx::document::view_or_value</definition>
+        <argsstring>() const </argsstring>
+        <name>operator bsoncxx::document::view_or_value</name>
+        <briefdescription>
+<para>Converts this query to BSON, in the form {$isolated: 1, &lt;underlying expression=&quot;&quot; bson&gt;=&quot;&quot;&gt;}. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mongo_odm/query_builder.hpp" line="695" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="695" bodyend="699"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An expression that wraps another expression and adds an $isolated operator. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mongo_odm/query_builder.hpp" line="667" column="1" bodyfile="src/mongo_odm/query_builder.hpp" bodystart="667" bodyend="703"/>
+    <listofallmembers>
+      <member refid="classmongo__odm_1_1isolated__expr_1ad472efed087b54fb6731a2e999b640e5" prot="private" virt="non-virtual"><scope>mongo_odm::isolated_expr</scope><name>_expr</name></member>
+      <member refid="classmongo__odm_1_1isolated__expr_1abb41dc8fb33aa4e7d83ac7a9579baba6" prot="public" virt="non-virtual"><scope>mongo_odm::isolated_expr</scope><name>append_to_bson</name></member>
+      <member refid="classmongo__odm_1_1isolated__expr_1a771fd1c595bd458ffeecc271862126c7" prot="public" virt="non-virtual"><scope>mongo_odm::isolated_expr</scope><name>isolated_expr</name></member>
+      <member refid="classmongo__odm_1_1isolated__expr_1a81fb5f0e8711bfcbea0ee3cc9f2e1b03" prot="public" virt="non-virtual"><scope>mongo_odm::isolated_expr</scope><name>operator bsoncxx::document::view_or_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

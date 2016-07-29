@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['hasfield',['hasField',['../structmongo__odm_1_1hasField.html',1,'mongo_odm']]],
-  ['hasfield_3c_20base_2c_20t_2c_20n_2c_20m_2c_20true_20_3e',['hasField&lt; Base, T, N, M, true &gt;',['../structmongo__odm_1_1hasField_3_01Base_00_01T_00_01N_00_01M_00_01true_01_4.html',1,'mongo_odm']]]
+  ['firsttypeisthesame',['FirstTypeIsTheSame',['../structmongo__odm_1_1FirstTypeIsTheSame.html',1,'mongo_odm']]],
+  ['firsttypeisthesame_3c_20t_2c_20t2_2c_20ts_2e_2e_2e_20_3e',['FirstTypeIsTheSame&lt; T, T2, Ts... &gt;',['../structmongo__odm_1_1FirstTypeIsTheSame_3_01T_00_01T2_00_01Ts_8_8_8_01_4.html',1,'mongo_odm']]],
+  ['free_5fnvp',['free_nvp',['../classmongo__odm_1_1free__nvp.html',1,'mongo_odm']]]
 ];

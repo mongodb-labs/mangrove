@@ -1,0 +1,50 @@
+\hypertarget{classmongo__odm_1_1unset__expr}{}\section{mongo\+\_\+odm\+:\+:unset\+\_\+expr$<$ NvpT $>$ Class Template Reference}
+\label{classmongo__odm_1_1unset__expr}\index{mongo\+\_\+odm\+::unset\+\_\+expr$<$ Nvp\+T $>$@{mongo\+\_\+odm\+::unset\+\_\+expr$<$ Nvp\+T $>$}}
+
+
+Represents an expresion that uses the \$unset operator.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmongo__odm_1_1unset__expr_a5d775357c94e0477351fb49d71378694}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends this query to a B\+S\+ON core builder as a key-\/value pair \char`\"{}\$unset\+: \{field\+: \textquotesingle{}\textquotesingle{}\}\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename NvpT$>$\\*
+class mongo\+\_\+odm\+::unset\+\_\+expr$<$ Nvp\+T $>$}
+
+Represents an expresion that uses the \$unset operator. 
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::unset\+\_\+expr@{mongo\+\_\+odm\+::unset\+\_\+expr}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mongo\+\_\+odm\+::unset\+\_\+expr@{mongo\+\_\+odm\+::unset\+\_\+expr}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename NvpT $>$ void {\bf mongo\+\_\+odm\+::unset\+\_\+expr}$<$ NvpT $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1unset__expr_a5d775357c94e0477351fb49d71378694}{}\label{classmongo__odm_1_1unset__expr_a5d775357c94e0477351fb49d71378694}
+
+
+Appends this query to a B\+S\+ON core builder as a key-\/value pair \char`\"{}\$unset\+: \{field\+: \textquotesingle{}\textquotesingle{}\}\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A basic B\+S\+ON core builder. \\
+\hline
+{\em Whether} & to wrap this expression inside a document. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/expression\+\_\+syntax.\+hpp\item 
+src/mongo\+\_\+odm/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}

@@ -11,39 +11,92 @@
     <includes refid="mongo__odm_2config_2postlude_8hpp" local="no">mongo_odm/config/postlude.hpp</includes>
     <includedby refid="odm__collection_8hpp" local="no">src/mongo_odm/odm_collection.hpp</includedby>
     <incdepgraph>
-      <node id="155">
+      <node id="167">
         <label>bsoncxx/builder/core.hpp</label>
       </node>
-      <node id="141">
+      <node id="153">
         <label>bson_mapper/mapping_functions.hpp</label>
         <link refid="mapping__functions_8hpp_source"/>
-        <childnode refid="142" relation="include">
+        <childnode refid="154" relation="include">
         </childnode>
-        <childnode refid="137" relation="include">
+        <childnode refid="149" relation="include">
         </childnode>
-        <childnode refid="138" relation="include">
+        <childnode refid="150" relation="include">
         </childnode>
-        <childnode refid="139" relation="include">
-        </childnode>
-        <childnode refid="147" relation="include">
+        <childnode refid="151" relation="include">
         </childnode>
         <childnode refid="159" relation="include">
         </childnode>
-        <childnode refid="165" relation="include">
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="177" relation="include">
         </childnode>
       </node>
-      <node id="165">
+      <node id="177">
         <label>bson_mapper/config/postlude.hpp</label>
         <link refid="bson__mapper_2config_2postlude_8hpp_source"/>
       </node>
-      <node id="139">
+      <node id="151">
         <label>bsoncxx/stdx/optional.hpp</label>
       </node>
-      <node id="159">
+      <node id="171">
         <label>bson_mapper/bson_streambuf.hpp</label>
         <link refid="bson__streambuf_8hpp_source"/>
-        <childnode refid="142" relation="include">
+        <childnode refid="154" relation="include">
         </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="177" relation="include">
+        </childnode>
+      </node>
+      <node id="164">
+        <label>string</label>
+      </node>
+      <node id="178">
+        <label>mongo_odm/config/postlude.hpp</label>
+        <link refid="mongo__odm_2config_2postlude_8hpp_source"/>
+      </node>
+      <node id="150">
+        <label>bsoncxx/builder/basic/document.hpp</label>
+      </node>
+      <node id="146">
+        <label>mongo_odm/config/config.hpp</label>
+      </node>
+      <node id="143">
+        <label>src/mongo_odm/deserializing_cursor.hpp</label>
+        <link refid="deserializing_cursor.hpp"/>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+      </node>
+      <node id="170">
+        <label>bson_mapper/stdx/optional.hpp</label>
+        <link refid="optional_8hpp_source"/>
+        <childnode refid="151" relation="include">
+        </childnode>
+      </node>
+      <node id="159">
+        <label>bson_mapper/bson_archiver.hpp</label>
+        <link refid="bson__archiver_8hpp_source"/>
         <childnode refid="160" relation="include">
         </childnode>
         <childnode refid="161" relation="include">
@@ -56,61 +109,54 @@
         </childnode>
         <childnode refid="165" relation="include">
         </childnode>
-      </node>
-      <node id="152">
-        <label>string</label>
-      </node>
-      <node id="166">
-        <label>mongo_odm/config/postlude.hpp</label>
-        <link refid="mongo__odm_2config_2postlude_8hpp_source"/>
-      </node>
-      <node id="138">
-        <label>bsoncxx/builder/basic/document.hpp</label>
-      </node>
-      <node id="134">
-        <label>mongo_odm/config/config.hpp</label>
-      </node>
-      <node id="131">
-        <label>src/mongo_odm/deserializing_cursor.hpp</label>
-        <link refid="deserializing_cursor.hpp"/>
-        <childnode refid="132" relation="include">
-        </childnode>
-        <childnode refid="137" relation="include">
-        </childnode>
-        <childnode refid="138" relation="include">
-        </childnode>
-        <childnode refid="139" relation="include">
-        </childnode>
-        <childnode refid="140" relation="include">
-        </childnode>
-        <childnode refid="141" relation="include">
-        </childnode>
         <childnode refid="166" relation="include">
         </childnode>
-      </node>
-      <node id="158">
-        <label>bson_mapper/stdx/optional.hpp</label>
-        <link refid="optional_8hpp_source"/>
-        <childnode refid="139" relation="include">
+        <childnode refid="167" relation="include">
         </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+      </node>
+      <node id="173">
+        <label>ostream</label>
+      </node>
+      <node id="152">
+        <label>mongocxx/cursor.hpp</label>
+      </node>
+      <node id="175">
+        <label>bsoncxx/builder/stream/document.hpp</label>
+      </node>
+      <node id="155">
+        <label>bson_mapper/config/compiler.hpp</label>
+        <link refid="bson__mapper_2config_2compiler_8hpp_source"/>
       </node>
       <node id="147">
-        <label>bson_mapper/bson_archiver.hpp</label>
-        <link refid="bson__archiver_8hpp_source"/>
-        <childnode refid="148" relation="include">
-        </childnode>
-        <childnode refid="149" relation="include">
-        </childnode>
-        <childnode refid="150" relation="include">
-        </childnode>
-        <childnode refid="151" relation="include">
-        </childnode>
-        <childnode refid="152" relation="include">
-        </childnode>
-        <childnode refid="153" relation="include">
-        </childnode>
-        <childnode refid="154" relation="include">
-        </childnode>
+        <label>mongo_odm/config/export.hpp</label>
+      </node>
+      <node id="169">
+        <label>bsoncxx/types/value.hpp</label>
+      </node>
+      <node id="156">
+        <label>bson_mapper/config/config.hpp</label>
+      </node>
+      <node id="165">
+        <label>vector</label>
+      </node>
+      <node id="163">
+        <label>stack</label>
+      </node>
+      <node id="168">
+        <label>bsoncxx/types.hpp</label>
+      </node>
+      <node id="174">
+        <label>streambuf</label>
+      </node>
+      <node id="154">
+        <label>bson_mapper/config/prelude.hpp</label>
+        <link refid="bson__mapper_2config_2prelude_8hpp_source"/>
         <childnode refid="155" relation="include">
         </childnode>
         <childnode refid="156" relation="include">
@@ -120,113 +166,67 @@
         <childnode refid="158" relation="include">
         </childnode>
       </node>
-      <node id="161">
-        <label>ostream</label>
-      </node>
-      <node id="140">
-        <label>mongocxx/cursor.hpp</label>
-      </node>
-      <node id="163">
-        <label>bsoncxx/builder/stream/document.hpp</label>
-      </node>
-      <node id="143">
-        <label>bson_mapper/config/compiler.hpp</label>
-        <link refid="bson__mapper_2config_2compiler_8hpp_source"/>
-      </node>
-      <node id="135">
-        <label>mongo_odm/config/export.hpp</label>
-      </node>
-      <node id="157">
-        <label>bsoncxx/types/value.hpp</label>
-      </node>
-      <node id="144">
-        <label>bson_mapper/config/config.hpp</label>
-      </node>
-      <node id="153">
-        <label>vector</label>
-      </node>
-      <node id="151">
-        <label>stack</label>
-      </node>
-      <node id="156">
-        <label>bsoncxx/types.hpp</label>
+      <node id="148">
+        <label>mongo_odm/config/version.hpp</label>
       </node>
       <node id="162">
-        <label>streambuf</label>
+        <label>sstream</label>
       </node>
-      <node id="142">
-        <label>bson_mapper/config/prelude.hpp</label>
-        <link refid="bson__mapper_2config_2prelude_8hpp_source"/>
-        <childnode refid="143" relation="include">
-        </childnode>
-        <childnode refid="144" relation="include">
-        </childnode>
+      <node id="166">
+        <label>cereal/cereal.hpp</label>
+      </node>
+      <node id="149">
+        <label>iostream</label>
+      </node>
+      <node id="144">
+        <label>mongo_odm/config/prelude.hpp</label>
+        <link refid="mongo__odm_2config_2prelude_8hpp_source"/>
         <childnode refid="145" relation="include">
         </childnode>
         <childnode refid="146" relation="include">
         </childnode>
-      </node>
-      <node id="136">
-        <label>mongo_odm/config/version.hpp</label>
-      </node>
-      <node id="150">
-        <label>sstream</label>
-      </node>
-      <node id="154">
-        <label>cereal/cereal.hpp</label>
-      </node>
-      <node id="137">
-        <label>iostream</label>
-      </node>
-      <node id="132">
-        <label>mongo_odm/config/prelude.hpp</label>
-        <link refid="mongo__odm_2config_2prelude_8hpp_source"/>
-        <childnode refid="133" relation="include">
+        <childnode refid="147" relation="include">
         </childnode>
-        <childnode refid="134" relation="include">
-        </childnode>
-        <childnode refid="135" relation="include">
-        </childnode>
-        <childnode refid="136" relation="include">
+        <childnode refid="148" relation="include">
         </childnode>
       </node>
-      <node id="148">
+      <node id="160">
         <label>chrono</label>
       </node>
-      <node id="146">
+      <node id="158">
         <label>bson_mapper/config/version.hpp</label>
       </node>
-      <node id="164">
+      <node id="176">
         <label>bsoncxx/json.hpp</label>
       </node>
-      <node id="145">
+      <node id="157">
         <label>bson_mapper/config/export.hpp</label>
       </node>
-      <node id="133">
+      <node id="145">
         <label>mongo_odm/config/compiler.hpp</label>
         <link refid="mongo__odm_2config_2compiler_8hpp_source"/>
       </node>
-      <node id="149">
+      <node id="161">
         <label>memory</label>
       </node>
-      <node id="160">
+      <node id="172">
         <label>istream</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="168">
+      <node id="180">
         <label>src/mongo_odm/odm_collection.hpp</label>
         <link refid="odm__collection_8hpp_source"/>
-        <childnode refid="169" relation="include">
+        <childnode refid="181" relation="include">
         </childnode>
       </node>
-      <node id="167">
+      <node id="179">
         <label>src/mongo_odm/deserializing_cursor.hpp</label>
         <link refid="deserializing_cursor.hpp"/>
-        <childnode refid="168" relation="include">
+        <childnode refid="180" relation="include">
         </childnode>
       </node>
-      <node id="169">
+      <node id="181">
         <label>src/mongo_odm/model.hpp</label>
         <link refid="model_8hpp_source"/>
       </node>

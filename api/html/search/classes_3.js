@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['exception',['Exception',['../structbson__mapper_1_1Exception.html',1,'bson_mapper']]],
-  ['expressionlist',['ExpressionList',['../classmongo__odm_1_1ExpressionList.html',1,'mongo_odm']]]
+  ['deserializing_5fcursor',['deserializing_cursor',['../classmongo__odm_1_1deserializing__cursor.html',1,'mongo_odm']]],
+  ['dollar_5foperator_5fnvp',['dollar_operator_nvp',['../classmongo__odm_1_1dollar__operator__nvp.html',1,'mongo_odm']]]
 ];

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.16" />
+    <meta name="description" content="">
+
+
+    <link rel="shortcut icon" href="http://mongodb.github.io/mongo-cxx-odm/images/favicon.png" type="image/x-icon" />
+
+    
+    <title>Introduction</title>
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/nucleus.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/hybrid.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/featherlight.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/theme.css" rel="stylesheet">
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/hugo-theme.css" rel="stylesheet">
+    <style type="text/css">:root #header + #content > #left > #rlblock_left
+    {display:none !important;}</style>
+    <link href="http://mongodb.github.io/mongo-cxx-odm/css/docs.css" rel="stylesheet">
+
+  </head>
+  <body class="" data-url="/3-queries/introduction/">
+    <nav id="sidebar">
+  <div id="header-wrapper">
+    <div id="header">
+      <html>
+<body>
+	<img src="http://mongodb.github.io/mongo-cxx-odm/images/logo.png"/>
+</body>
+</html>
+
+      
+    </div>
+</div>
+
+
+  <div class="highlightable">
+    <ul class="topics">
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/1-basics/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/">
+          <span>
+            
+              <b>1. </b>
+            
+             Basics
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/what-is-mangrove/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/what-is-mangrove/">
+                <span>What is Mangrove?     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/installation/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/installation/">
+                <span>Installation     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/1-basics/quick-tour/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/1-basics/quick-tour/">
+                <span>Quick Tour     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/2-models/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/">
+          <span>
+            
+              <b>2. </b>
+            
+             Models
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/introduction/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/introduction/">
+                <span>Introduction     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/allowed-types/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/allowed-types/">
+                <span>Allowed Types     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/custom_id/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/custom_id/">
+                <span>Custom _id Type     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/2-models/dynamic-schemas/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/2-models/dynamic-schemas/">
+                <span>Dynamic Schemas     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  parent" data-nav-id="/3-queries/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/3-queries/">
+          <span>
+            
+              <b>3. </b>
+            
+             Queries
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item active" data-nav-id="/3-queries/introduction/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/3-queries/introduction/">
+                <span>Introduction     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/3-queries/operators/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/3-queries/operators/">
+                <span>Operators     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/4-updates/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/4-updates/">
+          <span>
+            
+              <b>4. </b>
+            
+             Updates
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+          
+          
+          
+            <li class="dd-item " data-nav-id="/4-updates/introduction/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/4-updates/introduction/">
+                <span>Introduction     </i></span>
+              </a>
+            </li>
+          
+          
+          
+            <li class="dd-item " data-nav-id="/4-updates/operators/">
+              <a href="http://mongodb.github.io/mongo-cxx-odm/4-updates/operators/">
+                <span>Operators     </i></span>
+              </a>
+            </li>
+          
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/5-the-bson-mapper/">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/5-the-bson-mapper/">
+          <span>
+            
+              <b>5. </b>
+            
+             The BSON Mapper
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+      <li class="dd-item">
+        <a href="http://mongodb.github.io/mongo-cxx-odm/api/html">
+          <span> 
+            <b> 6. </b> API Docs
+          </span>
+        </a>
+      </li>
+      <li class="dd-item">
+        <a href="https://github.com/mongodb/mongo-cxx-odm">
+          <span> 
+            <b> 7. </b> Source Code
+          </span>
+        </a>
+      </li>
+    </ul>
+    <hr>
+      
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+    </section>
+  </div>
+</nav>
+
+        <section id="body">
+        <div id="overlay"></div>
+
+        <div class="padding highlightable">
+
+            <div id="top-bar">
+              
+              <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                  <span id="sidebar-toggle-span">
+                      <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                        <i class="fa fa-bars"></i>
+                      </a>
+                  </span>
+                
+                <span id="toc-menu"><a href=""><i class="fa fa-list-alt"></i></a></span>
+                
+                
+                
+                
+                  
+                
+                  
+                
+                  
+                    
+                    
+                <a href="http://mongodb.github.io/mongo-cxx-odm/3-queries/" itemprop="url"><span itemprop="title">Queries</span></a> <i class="fa fa-angle-right"></i>
+                    
+                  
+                
+                  
+                
+                  
+                
+                <span itemprop="title"> Introduction</span>
+              </div>
+              
+                  <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#specifying-fields">Specifying fields</a>
+<ul>
+<li>
+<ul>
+<li><a href="#referring-to-embedded-fields">Referring to embedded fields</a></li>
+<li><a href="#referring-to-array-elements">Referring to array elements</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#type-checking">Type checking</a></li>
+<li><a href="#combining-queries">Combining queries</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+              
+
+            </div>
+            
+    	        <div id="body-inner">
+                
+                <h1>Introduction</h1>
+                
+
+
+
+<p>Mangrove provides a <strong>query builder</strong> with static type-checking for constructing MongoDB queries.
+This allows you to compare documents using familiar C++ syntax using operators such as <code>&gt;</code> and <code>!=</code>.
+These query objects are automatically converted to BSON, and can be passed either to the Mangrove Model&rsquo;s <code>find</code> and <code>find_one</code> methods, to the Mangrove collection wrapper, or to the query methods in the Mongo C++ Driver.</p>
+
+<p>The query builder helps you avoid JSON syntax errors, such as forgetting a closing curly brace, and will catch other errors at compile time &mdash; so you don&rsquo;t have to wait until your queries return errors in production (or silently return incorrect results!) to catch mistakes.</p>
+
+<p>Mangrove currently supports all the 
+<a target="_blank" href="https://docs.mongodb.com/v3.2/reference/operator/query/">query operators <i class="fa fa-external-link"></i></a>
+ as of MongoDB 3.2,
+except for <code>$type</code>, <code>$where</code>, and geospatial queries. If you need to use these operators, create the BSON for the query as you 
+<a target="_blank" href="https://github.com/mongodb/mongo-cxx-driver/wiki/Handling-BSON-in-the-new-driver">normally would <i class="fa fa-external-link"></i></a>
+ using the MongoDB C++ driver.</p>
+
+<p>Consider the following class that represents a user of some website:</p>
+
+<pre><code class="language-cpp">class User : public mangrove::model&lt;User&gt; {
+public:
+    std::string username;
+    std::int32_t age;
+
+    MANGROVE_MAKE_KEYS_MODEL(User, MANGROVE_NVP(username), MANGROVE_NVP(age));
+};
+</code></pre>
+
+<p>To retrieve the users in the database that are over 21 years of age, one would use the following query:</p>
+
+<pre><code class="language-cpp">// { age: {$gte: 21} }
+auto results = User::find(MANGROVE_KEY(User::age) &gt;= 21);
+</code></pre>
+
+<p>Where <code>collection</code> is a <code>mongocxx::collection</code> object from the C++ Driver.
+The different parts of this code will be explained in more detail below,
+but note the <code>MANGROVE_KEY</code> macro that is used to refer to individual fields in the document.
+Then, Mangrove uses 
+<a target="_blank" href="http://en.cppreference.com/w/cpp/language/operators">operator overloading <i class="fa fa-external-link"></i></a>
+ to allow the field to be compared to <code>21</code> with the <code>&gt;=</code> operator.
+This constructs a query object, which is implicitly cast to a BSON value when passed into <code>mongocxx::collection::find()</code>.</p>
+
+<div class="notices warning" ><p>The query objects should only be used as <em>temporary objects</em> &mdash; that is, constructed and passed directly into another function, such as <code>find()</code>.
+Attempting to store these queries in a variable and use them later may produce undefined results.
+This is because the query expressions store their arguments by reference to avoid putting too much data on the stack.</p>
+</div>
+
+
+<h2 id="specifying-fields">Specifying fields</h2>
+
+<p>You&rsquo;ve already seen one way of referring to fields, the <code>MANGROVE_KEY</code> macro.
+This macro takes a class member specified as <code>Base::member</code>, and creates a &ldquo;field object&rdquo; that can be used in queries.</p>
+
+<h4 id="referring-to-embedded-fields">Referring to embedded fields</h4>
+
+<p>Referring to fields in embedded objects is a bit different.
+Let&rsquo;s say we wanted to add an Address class to our User:</p>
+
+<pre><code class="language-cpp">class Address {
+public:
+    std::string street;
+    std::string city;
+    std::string state;
+    std::string zip;  
+
+    MANGROVE_MAKE_KEYS(Address, MANGROVE_NVP(street), MANGROVE_NVP(city),
+                                MANGROVE_NVP(state), MANGROVE_NVP(zip));
+};
+
+class User : public mangrove::model&lt;User&gt; {
+public:
+    std::string username;
+    std::int32_t age;
+    Address addr;
+
+    MANGROVE_MAKE_KEYS_MODEL(User, MANGROVE_NVP(username), MANGROVE_NVP(age), MANGROVE_NVP(addr));
+};
+</code></pre>
+
+<p>Now, we can query for users using their address using the <code>MANGROVE_CHILD</code> macro:</p>
+
+<pre><code class="language-cpp">// { &quot;addr.zip&quot;: &quot;21211&quot; }
+auto results = User::find(MANGROVE_CHILD(User, addr, zip) == &quot;21211&quot;);
+</code></pre>
+
+<p>The <code>MANGROVE_CHILD</code> takes a base class, and then the names of each successive nested field.</p>
+
+<div class="notices info" ><p>Mangrove can support as many levels of nesting as is allowed in the
+<a target="_blank" href="https://docs.mongodb.com/manual/reference/limits/#Nested-Depth-for-BSON-Documents">BSON specification <i class="fa fa-external-link"></i></a>
+.</p>
+</div>
+
+
+<p>Another way to refer to children is to link field objects using the <code>-&gt;*</code> operator:</p>
+
+<pre><code class="language-cpp">// { &quot;addr.zip&quot;: &quot;21211&quot; }
+auto results = User::find(MANGROVE_KEY(User::addr) -&gt;* MANGROVE_KEY(Address::zip) == &quot;21211&quot;);
+</code></pre>
+
+<h4 id="referring-to-array-elements">Referring to array elements</h4>
+
+<p>Referring to specific array elements in queries is the same as in any C++ expression &mdash;
+one can simply user the square brackets <code>[]</code> to specify a certain index.
+For instance, the following query finds users whose 10th score in some game is higher than 1000:</p>
+
+<pre><code class="language-cpp">// { &quot;scores.9&quot;: {$gt: 1000} }
+// (note that arrays are 0-indexed)
+auto results = User::find(MANGROVE_KEY(User::scores)[9] &gt; 1000);
+</code></pre>
+
+<h2 id="type-checking">Type checking</h2>
+
+<p>Mangrove provides type checking on queries, so that comparing fields and values with mismatched types,
+or using array operators on non-array fields, results in compile-time errors.</p>
+
+<p>For instance, the following query will fail at compile time:</p>
+
+<pre><code class="language-cpp">// { age: {$gte: &quot;21&quot;} }
+auto results = User::find(MANGROVE_KEY(User::age) &gt;= &quot;21&quot;);
+</code></pre>
+
+<p>In the mongo shell, for instance, such a query would be just fine,
+but would have done a lexicographic comparison between the <code>age</code> field and the string <code>&quot;21&quot;</code>.
+This is definitely not what we want, and may only have been discovered later, in production.</p>
+
+<p>Similarly, the query</p>
+
+<pre><code class="language-cpp">// { age: {$all: [15, 17, 19]} }
+auto results = User::find(MANGROVE_KEY(User::age).all(std::vector&lt;int&gt;{15, 17, 19}));
+</code></pre>
+
+<p>does not make sense because <code>User::age</code> is not an array, and will cause a syntax error accordingly.</p>
+
+<h2 id="combining-queries">Combining queries</h2>
+
+<p>There are several ways to combine different conditions into one query in Mangrove.
+The simplest one is the comma operator &mdash; conditions can be appended one after the other, separated by a comma.
+This is the same as having comma-separated fields in a BSON query; it has the effect of a logical AND
+on the various conditions.</p>
+
+<p>The following query filters by users&rsquo; age as well as address:</p>
+
+<pre><code class="language-cpp">// { age: {$gt: 65}, &quot;addr.state&quot;: &quot;NY&quot; }
+auto results = User::find((MANGROVE_KEY(User::age) &gt; 65, MANGROVE_CHILD(User, addr, state) == &quot;NY&quot;));
+</code></pre>
+
+<div class="notices note" ><p>Note that the query expression is inside another set of parentheses.
+This is to ensure that the different conditions are combined as one query,
+instead of passed to <code>find()</code> as different arguments.</p>
+</div>
+
+
+<p>Queries can also be combined using boolean operators:</p>
+
+<pre><code class="language-cpp">// { $and: [
+//          {$or: [{age: {$gt: 65}}, {age: {$lt: 5}}]},
+//          {&quot;addr.state&quot;: &quot;NY&quot;}
+//        ] }
+auto results = User::find((MANGROVE_KEY(User::age) &gt; 65 || MANGROVE_KEY(User::age) &lt; 5) &amp;&amp; MANGROVE_CHILD(User, addr, state) == &quot;NY&quot;);
+</code></pre>
+
+<div class="notices tip" ><p>Using boolean operators also allows you to use the same field in several conditions.
+Above, <code>User::age</code> was compared twice.
+This is not supported in MongoDB when combining queries with commas.</p>
+</div>
+
+
+
+      
+      </div>
+    </div>
+
+    <div id="navigation">
+        <a class="nav nav-prev" href="http://mongodb.github.io/mongo-cxx-odm/3-queries"> <i class="fa fa-chevron-left"></i></a>
+        <a class="nav nav-next" href="http://mongodb.github.io/mongo-cxx-odm/3-queries/operators" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+    </div>
+
+    </section>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/jquery-2.x.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/clipboard.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/perfect-scrollbar.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/jquery.sticky-kit.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/featherlight.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/html5shiv-printshiv.min.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/modernizr.custom.71422.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/learn.js"></script>
+    <script src="http://mongodb.github.io/mongo-cxx-odm/js/hugo-learn.js"></script>
+    
+
+  </body>
+</html>
+

@@ -1,0 +1,93 @@
+\hypertarget{classmongo__odm_1_1expression__list}{}\section{mongo\+\_\+odm\+:\+:expression\+\_\+list$<$ list\+\_\+type, Args $>$ Class Template Reference}
+\label{classmongo__odm_1_1expression__list}\index{mongo\+\_\+odm\+::expression\+\_\+list$<$ list\+\_\+type, Args $>$@{mongo\+\_\+odm\+::expression\+\_\+list$<$ list\+\_\+type, Args $>$}}
+
+
+This represents a list of expressions.  
+
+
+
+
+{\ttfamily \#include $<$query\+\_\+builder.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmongo__odm_1_1expression__list_a005746d6c92dc87c719a0e8029493590}{expression\+\_\+list} (const Args \&...args)
+\begin{DoxyCompactList}\small\item\em Constructs an expression list of the given arguments. \end{DoxyCompactList}\item 
+void \hyperlink{classmongo__odm_1_1expression__list_a85ac4de221b14cf6adf52945fd9f7507}{append\+\_\+to\+\_\+bson} (bsoncxx\+::builder\+::core \&builder, bool wrap=false) const 
+\begin{DoxyCompactList}\small\item\em Appends each element to a B\+S\+ON code builder. \end{DoxyCompactList}\item 
+\hyperlink{classmongo__odm_1_1expression__list_a210238378d08926cab580c63dec1a31c}{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value} () const 
+\begin{DoxyCompactList}\small\item\em Casts the expression list to a B\+S\+ON query of the form \{ expr1, expr2, .... \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$expression\+\_\+category list\+\_\+type, typename... Args$>$\\*
+class mongo\+\_\+odm\+::expression\+\_\+list$<$ list\+\_\+type, Args $>$}
+
+This represents a list of expressions. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em list\+\_\+type} & The category of the expressions, such as \char`\"{}update\char`\"{} or \char`\"{}query\char`\"{}. \\
+\hline
+{\em Args...} & The types of the various expressions that make up the list. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mongo\+\_\+odm\+::expression\+\_\+list@{mongo\+\_\+odm\+::expression\+\_\+list}!expression\+\_\+list@{expression\+\_\+list}}
+\index{expression\+\_\+list@{expression\+\_\+list}!mongo\+\_\+odm\+::expression\+\_\+list@{mongo\+\_\+odm\+::expression\+\_\+list}}
+\subsubsection[{\texorpdfstring{expression\+\_\+list(const Args \&...\+args)}{expression_list(const Args &...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$expression\+\_\+category list\+\_\+type, typename... Args$>$ {\bf mongo\+\_\+odm\+::expression\+\_\+list}$<$ list\+\_\+type, Args $>$\+::{\bf expression\+\_\+list} (
+\begin{DoxyParamCaption}
+\item[{const Args \&...}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1expression__list_a005746d6c92dc87c719a0e8029493590}{}\label{classmongo__odm_1_1expression__list_a005746d6c92dc87c719a0e8029493590}
+
+
+Constructs an expression list of the given arguments. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em args} & The individual elements of the list. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\index{mongo\+\_\+odm\+::expression\+\_\+list@{mongo\+\_\+odm\+::expression\+\_\+list}!append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}}
+\index{append\+\_\+to\+\_\+bson@{append\+\_\+to\+\_\+bson}!mongo\+\_\+odm\+::expression\+\_\+list@{mongo\+\_\+odm\+::expression\+\_\+list}}
+\subsubsection[{\texorpdfstring{append\+\_\+to\+\_\+bson(bsoncxx\+::builder\+::core \&builder, bool wrap=false) const }{append_to_bson(bsoncxx::builder::core &builder, bool wrap=false) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$expression\+\_\+category list\+\_\+type, typename... Args$>$ void {\bf mongo\+\_\+odm\+::expression\+\_\+list}$<$ list\+\_\+type, Args $>$\+::append\+\_\+to\+\_\+bson (
+\begin{DoxyParamCaption}
+\item[{bsoncxx\+::builder\+::core \&}]{builder, }
+\item[{bool}]{wrap = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1expression__list_a85ac4de221b14cf6adf52945fd9f7507}{}\label{classmongo__odm_1_1expression__list_a85ac4de221b14cf6adf52945fd9f7507}
+
+
+Appends each element to a B\+S\+ON code builder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em builder} & A code B\+S\+ON builder \\
+\hline
+{\em wrap} & Whether to wrap individual elements inside a B\+S\+ON document, e.\+g. \char`\"{}\{elt1...\}, \{elt2, ...\}, ...\char`\"{} \\
+\hline
+\end{DoxyParams}
+\index{mongo\+\_\+odm\+::expression\+\_\+list@{mongo\+\_\+odm\+::expression\+\_\+list}!operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}}
+\index{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value@{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value}!mongo\+\_\+odm\+::expression\+\_\+list@{mongo\+\_\+odm\+::expression\+\_\+list}}
+\subsubsection[{\texorpdfstring{operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value() const }{operator bsoncxx::document::view_or_value() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$expression\+\_\+category list\+\_\+type, typename... Args$>$ {\bf mongo\+\_\+odm\+::expression\+\_\+list}$<$ list\+\_\+type, Args $>$\+::operator bsoncxx\+::document\+::view\+\_\+or\+\_\+value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmongo__odm_1_1expression__list_a210238378d08926cab580c63dec1a31c}{}\label{classmongo__odm_1_1expression__list_a210238378d08926cab580c63dec1a31c}
+
+
+Casts the expression list to a B\+S\+ON query of the form \{ expr1, expr2, .... 
+
+\} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+\_\+odm/expression\+\_\+syntax.\+hpp\item 
+src/mongo\+\_\+odm/query\+\_\+builder.\+hpp\end{DoxyCompactItemize}
