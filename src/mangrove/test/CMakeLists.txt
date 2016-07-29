@@ -12,6 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-add_definitions(-DMANGROVE_COMPILING)
-add_subdirectory(boson)
-add_subdirectory(mangrove)
+include_directories(
+    ${CMAKE_SOURCE_DIR}/src/third_party/catch/include
+)
+
+add_executable(test_mangrove
+    main.cpp
+    model.cpp
+    collection_wrapper.cpp
+    deserializing_cursor.cpp
+    query_builder.cpp
+    util.cpp
+)
+
+target_link_libraries(test_mangrove mangrove_static)
+add_test(mangrove test_mangrove)

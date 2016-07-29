@@ -50,7 +50,7 @@ Other community resources are outlined on the [MongoDB Community site](http://do
 
 The source files in this repository are made available under the terms of the Apache License, version 2.0.
 
-The BSON mapper in Mangrove is powered by the [Cereal](http://uscilab.github.io/cereal/) C++11 serialization library, which is made available under the BSD 3-Clause License.
+The BSON mapper in Mangrove (Boson) is powered by the [Cereal](http://uscilab.github.io/cereal/) C++11 serialization library, which is made available under the BSD 3-Clause License.
 
 The documentation for Mangrove utilizes the Hugo [Learn](https://github.com/matcornic/hugo-theme-learn) theme (Copyright (c) 2014 Grav Copyright (c) 2016 MATHIEU CORNIC) which is made available under the MIT License.
 

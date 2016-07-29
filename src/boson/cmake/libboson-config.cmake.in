@@ -12,6 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-add_definitions(-DMANGROVE_COMPILING)
-add_subdirectory(boson)
-add_subdirectory(mangrove)
+set(LIBBOSON_VERSION_MAJOR @BOSON_VERSION_MAJOR@)
+set(LIBBOSON_VERSION_MINOR @BOSON_VERSION_MINOR@)
+set(LIBBOSON_VERSION_PATCH @BOSON_VERSION_PATCH@)
+set(LIBBOSON_PACKAGE_VERSION @BOSON_VERSION@)
+set(LIBBOSON_LIBRARIES boson)
+
+@PACKAGE_INIT@
+
+set_and_check(LIBBOSON_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/@PACKAGE_INCLUDE_INSTALL_DIRS@")
+set_and_check(LIBBOSON_LIBRARY_DIRS "${PACKAGE_PREFIX_DIR}/@PACKAGE_LIBRARY_INSTALL_DIRS@")
+

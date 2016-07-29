@@ -12,6 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-add_definitions(-DMANGROVE_COMPILING)
-add_subdirectory(boson)
-add_subdirectory(mangrove)
+include_directories(
+    ${CMAKE_SOURCE_DIR}/src/third_party/catch/include
+)
+
+add_executable(test_boson
+    archiver_test.cpp
+    bson_streambuf.cpp
+    main.cpp
+    mapping_functions.cpp
+    stdx_optional_archiver_test.cpp
+)
+
+target_link_libraries(test_boson boson_static)
+add_test(boson test_boson)

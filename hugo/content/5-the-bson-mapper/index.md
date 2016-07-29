@@ -11,4 +11,4 @@ weight = 0
 
 # The BSON Mapper
 
-Learn about the {{% a_blank "Cereal" "http://uscilab.github.io/cereal/" %}}-powered **BSON serializer** that makes Mangrove work, and how you can use it in your own applications.
+Learn about **Boson**, the {{% a_blank "Cereal" "http://uscilab.github.io/cereal/" %}}-powered **BSON serializer** that makes Mangrove work, and how you can use it in your own applications.

@@ -55,7 +55,7 @@ before_script:
     - $CC --version
     - $CXX --version
 
-    # Build the odm and the tests
+    # Build Mangrove and its tests
     - export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/install/lib/pkgconfig
     - cd build
     - export CC_FLAGS="-Wall -Wextra -Wno-attributes -Werror -Wno-error=missing-field-initializers ${NO_ERROR_ON_MAYBE_UNINITIALIZED}"
@@ -65,11 +65,11 @@ script:
 
     - make -j$(grep -c ^processor /proc/cpuinfo) all
 
-    # Run bson_mapper tests with catch
-    - ./src/bson_mapper/test/test_bson_mapper
+    # Run boson tests with catch
+    - ./src/boson/test/test_boson
 
-    # Run mongo_odm tests with catch
-    - ./src/mongo_odm/test/test_mongo_odm
+    # Run boson tests with catch
+    - ./src/mangrove/test/test_mangrove
 
     # Install headers and libs for the examples
     - make install

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # NOTE: The targets in this directory will only build if you have
-# installed the bson_mapper libraries via the 'install' targets.
+# installed the boson libraries via the 'install' targets.
 
 # TODO: Ideally, there would be dependencies here on the install targets
 # for bsonc_mapper. However, there is currently no way to express
@@ -25,21 +25,21 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Gv")
 endif()
 
-add_subdirectory(bson_mapper)
-add_subdirectory(mongo_odm)
+add_subdirectory(boson)
+add_subdirectory(mangrove)
 
-add_custom_target(examples DEPENDS ${BSON_MAPPER_EXAMPLE_EXECUTABLES} ${MONGO_ODM_EXAMPLE_EXECUTABLES})
+add_custom_target(examples DEPENDS ${BOSON_EXAMPLE_EXECUTABLES} ${MANGROVE_EXAMPLE_EXECUTABLES})
 
 add_custom_target(run-examples DEPENDS examples)
 
-# Run all bson_mapper examples on `make run-examples`.
-foreach(EXAMPLE ${BSON_MAPPER_EXAMPLE_EXECUTABLES})
-    get_filename_component(EXAMPLE_EXECUTABLE "${CMAKE_BINARY_DIR}/examples/bson_mapper/${EXAMPLE}" ABSOLUTE)
+# Run all boson examples on `make run-examples`.
+foreach(EXAMPLE ${BOSON_EXAMPLE_EXECUTABLES})
+    get_filename_component(EXAMPLE_EXECUTABLE "${CMAKE_BINARY_DIR}/examples/boson/${EXAMPLE}" ABSOLUTE)
     add_custom_command(TARGET run-examples POST_BUILD COMMAND ${EXAMPLE_EXECUTABLE})
 endforeach(EXAMPLE)
 
-# Run all mongo_odm examples on `make run-examples`.
-foreach(EXAMPLE ${MONGO_ODM_EXAMPLE_EXECUTABLES})
-    get_filename_component(EXAMPLE_EXECUTABLE "${CMAKE_BINARY_DIR}/examples/mongo_odm/${EXAMPLE}" ABSOLUTE)
+# Run all mangrove examples on `make run-examples`.
+foreach(EXAMPLE ${MANGROVE_EXAMPLE_EXECUTABLES})
+    get_filename_component(EXAMPLE_EXECUTABLE "${CMAKE_BINARY_DIR}/examples/mangrove/${EXAMPLE}" ABSOLUTE)
     add_custom_command(TARGET run-examples POST_BUILD COMMAND ${EXAMPLE_EXECUTABLE})
 endforeach(EXAMPLE)

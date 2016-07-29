@@ -12,6 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-add_definitions(-DMANGROVE_COMPILING)
-add_subdirectory(boson)
-add_subdirectory(mangrove)
+include_directories(
+    ${CMAKE_INSTALL_PREFIX}/${BOSON_HEADER_INSTALL_DIR}
+)
+
+link_directories(
+    ${CMAKE_INSTALL_PREFIX}/lib
+)
+
+set(BOSON_EXAMPLES )
+
+foreach(EXAMPLE_SRC ${BOSON_EXAMPLES})
+    get_filename_component(EXAMPLE_TARGET ${EXAMPLE_SRC} NAME_WE)
+    add_executable(${EXAMPLE_TARGET} ${EXAMPLE_SRC})
+    target_link_libraries(${EXAMPLE_TARGET} boson)
+    set(BOSON_EXAMPLE_EXECUTABLES ${BOSON_EXAMPLE_EXECUTABLES} ${EXAMPLE_TARGET})
+endforeach(EXAMPLE_SRC)
+
+set(BOSON_EXAMPLE_EXECUTABLES ${BOSON_EXAMPLE_EXECUTABLES} PARENT_SCOPE)

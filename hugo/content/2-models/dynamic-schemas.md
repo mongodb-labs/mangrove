@@ -14,7 +14,7 @@ Let's say that you are storing a collection of web video metadata. You might wan
 You can accomplish this in Mangrove with `optional` fields.
 
 ```cpp
-using bson_mapper::stdx::optional;
+using boson::stdx::optional;
 
 class VideoMetadata : public mangrove::model<VideoMetadata> {
 	int64_t view_count;

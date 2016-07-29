@@ -12,6 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-add_definitions(-DMANGROVE_COMPILING)
-add_subdirectory(boson)
-add_subdirectory(mangrove)
+prefix=@CMAKE_INSTALL_PREFIX@
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: libmangrove
+Description: Mangrove: MongoDB C++14 ODM Library
+URL: http://github.com/mongodb/mongo-cxx-odm
+Version: @MANGROVE_VERSION@
+Requires.private: libbsoncxx >= @LIBBSONCXX_REQUIRED_VERSION@
+Cflags: -I${includedir}/mangrove/@MANGROVE_INLINE_NAMESPACE@
+Libs: -L${libdir} -lmangrove
