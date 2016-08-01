@@ -12,22 +12,69 @@
     <includedby refid="collection__wrapper_8hpp" local="no">src/mangrove/collection_wrapper.hpp</includedby>
     <includedby refid="deserializing__cursor_8hpp" local="no">src/mangrove/deserializing_cursor.hpp</includedby>
     <incdepgraph>
-      <node id="120">
+      <node id="127">
         <label>bsoncxx/builder/core.hpp</label>
       </node>
-      <node id="111">
+      <node id="118">
         <label>bsoncxx/stdx/optional.hpp</label>
       </node>
-      <node id="107">
+      <node id="133">
+        <label>cereal/types/list.hpp</label>
+      </node>
+      <node id="114">
         <label>boson/config/export.hpp</label>
       </node>
-      <node id="117">
+      <node id="124">
         <label>string</label>
       </node>
-      <node id="124">
+      <node id="138">
         <label>boson/bson_streambuf.hpp</label>
         <link refid="bson__streambuf_8hpp_source"/>
-        <childnode refid="104" relation="include">
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+      </node>
+      <node id="111">
+        <label>boson/config/prelude.hpp</label>
+        <link refid="boson_2config_2prelude_8hpp_source"/>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+      </node>
+      <node id="117">
+        <label>bsoncxx/builder/basic/document.hpp</label>
+      </node>
+      <node id="140">
+        <label>ostream</label>
+      </node>
+      <node id="119">
+        <label>boson/bson_archiver.hpp</label>
+        <link refid="bson__archiver_8hpp_source"/>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
         </childnode>
         <childnode refid="125" relation="include">
         </childnode>
@@ -41,33 +88,46 @@
         </childnode>
         <childnode refid="130" relation="include">
         </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="135" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="137" relation="include">
+        </childnode>
       </node>
-      <node id="104">
-        <label>boson/config/prelude.hpp</label>
-        <link refid="boson_2config_2prelude_8hpp_source"/>
-        <childnode refid="105" relation="include">
+      <node id="115">
+        <label>boson/config/version.hpp</label>
+      </node>
+      <node id="131">
+        <label>cereal/types/deque.hpp</label>
+      </node>
+      <node id="142">
+        <label>bsoncxx/builder/stream/document.hpp</label>
+      </node>
+      <node id="130">
+        <label>boson/stdx/optional.hpp</label>
+        <link refid="optional_8hpp_source"/>
+        <childnode refid="118" relation="include">
         </childnode>
-        <childnode refid="106" relation="include">
-        </childnode>
-        <childnode refid="107" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
+      </node>
+      <node id="134">
+        <label>cereal/types/set.hpp</label>
+      </node>
+      <node id="129">
+        <label>bsoncxx/types/value.hpp</label>
       </node>
       <node id="110">
-        <label>bsoncxx/builder/basic/document.hpp</label>
-      </node>
-      <node id="126">
-        <label>ostream</label>
-      </node>
-      <node id="112">
-        <label>boson/bson_archiver.hpp</label>
-        <link refid="bson__archiver_8hpp_source"/>
-        <childnode refid="113" relation="include">
-        </childnode>
-        <childnode refid="114" relation="include">
-        </childnode>
-        <childnode refid="115" relation="include">
+        <label>src/boson/mapping_functions.hpp</label>
+        <link refid="mapping_functions.hpp"/>
+        <childnode refid="111" relation="include">
         </childnode>
         <childnode refid="116" relation="include">
         </childnode>
@@ -77,116 +137,91 @@
         </childnode>
         <childnode refid="119" relation="include">
         </childnode>
-        <childnode refid="120" relation="include">
+        <childnode refid="138" relation="include">
         </childnode>
-        <childnode refid="121" relation="include">
-        </childnode>
-        <childnode refid="122" relation="include">
-        </childnode>
-        <childnode refid="123" relation="include">
+        <childnode refid="144" relation="include">
         </childnode>
       </node>
-      <node id="108">
-        <label>boson/config/version.hpp</label>
-      </node>
-      <node id="128">
-        <label>bsoncxx/builder/stream/document.hpp</label>
-      </node>
-      <node id="123">
-        <label>boson/stdx/optional.hpp</label>
-        <link refid="optional_8hpp_source"/>
-        <childnode refid="111" relation="include">
-        </childnode>
-      </node>
-      <node id="122">
-        <label>bsoncxx/types/value.hpp</label>
-      </node>
-      <node id="103">
-        <label>src/boson/mapping_functions.hpp</label>
-        <link refid="mapping_functions.hpp"/>
-        <childnode refid="104" relation="include">
-        </childnode>
-        <childnode refid="109" relation="include">
-        </childnode>
-        <childnode refid="110" relation="include">
-        </childnode>
-        <childnode refid="111" relation="include">
-        </childnode>
-        <childnode refid="112" relation="include">
-        </childnode>
-        <childnode refid="124" relation="include">
-        </childnode>
-        <childnode refid="130" relation="include">
-        </childnode>
-      </node>
-      <node id="118">
+      <node id="125">
         <label>vector</label>
       </node>
-      <node id="116">
+      <node id="123">
         <label>stack</label>
       </node>
-      <node id="121">
+      <node id="128">
         <label>bsoncxx/types.hpp</label>
       </node>
-      <node id="127">
+      <node id="141">
         <label>streambuf</label>
       </node>
-      <node id="115">
+      <node id="135">
+        <label>cereal/types/unordered_set.hpp</label>
+      </node>
+      <node id="136">
+        <label>cereal/types/valarray.hpp</label>
+      </node>
+      <node id="122">
         <label>sstream</label>
       </node>
-      <node id="119">
+      <node id="126">
         <label>cereal/cereal.hpp</label>
       </node>
-      <node id="105">
+      <node id="112">
         <label>boson/config/compiler.hpp</label>
         <link refid="boson_2config_2compiler_8hpp_source"/>
       </node>
-      <node id="109">
+      <node id="116">
         <label>iostream</label>
       </node>
-      <node id="113">
+      <node id="132">
+        <label>cereal/types/forward_list.hpp</label>
+      </node>
+      <node id="120">
         <label>chrono</label>
       </node>
-      <node id="106">
+      <node id="113">
         <label>boson/config/config.hpp</label>
       </node>
-      <node id="129">
+      <node id="143">
         <label>bsoncxx/json.hpp</label>
       </node>
-      <node id="114">
+      <node id="137">
+        <label>cereal/types/vector.hpp</label>
+      </node>
+      <node id="121">
         <label>memory</label>
       </node>
-      <node id="125">
+      <node id="139">
         <label>istream</label>
       </node>
-      <node id="130">
+      <node id="144">
         <label>boson/config/postlude.hpp</label>
         <link refid="boson_2config_2postlude_8hpp_source"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="133">
+      <node id="147">
         <label>src/mangrove/model.hpp</label>
         <link refid="model_8hpp_source"/>
       </node>
-      <node id="134">
+      <node id="148">
         <label>src/mangrove/deserializing_cursor.hpp</label>
         <link refid="deserializing__cursor_8hpp_source"/>
-        <childnode refid="132" relation="include">
+        <childnode refid="146" relation="include">
         </childnode>
       </node>
-      <node id="131">
+      <node id="145">
         <label>src/boson/mapping_functions.hpp</label>
         <link refid="mapping_functions.hpp"/>
-        <childnode refid="132" relation="include">
+        <childnode refid="146" relation="include">
         </childnode>
-        <childnode refid="134" relation="include">
+        <childnode refid="148" relation="include">
         </childnode>
       </node>
-      <node id="132">
+      <node id="146">
         <label>src/mangrove/collection_wrapper.hpp</label>
         <link refid="collection__wrapper_8hpp_source"/>
-        <childnode refid="133" relation="include">
+        <childnode refid="147" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

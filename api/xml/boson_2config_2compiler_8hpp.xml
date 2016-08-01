@@ -4,48 +4,48 @@
     <compoundname>compiler.hpp</compoundname>
     <includedby refid="boson_2config_2prelude_8hpp" local="no">src/boson/config/prelude.hpp</includedby>
     <invincdepgraph>
-      <node id="45">
+      <node id="52">
         <label>src/mangrove/model.hpp</label>
         <link refid="model_8hpp_source"/>
       </node>
-      <node id="46">
+      <node id="53">
         <label>src/mangrove/deserializing_cursor.hpp</label>
         <link refid="deserializing__cursor_8hpp_source"/>
-        <childnode refid="44" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="49">
         <label>src/boson/bson_streambuf.hpp</label>
         <link refid="bson__streambuf_8hpp_source"/>
-        <childnode refid="43" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
       </node>
-      <node id="41">
+      <node id="48">
         <label>src/boson/config/prelude.hpp</label>
         <link refid="boson_2config_2prelude_8hpp_source"/>
-        <childnode refid="42" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="50">
         <label>src/boson/mapping_functions.hpp</label>
         <link refid="mapping__functions_8hpp_source"/>
-        <childnode refid="44" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
       </node>
-      <node id="44">
+      <node id="51">
         <label>src/mangrove/collection_wrapper.hpp</label>
         <link refid="collection__wrapper_8hpp_source"/>
-        <childnode refid="45" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="47">
         <label>src/boson/config/compiler.hpp</label>
         <link refid="boson/config/compiler.hpp"/>
-        <childnode refid="41" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

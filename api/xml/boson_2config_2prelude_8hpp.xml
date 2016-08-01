@@ -9,69 +9,69 @@
     <includedby refid="bson__streambuf_8hpp" local="no">src/boson/bson_streambuf.hpp</includedby>
     <includedby refid="mapping__functions_8hpp" local="no">src/boson/mapping_functions.hpp</includedby>
     <incdepgraph>
-      <node id="80">
+      <node id="87">
         <label>boson/config/export.hpp</label>
       </node>
-      <node id="77">
+      <node id="84">
         <label>src/boson/config/prelude.hpp</label>
         <link refid="boson/config/prelude.hpp"/>
-        <childnode refid="78" relation="include">
+        <childnode refid="85" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="86" relation="include">
         </childnode>
-        <childnode refid="80" relation="include">
+        <childnode refid="87" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="88" relation="include">
         </childnode>
       </node>
-      <node id="81">
+      <node id="88">
         <label>boson/config/version.hpp</label>
       </node>
-      <node id="78">
+      <node id="85">
         <label>boson/config/compiler.hpp</label>
         <link refid="boson_2config_2compiler_8hpp_source"/>
       </node>
-      <node id="79">
+      <node id="86">
         <label>boson/config/config.hpp</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="86">
+      <node id="93">
         <label>src/mangrove/model.hpp</label>
         <link refid="model_8hpp_source"/>
       </node>
-      <node id="87">
+      <node id="94">
         <label>src/mangrove/deserializing_cursor.hpp</label>
         <link refid="deserializing__cursor_8hpp_source"/>
-        <childnode refid="85" relation="include">
+        <childnode refid="92" relation="include">
         </childnode>
       </node>
-      <node id="83">
+      <node id="90">
         <label>src/boson/bson_streambuf.hpp</label>
         <link refid="bson__streambuf_8hpp_source"/>
-        <childnode refid="84" relation="include">
+        <childnode refid="91" relation="include">
         </childnode>
       </node>
-      <node id="82">
+      <node id="89">
         <label>src/boson/config/prelude.hpp</label>
         <link refid="boson/config/prelude.hpp"/>
-        <childnode refid="83" relation="include">
+        <childnode refid="90" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="91" relation="include">
         </childnode>
       </node>
-      <node id="84">
+      <node id="91">
         <label>src/boson/mapping_functions.hpp</label>
         <link refid="mapping__functions_8hpp_source"/>
-        <childnode refid="85" relation="include">
+        <childnode refid="92" relation="include">
         </childnode>
-        <childnode refid="87" relation="include">
+        <childnode refid="94" relation="include">
         </childnode>
       </node>
-      <node id="85">
+      <node id="92">
         <label>src/mangrove/collection_wrapper.hpp</label>
         <link refid="collection__wrapper_8hpp_source"/>
-        <childnode refid="86" relation="include">
+        <childnode refid="93" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

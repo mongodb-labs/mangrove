@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="67" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="67" bodyend="68"/>
+        <location file="src/boson/bson_archiver.hpp" line="76" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="76" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="structboson_1_1Exception_1ade9926a2ea6ae34e9460263bdf3c322d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="69" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="69" bodyend="70"/>
+        <location file="src/boson/bson_archiver.hpp" line="78" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="78" bodyend="79"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -66,7 +66,7 @@
         <label>std::runtime_error</label>
       </node>
     </collaborationgraph>
-    <location file="src/boson/bson_archiver.hpp" line="66" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="66" bodyend="71"/>
+    <location file="src/boson/bson_archiver.hpp" line="75" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="75" bodyend="80"/>
     <listofallmembers>
       <member refid="structboson_1_1Exception_1a154723efc9a1b235f6f846bceddf3a66" prot="public" virt="non-virtual"><scope>boson::Exception</scope><name>Exception</name></member>
       <member refid="structboson_1_1Exception_1ade9926a2ea6ae34e9460263bdf3c322d" prot="public" virt="non-virtual"><scope>boson::Exception</scope><name>Exception</name></member>

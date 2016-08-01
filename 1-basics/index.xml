@@ -136,20 +136,59 @@ int main() {
 
 &lt;h2 id=&#34;build-and-install-mangrove&#34;&gt;Build and install Mangrove&lt;/h2&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Clone the repository, and check out the latest stable release.&lt;/p&gt;
+&lt;p&gt;Clone the repository, and check out the latest stable release.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;git clone -b master https://github.com/mongodb/mangrove&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;li&gt;&lt;p&gt;Build Mangrove. Note that if you installed the C driver and C++ driver to a path that is automatically searched by &lt;code&gt;pkg-config&lt;/code&gt;, you can omit the &lt;code&gt;PKG_CONFIG_PATH&lt;/code&gt; environment variable. If you don&amp;rsquo;t have &lt;code&gt;pkg-config&lt;/code&gt;, you can explicitly set the path to the libbson, libmongoc, libbsoncxx, and libmongocxx install prefixes with the &lt;code&gt;-DLIBBSON_DIR&lt;/code&gt;, &lt;code&gt;-DLIBMONGOC_DIR&lt;/code&gt;, -&lt;code&gt;Dlibbsoncxx_DIR&lt;/code&gt;, and &lt;code&gt;-Dlibmongocxx_DIR&lt;/code&gt; CMake arguments.&lt;/p&gt;
+&lt;p&gt;Build Mangrove with the following commands:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;cd mangrove/build&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;[PKG_CONFIG_PATH=CXXDRIVER_INSTALL_PATH/lib/pkgconfig] cmake -DCMAKE_BUILD_TYPE=Release [-DCMAKE_INSTALL_PREFIX=DESIRED_INSTALL_PATH] ..&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;make &amp;amp;&amp;amp; sudo make install&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;notices note&#34; &gt;&lt;p&gt;Note that if you installed the C driver and C++ driver to a path that is automatically searched by &lt;code&gt;pkg-config&lt;/code&gt;, you can omit the &lt;code&gt;PKG_CONFIG_PATH&lt;/code&gt; environment variable. If you don&amp;rsquo;t have &lt;code&gt;pkg-config&lt;/code&gt;, you can explicitly set the path to the libbson, libmongoc, libbsoncxx, and libmongocxx install prefixes with the &lt;code&gt;-DLIBBSON_DIR&lt;/code&gt;, &lt;code&gt;-DLIBMONGOC_DIR&lt;/code&gt;, -&lt;code&gt;Dlibbsoncxx_DIR&lt;/code&gt;, and &lt;code&gt;-Dlibmongocxx_DIR&lt;/code&gt; CMake arguments.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;using-mangrove&#34;&gt;Using Mangrove&lt;/h2&gt;
+
+&lt;p&gt;Once you&amp;rsquo;ve installed Mangrove, you can start using it by including and linking &lt;code&gt;libmangrove&lt;/code&gt;, &lt;code&gt;libboson&lt;/code&gt;, and &lt;code&gt;libmongocxx&lt;/code&gt; in your project. &lt;code&gt;libmangrove&lt;/code&gt; is the library that contains the actual ODM, &lt;code&gt;libboson&lt;/code&gt; is the BSON serialization library that powers &lt;code&gt;libmangrove&lt;/code&gt;, and &lt;code&gt;libmongocxx&lt;/code&gt; is the MongoDB C++ Driver.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re using &lt;code&gt;pkg-config&lt;/code&gt;, using Mangrove is incredibly simple. Simply add the following two flags to your compiler invocation:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--std=c++14&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$(pkg-config --libs --cflags libmangrove libboson libmongocxx)&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You may need to preface this with &lt;code&gt;PKG_CONFIG_PATH=MANGROVE_INSTALL_PATH/lib/pkgconfig&lt;/code&gt; if you installed Mangrove in a directory not automatically searched for by pkg-config.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you&amp;rsquo;re not using &lt;code&gt;pkg-config&lt;/code&gt;, you&amp;rsquo;ll need to add the following flags to your compiler invocation:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--std=c++14&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-IMANGROVE_INSTALL_PATH/include/mangrove/v_noabi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-IMANGROVE_INSTALL_PATH/include/boson/v_noabi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-IMANGROVE_INSTALL_PATH/include/boson/v_noabi/boson/third_party&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-ICXXDRIVER_INSTALL_PATH/include/mongocxx/v_noabi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-ICDRIVER_INSTALL_PATH/include/libmongoc-1.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-ICXXDRIVER_INSTALL_PATH/include/bsoncxx/v_noabi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-ICDRIVER_INSTALL_PATH/include/libbson-1.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-LMANGROVE_INSTALL_PATH/lib&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If the install prefixes for the C and C++ Drivers are different than the one for Mangrove, also include &lt;code&gt;-LCDRIVER_INSTALL_PATH/lib&lt;/code&gt; and &lt;code&gt;-LCXX_DRIVER_INSTALL_PATH/lib&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-lmangrove&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-lboson&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-lmongocxx&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-lbsoncxx&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

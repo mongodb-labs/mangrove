@@ -310,6 +310,7 @@
 <li><a href="#build-and-install-the-c-driver">Build and install the C driver</a></li>
 <li><a href="#build-and-install-the-c-11-driver">Build and install the C++11 driver</a></li>
 <li><a href="#build-and-install-mangrove">Build and install Mangrove</a></li>
+<li><a href="#using-mangrove">Using Mangrove</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -368,20 +369,59 @@
 
 <h2 id="build-and-install-mangrove">Build and install Mangrove</h2>
 
-<ul>
-<li><p>Clone the repository, and check out the latest stable release.</p>
+<p>Clone the repository, and check out the latest stable release.</p>
 
 <ul>
 <li><code>git clone -b master https://github.com/mongodb/mangrove</code></li>
-</ul></li>
+</ul>
 
-<li><p>Build Mangrove. Note that if you installed the C driver and C++ driver to a path that is automatically searched by <code>pkg-config</code>, you can omit the <code>PKG_CONFIG_PATH</code> environment variable. If you don&rsquo;t have <code>pkg-config</code>, you can explicitly set the path to the libbson, libmongoc, libbsoncxx, and libmongocxx install prefixes with the <code>-DLIBBSON_DIR</code>, <code>-DLIBMONGOC_DIR</code>, -<code>Dlibbsoncxx_DIR</code>, and <code>-Dlibmongocxx_DIR</code> CMake arguments.</p>
+<p>Build Mangrove with the following commands:</p>
 
 <ul>
 <li><code>cd mangrove/build</code></li>
 <li><code>[PKG_CONFIG_PATH=CXXDRIVER_INSTALL_PATH/lib/pkgconfig] cmake -DCMAKE_BUILD_TYPE=Release [-DCMAKE_INSTALL_PREFIX=DESIRED_INSTALL_PATH] ..</code></li>
 <li><code>make &amp;&amp; sudo make install</code></li>
+</ul>
+
+<div class="notices note" ><p>Note that if you installed the C driver and C++ driver to a path that is automatically searched by <code>pkg-config</code>, you can omit the <code>PKG_CONFIG_PATH</code> environment variable. If you don&rsquo;t have <code>pkg-config</code>, you can explicitly set the path to the libbson, libmongoc, libbsoncxx, and libmongocxx install prefixes with the <code>-DLIBBSON_DIR</code>, <code>-DLIBMONGOC_DIR</code>, -<code>Dlibbsoncxx_DIR</code>, and <code>-Dlibmongocxx_DIR</code> CMake arguments.</p>
+</div>
+
+
+<h2 id="using-mangrove">Using Mangrove</h2>
+
+<p>Once you&rsquo;ve installed Mangrove, you can start using it by including and linking <code>libmangrove</code>, <code>libboson</code>, and <code>libmongocxx</code> in your project. <code>libmangrove</code> is the library that contains the actual ODM, <code>libboson</code> is the BSON serialization library that powers <code>libmangrove</code>, and <code>libmongocxx</code> is the MongoDB C++ Driver.</p>
+
+<p>If you&rsquo;re using <code>pkg-config</code>, using Mangrove is incredibly simple. Simply add the following two flags to your compiler invocation:</p>
+
+<ul>
+<li><code>--std=c++14</code></li>
+<li><code>$(pkg-config --libs --cflags libmangrove libboson libmongocxx)</code>
+
+<ul>
+<li>You may need to preface this with <code>PKG_CONFIG_PATH=MANGROVE_INSTALL_PATH/lib/pkgconfig</code> if you installed Mangrove in a directory not automatically searched for by pkg-config.</li>
 </ul></li>
+</ul>
+
+<p>If you&rsquo;re not using <code>pkg-config</code>, you&rsquo;ll need to add the following flags to your compiler invocation:</p>
+
+<ul>
+<li><code>--std=c++14</code></li>
+<li><code>-IMANGROVE_INSTALL_PATH/include/mangrove/v_noabi</code></li>
+<li><code>-IMANGROVE_INSTALL_PATH/include/boson/v_noabi</code></li>
+<li><code>-IMANGROVE_INSTALL_PATH/include/boson/v_noabi/boson/third_party</code></li>
+<li><code>-ICXXDRIVER_INSTALL_PATH/include/mongocxx/v_noabi</code></li>
+<li><code>-ICDRIVER_INSTALL_PATH/include/libmongoc-1.0</code></li>
+<li><code>-ICXXDRIVER_INSTALL_PATH/include/bsoncxx/v_noabi</code></li>
+<li><code>-ICDRIVER_INSTALL_PATH/include/libbson-1.0</code></li>
+<li><code>-LMANGROVE_INSTALL_PATH/lib</code>
+
+<ul>
+<li>If the install prefixes for the C and C++ Drivers are different than the one for Mangrove, also include <code>-LCDRIVER_INSTALL_PATH/lib</code> and <code>-LCXX_DRIVER_INSTALL_PATH/lib</code></li>
+</ul></li>
+<li><code>-lmangrove</code></li>
+<li><code>-lboson</code></li>
+<li><code>-lmongocxx</code></li>
+<li><code>-lbsoncxx</code></li>
 </ul>
 
 

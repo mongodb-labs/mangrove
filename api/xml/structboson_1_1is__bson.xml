@@ -41,14 +41,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="106" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="106" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="115" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="115" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>A templated struct containing a bool value that specifies whether the provided template parameter is a BSON type. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/boson/bson_archiver.hpp" line="105" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="105" bodyend="127"/>
+    <location file="src/boson/bson_archiver.hpp" line="114" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="114" bodyend="136"/>
     <listofallmembers>
       <member refid="structboson_1_1is__bson_1a8d6a5cbb5e30909342eaeaf5dedd93e4" prot="public" virt="non-virtual"><scope>boson::is_bson</scope><name>value</name></member>
     </listofallmembers>

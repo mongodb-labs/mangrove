@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="150" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="150" bodyend="150"/>
+        <location file="src/boson/bson_archiver.hpp" line="159" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="159" bodyend="159"/>
       </memberdef>
       <memberdef kind="typedef" id="classboson_1_1BSONOutputArchive_1afbaa46a79891c991848c7a4a8ad81d59" prot="private" static="no">
         <type>bsoncxx::builder::core</type>
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="152" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="152" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="161" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="161" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="175" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="175" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="184" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="184" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a834a8e2a9411099a5a97e38a5b24d9ac" prot="public" static="no" mutable="no">
         <type></type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="176" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="176" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="185" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="185" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a5757003b2852c26ab8eba77f3d4f2c12" prot="public" static="no" mutable="no">
         <type></type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="177" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="177" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="186" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="186" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1aff505e107e1a4a2911cabb5dc256c4d9" prot="public" static="no" mutable="no">
         <type></type>
@@ -111,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="178" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="178" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="187" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="187" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a6530cbec807978d3c19198d3d0cb0bb8" prot="public" static="no" mutable="no">
         <type></type>
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="179" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="179" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="188" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="188" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a857c0dc7b8b0ee2eaf989e96cf531a18" prot="public" static="no" mutable="no">
         <type></type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="180" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="180" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="189" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="189" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1af9b923709c4a98aa75d5ccc3486b7f98" prot="public" static="no" mutable="no">
         <type>std::ostream &amp;</type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="426" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="426" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="435" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="435" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a21ae770e3eb91de12b515d5a7f93eaeb" prot="public" static="no" mutable="no">
         <type>char const *</type>
@@ -164,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="429" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="429" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="438" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="438" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1add855ca03ae4e72df9db2b2afe26e3ce" prot="public" static="no" mutable="no">
         <type>char const *</type>
@@ -177,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="433" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="433" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="442" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="442" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1ab26b4f55878f7754928634fc90f54388" prot="public" static="no" mutable="no">
         <type>std::stack&lt; OutputNodeType &gt;</type>
@@ -190,7 +190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="436" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="436" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="445" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="445" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a867aaed7643083cb99ca368d73f8dd51" prot="public" static="no" mutable="no">
         <type>std::stack&lt; bool &gt;</type>
@@ -203,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="440" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="440" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="449" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="449" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a3771bd5e4dfd7a7e8751951471dab1e1" prot="public" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -216,7 +216,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="444" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="444" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="453" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="453" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a825c63a16953a05cbdd5794d561dff35" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -229,7 +229,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="448" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="448" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="457" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="457" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a056da0fedb30c8b847101a2622b35deb" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -242,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="452" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="452" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="461" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="461" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1BSONOutputArchive_1a4014899e8fe171e039d47b76f16a253f" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -255,7 +255,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="456" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="456" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="465" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="465" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -296,7 +296,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="173" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="173" bodyend="174"/>
+        <location file="src/boson/bson_archiver.hpp" line="182" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="182" bodyend="183"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -325,7 +325,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/boson/bson_archiver.hpp" line="146" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="146" bodyend="458"/>
+    <location file="src/boson/bson_archiver.hpp" line="155" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="155" bodyend="467"/>
     <listofallmembers>
       <member refid="classboson_1_1BSONOutputArchive_1a857c0dc7b8b0ee2eaf989e96cf531a18" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_arrayNestingLevel</name></member>
       <member refid="classboson_1_1BSONOutputArchive_1a4014899e8fe171e039d47b76f16a253f" prot="public" virt="non-virtual"><scope>boson::BSONOutputArchive</scope><name>_arrayNestingLevel</name></member>

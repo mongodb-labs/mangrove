@@ -4,92 +4,92 @@
     <compoundname>compiler.hpp</compoundname>
     <includedby refid="mangrove_2config_2prelude_8hpp" local="no">src/mangrove/config/prelude.hpp</includedby>
     <invincdepgraph>
-      <node id="51">
+      <node id="58">
         <label>src/mangrove/model.hpp</label>
         <link refid="model_8hpp_source"/>
       </node>
-      <node id="49">
+      <node id="56">
         <label>src/mangrove/config/prelude.hpp</label>
         <link refid="mangrove_2config_2prelude_8hpp_source"/>
-        <childnode refid="50" relation="include">
-        </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="56" relation="include">
-        </childnode>
         <childnode refid="57" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="59" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="60" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
       </node>
-      <node id="58">
+      <node id="65">
         <label>src/mangrove/util.hpp</label>
         <link refid="util_8hpp_source"/>
-        <childnode refid="53" relation="include">
+        <childnode refid="60" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="62" relation="include">
         </childnode>
       </node>
-      <node id="57">
+      <node id="64">
         <label>src/mangrove/mangrove_child_autogen.hpp</label>
         <link refid="mangrove__child__autogen_8hpp_source"/>
-        <childnode refid="56" relation="include">
+        <childnode refid="63" relation="include">
         </childnode>
       </node>
-      <node id="52">
+      <node id="59">
         <label>src/mangrove/deserializing_cursor.hpp</label>
         <link refid="deserializing__cursor_8hpp_source"/>
-        <childnode refid="50" relation="include">
+        <childnode refid="57" relation="include">
         </childnode>
       </node>
-      <node id="56">
+      <node id="63">
         <label>src/mangrove/macros.hpp</label>
         <link refid="macros_8hpp_source"/>
-        <childnode refid="53" relation="include">
+        <childnode refid="60" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
       </node>
-      <node id="54">
+      <node id="61">
         <label>src/mangrove/nvp.hpp</label>
         <link refid="nvp_8hpp_source"/>
-        <childnode refid="55" relation="include">
+        <childnode refid="62" relation="include">
         </childnode>
       </node>
-      <node id="55">
+      <node id="62">
         <label>src/mangrove/query_builder.hpp</label>
         <link refid="query__builder_8hpp_source"/>
       </node>
-      <node id="53">
+      <node id="60">
         <label>src/mangrove/expression_syntax.hpp</label>
         <link refid="expression__syntax_8hpp_source"/>
-        <childnode refid="54" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="62" relation="include">
         </childnode>
       </node>
-      <node id="50">
+      <node id="57">
         <label>src/mangrove/collection_wrapper.hpp</label>
         <link refid="collection__wrapper_8hpp_source"/>
-        <childnode refid="51" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
       </node>
-      <node id="48">
+      <node id="55">
         <label>src/mangrove/config/compiler.hpp</label>
         <link refid="mangrove/config/compiler.hpp"/>
-        <childnode refid="49" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

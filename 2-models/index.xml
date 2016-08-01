@@ -33,7 +33,7 @@
       <description>
 
 &lt;p&gt;A &lt;strong&gt;model&lt;/strong&gt; is the fundamental way you access data in MongoDB with Mangrove. Models lets you treat C++ classes as objects you can store in the database. When you make a class a model, it is given the semantics of a MongoDB collection, and has access to all of 
-&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classmongo__odm_1_1model.html&#34;&gt;these static methods &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classmangrove_1_1model.html&#34;&gt;these static methods &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
 .&lt;/p&gt;
 
 &lt;h2 id=&#34;creating-a-model&#34;&gt;Creating a Model&lt;/h2&gt;
@@ -49,7 +49,7 @@ class Message : mangrove::model&amp;lt;Message&amp;gt; {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;This inheritance gives the inheriting class access to the interface specified 
-&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classmongo__odm_1_1model.html&#34;&gt;here &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classmangrove_1_1model.html&#34;&gt;here &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
 . The inheritance also gives you access to the &lt;code&gt;_id&lt;/code&gt; variable. Since every document stored in a MongoDB database contains an &lt;code&gt;_id&lt;/code&gt;, the model stores one automatically for you. By default this of type 
 &lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-driver/classbsoncxx_1_1oid.html&#34;&gt;&lt;code&gt;bsoncxx::oid&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
 , but you can customize it. We&amp;rsquo;ll discuss how to do this in a &lt;a href=&#34;http://mongodb.github.io/mangrove/2-models/custom_id&#34;&gt;later section&lt;/a&gt;.&lt;/p&gt;
@@ -384,7 +384,7 @@ int main() {
 &lt;/ul&gt;
 
 &lt;p&gt;Mangrove only supports these types if, in the class containing them, you inherit from &lt;code&gt;boson::UnderlyingBSONDataBase&lt;/code&gt;. When data is loaded from the database and deserialized into this class, 
-&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classbson__mapper_1_1UnderlyingBSONDataBase.html&#34;&gt;&lt;code&gt;UnderlyingBSONDataBase&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classboson_1_1UnderlyingBSONDataBase.html&#34;&gt;&lt;code&gt;UnderlyingBSONDataBase&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
  holds a &lt;code&gt;std::shared_ptr&lt;/code&gt; to the original BSON data from which it was deserialized. This ensures that any BSON view types in the class will never point to deallocated memory after being read from the database.&lt;/p&gt;
 </description>
     </item>

@@ -99,7 +99,7 @@
       <description>
 
 &lt;p&gt;A &lt;strong&gt;model&lt;/strong&gt; is the fundamental way you access data in MongoDB with Mangrove. Models lets you treat C++ classes as objects you can store in the database. When you make a class a model, it is given the semantics of a MongoDB collection, and has access to all of 
-&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classmongo__odm_1_1model.html&#34;&gt;these static methods &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classmangrove_1_1model.html&#34;&gt;these static methods &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
 .&lt;/p&gt;
 
 &lt;h2 id=&#34;creating-a-model&#34;&gt;Creating a Model&lt;/h2&gt;
@@ -115,7 +115,7 @@ class Message : mangrove::model&amp;lt;Message&amp;gt; {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;This inheritance gives the inheriting class access to the interface specified 
-&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classmongo__odm_1_1model.html&#34;&gt;here &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classmangrove_1_1model.html&#34;&gt;here &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
 . The inheritance also gives you access to the &lt;code&gt;_id&lt;/code&gt; variable. Since every document stored in a MongoDB database contains an &lt;code&gt;_id&lt;/code&gt;, the model stores one automatically for you. By default this of type 
 &lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mongo-cxx-driver/classbsoncxx_1_1oid.html&#34;&gt;&lt;code&gt;bsoncxx::oid&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
 , but you can customize it. We&amp;rsquo;ll discuss how to do this in a &lt;a href=&#34;http://mongodb.github.io/mangrove/2-models/custom_id&#34;&gt;later section&lt;/a&gt;.&lt;/p&gt;
@@ -1500,7 +1500,7 @@ int main() {
 &lt;/ul&gt;
 
 &lt;p&gt;Mangrove only supports these types if, in the class containing them, you inherit from &lt;code&gt;boson::UnderlyingBSONDataBase&lt;/code&gt;. When data is loaded from the database and deserialized into this class, 
-&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classbson__mapper_1_1UnderlyingBSONDataBase.html&#34;&gt;&lt;code&gt;UnderlyingBSONDataBase&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/api/html/classboson_1_1UnderlyingBSONDataBase.html&#34;&gt;&lt;code&gt;UnderlyingBSONDataBase&lt;/code&gt; &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
  holds a &lt;code&gt;std::shared_ptr&lt;/code&gt; to the original BSON data from which it was deserialized. This ensures that any BSON view types in the class will never point to deallocated memory after being read from the database.&lt;/p&gt;
 </description>
     </item>
@@ -1554,20 +1554,59 @@ int main() {
 
 &lt;h2 id=&#34;build-and-install-mangrove&#34;&gt;Build and install Mangrove&lt;/h2&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Clone the repository, and check out the latest stable release.&lt;/p&gt;
+&lt;p&gt;Clone the repository, and check out the latest stable release.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;git clone -b master https://github.com/mongodb/mangrove&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;li&gt;&lt;p&gt;Build Mangrove. Note that if you installed the C driver and C++ driver to a path that is automatically searched by &lt;code&gt;pkg-config&lt;/code&gt;, you can omit the &lt;code&gt;PKG_CONFIG_PATH&lt;/code&gt; environment variable. If you don&amp;rsquo;t have &lt;code&gt;pkg-config&lt;/code&gt;, you can explicitly set the path to the libbson, libmongoc, libbsoncxx, and libmongocxx install prefixes with the &lt;code&gt;-DLIBBSON_DIR&lt;/code&gt;, &lt;code&gt;-DLIBMONGOC_DIR&lt;/code&gt;, -&lt;code&gt;Dlibbsoncxx_DIR&lt;/code&gt;, and &lt;code&gt;-Dlibmongocxx_DIR&lt;/code&gt; CMake arguments.&lt;/p&gt;
+&lt;p&gt;Build Mangrove with the following commands:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;cd mangrove/build&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;[PKG_CONFIG_PATH=CXXDRIVER_INSTALL_PATH/lib/pkgconfig] cmake -DCMAKE_BUILD_TYPE=Release [-DCMAKE_INSTALL_PREFIX=DESIRED_INSTALL_PATH] ..&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;make &amp;amp;&amp;amp; sudo make install&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;notices note&#34; &gt;&lt;p&gt;Note that if you installed the C driver and C++ driver to a path that is automatically searched by &lt;code&gt;pkg-config&lt;/code&gt;, you can omit the &lt;code&gt;PKG_CONFIG_PATH&lt;/code&gt; environment variable. If you don&amp;rsquo;t have &lt;code&gt;pkg-config&lt;/code&gt;, you can explicitly set the path to the libbson, libmongoc, libbsoncxx, and libmongocxx install prefixes with the &lt;code&gt;-DLIBBSON_DIR&lt;/code&gt;, &lt;code&gt;-DLIBMONGOC_DIR&lt;/code&gt;, -&lt;code&gt;Dlibbsoncxx_DIR&lt;/code&gt;, and &lt;code&gt;-Dlibmongocxx_DIR&lt;/code&gt; CMake arguments.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;using-mangrove&#34;&gt;Using Mangrove&lt;/h2&gt;
+
+&lt;p&gt;Once you&amp;rsquo;ve installed Mangrove, you can start using it by including and linking &lt;code&gt;libmangrove&lt;/code&gt;, &lt;code&gt;libboson&lt;/code&gt;, and &lt;code&gt;libmongocxx&lt;/code&gt; in your project. &lt;code&gt;libmangrove&lt;/code&gt; is the library that contains the actual ODM, &lt;code&gt;libboson&lt;/code&gt; is the BSON serialization library that powers &lt;code&gt;libmangrove&lt;/code&gt;, and &lt;code&gt;libmongocxx&lt;/code&gt; is the MongoDB C++ Driver.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re using &lt;code&gt;pkg-config&lt;/code&gt;, using Mangrove is incredibly simple. Simply add the following two flags to your compiler invocation:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--std=c++14&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$(pkg-config --libs --cflags libmangrove libboson libmongocxx)&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You may need to preface this with &lt;code&gt;PKG_CONFIG_PATH=MANGROVE_INSTALL_PATH/lib/pkgconfig&lt;/code&gt; if you installed Mangrove in a directory not automatically searched for by pkg-config.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you&amp;rsquo;re not using &lt;code&gt;pkg-config&lt;/code&gt;, you&amp;rsquo;ll need to add the following flags to your compiler invocation:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--std=c++14&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-IMANGROVE_INSTALL_PATH/include/mangrove/v_noabi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-IMANGROVE_INSTALL_PATH/include/boson/v_noabi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-IMANGROVE_INSTALL_PATH/include/boson/v_noabi/boson/third_party&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-ICXXDRIVER_INSTALL_PATH/include/mongocxx/v_noabi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-ICDRIVER_INSTALL_PATH/include/libmongoc-1.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-ICXXDRIVER_INSTALL_PATH/include/bsoncxx/v_noabi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-ICDRIVER_INSTALL_PATH/include/libbson-1.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-LMANGROVE_INSTALL_PATH/lib&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If the install prefixes for the C and C++ Drivers are different than the one for Mangrove, also include &lt;code&gt;-LCDRIVER_INSTALL_PATH/lib&lt;/code&gt; and &lt;code&gt;-LCXX_DRIVER_INSTALL_PATH/lib&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-lmangrove&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-lboson&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-lmongocxx&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-lbsoncxx&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

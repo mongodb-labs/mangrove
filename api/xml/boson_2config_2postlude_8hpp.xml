@@ -5,42 +5,42 @@
     <includedby refid="bson__streambuf_8hpp" local="no">src/boson/bson_streambuf.hpp</includedby>
     <includedby refid="mapping__functions_8hpp" local="no">src/boson/mapping_functions.hpp</includedby>
     <invincdepgraph>
-      <node id="64">
+      <node id="71">
         <label>src/mangrove/model.hpp</label>
         <link refid="model_8hpp_source"/>
       </node>
-      <node id="65">
+      <node id="72">
         <label>src/mangrove/deserializing_cursor.hpp</label>
         <link refid="deserializing__cursor_8hpp_source"/>
-        <childnode refid="63" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
       </node>
-      <node id="61">
+      <node id="68">
         <label>src/boson/bson_streambuf.hpp</label>
         <link refid="bson__streambuf_8hpp_source"/>
-        <childnode refid="62" relation="include">
+        <childnode refid="69" relation="include">
         </childnode>
       </node>
-      <node id="62">
+      <node id="69">
         <label>src/boson/mapping_functions.hpp</label>
         <link refid="mapping__functions_8hpp_source"/>
-        <childnode refid="63" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
-        <childnode refid="65" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
       </node>
-      <node id="63">
+      <node id="70">
         <label>src/mangrove/collection_wrapper.hpp</label>
         <link refid="collection__wrapper_8hpp_source"/>
-        <childnode refid="64" relation="include">
+        <childnode refid="71" relation="include">
         </childnode>
       </node>
-      <node id="60">
+      <node id="67">
         <label>src/boson/config/postlude.hpp</label>
         <link refid="boson/config/postlude.hpp"/>
-        <childnode refid="61" relation="include">
+        <childnode refid="68" relation="include">
         </childnode>
-        <childnode refid="62" relation="include">
+        <childnode refid="69" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

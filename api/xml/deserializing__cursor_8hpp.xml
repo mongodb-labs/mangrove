@@ -11,103 +11,9 @@
     <includes refid="mangrove_2config_2postlude_8hpp" local="no">mangrove/config/postlude.hpp</includes>
     <includedby refid="collection__wrapper_8hpp" local="no">src/mangrove/collection_wrapper.hpp</includedby>
     <incdepgraph>
-      <node id="184">
+      <node id="205">
         <label>mangrove/config/prelude.hpp</label>
         <link refid="mangrove_2config_2prelude_8hpp_source"/>
-        <childnode refid="185" relation="include">
-        </childnode>
-        <childnode refid="186" relation="include">
-        </childnode>
-        <childnode refid="187" relation="include">
-        </childnode>
-        <childnode refid="188" relation="include">
-        </childnode>
-      </node>
-      <node id="207">
-        <label>bsoncxx/builder/core.hpp</label>
-      </node>
-      <node id="191">
-        <label>bsoncxx/stdx/optional.hpp</label>
-      </node>
-      <node id="183">
-        <label>src/mangrove/deserializing_cursor.hpp</label>
-        <link refid="deserializing_cursor.hpp"/>
-        <childnode refid="184" relation="include">
-        </childnode>
-        <childnode refid="189" relation="include">
-        </childnode>
-        <childnode refid="190" relation="include">
-        </childnode>
-        <childnode refid="191" relation="include">
-        </childnode>
-        <childnode refid="192" relation="include">
-        </childnode>
-        <childnode refid="193" relation="include">
-        </childnode>
-        <childnode refid="218" relation="include">
-        </childnode>
-      </node>
-      <node id="197">
-        <label>boson/config/export.hpp</label>
-      </node>
-      <node id="204">
-        <label>string</label>
-      </node>
-      <node id="211">
-        <label>boson/bson_streambuf.hpp</label>
-        <link refid="bson__streambuf_8hpp_source"/>
-        <childnode refid="194" relation="include">
-        </childnode>
-        <childnode refid="212" relation="include">
-        </childnode>
-        <childnode refid="213" relation="include">
-        </childnode>
-        <childnode refid="214" relation="include">
-        </childnode>
-        <childnode refid="215" relation="include">
-        </childnode>
-        <childnode refid="216" relation="include">
-        </childnode>
-        <childnode refid="217" relation="include">
-        </childnode>
-      </node>
-      <node id="194">
-        <label>boson/config/prelude.hpp</label>
-        <link refid="boson_2config_2prelude_8hpp_source"/>
-        <childnode refid="195" relation="include">
-        </childnode>
-        <childnode refid="196" relation="include">
-        </childnode>
-        <childnode refid="197" relation="include">
-        </childnode>
-        <childnode refid="198" relation="include">
-        </childnode>
-      </node>
-      <node id="190">
-        <label>bsoncxx/builder/basic/document.hpp</label>
-      </node>
-      <node id="218">
-        <label>mangrove/config/postlude.hpp</label>
-        <link refid="mangrove_2config_2postlude_8hpp_source"/>
-      </node>
-      <node id="213">
-        <label>ostream</label>
-      </node>
-      <node id="199">
-        <label>boson/bson_archiver.hpp</label>
-        <link refid="bson__archiver_8hpp_source"/>
-        <childnode refid="200" relation="include">
-        </childnode>
-        <childnode refid="201" relation="include">
-        </childnode>
-        <childnode refid="202" relation="include">
-        </childnode>
-        <childnode refid="203" relation="include">
-        </childnode>
-        <childnode refid="204" relation="include">
-        </childnode>
-        <childnode refid="205" relation="include">
-        </childnode>
         <childnode refid="206" relation="include">
         </childnode>
         <childnode refid="207" relation="include">
@@ -116,118 +22,247 @@
         </childnode>
         <childnode refid="209" relation="include">
         </childnode>
+      </node>
+      <node id="228">
+        <label>bsoncxx/builder/core.hpp</label>
+      </node>
+      <node id="212">
+        <label>bsoncxx/stdx/optional.hpp</label>
+      </node>
+      <node id="234">
+        <label>cereal/types/list.hpp</label>
+      </node>
+      <node id="204">
+        <label>src/mangrove/deserializing_cursor.hpp</label>
+        <link refid="deserializing_cursor.hpp"/>
+        <childnode refid="205" relation="include">
+        </childnode>
         <childnode refid="210" relation="include">
-        </childnode>
-      </node>
-      <node id="192">
-        <label>mongocxx/cursor.hpp</label>
-      </node>
-      <node id="198">
-        <label>boson/config/version.hpp</label>
-      </node>
-      <node id="215">
-        <label>bsoncxx/builder/stream/document.hpp</label>
-      </node>
-      <node id="210">
-        <label>boson/stdx/optional.hpp</label>
-        <link refid="optional_8hpp_source"/>
-        <childnode refid="191" relation="include">
-        </childnode>
-      </node>
-      <node id="209">
-        <label>bsoncxx/types/value.hpp</label>
-      </node>
-      <node id="187">
-        <label>mangrove/config/export.hpp</label>
-      </node>
-      <node id="193">
-        <label>boson/mapping_functions.hpp</label>
-        <link refid="mapping__functions_8hpp_source"/>
-        <childnode refid="194" relation="include">
-        </childnode>
-        <childnode refid="189" relation="include">
-        </childnode>
-        <childnode refid="190" relation="include">
-        </childnode>
-        <childnode refid="191" relation="include">
-        </childnode>
-        <childnode refid="199" relation="include">
         </childnode>
         <childnode refid="211" relation="include">
         </childnode>
-        <childnode refid="217" relation="include">
+        <childnode refid="212" relation="include">
+        </childnode>
+        <childnode refid="213" relation="include">
+        </childnode>
+        <childnode refid="214" relation="include">
+        </childnode>
+        <childnode refid="246" relation="include">
         </childnode>
       </node>
-      <node id="205">
-        <label>vector</label>
+      <node id="218">
+        <label>boson/config/export.hpp</label>
       </node>
-      <node id="203">
-        <label>stack</label>
+      <node id="225">
+        <label>string</label>
+      </node>
+      <node id="239">
+        <label>boson/bson_streambuf.hpp</label>
+        <link refid="bson__streambuf_8hpp_source"/>
+        <childnode refid="215" relation="include">
+        </childnode>
+        <childnode refid="240" relation="include">
+        </childnode>
+        <childnode refid="241" relation="include">
+        </childnode>
+        <childnode refid="242" relation="include">
+        </childnode>
+        <childnode refid="243" relation="include">
+        </childnode>
+        <childnode refid="244" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="215">
+        <label>boson/config/prelude.hpp</label>
+        <link refid="boson_2config_2prelude_8hpp_source"/>
+        <childnode refid="216" relation="include">
+        </childnode>
+        <childnode refid="217" relation="include">
+        </childnode>
+        <childnode refid="218" relation="include">
+        </childnode>
+        <childnode refid="219" relation="include">
+        </childnode>
+      </node>
+      <node id="211">
+        <label>bsoncxx/builder/basic/document.hpp</label>
+      </node>
+      <node id="246">
+        <label>mangrove/config/postlude.hpp</label>
+        <link refid="mangrove_2config_2postlude_8hpp_source"/>
+      </node>
+      <node id="241">
+        <label>ostream</label>
+      </node>
+      <node id="220">
+        <label>boson/bson_archiver.hpp</label>
+        <link refid="bson__archiver_8hpp_source"/>
+        <childnode refid="221" relation="include">
+        </childnode>
+        <childnode refid="222" relation="include">
+        </childnode>
+        <childnode refid="223" relation="include">
+        </childnode>
+        <childnode refid="224" relation="include">
+        </childnode>
+        <childnode refid="225" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="228" relation="include">
+        </childnode>
+        <childnode refid="229" relation="include">
+        </childnode>
+        <childnode refid="230" relation="include">
+        </childnode>
+        <childnode refid="231" relation="include">
+        </childnode>
+        <childnode refid="232" relation="include">
+        </childnode>
+        <childnode refid="233" relation="include">
+        </childnode>
+        <childnode refid="234" relation="include">
+        </childnode>
+        <childnode refid="235" relation="include">
+        </childnode>
+        <childnode refid="236" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="238" relation="include">
+        </childnode>
+      </node>
+      <node id="213">
+        <label>mongocxx/cursor.hpp</label>
+      </node>
+      <node id="219">
+        <label>boson/config/version.hpp</label>
+      </node>
+      <node id="232">
+        <label>cereal/types/deque.hpp</label>
+      </node>
+      <node id="243">
+        <label>bsoncxx/builder/stream/document.hpp</label>
+      </node>
+      <node id="231">
+        <label>boson/stdx/optional.hpp</label>
+        <link refid="optional_8hpp_source"/>
+        <childnode refid="212" relation="include">
+        </childnode>
+      </node>
+      <node id="235">
+        <label>cereal/types/set.hpp</label>
+      </node>
+      <node id="230">
+        <label>bsoncxx/types/value.hpp</label>
       </node>
       <node id="208">
-        <label>bsoncxx/types.hpp</label>
+        <label>mangrove/config/export.hpp</label>
       </node>
       <node id="214">
+        <label>boson/mapping_functions.hpp</label>
+        <link refid="mapping__functions_8hpp_source"/>
+        <childnode refid="215" relation="include">
+        </childnode>
+        <childnode refid="210" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+        <childnode refid="212" relation="include">
+        </childnode>
+        <childnode refid="220" relation="include">
+        </childnode>
+        <childnode refid="239" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="226">
+        <label>vector</label>
+      </node>
+      <node id="224">
+        <label>stack</label>
+      </node>
+      <node id="229">
+        <label>bsoncxx/types.hpp</label>
+      </node>
+      <node id="242">
         <label>streambuf</label>
       </node>
-      <node id="202">
+      <node id="236">
+        <label>cereal/types/unordered_set.hpp</label>
+      </node>
+      <node id="237">
+        <label>cereal/types/valarray.hpp</label>
+      </node>
+      <node id="223">
         <label>sstream</label>
       </node>
-      <node id="206">
+      <node id="227">
         <label>cereal/cereal.hpp</label>
       </node>
-      <node id="195">
+      <node id="216">
         <label>boson/config/compiler.hpp</label>
         <link refid="boson_2config_2compiler_8hpp_source"/>
       </node>
-      <node id="189">
+      <node id="210">
         <label>iostream</label>
       </node>
-      <node id="200">
+      <node id="233">
+        <label>cereal/types/forward_list.hpp</label>
+      </node>
+      <node id="221">
         <label>chrono</label>
       </node>
-      <node id="196">
+      <node id="217">
         <label>boson/config/config.hpp</label>
       </node>
-      <node id="185">
+      <node id="206">
         <label>mangrove/config/compiler.hpp</label>
         <link refid="mangrove_2config_2compiler_8hpp_source"/>
       </node>
-      <node id="186">
+      <node id="207">
         <label>mangrove/config/config.hpp</label>
       </node>
-      <node id="216">
+      <node id="244">
         <label>bsoncxx/json.hpp</label>
       </node>
-      <node id="188">
+      <node id="209">
         <label>mangrove/config/version.hpp</label>
       </node>
-      <node id="201">
+      <node id="238">
+        <label>cereal/types/vector.hpp</label>
+      </node>
+      <node id="222">
         <label>memory</label>
       </node>
-      <node id="212">
+      <node id="240">
         <label>istream</label>
       </node>
-      <node id="217">
+      <node id="245">
         <label>boson/config/postlude.hpp</label>
         <link refid="boson_2config_2postlude_8hpp_source"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="221">
+      <node id="249">
         <label>src/mangrove/model.hpp</label>
         <link refid="model_8hpp_source"/>
       </node>
-      <node id="219">
+      <node id="247">
         <label>src/mangrove/deserializing_cursor.hpp</label>
         <link refid="deserializing_cursor.hpp"/>
-        <childnode refid="220" relation="include">
+        <childnode refid="248" relation="include">
         </childnode>
       </node>
-      <node id="220">
+      <node id="248">
         <label>src/mangrove/collection_wrapper.hpp</label>
         <link refid="collection__wrapper_8hpp_source"/>
-        <childnode refid="221" relation="include">
+        <childnode refid="249" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

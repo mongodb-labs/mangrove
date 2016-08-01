@@ -331,7 +331,7 @@
 
 
 <p>A <strong>model</strong> is the fundamental way you access data in MongoDB with Mangrove. Models lets you treat C++ classes as objects you can store in the database. When you make a class a model, it is given the semantics of a MongoDB collection, and has access to all of 
-<a target="_blank" href="http://mongodb.github.io/mangrove/api/html/classmongo__odm_1_1model.html">these static methods <i class="fa fa-external-link"></i></a>
+<a target="_blank" href="http://mongodb.github.io/mangrove/api/html/classmangrove_1_1model.html">these static methods <i class="fa fa-external-link"></i></a>
 .</p>
 
 <h2 id="creating-a-model">Creating a Model</h2>
@@ -347,7 +347,7 @@ class Message : mangrove::model&lt;Message&gt; {
 </code></pre>
 
 <p>This inheritance gives the inheriting class access to the interface specified 
-<a target="_blank" href="http://mongodb.github.io/mangrove/api/html/classmongo__odm_1_1model.html">here <i class="fa fa-external-link"></i></a>
+<a target="_blank" href="http://mongodb.github.io/mangrove/api/html/classmangrove_1_1model.html">here <i class="fa fa-external-link"></i></a>
 . The inheritance also gives you access to the <code>_id</code> variable. Since every document stored in a MongoDB database contains an <code>_id</code>, the model stores one automatically for you. By default this of type 
 <a target="_blank" href="http://mongodb.github.io/mongo-cxx-driver/classbsoncxx_1_1oid.html"><code>bsoncxx::oid</code> <i class="fa fa-external-link"></i></a>
 , but you can customize it. We&rsquo;ll discuss how to do this in a <a href="http://mongodb.github.io/mangrove/2-models/custom_id">later section</a>.</p>

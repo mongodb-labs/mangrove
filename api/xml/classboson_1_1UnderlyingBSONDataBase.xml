@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="93" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="93" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="102" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classboson_1_1UnderlyingBSONDataBase_1a60f967af4768c85306b53fe8094a2a8b" prot="private" static="no" mutable="no">
         <type>size_t</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="97" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="97" bodyend="-1"/>
+        <location file="src/boson/bson_archiver.hpp" line="106" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="106" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="83" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="83" bodyend="86"/>
+        <location file="src/boson/bson_archiver.hpp" line="92" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="92" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classboson_1_1UnderlyingBSONDataBase_1afac61084f077f118a693ea26bcc30a64" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const bsoncxx::document::view</type>
@@ -64,14 +64,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/boson/bson_archiver.hpp" line="88" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="88" bodyend="90"/>
+        <location file="src/boson/bson_archiver.hpp" line="97" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="97" bodyend="99"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>A base class that holds a shared_ptr to the binary data for a BSON document. </para>    </briefdescription>
     <detaileddescription>
 <para>If a class you are serializing contains any of the bsoncxx view types (b_utf8, b_document, b_array, b_binary), you must have that class inherit this base so that the views don&apos;t point to deallocated memory.</para><para>When using the <ref refid="classboson_1_1BSONInputArchive" kindref="compound">BSONInputArchive</ref> to deserialize a class that inherits from this base, the data will be automatically loaded into this class using setUnderlyingBSONData(). </para>    </detaileddescription>
-    <location file="src/boson/bson_archiver.hpp" line="81" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="81" bodyend="98"/>
+    <location file="src/boson/bson_archiver.hpp" line="90" column="1" bodyfile="src/boson/bson_archiver.hpp" bodystart="90" bodyend="107"/>
     <listofallmembers>
       <member refid="classboson_1_1UnderlyingBSONDataBase_1a640246947c789871bb1ca7415c39fd13" prot="private" virt="non-virtual"><scope>boson::UnderlyingBSONDataBase</scope><name>_underlyingBSONData</name></member>
       <member refid="classboson_1_1UnderlyingBSONDataBase_1a60f967af4768c85306b53fe8094a2a8b" prot="private" virt="non-virtual"><scope>boson::UnderlyingBSONDataBase</scope><name>_underlyingBSONDataSize</name></member>

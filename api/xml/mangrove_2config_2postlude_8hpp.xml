@@ -11,84 +11,84 @@
     <includedby refid="query__builder_8hpp" local="no">src/mangrove/query_builder.hpp</includedby>
     <includedby refid="util_8hpp" local="no">src/mangrove/util.hpp</includedby>
     <invincdepgraph>
-      <node id="69">
+      <node id="76">
         <label>src/mangrove/model.hpp</label>
         <link refid="model_8hpp_source"/>
       </node>
-      <node id="76">
+      <node id="83">
         <label>src/mangrove/util.hpp</label>
         <link refid="util_8hpp_source"/>
-        <childnode refid="71" relation="include">
-        </childnode>
-        <childnode refid="69" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
-        </childnode>
-        <childnode refid="73" relation="include">
-        </childnode>
-      </node>
-      <node id="75">
-        <label>src/mangrove/mangrove_child_autogen.hpp</label>
-        <link refid="mangrove__child__autogen_8hpp_source"/>
-        <childnode refid="74" relation="include">
-        </childnode>
-      </node>
-      <node id="70">
-        <label>src/mangrove/deserializing_cursor.hpp</label>
-        <link refid="deserializing__cursor_8hpp_source"/>
-        <childnode refid="68" relation="include">
-        </childnode>
-      </node>
-      <node id="67">
-        <label>src/mangrove/config/postlude.hpp</label>
-        <link refid="mangrove/config/postlude.hpp"/>
-        <childnode refid="68" relation="include">
-        </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
-        <childnode refid="71" relation="include">
-        </childnode>
-        <childnode refid="74" relation="include">
-        </childnode>
-        <childnode refid="75" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
-        </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
         <childnode refid="76" relation="include">
         </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>src/mangrove/mangrove_child_autogen.hpp</label>
+        <link refid="mangrove__child__autogen_8hpp_source"/>
+        <childnode refid="81" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>src/mangrove/deserializing_cursor.hpp</label>
+        <link refid="deserializing__cursor_8hpp_source"/>
+        <childnode refid="75" relation="include">
+        </childnode>
       </node>
       <node id="74">
+        <label>src/mangrove/config/postlude.hpp</label>
+        <link refid="mangrove/config/postlude.hpp"/>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
         <label>src/mangrove/macros.hpp</label>
         <link refid="macros_8hpp_source"/>
-        <childnode refid="71" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
       </node>
-      <node id="72">
+      <node id="79">
         <label>src/mangrove/nvp.hpp</label>
         <link refid="nvp_8hpp_source"/>
-        <childnode refid="73" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
       </node>
-      <node id="73">
+      <node id="80">
         <label>src/mangrove/query_builder.hpp</label>
         <link refid="query__builder_8hpp_source"/>
       </node>
-      <node id="71">
+      <node id="78">
         <label>src/mangrove/expression_syntax.hpp</label>
         <link refid="expression__syntax_8hpp_source"/>
-        <childnode refid="72" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
       </node>
-      <node id="68">
+      <node id="75">
         <label>src/mangrove/collection_wrapper.hpp</label>
         <link refid="collection__wrapper_8hpp_source"/>
-        <childnode refid="69" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

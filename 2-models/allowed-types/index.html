@@ -515,7 +515,7 @@
 </ul>
 
 <p>Mangrove only supports these types if, in the class containing them, you inherit from <code>boson::UnderlyingBSONDataBase</code>. When data is loaded from the database and deserialized into this class, 
-<a target="_blank" href="http://mongodb.github.io/mangrove/api/html/classbson__mapper_1_1UnderlyingBSONDataBase.html"><code>UnderlyingBSONDataBase</code> <i class="fa fa-external-link"></i></a>
+<a target="_blank" href="http://mongodb.github.io/mangrove/api/html/classboson_1_1UnderlyingBSONDataBase.html"><code>UnderlyingBSONDataBase</code> <i class="fa fa-external-link"></i></a>
  holds a <code>std::shared_ptr</code> to the original BSON data from which it was deserialized. This ensures that any BSON view types in the class will never point to deallocated memory after being read from the database.</p>
 
 
