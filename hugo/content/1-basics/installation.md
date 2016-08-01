@@ -33,10 +33,43 @@ Build and install the C++ driver according to its {{% a_blank "quickstart guide"
 
 ## Build and install Mangrove
 
-* Clone the repository, and check out the latest stable release.
-    - `git clone -b master https://github.com/mongodb/mangrove`
+Clone the repository, and check out the latest stable release.
 
-* Build Mangrove. Note that if you installed the C driver and C++ driver to a path that is automatically searched by `pkg-config`, you can omit the `PKG_CONFIG_PATH` environment variable. If you don't have `pkg-config`, you can explicitly set the path to the libbson, libmongoc, libbsoncxx, and libmongocxx install prefixes with the `-DLIBBSON_DIR`, `-DLIBMONGOC_DIR`, -`Dlibbsoncxx_DIR`, and `-Dlibmongocxx_DIR` CMake arguments.
-   - `cd mangrove/build`
-   - `[PKG_CONFIG_PATH=CXXDRIVER_INSTALL_PATH/lib/pkgconfig] cmake -DCMAKE_BUILD_TYPE=Release [-DCMAKE_INSTALL_PREFIX=DESIRED_INSTALL_PATH] ..`
-   - `make && sudo make install`
+* `git clone -b master https://github.com/mongodb/mangrove`
+
+Build Mangrove with the following commands:
+
+* `cd mangrove/build`
+* `[PKG_CONFIG_PATH=CXXDRIVER_INSTALL_PATH/lib/pkgconfig] cmake -DCMAKE_BUILD_TYPE=Release [-DCMAKE_INSTALL_PREFIX=DESIRED_INSTALL_PATH] ..`
+* `make && sudo make install`
+
+{{% notice note %}}
+Note that if you installed the C driver and C++ driver to a path that is automatically searched by `pkg-config`, you can omit the `PKG_CONFIG_PATH` environment variable. If you don't have `pkg-config`, you can explicitly set the path to the libbson, libmongoc, libbsoncxx, and libmongocxx install prefixes with the `-DLIBBSON_DIR`, `-DLIBMONGOC_DIR`, -`Dlibbsoncxx_DIR`, and `-Dlibmongocxx_DIR` CMake arguments.
+{{% /notice %}}
+
+## Using Mangrove
+
+Once you've installed Mangrove, you can start using it by including and linking `libmangrove`, `libboson`, and `libmongocxx` in your project. `libmangrove` is the library that contains the actual ODM, `libboson` is the BSON serialization library that powers `libmangrove`, and `libmongocxx` is the MongoDB C++ Driver.
+
+If you're using `pkg-config`, using Mangrove is incredibly simple. Simply add the following two flags to your compiler invocation:
+
+* `--std=c++14`
+* `$(pkg-config --libs --cflags libmangrove libboson libmongocxx)`
+	- You may need to preface this with `PKG_CONFIG_PATH=MANGROVE_INSTALL_PATH/lib/pkgconfig` if you installed Mangrove in a directory not automatically searched for by pkg-config.
+
+If you're not using `pkg-config`, you'll need to add the following flags to your compiler invocation:
+
+* `--std=c++14`
+* `-IMANGROVE_INSTALL_PATH/include/mangrove/v_noabi` 
+* `-IMANGROVE_INSTALL_PATH/include/boson/v_noabi`
+* `-IMANGROVE_INSTALL_PATH/include/boson/v_noabi/boson/third_party`
+* `-ICXXDRIVER_INSTALL_PATH/include/mongocxx/v_noabi`
+* `-ICDRIVER_INSTALL_PATH/include/libmongoc-1.0`
+* `-ICXXDRIVER_INSTALL_PATH/include/bsoncxx/v_noabi`
+* `-ICDRIVER_INSTALL_PATH/include/libbson-1.0` 
+* `-LMANGROVE_INSTALL_PATH/lib`
+	- If the install prefixes for the C and C++ Drivers are different than the one for Mangrove, also include `-LCDRIVER_INSTALL_PATH/lib` and `-LCXX_DRIVER_INSTALL_PATH/lib`
+* `-lmangrove` 
+* `-lboson`
+* `-lmongocxx` 
+* `-lbsoncxx`
