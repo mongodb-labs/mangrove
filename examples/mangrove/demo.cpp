@@ -20,7 +20,6 @@
 #include <mongocxx/instance.hpp>
 #include <mongocxx/pipeline.hpp>
 
-#include <cereal/types/vector.hpp>
 #include <mangrove/collection_wrapper.hpp>
 
 // Makes dealing with dates easier

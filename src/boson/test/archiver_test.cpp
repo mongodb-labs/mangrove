@@ -16,8 +16,9 @@
 
 #include <boson/bson_archiver.hpp>
 #include <boson/bson_streambuf.hpp>
+
 #include <bsoncxx/json.hpp>
-#include <cereal/types/vector.hpp>
+
 #include <fstream>
 
 /**
@@ -543,4 +544,61 @@ TEST_CASE("the BSON archiver successfully serializes embedded classes with dot n
     b1.tp = std::chrono::system_clock::now();
 
     archive(b1);
+}
+
+struct ContainerData {
+    std::vector<int32_t> v;
+    std::set<int32_t> s;
+    std::unordered_set<int32_t> u;
+    std::list<int32_t> l;
+    std::forward_list<int32_t> f;
+    std::deque<int32_t> d;
+    std::valarray<int32_t> va;
+
+    template <class Archive>
+    void serialize(Archive& ar) {
+        ar(CEREAL_NVP(v), CEREAL_NVP(s), CEREAL_NVP(u), CEREAL_NVP(l), CEREAL_NVP(f), CEREAL_NVP(d),
+           CEREAL_NVP(va));
+    }
+
+    bool operator==(const ContainerData& other) {
+        auto va_vals_equal = (va == other.va);
+        if (!va_vals_equal.min()) {
+            return false;
+        }
+
+        return std::tie(v, s, u, l, f, d) ==
+               std::tie(other.v, other.s, other.u, other.l, other.f, other.d);
+    }
+};
+
+TEST_CASE(
+    "the BSON archiver successfully serializes and deserializes all of the supported STL "
+    "containers") {
+    std::vector<int32_t> v{1, 2, 3};
+    std::set<int32_t> s{4, 5, 6};
+    std::unordered_set<int32_t> u{7, 8, 9};
+    std::list<int32_t> l{10, 11, 12};
+    std::forward_list<int32_t> f{13, 14, 15};
+    std::deque<int32_t> d{16, 17, 18};
+    std::valarray<int32_t> va{19, 20, 21};
+
+    ContainerData out_cd{v, s, u, l, f, d, va};
+
+    {
+        std::ofstream os("container_data.bson", std::ios_base::binary);
+        boson::BSONOutputArchive oarchive(os);
+
+        oarchive(out_cd);
+    }
+
+    {
+        ContainerData in_cd;
+        std::ifstream is("container_data.bson", std::ios_base::binary);
+        boson::BSONInputArchive iarchive(is);
+
+        iarchive(in_cd);
+
+        REQUIRE(in_cd == out_cd);
+    }
 }

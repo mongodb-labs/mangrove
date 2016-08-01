@@ -17,7 +17,6 @@
 #include <boson/bson_archiver.hpp>
 #include <boson/stdx/optional.hpp>
 #include <bsoncxx/json.hpp>
-#include <cereal/types/vector.hpp>
 #include <fstream>
 
 using boson::stdx::optional;

@@ -16,8 +16,6 @@
 
 #include <iostream>
 
-#include <cereal/types/vector.hpp>
-
 #include <bsoncxx/builder/stream/document.hpp>
 #include <mongocxx/client.hpp>
 #include <mongocxx/instance.hpp>

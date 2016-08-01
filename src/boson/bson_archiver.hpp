@@ -58,6 +58,15 @@
 
 #include <boson/stdx/optional.hpp>
 
+// Includes for officially supported STL containers
+#include <cereal/types/deque.hpp>
+#include <cereal/types/forward_list.hpp>
+#include <cereal/types/list.hpp>
+#include <cereal/types/set.hpp>
+#include <cereal/types/unordered_set.hpp>
+#include <cereal/types/valarray.hpp>
+#include <cereal/types/vector.hpp>
+
 namespace boson {
 
 /**
