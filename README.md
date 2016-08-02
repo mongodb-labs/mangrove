@@ -1,6 +1,6 @@
 # Mangrove [![Build Status](https://travis-ci.org/mongodb/mangrove.svg?branch=master)](https://travis-ci.org/mongodb/mangrove)
 
-Welcome to Mangrove, the official MongoDB C++ ODM!
+Welcome to Mangrove, the MongoDB C++ ODM!
 
 Mangrove lets you map your C++ classes to collections in MongoDB for seamless data retrieval and manipulation.
 
@@ -38,7 +38,7 @@ Note that the Doxygen API will be unavailable in this served documentation.
 
 ## Bugs and Issues
 
-See our [JIRA project](http://jira.mongodb.org/browse/CXXODM).
+You can report any bugs or issues you find in the Github Issues tab for this repository. 
 
 ## Mailing Lists and IRC
 

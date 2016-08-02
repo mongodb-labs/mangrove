@@ -1,5 +1,28 @@
 {
     "readme": "Chronological by date of first commit: add yourself at the end",
     "contributors": [
+    	{
+    		"name" : "Matt Cotter",
+    		"email" : [
+    			"mc@mongodb.com"
+    		],
+    		"description" : "Provided boilerplate code and performed many code reviews."
+    	},
+    	{
+    		"name" : "Adam Chelminski",
+    		"email" : [
+    			"adam.chelminski@mongodb.com",
+    			"chelminski.adam@gmail.com"
+    		],
+    		"description" : "Principal author of BSON serializer, mangrove::model, Travis CI integration, and Hugo-generated documentation."
+    	},
+    	{
+    		"name" : "Raphael Kargon",
+    		"email" : [
+    			"raphael.kargon@mongodb.com",
+    			"raphael.kargon@gmail.com"
+    		],
+    		"description" : "Principal author of ODM collection wrapper, query builder, update builder."
+    	}
     ]
 }

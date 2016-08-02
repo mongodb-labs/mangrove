@@ -48,7 +48,7 @@ These are all serialized in the database as BSON arrays.
 
 MongoDB documents often contain embedded documents, which most likely don't logically map to a common C++ type. Fortunately, Mangrove allows you to create classes that represent subdocuments that may be present in a normal document.
 
-Creating a serializable subclass is straightfoward, and very similar to creating a model. Simply take your class, and instead of inheriting from `mangrove::model` and calling `MANGROVE_MAKE_KEYS_MODEL`, just call `MANGROVE_MAKE_KEYS` on the types you want serialized in the subdocument.
+Creating a serializable subclass is straightfoward, and very similar to creating a model. Simply take your class, and instead of inheriting from `mangrove::model` and calling `MANGROVE_MAKE_KEYS_MODEL`, just call `MANGROVE_MAKE_KEYS` on the types you want serialized in the subdocument. `MANGROVE_MAKE_KEYS` accepts all of the types that `MANGROVE_MAKE_KEYS_MODEL` accepts.
 
 ```cpp
 class ContactCard {
@@ -156,7 +156,7 @@ The following types, which are in the `bsoncxx::types::` namespace are supported
 
 ### BSON "View" Types
 
-Some of the types defined in the `bsoncxx::types::` namespace are non-owning "views" to their underlying data, meaning that they can be dangerous if the address they pointing to is freed from memory. The following types are BSON "views":
+Some of the types defined in the `bsoncxx::types::` namespace are non-owning "views" to their underlying data, meaning that they can be dangerous if the address they point to is freed from memory. The following types are BSON "views":
 
 * `b_utf8`
 * `b_document`

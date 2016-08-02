@@ -92,7 +92,7 @@ int main() {
 
 The `BlogEntry` model has a static function `setCollection()` that lets you specify in which collection to save and retrieve instances of `BlogEntry`. It accepts a `mongocxx::collection`, which is accessible via the `mongocxx::client`. The code above sets `BlogEntry`'s collection to the `"entries"` collection in the `"my_blog"` database hosted at `"mongodb://localhost:27017"`.
 
-If you're planning on writing multi-threaded applications with Mangrove, be sure to carefully read the warning [here](/2-models/introduction/#linking-with-the-database)
+If you're planning on writing multi-threaded applications with Mangrove, be sure to carefully read the warning [here](/2-models/introduction/#linking-with-the-database).
 
 ## Saving Objects
 
@@ -136,8 +136,3 @@ The return type of `BlogEntry::find()` is an iterator of `BlogEntry`s. This make
 {{% notice info %}}
 The iterator returned by the model's `find()` method has the semantics of a MongoDB **cursor**. This is useful for large queries where you want to periodically read from the database as you're reading from the query results, but this also gives the cursors some interesting behavior such as inactive cursor closure and the lack of cursor isolation. If you want to learn more about these behaviors, check out {{% a_blank "this page" "https://docs.mongodb.com/v3.2/tutorial/iterate-a-cursor/#cursor-behaviors" %}} in the MongoDB manual.  
 {{% /notice %}}
-
-## Bulk Updates
-
-TODO
-

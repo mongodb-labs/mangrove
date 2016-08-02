@@ -34,11 +34,10 @@ To retrieve the users in the database that are over 21 years of age, one would u
 auto results = User::find(MANGROVE_KEY(User::age) >= 21);
 ```
 
-Where `collection` is a `mongocxx::collection` object from the C++ Driver.
 The different parts of this code will be explained in more detail below,
 but note the `MANGROVE_KEY` macro that is used to refer to individual fields in the document.
 Then, Mangrove uses {{% a_blank "operator overloading" "http://en.cppreference.com/w/cpp/language/operators" %}} to allow the field to be compared to `21` with the `>=` operator.
-This constructs a query object, which is implicitly cast to a BSON value when passed into `mongocxx::collection::find()`.
+This constructs a query object, which is implicitly cast to a BSON value when passed into `User::find()`.
 
 {{% notice warning %}}
 The query objects should only be used as *temporary objects* --- that is, constructed and passed directly into another function, such as `find()`.

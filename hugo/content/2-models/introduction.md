@@ -71,8 +71,8 @@ class Message : mangrove::model<Message> {
     int dont_include_me;
 
     MANGROVE_MAKE_KEYS_MODEL(Message,
-                             MANGROVE_CUSTOM_NVP("a_id", author_id),
-                             MANGROVE_CUSTOM_NVP("c", content),
+                             MANGROVE_CUSTOM_NVP(author_id, "a_id"),
+                             MANGROVE_CUSTOM_NVP(content, "c"),
                              MANGROVE_NVP(time_sent))
 }
 ```
@@ -162,5 +162,5 @@ for(auto msg : Message::find(MANGROVE_KEY(Message::author_id) == bsoncxx::oid("5
 }
 ```
 {{% notice note %}}
-While the above code works, a more efficient way of achieving the same result is through a bulk delete with the model's `deleteMany()` method.
+While the above code works, a more efficient way of achieving the same result is through a bulk delete with the model's `delete_many()` method.
 {{% /notice %}}

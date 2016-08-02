@@ -19,6 +19,10 @@ To get Mangrove up and running in your project, simply follow these instructions
 5. The MongoDB C++ driver version 3.0.2+. (see below)
 6. *(Optional)* pkg-config
 
+{{% notice note %}}
+As of this writing, the MongoDB C++ driver version 3.0.2 has not been released. When installing the C++ driver, simply `git checkout master` if `git checkout r3.0.2` does not work.
+{{% /notice %}}
+
 ## Build and install the C driver
 
 Mangrove uses {{% a_blank "libbson" "https://api.mongodb.com/libbson/current/" %}} and {{% a_blank "libmongoc" "https://api.mongodb.com/c/current/" %}} internally. If you don't already have a new enough version of libmongoc and libbson installed, then you need to build them.
