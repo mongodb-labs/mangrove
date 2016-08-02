@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>5-the-bson-mappers on Mangrove</title>
-    <link>http://mongodb.github.io/mangrove/5-the-bson-mapper/</link>
+    <link>http://mongodb-labs.github.io/mangrove/5-the-bson-mapper/</link>
     <description>Recent content in 5-the-bson-mappers on Mangrove</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://mongodb.github.io/mangrove/5-the-bson-mapper/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://mongodb-labs.github.io/mangrove/5-the-bson-mapper/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The BSON Mapper</title>
-      <link>http://mongodb.github.io/mangrove/5-the-bson-mapper/</link>
+      <link>http://mongodb-labs.github.io/mangrove/5-the-bson-mapper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mangrove/5-the-bson-mapper/</guid>
+      <guid>http://mongodb-labs.github.io/mangrove/5-the-bson-mapper/</guid>
       <description>
 
 &lt;h3 id=&#34;chapter-5&#34;&gt;Chapter 5&lt;/h3&gt;
@@ -23,6 +23,10 @@
 &lt;p&gt;Learn about &lt;strong&gt;Boson&lt;/strong&gt;, the 
 &lt;a target=&#34;_blank&#34; href=&#34;http://uscilab.github.io/cereal/&#34;&gt;Cereal &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
 -powered &lt;strong&gt;BSON serializer&lt;/strong&gt; that makes Mangrove work, and how you can use it in your own applications.&lt;/p&gt;
+
+&lt;div class=&#34;notices note&#34; &gt;&lt;p&gt;This chapter has not been written yet. Check back soon!&lt;/p&gt;
+&lt;/div&gt;
+
 </description>
     </item>
     

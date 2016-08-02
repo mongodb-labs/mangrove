@@ -9,7 +9,7 @@
     <programlisting>
 <codeline><highlight class="normal">#<sp/>Mangrove</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">Welcome<sp/>to<sp/>the<sp/>generated<sp/>API<sp/>reference<sp/>for<sp/>Mangrove,<sp/>the<sp/>official<sp/>MongoDB<sp/>C++<sp/>ODM!</highlight></codeline>
+<codeline><highlight class="normal">Welcome<sp/>to<sp/>the<sp/>generated<sp/>API<sp/>reference<sp/>for<sp/>Mangrove,<sp/>the<sp/>MongoDB<sp/>C++<sp/>ODM!</highlight></codeline>
     </programlisting>
     <location file="DOXYGEN_README.md"/>
   </compounddef>

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>4-updates on Mangrove</title>
-    <link>http://mongodb.github.io/mangrove/4-updates/</link>
+    <link>http://mongodb-labs.github.io/mangrove/4-updates/</link>
     <description>Recent content in 4-updates on Mangrove</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://mongodb.github.io/mangrove/4-updates/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://mongodb-labs.github.io/mangrove/4-updates/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Updates</title>
-      <link>http://mongodb.github.io/mangrove/4-updates/</link>
+      <link>http://mongodb-labs.github.io/mangrove/4-updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mangrove/4-updates/</guid>
+      <guid>http://mongodb-labs.github.io/mangrove/4-updates/</guid>
       <description>
 
 &lt;h3 id=&#34;chapter-4&#34;&gt;Chapter 4&lt;/h3&gt;
@@ -26,10 +26,10 @@
     
     <item>
       <title>Introduction</title>
-      <link>http://mongodb.github.io/mangrove/4-updates/introduction/</link>
+      <link>http://mongodb-labs.github.io/mangrove/4-updates/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mangrove/4-updates/introduction/</guid>
+      <guid>http://mongodb-labs.github.io/mangrove/4-updates/introduction/</guid>
       <description>&lt;p&gt;Mangrove&amp;rsquo;s expression builder also provides the ability to construct &lt;strong&gt;update&lt;/strong&gt; expressions.
 The syntax is pretty much the same as for query expressions &amp;mdash; you refer to fields
 using &lt;code&gt;MANGROVE_KEY&lt;/code&gt; and the other macros, and update them using
@@ -45,7 +45,7 @@ auto res = User::update_many(MANGROVE_CHILD(User, addr, state) == &amp;quot;NY&a
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Note that a query, as seen in 
-&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb.github.io/mangrove/3-queries/&#34;&gt;chapter 3 &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;http://mongodb-labs.github.io/mangrove/3-queries/&#34;&gt;chapter 3 &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
 ,
 is given as the first argument, and an update is given as the second.&lt;/p&gt;
 
@@ -55,10 +55,10 @@ is given as the first argument, and an update is given as the second.&lt;/p&gt;
     
     <item>
       <title>Operators</title>
-      <link>http://mongodb.github.io/mangrove/4-updates/operators/</link>
+      <link>http://mongodb-labs.github.io/mangrove/4-updates/operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mangrove/4-updates/operators/</guid>
+      <guid>http://mongodb-labs.github.io/mangrove/4-updates/operators/</guid>
       <description>
 
 &lt;p&gt;The following is a list of the available &lt;strong&gt;update operators&lt;/strong&gt; for the Mangrove expression builder.

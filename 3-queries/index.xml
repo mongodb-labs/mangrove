@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>3-queries on Mangrove</title>
-    <link>http://mongodb.github.io/mangrove/3-queries/</link>
+    <link>http://mongodb-labs.github.io/mangrove/3-queries/</link>
     <description>Recent content in 3-queries on Mangrove</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://mongodb.github.io/mangrove/3-queries/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://mongodb-labs.github.io/mangrove/3-queries/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Queries</title>
-      <link>http://mongodb.github.io/mangrove/3-queries/</link>
+      <link>http://mongodb-labs.github.io/mangrove/3-queries/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mangrove/3-queries/</guid>
+      <guid>http://mongodb-labs.github.io/mangrove/3-queries/</guid>
       <description>
 
 &lt;h3 id=&#34;chapter-3&#34;&gt;Chapter 3&lt;/h3&gt;
@@ -26,10 +26,10 @@
     
     <item>
       <title>Introduction</title>
-      <link>http://mongodb.github.io/mangrove/3-queries/introduction/</link>
+      <link>http://mongodb-labs.github.io/mangrove/3-queries/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mangrove/3-queries/introduction/</guid>
+      <guid>http://mongodb-labs.github.io/mangrove/3-queries/introduction/</guid>
       <description>
 
 &lt;p&gt;Mangrove provides a &lt;strong&gt;query builder&lt;/strong&gt; with static type-checking for constructing MongoDB queries.
@@ -62,13 +62,12 @@ public:
 auto results = User::find(MANGROVE_KEY(User::age) &amp;gt;= 21);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Where &lt;code&gt;collection&lt;/code&gt; is a &lt;code&gt;mongocxx::collection&lt;/code&gt; object from the C++ Driver.
-The different parts of this code will be explained in more detail below,
+&lt;p&gt;The different parts of this code will be explained in more detail below,
 but note the &lt;code&gt;MANGROVE_KEY&lt;/code&gt; macro that is used to refer to individual fields in the document.
 Then, Mangrove uses 
 &lt;a target=&#34;_blank&#34; href=&#34;http://en.cppreference.com/w/cpp/language/operators&#34;&gt;operator overloading &lt;i class=&#34;fa fa-external-link&#34;&gt;&lt;/i&gt;&lt;/a&gt;
  to allow the field to be compared to &lt;code&gt;21&lt;/code&gt; with the &lt;code&gt;&amp;gt;=&lt;/code&gt; operator.
-This constructs a query object, which is implicitly cast to a BSON value when passed into &lt;code&gt;mongocxx::collection::find()&lt;/code&gt;.&lt;/p&gt;
+This constructs a query object, which is implicitly cast to a BSON value when passed into &lt;code&gt;User::find()&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&#34;notices warning&#34; &gt;&lt;p&gt;The query objects should only be used as &lt;em&gt;temporary objects&lt;/em&gt; &amp;mdash; that is, constructed and passed directly into another function, such as &lt;code&gt;find()&lt;/code&gt;.
 Attempting to store these queries in a variable and use them later may produce undefined results.
@@ -199,10 +198,10 @@ This is not supported in MongoDB when combining queries with commas.&lt;/p&gt;
     
     <item>
       <title>Operators</title>
-      <link>http://mongodb.github.io/mangrove/3-queries/operators/</link>
+      <link>http://mongodb-labs.github.io/mangrove/3-queries/operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mongodb.github.io/mangrove/3-queries/operators/</guid>
+      <guid>http://mongodb-labs.github.io/mangrove/3-queries/operators/</guid>
       <description>
 
 &lt;p&gt;The following is a list of the available &lt;strong&gt;query operators&lt;/strong&gt; for the Mangrove query builder.

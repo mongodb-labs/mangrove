@@ -4,6 +4,6 @@
     <compoundname>index</compoundname>
     <title>Mangrove</title>
     <detaileddescription>
-<para>Welcome to the generated API reference for Mangrove, the official MongoDB C++ ODM! </para>    </detaileddescription>
+<para>Welcome to the generated API reference for Mangrove, the MongoDB C++ ODM! </para>    </detaileddescription>
   </compounddef>
 </doxygen>
