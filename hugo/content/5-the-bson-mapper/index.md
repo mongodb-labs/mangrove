@@ -17,4 +17,4 @@ Learn about **Boson**, the {{% a_blank "Cereal" "http://uscilab.github.io/cereal
 
 This chapter has not been written yet. Check back soon!
 
-{{% /note}}
+{{% /notice %}}
