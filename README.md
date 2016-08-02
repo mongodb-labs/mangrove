@@ -6,12 +6,12 @@ Mangrove lets you map your C++ classes to collections in MongoDB for seamless da
 
 #### Documentation
 
-The documentation for Mangrove is currently hosted at <http://mongodb.github.io/mangrove>.
+The documentation for Mangrove is currently hosted at <http://mongodb-labs.github.io/mangrove>.
 
 We generate the documentation with the following commands:
 
 ```
-hugo -b http://mongodb.github.io/mangrove/ --canonifyURLs=true -s ./hugo -d ../docs
+hugo -b http://mongodb-labs.github.io/mangrove/ --canonifyURLs=true -s ./hugo -d ../docs
 doxygen
 ```
 
