@@ -1,4 +1,4 @@
-# Mangrove [![Build Status](https://travis-ci.org/mongodb/mangrove.svg?branch=master)](https://travis-ci.org/mongodb/mangrove)
+# Mangrove [![Build Status](https://travis-ci.org/mongodb-labs/mangrove.svg?branch=master)](https://travis-ci.org/mongodb-labs/mangrove)
 
 Welcome to Mangrove, the MongoDB C++ ODM!
 

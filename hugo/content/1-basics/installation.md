@@ -39,7 +39,7 @@ Build and install the C++ driver according to its {{% a_blank "quickstart guide"
 
 Clone the repository, and check out the latest stable release.
 
-* `git clone -b master https://github.com/mongodb/mangrove`
+* `git clone -b master https://github.com/mongodb-labs/mangrove`
 
 Build Mangrove with the following commands:
 
