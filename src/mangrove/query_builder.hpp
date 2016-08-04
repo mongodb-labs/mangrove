@@ -200,7 +200,7 @@ class comparison_expr {
      * @param builder   A BSON core builder
      * @param wrap      Whether to wrap the BSON inside a document.
      * @param omit_name Whether to skip the name of the field. This is used primarily in not_expr
-     *                  and free_expr to append just the value of the expression.
+     *                  and elem_match to append just the value of the expression.
      */
     void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false,
                         bool omit_name = false) const {
@@ -313,8 +313,7 @@ class text_search_expr {
     }
 
     /**
-     * Appends this expression to a BSON core builder,
-     * as a key-value pair of the form " key: { $mod: [ divisor, remainder ] } ".
+     * Appends this expression to a BSON core builder.
      * @param builder   a BSON core builder
      * @param wrap      Whether to wrap the BSON inside a document.
      */
@@ -361,6 +360,48 @@ class text_search_expr {
     mongocxx::stdx::optional<const char *> _language;
     bsoncxx::stdx::optional<bool> _case_sensitive;
     bsoncxx::stdx::optional<bool> _diacritic_sensitive;
+};
+
+/**
+ * Represents an expression with the $where operator, that applies a javascript predicate to
+ * documents.
+ *
+ * @tparam CodeT    The type of the JS code object, either b_code, b_codewscope, or a string.
+ */
+template <typename CodeT>
+class where_expr {
+   public:
+    constexpr where_expr(const CodeT &code) : _code(code) {
+    }
+
+    /**
+     * Appends this expression to a BSON core builder.
+     * @param builder   a BSON core builder
+     * @param wrap      Whether to wrap the BSON inside a document.
+     */
+    void append_to_bson(bsoncxx::builder::core &builder, bool wrap = false) const {
+        if (wrap) {
+            builder.open_document();
+        }
+        builder.key_view("$where");
+        builder.append(_code);
+        if (wrap) {
+            builder.close_document();
+        }
+    }
+
+    /**
+     * Converts the expression to a BSON filter for a query.
+     * The resulting BSON is of the form "{ $where: "<JS code here>" }".
+     */
+    operator bsoncxx::document::view_or_value() const {
+        auto builder = bsoncxx::builder::core(false);
+        append_to_bson(builder);
+        return builder.extract_document();
+    }
+
+   private:
+    const CodeT &_code;
 };
 
 /**
@@ -1330,6 +1371,24 @@ inline text_search_expr text(
     bsoncxx::stdx::optional<bool> case_sensitive = bsoncxx::stdx::nullopt,
     bsoncxx::stdx::optional<bool> diacritic_sensitive = bsoncxx::stdx::nullopt) {
     return {search, language, case_sensitive, diacritic_sensitive};
+}
+
+/**
+ * Creates an expression that queries the database with $where.
+ * This takes a representation of a Javascript predicate that is applied to documents.
+ * NOTE: This does *not* do static checking on strings to make sure they are valide predicates.
+ *
+ * @tparam CodeT        The type of the given JS expression. This can be either b_code,
+ * b_codewscope, or a std::string.
+ * @param code          An object representing JS code of a predicate to apply to documents. *
+ * @returns             A where_expr object that stores a reference to the given code object.
+ */
+template <typename CodeT, typename = std::enable_if_t<
+                              std::is_convertible<CodeT, bsoncxx::types::b_code>::value ||
+                              std::is_convertible<CodeT, bsoncxx::types::b_codewscope>::value ||
+                              std::is_convertible<CodeT, std::string>::value>>
+constexpr where_expr<CodeT> where(const CodeT &code) {
+    return {code};
 }
 
 /**

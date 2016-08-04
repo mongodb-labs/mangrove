@@ -196,7 +196,31 @@ Also, fields **must** be text-indexed for the `$text` operator to work on them.
 
 - `{{% a_blank "$where" "https://docs.mongodb.com/manual/reference/operator/query/where/" %}}`
 
-    *Mangrove does not provide a `$where` operator.*
+    This operator searches for documents in the database based on a Javascript expression that accepts a document and returns a boolean value. It is provided as a free function that accepts a JS predicate as one of three types:
+    - A string,
+    - The C++ driver's `{{% a_blank "b_code" "http://mongodb.github.io/mongo-cxx-driver/structbsoncxx_1_1types_1_1b__code.html"%}}` type, or
+    - The C++ driver's `{{% a_blank "b_codewscope" "http://mongodb.github.io/mongo-cxx-driver/structbsoncxx_1_1types_1_1b__codewscope.html"%}}` type.
+
+    ```cpp
+    using namespace bsoncx::builder::stream;
+    using namespace bsoncx::types;
+    // Find users whose previous score in some game was their best ever.
+    // The following two are equivalent, and produce the BSON:
+    // { $where: "this.prev_score == this.high_score" }
+    auto results = User::find(mangrove::where("this.prev_score == this.high_score"));
+    auto results = User::find(mangrove::where(b_code{"this.prev_score == this.high_score"}));
+
+    // An example of using a predicate that references an external variable.
+    auto scope = document{} << "diff" << 100 << finalize;
+    auto results = User::find(mangrove::where(b_codewscope{"this.high_score - this.prev_score < - diff", scope}));
+    ```
+
+    More information on `b_code` and `b_codewscope` can be found in the API documentation linked above.
+
+{{% notice warning %}}
+Mangrove does **not** do check on the string values passed to `where(...)` for validity. Any errors, such as Javascript syntax errors, will cause the server to return an error and the C++ driver may throw an exception.
+{{% /notice %}}
+
 
 
 ### Geospational Operators

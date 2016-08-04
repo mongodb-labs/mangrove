@@ -678,6 +678,30 @@ TEST_CASE("Query Builder", "[mangrove::query_builder]") {
         REQUIRE(res->z == "goodbye");
     }
 
+    SECTION("Test $where operator.", "[mangrove::nvp::where]") {
+        // Test $where with string
+        auto res = Bar::find_one(mangrove::where("this.x2 == this.x1 + 1"));
+        REQUIRE(res);
+        REQUIRE(res->w == 444);
+        REQUIRE(res->x2 == res->x1 + 1);
+
+        // Test $where with b_code
+        auto code = bsoncxx::types::b_code{"this.x2 == this.x1 + 1"};
+        res = Bar::find_one(mangrove::where(code));
+        REQUIRE(res);
+        REQUIRE(res->w == 444);
+        REQUIRE(res->x2 == res->x1 + 1);
+
+        // Test $where with "code with scope"
+        auto scope = bsoncxx::builder::stream::document{} << "inc" << 1
+                                                          << bsoncxx::builder::stream::finalize;
+        auto code_w_scope = bsoncxx::types::b_codewscope{"this.x2 == this.x1 + inc", scope};
+        res = Bar::find_one(mangrove::where(code_w_scope));
+        REQUIRE(res);
+        REQUIRE(res->w == 444);
+        REQUIRE(res->x2 == res->x1 + 1);
+    }
+
     SECTION("Test array query operators") {
         SECTION("Test $size operator.", "[mangrove::nvp::size]") {
             auto res = Bar::find_one(MANGROVE_KEY(Bar::arr).size(3));
