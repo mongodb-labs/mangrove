@@ -56,9 +56,6 @@ class comparison_expr;
 template <typename NvpT, typename U>
 class comparison_value_expr;
 
-template <typename NvpT>
-class mod_expr;
-
 template <typename Expr>
 class not_expr;
 
@@ -123,9 +120,6 @@ struct expression_type<comparison_expr<NvpT, U>> : public expression_query_t {};
 
 template <typename NvpT, typename U>
 struct expression_type<comparison_value_expr<NvpT, U>> : public expression_query_t {};
-
-template <typename NvpT>
-struct expression_type<mod_expr<NvpT>> : public expression_query_t {};
 
 template <typename Expr>
 struct expression_type<not_expr<Expr>> : public expression_query_t {};

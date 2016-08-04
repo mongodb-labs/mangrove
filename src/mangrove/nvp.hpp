@@ -388,15 +388,19 @@ class nvp_base {
 
     /**
      * Creates a mod_expr that represents a query with the $mod operator.
-     * Such a query essentially checks that "nvp_value % divisor == remainder"
+     * Such a query essentially checks that "nvp_value % divisor == remainder".
+     * The parameters for this operator must be integral types type.
+     *
      * @param divisor   The divisor for the modulus operation
      * @param remainder   The remainder after dividing a value by `divisor`
      * @returns A mod_expr representing this query.
      */
-    template <typename U = array_element_type,
-              typename = std::enable_if_t<std::is_arithmetic<U>::value>>
-    constexpr mod_expr<NvpT> mod(const int& divisor, const int& remainder) const {
-        return {*static_cast<const NvpT*>(this), divisor, remainder};
+    template <
+        typename U = no_opt_type, typename N,
+        typename = std::enable_if_t<std::is_arithmetic<U>::value && std::is_integral<N>::value>>
+    constexpr comparison_value_expr<NvpT, std::array<N, 2>> mod(const N& divisor,
+                                                                const N& remainder) const {
+        return {*static_cast<const NvpT*>(this), {{divisor, remainder}}, "$mod"};
     }
 
     /**
