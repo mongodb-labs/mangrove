@@ -257,13 +257,20 @@ class model {
      * In the terms of the CRUD specification, this uses deleteOne with the _id as the sole
      * argument to the query filter.
      *
+     * @param options
+     *      an optional mongocxx::options::delete_options specifying the options to pass to the
+     *      underlying delete operation.
+     *
+     * @return the result of the delete operation performed in the database.
+     *
      * @see https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/
      */
-    void remove() {
+    mongocxx::stdx::optional<mongocxx::result::delete_result> remove(
+        const mongocxx::options::delete_options& options = mongocxx::options::delete_options()) {
         auto id_match_filter = bsoncxx::builder::stream::document{}
                                << "_id" << this->_id << bsoncxx::builder::stream::finalize;
 
-        _coll.collection().delete_one(id_match_filter.view());
+        return _coll.collection().delete_one(id_match_filter.view(), options);
     }
 
     /**
@@ -294,9 +301,18 @@ class model {
      * operand, and upsert=true so that objects that aren't already in the collection are
      * automatically inserted.
      *
+     * @param options
+     *      an optional mongocxx::options::update specifying the options to pass to the
+     *      underlying update operation. Please mote that regardless of what you pass into the
+     *      upsert option, upsert will always be true so that a document not already in the database
+     *      will be inserted.
+     *
+     * @return the result of the update operation performed in the database.
+     *
      * @see https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/
      */
-    void save() {
+    mongocxx::stdx::optional<mongocxx::result::update> save(
+        mongocxx::options::update options = mongocxx::options::update()) {
         auto id_match_filter = bsoncxx::builder::stream::document{}
                                << "_id" << this->_id << bsoncxx::builder::stream::finalize;
 
@@ -304,12 +320,10 @@ class model {
                       << "$set" << boson::to_dotted_notation_document(*static_cast<T*>(this))
                       << bsoncxx::builder::stream::finalize;
 
-        mongocxx::options::update opts{};
+        options.upsert(true);
 
-        opts.upsert(true);
-
-        _coll.collection().update_one(id_match_filter.view(), update.view(), opts);
-    };
+        return _coll.collection().update_one(id_match_filter.view(), update.view(), options);
+    }
 
     /**
      *  Updates multiple documents matching the provided filter in this collection.
