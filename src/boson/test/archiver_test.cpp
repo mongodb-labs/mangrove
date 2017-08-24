@@ -162,6 +162,8 @@ for (var prop in obj) {
 })",
                           someScope.view()},
           test_dbpointer{"dbtest", someOid} {
+        test_timestamp.increment = 100;
+        test_timestamp.timestamp = 100;
     }
 
     void resetValues() {

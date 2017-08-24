@@ -57,8 +57,8 @@ int bson_output_streambuf::insert(int ch) {
         if (_len > BSON_MAX_SIZE) {
             throw std::invalid_argument("BSON document length is too large.");
         }
-        _data = std::unique_ptr<uint8_t, void (*)(std::uint8_t *)>(new uint8_t[_len],
-                                                                   [](uint8_t *p) { delete[] p; });
+        _data = std::unique_ptr<uint8_t[], void (*)(std::uint8_t *)>(
+            new uint8_t[_len], [](uint8_t *p) { delete[] p; });
         std::memcpy(_data.get(), &_len, 4);
     }
 

@@ -246,7 +246,7 @@ TEST_CASE(
     e1.test_utf8 = make_optional<bsoncxx::types::b_utf8>(bsoncxx::types::b_utf8("hello!"));
     e1.test_date = make_optional<bsoncxx::types::b_date>(
         bsoncxx::types::b_date(std::chrono::system_clock::time_point{}));
-    e1.test_regex = make_optional<bsoncxx::types::b_regex>(bsoncxx::types::b_regex("a", "b"));
+    e1.test_regex = make_optional<bsoncxx::types::b_regex>(bsoncxx::types::b_regex("a", "ilmsux"));
     e1.test_code = make_optional<bsoncxx::types::b_code>(bsoncxx::types::b_code("void main() {}"));
     e1.test_codewscope = make_optional<bsoncxx::types::b_codewscope>(
         bsoncxx::types::b_codewscope("void main() {}", someNonEmptyScope.view()));
@@ -269,7 +269,7 @@ TEST_CASE(
         REQUIRE(e2.test_date->operator std::chrono::system_clock::time_point() ==
                 std::chrono::system_clock::time_point{});
         REQUIRE(e2.test_regex->regex.to_string() == std::string("a"));
-        REQUIRE(e2.test_regex->options.to_string() == std::string("b"));
+        REQUIRE(e2.test_regex->options.to_string() == std::string("ilmsux"));
 
         REQUIRE(e2.test_code->code.to_string() == std::string("void main() {}"));
         REQUIRE(e2.test_codewscope->code.to_string() == std::string("void main() {}"));

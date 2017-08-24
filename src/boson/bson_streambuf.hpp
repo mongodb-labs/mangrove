@@ -72,7 +72,7 @@ class BOSON_API bson_output_streambuf : public std::streambuf {
     BOSON_PRIVATE int insert(int ch);
     // A callback that accepts a document::value and returns void.
     document_callback _cb;
-    std::unique_ptr<uint8_t, void (*)(std::uint8_t *)> _data;
+    std::unique_ptr<uint8_t[], void (*)(std::uint8_t *)> _data;
     size_t _len = 0;
     size_t _bytes_read = 0;
 };
